@@ -1,0 +1,19 @@
+@import "../base/base";
+
+.main-wrapper {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.expressive-component {
+	@include expressive-component();
+}
+
+.component {
+	opacity: 1;
+	transition: opacity 0.4s ease-in;
+
+	&.is-oov {
+		opacity: 0;
+	}
+}

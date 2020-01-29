@@ -1,0 +1,106 @@
+@import "../base/base";
+
+* {
+	box-sizing: border-box;
+
+	&:focus {
+		outline-color: $color-brand-dark;
+		outline-offset: 0;
+		outline-width: medium;
+	}
+
+	* {
+		box-sizing: inherit;
+	}
+}
+
+::selection {
+	background: $color-teal;
+	color: $color-black;
+}
+
+body {
+	background: $color-white;
+}
+
+//Prevent tracking pixels and other broken images from breaking layout.
+img[height="0"][width="0"] {
+	position: absolute;
+}
+
+//When images don't load show alt text in their place
+img {
+	color: $color-white;
+	position: relative;
+
+	&:after {
+		@include typography-h3;
+		color: $color-white;
+		content: attr(alt);
+		display: block;
+		font-size: 16px;
+		left: 0;
+		overflow: hidden;
+		padding: 10%;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 80%;
+		z-index: 2;
+	}
+
+	&:before {
+		background-color: $color-grey-darker;
+		bottom: 0;
+		content: " ";
+		display: block;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+input {
+	border: 1px solid $color-white;
+	border-radius: $form-radius;
+	height: 40px;
+	padding: 10px;
+	transition: all 0.3s;
+
+	&[type=email],
+	&[type=text] {
+		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		appearance: none;
+	}
+
+	&.is-invalid {
+		border-color: $color-black;
+		color: $color-warn;
+	}
+}
+
+a {
+	color: inherit;
+
+	&:visit,
+	&:hover {
+		color: inherit;
+	}
+}
+
+p {
+	margin-bottom: 20px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+b,
+strong {
+	font-weight: 600;
+}

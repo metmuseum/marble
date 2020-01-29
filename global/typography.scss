@@ -1,0 +1,121 @@
+@import "../base/base";
+
+body {
+	@include typography-body-long;
+	-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+
+	.fixed-width & {
+		font-size: 18px;
+	}
+}
+
+p {
+	max-width: 40em;
+
+	.expressive-body & {
+		@include typography-body-expressive;
+	}
+
+	.short-body & {
+		@include typography-body-short;
+	}
+
+	.subtext & {
+		font-weight: 300;
+		line-height: 1.3333;
+	}
+}
+
+a {
+	border-bottom: solid 1px currentcolor;
+	color: inherit;
+	padding-bottom: 2px;
+	text-decoration: none;
+	transition: background-position 0.3s, color 0.3s;
+
+	&:hover,
+	&:visited {
+		color: inherit;
+	}
+
+	&:focus {
+		border-color: transparent;
+	}
+
+	@media screen and (hover: hover) {
+		&:hover {
+			border-color: transparent;
+		}
+	}
+}
+
+b,
+strong {
+	font-weight: 600;
+}
+
+em,
+i {
+	font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	a,
+	a:hover,
+	a:visited {
+		border: none;
+		color: inherit;
+		padding-bottom: 0;
+	}
+}
+
+h1,
+h2,
+h3 {
+	padding-bottom: $spacing-micro;
+}
+
+h1 {
+	@include typography-h1
+}
+
+h1.expressive {
+	@include typography-h1-expressive;
+}
+
+h2 {
+	@include typography-h2;
+}
+
+h3 {
+	@include typography-h3;
+}
+
+h4 {
+	@include typography-h4;
+}
+
+ol,
+ul {
+	.expressive-body & {
+		@include typography-body-expressive;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+	font-family: inherit;
+
+	&:empty {
+		display: none;
+		height: 0;
+		margin: 0;
+		padding: 0;
+	}
+}

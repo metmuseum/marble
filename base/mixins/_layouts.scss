@@ -1,0 +1,61 @@
+@import "../sizes";
+@import "../colors";
+
+@mixin vimeo-iframe-16x9 {
+	box-sizing: border-box;
+	height: 56.25vw;
+	left: 50%;
+	min-height: 100%;
+	min-width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 177.77777778vh;
+}
+
+@mixin interaction-side-to-side($direction: right) {
+	transition: transform linear;
+	@if $direction == "right" {
+		animation: side-to-side-r 2s infinite;
+	} @else if $direction == "left" {
+		animation: side-to-side-l 2s infinite;
+	}
+}
+
+@mixin key-image-wrapper {
+	align-items: center;
+	display: flex;
+	flex-basis: auto;
+	flex-grow: 0;
+	flex-shrink: 0;
+	justify-content: center;
+	overflow: hidden;
+
+	a {
+		display: block;
+		flex: 1;
+		height: 100%;
+		overflow: hidden;
+		padding-bottom: 0;
+	}
+
+	a,
+	a:hover,
+	a:visited {
+		border: none;
+		color: transparent;
+		text-decoration: none;
+	}
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}
+
+@mixin expressive-component {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $expressive-width-max;
+}

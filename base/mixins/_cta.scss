@@ -1,0 +1,63 @@
+@import "../sizes";
+@import "../colors";
+
+@mixin button-default {
+	background-image: linear-gradient(to right, $color-pink, $color-met-red, $color-orange);
+	background-position: 0 0;
+	background-size: 200% 200%;
+	border: none;
+	border-radius: $form-radius;
+	color: $color-white;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: 18px;
+	font-weight: 500;
+	padding: 0 20px;
+	transition: background-position 0.5s;
+}
+
+@mixin interaction-fill-up($color-1, $color-2) {
+	background-color: transparent;
+	background-image: linear-gradient(180deg, transparent 0%, transparent 49%, $color-1 50%, $color-1 100%);
+	background-size: 200% 200%;
+	color: $color-1;
+	transition: all 0.3s;
+
+	&:focus {
+		background-position: 0 100%;
+		color: $color-2;
+	}
+
+	@media screen and (hover: hover) {
+		&:hover {
+			background-position: 0 100%;
+			color: $color-2;
+		}
+	}
+}
+
+@mixin underline($color: $color-black) {
+	border-bottom: 1px solid $color;
+	position: relative;
+
+	&:after {
+		border-bottom: 1.5px solid transparent;
+		bottom: -1px;
+		content: "";
+		left: 0;
+		position: absolute;
+		right: 100%;
+		transition: right 0.8s 0.1s;
+	}
+	@media screen and (hover: hover) {
+		&:hover {
+			border-color: transparent;
+
+			&:after {
+				border-color: $color;
+				content: "";
+				right: 0;
+			}
+		}
+	}
+}
