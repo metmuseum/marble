@@ -1,1 +1,1 @@
-import scss from `./marble.scss`;
+import "./marble.scss"

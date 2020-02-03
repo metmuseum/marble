@@ -3,9 +3,9 @@ const ScssConfigWebpackPlugin = require("scss-config-webpack-plugin");
 const FontConfigWebpackPlugin = require("font-config-webpack-plugin");
 
 module.exports = {
-  plugins: [
-    //new JsConfigWebpackPlugin(),
-    new ScssConfigWebpackPlugin(),
-    new FontConfigWebpackPlugin()
-  ]
+	plugins: [
+		new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }),
+		new ScssConfigWebpackPlugin(),
+		new FontConfigWebpackPlugin()
+	]
 };
