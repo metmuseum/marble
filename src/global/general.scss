@@ -1,11 +1,10 @@
 @import "../base/base";
-@import "../base/_colors.scss";
 
 * {
 	box-sizing: border-box;
 
 	&:focus {
-		// outline-color: $color-brand-dark; TODO: Joseph this is undefined?
+		outline-color: $color-met-red;
 		outline-offset: 0;
 		outline-width: medium;
 	}
@@ -53,7 +52,7 @@ img {
 	}
 
 	&:before {
-		// background-color: $color-grey-darker; TODO: Joseph this is undefined?
+		background-color: $color-grey-500;
 		bottom: 0;
 		content: " ";
 		display: block;
@@ -80,7 +79,7 @@ input {
 
 	&.is-invalid {
 		border-color: $color-black;
-		// color: $color-warn;  TODO: Joseph this is undefined?
+		color: $color-red-error;
 	}
 }
 

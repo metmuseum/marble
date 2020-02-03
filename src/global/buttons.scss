@@ -1,4 +1,6 @@
 @import "../base/base";
+$color-disabled-bg: $color-grey-200;
+$color-disabled-txt: $color-grey-600;
 
 .button {
 	@include button-default;
@@ -60,10 +62,10 @@
 	&.button--disabled:hover,
 	&[disabled],
 	&[disabled]:hover {
-		// background-color: $color-disabled-bg;  TODO: Joseph this is undefined?
+		background-color: $color-disabled-bg;
 		background-image: none;
 		border: none;
-		// color: $color-disabled-txt;  TODO: Joseph this is undefined?
+		color: $color-disabled-txt;
 		cursor: auto;
 	}
 }
@@ -107,7 +109,7 @@ a.button {
 	&.button--disabled,
 	&[disabled] {
 		border: none;
-		// color: $color-disabled-txt;  TODO: Joseph this is undefined?
+		color: $color-disabled-txt;
 		cursor: auto;
 
 		&:after {
@@ -162,7 +164,7 @@ a.button {
 	&.button--disabled,
 	&[disabled] {
 		border: none;
-		// color: $color-disabled-txt;  TODO: Joseph this is undefined?
+		color: $color-disabled-txt; 
 		cursor: auto;
 
 		&:after {
