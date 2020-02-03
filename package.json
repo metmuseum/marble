@@ -1,0 +1,37 @@
+{
+  "name": "marble",
+  "version": "1.0.0",
+  "description": "The Design System of The Metropolitan Museum Of Art",
+  "main": "webpack.common.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "asset-config-webpack-plugin": "^1.4.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "js-config-webpack-plugin": "^1.4.0",
+    "scss-config-webpack-plugin": "^1.4.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.2",
+    "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build": "webpack --config webpack.production.config.js",
+    "start": "webpack-dev-server --open --hot --config webpack.dev.config.js --host 0.0.0.0 --disable-host-check",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metmuseum/Marble.git"
+  },
+  "author": "Joseph Curley, Stephen Marsh, The Met",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metmuseum/Marble/issues"
+  },
+  "homepage": "https://github.com/metmuseum/Marble#readme"
+}
