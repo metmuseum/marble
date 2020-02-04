@@ -1,6 +1,6 @@
 {
 	"name": "marble",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "webpack.common.js",
 	"dependencies": {},
@@ -9,6 +9,7 @@
 		"@babel/preset-env": "^7.8.4",
 		"@babel/preset-react": "^7.8.3",
 		"asset-config-webpack-plugin": "^1.4.0",
+		"auto": "^9.9.0",
 		"clean-webpack-plugin": "^3.0.0",
 		"html-webpack-plugin": "^3.2.0",
 		"js-config-webpack-plugin": "^1.4.0",
