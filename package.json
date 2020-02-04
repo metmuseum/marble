@@ -24,6 +24,7 @@
 		"webpack-merge": "^4.2.2"
 	},
 	"scripts": {
+		"release": "auto shipit",
 		"clean": "rm dist/bundle.js",
 		"build": "webpack --config webpack.production.config.js",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
