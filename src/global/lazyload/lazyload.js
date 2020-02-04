@@ -1,7 +1,7 @@
 require(`intersection-observer`);
 import LazyLoad from "vanilla-lazyload";
 
-export default function pageLazyLoad() {
+export default function lazyload() {
 
 	const lazyLoadObj = new LazyLoad({
 		elements_selector: ".lazy",
