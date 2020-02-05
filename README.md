@@ -3,6 +3,19 @@
 
 ![marbling paper by MarbleJournals.com](https://ds62n8mqpnstb.cloudfront.net//full_Escanear-6r.jpg)
 
+# Using Marble
+You can import Marble into your project using npm.
+
+To continuously use the latest version: `npm install metmuseum/marble -S`
+
+To lock in at a specific release: `npm install metmuseum/marble#vX.X.X -S`
+
+To include all Marble CSS through SCSS:
+  `@include "marble/src/marble"`
+
+To include a specific piece of marble:
+`@include "marble/src/components/componentName"`
+
 
 
 # Marble Development As A Local Package
@@ -35,4 +48,4 @@ You may want to see your changes to Marble locally _**and**_ in the context of a
  (Not much to see, but it works!)
 
 # Webpack Build for Release And Production
-* It would be bad form to commit the dev environment version of our files.  When you're ready to `git commit`, you should stop webpack-dev-server if it's running and then: `npm run build`.   This
+* We don't want to commit the dev environment version of our bundle to the repo. When you're ready to `git commit`, you should stop webpack-dev-server if it's running and do `npm run build`.  Now the `/dist` folder will contain the bundles that are approrpiate for production (see also: `/webpack.production.config.js`).  Note that starting webpack-dev-server again will, by design, overwrite what's in `/dist`.
