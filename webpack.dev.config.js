@@ -9,7 +9,7 @@ module.exports = merge(common, {
 	devtool: "inline-source-map",
 	output: {
 		path: __dirname + "/dist",
-		filename: "bundle.[hash].js"
+		filename: "marble.js"
 	},
 	devServer: {
 		contentBase: "./dist",

@@ -2,7 +2,7 @@
 	"name": "marble",
 	"version": "0.1.0",
 	"description": "The Design System of The Metropolitan Museum Of Art",
-	"main": "webpack.common.js",
+	"main": "dist/marble.js",
 	"dependencies": {
 		"intersection-observer": "^0.7.0",
 		"vanilla-lazyload": "^12.4.0"
