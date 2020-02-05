@@ -1,9 +1,0 @@
-{
-  "plugins": [
-    "git-tag"
-  ],
-  "owner": "metmuseum",
-  "repo": "Marble",
-  "name": "JosephCurley",
-  "email": "joseph.curley@metmuseum.org"
-}
