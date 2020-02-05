@@ -1,5 +1,5 @@
 # Marble
-## `Marble` is the Design System used by [The Metropolitan Museum of Art](https://www.metmuseum.org/) (@metmuseum)
+## Marble is the Design System used by [The Metropolitan Museum of Art](https://www.metmuseum.org/) (@metmuseum)
 
 ![marbling paper by MarbleJournals.com](https://ds62n8mqpnstb.cloudfront.net//full_Escanear-6r.jpg)
 
@@ -29,21 +29,21 @@ You may want to see your changes to Marble locally _**and**_ in the context of a
 			npm link
 
 
-2. Next, tell whatever project you're working on to use that local, linked version of `Marble`.
-	* Navigate to a local project folder and find the directory that contains the `package.json` that originally specified `Marble`.
+2. Next, tell whatever project you're working on to use that local, linked version of Marble.
+	* Navigate to a local project folder and find the directory that contains the `package.json` that originally specified Marble.
 		* For example, in Ghidorah, this wouldn't be the project root, it would be: `ghidorah/MMA.Ghidorah/`
 	* From _that_ directory, run:
 
 			npm link Marble
 
-	* Now, instead of what's installed in `node_modules`, npm knows to pull our `Marble` package files from the directory in Step 1.  We can make our changes in our Marble repo, and our other project will show them to us. (Well, as long as they're compiled into `/dist`), more on that below:.
+	* Now, instead of what's installed in `node_modules`, npm knows to pull our Marble package files from the directory in Step 1.  We can make our changes in our Marble repo (more on that below), and our other project will show them to us.
 
 # Webpack Development
 
 1) Install the dependencies in this directory with `npm install`
 2) Launch wepback-dev-server to watch our `/src` directory for changes and compile them into `/dist` with:
 	* `npm run start`
-3) This will also launch a browser pointed to: `src/index.html`.
+3) This will also launch a browser, with hot-reloading enabled, pointed to: `dist/index.html`.
 
  (Not much to see, but it works!)
 
