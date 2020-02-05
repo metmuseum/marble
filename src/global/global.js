@@ -1,5 +1,7 @@
 import lazyLoad from "./lazyload/lazyload.js";
 
-export default function Global() {
+function global() {
 	lazyLoad();
 }
+
+exports.global = global;
