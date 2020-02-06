@@ -1,6 +1,8 @@
+import "./marble.scss";
+
 export default { title: 'Button' };
 
-export const withText = () => '<button class="btn">Hello World</button>';
+export const withText = () => '<button class="button">Hello World</button>';
 
 export const withEmoji = () => {
 	const button = document.createElement('button');
