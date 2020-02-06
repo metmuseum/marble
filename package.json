@@ -12,6 +12,7 @@
 		"@babel/preset-env": "^7.8.4",
 		"@babel/preset-react": "^7.8.3",
 		"@storybook/html": "^5.3.12",
+		"@storybook/storybook-deployer": "^2.8.1",
 		"asset-config-webpack-plugin": "^1.4.0",
 		"babel-loader": "^8.0.6",
 		"clean-webpack-plugin": "^3.0.0",
@@ -27,7 +28,7 @@
 	"scripts": {
 		"build": "webpack --config webpack.production.config.js",
 		"clean": "rm dist/bundle.js",
-		"deploy": "git subtree push --prefix dist origin gh-pages",
+		"deploy-storybook": "storybook-to-ghpages",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook"
 	},
