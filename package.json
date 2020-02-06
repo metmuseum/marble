@@ -11,7 +11,9 @@
 		"@babel/core": "^7.8.4",
 		"@babel/preset-env": "^7.8.4",
 		"@babel/preset-react": "^7.8.3",
+		"@storybook/html": "^5.3.12",
 		"asset-config-webpack-plugin": "^1.4.0",
+		"babel-loader": "^8.0.6",
 		"clean-webpack-plugin": "^3.0.0",
 		"git-tag": "^0.2.0",
 		"html-webpack-plugin": "^3.2.0",
@@ -23,10 +25,11 @@
 		"webpack-merge": "^4.2.2"
 	},
 	"scripts": {
-		"clean": "rm dist/bundle.js",
 		"build": "webpack --config webpack.production.config.js",
+		"clean": "rm dist/bundle.js",
+		"deploy": "git subtree push --prefix dist origin gh-pages",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
-		"deploy": "git subtree push --prefix dist origin gh-pages"
+		"storybook": "start-storybook"
 	},
 	"repository": {
 		"type": "git",
