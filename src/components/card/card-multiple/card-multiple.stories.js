@@ -1,9 +1,13 @@
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import "../card.scss";
 
-export default { title: 'Cards' };
+export default {
+	title: 'Cards',
+  decorators: [withKnobs]
+};
 
 const cardTemplate = (
-	cardHeader = "Large Editorial Card",
+	cardHeader = "Small Card",
 	descriptor = "descriptor",
 	description = "description",
 	images = "https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&hash=9CDD1BCFB213A815CCF4B476CDA5B35F 2x, https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&w=1920&hash=342B752D9534482E6C5C988C117585A4 1x",
@@ -24,16 +28,7 @@ const cardTemplate = (
 	}
 };
 
-const data = {
-	header: "MultiCards",
-	cards: [
-		cardTemplate(),
-		cardTemplate("Another Card", undefined, "This is a second Card"),
-		cardTemplate()
-	]
-};
-
-const cardMarkup = (model) => {
+const cardMarkup = (model, cardCount) => {
 	return `<section class="${model.cards.length} multicard">
   <h3>${model.header}</h3>
 	<div class="multicard-wrapper">
@@ -79,5 +74,12 @@ const cardMarkup = (model) => {
 
 
 export const MultipleCards = () => {
+	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
+	const cards = Array.apply(null, Array(cardCount)).map(() => cardTemplate());
+	const data = {
+		header: `${cardCount} MultiCards`,
+		cards: cards
+	};
+
   return cardMarkup(data);
 }
