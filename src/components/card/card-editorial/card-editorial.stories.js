@@ -15,11 +15,11 @@ const data = {
 const cardMarkup = (model) => {
 	return `<section class="editorial-card--large">
 		<div class="card">
-			<a href="${model.link.url}" class="card-image__link" tabindex="-1">
-				<div class="card-image__wrapper">
+			<div class="card-image__wrapper">
+				<a href="${model.link.url}" class="card-image__link" tabindex="-1">
 					<img class="card-image" srcset="${model.images}">
-				</div>
-			</a>
+				</a>
+			</div>
 			<div class="card-subject">
 				<div class="card-subject__body">
 					<div class="card-header">

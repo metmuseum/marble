@@ -1,112 +1,46 @@
+//When multiple cards are put in a container.
 $color-card-shadow: rgba(0, 0, 0, 0.08);
+$box-shadow-active-card: 4px 4px 10px 0 $color-card-shadow, -4px -4px 10px 0 $color-card-shadow;
 
-.multicard-wrapper {
-	display: flex;
-	flex-direction: column;
+//Use box-shadow instead of a border to keep spacing consistent.
+.card:not(.card--expressive):not(:only-child) {
+	box-shadow: inset 0 0 1px $color-grey-900;
 
-	@media screen and (min-width: $bp-two-column) {
-		flex-direction: row;
+	&.last-child {
+		box-shadow: 0;
 	}
 }
 
-.multicard {
-	.card {
-		flex-basis: 100%;
-		flex-grow: 1;
-		flex-shrink: 1;
+//Active State
+.card--active:not(:only-child) {
+	transition: all 0.15s ease-out;
+
+	&:focus-within {
+		box-shadow: $box-shadow-active-card;
+		z-index: 99;
 	}
 
-	.card-header {
-		margin-bottom: 14px;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-
-	.card-meta__description {
-		p {
-			@include typography-body-expressive;
-		}
-	}
-
-	.card-image__wrapper {
-		height: 0;
-		padding-bottom: 66%;
-		position: relative;
-	}
-
-	.card-image__link {
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
+	&:hover {
+		box-shadow: $box-shadow-active-card;
+		z-index: 99;
 	}
 }
 
-.card-subject__body--multicard {
-	padding-bottom: $spacing-s;
-	padding-top: $spacing-s;
-
-	.card--expressive & {
-		padding: $spacing-xs 0;
-	}
-}
-
-.card:not(.card--expressive) {
-	.multicard & {
-		box-shadow: inset 0 0 1px $color-grey-900;
-
-		&.last-child {
-			box-shadow: 0;
-		}
-	}
-}
-
-.three-card {
+//For Exactly Three Cards.
+.card:nth-last-child(3):first-child,
+.card:nth-last-child(3):first-child ~ .card  {
 	.card-header__heading {
+		//Three cards get a smaller title.
 		@include typography-h4;
 	}
 }
 
-.four-card {
+//For Exactly 4 cards.
+.card:nth-last-child(4):first-child,
+.card:nth-last-child(4):first-child ~ .card  {
 
 	@media screen and (min-width: $bp-two-column) {
-		flex-wrap: wrap;
-
-		.card {
-			width: 50%;
-		}
-	}
-}
-
-.card--active:not(.card--expressive) {
-	transition: all 0.15s ease-out;
-
-	.multicard & {
-		&:focus-within {
-			box-shadow: 4px 4px 10px 0 $color-card-shadow, -4px -4px 10px 0 $color-card-shadow ;
-			z-index: 99;
-		}
-
-		&:hover {
-			box-shadow: 4px 4px 10px 0 $color-card-shadow, -4px -4px 10px 0 $color-card-shadow ;
-			z-index: 99;
-		}
-	}
-}
-
-.multicard--expressive {
-	padding-bottom: $spacing-xs;
-
-	.card:not(:first-child) {
-		@media screen and (min-width: $bp-two-column) {
-			margin-left: $spacing-xs;
-		}
-	}
-
-	.multicard--expressive__header {
-		padding-bottom: $spacing-xs;
+		//For Four cards, on the largest breakpoint we want two rows of two.
+		flex-basis: 50%;
 	}
 }

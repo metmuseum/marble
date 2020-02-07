@@ -1,7 +1,6 @@
 //TODO: Not a giant fan of nesting everything in a file.
 //TODO: Whatever the file name is should match the component name.
 .editorial-card--large {
-
 	.card-header__body {
 		@media screen and (min-width: $bp-large-card) {
 			padding-right: 21%;
@@ -24,18 +23,8 @@
 	}
 
 	.card-meta__description {
-		margin-top: $spacing-s;
-
 		p {
 			@include typography-h2-subtext;
 		}
-
-		@media screen and (min-width: $bp-large-card) {
-			margin-top: 0;
-		}
-	}
-
-	.card-meta__link {
-		margin-top: $spacing-xs;
 	}
 }

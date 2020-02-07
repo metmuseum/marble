@@ -31,10 +31,10 @@ const cardTemplate = (
 const cardMarkup = (model, cardCount) => {
 	return `<section class="${model.cards.length} multicard">
   <h3>${model.header}</h3>
-	<div class="multicard-wrapper">
+	<div class="card-wrapper">
 	  ${ model.cards.reduce((total, card) => {
 			return total + `<div class="card card--active">
-	      <div class="card-image__wrapper">
+	      <div class="card-image__wrapper card-image__wrapper--fixed-ratio card-image__wrapper--66">
 	        <a href="${card.link.url}" class="card-image__link" tabindex="-1">
 	          <img class="card-image" srcset="${card.images}">
 	        </a>
