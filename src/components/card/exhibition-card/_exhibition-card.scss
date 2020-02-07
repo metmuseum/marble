@@ -1,0 +1,27 @@
+
+.card-meta__dates {
+	font-weight: 500;
+	text-transform: uppercase;
+
+	a {
+		border: none;
+	}
+}
+
+.card-image__wrapper--exhibitions {
+	padding-bottom: 50%;
+}
+
+
+.card__location-link {
+	border-bottom: none;
+	font-weight: normal;
+
+	.card__location-wrapper:hover & {
+		font-weight: 600;
+	}
+}
+
+.card__location-title {
+	font-weight: 600;
+}

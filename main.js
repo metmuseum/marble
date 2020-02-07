@@ -17,5 +17,6 @@ module.exports = {
     // Return the altered config
     return config;
   },
-  stories: ['../src/**/*.stories.[tj]s']
+  stories: ['../src/**/*.stories.[tj]s'],
+	addons: ['@storybook/addon-knobs/register']
 };
