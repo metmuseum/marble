@@ -1,0 +1,112 @@
+$color-card-shadow: rgba(0, 0, 0, 0.08);
+
+.multicard-wrapper {
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (min-width: $bp-two-column) {
+		flex-direction: row;
+	}
+}
+
+.multicard {
+	.card {
+		flex-basis: 100%;
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+
+	.card-header {
+		margin-bottom: 14px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.card-meta__description {
+		p {
+			@include typography-body-expressive;
+		}
+	}
+
+	.card-image__wrapper {
+		height: 0;
+		padding-bottom: 66%;
+		position: relative;
+	}
+
+	.card-image__link {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+.card-subject__body--multicard {
+	padding-bottom: $spacing-s;
+	padding-top: $spacing-s;
+
+	.card--expressive & {
+		padding: $spacing-xs 0;
+	}
+}
+
+.card:not(.card--expressive) {
+	.multicard & {
+		box-shadow: inset 0 0 1px $color-grey-900;
+
+		&.last-child {
+			box-shadow: 0;
+		}
+	}
+}
+
+.three-card {
+	.card-header__heading {
+		@include typography-h4;
+	}
+}
+
+.four-card {
+
+	@media screen and (min-width: $bp-two-column) {
+		flex-wrap: wrap;
+
+		.card {
+			width: 50%;
+		}
+	}
+}
+
+.card--active:not(.card--expressive) {
+	transition: all 0.15s ease-out;
+
+	.multicard & {
+		&:focus-within {
+			box-shadow: 4px 4px 10px 0 $color-card-shadow, -4px -4px 10px 0 $color-card-shadow ;
+			z-index: 99;
+		}
+
+		&:hover {
+			box-shadow: 4px 4px 10px 0 $color-card-shadow, -4px -4px 10px 0 $color-card-shadow ;
+			z-index: 99;
+		}
+	}
+}
+
+.multicard--expressive {
+	padding-bottom: $spacing-xs;
+
+	.card:not(:first-child) {
+		@media screen and (min-width: $bp-two-column) {
+			margin-left: $spacing-xs;
+		}
+	}
+
+	.multicard--expressive__header {
+		padding-bottom: $spacing-xs;
+	}
+}
