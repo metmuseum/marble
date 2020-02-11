@@ -1,47 +1,74 @@
 @import "../../base/base";
+@import "./banner-editorial/banner-editorial";
+
+$component-max-height: 85vh;
 
 .banner {
 	display: flex;
 	flex-direction: column;
-	min-height: 85vh;
+	min-height: $component-max-height;
+	text-align: center;
 	width: 100%;
+
 	@media (orientation: landscape) {
 		flex-direction: row-reverse;
+		text-align: left;
 	}
 }
 
 .banner__subject,
 .banner__image-wrapper {
-	flex-basis: 0;
+	flex-basis: 100%;
 	flex-grow: 1;
 	flex-shrink: 1;
 }
 
 .banner__image-wrapper {
+	min-height: 100vw;
+	overflow: hidden;
 	position: relative;
+	@media (orientation: landscape) {
+		min-height: 0;
+	}
 }
 
 .banner__image-link {
+	border: 0;
 	display: block;
 	line-height: 0;
 	min-height: 100%;
 	min-width: 100%;
+	padding: 0;
+	position: absolute;
 }
 
 .banner__image {
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	object-position: center center;
+	position: absolute;
+	top: 0;
+	transform-origin: center;
+	transition: all 0.4s ease-out;
 	width: 100%;
 
-	@media (orientation: landscape) {
-		height: 100%;
-		object-fit: cover;
-		position: absolute;
+	//If the a tag wrapping the image has an href and is being hovered
+	//Or if the banner has focus
+	a:not([href=""]):hover &,
+	.banner:focus-within & {
+		transform: scale(1.06);
 	}
+
 }
 
 .banner__subject {
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	padding: $spacing-s;
-	text-align: center;
+	min-height: 100vw;
+	padding: $spacing-m;
+	@media (orientation: landscape) {
+		min-height: 0;
+	}
 }

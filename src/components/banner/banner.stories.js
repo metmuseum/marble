@@ -10,7 +10,7 @@ const data = {
 	backgroundImages: "https://www.metmuseum.org/-/media/images/150-anniversary/150hubbannermobile.jpg?la=en&hash=507F0AA67DD7FDBB3AFF148741E8A2A0 2x, https://www.metmuseum.org/-/media/images/150-anniversary/150hubbannermobile.jpg?la=en&w=712&hash=3A9DFAFD734E0FAEC4EF53205B45476D 1x",
 	imageAlt: "Celebrating 150 Years",
 	link: {
-		url: "",
+		url: "http://metmuseum.org",
 	}
 }
 
@@ -18,7 +18,7 @@ const bannerMarkup = (model) => {
 	return `
 		<section class="banner banner-grand banner-@Model.Name">
 			<div class="banner__image-wrapper">
-			<a class='banner__image-link' href="${model.link.url}" title="${model.imageAlt}">
+			<a class='banner__image-link' tabindex="-1" href="${model.link.url}" title="${model.imageAlt}">
 				<img class="banner__image" srcset="${model.backgroundImages}">
 				${model.video ? `TODO: Put Video Here` : ''}
 			</a>
@@ -30,7 +30,7 @@ const bannerMarkup = (model) => {
 							<a href="${model.link.url}">${model.header}</a>
 						</h1>
 						<div class="banner__meta-description expressive-body">
-							<a href="${model.link.url}">${model.description}</a>
+							<a href="${model.link.url}" tabindex="-1">${model.description}</a>
 						</div>
 					</div>
 				</div>
