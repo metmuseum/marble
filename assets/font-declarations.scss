@@ -1,0 +1,180 @@
+@font-face {
+	font-family: "MetSans";
+	font-weight: 300;
+	src: url("./fonts/TheMetSans/TheMetSans-Light.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-Light.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-style: italic;
+	font-weight: 300;
+	src: url("./fonts/TheMetSans/TheMetSans-LightItalic.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-LightItalic.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-weight: 400;
+	src: url("./fonts/TheMetSans/TheMetSans-Regular.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-style: italic;
+	font-weight: 400;
+	src: url("./fonts/TheMetSans/TheMetSans-RegularItalic.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-RegularItalic.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-weight: 500;
+	src: url("./fonts/TheMetSans/TheMetSans-Medium.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-Medium.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-style: italic;
+	font-weight: 500;
+	src: url("./fonts/TheMetSans/TheMetSans-MediumItalic.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-weight: 600;
+	src: url("./fonts/TheMetSans/TheMetSans-Semibold.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-Semibold.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-style: italic;
+	font-weight: 600;
+	src: url("./fonts/TheMetSans/TheMetSans-SemiboldItalic.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-SemiboldItalic.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-weight: 700;
+	src: url("./fonts/TheMetSans/TheMetSans-Bold.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-Bold.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSans";
+	font-style: italic;
+	font-weight: 700;
+	src: url("./fonts/TheMetSans/TheMetSans-BoldItalic.woff2") format("woff2"),
+	url("./fonts/TheMetSans/TheMetSans-BoldItalic.woff") format("woff");
+}
+
+// Serif
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 300;
+	src: url("./fonts/Austin/Austin-Light-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Light-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 300;
+	src: url("./fonts/Austin/Austin-LightItalic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-LightItalic-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 400;
+	src: url("./fonts/Austin/Austin-Roman-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Roman-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 400;
+	src: url("./fonts/Austin/Austin-Italic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Italic-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 500;
+	src: url("./fonts/Austin/Austin-Medium-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Medium-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 500;
+	src: url("./fonts/Austin/Austin-MediumItalic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-MediumItalic-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 600;
+	src: url("./fonts/Austin/Austin-Semibold-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Semibold-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 600;
+	src: url("./fonts/Austin/Austin-SemiboldItalic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-SemiboldItalic-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 700;
+	src: url("./fonts/Austin/Austin-Bold-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Bold-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 700;
+	src: url("./fonts/Austin/Austin-BoldItalic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-BoldItalic-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 800;
+	src: url("./fonts/Austin/Austin-Fat-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Fat-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 800;
+	src: url("./fonts/Austin/Austin-FatItalic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-FatItalic-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-weight: 900;
+	src: url("./fonts/Austin/Austin-Ultra-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-Ultra-Web.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MetSerif";
+	font-style: italic;
+	font-weight: 900;
+	src: url("./fonts/Austin/Austin-UltraItalic-Web.woff2") format("woff2"),
+	url("./fonts/Austin/Austin-UltraItalic-Web.woff") format("woff");
+}
