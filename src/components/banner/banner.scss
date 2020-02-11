@@ -1,0 +1,47 @@
+@import "../../base/base";
+
+.banner {
+	display: flex;
+	flex-direction: column;
+	min-height: 85vh;
+	width: 100%;
+	@media (orientation: landscape) {
+		flex-direction: row-reverse;
+	}
+}
+
+.banner__subject,
+.banner__image-wrapper {
+	flex-basis: 0;
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.banner__image-wrapper {
+	position: relative;
+}
+
+.banner__image-link {
+	display: block;
+	line-height: 0;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.banner__image {
+	width: 100%;
+
+	@media (orientation: landscape) {
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+}
+
+.banner__subject {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	padding: $spacing-s;
+	text-align: center;
+}
