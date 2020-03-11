@@ -128,6 +128,12 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	text-transform: uppercase;
 }
 
+@mixin typography-info-label {
+	font-size: calc(14px + #{$font-scale-size-micro});
+	font-weight: 600;
+	line-height: 18px;
+}
+
 @mixin typography-link {
 	@include underline($color-black);
 	display: inline-block;
