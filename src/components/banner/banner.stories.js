@@ -1,4 +1,6 @@
 import "./banner.scss";
+import "../vimeo-player/vimeo-player.scss";
+import vimeoTemplate from "../vimeo-player/vimeo-player";
 
 export default { title: 'Banner' };
 
@@ -14,13 +16,14 @@ const data = {
 	}
 }
 
+
 const bannerMarkup = (model) => {
 	return `
 		<section class="banner banner-grand banner-@Model.Name">
 			<div class="banner__image-wrapper">
 			<a class='banner__image-link' tabindex="-1" href="${model.link.url}" title="${model.imageAlt}">
 				<img class="banner__image" srcset="${model.backgroundImages}">
-				${model.video ? `TODO: Put Video Here` : ''}
+				${model.video === true ? vimeoTemplate : ``}
 			</a>
 			</div>
 			<div class="banner__subject" style="background-color: ${model.backgroundColor}; color: ${model.color}">
@@ -41,5 +44,11 @@ const bannerMarkup = (model) => {
 
 
 export const Banner = () => {
-  return bannerMarkup(data);
+	let model = Object.assign(data, {video: false});
+  return bannerMarkup(model);
+}
+
+export const BannerWithVideo = () => {
+	const model = Object.assign(data, {video: true});
+  return bannerMarkup(model);
 }
