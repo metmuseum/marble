@@ -56,6 +56,20 @@ $expressive-width-max: 85vw;
 	}
 }
 
+@mixin three-by-two-image-crop-wrapper {
+	height: 0;
+	padding-bottom: 66%;
+	position: relative;
+
+	.card-image__link {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
 @mixin expressive-component {
 	margin-left: auto;
 	margin-right: auto;
