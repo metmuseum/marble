@@ -41,7 +41,7 @@ const bannerMarkup = (model) => {
 				</div>
 			</div>
 		</section>
-`
+	`
 }
 
 

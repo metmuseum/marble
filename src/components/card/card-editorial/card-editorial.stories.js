@@ -13,7 +13,8 @@ const data = {
 }
 
 const cardMarkup = (model) => {
-	return `<section class="editorial-marble-card--large">
+	return `
+	<section class="editorial-marble-card--large">
 		<div class="marble-card">
 			<div class="marble-card__image-wrapper">
 				<a href="${model.link.url}" class="marble-card__image-link" tabindex="-1">
@@ -44,7 +45,8 @@ const cardMarkup = (model) => {
 				</div>
 			</div>
 		</div>
-	</section>`
+	</section>
+	`
 }
 
 
