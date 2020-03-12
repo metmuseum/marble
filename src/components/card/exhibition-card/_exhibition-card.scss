@@ -1,0 +1,27 @@
+
+.marble-card__meta-dates {
+	font-weight: 500;
+	text-transform: uppercase;
+
+	a {
+		border: none;
+	}
+}
+
+.marble-card__image-wrapper--exhibitions {
+	padding-bottom: 50%;
+}
+
+
+.marble-card__location-link {
+	border-bottom: none;
+	font-weight: normal;
+
+	.marble-card__location-wrapper:hover & {
+		font-weight: 600;
+	}
+}
+
+.marble-card__location-title {
+	font-weight: 600;
+}

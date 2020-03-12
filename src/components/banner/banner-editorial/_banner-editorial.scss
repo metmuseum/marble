@@ -1,0 +1,23 @@
+.banner__image-link {
+	.banner--editorial & {
+		position: relative;
+	}
+}
+
+.banner__image {
+	.banner--editorial & {
+		max-height: 85vh;
+		position: relative;
+		@media (orientation: landscape) {
+			position: absolute;
+		}
+	}
+}
+
+.banner__image-wrapper {
+	.banner--editorial & {
+		border-style: solid;
+		border-width: $spacing-m;
+		min-height: 0;
+	}
+}

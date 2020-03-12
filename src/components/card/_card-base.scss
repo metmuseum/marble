@@ -1,0 +1,156 @@
+@import "../../base/base";
+
+.marble-card {
+	display: flex;
+	flex-basis: auto;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 1;
+	position: relative;
+}
+
+.marble-card__wrapper {
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (min-width: $bp-two-column) {
+		flex-direction: row;
+	}
+}
+
+.marble-card__header {
+	margin-bottom: $spacing-s;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.marble-card__header-body {
+	*:last-child {
+		padding-bottom: 0;
+	}
+}
+
+.marble-card__image {
+	transform-origin: center;
+	transition: all 0.4s ease-out;
+
+	.image--active:hover &,
+	.marble-card--active:hover & {
+		transform: scale(1.06);
+	}
+
+	.image--active:focus-within &,
+	.marble-card--active:focus-within & {
+		transform: scale(1.06);
+	}
+}
+
+.marble-card__video {
+	display: none;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+
+	@media screen and (min-width: $bp-two-column ) {
+		display: block;
+	}
+
+	&.is-loaded {
+		opacity: 1;
+		z-index: 9;
+	}
+
+	video {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}
+
+.marble-card__image-wrapper {
+	@include key-image-wrapper;
+	flex-grow: 0;
+}
+
+.marble-card__image-link {
+	.marble-card__image-wrapper--fixed-ratio & {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+//Force a 2/3 ratio for the image
+.marble-card__image-wrapper--66 {
+	height: 0;
+	padding-bottom: 66%;
+	position: relative;
+}
+
+.marble-card__image-link,
+.marble-card__image-link:hover,
+.marble-card__image-link:visited {
+	border: none;
+	color: transparent;
+	display: block;
+	line-height: 0;
+	padding-bottom: 0;
+	text-decoration: none;
+}
+
+.marble-card__subject {
+	flex-grow: 1;
+}
+
+.marble-card__subject-body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: $spacing-s;
+}
+
+.marble-card__meta-dates {
+	padding-bottom: $spacing-s;
+}
+
+.marble-card__meta-description {
+	margin-bottom: $spacing-xs;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.marble-card__header-descriptor {
+	margin-bottom: $spacing-xxs;
+
+	p {
+		@include typography-label-text;
+		text-transform: uppercase;
+	}
+}
+
+.marble-card__meta {
+	display: flex;
+	flex-grow: 1;
+}
+
+.marble-card__meta-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
+}
+
+.marble-card__header-title,
+.marble-card__header-heading {
+	&:hover {
+		text-decoration: underline;
+	}
+}
