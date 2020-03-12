@@ -1,6 +1,6 @@
 @import "../../base/base";
 
-.card {
+.marble-card {
 	display: flex;
 	flex-basis: auto;
 	flex-direction: column;
@@ -9,17 +9,16 @@
 	position: relative;
 }
 
-.card-wrapper {
+.marble-card__wrapper {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 
 	@media screen and (min-width: $bp-two-column) {
 		flex-direction: row;
 	}
 }
 
-.card-header {
+.marble-card__header {
 	margin-bottom: $spacing-s;
 
 	&:last-child {
@@ -27,28 +26,28 @@
 	}
 }
 
-.card-header__body {
+.marble-card__header-body {
 	*:last-child {
 		padding-bottom: 0;
 	}
 }
 
-.card-image {
+.marble-card__image {
 	transform-origin: center;
 	transition: all 0.4s ease-out;
 
 	.image--active:hover &,
-	.card--active:hover & {
+	.marble-card--active:hover & {
 		transform: scale(1.06);
 	}
 
 	.image--active:focus-within &,
-	.card--active:focus-within & {
+	.marble-card--active:focus-within & {
 		transform: scale(1.06);
 	}
 }
 
-.card-video {
+.marble-card__video {
 	display: none;
 	height: 100%;
 	opacity: 0;
@@ -56,13 +55,13 @@
 	top: 0;
 	width: 100%;
 
+	@media screen and (min-width: $bp-two-column ) {
+		display: block;
+	}
+
 	&.is-loaded {
 		opacity: 1;
 		z-index: 9;
-	}
-
-	@media screen and (min-width: $bp-two-column ) {
-		display: block;
 	}
 
 	video {
@@ -72,13 +71,13 @@
 	}
 }
 
-.card-image__wrapper {
+.marble-card__image-wrapper {
 	@include key-image-wrapper;
 	flex-grow: 0;
 }
 
-.card-image__link {
-	.card-image__wrapper--fixed-ratio & {
+.marble-card__image-link {
+	.marble-card__image-wrapper--fixed-ratio & {
 		bottom: 0;
 		left: 0;
 		position: absolute;
@@ -88,15 +87,15 @@
 }
 
 //Force a 2/3 ratio for the image
-.card-image__wrapper--66 {
+.marble-card__image-wrapper--66 {
 	height: 0;
 	padding-bottom: 66%;
 	position: relative;
 }
 
-.card-image__link,
-.card-image__link:hover,
-.card-image__link:visited {
+.marble-card__image-link,
+.marble-card__image-link:hover,
+.marble-card__image-link:visited {
 	border: none;
 	color: transparent;
 	display: block;
@@ -105,22 +104,22 @@
 	text-decoration: none;
 }
 
-.card-subject {
+.marble-card__subject {
 	flex-grow: 1;
 }
 
-.card-subject__body {
+.marble-card__subject-body {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	padding: $spacing-s;
 }
 
-.card-meta__dates {
+.marble-card__meta-dates {
 	padding-bottom: $spacing-s;
 }
 
-.card-meta__description {
+.marble-card__meta-description {
 	margin-bottom: $spacing-xs;
 
 	&:last-child {
@@ -128,7 +127,7 @@
 	}
 }
 
-.card-header__descriptor {
+.marble-card__header-descriptor {
 	margin-bottom: $spacing-xxs;
 
 	p {
@@ -137,20 +136,20 @@
 	}
 }
 
-.card-meta {
+.marble-card__meta {
 	display: flex;
 	flex-grow: 1;
 }
 
-.card-meta__body {
+.marble-card__meta-body {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
 	justify-content: space-between;
 }
 
-.card-header__title,
-.card-header__heading {
+.marble-card__header-title,
+.marble-card__header-heading {
 	&:hover {
 		text-decoration: underline;
 	}

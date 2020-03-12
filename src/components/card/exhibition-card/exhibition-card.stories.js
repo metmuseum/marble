@@ -32,41 +32,42 @@ const cardTemplate = (
 };
 
 const cardMarkup = (model, cardCount) => {
-	return `<section class="${model.cards.length} multicard">
+	return `
+<section>
   <h3>${model.header}</h3>
-	<div class="card-wrapper">
+	<div class="marble-card__wrapper">
 	  ${ model.cards.reduce((total, card) => {
-			return total + `<div class="card card--active">
-	      <div class="card-image__wrapper card-image__wrapper--fixed-ratio card-image__wrapper--66">
-	        <a href="${card.link.url}" class="card-image__link" tabindex="-1">
-	          <img class="card-image" srcset="${card.images}">
+			return total + `<div class="marble-card marble-card--active">
+	      <div class="marble-card__image-wrapper marble-card__image-wrapper--fixed-ratio marble-card__image-wrapper--66">
+	        <a href="${card.link.url}" class="marble-card__image-link" tabindex="-1">
+	          <img class="marble-card__image" srcset="${card.images}">
 	        </a>
 	      </div>
-	      <div class="card-subject">
-	        <div class="card-subject__body card-subject__body--multicard">
-	          <div class="card-header">
-	            <div class="card-header__body">
-	              <div class="card-header__descriptor">
+	      <div class="marble-card__subject">
+	        <div class="marble-card__subject-body marble-card__subject-body--multicard">
+	          <div class="marble-card__header">
+	            <div class="marble-card__header-body">
+	              <div class="marble-card__header-descriptor">
 	                <p>
 	                  ${card.descriptor}
 	                </p>
 	              </div>
-	              <h3 class="card-header__heading">
+	              <h3 class="marble-card__header-heading">
 	                <a href="${card.link.url}">
 	                  ${card.header}
 	                </a>
 	              </h3>
 	            </div>
 	          </div>
-		        <div class="card-meta">
-	            <div class="card-meta__body">
-	              <div class="card-meta__dates short-body">
+		        <div class="marble-card__meta">
+	            <div class="marble-card__meta-body">
+	              <div class="marble-card__meta-dates short-body">
 	                <p><a href="${card.link.url}">${card.dates}</a></p>
 	              </div>
-	              <div class="card-meta__link card__location-wrapper short-body">
+	              <div class="marble-card__meta-link marble-card__location-wrapper short-body">
 	                <p>
-	                  <span class="card__location-title">Location</span>
-										<a href="${card.link.url}" class="card__location-link">${card.location}</a>
+	                  <span class="marble-card__location-title">Location</span>
+										<a href="${card.link.url}" class="marble-card__location-link">${card.location}</a>
 	                </p>
 	              </div>
 	            </div>
@@ -76,8 +77,8 @@ const cardMarkup = (model, cardCount) => {
 	    </div>`
 		}, "")}
 	</div>
-</section>`
-}
+</section>
+`}
 
 
 

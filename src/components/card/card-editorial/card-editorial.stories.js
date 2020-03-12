@@ -13,30 +13,30 @@ const data = {
 }
 
 const cardMarkup = (model) => {
-	return `<section class="editorial-card--large">
-		<div class="card">
-			<div class="card-image__wrapper">
-				<a href="${model.link.url}" class="card-image__link" tabindex="-1">
-					<img class="card-image" srcset="${model.images}">
+	return `<section class="editorial-marble-card--large">
+		<div class="marble-card">
+			<div class="marble-card__image-wrapper">
+				<a href="${model.link.url}" class="marble-card__image-link" tabindex="-1">
+					<img class="marble-card__image" srcset="${model.images}">
 				</a>
 			</div>
-			<div class="card-subject">
-				<div class="card-subject__body">
-					<div class="card-header">
-						<div class="card-header__body">
-							<h2 class="card-header__title">
+			<div class="marble-card__subject">
+				<div class="marble-card__subject-body">
+					<div class="marble-card__header">
+						<div class="marble-card__header-body">
+							<h2 class="marble-card__header-title">
 								<a href="${model.link.url}">
 									${model.header}
 								</a>
 							</h2>
 						</div>
 					</div>
-					<div class="card-meta">
-						<div class="card-meta__body">
-							<div class="card-meta__description">
+					<div class="marble-card__meta">
+						<div class="marble-card__meta-body">
+							<div class="marble-card__meta-description">
 								${model.description}
 							</div>
-							<div class="card-meta__link">
+							<div class="marble-card__meta-link">
 								<a href="${model.link.url}" class="button--tertiary">${model.link.text}</a>
 							</div>
 						</div>

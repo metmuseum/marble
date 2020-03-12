@@ -1,5 +1,5 @@
 
-.card-meta__dates {
+.marble-card__meta-dates {
 	font-weight: 500;
 	text-transform: uppercase;
 
@@ -8,20 +8,20 @@
 	}
 }
 
-.card-image__wrapper--exhibitions {
+.marble-card__image-wrapper--exhibitions {
 	padding-bottom: 50%;
 }
 
 
-.card__location-link {
+.marble-card__location-link {
 	border-bottom: none;
 	font-weight: normal;
 
-	.card__location-wrapper:hover & {
+	.marble-card__location-wrapper:hover & {
 		font-weight: 600;
 	}
 }
 
-.card__location-title {
+.marble-card__location-title {
 	font-weight: 600;
 }
