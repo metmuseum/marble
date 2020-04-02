@@ -14,7 +14,7 @@ const data = {
 
 const cardMarkup = (model) => {
 	return `
-	<section class="editorial-marble-card--large">
+	<section class="editorial-card--large">
 		<div class="marble-card">
 			<div class="marble-card__image-wrapper">
 				<a href="${model.link.url}" class="marble-card__image-link" tabindex="-1">
@@ -50,6 +50,6 @@ const cardMarkup = (model) => {
 }
 
 
-export const LargeEdiotrialCard = () => {
+export const LargeEditorialCard = () => {
   return cardMarkup(data);
 }

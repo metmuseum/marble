@@ -45,12 +45,12 @@ const bannerMarkup = (model) => {
 }
 
 
-export const BannerEdiotrial = () => {
+export const BannerEditorial = () => {
 	const model = Object.assign(data, {video: false});
   return bannerMarkup(model);
 }
 
-export const BannerEdiotrialWithVideo = () => {
+export const BannerEditorialWithVideo = () => {
 	const model = Object.assign(data, {video: true});
   return bannerMarkup(model);
 }
