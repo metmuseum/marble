@@ -35,7 +35,7 @@ $minimum-header-width: 350px;
 
 .notification-banner__body {
 	@media screen and (min-width: $bp-large-card) {
-		flex-basis: 100%;
+		flex-basis: 60%;
 		flex-grow: 1;
 		flex-shrink: 1;
 	}
