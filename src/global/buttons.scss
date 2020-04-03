@@ -121,7 +121,7 @@ a.button {
 .button--tertiary {
 	@include typography-body-expressive;
 	background-color: transparent;
-	border-bottom: 2px solid currentColor;
+	border: 0 0 2px solid currentColor 0;
 	color: currentColor;
 	cursor: pointer;
 	font-family: $metsans;
@@ -164,7 +164,7 @@ a.button {
 	&.button--disabled,
 	&[disabled] {
 		border: none;
-		color: $color-disabled-txt; 
+		color: $color-disabled-txt;
 		cursor: auto;
 
 		&:after {
