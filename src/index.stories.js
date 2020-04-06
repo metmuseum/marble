@@ -1,1 +1,1 @@
-import "../assets/font-declarations.scss";
+import "../.storybook/assets/font-declarations.scss";
