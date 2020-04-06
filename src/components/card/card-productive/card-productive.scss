@@ -1,7 +1,6 @@
-//TODO We got the name wrong and these are the productive cards. Oops.
-//TODO build out story book.
-//Expressive Cards
-.multicard--expressive {
+//TODO build out storybook.
+//Productive Cards
+.multicard--productive {
 	padding-bottom: $spacing-xs;
 
 	.marble-card:not(:first-child) {
@@ -10,13 +9,13 @@
 		}
 	}
 
-	.multicard--expressive__header {
+	.multicard--productive__header {
 		padding-bottom: $spacing-xs;
 	}
 }
 
 .mrable-card__subject-body--multicard {
-	.card--expressive & {
+	.card--productive & {
 		padding: $spacing-xs 0;
 	}
 }

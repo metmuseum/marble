@@ -2,3 +2,6 @@
 
 $shadow-passive: 4px 4px 10px 0 $color-card-shadow, 0 0 2px 0 $color-card-shadow;
 $shadow-active: 6px 6px 10px 0 $color-active-shadow, 0 0 4px 0 $color-active-shadow;
+
+//Since expressive components don't have a gutter their shadow treatment should be slightly different;
+$shadow-active--expressive: 6px 6px 10px 0 $color-card-shadow, -6px -6px 10px 0 $color-card-shadow;
