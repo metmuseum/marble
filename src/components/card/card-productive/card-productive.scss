@@ -1,0 +1,21 @@
+//TODO build out storybook.
+//Productive Cards
+.multicard--productive {
+	padding-bottom: $spacing-xs;
+
+	.marble-card:not(:first-child) {
+		@media screen and (min-width: $bp-two-column) {
+			margin-left: $spacing-xs;
+		}
+	}
+
+	.multicard--productive__header {
+		padding-bottom: $spacing-xs;
+	}
+}
+
+.mrable-card__subject-body--multicard {
+	.card--productive & {
+		padding: $spacing-xs 0;
+	}
+}

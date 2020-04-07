@@ -26,4 +26,7 @@ $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
 //TODO- Not sure how to categorize this or if we even need it as a variable.
+//TODO- If we keep these as variables lets come up with a $TYPE-Variation naming convention
+//$radius-form, $corners-form, $br-form, $border-radius-form, etc....
 $form-radius: 4px;
+$soft-radius: 16px;

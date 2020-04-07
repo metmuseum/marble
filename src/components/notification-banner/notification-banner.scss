@@ -1,0 +1,46 @@
+@import "../../base/base";
+
+$minimum-header-width: 350px;
+
+.notification-banner {
+	background-color: $color-grey-900;
+	border-radius: $soft-radius;
+	color: $color-blue-light;
+	display: flex;
+	flex-direction: column;
+	padding: $spacing-s;
+
+	@media screen and (min-width: $bp-large-card) {
+		flex-direction: row;
+	}
+
+	&.notification-banner--productive {
+		@include productive-component();
+	}
+}
+
+
+.notification-banner__header {
+	padding-bottom: $spacing-s;
+
+	@media screen and (min-width: $bp-large-card) {
+		flex-basis: $minimum-header-width;
+		flex-grow: 1;
+		flex-shrink: 0;
+		padding-bottom: 0;
+		padding-right: $spacing-s;
+	}
+}
+
+
+.notification-banner__body {
+	@media screen and (min-width: $bp-large-card) {
+		flex-basis: 60%;
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+}
+
+.notification-banner__subtext {
+	@include typography-h2-subtext;
+}

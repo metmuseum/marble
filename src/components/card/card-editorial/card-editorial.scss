@@ -1,0 +1,30 @@
+//TODO: Not a giant fan of nesting everything in a file.
+//TODO: Whatever the file name is should match the component name.
+.editorial-card--large {
+	.marble-card__header-body {
+		@media screen and (min-width: $bp-large-card) {
+			padding-right: 21%;
+		}
+	}
+
+	.marble-card__subject-body {
+		flex-direction: column;
+		padding: $spacing-m $spacing-s;
+
+		@media screen and (min-width: $bp-large-card) {
+			flex-direction: row;
+			padding: $spacing-m $spacing-s;
+		}
+	}
+
+	.marble-card__meta {
+		display: flex;
+		flex-basis: 0;
+	}
+
+	.marble-card__meta-description {
+		p {
+			@include typography-h2-subtext;
+		}
+	}
+}

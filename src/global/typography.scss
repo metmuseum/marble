@@ -33,6 +33,11 @@ a {
 	text-decoration: none;
 	transition: background-position 0.3s, color 0.3s;
 
+	&[href=""] {
+		border-color: transparent;
+		padding-bottom: 0;
+	}
+
 	&:hover,
 	&:visited {
 		color: inherit;
