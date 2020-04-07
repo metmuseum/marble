@@ -77,6 +77,7 @@ $expressive-width-max: $productive-width-max;
 //TODO: DEPRECATED: This Mixin needs to be removed in our next major version. (V1)
 //We named this incorrectly, it should be named productive-component. Please use @productive-component in the future.
 @mixin expressive-component {
+	@warn "mixin expressive-component is deprecated. Please use @productive-component in the future.";
 	margin-left: auto;
 	margin-right: auto;
 	max-width: $expressive-width-max;
