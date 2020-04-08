@@ -4,7 +4,6 @@ $minimum-header-width: 350px;
 
 .notification-banner {
 	background-color: $color-grey-900;
-	border-radius: $soft-radius;
 	color: $color-blue-light;
 	display: flex;
 	flex-direction: column;
@@ -16,6 +15,7 @@ $minimum-header-width: 350px;
 
 	&.notification-banner--productive {
 		@include productive-component();
+		border-radius: $soft-radius;
 	}
 }
 
