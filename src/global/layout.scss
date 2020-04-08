@@ -5,8 +5,13 @@
 	width: 100%;
 }
 
+//TODO: DEPRECATED - REMOVE IN V1. Use the correctly named .productive-component;
 .expressive-component {
 	@include expressive-component();
+}
+
+.productive-component {
+	@include productive-component();
 }
 
 .component {

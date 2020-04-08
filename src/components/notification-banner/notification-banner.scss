@@ -14,7 +14,7 @@ $minimum-header-width: 350px;
 	}
 
 	&.notification-banner--productive {
-		@include expressive-component();
+		@include productive-component();
 		border-radius: $soft-radius;
 	}
 }
