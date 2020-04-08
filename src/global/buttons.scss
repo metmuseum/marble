@@ -121,6 +121,7 @@ a.button {
 .button--tertiary {
 	@include typography-body-expressive;
 	background-color: transparent;
+	border: unset;
 	border-bottom: 2px solid currentColor;
 	border-left: none;
 	border-right: none;
@@ -132,6 +133,10 @@ a.button {
 	line-height: 1.2;
 	padding: 0;
 	position: relative;
+
+	&:active {
+		color: $color-purplee;
+	}
 
 	&:after {
 		border-bottom: 2px solid transparent;
@@ -145,6 +150,8 @@ a.button {
 
 	&:focus {
 		border-color: transparent;
+		color: $color-purplee;
+		outline: 0;
 
 		&:after {
 			border-color: currentColor;
@@ -168,10 +175,15 @@ a.button {
 	&[disabled] {
 		border: none;
 		color: $color-disabled-txt;
-		cursor: auto;
+		cursor: not-allowed;
 
 		&:after {
 			border: none;
 		}
 	}
+}
+
+/* Firefox: removes the inner border shown on focus */
+.button--tertiary::-moz-focus-inner {
+	border: none;
 }
