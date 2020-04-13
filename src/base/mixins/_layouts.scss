@@ -38,6 +38,10 @@ $expressive-width-max: $productive-width-max;
 	justify-content: center;
 	overflow: hidden;
 
+	a {
+		line-height: 0;
+	}
+
 	img {
 		height: 100%;
 		object-fit: cover;
