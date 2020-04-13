@@ -35,7 +35,7 @@ const cardMarkup = (model, cardCount) => {
 			<div class="marble-card__wrapper">
 			  ${ model.cards.reduce((total, card) => {
 					return total + `<div class="marble-card marble-card--active">
-			      <div class="marble-card__image-wrapper card__image-wrapper--fixed-ratio card__image-wrapper--66">
+			      <div class="marble-card__image-wrapper marble-card__image-wrapper--fixed-ratio marble-card__image-wrapper--66">
 			        <a href="${card.link.url}" class="marble-card__image-link" tabindex="-1">
 			          <img class="marble-card__image" srcset="${card.images}">
 			        </a>

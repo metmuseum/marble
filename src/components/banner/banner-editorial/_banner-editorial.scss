@@ -1,5 +1,13 @@
 @import "../../base/base";
 
+.banner.banner--editorial {
+	@media (orientation: landscape) {
+		height: 56.6vw; //16x9
+		max-height: 100vh;
+		min-height: unset;
+	}
+}
+
 .banner__image-link {
 	.banner--editorial & {
 		position: relative;

@@ -27,7 +27,7 @@
 //For Exactly Three Cards.
 .marble-card:nth-last-child(3):first-child,
 .marble-card:nth-last-child(3):first-child ~ .marble-card  {
-	.marble-card-header__heading {
+	.marble-card__header-heading {
 		//Three cards get a smaller title.
 		@include typography-h4;
 	}
