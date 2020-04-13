@@ -95,6 +95,10 @@ h2 {
 	@include typography-h2;
 }
 
+h2.subtext {
+	@include typography-h2-subtext;
+}
+
 h3 {
 	@include typography-h3;
 }
