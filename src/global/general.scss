@@ -79,6 +79,7 @@ input {
 }
 
 a {
+	@include underline($color-grey-900);
 	color: inherit;
 
 	&:visit,
