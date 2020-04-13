@@ -1,3 +1,5 @@
+@import "../../base/base";
+
 .banner__image-link {
 	.banner--editorial & {
 		position: relative;
@@ -6,7 +8,7 @@
 
 .banner__image {
 	.banner--editorial & {
-		max-height: 85vh;
+		max-height: $height-max;
 		position: relative;
 		@media (orientation: landscape) {
 			position: absolute;

@@ -2,16 +2,18 @@
 $site-width: 1200px;
 $grid-gutter: 20px;
 
-//TODO Lets Remove some of these?
-//breakpoints
-$bp-500: 500px;
+//Breakpoints
 $bp-fixed-type: 600px;
-$bp-two-column: 900px;
 $bp-large-card: 950px;
+
+//TODO: Remove unnecesarry breakpoints once we're sure they arent used anywhere.
+//These arent anywhere in Marble (But may be used in Ghidorah or another project pulling Marble in)
 $bp-1000: 1000px;
+$bp-2000: 2000px;
+$bp-500: 500px;
+$bp-two-column: 900px;
 $bp-banner: 1200px;
 $bp-extra-large: 1440px;
-$bp-2000: 2000px;
 
 //padding and margins
 //This is used super sparingly and won't be a part of most designs.
@@ -30,3 +32,6 @@ $spacing-xxl: calc(144px + 9vw);
 //$radius-form, $corners-form, $br-form, $border-radius-form, etc....
 $form-radius: 4px;
 $soft-radius: 16px;
+
+//Generally used with a landscape media query
+$height-max: 85vh;

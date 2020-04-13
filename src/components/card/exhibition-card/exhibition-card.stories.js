@@ -46,18 +46,16 @@ const cardMarkup = (model, cardCount) => {
 			      <div class="marble-card__subject">
 			        <div class="marble-card__subject-body marble-card__subject-body--multicard">
 			          <div class="marble-card__header">
-			            <div class="marble-card__header-body">
-			              <div class="marble-card__header-descriptor">
-			                <p>
-			                  ${card.descriptor}
-			                </p>
-			              </div>
-			              <h3 class="marble-card__header-heading">
-			                <a href="${card.link.url}">
-			                  ${card.header}
-			                </a>
-			              </h3>
-			            </div>
+		              <div class="marble-card__header-descriptor">
+		                <p>
+		                  ${card.descriptor}
+		                </p>
+		              </div>
+		              <h3 class="marble-card__header-heading">
+		                <a href="${card.link.url}">
+		                  ${card.header}
+		                </a>
+		              </h3>
 			          </div>
 				        <div class="marble-card__meta">
 			            <div class="marble-card__meta-body">

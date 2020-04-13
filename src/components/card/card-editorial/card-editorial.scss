@@ -1,9 +1,14 @@
 //TODO: Not a giant fan of nesting everything in a file.
-//TODO: Whatever the file name is should match the component name.
+//TODO: Component name and file name should match (I believe this component is being renamed soon so this is on hold);
+$minimum-header-width: 350px;
+
 .editorial-card--large {
-	.marble-card__header-body {
+	.marble-card__header {
 		@media screen and (min-width: $bp-large-card) {
-			padding-right: 21%;
+			flex-basis: $minimum-header-width;
+			flex-grow: 1;
+			flex-shrink: 0;
+			padding-right: $spacing-s;
 		}
 	}
 
@@ -20,6 +25,11 @@
 	.marble-card__meta {
 		display: flex;
 		flex-basis: 0;
+		@media screen and (min-width: $bp-large-card) {
+			flex-basis: 60%;
+			flex-grow: 1;
+			flex-shrink: 1;
+		}
 	}
 
 	.marble-card__meta-description {
