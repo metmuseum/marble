@@ -2,7 +2,7 @@
 
 .banner.banner--editorial {
 	@media (orientation: landscape) {
-		height: 56.6vw; //16x9
+		height: 56.6vw; //Force a 16x9 layout
 		max-height: 100vh;
 		min-height: unset;
 	}
@@ -16,9 +16,10 @@
 
 .banner__image {
 	.banner--editorial & {
-		max-height: $height-max;
+		height: 100vw;
 		position: relative;
 		@media (orientation: landscape) {
+			height: 100%;
 			position: absolute;
 		}
 	}
@@ -27,7 +28,18 @@
 .banner__image-wrapper {
 	.banner--editorial & {
 		border-style: solid;
-		border-width: $spacing-m;
+		border-width: $spacing-l 16vw;
 		min-height: 0;
+		@media (orientation: landscape) {
+			border-width: 8vw;
+		}
+	}
+}
+
+.banner__subject-body {
+	.banner--editorial & {
+		align-items: center;
+		display: flex;
+		height: 100vw;
 	}
 }
