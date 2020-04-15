@@ -6,8 +6,7 @@ $editorial-banner-min-height: 88vw;
 
 .banner.banner--editorial {
 	@media (orientation: landscape) {
-		height: 56.25vw; //Force a 16x9 layout
-		min-height: unset;
+		min-height: 56.25vw; //Force a 16x9 layout
 	}
 }
 
@@ -17,6 +16,9 @@ $editorial-banner-min-height: 88vw;
 		flex-direction: column;
 		justify-content: center;
 		min-height: $editorial-banner-min-height;
+		@media (orientation: landscape) {
+			min-height: 0;
+		}
 	}
 }
 
