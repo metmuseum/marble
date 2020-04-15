@@ -1,5 +1,3 @@
-@import "../../base/base";
-
 $editorial-banner-min-height: 88vw;
 //Flexbox doesn't match the height of children in `flex-drection: column`
 //So we're using this number to sort of force a minimum aspect ratio for the content to match.
