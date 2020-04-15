@@ -1,27 +1,22 @@
 @import "../../base/base";
 
+$editorial-banner-min-height: 88vw;
+//Flexbox doesn't match the height of children in `flex-drection: column`
+//So we're using this number to sort of force a minimum aspect ratio for the content to match.
+
 .banner.banner--editorial {
 	@media (orientation: landscape) {
-		height: 56.6vw; //Force a 16x9 layout
-		max-height: 100vh;
+		height: 56.25vw; //Force a 16x9 layout
 		min-height: unset;
 	}
 }
 
-.banner__image-link {
+.banner__subject-body {
 	.banner--editorial & {
-		position: relative;
-	}
-}
-
-.banner__image {
-	.banner--editorial & {
-		height: 100vw;
-		position: relative;
-		@media (orientation: landscape) {
-			height: 100%;
-			position: absolute;
-		}
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: $editorial-banner-min-height;
 	}
 }
 
@@ -29,17 +24,20 @@
 	.banner--editorial & {
 		border-style: solid;
 		border-width: $spacing-l 16vw;
-		min-height: 0;
 		@media (orientation: landscape) {
-			border-width: 8vw;
+			border-width: 8vw 10vw;
 		}
 	}
 }
 
-.banner__subject-body {
+.banner__image-link {
 	.banner--editorial & {
-		align-items: center;
-		display: flex;
-		height: 100vw;
+		height: 0;
+		padding-bottom: $editorial-banner-min-height;
+		position: relative;
+		@media (orientation: landscape) {
+			height: auto;
+			padding-bottom: 0;
+		}
 	}
 }
