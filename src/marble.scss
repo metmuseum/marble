@@ -1,14 +1,9 @@
 @import "base/base";
 @import "global/global";
 
-
-//Components;
-@import "components/notification-banner/notification-banner";
-
 //Components that have passed design QA and are ready for production.
 //In the future there shouldnt be any components checked into master that aren't production ready.
 //This is a weird interim state where a lot of components were created to flesh out storybook but arent neccesarily ready for prod.
-
-//TODO: Components to QA and get prod ready.
-//Card
-//Banner
+@import "components/card/card";
+@import "components/banner/banner";
+@import "components/notification-banner/notification-banner";
