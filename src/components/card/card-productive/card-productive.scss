@@ -4,7 +4,7 @@
 	padding-bottom: $spacing-xs;
 
 	.marble-card:not(:first-child) {
-		@media screen and (min-width: $bp-two-column) {
+		@media screen and (min-width: $bp-large-card) {
 			margin-left: $spacing-xs;
 		}
 	}

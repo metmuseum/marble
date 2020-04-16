@@ -35,7 +35,7 @@ const cardMarkup = (model, cardCount) => {
 			<div class="marble-card__wrapper">
 			  ${ model.cards.reduce((total, card) => {
 					return total + `<div class="marble-card marble-card--active">
-			      <div class="marble-card__image-wrapper card__image-wrapper--fixed-ratio card__image-wrapper--66">
+			      <div class="marble-card__image-wrapper marble-card__image-wrapper--fixed-ratio marble-card__image-wrapper--66">
 			        <a href="${card.link.url}" class="marble-card__image-link" tabindex="-1">
 			          <img class="marble-card__image" srcset="${card.images}">
 			        </a>
@@ -43,18 +43,16 @@ const cardMarkup = (model, cardCount) => {
 			      <div class="marble-card__subject">
 			        <div class="marble-card__subject-body marble-card__subject-body--multicard">
 			          <div class="marble-card__header">
-			            <div class="marble-card__header-body">
-			              <div class="marble-card__header-descriptor">
-			                <p>
-			                  ${card.descriptor}
-			                </p>
-			              </div>
-			              <h3 class="marble-card__header-heading">
-			                <a href="${card.link.url}">
-			                  ${card.header}
-			                </a>
-			              </h3>
-			            </div>
+		              <div class="marble-card__header-descriptor">
+		                <p>
+		                  ${card.descriptor}
+		                </p>
+		              </div>
+		              <h3 class="marble-card__header-heading">
+		                <a href="${card.link.url}">
+		                  ${card.header}
+		                </a>
+		              </h3>
 			          </div>
 			          ${ card.description &&
 				          `<div class="marble-card__meta">
@@ -75,11 +73,33 @@ const cardMarkup = (model, cardCount) => {
 }
 
 
-export const MultipleCards = () => {
-	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
+export const TwoMarbleCards = () => {
+	const cardCount = 2;
 	const cards = Array.apply(null, Array(cardCount)).map(() => cardTemplate());
 	const data = {
-		header: `${cardCount} MultiCards`,
+		header: `${cardCount} Marble Cards`,
+		cards: cards
+	};
+
+  return cardMarkup(data);
+}
+
+export const ThreeMarbleCards = () => {
+	const cardCount = 3;
+	const cards = Array.apply(null, Array(cardCount)).map(() => cardTemplate());
+	const data = {
+		header: `${cardCount} Marble Cards`,
+		cards: cards
+	};
+
+  return cardMarkup(data);
+}
+
+export const FourMarbleCards = () => {
+	const cardCount = 4;
+	const cards = Array.apply(null, Array(cardCount)).map(() => cardTemplate());
+	const data = {
+		header: `${cardCount} Marble Cards`,
 		cards: cards
 	};
 

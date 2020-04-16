@@ -7,7 +7,7 @@ $minimum-header-width: 350px;
 	color: $color-blue-light;
 	display: flex;
 	flex-direction: column;
-	padding: $spacing-s;
+	padding: $spacing-s $spacing-l;
 
 	@media screen and (min-width: $bp-large-card) {
 		flex-direction: row;
@@ -16,6 +16,7 @@ $minimum-header-width: 350px;
 	&.notification-banner--productive {
 		@include productive-component();
 		border-radius: $soft-radius;
+		padding: $spacing-s;
 	}
 }
 
