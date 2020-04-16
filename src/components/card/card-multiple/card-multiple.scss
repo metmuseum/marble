@@ -27,7 +27,7 @@
 //For Exactly Three Cards.
 .marble-card:nth-last-child(3):first-child,
 .marble-card:nth-last-child(3):first-child ~ .marble-card  {
-	.marble-card-header__heading {
+	.marble-card__header-heading {
 		//Three cards get a smaller title.
 		@include typography-h4;
 	}
@@ -37,7 +37,7 @@
 .marble-card:nth-last-child(4):first-child,
 .marble-card:nth-last-child(4):first-child ~ .marble-card  {
 
-	@media screen and (min-width: $bp-two-column) {
+	@media screen and (min-width: $bp-large-card) {
 		//For Four cards, on the largest breakpoint we want two rows of two.
 		flex-basis: 50%;
 	}

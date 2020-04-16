@@ -6,6 +6,7 @@ $productive-width-max: 85vw;
 //TODO: DEPRECATED - Remove in V1. Please use the correctly named $productive-width-max in the future.
 $expressive-width-max: $productive-width-max;
 
+
 @mixin vimeo-iframe-16x9 {
 	box-sizing: border-box;
 	height: 56.25vw;
@@ -27,6 +28,7 @@ $expressive-width-max: $productive-width-max;
 	}
 }
 
+
 @mixin key-image-wrapper {
 	align-items: center;
 	display: flex;
@@ -37,19 +39,7 @@ $expressive-width-max: $productive-width-max;
 	overflow: hidden;
 
 	a {
-		display: block;
-		flex: 1;
-		height: 100%;
-		overflow: hidden;
-		padding-bottom: 0;
-	}
-
-	a,
-	a:hover,
-	a:visited {
-		border: none;
-		color: transparent;
-		text-decoration: none;
+		line-height: 0;
 	}
 
 	img {
@@ -59,6 +49,22 @@ $expressive-width-max: $productive-width-max;
 	}
 }
 
+//Remove border/underline/colors from link.
+@mixin link-reset {
+	display: block;
+	overflow: hidden;
+	padding-bottom: 0;
+
+	&,
+	&:hover,
+	&:visited {
+		border: none;
+		color: currentColor;
+		text-decoration: none;
+	}
+}
+//TODO This makes no sense.
+//We can do inheritence through either classes or mixins, a combination of both is bizzare.
 @mixin three-by-two-image-crop-wrapper {
 	height: 0;
 	padding-bottom: 66%;

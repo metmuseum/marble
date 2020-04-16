@@ -18,25 +18,24 @@ const data = {
 const bannerMarkup = (model) => {
 	return `
 		<section class="banner banner-@Model.Name banner--editorial">
-			<div class="banner__image-wrapper" style="border-color: ${model.imageBorderColor}">
-			<a class='banner__image-link'
-				tabindex="-1"
-				href="${model.link.url}"
-				title="${model.imageAlt}">
+			<div class="banner__image-wrapper" style="border-color: ${model.imageBorderColor}; background-color: ${model.imageBorderColor};">
+				<a class='banner__image-link'
+					tabindex="-1"
+					href="${model.link.url}"
+					title="${model.imageAlt}">
 
-				<img class="banner__image" srcset="${model.backgroundImages}">
-				${model.video === true ? vimeoTemplate : ``}
-			</a>
+					<img class="banner__image" srcset="${model.backgroundImages}">
+					${model.video === true ? vimeoTemplate : ``}
+				</a>
 			</div>
+
 			<div class="banner__subject" style="background-color: ${model.backgroundColor}; color: ${model.color}">
 				<div class="banner__subject-body">
-					<div class="banner__header">
-						<h1 class="expressive">
-							<a href="${model.link.url}">${model.header}</a>
-						</h1>
-						<div class="banner__meta-description expressive-body">
-							<a href="${model.link.url}" tabindex="-1">${model.description}</a>
-						</div>
+					<h1 class="expressive">
+						<a href="${model.link.url}">${model.header}</a>
+					</h1>
+					<div class="banner__meta-description expressive-body">
+						<a href="${model.link.url}" tabindex="-1">${model.description}</a>
 					</div>
 				</div>
 			</div>

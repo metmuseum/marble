@@ -21,20 +21,23 @@ const bannerMarkup = (model) => {
 	return `
 		<section class="banner banner-grand banner-@Model.Name">
 			<div class="banner__image-wrapper">
-			<a class='banner__image-link' tabindex="-1" href="${model.link.url}" title="${model.imageAlt}">
-				<img class="banner__image" srcset="${model.backgroundImages}">
+				<a class='banner__image-link'
+					tabindex="-1"
+					href="${model.link.url}"
+					title="${model.imageAlt}">
+
+					<img class="banner__image" srcset="${model.backgroundImages}">
 				${model.video === true ? vimeoTemplate : ``}
-			</a>
+				</a>
+
 			</div>
 			<div class="banner__subject" style="background-color: ${model.backgroundColor}; color: ${model.color}">
 				<div class="banner__subject-body">
-					<div class="banner__header">
-						<h1 class="expressive">
-							<a href="${model.link.url}">${model.header}</a>
-						</h1>
-						<div class="banner__meta-description expressive-body">
-							<a href="${model.link.url}" tabindex="-1">${model.description}</a>
-						</div>
+					<h1 class="expressive">
+						<a href="${model.link.url}">${model.header}</a>
+					</h1>
+					<div class="banner__meta-description expressive-body">
+						<a href="${model.link.url}" tabindex="-1">${model.description}</a>
 					</div>
 				</div>
 			</div>

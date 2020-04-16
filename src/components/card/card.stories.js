@@ -3,8 +3,8 @@ import "./card.scss";
 export default { title: 'Cards' };
 
 const data = {
-	header: "Large Editorial Card",
-	description: "Have you ever heard a museum love story? Did you know that art has the power to heal? Met visitors share their personal stories in this new series.",
+	header: "Base Card",
+	description: "This Represents a Marble Card without any tweaking. Currently Not really a component, just the basis of a bunch of different ones.",
 	images: "https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&hash=9CDD1BCFB213A815CCF4B476CDA5B35F 2x, https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&w=1920&hash=342B752D9534482E6C5C988C117585A4 1x",
 	link: {
 		url: "http://metmuseum.org",
@@ -22,15 +22,11 @@ const cardMarkup = (model) => {
 			</a>
 			<div class="marble-card__subject">
 				<div class="marble-card__subject-body">
-					<div class="marble-card__header">
-						<div class="marble-card__header-body">
-							<h2 class="marble-card__header-title">
-								<a href="${model.link.url}">
-									${model.header}
-								</a>
-							</h2>
-						</div>
-					</div>
+					<h2 class="marble-card__header">
+						<a href="${model.link.url}">
+							${model.header}
+						</a>
+					</h2>
 					<div class="marble-card__meta">
 						<div class="marble-card__meta-body">
 							<div class="marble-card__meta-description">
@@ -48,6 +44,6 @@ const cardMarkup = (model) => {
 }
 
 
-export const Card = () => {
-  return cardMarkup(data);
-}
+// export const Card = () => {
+//   return cardMarkup(data);
+// }

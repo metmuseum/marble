@@ -24,13 +24,11 @@ const cardMarkup = (model) => {
 			<div class="marble-card__subject">
 				<div class="marble-card__subject-body">
 					<div class="marble-card__header">
-						<div class="marble-card__header-body">
-							<h2 class="marble-card__header-title">
-								<a href="${model.link.url}">
-									${model.header}
-								</a>
-							</h2>
-						</div>
+						<h2 class="marble-card__header-title">
+							<a href="${model.link.url}">
+								${model.header}
+							</a>
+						</h2>
 					</div>
 					<div class="marble-card__meta">
 						<div class="marble-card__meta-body">

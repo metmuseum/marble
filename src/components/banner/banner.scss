@@ -1,12 +1,10 @@
 @import "../../base/base";
 @import "./banner-editorial/banner-editorial";
 
-$component-max-height: 85vh;
-
 .banner {
 	display: flex;
 	flex-direction: column;
-	min-height: $component-max-height;
+	min-height: $height-max;
 	text-align: center;
 	width: 100%;
 
@@ -18,7 +16,7 @@ $component-max-height: 85vh;
 
 .banner__subject,
 .banner__image-wrapper {
-	flex-basis: 100%;
+	flex-basis: 50%;
 	flex-grow: 1;
 	flex-shrink: 1;
 }
@@ -66,9 +64,8 @@ $component-max-height: 85vh;
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	min-height: 100vw;
 	padding: $spacing-m;
-	@media (orientation: landscape) {
-		min-height: 0;
+	@media (orientation: portrait) {
+		min-height: 100vw;
 	}
 }
