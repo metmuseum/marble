@@ -1,0 +1,23 @@
+@import "../../global/z-index.scss";
+
+.full-width-image-container {
+	border: 0;
+	font-size: 0;
+	line-height: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	z-index: z("full-width-image");
+}
+
+.full-width-image {
+	border: 0;
+	font-size: 0;
+	height: auto;
+	line-height: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	z-index: z("full-width-image");
+}

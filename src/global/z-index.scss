@@ -1,0 +1,12 @@
+$z-layers: (
+	"marble-card--active": 99,
+	"marble-card-video-is-loaded": 9,
+	"vimeo-container.is-visible": 9,
+	"img&:after": 2,
+	"vimeo-container": -1,
+	"full-width-image": -20,
+);
+
+@function z($layer) {
+	@return map-get($z-layers, $layer);
+}
