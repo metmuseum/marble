@@ -15,6 +15,9 @@ export default {
 	decorators: [withA11y],
 };
 
+const width = 3920;
+const height = 2621;
+
 export const anyRatio = () =>
 	// Example shown for up to 5k Retina (2880w native, 5760px @ 2x).
 	// Don't forget alt attribute.
@@ -25,8 +28,8 @@ export const anyRatio = () =>
 			<img
 				class="full-width-image"
 				alt="An image alt, for accessibility"
-				width="3920"
-				height="2621"
+				width="${width}"
+				height="${height}"
 				src="${image768}"
 				srcset="
 					${image768}  768w,
