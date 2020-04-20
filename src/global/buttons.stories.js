@@ -1,19 +1,20 @@
+import raw from "../../.storybook/helpers/raw";
 import { withKnobs, text } from "@storybook/addon-knobs";
 import "./buttons.scss";
 
 export default {
-  title: "Tertiary Buttons",
-  decorators: [withKnobs],
+	title: "Tertiary Buttons",
+	decorators: [withKnobs],
 };
 
 export const tertiary = () =>
-  `<button class="button--tertiary">
+	raw`<button class="button--tertiary">
     ${text("Label", "Tertiary")}
   </button>
   <br />`;
 
 export const tertiaryDisabled = () =>
-  `
+	raw`
   <button class="button--tertiary" disabled>
     ${text("Label", "Tertiary Disabled")}
   </button>
@@ -22,7 +23,7 @@ export const tertiaryDisabled = () =>
 
 // TODO: automated tests to ensure <button> and <a> styles are always identical.
 export const anchorTagTertiaryButton = () =>
-  `
+	raw`
   <a role="button" tabindex="0" class="button--tertiary">
     ${text("Label", "Anchor Tag Styled As Tertiary Button")}
   </a>
@@ -30,7 +31,7 @@ export const anchorTagTertiaryButton = () =>
   `;
 
 export const anchorTagTertiaryButtonDisabled = () =>
-  `
+	raw`
   <a role="button" tabindex="0" class="button--tertiary" disabled>
     ${text("Label", "Anchor Tag Styled As Tertiary Button Disabled")}
   </a>
