@@ -1,0 +1,30 @@
+@import "../base/mixins/text-alignment.scss";
+@import "../base/sizes";
+@import "../base/sizes";
+
+.featured-module {
+	box-sizing: border-box;
+	padding: $spacing-xs 5%;
+	@include text-center;
+
+	@media screen and (min-width: $bp-two-column) {
+		padding: $spacing-xs 25%;
+	}
+
+	a {
+		border: unset; // match figma, y tho?
+		font-size: calc(17px + 0.3vw); // make it fluid?
+		font-weight: 500; // match figma, y tho?
+		margin: 0 $spacing-micro; // match figma, y tho?
+		text-decoration: underline; // match figma, y tho?
+	}
+
+	h1 {
+		font-weight: 500; // match figma, y tho?
+		line-height: 1; // match figma, y tho?
+	}
+
+	p {
+		line-height: (24/18); // match figma, y tho?
+	}
+}

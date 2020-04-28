@@ -1,0 +1,17 @@
+@import "./mixins/text-alignment";
+
+.text-center {
+	@include text-center;
+}
+
+.text-justify {
+	@include text-justify;
+}
+
+.text-left {
+	@include text-left;
+}
+
+.text-right {
+	@include text-right;
+}
