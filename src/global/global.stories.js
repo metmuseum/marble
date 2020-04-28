@@ -21,5 +21,5 @@ export const headings = () => {
   h2Subtext("By Jove, my quick study of lexicography won a prize!") +
   h2SubtextFixed("By Jove, my quick study of lexicography won a prize!") +
   h3("By Jove, my quick study of lexicography won a prize!") +
-  h4("By Jove, my quick study of lexicography won a prize!") +
+  h4("By Jove, my quick study of lexicography won a prize!")
 }
