@@ -1,11 +1,9 @@
-@import "../base/mixins/text-alignment.scss";
-@import "../base/sizes";
-@import "../base/sizes";
+@import "../../base/sizes";
 
 .featured-module {
 	box-sizing: border-box;
 	padding: $spacing-xs 5%;
-	@include text-center;
+	text-align: center;
 
 	@media screen and (min-width: $bp-two-column) {
 		padding: $spacing-xs 25%;
