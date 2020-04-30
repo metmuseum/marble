@@ -1,3 +1,5 @@
+@import ".../../../../../global/z-index.scss";
+
 //When multiple cards are put in a container.
 
 //For marble cards with siblings that are not Productive style.
@@ -15,18 +17,18 @@
 
 	&:focus-within {
 		box-shadow: $shadow-active--expressive;
-		z-index: 99;
+		z-index: z("marble-card--active");
 	}
 
 	&:hover {
 		box-shadow: $shadow-active--expressive;
-		z-index: 99;
+		z-index: z("marble-card--active");
 	}
 }
 
 //For Exactly Three Cards.
 .marble-card:nth-last-child(3):first-child,
-.marble-card:nth-last-child(3):first-child ~ .marble-card  {
+.marble-card:nth-last-child(3):first-child ~ .marble-card {
 	.marble-card__header-heading {
 		//Three cards get a smaller title.
 		@include typography-h4;
@@ -35,8 +37,7 @@
 
 //For Exactly 4 cards.
 .marble-card:nth-last-child(4):first-child,
-.marble-card:nth-last-child(4):first-child ~ .marble-card  {
-
+.marble-card:nth-last-child(4):first-child ~ .marble-card {
 	@media screen and (min-width: $bp-large-card) {
 		//For Four cards, on the largest breakpoint we want two rows of two.
 		flex-basis: 50%;

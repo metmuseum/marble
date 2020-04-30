@@ -1,4 +1,5 @@
 @import "../base/base";
+@import "../global/z-index.scss";
 
 * {
 	box-sizing: border-box;
@@ -43,7 +44,7 @@ img {
 		top: 50%;
 		transform: translateY(-50%);
 		width: 80%;
-		z-index: 2;
+		z-index: z("img&:after");
 	}
 
 	&:before {
@@ -65,8 +66,8 @@ input {
 	padding: 10px;
 	transition: all 0.3s;
 
-	&[type=email],
-	&[type=text] {
+	&[type="email"],
+	&[type="text"] {
 		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 		appearance: none;
