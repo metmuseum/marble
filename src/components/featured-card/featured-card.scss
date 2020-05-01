@@ -1,0 +1,51 @@
+@import "../../base/base";
+
+.featured-card {
+	align-items: flex-end;
+	display: flex;
+	min-height: 56.25vw;
+	position: relative;
+	@media (min-aspect-ratio: 16/10) {
+		min-height: 85vh;
+	}
+}
+
+.featured-card__content {
+	color: $color-white;
+	padding: $spacing-m;
+	@media (orientation: landscape) {
+		max-width: 66%;
+	}
+}
+
+.featured-card__links {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.featured-card__image-wrapper {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: -1;
+}
+
+.featured-card__description {
+	margin-bottom: $spacing-xs;
+}
+
+.featured-card__secondary-button {
+	margin: $spacing-xxs;
+}
+
+.image-container__image {
+	.featured-card & {
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+}
