@@ -7,12 +7,6 @@
 	text-align: left;
 	width: 100vw;
 
-	// border: 1px dotted black;
-
-	// div {
-	// 	border: 1px dotted red;
-	// }
-
 	@media screen and (min-width: $bp-two-column) {
 		align-items: center;
 		flex-direction: row;
@@ -29,7 +23,7 @@
 
 	.featured-banner-body-container {
 		box-sizing: border-box;
-		flex: 0 0 40%;
+		flex: 0 1 40%;
 		padding-bottom: 1.5em;
 		@media screen and (min-width: $bp-two-column) {
 			padding: 0 1em;
@@ -55,12 +49,14 @@
 		width: 100%;
 	}
 
+	.featured-banner__link {
+		margin-right: 1em;
+	}
+
 	a {
 		border: unset; // match figma, y tho?
 		font-size: calc(17px + 0.3vw); // make it fluid?
 		font-weight: 500; // match figma, y tho?
-		// margin: 0 $spacing-micro; // match figma, y tho?
-		margin-right: 1em;
 		text-decoration: underline; // match figma, y tho?
 		white-space: nowrap;
 	}

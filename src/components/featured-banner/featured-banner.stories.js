@@ -1,5 +1,7 @@
 import html from "../../../.storybook/helpers/html";
+import he from "he";
 import { withA11y } from "@storybook/addon-a11y";
+import { withKnobs, text } from "@storybook/addon-knobs";
 import sizeStyles from "../../base/_sizes.scss";
 import "./featured-banner.scss";
 
@@ -8,38 +10,37 @@ import image960 from "../../../.storybook/assets/images/full-width-image/seurat_
 import image1440 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
 import image2160 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-2160.jpg";
 import image3240 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-3240.jpg";
-import image4860 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-4860.jpg";
-import image5760 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-5760.jpg";
-
-const bpTwoColumn = sizeStyles.bpTwoColumn;
-
-const width = 3920;
-const height = 2621;
 
 export default {
 	title: "Featured",
-	decorators: [withA11y],
+	decorators: [withA11y, withKnobs],
 };
 
+const bpTwoColumn = sizeStyles.bpTwoColumn;
+const width = 3920;
+const height = 2621;
+
 export const featuredBanner = () => {
+	const header = text("Header", "Contribute to the Future");
+	const bodyCopyDefault =
+		"Care about art and wondering how to keep it safe from moths?<br />Support our mission in a new way.";
+	const bodyCopy = text("Body Copy", bodyCopyDefault);
+
 	return html`
 		<div class="featured-banner">
 			<div class="featured-banner-heading-container">
-				<h1>Contribute to the Future</h1>
+				<h1>${header}</h1>
 			</div>
 			<div class="featured-banner-body-container">
-				<p>
-					Care about art and wondering how to keep it safe from moths?<br />
-					Support our mission in a new way.
-				</p>
-				<a class="" href="#">Become A Member</a>
-				<a class="" href="#">Give A Gift</a>
-				<a class="" href="#">Third Link</a>
+				<p>${he.decode(bodyCopy)}</p>
+				<a class="featured-banner__link" href="#">Become A Member</a>
+				<a class="featured-banner__link" href="#">Give A Gift</a>
+				<a class="featured-banner__link" href="#">Third Link</a>
 			</div>
 			<div class="featured-banner-image-container">
 				<img
 					class="featured-banner__image"
-					alt="An image alt, for accessibility"
+					alt="An image alt, for acacessibility"
 					width="${width}"
 					height="${height}"
 					src="${image768}"
