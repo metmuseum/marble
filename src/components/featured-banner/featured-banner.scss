@@ -1,0 +1,76 @@
+@import "../../base/sizes";
+
+.featured-banner {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	width: 100vw;
+
+	// border: 1px dotted black;
+
+	// div {
+	// 	border: 1px dotted red;
+	// }
+
+	@media screen and (min-width: $bp-two-column) {
+		align-items: center;
+		flex-direction: row;
+		justify-content: stretch;
+	}
+
+	.featured-banner-heading-container {
+		box-sizing: border-box;
+		flex: 0 0 30%;
+		@media screen and (min-width: $bp-two-column) {
+			padding: 40px 0;
+		}
+	}
+
+	.featured-banner-body-container {
+		box-sizing: border-box;
+		flex: 0 0 40%;
+		padding-bottom: 1.5em;
+		@media screen and (min-width: $bp-two-column) {
+			padding: 0 1em;
+		}
+	}
+
+	.featured-banner-image-container {
+		border: 0;
+		box-sizing: border-box;
+		flex: 0 0 30%;
+		font-size: 0;
+		height: auto;
+		line-height: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	.featured-banner__image {
+		border: 0;
+		height: auto;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	a {
+		border: unset; // match figma, y tho?
+		font-size: calc(17px + 0.3vw); // make it fluid?
+		font-weight: 500; // match figma, y tho?
+		// margin: 0 $spacing-micro; // match figma, y tho?
+		margin-right: 1em;
+		text-decoration: underline; // match figma, y tho?
+		white-space: nowrap;
+	}
+
+	h1 {
+		font-weight: 500; // match figma, y tho?
+		line-height: 1; // match figma, y tho?
+	}
+
+	p {
+		line-height: (24/18); // match figma, y tho?
+	}
+}

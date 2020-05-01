@@ -16,7 +16,7 @@ export const featuredModule = () => {
 				Care about art and wondering how to keep it safe from moths?<br />
 				Support our mission in a new way.
 			</p>
-			<div class="text-center">
+			<div>
 				<a class="" href="#">Become A Member</a>
 				<a class="" href="#">Give A Gift</a>
 				<a class="" href="#">Third Link</a>
