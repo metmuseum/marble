@@ -41,7 +41,7 @@
 		"type": "git",
 		"url": "git+https://github.com/metmuseum/Marble.git"
 	},
-	"author": "Joseph Curley, Stephen Marsh, The Met",
+	"author": "Joseph Curley, Stephen Marsh, David Seguin, Evander Batson, Courtney Allen, The Met",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/metmuseum/Marble/issues"
