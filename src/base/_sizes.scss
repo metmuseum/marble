@@ -15,6 +15,10 @@ $bp-two-column: 900px;
 $bp-banner: 1200px;
 $bp-extra-large: 1440px;
 
+:export {
+	bpTwoColumn: $bp-two-column;
+}
+
 //padding and margins
 //This is used super sparingly and won't be a part of most designs.
 $spacing-micro: calc(8px + 0.25vw);
