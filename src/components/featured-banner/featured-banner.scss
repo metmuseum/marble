@@ -8,10 +8,8 @@
 	text-align: left;
 	width: 100%;
 
-	@media screen and (min-width: $bp-two-column) {
-		align-items: center;
+	@media screen and (min-width: $bp-1200) {
 		flex-direction: row;
-		justify-content: stretch;
 	}
 
 	&.productive-component {
@@ -39,8 +37,8 @@
 .featured-banner-heading-container {
 	box-sizing: border-box;
 	flex: 0 0 30%;
-	@media screen and (min-width: $bp-two-column) {
-		padding: 40px 0;
+	@media screen and (min-width: $bp-1200) {
+		padding-bottom: 40px;
 	}
 }
 
@@ -48,7 +46,7 @@
 	box-sizing: border-box;
 	flex: 0 1 40%;
 	padding-bottom: 1.5em;
-	@media screen and (min-width: $bp-two-column) {
+	@media screen and (min-width: $bp-1200) {
 		padding: 0 1em;
 	}
 }

@@ -6,17 +6,21 @@ $grid-gutter: 20px;
 $bp-fixed-type: 600px;
 $bp-large-card: 950px;
 
+$bp-500: 500px;
+$bp-900: 900px;
+$bp-1000: 1000px;
+$bp-1200: 1200px;
+$bp-1440: 1440px;
+$bp-2000: 2000px;
+
 //TODO: Remove unnecesarry breakpoints once we're sure they arent used anywhere.
 //These arent anywhere in Marble (But may be used in Ghidorah or another project pulling Marble in)
-$bp-1000: 1000px;
-$bp-2000: 2000px;
-$bp-500: 500px;
-$bp-two-column: 900px;
-$bp-banner: 1200px;
-$bp-extra-large: 1440px;
+$bp-two-column: $bp-900;
+$bp-banner: $bp-1200;
+$bp-extra-large: $bp-1440;
 
 :export {
-	bpTwoColumn: $bp-two-column;
+	bp1200: $bp-1200;
 }
 
 //padding and margins
