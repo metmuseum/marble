@@ -1,16 +1,21 @@
 @import "../../base/sizes";
+@import "../../base/mixins/layouts";
 
 .featured-banner {
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	text-align: left;
-	width: 100vw;
+	width: 100%;
 
 	@media screen and (min-width: $bp-two-column) {
 		align-items: center;
 		flex-direction: row;
 		justify-content: stretch;
+	}
+
+	&.productive-component {
+		@include productive-component;
 	}
 
 	a {
