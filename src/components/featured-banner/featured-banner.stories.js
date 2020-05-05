@@ -16,7 +16,7 @@ export default {
 	decorators: [withA11y, withKnobs],
 };
 
-const bpTwoColumn = sizeStyles.bpTwoColumn;
+const bp1200 = sizeStyles.bp1200;
 const width = 3920;
 const height = 2621;
 
@@ -56,7 +56,7 @@ export const featuredBanner = () => {
 						${image2160} 2160w,
 						${image3240} 3240w
 					"
-					sizes="100vw, (min-width: ${bpTwoColumn}) 30vw"
+					sizes="100vw, (min-width: ${bp1200}) 30vw"
 				/>
 			</div>
 		</div>
