@@ -1,4 +1,11 @@
 @import "../../base/sizes";
+@import "../../base/mixins/layouts";
+
+.featured-module-container {
+	&.productive-component {
+		@include productive-component;
+	}
+}
 
 .featured-module {
 	box-sizing: border-box;
