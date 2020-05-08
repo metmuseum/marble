@@ -42,7 +42,14 @@ export const sectionHeading = () => {
 		>
 			<h1 class="section-heading__heading ${context}">${header}</h1>
 			<div>${he.decode(bodyCopy)}</div>
-			<a class="section-heading__text-link" href="">${CTA1}</a>
+			<a
+				class="button--tertiary section-heading__text-link"
+				role="button"
+				tabindex="0"
+				href="#"
+			>
+				${CTA1}</a
+			>
 		</div>
 	`;
 };
