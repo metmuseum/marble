@@ -25,6 +25,8 @@ commands:
             fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
 jobs:
   build-and-test:
+    docker:
+      - image: circleci/node:12.14.1-buster-browsers
     environment:
       NODE_ENV: development
     executor:
