@@ -1,6 +1,6 @@
 const path = require("path");
 import initStoryshots from "@storybook/addon-storyshots";
-import { imageSnapshot } from "@storybook/addon-storyshots-puppeteer";
+import { puppeteerTest } from "@storybook/addon-storyshots-puppeteer";
 
 const getMatchOptions = ({ context: { kind, story }, url }) => {
 	return {
@@ -26,7 +26,7 @@ const afterScreenshot = ({ image, context }) => {
 initStoryshots({
 	framework: "html",
 	suite: "Image storyshots",
-	test: imageSnapshot({
+	test: puppeteerTest({
 		storybookUrl: `file://${path.resolve(__dirname, "../.out")}`,
 		getMatchOptions,
 		beforeScreenshot,
