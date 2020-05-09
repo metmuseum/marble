@@ -1,13 +1,14 @@
-// we might want to configure babel at some point
-// const presets = [
-// 	[
-// 		"@babel/env",
-// 		{
-// 			targets: "> 0.25%, not dead",
-// 			useBuiltIns: "usage",
-// 			corejs: 3
-// 		}
-// 	]
-// ];
+const presets = [
+	[
+		"@babel/preset-env",
+		{
+			corejs: 3,
+			useBuiltIns: "usage",
+			shippedProposals: true,
+		},
+	],
+];
 
-// module.exports = { presets };
+const plugins = ["@babel/plugin-transform-runtime"];
+
+module.exports = { presets, plugins };

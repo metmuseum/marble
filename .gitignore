@@ -101,3 +101,6 @@ typings/
 
 # TernJS port file
 .tern-port
+
+# static storybook output file (for jest storyshot testing)
+.out

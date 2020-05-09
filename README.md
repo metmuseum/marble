@@ -10,6 +10,7 @@
 - ### [Using Marble](#Using-Marble)
 - ### [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
 - ### [Storybook Development](#Storybook-Development)
+- ### [Snapshot Tests](#Snapshot-Tests)
 - ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
 
 # Living Style Guide
@@ -64,6 +65,15 @@ To publish the Storybook to its web homepage (via GitHub pages), please commit y
 We use the `html preset` for Storybook. There are many good exmaples of html stories and add-ons at the official "kitchen sink" example directory:
 
 - https://github.com/storybookjs/storybook/tree/next/examples/html-kitchen-sink
+
+# Snapshot Tests
+
+Storybook helps us use automated snapshot tests to look for visual regresssions. The tests will run on CircleCI for every pull request.
+
+To make sure the tests pass before you push, you can run the tests locally:
+
+1. First, Storyshot needs a static copy of Storybook to check against. (This makes it easy to run the tests in CI versus hitting a local `webpack-dev-server`). Run `npm run build-storybook` to make a fresh static copy of Storybook for the tests to check against. If you don't want to manually rebuild the static Storybook every time you make a change, you can run `npm run build-and-watch-storybook` to create a fresh build every time a file changes.
+2. Run tests with `npm run test`
 
 # Webpack Build for Release And Production
 
