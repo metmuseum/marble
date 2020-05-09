@@ -30,11 +30,9 @@ jobs:
     executor:
       name: node/default
     steps:
-      - install-puppeteer-libs
-      - node/install:
-          node-version: latest
-      - run: node --version
       - checkout
+      - install-puppeteer-libs
+      - run: node --version
       - node/install-packages
       - run: npm run build-storybook
       - run: npm run test-on-circle-ci
