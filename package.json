@@ -44,7 +44,8 @@
 		"deploy-storybook": "storybook-to-ghpages",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook",
-		"test": "jest"
+		"test": "jest",
+		"test-on-circle-ci": "jest --maxWorkers=2"
 	},
 	"repository": {
 		"type": "git",

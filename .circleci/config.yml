@@ -1,8 +1,11 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.1.0
+  puppeteer: threetreeslight/puppeteer@0.1.2
 jobs:
   build-and-test:
+    environment:
+      NODE_ENV: development
     executor:
       name: node/default
     steps:
@@ -11,7 +14,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build-storybook
-            - run: npm run test
+            - run: npm run test-on-circle-ci
 workflows:
   build-and-test:
     jobs:
