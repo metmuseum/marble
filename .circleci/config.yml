@@ -38,8 +38,8 @@ jobs:
       - install-puppeteer-libs
       - run: node --version
       - node/install-packages
-      - run: sudo npm run build-storybook
-      - run: sudo npm run test-on-circle-ci
+      - run: npm run build-storybook
+      - run: npm run test-on-circle-ci
 workflows:
   build-and-test:
     jobs:
