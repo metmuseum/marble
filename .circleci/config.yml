@@ -22,6 +22,8 @@ commands:
             libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1
             libxtst6 ca-certificates \
 
+            libgbm-dev \
+
             fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
 jobs:
   build-and-test:
