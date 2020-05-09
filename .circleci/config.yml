@@ -22,7 +22,6 @@ commands:
             libxtst6 ca-certificates \
 
             fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
-
 jobs:
   build-and-test:
     environment:
@@ -30,13 +29,14 @@ jobs:
     executor:
       name: node/default
     steps:
+      - install-puppeteer-libs
+      - node/install:
+          node-version: latest
+      - run: node --version
       - checkout
-      - node/with-cache:
-          steps:
-            - install-puppeteer-libs
-            - run: npm install
-            - run: npm run build-storybook
-            - run: npm run test-on-circle-ci
+      - node/install-packages
+      - run: npm run build-storybook
+      - run: npm run test-on-circle-ci
 workflows:
   build-and-test:
     jobs:
