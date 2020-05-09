@@ -4,6 +4,7 @@ orbs:
 commands:
   install-puppeteer-libs:
     steps:
+      - run: sudo apt-get update
       - run:
           name: Install Headless Chrome dependencies
           command: >
