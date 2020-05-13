@@ -1,0 +1,67 @@
+@import "../../base/sizes";
+@import "../../base/mixins/layouts";
+@import "../../base/mixins/_typography.scss";
+
+$fluid-font-size: calc(18px + #{$font-scale-base});
+
+.section-heading {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	font-size: $fluid-font-size;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 24/18;
+	padding-bottom: $spacing-s;
+	padding-top: $spacing-l;
+
+	@media (orientation: portrait) {
+		max-width: 85vw;
+	}
+
+	@media (orientation: landscape) {
+		* {
+			max-width: 60vw;
+		}
+	}
+
+	&.productive-component {
+		@include productive-component;
+	}
+}
+
+.section-heading--text-left {
+	align-items: flex-start;
+	text-align: left;
+}
+
+.section-heading--text-center {
+	align-items: center;
+	margin: auto;
+	text-align: center;
+}
+
+.section-heading--text-right {
+	align-items: flex-end;
+	text-align: right;
+}
+
+.section-heading__heading {
+	&.expressive,
+	&.productive {
+		font-style: normal; // match figma
+		font-weight: 500; // match figma
+		line-height: 1;
+		margin-bottom: $fluid-font-size;
+		margin-top: 0;
+		padding: 0;
+	}
+}
+
+.section-heading__text-link,
+.section-heading__text-link.button--tertiary {
+	display: block;
+	font-size: $fluid-font-size; // match figma
+	margin-top: $fluid-font-size;
+	white-space: nowrap;
+}
