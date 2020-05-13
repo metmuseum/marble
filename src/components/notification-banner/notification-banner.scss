@@ -3,11 +3,11 @@
 $minimum-header-width: 350px;
 
 .notification-banner {
-	background-color: $color-grey-900;
-	color: $color-blue-light;
+	background-color: inherit;
+	color: inherit;
 	display: flex;
 	flex-direction: column;
-	padding: $spacing-s $spacing-l;
+	padding: $spacing-s $spacing-component-margin;
 
 	@media screen and (min-width: $bp-large-card) {
 		flex-direction: row;

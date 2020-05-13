@@ -35,6 +35,9 @@ $spacing-l: calc(64px + 2vw);
 $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
+//This is as an outside margin to help align components with those that use width: 85vw which is an emerging standard.
+$spacing-component-margin: 7.5vw;
+
 //TODO- Not sure how to categorize this or if we even need it as a variable.
 //TODO- If we keep these as variables lets come up with a $TYPE-Variation naming convention
 //$radius-form, $corners-form, $br-form, $border-radius-form, etc....
