@@ -1,42 +1,58 @@
 import html from "../../../.storybook/helpers/html";
+import he from "he";
+import { withA11y } from "@storybook/addon-a11y";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { fullWidth } from "../image-container/image-container.stories.js";
 import "./featured-card.scss";
 
-import { fullWidth } from "../image-container/image-container.stories.js";
+export default { title: "Featured", decorators: [withA11y, withKnobs] };
 
-export default { title: 'Featured' };
-
-const data = {
-	header: "Visit Us from Home",
-	description: "<p>Immerse yourself in 360-degree video of iconic spaces in the Museum. Visit the Great Hall as a ball,  and Greek as a treat!</p>",
-	images: "",
-	primaryLink: {
-		url: "http://metmuseum.org",
-		text: "Primary"
-	},
-	secondaryLink: {
-		url: "http://metmuseum.org",
-		text: "Browse Artwork"
-	}
-}
+const data = () => {
+	return {
+		inSitu: boolean("In Situ", false),
+		header: text("Header", "Visit Us from Home"),
+		description: text(
+			"Body Copy",
+			"<p>Immerse yourself in 360-degree video of iconic spaces in the Museum. Visit the Great Hall as a ball,  and Greek as a treat!</p>"
+		),
+		images: "",
+		primaryLink: {
+			url: "http://metmuseum.org",
+			text: text("Button Text", "Primary"),
+		},
+		secondaryLink: {
+			url: "http://metmuseum.org",
+			text: text("Secondary Link", "Browse Artwork"),
+		},
+	};
+};
 
 const featuredCardMarkup = (model) => {
-	return html`
-	<div class="featured-card">
+	return html` <div
+		class="featured-card ${model.inSitu ? "productive-component" : ""}"
+	>
 		<div class="featured-card__content">
 			<h1 class="expressive">${model.header}</h1>
-			<div class="featured-card__description">${model.description}</div>
+			<div class="featured-card__description">
+				${he.decode(model.description)}
+			</div>
 			<div class="featured-card__links">
-				<a href="#" class="button button--ghosted inverse">${model.primaryLink.text}</a>
-				<a href="#" class="button--tertiary inverse featured-card__secondary-button">${model.secondaryLink.text}</a>
+				<a href="#" class="button button--ghosted inverse"
+					>${model.primaryLink.text}</a
+				>
+				<a
+					href="#"
+					class="button--tertiary inverse featured-card__secondary-button"
+					>${model.secondaryLink.text}</a
+				>
 			</div>
 		</div>
 		<div class="featured-card__image-wrapper">
 			${fullWidth()}
 		</div>
-	</div>`
-}
-
+	</div>`;
+};
 
 export const FeaturedCard = () => {
-  return featuredCardMarkup(data);
-}
+	return featuredCardMarkup(data());
+};

@@ -1,7 +1,7 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import sizeStyles from "../../base/_sizes.scss";
 import "./featured-banner.scss";
 
@@ -16,26 +16,31 @@ export default {
 	decorators: [withA11y, withKnobs],
 };
 
-const bpTwoColumn = sizeStyles.bpTwoColumn;
+const bp1200 = sizeStyles.bp1200;
 const width = 3920;
 const height = 2621;
 
 export const featuredBanner = () => {
+	const inSitu = boolean("In Situ", false);
 	const header = text("Header", "Contribute to the Future");
 	const bodyCopyDefault =
 		"Care about art and wondering how to keep it safe from moths?<br />Support our mission in a new way.";
 	const bodyCopy = text("Body Copy", bodyCopyDefault);
+	let ctaDefaults = ["Become A Member", "Give A Gift", "Third Link"];
+	const CTA1 = text("CTA 1", ctaDefaults.shift());
+	const CTA2 = text("CTA 2", ctaDefaults.shift());
+	const CTA3 = text("CTA 3", ctaDefaults.shift());
 
 	return html`
-		<div class="featured-banner">
+		<div class="featured-banner ${inSitu ? "productive-component" : ""}">
 			<div class="featured-banner-heading-container">
 				<h1>${header}</h1>
 			</div>
 			<div class="featured-banner-body-container">
 				<p>${he.decode(bodyCopy)}</p>
-				<a class="featured-banner__link" href="#">Become A Member</a>
-				<a class="featured-banner__link" href="#">Give A Gift</a>
-				<a class="featured-banner__link" href="#">Third Link</a>
+				<a class="featured-banner__link" href="#">${CTA1}</a>
+				<a class="featured-banner__link" href="#">${CTA2}</a>
+				<a class="featured-banner__link" href="#">${CTA3}</a>
 			</div>
 			<div class="featured-banner-image-container">
 				<img
@@ -45,13 +50,13 @@ export const featuredBanner = () => {
 					height="${height}"
 					src="${image768}"
 					srcset="
-						${image768}  768w,
+						${image768}   768w,
 						${image960}  960w,
 						${image1440} 1440w,
 						${image2160} 2160w,
 						${image3240} 3240w
 					"
-					sizes="100vw, (min-width: ${bpTwoColumn}) 30vw"
+					sizes="100vw, (min-width: ${bp1200}) 30vw"
 				/>
 			</div>
 		</div>
