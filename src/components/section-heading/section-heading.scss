@@ -16,7 +16,6 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 	padding-top: $spacing-l;
 
 	@media (orientation: portrait) {
-		padding-top: $spacing-l;
 		max-width: 85vw;
 	}
 
