@@ -17,7 +17,7 @@
 
 .featured-card__content {
 	color: $color-white;
-	padding: $spacing-m;
+	padding: $spacing-component-margin;
 	@media (orientation: landscape) {
 		max-width: 66%;
 	}
@@ -44,7 +44,7 @@
 }
 
 .featured-card__secondary-button {
-	margin: $spacing-xxs;
+	margin: $spacing-micro $spacing-xxs;
 }
 
 .image-container__image {
