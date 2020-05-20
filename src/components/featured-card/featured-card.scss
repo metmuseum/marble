@@ -17,7 +17,7 @@
 
 .featured-card__content {
 	color: $color-white;
-	padding: $spacing-m;
+	padding: $spacing-component-margin;
 	@media (orientation: landscape) {
 		max-width: 66%;
 	}
@@ -31,12 +31,25 @@
 }
 
 .featured-card__image-wrapper {
+	border-radius: $form-radius;
 	bottom: 0;
 	left: 0;
+	overflow: hidden;
 	position: absolute;
 	right: 0;
 	top: 0;
 	z-index: -1;
+
+	&:before {
+		background-image: linear-gradient(to right, $color-black-opaque-80, transparent);
+		bottom: 0;
+		content: "";
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
 }
 
 .featured-card__description {
@@ -44,7 +57,7 @@
 }
 
 .featured-card__secondary-button {
-	margin: $spacing-xxs;
+	margin: $spacing-micro $spacing-xxs;
 }
 
 .image-container__image {
