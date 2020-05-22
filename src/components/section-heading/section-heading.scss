@@ -47,6 +47,12 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 }
 
 .section-heading__heading {
+	&.expressive {
+		font-family: $metserif;
+	}
+	&.productive {
+		font-family: $metsans;
+	}
 	&.expressive,
 	&.productive {
 		font-style: normal; // match figma
