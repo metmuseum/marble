@@ -4,6 +4,7 @@
 .featured-card {
 	align-items: flex-end;
 	display: flex;
+	margin-bottom: $spacing-s;
 	min-height: 56.25vw;
 	position: relative;
 	@media (min-aspect-ratio: 16/10) {

@@ -2,6 +2,7 @@
 @import "../../base/mixins/layouts";
 
 .featured-module-container {
+	margin-bottom: $spacing-s;
 	&.productive-component {
 		@include productive-component;
 	}

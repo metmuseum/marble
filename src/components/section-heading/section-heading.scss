@@ -11,9 +11,9 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 	font-size: $fluid-font-size;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 24/18;
-	padding-bottom: $spacing-s;
-	padding-top: $spacing-l;
+	line-height: (24/18);
+	margin-bottom: $spacing-s;
+	padding-top: $spacing-xs;
 
 	@media (orientation: portrait) {
 		max-width: 85vw;
