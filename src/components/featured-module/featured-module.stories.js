@@ -26,7 +26,7 @@ export const featuredModule = () => {
 			class="featured-module-container ${inSitu ? "productive-component" : ""}"
 		>
 			<div class="featured-module">
-				<h1>${header}</h1>
+				<h2>${header}</h2>
 				<p>${he.decode(bodyCopy)}</p>
 				<div>
 					<a class="" href="#">${CTA1}</a>

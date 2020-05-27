@@ -34,7 +34,7 @@ export const featuredBanner = () => {
 	return html`
 		<div class="featured-banner ${inSitu ? "productive-component" : ""}">
 			<div class="featured-banner-heading-container">
-				<h1>${header}</h1>
+				<h2>${header}</h2>
 			</div>
 			<div class="featured-banner-body-container">
 				<p>${he.decode(bodyCopy)}</p>
