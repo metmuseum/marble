@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: $spacing-s;
+	margin: $spacing-s 0;
 	text-align: left;
 	width: 100%;
 
@@ -18,16 +18,7 @@
 	}
 
 	a {
-		border: unset; // match figma, y tho?
-		font-size: calc(17px + 0.3vw); // make it fluid?
-		font-weight: 500; // match figma, y tho?
-		text-decoration: underline; // match figma, y tho?
 		white-space: nowrap;
-	}
-
-	h1 {
-		font-weight: 500; // match figma, y tho?
-		line-height: 1; // match figma, y tho?
 	}
 
 	p {
@@ -46,7 +37,7 @@
 .featured-banner-body-container {
 	box-sizing: border-box;
 	flex: 0 1 40%;
-	padding-bottom: 1.5em;
+	padding-bottom: $spacing-s;
 	@media screen and (min-width: $bp-1200) {
 		padding: 0 1em;
 	}
