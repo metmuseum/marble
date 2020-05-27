@@ -18,16 +18,7 @@
 	}
 
 	a {
-		border: unset; // match figma, y tho?
-		font-size: calc(17px + 0.3vw); // make it fluid?
-		font-weight: 500; // match figma, y tho?
-		margin: 0 $spacing-micro; // match figma, y tho?
-		text-decoration: underline; // match figma, y tho?
-	}
-
-	h2 {
-		font-weight: 500; // match figma, y tho?
-		line-height: 1; // match figma, y tho?
+		margin: 0 $spacing-micro;
 	}
 
 	p {

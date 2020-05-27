@@ -29,9 +29,15 @@ export const featuredModule = () => {
 				<h2>${header}</h2>
 				<p>${he.decode(bodyCopy)}</p>
 				<div>
-					<a class="" href="#">${CTA1}</a>
-					<a class="" href="#">${CTA2}</a>
-					<a class="" href="#">${CTA3}</a>
+					<a role="button" href="#" tabindex="0" class="button--tertiary">
+						${CTA1}
+					</a>
+					<a role="button" href="#" tabindex="0" class="button--tertiary">
+						${CTA2}
+					</a>
+					<a role="button" href="#" tabindex="0" class="button--tertiary">
+						${CTA3}
+					</a>
 				</div>
 			</div>
 			${fullWidth()}

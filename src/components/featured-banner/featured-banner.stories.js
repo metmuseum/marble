@@ -38,9 +38,30 @@ export const featuredBanner = () => {
 			</div>
 			<div class="featured-banner-body-container">
 				<p>${he.decode(bodyCopy)}</p>
-				<a class="featured-banner__link" href="#">${CTA1}</a>
-				<a class="featured-banner__link" href="#">${CTA2}</a>
-				<a class="featured-banner__link" href="#">${CTA3}</a>
+				<a
+					role="button"
+					href="#"
+					tabindex="0"
+					class="button--tertiary featured-banner__link"
+				>
+					${CTA1}
+				</a>
+				<a
+					role="button"
+					href="#"
+					tabindex="0"
+					class="button--tertiary featured-banner__link"
+				>
+					${CTA2}
+				</a>
+				<a
+					role="button"
+					href="#"
+					tabindex="0"
+					class="button--tertiary featured-banner__link"
+				>
+					${CTA3}
+				</a>
 			</div>
 			<div class="featured-banner-image-container">
 				<img
