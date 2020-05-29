@@ -19,24 +19,24 @@ const data = {
 
 const bannerMarkup = (model) => {
 	return `
-		<section class="banner banner-grand banner-@Model.Name">
-			<div class="banner__image-wrapper">
-				<a class='banner__image-link'
+		<section class="marble-banner banner-@Model.Name">
+			<div class="marble-banner__image-wrapper">
+				<a class="marble-banner__image-link"
 					tabindex="-1"
 					href="${model.link.url}"
 					title="${model.imageAlt}">
 
-					<img class="banner__image" srcset="${model.backgroundImages}">
+					<img class="marble-banner__image" srcset="${model.backgroundImages}">
 				${model.video === true ? vimeoTemplate : ``}
 				</a>
 
 			</div>
-			<div class="banner__subject" style="background-color: ${model.backgroundColor}; color: ${model.color}">
-				<div class="banner__subject-body">
+			<div class="marble-banner__subject" style="background-color: ${model.backgroundColor}; color: ${model.color}">
+				<div class="marble-banner__subject-body">
 					<h1 class="expressive">
 						<a href="${model.link.url}">${model.header}</a>
 					</h1>
-					<div class="banner__meta-description expressive-body">
+					<div class="marble-banner__meta-description expressive-body">
 						<a href="${model.link.url}" tabindex="-1">${model.description}</a>
 					</div>
 				</div>

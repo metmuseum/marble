@@ -1,7 +1,7 @@
 @import "../../base/base";
 @import "./banner-editorial/banner-editorial";
 
-.banner {
+.marble-banner {
 	display: flex;
 	flex-direction: column;
 	min-height: $height-max;
@@ -14,14 +14,14 @@
 	}
 }
 
-.banner__subject,
-.banner__image-wrapper {
+.marble-banner__subject,
+.marble-banner__image-wrapper {
 	flex-basis: 50%;
 	flex-grow: 1;
 	flex-shrink: 1;
 }
 
-.banner__image-wrapper {
+.marble-banner__image-wrapper {
 	min-height: 100vw;
 	overflow: hidden;
 	position: relative;
@@ -30,7 +30,7 @@
 	}
 }
 
-.banner__image-link {
+.marble-banner__image-link {
 	border: 0;
 	display: block;
 	line-height: 0;
@@ -40,7 +40,7 @@
 	position: absolute;
 }
 
-.banner__image {
+.marble-banner__image {
 	height: 100%;
 	left: 0;
 	object-fit: cover;
@@ -54,13 +54,13 @@
 	//If the a tag wrapping the image has an href and is being hovered
 	//Or if the banner has focus
 	a:not([href=""]):hover &,
-	.banner:focus-within & {
+	.marble-banner:focus-within & {
 		transform: scale(1.06);
 	}
 
 }
 
-.banner__subject {
+.marble-banner__subject {
 	align-items: center;
 	display: flex;
 	justify-content: center;
