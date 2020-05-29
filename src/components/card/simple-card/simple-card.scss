@@ -1,0 +1,132 @@
+@import "../../../base/base";
+
+$promo-break-sm: 400px;
+$promo-break-md: 900px;
+$promo-max-image-height: 450px;
+
+.simple-card {
+	display: flex;
+	flex-direction: column;
+	margin: 0 0 $spacing-s;
+	//max-height: $promo-max-image-height;
+	@media screen and (min-width: $promo-break-md) {
+		flex-direction: row;
+	}
+
+}
+
+.simple-card__copy-wrapper {
+	background-color: $color-grey-050;
+	display: flex;
+	flex-basis: 50%;
+
+	&.simple-card__copy-wrapper---small {
+		@media screen and (min-width: $promo-break-md) {
+			flex-basis: 35%;
+		}
+	}
+}
+
+.simple-card__copy {
+	align-items: flex-start;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	opacity: 1;
+	padding: $spacing-s;
+	width: 100%;
+
+	@media screen and (min-width: $promo-break-md) {
+		padding: 80px;
+	}
+}
+
+.simple-card__heading {
+	padding-bottom: 16px;
+	position: relative;
+}
+
+.simple-card__body {
+	margin-bottom: 26px;
+	max-width: 100%;
+}
+
+.simple-card__image-link {
+	border-bottom: 0;
+	width: 100%;
+}
+
+.simple-card__item-wrapper {
+	display: flex;
+	flex-basis: 50%;
+	overflow: hidden;
+	position: relative;
+	z-index: 9;
+
+	@media screen and (min-width: $promo-break-md) {
+		flex-grow: 1;
+	}
+
+	.left-text & {
+		@media screen and (min-width: $promo-break-md) {
+			order: 2;
+		}
+	}
+}
+
+.simple-card__link {
+	align-items: center;
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	max-height: 100%;
+	position: relative;
+	@media screen and (min-width: $promo-break-md) {
+		height: 100%;
+		max-height: none;
+	}
+}
+
+.simple-card__image-wrapper {
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	padding: 0;
+	width: 100%;
+
+	@media screen and (min-width: $promo-break-md) {
+		align-self: flex-end;
+		justify-content: flex-end;
+		max-height: none;
+		text-align: inherit;
+	}
+
+	.left-text & {
+		@media screen and (min-width: $promo-break-md) {
+			align-self: flex-start;
+			justify-content: flex-start;
+		}
+	}
+}
+
+.simple-card__image {
+	align-self: center;
+	flex-basis: 0;
+	flex-grow: 1;
+	flex-shrink: 0;
+	height: auto;
+	max-width: 100%;
+	min-height: 226px;
+	object-fit: cover;
+	opacity: 1;
+	position: relative;
+	width: 100%;
+	@media screen and (min-width: $promo-break-md) {
+		height: 100%;
+		width: 100%;
+	}
+
+	&.loaded {
+		min-height: 0;
+	}
+}
