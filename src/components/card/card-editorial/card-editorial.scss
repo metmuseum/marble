@@ -14,11 +14,10 @@ $minimum-header-width: 350px;
 
 	.marble-card__subject-body {
 		flex-direction: column;
-		padding: $spacing-m $spacing-s;
+		padding: $spacing-m $spacing-component-margin;
 
 		@media screen and (min-width: $bp-large-card) {
 			flex-direction: row;
-			padding: $spacing-m $spacing-l;
 		}
 	}
 

@@ -1,3 +1,4 @@
+import html from "../../../../.storybook/helpers/html";
 import "../card.scss";
 
 export default { title: 'Cards' };
@@ -13,7 +14,7 @@ const data = {
 }
 
 const cardMarkup = (model) => {
-	return `
+	return html`
 	<section class="editorial-card--large">
 		<div class="marble-card">
 			<div class="marble-card__image-wrapper">
