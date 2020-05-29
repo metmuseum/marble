@@ -2,14 +2,14 @@ $editorial-banner-min-height: 88vw;
 //Flexbox doesn't match the height of children in `flex-drection: column`
 //So we're using this number to sort of force a minimum aspect ratio for the content to match.
 
-.banner.banner--editorial {
+.marble-banner.marble-banner--editorial {
 	@media (orientation: landscape) {
 		min-height: 56.25vw; //Force a 16x9 layout
 	}
 }
 
-.banner__subject-body {
-	.banner--editorial & {
+.marble-banner__subject-body {
+	.marble-banner--editorial & {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -20,8 +20,8 @@ $editorial-banner-min-height: 88vw;
 	}
 }
 
-.banner__image-wrapper {
-	.banner--editorial & {
+.marble-banner__image-wrapper {
+	.marble-banner--editorial & {
 		border-style: solid;
 		border-width: $spacing-l 16vw;
 		@media (orientation: landscape) {
@@ -30,8 +30,8 @@ $editorial-banner-min-height: 88vw;
 	}
 }
 
-.banner__image-link {
-	.banner--editorial & {
+.marble-banner__image-link {
+	.marble-banner--editorial & {
 		height: 0;
 		padding-bottom: $editorial-banner-min-height;
 		position: relative;
