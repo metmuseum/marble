@@ -30,8 +30,12 @@
 .marble-card:nth-last-child(3):first-child,
 .marble-card:nth-last-child(3):first-child ~ .marble-card {
 	.marble-card__header-heading {
-		//Three cards get a smaller title.
+		//Three cards get a smaller title and tighter padding.
 		@include typography-h4;
+	}
+
+	.marble-card__subject-body {
+		padding: $spacing-s;
 	}
 }
 
