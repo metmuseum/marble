@@ -4,6 +4,7 @@ $minimum-header-width: 350px;
 
 .editorial-card--large {
 	.marble-card__header {
+		margin-bottom: 0;
 		padding-bottom: $spacing-xs;
 		@media screen and (min-width: $bp-large-card) {
 			flex-basis: $minimum-header-width;
