@@ -26,7 +26,7 @@ $minimum-header-width: 350px;
 		flex-basis: 0;
 		@media screen and (min-width: $bp-large-card) {
 			flex-basis: 60%;
-			flex-grow: 1;
+			flex-grow: 0;
 			flex-shrink: 1;
 		}
 	}
