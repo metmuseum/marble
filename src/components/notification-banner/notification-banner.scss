@@ -22,14 +22,14 @@ $minimum-header-width: 350px;
 
 
 .notification-banner__header {
-	padding-bottom: $spacing-s;
+	padding-bottom: $spacing-xs;
 
 	@media screen and (min-width: $bp-large-card) {
 		flex-basis: $minimum-header-width;
 		flex-grow: 1;
 		flex-shrink: 0;
 		padding-bottom: 0;
-		padding-right: $spacing-s;
+		padding-right: $spacing-m;
 	}
 }
 
