@@ -1,0 +1,22 @@
+.streams-landing-wrapper,
+.verticals-landing-wrapper {
+    @include productive-component;
+}
+
+.verticals-landing-wrapper {
+    .featured-card {
+        margin-bottom: $spacing-xl;
+    }
+}
+
+.article-list {
+
+    .article-card {
+        @include article-card--sideways;
+        margin-bottom: $spacing-xl;
+    }
+
+    .article-card__meta-body {
+        display: block;
+    }
+}

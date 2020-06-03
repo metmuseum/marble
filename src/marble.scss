@@ -1,9 +1,10 @@
 @import "base/base";
 @import "global/global";
+@import "components/card/card";
 
 //Components:
+@import "components/article-list/article-list";
 @import "components/banner/banner";
-@import "components/card/card";
 @import "components/featured-banner/featured-banner";
 @import "components/featured-card/featured-card";
 @import "components/featured-module/featured-module";
