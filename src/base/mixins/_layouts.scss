@@ -1,7 +1,8 @@
 @import "../sizes";
 @import "../colors";
 
-$productive-width-max: 85vw;
+//DS - cross-platform 85vw that accounts for scrollbars
+$productive-width-max: calc(85vw - (100vw - 100%));;
 
 //TODO: DEPRECATED - Remove in V1. Please use the correctly named $productive-width-max in the future.
 $expressive-width-max: $productive-width-max;
