@@ -8,17 +8,17 @@ $minimum-header-width: 350px;
 			flex-basis: $minimum-header-width;
 			flex-grow: 1;
 			flex-shrink: 0;
-			padding-right: $spacing-s;
+			margin-bottom: 0;
+			padding-right: $spacing-m;
 		}
 	}
 
 	.marble-card__subject-body {
 		flex-direction: column;
-		padding: $spacing-m $spacing-s;
+		padding: $spacing-m $spacing-component-margin;
 
 		@media screen and (min-width: $bp-large-card) {
 			flex-direction: row;
-			padding: $spacing-m $spacing-l;
 		}
 	}
 
@@ -27,7 +27,7 @@ $minimum-header-width: 350px;
 		flex-basis: 0;
 		@media screen and (min-width: $bp-large-card) {
 			flex-basis: 60%;
-			flex-grow: 1;
+			flex-grow: 0;
 			flex-shrink: 1;
 		}
 	}

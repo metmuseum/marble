@@ -19,7 +19,7 @@ const data = {
 
 const bannerMarkup = (model) => {
 	return `
-		<section class="marble-banner banner-grand banner-@Model.Name">
+		<section class="marble-banner banner-@Model.Name">
 			<div class="marble-banner__image-wrapper">
 				<a class="marble-banner__image-link"
 					tabindex="-1"
