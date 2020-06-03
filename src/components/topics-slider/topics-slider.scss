@@ -72,10 +72,18 @@ $topic-side-height: 120px;
         &.previous {
             left: auto;
             right: calc(#{$spacing-component-margin} + 58px);
+
+            .flickity-button-icon {
+                left: 31%;
+            }
         }
 
         &.next {
             right: $spacing-component-margin;
+
+            .flickity-button-icon {
+                left: 14%;
+            }
         }
     }
     
