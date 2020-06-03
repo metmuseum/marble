@@ -1,0 +1,91 @@
+$article-card-width: 250px;
+$secondary-article-card-width: 280px;
+
+//Flickity control
+.primary-stream-items,
+.secondary-stream-items {
+	&:after {
+		//enable flickity with watchCSS option
+		content: "flickity";
+		display: none;
+	}
+
+	@media screen and (min-width: $bp-large-card) {
+		display: flex;
+		&:after {
+			content: "";
+		}
+	}
+}
+
+//two streams module
+$color-understated-yellow: yellow; // TODO: remove this. sass can't find this variable and it was breaking build.
+.twostreams {
+	background-color: $color-understated-yellow;
+	display: flex;
+	flex-direction: column;
+	padding: $spacing-m 0;
+
+	@media screen and (min-width: $bp-large-card) {
+		display: grid;
+		grid-template-columns: 64% 30%;
+		grid-gap: $spacing-m;
+		padding: $spacing-m $spacing-component-margin;
+	}
+}
+
+//secondary stream
+.twostreams__secondary-stream {
+	@media screen and (min-width: $bp-large-card) {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.stream__header {
+		padding-top: $spacing-m;
+
+		@media screen and (min-width: $bp-large-card) {
+			padding-top: 0;
+		}
+	}
+
+	.article-card__wrapper {
+		flex-direction: column;
+	}
+
+	.article-card {
+		@include article-card--sideways;
+		margin-bottom: 0;
+		margin-right: $spacing-xs;
+		width: $secondary-article-card-width;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@media screen and (min-width: $bp-large-card) {
+			margin-bottom: $spacing-s;
+			margin-right: 0;
+			width: 100%;
+		}
+
+		&:first-child {
+			width: calc(
+				#{$secondary-article-card-width} + #{$spacing-component-margin}
+			);
+
+			@media screen and (min-width: $bp-large-card) {
+				width: 100%;
+			}
+		}
+
+		.article-card__header-heading {
+			@include typography-label-field;
+			font-weight: 500;
+		}
+
+		.article-card__meta-description {
+			display: none;
+		}
+	}
+}
