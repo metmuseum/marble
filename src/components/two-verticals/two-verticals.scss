@@ -1,0 +1,103 @@
+$card-width: 160px;
+$bp-500: 520px;
+
+//Flickity control
+.two-verticals-items {
+    display: flex;
+    flex-direction: column;
+
+    &:after { //enable flickity with watchCSS option
+        content: 'flickity';
+        display: none;
+      }
+    
+    @media screen and (min-width: $bp-large-card) {
+
+        &:after {
+            content: '';
+        }
+    }
+}
+
+//page
+.two-verticals {
+    padding: 0;
+
+    @media screen and (min-width: $bp-large-card) {
+        display: flex;
+    }
+
+    .article-card {
+        width: $card-width;
+
+        &:first-child {
+            width: calc(#{$card-width} + #{$spacing-component-margin});
+        }
+
+        @media screen and (min-width: $bp-500) { //an intirim step for tablet
+            width: $article-card-width;
+
+            &:first-child {
+                width: calc(#{$article-card-width} + #{$spacing-component-margin});
+            }
+        }
+
+        @media screen and (min-width: $bp-large-card) {
+            @include article-card--sideways;
+            margin-bottom: $spacing-m;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .article-card__image-wrapper {
+                margin-right: $spacing-xs
+            }
+        }
+    }
+
+    .article-card__header {
+        margin-bottom: $spacing-micro;
+    }
+
+    .article-card__header-heading {
+        @include typography-body-expressive;
+    }
+
+    .article-card__meta-description {
+        display: none;
+
+        @media screen and (min-width: $bp-large-card) {
+            display: block;
+        }
+    }
+}
+
+.one-of-two-verticals {
+    border-top: 1px solid $color-grey-200;
+    padding: $spacing-m 0;
+
+    @media screen and (min-width: $bp-large-card) {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 50%;
+    }
+}
+
+.two-verticals--left {
+    @media screen and (min-width: $bp-large-card) {
+        padding-left: $spacing-component-margin;
+        padding-right: $spacing-m;
+    }
+}
+
+.two-verticals--right {
+    @media screen and (min-width: $bp-large-card) {
+        border-left: 1px solid $color-grey-200;
+        padding-left: $spacing-m;
+        padding-right: $spacing-component-margin;
+    }
+}
+.two-verticals-items {
+    display: flex;
+}

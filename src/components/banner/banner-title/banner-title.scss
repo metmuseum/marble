@@ -1,0 +1,6 @@
+.banner--title {
+    .card-header__body {
+        @include productive-component;
+        padding: $spacing-xs 0 $spacing-xxs;
+    }
+}

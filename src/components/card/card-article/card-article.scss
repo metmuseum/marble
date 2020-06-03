@@ -1,0 +1,215 @@
+$article-card-width: 250px;
+
+//around the cards to handle transition from flickity
+.article-card__wrapper {
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (min-width: $bp-large-card) {
+		flex-direction: row;
+	}
+}
+
+//the card
+.article-card {
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 1;
+	margin-right: $spacing-xxs;
+	position: relative;
+	width: $article-card-width;
+
+	@media screen and (min-width: $bp-large-card) {
+		width: 100%;
+	}
+
+	&:first-child {
+		padding-left: $spacing-component-margin;
+		width: calc(#{$article-card-width} + #{$spacing-component-margin});
+
+		@media screen and (min-width: $bp-large-card) {
+			padding-left: 0;
+			width: 100%;
+		}
+	}
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.article-card__header {
+	margin-bottom: $spacing-xxs;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	*:last-child {
+		padding-bottom: 0;
+	}
+}
+
+.article-card__header-descriptor {
+	@include typography-info-label;
+	font-weight: 500;
+	margin-bottom: $spacing-micro;
+	text-transform: uppercase;
+
+	p {
+		@include typography-label-text;
+		text-transform: uppercase;
+	}
+}
+
+.article-card__header-title,
+.article-card__header-heading {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.article-card__header-heading {
+	@include typography-h4;
+	font-weight: 500;
+}
+
+.article-card__image {
+	transform-origin: center;
+	transition: all 0.4s ease-out;
+
+	.image--active:hover &,
+	.article-card--active:hover & {
+		transform: scale(1.06);
+	}
+
+	.image--active:focus-within &,
+	.article-card--active:focus-within & {
+		transform: scale(1.06);
+	}
+}
+
+.article-card__image-wrapper {
+	border-radius: 4px;
+	margin-bottom: $spacing-xxs;
+
+	@include key-image-wrapper;
+	flex-grow: 0;
+
+	@media (orientation: landscape) {
+		max-height: $height-max;
+	}
+}
+
+.article-card__image-link {
+	@include link-reset();
+
+	.article-card__image-wrapper--fixed-ratio & {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+//Force a 2/3 ratio for the image
+.article-card__image-wrapper--66 {
+	height: 0;
+	padding-bottom: 66%;
+	position: relative;
+}
+
+.article-card__subject {
+	flex-grow: 1;
+}
+
+.article-card__subject-body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.article-card__meta-dates {
+	padding-bottom: $spacing-s;
+}
+
+.article-card__meta-description {
+	font-weight: 400;
+	margin-bottom: $spacing-xxs;
+    line-height: 1.3;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.article-card__meta {
+	@include typography-info-label;
+	display: flex;
+	flex-grow: 1;
+}
+
+.article-card__meta-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
+}
+
+.article-card__meta-footer {
+    color: $color-grey-700;
+}
+
+.article-card__author {
+	font-weight: 500;
+
+	&:after {
+		content: '\000B7';
+		display: inline-block;
+		padding: 0 5px;
+	}
+
+	a {
+		border: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.article-card__date {
+	font-weight: 400;
+}
+
+@mixin article-card--sideways { //include at the card level to get image to the left of meta
+	flex-direction: row;
+	margin-right: 0;
+	width: 100%; 
+
+	&:first-child {
+		width: 100%; 
+	}
+
+	.article-card__image-wrapper {
+		flex: 0 0 28%;
+		margin-bottom: 0;
+		margin-right: $spacing-micro;
+	}
+
+	.article-card__image-wrapper--66 {
+		padding-bottom: 17%;
+	}
+
+	.article-card__header {
+		margin-bottom: $spacing-micro;
+	}
+
+	.article-card__header-heading {
+		@include typography-h4;
+		font-weight: 500;
+	}
+}
