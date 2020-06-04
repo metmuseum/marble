@@ -1,3 +1,12 @@
+.single-vertical-page,
+.single-stream-page {
+
+    .navigation-bare {
+        border-bottom: 1px solid $color-grey-200;
+        padding: $spacing-xxs 0;
+    }
+}
+
 .streams-landing-wrapper,
 .verticals-landing-wrapper {
     @include productive-component;
@@ -8,6 +17,10 @@
     .featured-card {
         margin-bottom: $spacing-l;
     }
+}
+
+.streams-landing-heading {
+    @include typography-h2;
 }
 
 .article-list {
