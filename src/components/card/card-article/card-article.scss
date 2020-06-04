@@ -64,6 +64,12 @@ $article-card-width: 250px;
 	}
 }
 
+.article-card__header-descriptor-link {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .article-card__header-title,
 .article-card__header-heading {
 	&:hover {

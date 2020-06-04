@@ -1,11 +1,12 @@
 .streams-landing-wrapper,
 .verticals-landing-wrapper {
     @include productive-component;
+    margin-top: $spacing-xs;
 }
 
 .verticals-landing-wrapper {
     .featured-card {
-        margin-bottom: $spacing-xl;
+        margin-bottom: $spacing-l;
     }
 }
 
@@ -13,10 +14,20 @@
 
     .article-card {
         @include article-card--sideways;
-        margin-bottom: $spacing-xl;
+        margin-bottom: $spacing-l;
+
+        .article-card__image-wrapper {
+            margin-right: $spacing-xs;
+        }
     }
 
     .article-card__meta-body {
         display: block;
+    }
+
+    .article-card__meta-description {
+        p {
+            max-width: none;
+        }
     }
 }
