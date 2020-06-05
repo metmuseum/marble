@@ -55,7 +55,7 @@ $topic-side-height: 120px;
         background: none;
         display: none;
         height: 66px;
-        top: -60px;
+        top: calc(-55px + -0.75vw);
         width: 66px;
 
         @media screen and (min-width: $bp-500) {
