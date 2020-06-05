@@ -38,3 +38,19 @@
         text-decoration: underline;
     }
 }
+
+// special treatment for home link
+.navigation-bare--item__home--link {
+    @include typography-h4;
+}
+
+// hide home link in nav and add padding to the adjacent item
+.hide-home-link {
+    .navigation-bare--item__home {
+        display: none;
+
+        &+ .navigation-bare--item {
+            padding-left: $spacing-component-margin;
+        }
+    }
+}
