@@ -27,22 +27,35 @@
 .article-list {
 
     .article-card {
-        @include article-card--sideways;
         margin-bottom: $spacing-l;
+        margin-right: 0;
+        width: 100%;
 
-        .article-card__image-wrapper {
-            margin-right: $spacing-xs;
+        @media screen and (min-width: $bp-500) {
+            @include article-card--sideways;
+
+            .article-card__image-wrapper {
+                margin-right: $spacing-xs;
+            }
+
+            .article-card__meta-body {
+                display: block;
+            }
+
+            .article-card__header-heading {
+                @include typography-h3
+            }
+
+            .article-card__meta-description {
+                p {
+                    max-width: none;
+                }
+            }
         }
     }
 
-    .article-card__meta-body {
-        display: block;
-    }
-
-    .article-card__meta-description {
-        p {
-            max-width: none;
-        }
+    .article-card__header-heading {
+        @include typography-h3
     }
 }
 
