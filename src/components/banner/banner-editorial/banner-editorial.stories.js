@@ -17,7 +17,7 @@ const data = {
 
 const bannerMarkup = (model) => {
 	return `
-		<section class="marble-banner banner-@Model.Name banner--editorial">
+		<section class="marble-banner marble-banner-@Model.Name marble-banner--editorial">
 			<div class="marble-banner__image-wrapper" style="border-color: ${model.imageBorderColor}; background-color: ${model.imageBorderColor};">
 				<a class="marble-banner__image-link"
 					tabindex="-1"
