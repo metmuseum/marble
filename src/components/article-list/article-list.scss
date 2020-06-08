@@ -15,7 +15,7 @@
 
 .single-vertical-wrapper {
     .featured-card {
-        margin-bottom: $spacing-l;
+        margin-bottom: $spacing-m;
     }
 }
 
@@ -27,7 +27,7 @@
 .article-list {
 
     .article-card {
-        margin-bottom: $spacing-l;
+        margin-bottom: $spacing-m;
         margin-right: 0;
         width: 100%;
 
@@ -62,11 +62,15 @@
 .single-stream-wrapper {
 
     .article-card:first-child {
+        padding-left: 0;
 
         .article-card__image-wrapper {
-            flex: 0 0 46%;
-            margin-right: $spacing-s;
-            padding-bottom: 29%;
+
+            @media screen and (min-width: $bp-500) {
+                flex: 0 0 46%;
+                margin-right: $spacing-s;
+                padding-bottom: 29%;
+            }
         }
 
         .article-card__subject {
