@@ -32,7 +32,7 @@ const featuredCardMarkup = (model) => {
 		class="featured-card ${model.inSitu ? "productive-component" : ""}"
 	>
 		<div class="featured-card__content">
-			<h1 class="expressive">${model.header}</h1>
+			<h2 class="expressive">${model.header}</h2>
 			<div class="featured-card__description">
 				${he.decode(model.description)}
 			</div>
