@@ -1,4 +1,5 @@
 const path = require("path");
+// const MarbleGlobalScirpt = require("./addons/global/register");
 
 //Export a function. Accept the base config as the only param.
 module.exports = {
@@ -18,5 +19,9 @@ module.exports = {
 		return config;
 	},
 	stories: ["../src/**/*.stories.[tj]s"],
-	addons: ["@storybook/addon-knobs/register", "@storybook/addon-a11y/register"],
+	addons: [
+		"@storybook/addon-knobs/register",
+		"@storybook/addon-a11y/register",
+		require.resolve("./addons/global/register"),
+	],
 };

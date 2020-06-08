@@ -67,3 +67,30 @@ export const halfWidth = () =>
 			/>
 		</div>
 	`;
+
+export const lazyLoadedImage = () =>
+	html`
+		<div style="margin-bottom: 150vw;">
+			<h3>The image below should not be loaded until you start scrolling.</h3>
+		</div>
+
+		<div class="image-container image-container--full-width ">
+			<img
+				class="image-container__image lazy marble-js-lazy"
+				alt="An image alt, for accessibility"
+				width="${width}"
+				height="${height}"
+				data-src="${image768}"
+				data-srcset="
+					${image768}  768w,
+					${image960}  960w,
+					${image1440} 1440w,
+					${image2160} 2160w,
+					${image3240} 3240w,
+					${image4860} 4860w,
+					${image5760} 5760w
+				"
+				data-sizes="100vw"
+			/>
+		</div>
+	`;

@@ -1,7 +1,8 @@
-import lazyLoad from "./lazyload/lazyload.js";
+import lazyload from "./lazyload/lazyload.js";
 
 function global() {
-	lazyLoad();
+	lazyload();
+	console.debug("Marble Global Javascript Initialized");
 }
 
-exports.global = global;
+export default global;
