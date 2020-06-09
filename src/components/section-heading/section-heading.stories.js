@@ -9,6 +9,16 @@ export default {
 	decorators: [withA11y, withKnobs],
 };
 
+const exampleComponent = () => {
+	return html`
+		<div
+			style="width: 100%; height: 200px; background: #333; color: white; text-align: center;"
+		>
+			<h2>Just an example component</h2>
+		</div>
+	`;
+};
+
 export const sectionHeading = () => {
 	const inSitu = boolean("In Situ", false); // TODO: this just toggles .productive-component, what about expressive context?
 	const context = radios(
@@ -35,10 +45,12 @@ export const sectionHeading = () => {
 	const CTA1 = text("CTA 1", "Become A Member");
 
 	return html`
+		${inSitu ? exampleComponent() : ""}
+
 		<div
 			class="section-heading section-heading--text-${textAlignment} ${inSitu
-			? "productive-component"
-			: ""}"
+				? "productive-component"
+				: ""}"
 		>
 			<h2 class="section-heading__heading ${context}">${header}</h2>
 			<div>${he.decode(bodyCopy)}</div>
@@ -51,5 +63,6 @@ export const sectionHeading = () => {
 				${CTA1}</a
 			>
 		</div>
+		${inSitu ? exampleComponent() : ""}
 	`;
 };
