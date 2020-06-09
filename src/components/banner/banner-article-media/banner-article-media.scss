@@ -1,0 +1,15 @@
+.marble-article__banner-images {
+    // display: flex;
+    // flex-direction: row;
+    height: 400px;
+    margin-bottom: $spacing-m;
+
+    .banner-image__wrapper {
+        float: left;
+        height: 100%;
+    }
+
+    .banner-image {
+        height: 100%;
+    }
+}

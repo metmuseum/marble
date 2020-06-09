@@ -1,3 +1,33 @@
 @import "_cta";
 @import "_layouts";
 @import "_typography";
+
+@mixin article-card--sideways {
+	//include at the card level to get image to the left of meta
+	flex-direction: row;
+	margin-right: 0;
+	width: 100%;
+
+	&:first-child {
+		width: 100%;
+	}
+
+	.article-card__image-wrapper {
+		flex: 0 0 28%;
+		margin-bottom: 0;
+		margin-right: $spacing-micro;
+	}
+
+	.article-card__image-wrapper--66 {
+		padding-bottom: 17%;
+	}
+
+	.article-card__header {
+		margin-bottom: $spacing-micro;
+	}
+
+	.article-card__header-heading {
+		@include typography-h4;
+		font-weight: 500;
+	}
+}

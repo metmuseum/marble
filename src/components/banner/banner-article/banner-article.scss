@@ -1,0 +1,13 @@
+.banner--marble-article {
+    .card-header__body {
+        @include productive-component;
+        padding: $spacing-xs 0 $spacing-xxs;
+    }
+
+    h1 {
+        font-family: $metserif;
+        font-size: calc(38px + 1.5vw);
+        font-weight: 700;
+        text-align: center;
+    }
+}

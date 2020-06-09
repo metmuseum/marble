@@ -1,12 +1,12 @@
 @import "base/base";
 @import "global/global";
-@import "components/card/card";
 
 //partials
 @import "components/image-container/image-container";
 @import "components/vimeo-player/vimeo-player";
 
 //Components:
+@import "components/article/article";
 @import "components/article-list/article-list";
 @import "components/banner/banner";
 @import "components/featured-banner/featured-banner";
@@ -21,7 +21,7 @@
 //other
 @import "components/featured-module/featured-module";
 @import "components/section-heading/section-heading";
-// @import "components/featured-vertical/featured-vertical"; TODO: missing file?
+@import "components/featured-vertical/featured-vertical";
 @import "components/navigation/navigation";
 @import "components/notification-banner/notification-banner";
 @import "components/section-heading/section-heading";
