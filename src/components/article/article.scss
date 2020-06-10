@@ -11,9 +11,15 @@ $article-sidebar-width: calc(228px + 1.5vw);
     strong {
         @include typography-h4;
         font-weight: 500;
+    }
 
-        &::before {
-            content: "By ";
+    p {
+        &:first-child {
+            strong {
+                &::before {
+                    content: "By ";
+                }
+            }
         }
     }
 }
