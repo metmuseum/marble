@@ -6,6 +6,18 @@ $article-sidebar-width: calc(228px + 1.5vw);
     line-height: 17px;
 }
 
+//DS - dirty hack for now
+.authorship-section {
+    strong {
+        @include typography-h4;
+        font-weight: 500;
+
+        &::before {
+            content: "By ";
+        }
+    }
+}
+
 .marble-article {
     margin-bottom: $spacing-l;
 }
