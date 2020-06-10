@@ -75,3 +75,11 @@
         }
     }
 }
+
+// slimmer nav
+.slimmer-bare-navigation {
+    .navigation-bare {
+        border-bottom: 1px solid $color-grey-200;
+        padding: $spacing-xxs 0;
+    }
+}

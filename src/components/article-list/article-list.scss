@@ -1,12 +1,3 @@
-.single-vertical-page,
-.single-stream-page {
-
-    .navigation-bare {
-        border-bottom: 1px solid $color-grey-200;
-        padding: $spacing-xxs 0;
-    }
-}
-
 .single-stream-wrapper,
 .single-vertical-wrapper {
     @include productive-component;
