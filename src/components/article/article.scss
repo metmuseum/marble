@@ -18,6 +18,7 @@ $article-sidebar-width: calc(228px + 1.5vw);
 
 .marble-article__meta {
     @include typography-metadata;
+    overflow: hidden;
     width: $article-sidebar-width;
 
     h3 {
