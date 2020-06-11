@@ -64,18 +64,13 @@ $article-sidebar-width: calc(228px + 1.5vw);
 
 .marble-article__meta {
 
-    &.closed {
-        ul {
-            display: none;
-        }
+    .js-toggled-closed {
+        display: none;
     }
 
-    &.opened {
+    .js-toggled-opened {
+        display: block;
         margin-bottom: $spacing-xs;
-
-        ul {
-            display: block;
-        }
     }
 }
 
