@@ -64,6 +64,10 @@ $article-sidebar-width: calc(228px + 1.5vw);
 
 .marble-article__meta {
 
+    .js-toggler {
+        cursor: pointer;
+    }
+
     .js-toggled-closed {
         display: none;
     }
