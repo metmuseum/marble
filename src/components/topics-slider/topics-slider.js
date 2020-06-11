@@ -20,11 +20,5 @@ export default function topicsSlider() {
 			x2: 55, y2: 44,
 			x3: 6
 		}
-		// arrowShape: {
-		// 	x0: 0,
-		// 	x1: 50, y1: 45,
-		// 	x2: 55, y2: 40,
-		// 	x3: 12
-		// }
 	});
 }
