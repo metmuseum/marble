@@ -83,6 +83,10 @@ $article-sidebar-width: calc(228px + 1.5vw);
     .marble-article__meta {
         font-size: calc(15px + .3vw);
         margin-top: $spacing-m;
+
+        p {
+            margin-bottom: 15px;
+        }
     }
 }
 
