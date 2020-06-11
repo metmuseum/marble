@@ -58,12 +58,18 @@ $article-sidebar-width: calc(228px + 1.5vw);
     }
 
     li {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
     }
 }
 
 .marble-article__meta {
     margin-bottom: $spacing-xs;
+
+    &.closed {
+        ul {
+            display: none;
+        }
+    }
 }
 
 .marble-article__text-wrapper {
