@@ -63,11 +63,18 @@ $article-sidebar-width: calc(228px + 1.5vw);
 }
 
 .marble-article__meta {
-    margin-bottom: $spacing-xs;
 
     &.closed {
         ul {
             display: none;
+        }
+    }
+
+    &.opened {
+        margin-bottom: $spacing-xs;
+
+        ul {
+            display: block;
         }
     }
 }
