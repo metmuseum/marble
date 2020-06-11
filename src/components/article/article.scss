@@ -34,7 +34,7 @@ $article-sidebar-width: calc(228px + 1.5vw);
     flex-direction: row;
 }
 
-.marble-article__meta {
+.marble-article__meta-wrapper {
     @include typography-metadata;
     overflow: hidden;
     width: $article-sidebar-width;
@@ -62,7 +62,7 @@ $article-sidebar-width: calc(228px + 1.5vw);
     }
 }
 
-.marble-article__meta--section {
+.marble-article__meta {
     margin-bottom: $spacing-xs;
 }
 
@@ -70,7 +70,7 @@ $article-sidebar-width: calc(228px + 1.5vw);
 
 }
 
-.marble-article__text {
+.marble-article__text-wrapper {
     @include typography-body-long;
     flex-grow: 1;
     font-family: $metserif;
@@ -78,6 +78,11 @@ $article-sidebar-width: calc(228px + 1.5vw);
 
     a {
         padding-bottom: 0;
+    }
+
+    .marble-article__meta {
+        font-size: calc(15px + .3vw);
+        margin-top: $spacing-m;
     }
 }
 
