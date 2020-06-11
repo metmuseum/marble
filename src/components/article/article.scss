@@ -66,10 +66,6 @@ $article-sidebar-width: calc(228px + 1.5vw);
     margin-bottom: $spacing-xs;
 }
 
-.marble-article__publication {
-
-}
-
 .marble-article__text-wrapper {
     @include typography-body-long;
     flex-grow: 1;
@@ -84,12 +80,13 @@ $article-sidebar-width: calc(228px + 1.5vw);
         font-size: calc(15px + .3vw);
         margin-top: $spacing-m;
 
-        p {
+        p,
+        li {
             margin-bottom: 15px;
         }
     }
 }
 
-.marble-article__related {
+.marble-article__related-wrapper {
     margin-left: $spacing-m;
 }
