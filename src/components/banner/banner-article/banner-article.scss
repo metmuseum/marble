@@ -1,6 +1,7 @@
 .banner--marble-article {
     .card-header__body {
         @include productive-component;
+        max-width: 47vw; //to match text column
         padding: $spacing-xs 0 $spacing-xxs;
     }
 
