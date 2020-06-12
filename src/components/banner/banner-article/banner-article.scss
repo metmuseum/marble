@@ -5,6 +5,10 @@
         padding: $spacing-xs 0 $spacing-xxs;
     }
 
+    .card-header__descriptor {
+        @include typography-label-text
+    }
+
     h1 {
         font-family: $metserif;
         font-size: calc(38px + 1.5vw);
