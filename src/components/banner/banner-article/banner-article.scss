@@ -15,12 +15,10 @@
 
     .card-header__top-level-link {
         font-weight: 600;
-        margin-left: 5px;
-        position: absolute;
 
         &:after {
             right: -11px;
-            position: absolute
+            position: absolute;
             content:"·";
         }
     }
