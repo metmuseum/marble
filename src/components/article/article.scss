@@ -1,11 +1,5 @@
 $article-sidebar-width: calc(228px + 1.5vw);
 
-@mixin typography-metadata {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
-}
-
 //DS - dirty hack for now
 .authorship-section {
     strong {
@@ -35,7 +29,8 @@ $article-sidebar-width: calc(228px + 1.5vw);
 }
 
 .marble-article__meta-wrapper {
-    @include typography-metadata;
+    @include typography-info-label;
+    font-weight: 500;
     overflow: hidden;
     width: $article-sidebar-width;
 
