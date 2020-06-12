@@ -22,6 +22,10 @@
             position: absolute;
             content:"·";
         }
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .card-header__second-level-link {
