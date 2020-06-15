@@ -47,7 +47,7 @@ const jumplinkBannerMarkup = (model) => {
 			<h3 class="jumplink-banner__description">${he.decode(model.description)}</h3>
 			<div class="jumplink-banner__links">
 			${model.links.map((link) => `
-				 <a href="${link.url}" class="button--wide jumplink-banner__link button button--pill inverse">${link.text}</a>
+				 <a href="${link.url}" class="button--wide jumplink-banner__link button button--pill inverse--opaque">${link.text}</a>
 			 `).join('')}
 			</div>
 		</div>

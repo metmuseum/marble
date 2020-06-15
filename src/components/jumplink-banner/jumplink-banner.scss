@@ -31,7 +31,7 @@
 
 .jumplink-banner__content {
 	color: $color-white;
-	padding: $spacing-component-margin;
+	padding: $spacing-xl $spacing-component-margin $spacing-component-margin;
 	text-align: center;
 
 	.align--left & {
@@ -60,7 +60,7 @@
 }
 
 .jumplink-banner__link {
-	margin: 0 $spacing-xxs $spacing-xxs 0;
+	margin: 0 $spacing-s $spacing-xxs 0;
 }
 
 .jumplink-banner__image-wrapper {
