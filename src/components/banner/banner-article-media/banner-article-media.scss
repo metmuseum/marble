@@ -1,6 +1,10 @@
 .marble-article__banner-images {
-    height: 400px;
+    height: calc(200px + 3vw);
     margin-bottom: $spacing-m;
+
+    @media screen and (min-width: $bp-900) {
+        height: 400px;
+    }
 
     .banner-image__wrapper {
         float: left;
