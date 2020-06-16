@@ -87,6 +87,10 @@ $article-sidebar-width: calc(228px + 1.5vw);
         margin-top: 0;
     }
 
+    &.authorship-section {
+        margin-top: 0;
+    }
+
     .js-toggler {
         cursor: pointer;
     }
