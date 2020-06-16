@@ -1,4 +1,4 @@
-$article-sidebar-width: calc(228px + 1.5vw);
+$article-sidebar-width: calc(280px + 1.5vw);
 
 @mixin typography-metadata {
     @include typography-info-label;
@@ -96,7 +96,11 @@ $article-sidebar-width: calc(228px + 1.5vw);
     }
 
     .js-toggler {
+        background-image: url('/Rodan/dist/svg/can-open.svg');
+        background-position: top 5px left;
+        background-repeat: no-repeat;
         cursor: pointer;
+        padding-left: 20px;
     }
 
     .js-toggled-open {
