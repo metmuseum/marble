@@ -1,17 +1,20 @@
 $article-sidebar-width: calc(228px + 1.5vw);
 
 @mixin typography-metadata {
-    font-family: $metsans;
-    font-size: 14px;
+    @include typography-info-label;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 1.1;
 }
 
-//DS - dirty hack for now
+//DS - there is real crap html in this module
+//we need to work around it for now
 .authorship-section {
     strong {
         @include typography-h4;
+        display: inline-block;
+        font-family: $metsans;
         font-weight: 500;
+        margin-bottom: $spacing-micro;
     }
 
     p {
@@ -39,6 +42,7 @@ $article-sidebar-width: calc(228px + 1.5vw);
     }
 }
 
+//"sidebars"
 .marble-article__meta-wrapper {
     font-family: $metserif;
     font-size: calc(15px + .3vw);
@@ -97,14 +101,6 @@ $article-sidebar-width: calc(228px + 1.5vw);
 
     .js-toggled-open {
         margin-bottom: $spacing-xs;
-    }
-
-    .js-toggled-closed {
-        display: block;
-
-        @media screen and (min-width: $bp-900) {
-            display: none;
-        }
     }
 }
 
