@@ -4,6 +4,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { fullWidth } from "../image-container/image-container.stories.js";
 import "./jumplink-banner.scss";
+//import jumpLinkBanner from "./jumplink-banner.js";
 
 export default { title: "Banner", decorators: [withA11y, withKnobs] };
 
@@ -46,8 +47,12 @@ const jumplinkBannerMarkup = (model) => {
 			<h1 class="expressive">${model.header}</h1>
 			<h3 class="jumplink-banner__description">${he.decode(model.description)}</h3>
 			<div class="jumplink-banner__links">
-			${model.links.map((link) => `
-				 <a href="${link.url}" class="button--wide jumplink-banner__link button button--pill inverse--opaque">${link.text}</a>
+			${model.links.map((link) => html`
+				<a
+					href="${link.url}"
+					class="js-jump-link button--wide jumplink-banner__link button button--pill inverse--opaque">
+					${link.text}
+				</a>
 			 `).join('')}
 			</div>
 		</div>
