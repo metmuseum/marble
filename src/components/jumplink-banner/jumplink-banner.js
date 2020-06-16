@@ -5,7 +5,7 @@ function jumpLinkBanner() {
 		link.addEventListener("click", (e)=> {
 			e.preventDefault();
 			//Scroll to the next section
-			document.querySelector(link.href).scrollIntoView({
+			document.querySelector(link.getAttribute("href")).scrollIntoView({
 				behavior: "smooth"
 			});
 		});
