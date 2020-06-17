@@ -1,0 +1,103 @@
+@import "../../base/base";
+@import "../../base/mixins/layouts";
+
+.jumplink-banner {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 56.25vw;
+	position: relative;
+	@media (min-aspect-ratio: 16/10) {
+		min-height: 85vh;
+	}
+
+	&.productive-component {
+		@include productive-component;
+	}
+
+	&.align--left {
+		@media (orientation: landscape) {
+			justify-content: flex-start;
+			text-align: left;
+		}
+	}
+
+	&.align--bottom {
+		@media (orientation: landscape) {
+			align-items: flex-end;
+		}
+	}
+}
+
+.jumplink-banner__content {
+	color: $color-white;
+	padding: $spacing-xl $spacing-component-margin $spacing-component-margin;
+	text-align: center;
+
+	.align--left & {
+		@media (orientation: landscape) {
+			text-align: left;
+		}
+	}
+
+	@media (orientation: landscape) {
+		max-width: 80%;
+	}
+}
+
+.jumplink-banner__links {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	.align--left & {
+		@media (orientation: landscape) {
+			justify-content: flex-start;
+		}
+	}
+}
+
+.jumplink-banner__link {
+	margin: 0 $spacing-xxs $spacing-xxs;
+}
+
+.jumplink-banner__image-wrapper {
+	border-radius: $form-radius;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: -1;
+
+	&:before {
+		background-color: $color-black-opaque;
+		bottom: 0;
+		content: "";
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
+}
+
+.jumplink-banner__description {
+	margin-bottom: $spacing-xs;
+	padding-bottom: 0;
+}
+
+.jumplink-banner__secondary-button {
+	margin: $spacing-micro $spacing-xxs;
+}
+
+.image-container__image {
+	.jumplink-banner & {
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+}
