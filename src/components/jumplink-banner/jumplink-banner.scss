@@ -74,7 +74,7 @@
 	z-index: -1;
 
 	&:before {
-		background-color: $color-black-opaque;
+		background-image: linear-gradient(to top, $color-black-opaque-80, transparent);
 		bottom: 0;
 		content: "";
 		left: 0;
