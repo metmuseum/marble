@@ -1,5 +1,8 @@
 @import "../../base/base";
 @import "./banner-editorial/banner-editorial";
+@import "./banner-title/banner-title";
+@import "./banner-article/banner-article";
+@import "./banner-article-media/banner-article-media";
 
 .marble-banner {
 	display: flex;

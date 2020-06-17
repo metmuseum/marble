@@ -1,0 +1,93 @@
+.navigation-bare {
+    padding: 0 0 $spacing-xs;
+
+    &:after { //enable flickity with watchCSS option
+        content: 'flickity';
+        display: none;
+      }
+    
+    @media screen and (min-width: $bp-1000) { //disable flickity at this viewport
+        display: flex;
+        
+        &:after {
+            content: '';
+        }
+    }
+}
+
+// nav beings
+.navigation-bare--item {
+	margin: 0 $spacing-xxs 0 0;
+    line-height: 1;
+    text-align: center;
+    width: auto;
+
+    &:first-child {
+        padding-left: $spacing-component-margin;
+        text-align: left;
+    }
+
+    &:last-child {
+        padding-right: $spacing-component-margin;
+        text-align: right;
+    }
+
+    &.is-selected {
+
+        .navigation-bare--link {
+            text-decoration: underline;
+        }
+
+    }
+
+    @media screen and (min-width: $bp-1000) {
+        flex-grow: 1;
+    }
+
+    @media screen and (min-width: $bp-1440) {
+
+        &:first-child {
+            margin-right: -1.5vw;
+        }
+    
+        &:last-child {
+            margin-left: -1.5vw;
+        }
+    }
+}
+
+.navigation-bare--link {
+	@include typography-info-label;
+	border: none;
+    white-space: nowrap;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// special treatment for home link
+.navigation-bare--item__home--link {
+    @include typography-h4;
+    line-height: 18px;
+}
+
+// hide home link in nav and add padding to the adjacent item
+.hide-home-link {
+    .navigation-bare--item__home {
+        display: none;
+
+        &+ .navigation-bare--item {
+            padding-left: $spacing-component-margin;
+            text-align: left;
+        }
+    }
+}
+
+// slimmer nav
+.slimmer-bare-navigation {
+    .navigation-bare {
+        border-bottom: 1px solid $color-grey-200;
+        padding: $spacing-xxs 0;
+    }
+}

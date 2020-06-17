@@ -1,0 +1,139 @@
+$article-sidebar-width: calc(280px + 1.5vw);
+
+@mixin typography-metadata {
+    @include typography-info-label;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+//DS - there is real crap html in this module
+//we need to work around it for now
+.authorship-section {
+    strong {
+        @include typography-h4;
+        display: inline-block;
+        font-family: $metsans;
+        font-weight: 500;
+        margin-bottom: $spacing-micro;
+    }
+
+    p {
+        &:first-child {
+            strong {
+                &::before {
+                    content: "By ";
+                }
+            }
+        }
+    }
+}
+
+.marble-article {
+    margin-bottom: $spacing-l;
+}
+
+.marble-article__body {
+    @include productive-component;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: $bp-900) {
+        flex-direction: row;
+    }
+}
+
+//"sidebars"
+.marble-article__meta-wrapper {
+    font-family: $metserif;
+    font-size: calc(15px + .3vw);
+
+    @media screen and (min-width: $bp-900) {
+        @include typography-metadata;
+        overflow: hidden;
+        width: $article-sidebar-width;
+    }
+
+    h3 {
+        @include typography-h3;
+        font-family: $metserif;
+
+        @media screen and (min-width: $bp-900) {
+            @include typography-h4;
+            font-family: $metsans;
+            font-weight: 500;
+        }
+    }
+
+    a {
+        @media screen and (min-width: $bp-900) {
+            border: none;
+            text-decoration: none;
+    
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    p {
+        margin-bottom: 11px;
+    }
+
+    li {
+        margin-bottom: 5px;
+    }
+}
+
+.marble-article__meta {
+    margin-top: $spacing-m;
+
+    @media screen and (min-width: $bp-900) {
+        margin-top: 0;
+    }
+
+    &.authorship-section {
+        margin-top: 0;
+    }
+
+    .js-toggler {
+        background-image: url('/Rodan/dist/svg/can-open.svg');
+        background-position: top 3px left;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        padding-left: 20px;
+    }
+
+    .js-toggled-open {
+        margin-bottom: $spacing-xs;
+    }
+}
+
+.marble-article__text-wrapper {
+    @include typography-body-long;
+    flex-grow: 1;
+    font-family: $metserif;
+
+    @media screen and (min-width: $bp-900) {
+        margin-left: $spacing-m;
+    }
+
+    a {
+        padding-bottom: 0;
+    }
+
+    .marble-article__meta {
+        font-size: calc(15px + .3vw);
+        margin-top: $spacing-m;
+
+        p,
+        li {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.marble-article__related-wrapper {
+    @media screen and (min-width: $bp-900) {
+        margin-left: $spacing-m;
+    }
+}
