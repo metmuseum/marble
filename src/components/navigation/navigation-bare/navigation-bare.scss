@@ -32,6 +32,14 @@
         text-align: right;
     }
 
+    &.is-selected {
+
+        .navigation-bare--link {
+            text-decoration: underline;
+        }
+
+    }
+
     @media screen and (min-width: $bp-1000) {
         flex-grow: 1;
     }
