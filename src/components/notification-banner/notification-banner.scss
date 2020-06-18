@@ -44,4 +44,5 @@ $minimum-header-width: 350px;
 
 .notification-banner__subtext {
 	@include typography-h2-subtext;
+	margin-bottom: $spacing-xxs;
 }

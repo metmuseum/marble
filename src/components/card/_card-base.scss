@@ -81,6 +81,7 @@
 
 .marble-card__image-link {
 	@include link-reset();
+	position: relative;
 
 	.marble-card__image-wrapper--fixed-ratio & {
 		bottom: 0;
