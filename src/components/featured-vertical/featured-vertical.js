@@ -19,10 +19,12 @@ export default function featuredVerticalFlickity() {
 
 	const posterChangers = document.querySelectorAll('.js-poster-changer');
 	const initialPosterChanger = document.querySelector('.js-poster-changer');
+	const initialPoster = document.querySelector('.js-poster');
 	const posterFrame = document.querySelector('#poster-frame');
 	const posters = posterFrame.querySelectorAll('.js-poster');
 
 	initialPosterChanger.classList.add('poster-changer-active');
+	initialPoster.classList.add('image-opaque');
 
 	const deactivateAllPosterChangers = (e) => {
 		posterChangers.forEach(posterChanger => {
