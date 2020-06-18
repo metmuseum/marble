@@ -1,32 +1,23 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
 import "./featured-vertical.scss";
+import "../article/article.scss";
+import "../card/card-article/card-article.scss";
+
+/// ugh wtf too many dependencies everywhere
+
+import "../../marble.scss"; /// just brute force it
 
 export default {
 	title: "Featured Vertical",
 	decorators: [withA11y, withKnobs],
 };
 
-const options = {
-	title: `@Html.Raw(!string.IsNullOrWhiteSpace(Model.Vertical.Title) ? Model.Vertical.Title : "")`,
-	contentItems: [
-		{
-			authorsFormatted: "",
-			landscapeImageAltText: "",
-			landscapeImageSrc:
-				"https://collectionapi.metmuseum.org/api/collection/v1/iiif/337824/731309/main-image",
-			landscapeImageSrcSet: `TODO`,
-			link: "",
-			primaryStream: { title: "" },
-			teaser: "",
-			postedDateFormatted: "",
-		},
-	],
-};
-
 const featuredVerticalMarkup = (options) => {
+	const contentItem = options.contentItems[0];
+
 	return html` <section
 		class="featured-vertical featured-vertical--contentstreams"
 	>
@@ -72,23 +63,21 @@ const featuredVerticalMarkup = (options) => {
 											class="article-card__header-heading-link"
 											href="${contentItem.link}"
 										>
-											${he.decode($contentItem.title)}
+											${contentItem.title}
 										</a>
 									</h3>
 								</div>
 								<div class="article-card__meta">
 									<div class="article-card__meta-body">
 										<div class="article-card__meta-description">
-											${he.decode(contentItem.teaser)}
+											${contentItem.teaser}
 										</div>
 										<div class="article-card__meta-footer">
 											<span class="article-card__author">
-												${he.decode(contentItem.authorsFormatted)}
-												<!-- @Html.Raw(!string.IsNullOrWhiteSpace(contentItem.AuthorsFormatted)
-												? contentItem.AuthorsFormatted : "") -->
+												${contentItem.authorsFormatted}
 											</span>
 											<span class="article-card__date">
-												${he.decode(contentItem.postedDateFormatted)}
+												${contentItem.postedDateFormatted}
 											</span>
 										</div>
 									</div>
@@ -150,4 +139,24 @@ const featuredVerticalMarkup = (options) => {
 		</div>
 		<!-- @* end featured-vertical__wrapper *@ -->
 	</section>`;
+};
+
+export const FeaturedVertical = () => {
+	const options = {
+		title: text("Title", "Test Title"),
+		contentItems: [
+			{
+				authorsFormatted: text("Authors Formatted", "Test"),
+				landscapeImageAltText: "",
+				landscapeImageSrc:
+					"https://collectionapi.metmuseum.org/api/collection/v1/iiif/337824/731309/main-image",
+				landscapeImageSrcSet: `TODO`,
+				link: text("Link", "#"),
+				primaryStream: { title: "" },
+				teaser: "",
+				postedDateFormatted: "",
+			},
+		],
+	};
+	return featuredVerticalMarkup(options);
 };

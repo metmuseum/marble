@@ -1,3 +1,6 @@
+@import "../../../base/mixins/typography"; // for typography info label, etc.
+@import "../../../base/mixins/layouts"; // for key-image-wrapper
+
 $article-card-width: 250px;
 
 //around the cards to handle transition from flickity
@@ -145,7 +148,7 @@ $article-card-width: 250px;
 .article-card__meta-description {
 	font-weight: 400;
 	margin-bottom: $spacing-xxs;
-    line-height: 1.3;
+	line-height: 1.3;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -166,14 +169,14 @@ $article-card-width: 250px;
 }
 
 .article-card__meta-footer {
-    color: $color-grey-700;
+	color: $color-grey-700;
 }
 
 .article-card__author {
 	font-weight: 500;
 
 	&:after {
-		content: '\000B7';
+		content: "\000B7";
 		display: inline-block;
 		padding: 0 5px;
 	}
@@ -191,13 +194,14 @@ $article-card-width: 250px;
 	font-weight: 400;
 }
 
-@mixin article-card--sideways { //include at the card level to get image to the left of meta
+@mixin article-card--sideways {
+	//include at the card level to get image to the left of meta
 	flex-direction: row;
 	margin-right: 0;
-	width: 100%; 
+	width: 100%;
 
 	&:first-child {
-		width: 100%; 
+		width: 100%;
 	}
 
 	.article-card__image-wrapper {

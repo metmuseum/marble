@@ -1,5 +1,6 @@
 @import "../../base/sizes"; // for $sizing-m
 @import "../../base/mixins/layouts"; // for @include productive-component
+@import "../card/card-article/card-article";
 $bp-large-card: 100px; // TOOD: FIX
 
 //Flickity control
