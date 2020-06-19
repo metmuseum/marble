@@ -72,9 +72,7 @@ const jumplinkBannerMarkup = (model) => {
 };
 
 export const JumpLinkBanner = () => {
-	useEffect(() => {
-		jumpLinkBanner();
-	});
+	useEffect(jumpLinkBanner);
 	const storyData = data();
 	return html`
 		${jumplinkBannerMarkup(storyData)}
