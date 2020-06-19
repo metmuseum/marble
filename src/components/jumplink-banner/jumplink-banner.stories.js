@@ -4,7 +4,8 @@ import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { fullWidth } from "../image-container/image-container.stories.js";
 import "./jumplink-banner.scss";
-//import jumpLinkBanner from "./jumplink-banner.js";
+import { useEffect } from "@storybook/client-api";
+import jumpLinkBanner from "./jumplink-banner.js";
 
 export default { title: "Banner", decorators: [withA11y, withKnobs] };
 
@@ -21,18 +22,18 @@ const data = () => {
 		images: "",
 		links: [
 			{
-				url: "http://metmuseum.org",
+				url: "#a",
 				text: text("Button One Text", "Primary Link"),
 			},
 			{
-				url: "http://metmuseum.org",
+				url: "#b",
 				text: text("Button Two Text", "Component two"),
 			},
 			{
-				url: "http://metmuseum.org",
+				url: "#c",
 				text: text("Button Three Text", "Footer"),
-			}
-		]
+			},
+		],
 	};
 };
 
@@ -42,18 +43,26 @@ const jumplinkBannerMarkup = (model) => {
 			${model.inSitu ? "productive-component" : ""}
 			${model.leftAlign ? "align--left" : ""}
 			${model.bottomAlign ? "align--bottom" : ""}
-	">
+	"
+	>
 		<div class="jumplink-banner__content">
 			<h1 class="expressive">${model.header}</h1>
-			<h3 class="jumplink-banner__description">${he.decode(model.description)}</h3>
+			<h3 class="jumplink-banner__description">
+				${he.decode(model.description)}
+			</h3>
 			<div class="jumplink-banner__links">
-			${model.links.map((link) => html`
-				<a
-					href="${link.url}"
-					class="js-jump-link button--wide jumplink-banner__link button button--pill inverse--opaque">
-					${link.text}
-				</a>
-			 `).join('')}
+				${model.links
+					.map(
+						(link) => html`
+							<a
+								href="${link.url}"
+								class="js-jump-link button--wide jumplink-banner__link button button--pill inverse--opaque"
+							>
+								${link.text}
+							</a>
+						`
+					)
+					.join("")}
 			</div>
 		</div>
 		<div class="jumplink-banner__image-wrapper">
@@ -63,5 +72,19 @@ const jumplinkBannerMarkup = (model) => {
 };
 
 export const JumpLinkBanner = () => {
-	return jumplinkBannerMarkup(data());
+	useEffect(() => {
+		jumpLinkBanner();
+	});
+	const storyData = data();
+	return html`
+		${jumplinkBannerMarkup(storyData)}
+		${storyData.links
+			.map(({ url, text }) => {
+				let id = url.replace("#", "");
+				return html`<div id="${id}" style="margin-top: 50vh;">
+					${text}
+				</div>`;
+			})
+			.join("")}
+	`;
 };
