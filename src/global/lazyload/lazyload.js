@@ -2,10 +2,11 @@ require(`intersection-observer`);
 import LazyLoad from "vanilla-lazyload";
 
 export default function lazyload() {
-
 	const lazyLoadObj = new LazyLoad({
 		elements_selector: ".lazy",
-		callback_loaded: (el) => { el.dispatchEvent(new CustomEvent("image-loaded", { bubbles: true })); }
+		callback_loaded: el => {
+			el.dispatchEvent(new CustomEvent("image-loaded", { bubbles: true }));
+		}
 	});
 
 	document.querySelector("body").addEventListener("flickity-change", () => {
