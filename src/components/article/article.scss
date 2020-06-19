@@ -94,18 +94,24 @@ $article-sidebar-width: calc(280px + 1.5vw);
     &.authorship-section {
         margin-top: 0;
     }
+}
 
-    .js-toggler {
-        background-image: url('/Rodan/dist/svg/can-open.svg');
-        background-position: top 3px left;
-        background-repeat: no-repeat;
-        cursor: pointer;
-        padding-left: 20px;
-    }
+.js-toggler {
+    background-image: url('/Rodan/dist/svg/can-open.svg');
+    background-position: top 3px left;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    padding-left: 24px;
 
-    .js-toggled-open {
-        margin-bottom: $spacing-xs;
+    .js-toggled-open & {
+        background-image: url('/Rodan/dist/svg/can-close.svg');
+        background-position: top 10px left;
     }
+}
+
+.js-togglee {
+    margin-bottom: $spacing-xs;
+    margin-left: 25px;
 }
 
 .marble-article__text-wrapper {
