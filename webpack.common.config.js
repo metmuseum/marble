@@ -3,9 +3,11 @@ const ScssConfigWebpackPlugin = require("scss-config-webpack-plugin");
 const FontConfigWebpackPlugin = require("font-config-webpack-plugin");
 
 module.exports = {
+	entry: './src/index.mjs',
 	plugins: [
 		new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }),
 		new ScssConfigWebpackPlugin(),
 		new FontConfigWebpackPlugin()
-	]
+	],
+	target: "node",
 };

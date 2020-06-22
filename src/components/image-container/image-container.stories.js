@@ -12,7 +12,7 @@ import image5760 from "../../../.storybook/assets/images/full-width-image/seurat
 
 export default {
 	title: "Image Containers",
-	decorators: [withA11y],
+	decorators: [withA11y]
 };
 
 const width = 3920;
@@ -64,6 +64,32 @@ export const halfWidth = () =>
 					${image3240} 3240w
 				"
 				sizes="50vw"
+			/>
+		</div>
+	`;
+
+export const lazyLoaded = () =>
+	html`
+		<div style="margin-bottom: 200vh;">
+			<h2 style="margin: 5% 25%;">The image below should lazy load.</h2>
+		</div>
+		<div class="image-container image-container--full-width">
+			<img
+				class="lazy image-container__image"
+				alt="An image alt, for accessibility"
+				width="${width}"
+				height="${height}"
+				data-src="${image768}"
+				data-srcset="
+					${image768}  768w,
+					${image960}  960w,
+					${image1440} 1440w,
+					${image2160} 2160w,
+					${image3240} 3240w,
+					${image4860} 4860w,
+					${image5760} 5760w
+				"
+				data-sizes="100vw"
 			/>
 		</div>
 	`;

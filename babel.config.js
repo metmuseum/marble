@@ -1,4 +1,3 @@
-// we might want to configure babel at some point
 // const presets = [
 // 	[
 // 		"@babel/env",
