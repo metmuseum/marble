@@ -1,11 +1,5 @@
 $article-sidebar-width: calc(280px + 1.5vw);
 
-@mixin typography-metadata {
-    @include typography-info-label;
-    font-weight: 500;
-    line-height: 1.1;
-}
-
 //DS - there is real crap html in this module
 //we need to work around it for now
 .authorship-section {
@@ -44,11 +38,11 @@ $article-sidebar-width: calc(280px + 1.5vw);
 
 //"sidebars"
 .marble-article__meta-wrapper {
-    font-family: $metserif;
-    font-size: calc(15px + .3vw);
+    @include typography-info-label;
+    font-weight: 400;
 
     @media screen and (min-width: $bp-900) {
-        @include typography-metadata;
+        line-height: 1.1;
         overflow: hidden;
         width: $article-sidebar-width;
     }
@@ -86,6 +80,7 @@ $article-sidebar-width: calc(280px + 1.5vw);
 
 .marble-article__meta {
     margin-top: $spacing-m;
+    padding-bottom: 15px;
 
     @media screen and (min-width: $bp-900) {
         margin-top: 0;
@@ -98,14 +93,15 @@ $article-sidebar-width: calc(280px + 1.5vw);
 
 .js-toggler {
     background-image: url('/Rodan/dist/svg/can-open.svg');
-    background-position: top 3px left;
+    background-position: center left;
     background-repeat: no-repeat;
     cursor: pointer;
+    padding-bottom: 0;
     padding-left: 24px;
 
     .js-toggled-open & {
         background-image: url('/Rodan/dist/svg/can-close.svg');
-        background-position: top 10px left;
+        background-position: center left;
     }
 }
 
