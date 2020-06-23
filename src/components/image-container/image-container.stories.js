@@ -12,7 +12,7 @@ import image5760 from "../../../.storybook/assets/images/full-width-image/seurat
 
 export default {
 	title: "Image Containers",
-	decorators: [withA11y]
+	decorators: [withA11y],
 };
 
 const width = 3920;
@@ -46,7 +46,7 @@ export const fullWidth = () =>
 		</div>
 	`;
 
-export const halfWidth = () =>
+const halfWidth = () =>
 	// note sizes attribute is just 50vw
 	html`
 		<div class="image-container image-container--half-width">
@@ -67,6 +67,15 @@ export const halfWidth = () =>
 			/>
 		</div>
 	`;
+
+halfWidth.story = {
+	parameters: {
+		// increase threshold because Chrome tests don't have deterministic 50vw (600x401px vs 600x402px)
+		chromatic: { diffThreshold: 0.2 },
+	},
+};
+
+export { halfWidth };
 
 export const lazyLoaded = () =>
 	html`
