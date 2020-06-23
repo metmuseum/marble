@@ -1,0 +1,97 @@
+version: 2.1
+executors:
+  marble-node:
+    docker:
+      - image: "circleci/node:latest"
+jobs:
+  setup_marble:
+    executor: marble-node
+    steps:
+      - checkout
+      - run: npm ci
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  build_static_storybook:
+    executor: marble-node
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Build static storybook to ./.out"
+          command: npm run build-storybook
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  do_chromatic:
+    executor: marble-node
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Run full chromatic. This job does not run for main. If PR: build and test. If not: build only and skip snapshots"
+          command: "npm run chromatic -- --ci --storybook-build-dir .out"
+          # TODO: as soon as they support "publishOnly," use that when not on a PR: https://github.com/chromaui/chromatic-cli/issues/141
+          # command: '[[ ! -z "$CIRCLE_PULL_REQUEST" ]] && npm run chromatic -- --ci --storybook-build-dir .out || npm run chromatic -- --ci --storybook-build-dir ./.out --only ImageContainers/HalfWidth'
+  deploy_gh_pages:
+    executor: marble-node
+    steps:
+      - attach_workspace:
+          at: .
+      - add_ssh_keys:
+          fingerprints:
+            - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
+      - run:
+          name: "Run Storybook GitHub Pages Deployer Script"
+          command: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN --existing-output-dir=.out --source-branch=main
+  build_and_deploy_dist:
+    executor: marble-node
+    steps:
+      - attach_workspace:
+          at: .
+      - add_ssh_keys:
+          fingerprints:
+            - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
+      - run:
+          name: "Build Marble's /dist for production!"
+          command: npm run build
+      - run: git status
+      - run: git add dist
+      - run: git commit --allow-empty -m "auto build dist for $(git rev-parse HEAD) [skip-ci]"
+      - run: git push origin main
+
+workflows:
+  version: 2
+  build_do_chromatic_deploy_gh_pages_build_and_deploy_dist:
+    jobs:
+      - setup_marble:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - build_static_storybook:
+          requires:
+            - setup_marble
+      - do_chromatic:
+          requires:
+            - build_static_storybook
+          filters:
+            branches:
+              ignore:
+                - main
+      - deploy_gh_pages:
+          requires:
+            - build_static_storybook
+          filters:
+            branches:
+              only:
+                - main
+      - build_and_deploy_dist:
+          requires:
+            - setup_marble
+          filters:
+            branches:
+              only:
+                - main

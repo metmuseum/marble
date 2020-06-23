@@ -5,6 +5,9 @@ import { withKnobs, number } from "@storybook/addon-knobs";
 export default {
 	title: "Lorem Ipsum",
 	decorators: [withKnobs],
+	parameters: {
+		chromatic: { disable: true },
+	},
 };
 
 const label = "Number of Paragraphs";
@@ -15,7 +18,6 @@ const options = {
 	max: 12,
 	step: 1,
 };
-// const groupId = "GROUP-ID1";
 
 export const LoremIpsum = () => {
 	const numberOfParagraphs = number(label, defaultValue, options);

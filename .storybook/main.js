@@ -11,12 +11,12 @@ module.exports = {
 		config.module.rules.push({
 			test: /\.scss$/,
 			use: ["style-loader", "css-loader", "sass-loader"],
-			include: path.resolve(__dirname, "../")
+			include: path.resolve(__dirname, "../"),
 		});
 
 		// Return the altered config
 		return config;
 	},
-	stories: ["../src/**/*.stories.[tj]s"],
-	addons: ["@storybook/addon-knobs/register", "@storybook/addon-a11y/register"]
+	stories: ["../src/**/*.stories.[mj]s"],
+	addons: ["@storybook/addon-knobs/register", "@storybook/addon-a11y/register"],
 };
