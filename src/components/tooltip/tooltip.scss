@@ -39,6 +39,7 @@
 
 .marble-inline-tooltip p {
     @include typography-label-field;
+    margin: $spacing-micro 0;
 }
 
 .show-tooltip {
