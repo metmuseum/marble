@@ -1,0 +1,46 @@
+.marble-tooltips a {
+    position: relative;
+}
+
+.marble-inline-tooltip {
+    background: white;
+    bottom: 40px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    display: none;
+    left: -54px;
+    padding: $spacing-micro;
+    position: absolute;
+    width: 250px;
+    font-family: $metsans;
+}
+
+.marble-inline-tooltip:after {
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent; 
+    border-top: 13px solid white;
+    content: "";
+    left: 94px;
+    position: absolute;
+    top: 100%;
+    }
+
+.marble-inline-tooltip h4 {
+    margin-bottom: $spacing-micro;
+}
+
+.marble-inline-tooltip a {
+    border: none;
+    display: block;
+}
+
+.marble-inline-tooltip img {
+    width: 100%;
+}
+
+.marble-inline-tooltip p {
+    @include typography-label-field;
+}
+
+.show-tooltip {
+    display: block;
+}
