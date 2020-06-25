@@ -1,3 +1,6 @@
+import html from "../../../.storybook/helpers/html";
+import he from "he";
+
 const sectionHeadingMarkup = ({
 	inSitu,
 	bodyCopy,

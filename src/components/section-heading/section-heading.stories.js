@@ -1,10 +1,9 @@
 import html from "../../../.storybook/helpers/html";
 import exampleComponent from "../../../.storybook/helpers/exampleComponent";
-import he from "he";
 import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 import "./section-heading.scss";
-import
+import sectionHeadingMarkup from "./section-heading.html.js";
 
 export default {
 	title: "Section Heading",
@@ -38,8 +37,6 @@ const options = () => {
 		),
 	};
 };
-
-
 
 export const SectionHeading = () => {
 	return html`

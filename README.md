@@ -205,6 +205,7 @@ It is **not recommended** to point your installation of Marble to an environment
 - mock your data separately
 - use component story format
 - use knobs
+- try to provide in-situ examples?
 - make sure a11y passes!
 
 * file organization
@@ -214,7 +215,7 @@ It is **not recommended** to point your installation of Marble to an environment
   - javascript
   - text casing (kebab-case?)
 
-* linting
+- linting
   - recommend prettier
   - explore: CI enforcement?
 
