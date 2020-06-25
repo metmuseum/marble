@@ -97,9 +97,73 @@ TODO: investigate Sass `@import` vs new `@use` syntax:
 - TODO: Probably we should move away from: `@import "marble/src/base/base";` (_kinda_ bad/leaky abstraction because what if we change file structure?)
 - Depending on SCSS preprocesssor, namely scss-loader+postcss (webpack) vs gulp sass, there is totally different behave regarding scope and iikjf it follows dependencies :(
 
-### Using Components
+### Using Marble's Components
 
-TODO: `marble.everything();` ?
+Marble does not currently export component html or templates, only styles and javascript. Think of it a little bit like Twitter's [Bootstrap Framework](/github.com/twbs/bootstrap), or like a meal kit, but not dish you serve.
+
+It's up to your project to implement the proper markup, based on examples you can find in `/src` and on our [Storybook](https://metmuseum.github.io/Marble).
+
+#### Example:
+
+Take the structure and classes from Marble:
+
+```javascript
+// in src/components/section-heading/section-heading.html.js
+
+html`<div
+	class="section-heading section-heading--text-${textAlignment} ${inSitu
+		? "productive-component"
+		: ""}"
+>
+	<h2 class="section-heading__heading ${context}">
+		${header}
+	</h2>
+	<div>${he.decode(bodyCopy)}</div>
+	<a
+		class="button--tertiary section-heading__text-link"
+		role="button"
+		tabindex="0"
+		href="#"
+	>
+		${CTA1}</a
+	>
+</div>`;
+```
+
+And interpret them for your project's framework and data models:
+
+```HTML+Razor
+<div class="section-heading section-heading--text-center productive-component section-header-@Model.Name">
+	<h2 class="section-heading__heading expressive">@Html.Raw(Model.Header)</h2>
+	<div>@Html.Raw(@Model.Description)</div>
+	<a
+		class="button--tertiary section-heading__text-link"
+		role="button"
+		tabindex="0"
+		href="@Model.UrlLink"
+	>@Html.Raw(Model.CTA)</a>
+</div>
+```
+
+##### Javascript
+
+By design, Marble's Javascript should only cause one side-effect: exposing a variable called `marble`. It's up to your project to tell Marble what to do and when.
+
+At the bare minimum, you probably want to run Marble's global code:
+
+```javascript
+import marble from "Marble";
+
+marble.global();
+```
+
+If you use a specific component, say the `jumpLinkBanner`, you need to call that somewhere, as well:
+
+```javascript
+marble.jumpLinkBanner();
+```
+
+TODO: a `marble.everything();` option?
 
 ## Deployment and Continuous Integration
 
@@ -148,6 +212,7 @@ It is **not recommended** to point your installation of Marble to an environment
   - stories
   - scss
   - javascript
+  - text casing (kebab-case?)
 
 * linting
   - recommend prettier
