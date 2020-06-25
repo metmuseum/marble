@@ -70,7 +70,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	padding: $spacing-m;
+	padding: $spacing-m $spacing-component-margin;
 	@media (orientation: portrait) {
 		min-height: 100vw;
 	}
