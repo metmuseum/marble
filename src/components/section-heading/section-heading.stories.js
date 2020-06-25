@@ -1,9 +1,9 @@
 import html from "../../../.storybook/helpers/html";
 import exampleComponent from "../../../.storybook/helpers/exampleComponent";
-import he from "he";
 import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 import "./section-heading.scss";
+import sectionHeadingMarkup from "./section-heading.html.js";
 
 export default {
 	title: "Section Heading",
@@ -36,34 +36,6 @@ const options = () => {
 			"center"
 		),
 	};
-};
-
-const sectionHeadingMarkup = ({
-	inSitu,
-	bodyCopy,
-	context,
-	CTA1,
-	header,
-	textAlignment,
-}) => {
-	return html`<div
-		class="section-heading section-heading--text-${textAlignment} ${inSitu
-			? "productive-component"
-			: ""}"
-	>
-		<h2 class="section-heading__heading ${context}">
-			${header}
-		</h2>
-		<div>${he.decode(bodyCopy)}</div>
-		<a
-			class="button--tertiary section-heading__text-link"
-			role="button"
-			tabindex="0"
-			href="#"
-		>
-			${CTA1}</a
-		>
-	</div>`;
 };
 
 export const SectionHeading = () => {
