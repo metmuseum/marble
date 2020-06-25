@@ -33,9 +33,13 @@ a {
 	text-decoration: none;
 	transition: background-position 0.3s, color 0.3s;
 
-	&[href=""] {
+	&[href=""],
+	&[href=""]:focus,
+	&[href=""]:hover {
 		border-color: transparent;
+		cursor: default;
 		padding-bottom: 0;
+		pointer-events: none;
 	}
 
 	&:hover,
