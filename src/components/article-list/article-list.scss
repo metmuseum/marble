@@ -76,3 +76,30 @@
         }
     }
 }
+
+.article-pagination {
+    margin: $spacing-l 0;
+    display: block;
+    text-align: center;
+
+    @media screen and (min-width: $bp-500) {
+        margin: $spacing-xl 0;
+    }
+
+    .ghost-button {
+        display: block;
+
+        @media screen and (min-width: $bp-500) {
+            display: inline-block;
+        }
+    }
+
+    .ghost-button--previous {
+        margin-bottom: $spacing-xxs;
+
+        @media screen and (min-width: $bp-500) {
+            margin-bottom: 0;
+            margin-right: $spacing-xxs;
+        }
+    }
+}
