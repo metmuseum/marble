@@ -1,13 +1,9 @@
-.marble-tooltips a {
-    position: relative;
-}
-
 .marble-inline-tooltip {
     background: white;
-    bottom: 40px;
+    //bottom: 40px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     display: none;
-    left: -54px;
+    //left: -54px;
     padding: $spacing-micro;
     position: absolute;
     width: 250px;
