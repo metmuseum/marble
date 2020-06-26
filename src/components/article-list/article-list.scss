@@ -6,7 +6,7 @@
 
 .single-stream-heading {
     @include typography-h2;
-    padding-bottom: $spacing-xs;
+    padding-bottom: 0;
 }
 
 .article-list {
@@ -15,6 +15,10 @@
         margin-top: $spacing-m;
         margin-right: 0;
         width: 100%;
+
+        &:first-child {
+            padding-left: 0;
+        }
 
         @media screen and (min-width: $bp-500) {
             @include article-card--sideways;
@@ -47,6 +51,7 @@
 .single-stream-wrapper {
 
     .article-card:first-child {
+        margin-top: $spacing-s;
         padding-left: 0;
 
         .article-card__image-wrapper {
