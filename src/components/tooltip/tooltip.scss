@@ -1,9 +1,7 @@
 .marble-inline-tooltip {
     background: white;
-    //bottom: 40px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     display: none;
-    //left: -54px;
     padding: $spacing-micro;
     position: absolute;
     width: 250px;
@@ -13,12 +11,12 @@
 .marble-inline-tooltip:after {
     border-left: 13px solid transparent;
     border-right: 13px solid transparent; 
-    border-top: 13px solid white;
+    border-bottom: 13px solid white;
     content: "";
-    left: 94px;
+    left: 22px;
     position: absolute;
-    top: 100%;
-    }
+    top: -13px;
+}
 
 .marble-inline-tooltip h4 {
     margin-bottom: $spacing-micro;
