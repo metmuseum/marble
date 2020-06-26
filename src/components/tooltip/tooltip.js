@@ -1,7 +1,5 @@
 export default function theTooltip() {
 
-    console.log('THE TIP!!!!!');
-
 	function fetchPage(linkElement, theURL, thisToolTip) {
 
 		if (thisToolTip.classList.contains("tooltip-empty")) { //if it's empty, fill it
@@ -64,6 +62,15 @@ export default function theTooltip() {
 		}
 	}
 
+	function placeToolTip(event, thisToolTip) {
+		var x = event.pageX;
+		var y = event.pageY;
+		console.log('x', x);
+		thisToolTip.style.top = (y + 20) + 'px';
+		thisToolTip.style.left = (x + 20) + 'px';
+		thisToolTip.classList.add("show-tooltip");
+	}
+
 	const bodyText = document.querySelector(".js-insert-tooltips");
 	const linksToCheck = bodyText.querySelectorAll("a");
 
@@ -88,15 +95,15 @@ export default function theTooltip() {
                     `;
 			linkElement.insertAdjacentHTML("beforeend", popup);
 
-			linkElement.onmouseenter = function () {
+			linkElement.onmouseenter = function (event) {
 				var thisToolTip = this.querySelector(".marble-inline-tooltip");
-				thisToolTip.classList.add("show-tooltip");
+				placeToolTip(event, thisToolTip);
 				fetchPage(linkElement, theURL, thisToolTip);
 			};
 
 			linkElement.onmouseout = function () {
-				var thisToolTip = this.querySelector(".marble-inline-tooltip");
-				thisToolTip.classList.remove("show-tooltip");
+				// var thisToolTip = this.querySelector(".marble-inline-tooltip");
+				// thisToolTip.classList.remove("show-tooltip");
 			};
 		}
 	});
