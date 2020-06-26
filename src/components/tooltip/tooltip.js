@@ -66,8 +66,8 @@ export default function theTooltip() {
 		var x = event.pageX;
 		var y = event.pageY;
 		console.log('x', x);
-		thisToolTip.style.top = (y + 20) + 'px';
-		thisToolTip.style.left = (x + 20) + 'px';
+		thisToolTip.style.top = (y + 25) + 'px';
+		thisToolTip.style.left = (x - 25) + 'px';
 		thisToolTip.classList.add("show-tooltip");
 	}
 
@@ -102,8 +102,8 @@ export default function theTooltip() {
 			};
 
 			linkElement.onmouseout = function () {
-				// var thisToolTip = this.querySelector(".marble-inline-tooltip");
-				// thisToolTip.classList.remove("show-tooltip");
+				var thisToolTip = this.querySelector(".marble-inline-tooltip");
+				thisToolTip.classList.remove("show-tooltip");
 			};
 		}
 	});
