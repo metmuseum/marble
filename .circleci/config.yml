@@ -1,55 +1,65 @@
-# version: 2.1
-# commands:
-#   install-npm-packages:
-#     description: Use npm ci to install from package-lock.json, using cache
-#     parameters:
-#       cache_key:
-#         default: package-lock-{{ checksum "package-lock.json" }}
-#         type: string
-#     steps:
-#       - restore_cache:
-#           key: <<parameters.cache_key>>
-#       - run: npm ci
-#       - save_cache:
-#           key: <<parameters.cache_key>>
-#           paths:
-#             - node_modules
-# jobs:
-#   just-deploy-storybook:
-#     docker:
-#       - image: "circleci/node:latest"
-#     steps:
-#       - checkout # todo
-#       # npx chromatic --only path/to/dummystory --ci
-#       # it looks like i can use --only and that might help me run a dummy story that is ignored anyway? and then we get deploys without tests!!
-#       # only do this if NO CIRCLE_PR_NUMBER, else do full-chromatic?
-#   do-full-chromatic:
-#     docker:
-#       - image: "circleci/node:latest"
-#     steps:
-#       - checkout
-#       - run: install-npm-packages
-#       - run:
-#           name: Run full chromatic (build, deploy, snapshot test)
-#           command: npm chromatic --ci
-#   build-main-for-release: # TODO: maybe handle this as just a github action?
-#     docker:
-#       - image: "circleci/node:latest"
-#     steps:
-#       - checkout # todo wait, how do i fix the circular dependency here?
-#   deploy-github-pages: # TODO: maybe handle this as just a github action?
-#     docker:
-#       - image: "circleci/node:latest"
-#     steps:
-#       - checkout
-# workflows:
-#   version: 2
-#   build-and-deploy:
-#     jobs:
-#       - build
-#       - deploy:
-#           requires:
-#             - build
-#           filters:
-#             branches:
-#               only: sequential-branch-filter
+version: 2.1
+commands:
+  install-npm-packages:
+    description: Use npm ci to install from package-lock.json, using cache
+    parameters:
+      cache_key:
+        default: package-lock-{{ checksum "package-lock.json" }}
+        type: string
+    steps:
+      - restore_cache:
+          key: <<parameters.cache_key>>
+      - run: npm ci
+      - save_cache:
+          key: <<parameters.cache_key>>
+          paths:
+            - node_modules
+jobs:
+  setup_marble:
+    docker:
+      - image: "circleci/node:latest"
+    steps:
+      - checkout
+      - install-npm-packages
+  build_static_storybook:
+    docker:
+      - image: "circleci/node:latest"
+    steps:
+      - run:
+          name: "Build static storybook to ./.out"
+          command: npm run build-storybook
+  do_chromatic:
+    docker:
+      - image: "circleci/node:latest"
+    steps:
+      - run:
+          name: "Run full chromatic. This job does not run for main. If PR: build and test. If not: build only and skip snapshots"
+          command: '[[ ! -z "$CIRCLE_PULL_REQUEST" ]] && npx chromatic --ci --storybook-build-dir .out || npx chromatic --ci --storybook-build-dir ./.out --only ./src/components/image-container/image-container.stories.js'
+  deploy_github:
+    docker:
+      - image: "circleci/node:latest"
+    steps:
+      - run:
+          name: "Run Storybook GitHub Pages Deployer Script"
+          command: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN --existing-output-dir=.out
+workflows:
+  version: 2
+  build_do_chromatic_deploy_github:
+    jobs:
+      - setup_marble
+      - build_static_storybook:
+          requires:
+            - setup_marble
+      - do_chromatic:
+          requires:
+            - build_static_storybook
+          branches:
+            ignore:
+              - main
+      - deploy_github:
+          requires:
+            - build_static_storybook
+          filters:
+            branches:
+              only:
+                - main
