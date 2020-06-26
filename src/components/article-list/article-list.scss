@@ -4,12 +4,6 @@
     margin-top: $spacing-xs;
 }
 
-.single-vertical-wrapper {
-    .featured-card {
-        margin-bottom: $spacing-m;
-    }
-}
-
 .single-stream-heading {
     @include typography-h2;
     padding-bottom: $spacing-xs;
@@ -18,7 +12,7 @@
 .article-list {
 
     .article-card {
-        margin-bottom: $spacing-m;
+        margin-top: $spacing-m;
         margin-right: 0;
         width: 100%;
 
@@ -81,10 +75,6 @@
     margin: $spacing-l 0;
     display: block;
     text-align: center;
-
-    @media screen and (min-width: $bp-500) {
-        margin: $spacing-xl 0;
-    }
 
     .ghost-button {
         display: block;
