@@ -14,6 +14,13 @@
 	}
 }
 
+.marble-banner__header-link {
+	&:focus,
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .marble-banner__subject,
 .marble-banner__image-wrapper {
 	flex-basis: 50%;
@@ -57,14 +64,13 @@
 	.marble-banner:focus-within & {
 		transform: scale(1.06);
 	}
-
 }
 
 .marble-banner__subject {
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	padding: $spacing-m;
+	padding: $spacing-m $spacing-component-margin;
 	@media (orientation: portrait) {
 		min-height: 100vw;
 	}

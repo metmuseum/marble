@@ -1,16 +1,17 @@
 # Marble
 
-## Marble is the Design System used by [The Metropolitan Museum of Art](https://www.metmuseum.org/) ([@metmuseum](https://github.com/metmuseum/))
+## The Design System of [The Metropolitan Museum of Art](https://www.metmuseum.org/) ([@metmuseum](https://github.com/metmuseum/))
 
 ![marbling paper by MarbleJournals.com](https://ds62n8mqpnstb.cloudfront.net//full_Escanear-6r.jpg)
 
 # Table Of Contents
 
 - ### [Living Style Guide](#Living-Style-Guide)
-- ### [Using Marble](#Using-Marble)
-- ### [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
-- ### [Storybook Development](#Storybook-Development)
-- ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
+- ### [Using Marble In Your Project](#Using-Marble-In-Your-Project)
+- ### [How To Contribute To Marble](#Contributing-To-Marble)
+  - ### [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
+  - ### [Storybook Development](#Storybook-Development)
+  - ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
 
 # Living Style Guide
 
@@ -18,23 +19,207 @@ Our Living Style Guide, powered by [Storybook](https://storybook.js.org/docs/bas
 
 ## 🏛️ [metmuseum.github.io/Marble](https://metmuseum.github.io/Marble) 📙
 
-For developer info on how to edit the styleguide, see the [Storybook Section](#Storybook) below.
+# Using Marble In Your Project
 
-# Using Marble
+## Installing Marble
 
-You can import Marble into your project using npm.
+To continuously use the latest release version:
 
-To continuously use the latest version: `npm install metmuseum/marble -S`
+```
+npm install metmuseum/Marble#main -S
+```
 
-To lock in at a specific release: `npm install metmuseum/marble#vX.X.X -S`
+## Importing Marble
 
-To include all Marble CSS through SCSS:
-`@include "marble/src/marble"`
+Marble can be imported a few different ways, depending on how your project preprocesses and bundles things. If you're unsure, please reach out in our [#app-dev](https://met-museum.slack.com/archives/G29NSRAGL) Slack channel.
 
-To include a specific piece of marble:
-`@include "marble/src/components/componentName"`
+### Ways To Import "Everything" At Once:
 
-# Marble Development As A Local Package
+#### Webpack (SCSS & ECMAScript2020)
+
+```javascript
+import marble from "Marble";
+```
+
+#### Javascript Only:
+
+- If your project only uses CommonJS syntax, which is probably the case if you don't run things through webpack, this should (TODO: check? Dual package hazard?) give you production-ready code:
+
+  ```javascript
+  const marble = require("Marble");
+  ```
+
+- Or just reference the files directly:
+  - `Path/To/Your/Project/node_modules/Marble/dist/marble.js`
+    - This exposes a variable called `marble`.
+  - `Path/To/Your/Project/node_modules/Marble/dist/marble.js.map`
+    - Source maps (recommended)
+
+* TODO: Consider CDN-hosted file for `<script>` tag? (easy with CI, but like, version control?)
+
+#### SCSS Only:
+
+This should work, please let us know if it does not:
+
+```scss
+@import "Marble";
+```
+
+#### CSS Only:
+
+- Production-ready assets are available to reference directly:
+  - `Path/To/Your/Project/node_modules/Marble/dist/marble.css`
+- TODO: Consider CDN-hosted file for stylesheet `<link>` tag? (easy with CI, but like, version control?)
+
+### Ways To Import A La Carte:
+
+If you have a way to preprocess and bundle your assets, like webpack, you can import only what you need from Marble (and also get the benefits of tree-shaking):
+
+#### Webpack
+
+```javascript
+import { jumpLinkBanner } from "Marble";
+
+// it won't do anything unless you call it:
+jumpLinkBanner();
+```
+
+TODO: support automatic scss loading here too, because this example would not include styles?
+
+#### SCSS
+
+We recommend just using all of Marble's styles, for now. See above. ☝️
+
+TODO: investigate Sass `@import` vs new `@use` syntax:
+
+- https://sass-lang.com/documentation/at-rules/import#import-only-files
+- will inform if we need our file structure to have `module.import.scss` naming.
+- TODO: Probably we should move away from: `@import "marble/src/base/base";` (_kinda_ bad/leaky abstraction because what if we change file structure?)
+- Depending on SCSS preprocesssor, namely scss-loader+postcss (webpack) vs gulp sass, there is totally different behave regarding scope and iikjf it follows dependencies :(
+
+### Using Marble's Components
+
+Marble does not currently export component html or templates, only styles and javascript. Think of it a little bit like Twitter's [Bootstrap Framework](/github.com/twbs/bootstrap), or like a meal kit, but not dish you serve.
+
+It's up to your project to implement the proper markup, based on examples you can find in `/src` and on our [Storybook](https://metmuseum.github.io/Marble).
+
+#### Example:
+
+Take the structure and classes from Marble:
+
+```javascript
+// in src/components/section-heading/section-heading.html.js
+
+html`<div
+	class="section-heading section-heading--text-${textAlignment} ${inSitu
+		? "productive-component"
+		: ""}"
+>
+	<h2 class="section-heading__heading ${context}">
+		${header}
+	</h2>
+	<div>${he.decode(bodyCopy)}</div>
+	<a
+		class="button--tertiary section-heading__text-link"
+		role="button"
+		tabindex="0"
+		href="#"
+	>
+		${CTA1}</a
+	>
+</div>`;
+```
+
+And interpret them for your project's framework and data models:
+
+```HTML+Razor
+<div class="section-heading section-heading--text-center productive-component section-header-@Model.Name">
+	<h2 class="section-heading__heading expressive">@Html.Raw(Model.Header)</h2>
+	<div>@Html.Raw(@Model.Description)</div>
+	<a
+		class="button--tertiary section-heading__text-link"
+		role="button"
+		tabindex="0"
+		href="@Model.UrlLink"
+	>@Html.Raw(Model.CTA)</a>
+</div>
+```
+
+##### Javascript
+
+By design, Marble's Javascript should only cause one side-effect: exposing a variable called `marble`. It's up to your project to tell Marble what to do and when.
+
+At the bare minimum, you probably want to run Marble's global code:
+
+```javascript
+import marble from "Marble";
+
+marble.global();
+```
+
+If you use a specific component, say the `jumpLinkBanner`, you need to call that somewhere, as well:
+
+```javascript
+marble.jumpLinkBanner();
+```
+
+TODO: a `marble.everything();` option?
+
+## Deployment and Continuous Integration
+
+You can expect that Marble's default branch, `main`, is always stable and releaseable. If you installed as above, `npm install` and `npm update` should always be safe.
+
+**Make sure you always check in your your package-lock.json**.
+
+### Recommended CI
+
+If you need something more deterministic and safe, say for staging or production environments, those environments should use `npm ci` **_instead of_** `npm install`. This will ensure the project only builds with the exact commit (and dependencies) that were specified earlier in the `package-lock.json`.
+
+Example:
+
+```json
+"marble": {
+    "version": "github:metmuseum/Marble#d765ab8a340e1e989953207115414469307da93c",
+    "from": "github:metmuseum/Marble#main",
+    "requires": {
+        "he": "^1.2.0",
+        "intersection-observer": "^0.7.0",
+        "smoothscroll-polyfill": "^0.4.4",
+        "vanilla-lazyload": "^12.5.1"
+    }
+}
+```
+
+More info: https://docs.npmjs.com/cli/ci.html
+
+For a preview environment (example: on Ghidorah this is called the "development" server), you might want to only use `npm install` so each build has the latest and you can catch integration issues earlier.
+
+It is **not recommended** to point your installation of Marble to an environment-specific branch on staging or production. Please always use `main`.
+
+# Contributing To Marble
+
+# WIP
+
+## Conventions
+
+- mock your data separately
+- use component story format
+- use knobs
+- try to provide in-situ examples?
+- make sure a11y passes!
+
+* file organization
+
+  - stories
+  - scss
+  - javascript
+  - text casing (kebab-case?)
+
+- linting
+  - recommend prettier
+  - explore: CI enforcement?
+
+### Marble Development As A Local Package
 
 You may want to see your changes to Marble locally _**and**_ in the context of another project you're working on. We can do this easily with [npm link](https://docs.npmjs.com/cli/link.html).
 
@@ -66,6 +251,8 @@ We use the `html preset` for Storybook. There are many good exmaples of html sto
 - https://github.com/storybookjs/storybook/tree/next/examples/html-kitchen-sink
 
 # Webpack Build for Release And Production
+
+TODO: update this to have CI build dist on merge
 
 - For releases of Marble, we'll want to compile everything into a production-ready `.css` and `.js` file.
 - We use Webpack to build and bundle these files to `/dist`
