@@ -57,6 +57,8 @@ jobs:
       - run:
           name: "Build Marble's /dist for production!"
           command: npm run build
+      - run: git config user.email "stephen.marsh@metmuseum.org"
+      - run: git config user.name "Marble Bot"
       - run: git status
       - run: git add dist
       - run: git commit --allow-empty -m "auto build dist for $(git rev-parse HEAD) [skip-ci]"
