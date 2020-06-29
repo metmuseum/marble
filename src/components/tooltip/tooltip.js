@@ -66,9 +66,7 @@ export default function theTooltip() {
 		var documentX = event.pageX;
 		var documentY = event.pageY;
 		var viewportY = event.screenY;
-		var midViewport = window.innerHeight / 2;
-
-		console.log('midViewport', midViewport);
+		var midViewport = (window.innerHeight * 1.15) / 2;
 
 		if (viewportY > midViewport) {
 			thisToolTip.parentElement.classList.add('tooltip-upwards');
@@ -77,8 +75,6 @@ export default function theTooltip() {
 			thisToolTip.style.left = (documentX - 25) + 'px';
 		}
 
-		
-		
 		thisToolTip.classList.add("show-tooltip");
 	}
 
