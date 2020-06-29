@@ -6,6 +6,32 @@
     position: absolute;
     width: 250px;
     font-family: $metsans;
+
+    &:after {
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent; 
+        border-bottom: 13px solid white;
+        content: "";
+        left: 22px;
+        position: absolute;
+        top: -13px;
+    }
+}
+
+.tooltip-upwards {
+    position: relative;
+
+    .marble-inline-tooltip {
+        bottom: 46px;
+        left: -75px;
+
+        &:after {
+            border-bottom: none;
+            border-top: 13px solid #fff;
+            left: 94px;
+            top: 100%;
+        }
+    }
 }
 
 .marble-inline-tooltip:after {
