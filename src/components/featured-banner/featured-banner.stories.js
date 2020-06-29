@@ -1,6 +1,5 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
-import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import sizeStyles from "../../base/_sizes.scss";
 import "./featured-banner.scss";
@@ -13,7 +12,7 @@ import image3240 from "../../../.storybook/assets/images/full-width-image/seurat
 
 export default {
 	title: "Featured",
-	decorators: [withA11y, withKnobs],
+	decorators: [withKnobs],
 };
 
 const bp1200 = sizeStyles.bp1200;
