@@ -63,7 +63,7 @@ jobs:
           command: npm run build
       - run:
           name: "Check for changes and exit job if none."
-          command: "[[ -z $(git status --porcelain) ]] && exit 0"
+          command: "[[ -z $(git status --porcelain) ]] && circleci-agent step halt"
       - run: git config user.email "stephen.marsh@metmuseum.org"
       - run: git config user.name "Marble Bot"
       - run: git add dist
