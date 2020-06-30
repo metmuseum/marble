@@ -52,5 +52,10 @@
 	"bugs": {
 		"url": "https://github.com/metmuseum/Marble/issues"
 	},
-	"homepage": "https://github.com/metmuseum/Marble#readme"
+	"homepage": "https://github.com/metmuseum/Marble#readme",
+	"storybook-deployer": {
+		"gitUsername": "Marble Bot",
+		"gitEmail": "hello@ghbot.com",
+		"commitMessage": "Deploy Storybook [skip ci]"
+	}
 }
