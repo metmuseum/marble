@@ -1,5 +1,4 @@
 import html from "../../../.storybook/helpers/html";
-import { withA11y } from "@storybook/addon-a11y";
 import "./image-container.scss";
 
 import image768 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
@@ -12,7 +11,6 @@ import image5760 from "../../../.storybook/assets/images/full-width-image/seurat
 
 export default {
 	title: "Image Containers",
-	decorators: [withA11y],
 };
 
 const width = 3920;

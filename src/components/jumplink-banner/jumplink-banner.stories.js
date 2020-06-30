@@ -1,13 +1,12 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
-import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { fullWidth } from "../image-container/image-container.stories.js";
 import "./jumplink-banner.scss";
 import { useEffect } from "@storybook/client-api";
 import jumpLinkBanner from "./jumplink-banner.js";
 
-export default { title: "Banner", decorators: [withA11y, withKnobs] };
+export default { title: "Banner", decorators: [withKnobs] };
 
 const data = () => {
 	return {
