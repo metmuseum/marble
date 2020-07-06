@@ -16,6 +16,32 @@
         position: absolute;
         top: -13px;
     }
+
+    h5 {
+        @include typography-label-text;
+        margin-bottom: $spacing-micro;
+    }
+
+    h4 {
+        margin-bottom: $spacing-micro;
+    }
+
+    a {
+        border: none;
+        display: block;
+    }
+
+    img {
+        width: 100%;
+        max-height: 227px;
+        object-fit: cover;
+        margin-bottom: -8px;
+    }
+
+    p {
+        @include typography-label-field;
+        margin: $spacing-micro 0;
+    }
 }
 
 .tooltip-upwards {
@@ -32,36 +58,6 @@
             top: 100%;
         }
     }
-}
-
-.marble-inline-tooltip:after {
-    border-left: 13px solid transparent;
-    border-right: 13px solid transparent; 
-    border-bottom: 13px solid white;
-    content: "";
-    left: 22px;
-    position: absolute;
-    top: -13px;
-}
-
-.marble-inline-tooltip h4 {
-    margin-bottom: $spacing-micro;
-}
-
-.marble-inline-tooltip a {
-    border: none;
-    display: block;
-}
-
-.marble-inline-tooltip img {
-    width: 100%;
-    max-height: 227px;
-    object-fit: cover;
-}
-
-.marble-inline-tooltip p {
-    @include typography-label-field;
-    margin: $spacing-micro 0;
 }
 
 .show-tooltip {
