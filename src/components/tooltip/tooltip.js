@@ -11,6 +11,7 @@ export default function theTooltip() {
 					var document = new DOMParser().parseFromString(data, "text/html"); //convert text to html for parsing
 					var title = document.title;
 					var type;
+					var typeKicker = '';
 
 					if (
 						theURL.includes("works-of-art") ||
@@ -22,10 +23,12 @@ export default function theTooltip() {
 							"by " +
 							document.title.split("|")[0];
 						type = "artwork";
+						typeKicker = "Artwork";
 					} else {
 						//assume it's an essay, for now - get title up to the first pipe
 						title = document.title.split("|")[0];
 						type = "essay";
+						typeKicker = "Essay";
 					}
 
 					var ogImageTag = document.querySelector('meta[property~="og:image"]');
@@ -36,22 +39,14 @@ export default function theTooltip() {
 						)}" /></a>`;
 					}
 
-					var ogDescriptionTag = document.querySelector(
-						'meta[property~="og:description"]'
-					);
-					var ogDescription = "";
-					if (ogDescriptionTag && type == "essay") {
-						ogDescription = `<p> ${ogDescriptionTag.getAttribute(
-							"content"
-						)} </p>`;
-					}
-
 					var tooltipFilling = `
+					<h3 class="descriptor">
+						${typeKicker}
+					</h3>
                     <h4>
-                        <a href="${theURL}">${title}</a>
+                        ${title}
                     </h4>
                     ${ogImage}
-                    ${ogDescription}
                 `;
 					thisToolTip.innerHTML = tooltipFilling;
 					thisToolTip.classList.remove("tooltip-empty");
