@@ -34,15 +34,15 @@ export default function theTooltip() {
 					var ogImageTag = document.querySelector('meta[property~="og:image"]');
 					var ogImage = "";
 					if (ogImageTag) {
-						ogImage = `<a href="${theURL}"><img src="${ogImageTag.getAttribute(
+						ogImage = `<img src="${ogImageTag.getAttribute(
 							"content"
-						)}" /></a>`;
+						)}" />`;
 					}
 
 					var tooltipFilling = `
-					<h3 class="descriptor">
+					<h5 class="descriptor">
 						${typeKicker}
-					</h3>
+					</h5>
                     <h4>
                         ${title}
                     </h4>
