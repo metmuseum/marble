@@ -48,11 +48,14 @@ $carousel-image-height: 400px;
     }
 
     .banner-image__title {
-        @include typography-h4;
-        font-weight: 600;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.1;
     }
 
     .banner-image__creator {
-        @include typography-info-label;
+        font-size: calc(12px + .2vw);
+        font-weight: 500;
+        line-height: 18px;
     }
 }
