@@ -74,12 +74,12 @@ $article-sidebar-width: calc(280px + 1.5vw);
     }
 
     li {
-        margin-bottom: 5px;
+        margin-bottom: 8px;
     }
 }
 
 .marble-article__meta {
-    padding-bottom: 15px;
+    padding-bottom: $spacing-xs;
 
     &.authorship-section {
         margin-top: 0;
@@ -107,7 +107,6 @@ $article-sidebar-width: calc(280px + 1.5vw);
 .marble-article__text-wrapper {
     @include typography-body-long;
     flex-grow: 1;
-    font-family: $metserif;
 
     @media screen and (min-width: $bp-900) {
         margin-left: $spacing-m;

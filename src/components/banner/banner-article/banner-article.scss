@@ -34,6 +34,10 @@
     .card-header__second-level-link {
         font-weight: 500;
         margin-left: 20px;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     h1 {
