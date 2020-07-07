@@ -6,7 +6,7 @@ $carousel-image-height: 400px;
 .marble-article__banner-images {
     //display: flex;
     height: $carousel-mobile-height;
-    margin-bottom: $spacing-xs;
+    margin-bottom: $spacing-xxs;
     min-width: 190px;
 
     @media screen and (min-width: $bp-900) {
