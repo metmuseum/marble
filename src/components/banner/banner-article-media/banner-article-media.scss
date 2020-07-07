@@ -1,12 +1,12 @@
 $carousel-mobile-height: calc(200px + 3vw);
-$carousel-desktop-height: 400px;
+$carousel-desktop-height: 500px;
 $carousel-image-height: 400px;
 
 
 .marble-article__banner-images {
     //display: flex;
     height: $carousel-mobile-height;
-    margin-bottom: $spacing-m;
+    margin-bottom: $spacing-xs;
     min-width: 190px;
 
     @media screen and (min-width: $bp-900) {
@@ -19,6 +19,7 @@ $carousel-image-height: 400px;
         // height: 100%;
         margin-left: $spacing-xxs;
         // position: relative;
+        height: $carousel-desktop-height;
     }
 
     .banner-image__link {
@@ -41,7 +42,7 @@ $carousel-image-height: 400px;
 
     .banner-image__meta {
         background-color:rgba(255,255,255,0.6);
-        bottom: 0;
+        //bottom: 0;
         padding: $spacing-micro;
         position: absolute;
         width: 100%;
