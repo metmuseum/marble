@@ -28,6 +28,7 @@ $article-sidebar-width: calc(280px + 1.5vw);
     @include productive-component;
     display: flex;
     flex-direction: column;
+    margin-top: $spacing-s;
 
     @media screen and (min-width: $bp-900) {
         flex-direction: row;
