@@ -2,7 +2,7 @@
     background: white;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     display: none;
-    padding: $spacing-micro;
+    padding: $spacing-xxs;
     position: absolute;
     width: 250px;
     font-family: $metsans;
@@ -19,10 +19,13 @@
 
     h5 {
         @include typography-label-text;
+        font-weight: 700;
         margin-bottom: $spacing-micro;
     }
 
     h4 {
+        @include typography-label-field;
+        font-weight: 500;
         margin-bottom: $spacing-micro;
     }
 
