@@ -1,16 +1,17 @@
-$carousel-mobile-height: calc(200px + 3vw);
+//$carousel-mobile-height: calc(200px + 3vw);
 $carousel-desktop-height: 500px;
 $carousel-image-height: 400px;
 
 
 .marble-article__banner-images {
     //display: flex;
-    height: $carousel-mobile-height;
+    //height: $carousel-mobile-height;
+    height: $carousel-desktop-height;
     margin-bottom: $spacing-xxs;
     min-width: 190px;
 
     @media screen and (min-width: $bp-900) {
-        height: $carousel-desktop-height;
+        
     }
 
     .banner-image__wrapper {

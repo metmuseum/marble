@@ -6,7 +6,6 @@ $article-sidebar-width: calc(280px + 1.5vw);
     strong {
         @include typography-h4;
         display: inline-block;
-        font-family: $metsans;
         font-weight: 500;
         margin-bottom: $spacing-micro;
     }
@@ -49,11 +48,9 @@ $article-sidebar-width: calc(280px + 1.5vw);
 
     h3 {
         @include typography-h3;
-        font-family: $metserif;
 
         @media screen and (min-width: $bp-900) {
             @include typography-h4;
-            font-family: $metsans;
             font-weight: 500;
         }
     }
@@ -74,7 +71,12 @@ $article-sidebar-width: calc(280px + 1.5vw);
     }
 
     li {
+        line-height: 1.7;
         margin-bottom: 8px;
+
+        @media screen and (min-width: $bp-900) {
+            line-height: 1.3;
+        }
     }
 }
 
@@ -102,6 +104,27 @@ $article-sidebar-width: calc(280px + 1.5vw);
 
 .js-togglee {
     margin: $spacing-micro 0 $spacing-xxs 25px;
+}
+
+.js-toggled-open {
+    .js-togglee {
+        animation-duration: 0.3s;
+        animation-name: slidein;
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+    }
+}
+  
+@keyframes slidein {
+    from {
+        margin-left: 30px;
+        opacity: 0;
+    }
+
+    to {
+        margin-left: 25px;
+        opacity: 1;
+    }
 }
 
 .marble-article__text-wrapper {
