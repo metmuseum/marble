@@ -1,11 +1,8 @@
-//$carousel-mobile-height: calc(200px + 3vw);
 $carousel-desktop-height: 500px;
 $carousel-image-height: 400px;
 
 
 .marble-article__banner-images {
-    //display: flex;
-    //height: $carousel-mobile-height;
     height: $carousel-desktop-height;
     margin-bottom: $spacing-xxs;
     min-width: 190px;
@@ -15,11 +12,7 @@ $carousel-image-height: 400px;
     }
 
     .banner-image__wrapper {
-        // display: inline-block;
-        // float: left;
-        // height: 100%;
         margin-left: $spacing-xxs;
-        // position: relative;
         height: $carousel-desktop-height;
     }
 
@@ -43,7 +36,6 @@ $carousel-image-height: 400px;
 
     .banner-image__meta {
         background-color:rgba(255,255,255,0.6);
-        //bottom: 0;
         padding: $spacing-micro;
         position: absolute;
         width: 100%;
@@ -57,7 +49,7 @@ $carousel-image-height: 400px;
 
     .banner-image__creator {
         font-size: calc(12px + .2vw);
-        font-weight: 500;
+        font-weight: 400;
         line-height: 18px;
     }
 }

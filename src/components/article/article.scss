@@ -5,9 +5,8 @@ $article-sidebar-width: calc(280px + 1.5vw);
 .authorship-section {
     strong {
         @include typography-h4;
-        display: inline-block;
+        display: block;
         font-weight: 500;
-        margin-bottom: $spacing-micro;
     }
 
     p {
