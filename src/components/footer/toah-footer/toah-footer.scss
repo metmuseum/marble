@@ -1,0 +1,36 @@
+.toah-footer {
+    border-bottom: 0;
+    margin: 0 auto;
+    max-width: 60rem; //from fas
+    padding-bottom: 0;
+}
+
+.toah-footer__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 15rem; //from fas
+    padding: 0 1.25rem;
+}
+
+.toah-footer__item {
+    font-size: 16px;
+    font-weight: 500;
+
+    a {
+        border: none;
+
+        &:hover {
+            color: $color-met-red;
+        }
+    }
+}
+
+.toah-footer__second-tier {
+    display: flex;
+    flex-direction: row;
+
+    .toah-footer__item {
+        margin-left: $spacing-xxs;
+    }
+}
