@@ -5,6 +5,42 @@ $carousel-image-height: 400px;
     background: $color-grey-050;
     display: flex;
     flex-direction: column;
+
+    .flickity-button {
+        background: none;
+        display: none;
+        height: 66px;
+        top: calc(-55px + -0.75vw);
+        width: 66px;
+
+        @media screen and (min-width: $bp-500) {
+            display: block;
+        }
+    }
+
+    .flickity-button-icon {
+        fill: $color-grey-900
+    }
+
+    .flickity-prev-next-button {
+
+        &.previous {
+            left: auto;
+            right: calc(#{$spacing-component-margin} + 58px);
+
+            .flickity-button-icon {
+                left: 31%;
+            }
+        }
+
+        &.next {
+            right: $spacing-component-margin;
+
+            .flickity-button-icon {
+                left: 14%;
+            }
+        }
+    }
 }
 
 .marble-article__banner-images {
