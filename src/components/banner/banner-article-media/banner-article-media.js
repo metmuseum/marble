@@ -12,8 +12,14 @@ export default function articleMediaSlider() {
 		friction: 0.4,
 		imagesLoaded: true,
 		pageDots: false,
-		prevNextButtons: false,
+		prevNextButtons: true,
 		resize: true,
-        wrapAround: false
+		wrapAround: false,
+		arrowShape: {
+			x0: 0,
+			x1: 50, y1: 45,
+			x2: 55, y2: 44,
+			x3: 6
+		}
 	});
 }
