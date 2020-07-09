@@ -1,16 +1,20 @@
+.fas .global-footer {
+    border-top: none !important;
+}
+
 .toah-footer {
-    border-bottom: 0;
-    margin: 0 auto;
-    max-width: 60rem; //from fas
-    padding-bottom: 0;
+    border-top: 1px solid $color-grey-500;
 }
 
 .toah-footer__wrapper {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-width: 60rem;
     min-width: 15rem; //from fas
-    padding: 0 1.25rem;
+    padding: 1.25rem;
+    margin: 0 auto;
 }
 
 .toah-footer__item {
@@ -24,6 +28,14 @@
             color: $color-met-red;
         }
     }
+}
+
+.toah-footer__home {
+    font-size: 18px;
+}
+
+.toah-footer__copyright {
+    font-size: 14px;
 }
 
 .toah-footer__second-tier {
