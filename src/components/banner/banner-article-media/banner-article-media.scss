@@ -76,7 +76,7 @@ $carousel-image-height: 400px;
     }
 
     .banner-image__meta {
-        padding: $spacing-micro;
+        padding: $spacing-micro $spacing-micro $spacing-micro 0;
         position: absolute;
     }
 
@@ -84,6 +84,12 @@ $carousel-image-height: 400px;
         font-size: 18px;
         font-weight: 500;
         line-height: 1.1;
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .banner-image__creator {
