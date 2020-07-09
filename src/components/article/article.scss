@@ -47,12 +47,8 @@ $article-sidebar-width: calc(280px + 1.5vw);
     }
 
     h3 {
-        @include typography-h3;
-
-        @media screen and (min-width: $bp-900) {
-            @include typography-h4;
-            font-weight: 500;
-        }
+        @include typography-h4;
+        font-weight: 500;
     }
 
     a {
