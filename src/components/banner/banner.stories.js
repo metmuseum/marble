@@ -1,7 +1,8 @@
 import "./banner.scss";
 import "../vimeo-player/vimeo-player.scss";
 import vimeoTemplate from "../vimeo-player/vimeo-player";
-
+import vimeoControls from "../vimeo-player/vimeo-controls.js";
+import { useEffect } from "@storybook/client-api";
 export default { title: 'Banner' };
 
 const data = {
@@ -52,6 +53,7 @@ export const Banner = () => {
 }
 
 export const BannerWithVideo = () => {
+	useEffect(vimeoControls);
 	const model = Object.assign(data, {video: true});
   return bannerMarkup(model);
 }

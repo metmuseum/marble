@@ -9,7 +9,7 @@
 import "./marble.scss";
 import global from "./global/global.mjs";
 import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner";
-
-const marble = { global, jumpLinkBanner }
+import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls";
+const marble = { global, jumpLinkBanner, vimeoPlayToggle }
 
 export default marble;
