@@ -9,12 +9,16 @@
 .toah-footer__wrapper {
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     max-width: 60rem;
     min-width: 15rem; //from fas
     padding: 1.25rem;
     margin: 0 auto;
+
+    @media screen and (min-width: $bp-900) {
+        flex-direction: row;
+    }
 }
 
 .toah-footer__item {
@@ -32,6 +36,11 @@
 
 .toah-footer__home {
     font-size: 18px;
+    text-align: center;
+
+    @media screen and (min-width: $bp-900) {
+        text-align: left;
+    }
 }
 
 .toah-footer__copyright {
@@ -41,8 +50,20 @@
 .toah-footer__second-tier {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 11px;
+
+    @media screen and (min-width: $bp-900) {
+        justify-content: normal;
+        margin-top: 0;
+    }
 
     .toah-footer__item {
         margin-left: $spacing-xxs;
+
+        &:first-child {
+            margin-left: 0;
+        }
     }
 }
