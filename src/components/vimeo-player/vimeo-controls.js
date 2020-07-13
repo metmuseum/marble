@@ -16,8 +16,7 @@ function vimeoControls() {
 
 	const vimeoContainers = document.querySelectorAll('.js-vimeo-container');
 	vimeoContainers.forEach((container)=> {
-		const vimeoIframe = container.querySelector("iframe");
-    const player = new VimeoPlayer(vimeoIframe);
+    const player = new VimeoPlayer(container);
 
 		const playButton = container.querySelector(".js-vimeo-play");
 		playButton.addEventListener("click", function(e) {
