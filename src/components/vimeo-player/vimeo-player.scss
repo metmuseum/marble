@@ -53,6 +53,8 @@
 }
 
 .vimeo-play__icon {
+	color: currentColor;
+	display: block;
 	max-height: $spacing-xxs;
 	max-width: $spacing-xxs;
 
