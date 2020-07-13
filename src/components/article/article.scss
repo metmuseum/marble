@@ -1,4 +1,4 @@
-$article-sidebar-width: calc(280px + 1.5vw);
+$article-sidebar-width: calc(170px + 3.5vw);
 
 //DS - there is real crap html in this module
 //we need to work around it for now
@@ -87,7 +87,7 @@ $article-sidebar-width: calc(280px + 1.5vw);
 //main coluumn
 .marble-article__text-wrapper {
     @include typography-body-long;
-    flex-grow: 1;
+    flex: 1;
 
     @media screen and (min-width: $bp-900) {
         margin-left: $spacing-m;
