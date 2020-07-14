@@ -1,5 +1,6 @@
 import "./banner.scss";
 import "../vimeo-player/vimeo-player.scss";
+import html from "../../../.storybook/helpers/html";
 import vimeoTemplate from "../vimeo-player/vimeo-player";
 import vimeoControls from "../vimeo-player/vimeo-controls.js";
 import { useEffect } from "@storybook/client-api";
@@ -19,7 +20,7 @@ const data = {
 
 
 const bannerMarkup = (model) => {
-	return `
+	return html`
 		<section class="marble-banner marble-banner-@Model.Name">
 			<div class="marble-banner__image-wrapper">
 				<a class="marble-banner__image-link"
@@ -27,8 +28,11 @@ const bannerMarkup = (model) => {
 					href="${model.link.url}"
 					title="${model.imageAlt}">
 
-					<img class="marble-banner__image" srcset="${model.backgroundImages}">
-				${model.video === true ? vimeoTemplate : ``}
+					<img class="marble-banner__image"
+						srcset="${model.backgroundImages}"
+						alt="${model.imageAlt}">
+
+					${model.video === true ? vimeoTemplate : ``}
 				</a>
 
 			</div>
