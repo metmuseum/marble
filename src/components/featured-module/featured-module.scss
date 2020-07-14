@@ -3,6 +3,7 @@
 
 .featured-module-container {
 	margin-bottom: $spacing-s;
+
 	&.productive-component {
 		@include productive-component;
 	}
@@ -19,6 +20,10 @@
 
 	a {
 		margin: 0 $spacing-micro;
+
+		&[href=""] {
+			margin: 0;
+		}
 	}
 
 	p {
