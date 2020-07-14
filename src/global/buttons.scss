@@ -1,9 +1,9 @@
 @import "../base/base";
+@import "./buttons/primary.scss";
 $color-disabled-bg: $color-grey-200;
 $color-disabled-txt: $color-grey-600;
 
-.button {
-	@include button-default;
+@mixin button-base {
 	min-height: 48px;
 	min-width: 148px;
 
@@ -65,7 +65,6 @@ $color-disabled-txt: $color-grey-600;
 				}
 			}
 		}
-
 	}
 
 	&.button--pill {
@@ -90,6 +89,11 @@ $color-disabled-txt: $color-grey-600;
 		color: $color-disabled-txt;
 		cursor: auto;
 	}
+}
+
+.button {
+	@include button-default();
+	@include button-base();
 }
 
 a.button {

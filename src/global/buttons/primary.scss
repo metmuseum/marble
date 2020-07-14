@@ -1,0 +1,29 @@
+@import "../../base/mixins/typography";
+
+@mixin button-primary {
+	background-image: linear-gradient(
+		to right,
+		$color-pink,
+		$color-met-red,
+		$color-orange
+	);
+	background-position: 0 0;
+	background-size: 200% 200%;
+	border: none;
+	border-radius: $form-radius;
+	color: $color-white;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: 18px;
+	font-weight: 500;
+	padding: 0 20px;
+	transition: background-position 0.5s;
+}
+
+.primary-button {
+	@include button-primary();
+}
+
+.primary-button--large {
+	padding: 0.8333em 4em;
+}
