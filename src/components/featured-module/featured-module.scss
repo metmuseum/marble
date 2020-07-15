@@ -3,6 +3,7 @@
 
 .featured-module-container {
 	margin-bottom: $spacing-s;
+
 	&.productive-component {
 		@include productive-component;
 	}
@@ -19,9 +20,15 @@
 
 	a {
 		margin: 0 $spacing-micro;
+
+		&[href=""] {
+			margin: 0;
+		}
 	}
 
 	p {
 		line-height: (24/18); // match figma, y tho?
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
