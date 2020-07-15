@@ -4,8 +4,8 @@ $color-disabled-bg: $color-grey-200;
 $color-disabled-txt: $color-grey-600;
 
 @mixin button-base {
-	min-height: 48px;
-	min-width: 148px;
+	min-height: 48px; // TODO ?
+	min-width: 148px; // TODO ?
 
 	&:focus,
 	&:hover,
@@ -68,26 +68,22 @@ $color-disabled-txt: $color-grey-600;
 	}
 
 	&.button--pill {
-		border-radius: 50px;
+		border-radius: 50px; // TODO ?
 	}
 
 	&.button--wide {
-		min-width: 200px;
+		min-width: 200px; // TODO ?
 	}
 
 	&.button--cta {
-		min-width: 280px;
+		min-width: 280px; // TODO ?
 	}
 
 	&.button--disabled,
 	&.button--disabled:hover,
 	&[disabled],
 	&[disabled]:hover {
-		background-color: $color-disabled-bg;
-		background-image: none;
-		border: none;
-		color: $color-disabled-txt;
-		cursor: auto;
+		@include button-primary--disabled();
 	}
 }
 
