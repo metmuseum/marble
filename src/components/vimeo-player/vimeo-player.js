@@ -1,6 +1,7 @@
 import html from "../../../.storybook/helpers/html";
 
 const videoTemplate = html`<div class="js-vimeo-container vimeo-container is-visible"
+	aria-hidden="true"
 	data-vimeo-background=""
 	data-vimeo-dnt=""
 	data-vimeo-defer=""
