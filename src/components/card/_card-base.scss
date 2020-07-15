@@ -73,6 +73,7 @@
 .marble-card__image-wrapper {
 	@include key-image-wrapper;
 	flex-grow: 0;
+	position: relative;
 
 	@media (orientation: landscape) {
 		max-height: $height-max;
