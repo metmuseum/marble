@@ -1,11 +1,12 @@
 @import "../base/base";
-@import "./buttons/primary.scss";
+@import "./buttons/primary";
 $color-disabled-bg: $color-grey-200;
 $color-disabled-txt: $color-grey-600;
 
 @mixin button-base {
-	min-height: 48px; // TODO ?
-	min-width: 148px; // TODO ?
+	// min-height: 48px; // TODO ?
+	// min-width: 148px; // TODO ?
+	cursor: pointer;
 
 	&:focus,
 	&:hover,
@@ -83,12 +84,12 @@ $color-disabled-txt: $color-grey-600;
 	&.button--disabled:hover,
 	&[disabled],
 	&[disabled]:hover {
-		@include button-primary--disabled();
+		@include primary-button-disabled();
 	}
 }
 
 .button {
-	@include button-default();
+	// @include button-default();
 	@include button-base();
 }
 

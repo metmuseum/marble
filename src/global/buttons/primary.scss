@@ -1,36 +1,34 @@
 @import "../../base/mixins/typography";
 
-@mixin button-primary {
-	background-image: linear-gradient(
-		to right,
-		$color-pink,
-		$color-met-red,
-		$color-orange
-	);
-	background-position: 0 0;
-	background-size: 200% 200%;
-	border: none;
-	border-radius: $form-radius;
-	color: $color-white;
-	cursor: pointer;
-	font-family: $metsans;
-	// font-size: 18px;
-	font-size: calc(17px + #{$font-scale-base});
-	font-weight: 500;
-	// padding: 0 20px;
-	transition: background-position 0.5s;
-}
-
-@mixin button-primary--disabled {
+@mixin primary-button-disabled {
 	background: $color-grey-050;
 	border-color: $color-grey-050;
 	color: $color-grey-600;
 	cursor: not-allowed;
 }
 
-.primary-button {
-	@include button-primary();
+@mixin primary-button {
+	border: none;
+	border-radius: $form-radius;
+	color: $color-white;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: calc(17px + #{$font-scale-base});
+	font-weight: 500;
+
+	&.button--disabled,
+	&.button--disabled:hover,
+	&[disabled],
+	&[disabled]:hover {
+		@include primary-button-disabled();
+	}
 }
+
+.primary-button {
+	@include primary-button();
+}
+
+// sizes
 
 .primary-button--small {
 	padding: 0.8333em 2.5em;
@@ -40,10 +38,23 @@
 	padding: 0.8333em 4em;
 }
 
+// styles
+
+.primary-button--filled {
+	background-image: linear-gradient(
+		to right,
+		$color-pink,
+		$color-met-red,
+		$color-orange
+	);
+	background-position: 0 0;
+	background-size: 200% 200%;
+	transition: background-position 0.5s;
+}
+
 .primary-button--ghost {
 	background: $color-white;
 	border: 2px solid $color-grey-900;
-	border-radius: 4px;
 	color: $color-grey-900;
 	cursor: pointer;
 	font-family: $metsans;

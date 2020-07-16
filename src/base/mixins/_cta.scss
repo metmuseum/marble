@@ -5,7 +5,7 @@
 @mixin button-default {
 	// moved this code to button-primary.
 	// TODO:  deprecate this mixin name?
-	@include button-primary();
+	// @include button-primary();
 }
 
 @mixin interaction-fill-up($color-1, $color-2) {
