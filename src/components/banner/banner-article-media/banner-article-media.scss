@@ -67,13 +67,15 @@ $carousel-image-height: 400px;
 
     .banner-image__link {
         border: none;
-        display: block;
+        display: flex;
         height: $carousel-image-height;
         overflow: hidden;
     }
 
     .banner-image {
-        height: 101%;
+        //height: 101%;
+        max-height: 100%;
+        object-fit: contain;
         transform-origin: center;
         transition: all 0.4s ease-out;
     
