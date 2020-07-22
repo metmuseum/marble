@@ -1,11 +1,12 @@
 @import "../base/base";
-@import "./buttons/primary";
-$color-disabled-bg: $color-grey-200;
+@import "./buttons/primary/primary";
+// $color-disabled-bg: $color-grey-200; todo: can remove?
 $color-disabled-txt: $color-grey-600;
 
 @mixin button-base {
 	// min-height: 48px; // TODO ?
 	// min-width: 148px; // TODO ?
+	// TODO: our reset goes here?
 	cursor: pointer;
 
 	&:focus,
@@ -15,6 +16,18 @@ $color-disabled-txt: $color-grey-600;
 		color: $color-white;
 	}
 
+	&.button--disabled,
+	&.button--disabled:hover,
+	&[disabled],
+	&[disabled]:hover {
+		@include primary-button-disabled();
+	}
+}
+
+.button {
+	@include button-base();
+
+	// TODO: will need to somehow migrate from the below styles?
 	&.button--pill,
 	&.button--ghosted {
 		background-color: transparent;
@@ -36,6 +49,7 @@ $color-disabled-txt: $color-grey-600;
 		}
 
 		&.inverse {
+			// used like 3 places in ghidorah, including HP hero
 			border-color: $color-white;
 			color: $color-white;
 
@@ -52,6 +66,7 @@ $color-disabled-txt: $color-grey-600;
 		}
 
 		&.inverse--opaque {
+			// just used 1 for jumplink
 			border-color: $color-white;
 			color: $color-white;
 
@@ -69,31 +84,25 @@ $color-disabled-txt: $color-grey-600;
 	}
 
 	&.button--pill {
+		// just used for the jumplink banner in ghidorah
 		border-radius: 50px; // TODO ?
 	}
 
 	&.button--wide {
+		// 2 uses in ghidorah,
+		// - jumplink
+		// - visit section "buy ticket" button
 		min-width: 200px; // TODO ?
 	}
 
 	&.button--cta {
+		// 3 uses in ghidorah
 		min-width: 280px; // TODO ?
 	}
-
-	&.button--disabled,
-	&.button--disabled:hover,
-	&[disabled],
-	&[disabled]:hover {
-		@include primary-button-disabled();
-	}
-}
-
-.button {
-	// @include button-default();
-	@include button-base();
 }
 
 a.button {
+	// TODO: our reset goes here?
 	//link to button
 	align-items: center;
 	display: inline-flex;

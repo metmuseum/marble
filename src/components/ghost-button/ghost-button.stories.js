@@ -3,7 +3,7 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import "./ghost-button.scss";
 
 export default {
-	title: "Buttons/Primary/Ghost/Button Tag",
+	title: "Buttons/To Deprecate/Ghost/Button Tag",
 	decorators: [withKnobs],
 };
 
