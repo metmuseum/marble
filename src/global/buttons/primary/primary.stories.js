@@ -1,5 +1,6 @@
 import html from "../../../../.storybook/helpers/html";
-import { text, radios } from "@storybook/addon-knobs";
+import { withKnobs, text, radios } from "@storybook/addon-knobs";
+import "../../../marble.scss";
 
 // hopefully this remains self-documenting
 const permutations = {
@@ -17,10 +18,9 @@ permutations.elementTags.forEach((elementTag) => {
 	permutations.modes.style.forEach((styleMode) => {
 		permutations.modes.size.forEach((sizeMode) => {
 			permutations.states.forEach((state) => {
-				// let's name each story based on current options
-				StoriesToExport[
-					[elementTag, styleMode, sizeMode, state].join("")
-				] = () => {
+				let storyName = [elementTag, styleMode, sizeMode, state].join("");
+
+				StoriesToExport[storyName] = () => {
 					return buttonStoryTemplate({
 						elementTag,
 						styleMode,
@@ -101,9 +101,26 @@ const buttonTagTemplate = (options) => {
 	`;
 };
 
-// Ugh!! Javascript!! Y u no Reflection!?!?! (ﾉಥ益ಥ）ﾉ ┻━┻
-// "Exports and imports are required to be statically analysable in ES6 modules"
-// https://stackoverflow.com/a/35875379/3633109
+export default {
+	decorators: [withKnobs],
+	title: "Elements/Buttons/Primary",
+};
 
-// so let's just export a big object:
-export default StoriesToExport;
+export const {
+	AnchorFilledSmallActive,
+	AnchorFilledSmallInactive,
+	AnchorFilledLargeActive,
+	AnchorFilledLargeInactive,
+	AnchorGhostSmallActive,
+	AnchorGhostSmallInactive,
+	AnchorGhostLargeActive,
+	AnchorGhostLargeInactive,
+	ButtonFilledSmallActive,
+	ButtonFilledSmallInactive,
+	ButtonFilledLargeActive,
+	ButtonFilledLargeInactive,
+	ButtonGhostSmallActive,
+	ButtonGhostSmallInactive,
+	ButtonGhostLargeActive,
+	ButtonGhostLargeInactive,
+} = StoriesToExport;
