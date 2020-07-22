@@ -66,9 +66,12 @@ $carousel-image-height: 400px;
     }
 
     .banner-image__link {
+        background-color: $color-grey-200;
         border: none;
         display: flex;
         height: $carousel-image-height;
+        justify-content: center;
+        min-width: 200px;
         overflow: hidden;
     }
 
