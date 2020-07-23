@@ -84,6 +84,7 @@ $ghost-border-width: 2px;
 	&:focus:not(:disabled),
 	&:active:not(:disabled),
 	&:hover:not(:disabled) {
+		border-color: $color-grey-050;
 		background: $color-grey-050;
 		color: $color-grey-600;
 	}
