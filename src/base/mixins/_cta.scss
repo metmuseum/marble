@@ -1,12 +1,5 @@
 @import "../sizes";
 @import "../colors";
-@import "../../global/buttons/primary/primary";
-
-@mixin button-default {
-	// moved this code to button-primary.
-	// TODO:  deprecate this mixin name?
-	// @include button-primary();
-}
 
 @mixin interaction-fill-up($color-1, $color-2) {
 	background-color: transparent;

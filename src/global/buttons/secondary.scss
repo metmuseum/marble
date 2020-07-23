@@ -1,0 +1,40 @@
+.button--secondary {
+	background-color: transparent;
+	border-bottom: 2px solid currentColor;
+	color: $color-purplee;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: 18px;
+	font-weight: 500;
+	padding: 0;
+	position: relative;
+
+	&:focus {
+		border-color: transparent;
+	}
+
+	&:hover,
+	&:visited {
+		color: $color-purplee;
+	}
+	@media screen and (hover: hover) {
+		&:hover {
+			border-color: transparent;
+		}
+	}
+
+	&.button--ghosted {
+		color: $color-black;
+	}
+
+	&.button--disabled,
+	&[disabled] {
+		border: none;
+		color: $color-grey-600;
+		cursor: auto;
+
+		&:after {
+			border: none;
+		}
+	}
+}

@@ -1,12 +1,11 @@
-import html from "../../../../.storybook/helpers/html";
+import html from "../../../.storybook/helpers/html";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
-import "../../../marble.scss";
 
 // hopefully this remains self-documenting
 const permutations = {
-	elementTags: ["Anchor", "Button"],
+	elementTags: ["Button", "Anchor"],
 	modes: {
-		style: ["Filled", "Ghost"],
+		style: ["Filled", "Ghost-Dark", "Ghost-Light"],
 		size: ["Small", "Large"],
 	},
 	states: ["Active", "Inactive"],
@@ -18,7 +17,12 @@ permutations.elementTags.forEach((elementTag) => {
 	permutations.modes.style.forEach((styleMode) => {
 		permutations.modes.size.forEach((sizeMode) => {
 			permutations.states.forEach((state) => {
-				let storyName = [elementTag, styleMode, sizeMode, state].join("");
+				let storyName = [
+					elementTag,
+					styleMode.replace("-", ""),
+					sizeMode,
+					state,
+				].join("");
 
 				StoriesToExport[storyName] = () => {
 					return buttonStoryTemplate({
@@ -67,15 +71,25 @@ const buttonStoryTemplate = (options) => {
 		state,
 	};
 
-	if (finalOptions.elementTag === "Anchor") {
-		return anchorTagTemplate(finalOptions);
-	} else if (finalOptions.elementTag === "Button") {
-		return buttonTagTemplate(finalOptions);
-	}
+	return html`
+		${backgroundOverride}
+		${finalOptions.elementTag === "Anchor"
+			? anchorTagTemplate(finalOptions)
+			: finalOptions.elementTag === "Button"
+			? buttonTagTemplate(finalOptions)
+			: "Error: no element tag selected"}
+	`;
 };
+
+const backgroundOverride = html`<style>
+	body {
+		background: #c5c7c7;
+	}
+</style>`;
 
 const anchorTagTemplate = (options) => {
 	return html`
+		${backgroundOverride}
 		<a
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
@@ -107,20 +121,28 @@ export default {
 };
 
 export const {
-	AnchorFilledSmallActive,
-	AnchorFilledSmallInactive,
-	AnchorFilledLargeActive,
-	AnchorFilledLargeInactive,
-	AnchorGhostSmallActive,
-	AnchorGhostSmallInactive,
-	AnchorGhostLargeActive,
-	AnchorGhostLargeInactive,
 	ButtonFilledSmallActive,
 	ButtonFilledSmallInactive,
+	ButtonGhostLightSmallActive,
+	ButtonGhostLightSmallInactive,
+	ButtonGhostDarkSmallActive,
+	ButtonGhostDarkSmallInactive,
 	ButtonFilledLargeActive,
 	ButtonFilledLargeInactive,
-	ButtonGhostSmallActive,
-	ButtonGhostSmallInactive,
-	ButtonGhostLargeActive,
-	ButtonGhostLargeInactive,
+	ButtonGhostLightLargeActive,
+	ButtonGhostLightLargeInactive,
+	ButtonGhostDarkLargeActive,
+	ButtonGhostDarkLargeInactive,
+	AnchorFilledSmallActive,
+	AnchorFilledSmallInactive,
+	AnchorGhostLightSmallActive,
+	AnchorGhostLightSmallInactive,
+	AnchorGhostDarkSmallActive,
+	AnchorGhostDarkSmallInactive,
+	AnchorFilledLargeActive,
+	AnchorFilledLargeInactive,
+	AnchorGhostLightLargeActive,
+	AnchorGhostLightLargeInactive,
+	AnchorGhostDarkLargeActive,
+	AnchorGhostDarkLargeInactive,
 } = StoriesToExport;

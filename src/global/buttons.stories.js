@@ -3,7 +3,7 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import "./buttons.scss";
 
 export default {
-	title: "Buttons/To Deprecate/Tertiary",
+	title: "Elements/Buttons/Tertiary",
 	decorators: [withKnobs],
 };
 

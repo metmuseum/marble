@@ -1,0 +1,115 @@
+$ghost-border-width: 2px;
+
+// todo: aria pressed?
+
+@mixin primary-button-disabled-light {
+	background: $color-grey-050;
+	border-color: $color-grey-050;
+	color: $color-grey-600;
+	cursor: not-allowed;
+}
+
+@mixin primary-button-disabled-dark {
+	background: $color-grey-800;
+	border-color: $color-grey-800;
+	color: $color-grey-050;
+	cursor: not-allowed;
+}
+
+@mixin primary-button {
+	border: none;
+	border-radius: $form-radius;
+	color: $color-white;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: calc(17px + #{$font-scale-base});
+	font-weight: 500;
+	transition: background-position 0.3s, color 0.3s; // match the behavior on a tags from src/global/typography
+
+	&.button--disabled,
+	&.button--disabled:hover,
+	&[disabled],
+	&[disabled]:hover {
+		@include primary-button-disabled-light();
+	}
+}
+
+.primary-button {
+	@include primary-button();
+}
+
+// sizes
+
+.primary-button--small {
+	padding: 0.7777777778em 2.5em;
+	&.primary-button--ghost-light,
+	&.primary-button--ghost-dark {
+		padding: calc(0.7777777778em - #{$ghost-border-width})
+			calc(2.5em - #{$ghost-border-width});
+	}
+}
+
+.primary-button--large {
+	padding: 0.7777777778em 4em;
+	&.primary-button--ghost-light,
+	&.primary-button--ghost-dark {
+		padding: calc(0.7777777778em - #{$ghost-border-width})
+			calc(4em - #{$ghost-border-width});
+	}
+}
+
+// styles
+
+.primary-button--filled {
+	background-image: linear-gradient(
+		to right,
+		$color-pink,
+		$color-met-red,
+		$color-orange
+	);
+	background-position: 0 0;
+	background-size: 200% 200%;
+}
+
+.primary-button--ghost-light {
+	background: transparent;
+	border: $ghost-border-width solid $color-white;
+	color: $color-white;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: calc(17px + #{$font-scale-base});
+	font-weight: 500;
+	line-height: 1;
+
+	&:focus:not(:disabled),
+	&:active:not(:disabled),
+	&:hover:not(:disabled) {
+		background: $color-grey-050;
+		color: $color-grey-600;
+	}
+}
+
+.primary-button--ghost-dark {
+	background: transparent;
+	border: $ghost-border-width solid $color-grey-900;
+	color: $color-grey-900;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: calc(17px + #{$font-scale-base});
+	font-weight: 500;
+	line-height: 1;
+
+	&:focus:not(:disabled),
+	&:active:not(:disabled),
+	&:hover:not(:disabled) {
+		background: $color-grey-900;
+		color: $color-white;
+	}
+
+	&.button--disabled,
+	&.button--disabled:hover,
+	&[disabled],
+	&[disabled]:hover {
+		@include primary-button-disabled-dark();
+	}
+}

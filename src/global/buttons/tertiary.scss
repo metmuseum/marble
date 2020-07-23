@@ -1,0 +1,69 @@
+.button--tertiary {
+	@include typography-body-expressive;
+	background-color: transparent;
+	border: unset;
+	border-bottom: 2px solid currentColor;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	color: currentColor;
+	cursor: pointer;
+	font-family: $metsans;
+	font-weight: 500;
+	line-height: 1.2;
+	padding: 0;
+	position: relative;
+
+	&:active {
+		color: $color-purplee;
+	}
+
+	&:after {
+		border-bottom: 2px solid transparent;
+		bottom: -2px;
+		content: "";
+		left: 0;
+		position: absolute;
+		right: 100%;
+		transition: right 0.8s 0.1s;
+	}
+
+	&:focus {
+		border-color: transparent;
+		color: $color-purplee;
+		outline: 0;
+
+		&:after {
+			border-color: currentColor;
+			content: "";
+			right: 0;
+		}
+	}
+	@media screen and (hover: hover) {
+		&:hover {
+			border-color: transparent;
+
+			&:after {
+				border-color: currentColor;
+				content: "";
+				right: 0;
+			}
+		}
+	}
+
+	&.button--disabled,
+	&[disabled] {
+		border: none;
+		color: $color-grey-600;
+		cursor: not-allowed;
+
+		&:after {
+			border: none;
+		}
+	}
+}
+
+/* Firefox: removes the inner border shown on focus */
+.button--tertiary::-moz-focus-inner {
+	border: none;
+}
