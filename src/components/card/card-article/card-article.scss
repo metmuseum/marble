@@ -54,7 +54,6 @@ $article-card-width: 250px;
 
 .article-card__header-descriptor {
 	@include typography-info-label;
-	font-weight: 500;
 	margin-bottom: $spacing-micro;
 	text-transform: uppercase;
 

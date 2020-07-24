@@ -4,7 +4,7 @@ $topic-side-height: 120px;
 .topics-slider {
     background-color: $color-grey-050;
     border-top: 1px solid $color-grey-200;
-    padding: $spacing-m 0;
+    padding: $spacing-l 0;
 
     .article-card {
         display: block;
@@ -57,6 +57,10 @@ $topic-side-height: 120px;
         height: 66px;
         top: calc(-55px + -0.75vw);
         width: 66px;
+
+        &:hover {
+            background: transparent;
+        }
 
         @media screen and (min-width: $bp-500) {
             display: block;
