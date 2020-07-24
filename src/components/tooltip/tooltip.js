@@ -114,7 +114,7 @@ export default function theTooltip() {
 			var nonMetCode = (theURL.split("/nonmet/").pop()).replace("/","").replace(new RegExp("^ht_"), '');
 			var legacyTOAHhtml = '/toah/data/content/nonmet/' + nonMetCode + '.html';
 			//DS - my test path
-			var legacyTOAHhtml = 'canned-data/' + nonMetCode + '.html';
+			//var legacyTOAHhtml = 'canned-data/' + nonMetCode + '.html';
 			needsToolTip = true;
 			isRealLink = false;
 			linkElement.classList.add('tooltip-only');
