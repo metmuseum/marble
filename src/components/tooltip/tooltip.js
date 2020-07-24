@@ -57,6 +57,23 @@ export default function theTooltip() {
 		}
 	}
 
+	function fetchLegacyTOAH(linkElement, theURL, thisToolTip) {
+
+			if (thisToolTip.classList.contains("tooltip-empty")) { //if it's empty, fill it
+				fetch(theURL)
+					.then(function (response) {
+						return response.text(); //get response as text
+					})
+					.then(function (data) {
+						thisToolTip.innerHTML = data;
+						thisToolTip.classList.remove("tooltip-empty");
+					})
+					.catch(function (err) {
+						// There was an error
+					});
+			}
+		}
+
 	function placeToolTip(event, thisToolTip) {
 		var documentX = event.pageX;
 		var documentY = event.pageY;
@@ -78,7 +95,8 @@ export default function theTooltip() {
 
 	linksToCheck.forEach((linkElement) => {
 		var theURL = linkElement.getAttribute("href");
-		var isMetLink = false;
+		var needsToolTip = false;
+		var isRealLink = false;
 
 		//are these relative links?
 		if (theURL.charAt(0) == "/") {
@@ -87,10 +105,16 @@ export default function theTooltip() {
 		}
 
 		if (theURL.includes("metmuseum.org")) {
-			isMetLink = true;
+			needsToolTip = true;
+			isRealLink = true;
 		}
 
-		if (isMetLink) {
+		if (theURL.includes("/nonmet/")) {
+			needsToolTip = true;
+			isRealLink = false;
+		}
+
+		if (needsToolTip) {
 			var popup = `
                     <div class="marble-inline-tooltip tooltip-empty">
                     </div>
@@ -100,7 +124,21 @@ export default function theTooltip() {
 			linkElement.onmouseenter = function (event) {
 				var thisToolTip = this.querySelector(".marble-inline-tooltip");
 				placeToolTip(event, thisToolTip);
-				fetchPage(linkElement, theURL, thisToolTip);
+				if (isRealLink) {
+					fetchPage(linkElement, theURL, thisToolTip);
+				} else {
+					var nonMetCode = (theURL.split("/nonmet/").pop()).replace("/","").replace(new RegExp("^ht_"), '');
+					var legacyTOAHhtml = '/toah/data/content/nonmet/' + nonMetCode + '.html'
+					//DS - my test path
+					//var legacyTOAHhtml = 'canned-data/' + nonMetCode + '.html'
+					linkElement.classList.add('nonmet');
+					linkElement.href = '#';
+					linkElement.rel = 'nonMetCode';
+					linkElement.addEventListener("click", function(e) {
+						e.preventDefault();
+					});
+					fetchLegacyTOAH(linkElement, legacyTOAHhtml, thisToolTip);
+				}
 			};
 
 			linkElement.onmouseout = function () {
