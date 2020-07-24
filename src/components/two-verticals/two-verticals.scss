@@ -75,7 +75,7 @@ $bp-500: 520px;
 
 .one-of-two-verticals {
     border-top: 1px solid $color-grey-200;
-    padding: $spacing-m 0;
+    padding: $spacing-l 0;
 
     @media screen and (min-width: $bp-large-card) {
         display: flex;

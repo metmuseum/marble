@@ -18,7 +18,7 @@
 
 //page
 .featured-vertical {
-    padding: $spacing-m 0;
+    padding: $spacing-l 0;
 
     @media screen and (min-width: $bp-large-card) {
         @include productive-component;
@@ -82,7 +82,7 @@
     
     @media screen and (min-width: $bp-large-card) {
         display: flex;
-        max-height: 38vw;
+        max-height: 45vw;
         position: sticky;
         top: 20px;
     }
@@ -90,7 +90,6 @@
 
 .featured-vertical-image__image-wrapper {
     box-shadow: 5px 4px 8px rgba(0,0,0,.3);
-    max-height: 38vw;
 	flex-basis: 50%;
     flex-grow: 1;
 }

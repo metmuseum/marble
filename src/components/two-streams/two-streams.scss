@@ -21,16 +21,16 @@ $secondary-article-card-width: 280px;
 //two streams module
 $color-understated-yellow: yellow; // TODO: remove this. sass can't find this variable and it was breaking build.
 .twostreams {
-	background-color: $color-understated-yellow;
+	background-color: $color-grey-050;
 	display: flex;
 	flex-direction: column;
-	padding: $spacing-m 0;
+	padding: $spacing-l 0;
 
 	@media screen and (min-width: $bp-large-card) {
 		display: grid;
 		grid-template-columns: 64% 30%;
 		grid-gap: $spacing-m;
-		padding: $spacing-m $spacing-component-margin;
+		padding: $spacing-l $spacing-component-margin;
 	}
 }
 
