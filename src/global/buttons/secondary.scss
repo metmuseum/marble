@@ -1,40 +1,24 @@
-.button--secondary {
-	background-color: transparent;
-	border-bottom: 2px solid currentColor;
-	color: $color-purplee;
-	cursor: pointer;
-	font-family: $metsans;
-	font-size: 18px;
+.secondary-button {
+	border: 2px solid $color-white;
+	border-radius: 5em;
+	color: $color-white;
+	font-size: calc(
+		16px + 0.5vw
+	); // TODO: replace with Evander's body copy variable, or clone
 	font-weight: 500;
-	padding: 0;
-	position: relative;
+	min-width: 200px;
+	padding: 1.1em 2em;
 
 	&:focus {
-		border-color: transparent;
-	}
-
-	&:hover,
-	&:visited {
-		color: $color-purplee;
+		border: 2px solid $color-white;
+		background-color: $color-white-opaque-70;
+		color: $color-grey-900;
 	}
 	@media screen and (hover: hover) {
 		&:hover {
-			border-color: transparent;
-		}
-	}
-
-	&.button--ghosted {
-		color: $color-black;
-	}
-
-	&.button--disabled,
-	&[disabled] {
-		border: none;
-		color: $color-grey-600;
-		cursor: auto;
-
-		&:after {
-			border: none;
+			border: 2px solid $color-white;
+			background-color: $color-white-opaque-70;
+			color: $color-grey-900;
 		}
 	}
 }

@@ -1,6 +1,5 @@
-import html from "../../.storybook/helpers/html";
+import html from "../../../.storybook/helpers/html";
 import { withKnobs, text } from "@storybook/addon-knobs";
-import "./buttons.scss";
 
 export default {
 	title: "Elements/Buttons/Tertiary",
@@ -21,7 +20,6 @@ export const tertiaryDisabled = () =>
 		<br />
 	`;
 
-// TODO: automated tests to ensure <button> and <a> styles are always identical.
 export const anchorTagTertiaryButton = () =>
 	html`
 		<a role="button" tabindex="0" class="button--tertiary">

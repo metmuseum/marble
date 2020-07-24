@@ -2,7 +2,6 @@ import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { fullWidth } from "../image-container/image-container.stories.js";
-import "./jumplink-banner.scss";
 import { useEffect } from "@storybook/client-api";
 import jumpLinkBanner from "./jumplink-banner.js";
 
@@ -55,7 +54,7 @@ const jumplinkBannerMarkup = (model) => {
 						(link) => html`
 							<a
 								href="${link.url}"
-								class="js-jump-link button--wide jumplink-banner__link button button--pill inverse--opaque"
+								class="js-jump-link button secondary-button jumplink-banner__link"
 							>
 								${link.text}
 							</a>

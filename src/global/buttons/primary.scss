@@ -75,11 +75,6 @@ $ghost-border-width: 2px;
 	background: transparent;
 	border: $ghost-border-width solid $color-white;
 	color: $color-white;
-	cursor: pointer;
-	font-family: $metsans;
-	font-size: calc(17px + #{$font-scale-base});
-	font-weight: 500;
-	line-height: 1;
 
 	&:focus:not(:disabled),
 	&:active:not(:disabled),
@@ -94,11 +89,6 @@ $ghost-border-width: 2px;
 	background: transparent;
 	border: $ghost-border-width solid $color-grey-900;
 	color: $color-grey-900;
-	cursor: pointer;
-	font-family: $metsans;
-	font-size: calc(17px + #{$font-scale-base});
-	font-weight: 500;
-	line-height: 1;
 
 	&:focus:not(:disabled),
 	&:active:not(:disabled),

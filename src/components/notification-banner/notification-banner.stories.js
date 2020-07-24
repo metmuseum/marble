@@ -1,5 +1,3 @@
-import "./notification-banner.scss";
-
 export default { title: 'Notification Banner' };
 
 const data = {

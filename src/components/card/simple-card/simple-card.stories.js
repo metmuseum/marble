@@ -1,4 +1,3 @@
-import "./simple-card.scss";
 import html from "../../../../.storybook/helpers/html";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 

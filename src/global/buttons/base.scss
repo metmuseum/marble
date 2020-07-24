@@ -3,6 +3,7 @@
 @mixin button-base {
 	// TODO: our reset goes here?
 	cursor: pointer;
+	font-family: $metsans;
 	line-height: 1;
 	margin: 0;
 

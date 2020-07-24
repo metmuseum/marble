@@ -1,5 +1,3 @@
-import "./banner.scss";
-import "../vimeo-player/vimeo-player.scss";
 import vimeoTemplate from "../vimeo-player/vimeo-player";
 
 export default { title: 'Banner' };

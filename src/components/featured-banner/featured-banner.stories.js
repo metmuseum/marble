@@ -2,7 +2,6 @@ import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import sizeStyles from "../../base/_sizes.scss";
-import "./featured-banner.scss";
 
 import image768 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
 import image960 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
