@@ -32,6 +32,16 @@ $secondary-article-card-width: 280px;
 	}
 }
 
+.primary-stream-items {
+	.article-card {
+		@media screen and (min-width: $bp-large-card) {
+			&:first-child {
+				margin-right: $spacing-s;
+			}
+		}
+	}
+}
+
 //secondary stream
 .twostreams__secondary-stream {
 
