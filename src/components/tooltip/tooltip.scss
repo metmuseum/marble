@@ -67,3 +67,18 @@
 .show-tooltip {
     display: block;
 }
+
+//not a real link, just a tooltip
+.tooltip-only {
+
+    &:after {
+        background: url('/Rodan/dist/svg/tooltip-popup.svg') no-repeat;
+        border-bottom: solid 2px white;
+        content: '';
+        display: inline-block;
+        height: 18px;
+        padding-bottom: 7px;
+        vertical-align: middle;
+        width: 19px;
+    }
+}

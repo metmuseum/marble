@@ -109,9 +109,17 @@ export default function theTooltip() {
 			isRealLink = true;
 		}
 
+		//legacy TOAH 'links to nowhere'
 		if (theURL.includes("/nonmet/")) {
+			var nonMetCode = (theURL.split("/nonmet/").pop()).replace("/","").replace(new RegExp("^ht_"), '');
+			var legacyTOAHhtml = '/toah/data/content/nonmet/' + nonMetCode + '.html';
+			//DS - my test path
+			var legacyTOAHhtml = 'canned-data/' + nonMetCode + '.html';
 			needsToolTip = true;
 			isRealLink = false;
+			linkElement.classList.add('tooltip-only');
+			linkElement.href = '#';
+			linkElement.rel = nonMetCode;
 		}
 
 		if (needsToolTip) {
@@ -127,13 +135,6 @@ export default function theTooltip() {
 				if (isRealLink) {
 					fetchPage(linkElement, theURL, thisToolTip);
 				} else {
-					var nonMetCode = (theURL.split("/nonmet/").pop()).replace("/","").replace(new RegExp("^ht_"), '');
-					var legacyTOAHhtml = '/toah/data/content/nonmet/' + nonMetCode + '.html'
-					//DS - my test path
-					//var legacyTOAHhtml = 'canned-data/' + nonMetCode + '.html'
-					linkElement.classList.add('nonmet');
-					linkElement.href = '#';
-					linkElement.rel = 'nonMetCode';
 					linkElement.addEventListener("click", function(e) {
 						e.preventDefault();
 					});
