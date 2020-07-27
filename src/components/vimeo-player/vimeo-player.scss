@@ -1,4 +1,4 @@
-@import "../../global/z-index.scss";
+@import "../../global/global";
 
 .vimeo-container {
 	opacity: 0;
@@ -32,4 +32,33 @@
 
 .vimeo-container.is-visible iframe {
 	visibility: visible;
+}
+
+.vimeo-play {
+	border: 0;
+	bottom: 0;
+	color: $color-white-opaque-70;
+	line-height: 1;
+	margin: 0;
+	padding: $spacing-xxs;
+	position: absolute;
+	right: 0;
+	transition: all 0.2s;
+	z-index: z("vimeo-play");
+
+	&:hover,
+	&:focus {
+		color: $color-white;
+	}
+}
+
+.vimeo-play__icon {
+	color: currentColor;
+	display: block;
+	max-height: $spacing-xxs;
+	max-width: $spacing-xxs;
+
+	&.is-hidden {
+		display: none;
+	}
 }
