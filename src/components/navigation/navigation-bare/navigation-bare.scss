@@ -1,6 +1,6 @@
 .navigation-bare {
     display: block;
-    padding: 0 0 $spacing-xs;
+    padding: 0 0 $spacing-micro;
 
     &:after { //enable flickity with watchCSS option
         content: 'flickity';
