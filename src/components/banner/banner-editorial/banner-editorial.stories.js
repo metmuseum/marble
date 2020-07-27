@@ -1,5 +1,3 @@
-import "../banner.scss";
-import vimeoControls from "../../vimeo-player/vimeo-controls.js";
 import vimeoTemplate from "../../vimeo-player/vimeo-player";
 import { useEffect } from "@storybook/client-api";
 

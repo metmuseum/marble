@@ -1,5 +1,5 @@
-@import "../../base/base";
-@import "../../base/mixins/layouts";
+// @import "../../base/base";
+// @import "../../base/mixins/layouts";
 
 .jumplink-banner {
 	align-items: center;
@@ -74,7 +74,11 @@
 	z-index: -1;
 
 	&:before {
-		background-image: linear-gradient(to top, $color-black-opaque-80, transparent);
+		background-image: linear-gradient(
+			to top,
+			$color-black-opaque-80,
+			transparent
+		);
 		bottom: 0;
 		content: "";
 		left: 0;

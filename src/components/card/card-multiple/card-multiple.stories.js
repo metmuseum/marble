@@ -1,5 +1,4 @@
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
-import "../card.scss";
+import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
 	title: 'Cards',

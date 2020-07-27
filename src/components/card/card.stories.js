@@ -1,5 +1,3 @@
-import "./card.scss";
-
 export default { title: 'Cards' };
 
 const data = {

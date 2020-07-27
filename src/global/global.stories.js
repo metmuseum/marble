@@ -1,5 +1,3 @@
-import "./global.scss";
-
 export default { title: "Typography" };
 
 const h1 = (text) => `<h1>${text}</h1>`;

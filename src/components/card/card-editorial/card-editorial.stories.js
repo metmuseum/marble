@@ -1,5 +1,4 @@
 import html from "../../../../.storybook/helpers/html";
-import "../card.scss";
 
 export default { title: 'Cards' };
 

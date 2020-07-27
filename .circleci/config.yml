@@ -34,7 +34,7 @@ jobs:
           at: .
       - run:
           name: "Run full chromatic. This job does not run for main. If PR: build and test. If not: build only and skip snapshots"
-          command: "npm run chromatic -- --ci --storybook-build-dir .out"
+          command: "npm run chromatic -- --ci --exit-once-uploaded --storybook-build-dir .out"
           # TODO: as soon as they support "publishOnly," or --only works, use that when not on a PR to save quota: https://github.com/chromaui/chromatic-cli/issues/141
           # command: '[[ ! -z "$CIRCLE_PULL_REQUEST" ]] && npm run chromatic -- --ci --storybook-build-dir .out || npm run chromatic -- --ci --storybook-build-dir ./.out --only ImageContainers/HalfWidth'
   deploy_gh_pages:

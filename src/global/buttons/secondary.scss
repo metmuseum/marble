@@ -1,0 +1,25 @@
+.secondary-button {
+	background-color: transparent;
+	border: 2px solid $color-white;
+	border-radius: 5em;
+	color: $color-white;
+	font-size: calc(
+		16px + 0.5vw
+	); // TODO: replace with Evander's body copy variable, or clone
+	font-weight: 500;
+	min-width: 200px;
+	padding: 1em 2.5em;
+
+	&:focus {
+		border: 2px solid $color-white;
+		background-color: $color-white-opaque-70;
+		color: $color-grey-900;
+	}
+	@media screen and (hover: hover) {
+		&:hover {
+			border: 2px solid $color-white;
+			background-color: $color-white-opaque-70;
+			color: $color-grey-900;
+		}
+	}
+}
