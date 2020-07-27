@@ -62,8 +62,3 @@
 		}
 	}
 }
-
-/* Firefox: removes the inner border shown on focus */
-.button--tertiary::-moz-focus-inner {
-	border: none;
-}

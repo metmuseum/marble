@@ -26,6 +26,12 @@ $ghost-border-width: 2px;
 	font-weight: 500;
 	transition: background-position 0.3s, color 0.3s; // match the behavior on a tags from src/global/typography
 
+	&:focus,
+	&:hover,
+	&:visited {
+		background-position: 100% 0;
+	}
+
 	&.button--disabled,
 	&.button--disabled:hover,
 	&[disabled],

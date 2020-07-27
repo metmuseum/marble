@@ -1,36 +1,84 @@
 import html from "../../../.storybook/helpers/html";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, radios } from "@storybook/addon-knobs";
 
 export default {
 	title: "Elements/Buttons/Tertiary",
 	decorators: [withKnobs],
 };
 
-export const tertiary = () =>
-	html`<button class="button--tertiary">
-			${text("Label", "Tertiary")}
-		</button>
-		<br />`;
+const permutations = {
+	elementTags: ["Button", "Anchor"],
 
-export const tertiaryDisabled = () =>
-	html`
-		<button class="button--tertiary" disabled>
-			${text("Label", "Tertiary Disabled")}
-		</button>
-		<br />
+	states: ["Active", "Inactive"],
+};
+
+const StoriesToExport = {};
+
+permutations.elementTags.forEach((elementTag) => {
+	permutations.states.forEach((state) => {
+		let storyName = [elementTag, state].join("");
+
+		StoriesToExport[storyName] = () => {
+			return buttonStoryTemplate({
+				elementTag,
+				state,
+			});
+		};
+	});
+});
+
+const buttonStoryTemplate = (options) => {
+	// reassign the options based on knobs
+	const elementTag = elementTagSelector(options.elementTag);
+	const state = stateSelector(options.state);
+
+	const finalOptions = {
+		elementTag,
+		state,
+	};
+
+	return html`
+		${finalOptions.elementTag === "Anchor"
+			? anchorTagTemplate(finalOptions)
+			: finalOptions.elementTag === "Button"
+			? buttonTagTemplate(finalOptions)
+			: "Error: no element tag selected"}
 	`;
+};
 
-export const anchorTagTertiaryButton = () =>
+const elementTagSelector = (defaultValue) => {
+	const label = "Element Tag";
+	return radios(label, permutations.elementTags, defaultValue);
+};
+
+const stateSelector = (defaultValue) => {
+	const label = "State";
+	return radios(label, permutations.states, defaultValue);
+};
+
+const buttonTagTemplate = (options) =>
+	html`<button
+		class="button button--tertiary"
+		${options.state === "Inactive" ? "disabled" : ""}
+	>
+		${text("Label", "Tertiary")}
+	</button> `;
+
+const anchorTagTemplate = (options) =>
 	html`
-		<a role="button" tabindex="0" class="button--tertiary">
+		<a
+			role="button"
+			tabindex="0"
+			class="button button--tertiary"
+			${options.state === "Inactive" ? "disabled" : ""}
+		>
 			${text("Label", "Anchor Tag Styled As Tertiary Button")}
 		</a>
-		<br />
 	`;
 
-export const anchorTagTertiaryButtonDisabled = () =>
-	html`
-		<a role="button" tabindex="0" class="button--tertiary" disabled>
-			${text("Label", "Anchor Tag Styled As Tertiary Button Disabled")}
-		</a>
-	`;
+export const {
+	ButtonActive,
+	ButtonInactive,
+	AnchorActive,
+	AnchorInactive,
+} = StoriesToExport;

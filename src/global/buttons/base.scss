@@ -2,24 +2,16 @@
 
 @mixin button-base {
 	// TODO: our reset goes here?
+
 	cursor: pointer;
 	font-family: $metsans;
 	line-height: 1;
 	margin: 0;
 
-	&:focus,
-	&:hover,
-	&:visited {
-		background-position: 100% 0;
-		color: $color-white;
+	/* Firefox: removes the inner border shown on focus */
+	&::-moz-focus-inner {
+		border: none;
 	}
-
-	// &.button--disabled,
-	// &.button--disabled:hover,
-	// &[disabled],
-	// &[disabled]:hover {
-	// 	// @include primary-button-disabled();
-	// }
 }
 
 .button {
