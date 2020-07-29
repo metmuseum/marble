@@ -35,12 +35,14 @@ const featuredCardMarkup = (model) => {
 				${he.decode(model.description)}
 			</div>
 			<div class="featured-card__links">
-				<a href="#" class="button button--ghosted inverse"
+				<a
+					href="#"
+					class="button primary-button primary-button--small primary-button--ghost-light"
 					>${model.primaryLink.text}</a
 				>
 				<a
 					href="#"
-					class="button--tertiary inverse featured-card__secondary-button"
+					class="button tertiary-button featured-card__secondary-button"
 					>${model.secondaryLink.text}</a
 				>
 			</div>

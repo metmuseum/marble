@@ -58,7 +58,7 @@ const stateSelector = (defaultValue) => {
 
 const buttonTagTemplate = (options) =>
 	html`<button
-		class="button button--tertiary"
+		class="button tertiary-button"
 		${options.state === "Inactive" ? "disabled" : ""}
 	>
 		${text("Label", "Tertiary")}
@@ -69,7 +69,7 @@ const anchorTagTemplate = (options) =>
 		<a
 			role="button"
 			tabindex="0"
-			class="button button--tertiary"
+			class="button tertiary-button"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Anchor Tag Styled As Tertiary Button")}
