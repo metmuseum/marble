@@ -45,14 +45,16 @@ $ghost-border-width: 2px;
 }
 
 // sizes
-
-.primary-button--small {
+@mixin primary-button--small {
 	padding: 0.7777777778em 2.5em;
 	&.primary-button--ghost-light,
 	&.primary-button--ghost-dark {
 		padding: calc(0.7777777778em - #{$ghost-border-width})
 			calc(2.5em - #{$ghost-border-width});
 	}
+}
+.primary-button--small {
+	@include primary-button--small();
 }
 
 .primary-button--large {
@@ -65,9 +67,8 @@ $ghost-border-width: 2px;
 }
 
 // styles
-
-.primary-button--filled {
-	background-image: linear-gradient(
+@mixin primary-button--filled {
+		background-image: linear-gradient(
 		to right,
 		$color-pink,
 		$color-met-red,
@@ -75,6 +76,15 @@ $ghost-border-width: 2px;
 	);
 	background-position: 0 0;
 	background-size: 200% 200%;
+	color: $color-white;
+
+	&:hover,
+	&:visited {
+		color: $color-white; // when a tag, need to override the inherit rule
+	}
+}
+.primary-button--filled {
+	@include primary-button--filled();
 }
 
 .primary-button--ghost-light {
