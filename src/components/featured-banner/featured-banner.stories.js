@@ -40,7 +40,7 @@ export const featuredBanner = () => {
 					role="button"
 					href="#"
 					tabindex="0"
-					class="button--tertiary featured-banner__link"
+					class="button tertiary-button featured-banner__link"
 				>
 					${CTA1}
 				</a>
@@ -48,7 +48,7 @@ export const featuredBanner = () => {
 					role="button"
 					href="#"
 					tabindex="0"
-					class="button--tertiary featured-banner__link"
+					class="button tertiary-button featured-banner__link"
 				>
 					${CTA2}
 				</a>
@@ -56,7 +56,7 @@ export const featuredBanner = () => {
 					role="button"
 					href="#"
 					tabindex="0"
-					class="button--tertiary featured-banner__link"
+					class="button tertiary-button featured-banner__link"
 				>
 					${CTA3}
 				</a>

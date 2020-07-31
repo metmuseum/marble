@@ -120,7 +120,7 @@ html`<div
 	</h2>
 	<div>${he.decode(bodyCopy)}</div>
 	<a
-		class="button--tertiary section-heading__text-link"
+		class="button tertiary-button section-heading__text-link"
 		role="button"
 		tabindex="0"
 		href="#"
@@ -137,7 +137,7 @@ And interpret them for your project's framework and data models:
 	<h2 class="section-heading__heading expressive">@Html.Raw(Model.Header)</h2>
 	<div>@Html.Raw(@Model.Description)</div>
 	<a
-		class="button--tertiary section-heading__text-link"
+		class="button tertiary-button section-heading__text-link"
 		role="button"
 		tabindex="0"
 		href="@Model.UrlLink"

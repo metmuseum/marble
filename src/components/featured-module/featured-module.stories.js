@@ -27,13 +27,28 @@ export const featuredModule = () => {
 				<h2>${header}</h2>
 				<p>${he.decode(bodyCopy)}</p>
 				<div>
-					<a role="button" href="#" tabindex="0" class="button--tertiary">
+					<a
+						role="button"
+						href="#"
+						tabindex="0"
+						class="button tertiary-buttton"
+					>
 						${CTA1}
 					</a>
-					<a role="button" href="#" tabindex="0" class="button--tertiary">
+					<a
+						role="button"
+						href="#"
+						tabindex="0"
+						class="button tertiary-buttton"
+					>
 						${CTA2}
 					</a>
-					<a role="button" href="#" tabindex="0" class="button--tertiary">
+					<a
+						role="button"
+						href="#"
+						tabindex="0"
+						class="button tertiary-buttton"
+					>
 						${CTA3}
 					</a>
 				</div>

@@ -19,7 +19,7 @@ const sectionHeadingMarkup = ({
 		</h2>
 		<div>${he.decode(bodyCopy)}</div>
 		<a
-			class="button--tertiary section-heading__text-link"
+			class="button tertiary-button section-heading__text-link"
 			role="button"
 			tabindex="0"
 			href="#"
