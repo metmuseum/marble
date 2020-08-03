@@ -9,6 +9,7 @@
 		"flickity-imagesloaded": "^2.0.0",
 		"he": "^1.2.0",
 		"intersection-observer": "^0.7.0",
+		"openseadragon": "^2.4.1",
 		"vanilla-lazyload": "^12.5.1"
 	},
 	"devDependencies": {

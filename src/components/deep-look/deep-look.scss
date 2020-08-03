@@ -1,0 +1,83 @@
+.deep-look {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.deep-look__essay {
+    width: 40vw;
+    padding: 7%;
+    box-sizing: border-box;
+}
+
+.deep-look__image {
+    background-color: #000;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 60vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.deep-look__heading {
+    font-family: "MetSerif", "Georgia", "Times New Roman", Times, serif;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.deep-look__entry {
+    margin: 100vh 0;
+}
+
+.deep-look__half-image {
+    margin-right: 15px;
+    width: 61%;
+    float: left;
+}
+
+.deep-look__full-image {
+    width: 100%;
+}
+
+@media (orientation: portrait) {
+
+    .deep-look {
+        display: block;
+    }
+
+    .deep-look__essay {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        top: -30vh;
+    }
+
+    .deep-look__image {
+        width: 100vw;
+    }
+
+    .deep-look__byline {
+        font-size: 3.2vw;
+        line-height: 3.6vw;
+    }
+
+    .deep-look__intro {
+        background-color: #fff;
+        padding: 3% 5%;
+        border-radius: 2px;
+        width: 70%;
+    }
+
+    .deep-look__entry {
+        background-color: #fff;
+        padding: 3% 5%;
+        width: 70%;
+        font-size: 2.8vw;
+        line-height: 4.6vw;
+    }
+
+    .deep-look__explainer {
+        line-height: 1.8;
+        font-size: 19px;
+    }
+}
