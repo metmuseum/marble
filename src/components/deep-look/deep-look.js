@@ -1,8 +1,6 @@
 import OpenSeadragon from "OpenSeadragon";
 
 export default function deepLookViewer() {
-    console.log('GOGOGOGOG');
-
     const containerElement = document.querySelector(".js-deep-look__image");
     const imageURL = containerElement.dataset.image;
     const viewer = OpenSeadragon({
