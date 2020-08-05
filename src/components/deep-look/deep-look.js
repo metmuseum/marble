@@ -24,6 +24,22 @@ export default function deepLookViewer() {
     });
 
     let homeZoom = viewer.viewport.getHomeZoom();
+
+    console.log('viewer.viewport.getHomeZoom()',viewer.viewport.getHomeZoom());
+    console.log('viewer.viewport.getHomeBounds()',viewer.viewport.getHomeBounds());
+    console.log('viewer.viewport.getBoundsWithMargins(true) ',viewer.viewport.getBoundsWithMargins(true));
+    console.log('viewer.viewport.getBoundsWithMargins(false) ',viewer.viewport.getBoundsWithMargins(false));
+
+    // let homebounds = viewer.viewport.getHomeBounds();
+    // let homeX = homebounds.x;
+    // let homeY = homebounds.y;
+    
+
+
+
+
+
+
     document.querySelector('.js-deep-look-home').setAttribute('data-z', homeZoom);
     document.querySelector('.js-deep-look-home').setAttribute('data-x', '0.5');
     document.querySelector('.js-deep-look-home').setAttribute('data-y', '0.7');
