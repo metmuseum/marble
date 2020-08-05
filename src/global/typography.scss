@@ -1,4 +1,4 @@
-@import "../base/base";
+@import "./typography/headings.scss";
 
 body {
 	@include typography-body-long;
@@ -10,6 +10,7 @@ body {
 }
 
 p {
+	font-family: inherit;
 	max-width: 40em;
 
 	.expressive-body & {
@@ -81,32 +82,6 @@ h4 {
 	}
 }
 
-h1,
-h2,
-h3 {
-	padding-bottom: $spacing-micro;
-}
-
-h1 {
-	@include typography-h1
-}
-
-h1.expressive {
-	@include typography-h1-expressive;
-}
-
-h2 {
-	@include typography-h2;
-}
-
-h3 {
-	@include typography-h3;
-}
-
-h4 {
-	@include typography-h4;
-}
-
 ol,
 ul {
 	.expressive-body & {
@@ -114,13 +89,12 @@ ul {
 	}
 }
 
+// Visually remove these empty typography tags:
 h1,
 h2,
 h3,
 h4,
 p {
-	font-family: inherit;
-
 	&:empty {
 		display: none;
 		height: 0;

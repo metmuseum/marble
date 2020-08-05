@@ -3,9 +3,7 @@
 
 //font-sizes
 $font-scale-base: 0.3vw;
-$font-scale-size-h1: 2.2vw;
 $font-scale-size: 1.5vw;
-$font-scale-size-h3: 0.25vw;
 $font-scale-size-body: 0.3vw;
 $font-scale-size-micro: 0.2vw;
 
@@ -14,9 +12,13 @@ $metsans: "MetSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 
 @mixin typography-h1 {
-	font-size: calc(44px + #{$font-scale-size-h1});
+	font-size: $textsize-xxl;
 	font-weight: bold;
 	line-height: 1.1;
+
+	&.masthead {
+		font-size: calc(46px + 2.5vw);
+	}
 
 	.fixed-width & {
 		font-size: 64px;
@@ -35,7 +37,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-h2 {
-	font-size: calc(28px + #{$font-scale-size});
+	font-size: $textsize-xl;
 	font-weight: 500;
 	line-height: 1.1;
 
@@ -49,6 +51,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-h2-subtext {
+	// TODO: check with Evander
 	font-size: calc(14px + #{$font-scale-size});
 	font-weight: 500;
 	line-height: 1.1;
@@ -62,7 +65,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-h3 {
-	font-size: calc(30px + #{$font-scale-size-h3});
+	font-size: $textsize-l;
 	font-weight: 500;
 	line-height: 1.1;
 
@@ -76,7 +79,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-h4 {
-	font-size: 24px;
+	font-size: $textsize-m;
 	font-weight: bold;
 	line-height: 1.1;
 
