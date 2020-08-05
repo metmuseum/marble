@@ -40,9 +40,9 @@ export default function deepLookViewer() {
 
 
 
-    document.querySelector('.js-deep-look-home').setAttribute('data-z', homeZoom);
-    document.querySelector('.js-deep-look-home').setAttribute('data-x', '0.5');
-    document.querySelector('.js-deep-look-home').setAttribute('data-y', '0.7');
+    // document.querySelector('.js-deep-look-home').setAttribute('data-z', homeZoom);
+    // document.querySelector('.js-deep-look-home').setAttribute('data-x', '0.5');
+    // document.querySelector('.js-deep-look-home').setAttribute('data-y', '0.7');
 
     let essayEntries = document.querySelectorAll('.js-deep-look-zoom');
 
