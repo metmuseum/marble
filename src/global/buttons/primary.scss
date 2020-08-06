@@ -1,4 +1,4 @@
-$ghost-border-width: 2px;
+$border-width-ghost: 2px;
 
 // todo: aria pressed?
 
@@ -49,8 +49,8 @@ $ghost-border-width: 2px;
 	padding: 0.7777777778em 2.5em;
 	&.primary-button--ghost-light,
 	&.primary-button--ghost-dark {
-		padding: calc(0.7777777778em - #{$ghost-border-width})
-			calc(2.5em - #{$ghost-border-width});
+		padding: calc(0.7777777778em - #{$border-width-ghost})
+			calc(2.5em - #{$border-width-ghost});
 	}
 }
 .primary-button--small {
@@ -61,14 +61,14 @@ $ghost-border-width: 2px;
 	padding: 0.7777777778em 4em;
 	&.primary-button--ghost-light,
 	&.primary-button--ghost-dark {
-		padding: calc(0.7777777778em - #{$ghost-border-width})
-			calc(4em - #{$ghost-border-width});
+		padding: calc(0.7777777778em - #{$border-width-ghost})
+			calc(4em - #{$border-width-ghost});
 	}
 }
 
 // styles
 @mixin primary-button--filled {
-		background-image: linear-gradient(
+	background-image: linear-gradient(
 		to right,
 		$color-pink,
 		$color-met-red,
@@ -89,7 +89,7 @@ $ghost-border-width: 2px;
 
 .primary-button--ghost-light {
 	background: transparent;
-	border: $ghost-border-width solid $color-white;
+	border: $border-width-ghost solid $color-white;
 	color: $color-white;
 
 	&:focus:not(:disabled),
@@ -103,7 +103,7 @@ $ghost-border-width: 2px;
 
 .primary-button--ghost-dark {
 	background: transparent;
-	border: $ghost-border-width solid $color-grey-900;
+	border: $border-width-ghost solid $color-grey-900;
 	color: $color-grey-900;
 
 	&:focus:not(:disabled),
