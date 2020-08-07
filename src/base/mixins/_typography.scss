@@ -4,7 +4,6 @@
 //font-sizes
 $font-scale-base: 0.3vw;
 $font-scale-size: 1.5vw;
-$font-scale-size-body: 0.3vw;
 $font-scale-size-micro: 0.2vw;
 
 //font stacks
@@ -93,7 +92,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 @mixin typography-body-long {
 	color: $color-grey-900;
 	font-family: $metsans;
-	font-size: calc(18px + #{$font-scale-base});
+	font-size: $textsize-s;
 	font-weight: 400;
 	line-height: 1.5555;
 }
@@ -103,7 +102,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-body-expressive {
-	font-size: calc(17px + #{$font-scale-size-body});
+	font-size: $textsize-s; // Is this okay?
 	font-weight: 500;
 	line-height: 1.3333;
 

@@ -1,31 +1,5 @@
 @import "./typography/headings.scss";
-
-body {
-	@include typography-body-long;
-	-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
-
-	.fixed-width & {
-		font-size: 18px;
-	}
-}
-
-p {
-	font-family: inherit;
-	max-width: 40em;
-
-	.expressive-body & {
-		@include typography-body-expressive;
-	}
-
-	.short-body & {
-		@include typography-body-short;
-	}
-
-	.subtext & {
-		font-weight: 300;
-		line-height: 1.3333;
-	}
-}
+@import "./typography/body.scss";
 
 a {
 	border-bottom: solid 1px currentcolor;
