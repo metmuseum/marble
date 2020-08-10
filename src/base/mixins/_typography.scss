@@ -3,10 +3,7 @@
 
 //font-sizes
 $font-scale-base: 0.3vw;
-$font-scale-size-h1: 2.2vw;
 $font-scale-size: 1.5vw;
-$font-scale-size-h3: 0.25vw;
-$font-scale-size-body: 0.3vw;
 $font-scale-size-micro: 0.2vw;
 
 //font stacks
@@ -14,9 +11,13 @@ $metsans: "MetSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 
 @mixin typography-h1 {
-	font-size: calc(44px + #{$font-scale-size-h1});
+	font-size: $textsize-xxl;
 	font-weight: bold;
 	line-height: 1.1;
+
+	&.masthead {
+		font-size: calc(46px + 2.5vw);
+	}
 
 	.fixed-width & {
 		font-size: 64px;
@@ -35,7 +36,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-h2 {
-	font-size: calc(28px + #{$font-scale-size});
+	font-size: $textsize-xl;
 	font-weight: 500;
 	line-height: 1.1;
 
@@ -48,21 +49,8 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	}
 }
 
-@mixin typography-h2-subtext {
-	font-size: calc(14px + #{$font-scale-size});
-	font-weight: 500;
-	line-height: 1.1;
-
-	.fixed-width & {
-		font-size: 24px;
-		@media screen and (min-width: $bp-fixed-type) {
-			font-size: 38px;
-		}
-	}
-}
-
 @mixin typography-h3 {
-	font-size: calc(30px + #{$font-scale-size-h3});
+	font-size: $textsize-l;
 	font-weight: 500;
 	line-height: 1.1;
 
@@ -75,8 +63,13 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	}
 }
 
+@mixin typography-h2-subtext {
+	// TODO: remove/deprecate. it's now merged into h3
+	@include typography-h3();
+}
+
 @mixin typography-h4 {
-	font-size: 24px;
+	font-size: $textsize-m;
 	font-weight: bold;
 	line-height: 1.1;
 
@@ -90,7 +83,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 @mixin typography-body-long {
 	color: $color-grey-900;
 	font-family: $metsans;
-	font-size: calc(18px + #{$font-scale-base});
+	font-size: $textsize-s;
 	font-weight: 400;
 	line-height: 1.5555;
 }
@@ -100,7 +93,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-body-expressive {
-	font-size: calc(17px + #{$font-scale-size-body});
+	font-size: $textsize-s; // Is this okay?
 	font-weight: 500;
 	line-height: 1.3333;
 
