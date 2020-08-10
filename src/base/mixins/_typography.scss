@@ -49,20 +49,6 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	}
 }
 
-@mixin typography-h2-subtext {
-	// TODO: check with Evander
-	font-size: calc(14px + #{$font-scale-size});
-	font-weight: 500;
-	line-height: 1.1;
-
-	.fixed-width & {
-		font-size: 24px;
-		@media screen and (min-width: $bp-fixed-type) {
-			font-size: 38px;
-		}
-	}
-}
-
 @mixin typography-h3 {
 	font-size: $textsize-l;
 	font-weight: 500;
@@ -75,6 +61,11 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 			font-size: 36px;
 		}
 	}
+}
+
+@mixin typography-h2-subtext {
+	// TODO: remove/deprecate. it's now merged into h3
+	@include typography-h3();
 }
 
 @mixin typography-h4 {
