@@ -9,12 +9,12 @@
 
 .deep-look__essay {
     box-sizing: border-box;
-    padding: 7%;
+    padding: $spacing-l $spacing-s $spacing-l $spacing-l;
     width: 40vw;
 
     @media (orientation: portrait) {
         position: relative;
-        top: -90vh;
+        top: -40vh;
         width: 100%;
         z-index: 1;
     }
@@ -37,32 +37,20 @@
     @include typography-h1-expressive;
 }
 
+.deep-look__byline {
+    font-weight: 600;
+}
+
 .deep-look__entry {
     margin: 100vh 0;
 
     @media (orientation: portrait) {
         background-color: $color-white;
-        padding: 3% 5%;
-        width: 70%;
+        padding: $spacing-s $spacing-m;
+        width: 70vw;
     }
 }
 
-@media (orientation: portrait) {
-
-    .deep-look__byline {
-        font-size: 3.2vw;
-        line-height: 3.6vw;
-    }
-
-    .deep-look__intro {
-        background-color: $color-white;
-        border-radius: 2px;
-        padding: 3% 5%;
-        width: 70%;
-    }
-
-    .deep-look__explainer {
-        font-size: 19px;
-        line-height: 1.8;
-    }
+.deep-look__intro {
+    margin: 0 0 100vh 0;
 }
