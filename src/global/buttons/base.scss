@@ -1,0 +1,98 @@
+@import "../../base/base";
+
+@mixin button-base {
+	// TODO: our reset goes here?
+
+	cursor: pointer;
+	font-family: $metsans;
+	line-height: 1;
+	margin: 0;
+
+	/* Firefox: removes the inner border shown on focus */
+	&::-moz-focus-inner {
+		border: none;
+	}
+}
+
+.button {
+	@include button-base();
+
+	// TODO: will need to somehow migrate from the below styles?
+	&.button--pill,
+	&.button--ghosted {
+		background-color: transparent;
+		background-image: none;
+		border: solid 2px $color-grey-900;
+		color: $color-grey-900;
+		transition: all 0.3s;
+
+		&:focus {
+			background-color: $color-grey-900;
+			color: $color-white;
+		}
+
+		@media screen and (hover: hover) {
+			&:hover {
+				background-color: $color-grey-900;
+				color: $color-white;
+			}
+		}
+
+		&.inverse {
+			// used like 3 places in ghidorah, including HP hero
+			border-color: $color-white;
+			color: $color-white;
+
+			&:focus {
+				background-color: $color-white;
+				color: $color-grey-900;
+			}
+			@media screen and (hover: hover) {
+				&:hover {
+					background-color: $color-white;
+					color: $color-grey-900;
+				}
+			}
+		}
+
+		&.inverse--opaque {
+			// just used 1 for jumplink
+			border-color: $color-white;
+			color: $color-white;
+
+			&:focus {
+				background-color: $color-white-opaque-70;
+				color: $color-grey-900;
+			}
+			@media screen and (hover: hover) {
+				&:hover {
+					background-color: $color-white-opaque-70;
+					color: $color-grey-900;
+				}
+			}
+		}
+	}
+
+	&.button--pill {
+		// just used for the jumplink banner in ghidorah
+		border-radius: 50px; // TODO ?
+	}
+
+	&.button--wide {
+		// 2 uses in ghidorah,
+		// - jumplink
+		// - visit section "buy ticket" button
+		min-width: 200px; // TODO ?
+	}
+
+	&.button--cta {
+		// 3 uses in ghidorah
+		min-width: 280px; // TODO ?
+	}
+}
+
+a.button {
+	align-items: center;
+	display: inline-flex;
+	justify-content: center;
+}

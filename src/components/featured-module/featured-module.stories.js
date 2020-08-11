@@ -2,7 +2,6 @@ import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { fullWidth } from "../image-container/image-container.stories.js";
-import "./featured-module.scss";
 
 export default {
 	title: "Featured",
@@ -28,13 +27,28 @@ export const featuredModule = () => {
 				<h2>${header}</h2>
 				<p>${he.decode(bodyCopy)}</p>
 				<div>
-					<a role="button" href="#" tabindex="0" class="button--tertiary">
+					<a
+						role="button"
+						href="#"
+						tabindex="0"
+						class="button tertiary-buttton"
+					>
 						${CTA1}
 					</a>
-					<a role="button" href="#" tabindex="0" class="button--tertiary">
+					<a
+						role="button"
+						href="#"
+						tabindex="0"
+						class="button tertiary-buttton"
+					>
 						${CTA2}
 					</a>
-					<a role="button" href="#" tabindex="0" class="button--tertiary">
+					<a
+						role="button"
+						href="#"
+						tabindex="0"
+						class="button tertiary-buttton"
+					>
 						${CTA3}
 					</a>
 				</div>

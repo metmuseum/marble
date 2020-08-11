@@ -1,5 +1,3 @@
-import "./banner.scss";
-import "../vimeo-player/vimeo-player.scss";
 import html from "../../../.storybook/helpers/html";
 import vimeoTemplate from "../vimeo-player/vimeo-player";
 import vimeoControls from "../vimeo-player/vimeo-controls.js";

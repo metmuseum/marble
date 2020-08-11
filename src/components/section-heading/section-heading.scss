@@ -64,9 +64,8 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 }
 
 .section-heading__text-link,
-.section-heading__text-link.button--tertiary {
+.section-heading__text-link.tertiary-button {
 	display: block;
-	font-size: $fluid-font-size; // match figma
 	margin-top: $fluid-font-size;
 	white-space: nowrap;
 }

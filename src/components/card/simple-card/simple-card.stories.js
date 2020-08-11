@@ -1,4 +1,3 @@
-import "./simple-card.scss";
 import html from "../../../../.storybook/helpers/html";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 
@@ -45,7 +44,7 @@ const cardMarkup = (model) => {
 						<h2 class="alt simple-card__heading">${model.header}</h2>
 						<div class="simple-card__body short-body">${model.description}</div>
 						<a
-							class="button--tertiary gtm-homepage-simple-card-cta"
+							class="button tertiary-button gtm-homepage-simple-card-cta"
 							href="${model.link.url}"
 							>${model.link.text}</a
 						>

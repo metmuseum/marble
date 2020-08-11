@@ -1,0 +1,23 @@
+.secondary-button {
+	background-color: transparent;
+	border: 2px solid $color-white;
+	border-radius: 5em;
+	color: $color-white;
+	font-size: $textsize-s;
+	font-weight: 500;
+	min-width: 24ch;
+	padding: $textsize-xs 2.5em;
+
+	&:focus {
+		border: 2px solid $color-white;
+		background-color: $color-white-opaque-70;
+		color: $color-grey-900;
+	}
+	@media screen and (hover: hover) {
+		&:hover {
+			border: 2px solid $color-white;
+			background-color: $color-white-opaque-70;
+			color: $color-grey-900;
+		}
+	}
+}
