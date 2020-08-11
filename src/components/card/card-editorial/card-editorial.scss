@@ -24,7 +24,7 @@ $minimum-header-width: 350px;
 
 	.marble-card__meta {
 		display: flex;
-		flex-basis: 0;
+		flex-basis: auto;
 		@media screen and (min-width: $bp-large-card) {
 			flex-basis: 60%;
 			flex-grow: 0;
