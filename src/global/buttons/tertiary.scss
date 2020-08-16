@@ -25,7 +25,20 @@
 		left: 0;
 		position: absolute;
 		right: 100%;
-		transition: right 0.8s 0.1s;
+		transition: right 0.4s 0.2s cubic-bezier(0.35, 0.01, 0.5, 0.96);
+	}
+
+	@media screen and (hover: hover) {
+		&:hover {
+			border-color: transparent;
+			transition: border-color 0.2s ease;
+
+			&:after {
+				border-color: currentColor;
+				content: "";
+				right: 0;
+			}
+		}
 	}
 
 	&:focus {
@@ -37,17 +50,6 @@
 			border-color: currentColor;
 			content: "";
 			right: 0;
-		}
-	}
-	@media screen and (hover: hover) {
-		&:hover {
-			border-color: transparent;
-
-			&:after {
-				border-color: currentColor;
-				content: "";
-				right: 0;
-			}
 		}
 	}
 
