@@ -23,28 +23,13 @@ export default function deepLookViewer() {
         animationTime: 3,
     });
 
-    let homeZoom = viewer.viewport.getHomeZoom();
-
-    console.log('viewer.viewport.getHomeZoom()',viewer.viewport.getHomeZoom());
-    console.log('viewer.viewport.getHomeBounds()',viewer.viewport.getHomeBounds());
-    console.log('viewer.viewport.getBoundsWithMargins(true) ',viewer.viewport.getBoundsWithMargins(true));
-    console.log('viewer.viewport.getBoundsWithMargins(false) ',viewer.viewport.getBoundsWithMargins(false));
-
-    // let homebounds = viewer.viewport.getHomeBounds();
-    // let homeX = homebounds.x;
-    // let homeY = homebounds.y;
-    
-
-
-
-
-
-
-    // document.querySelector('.js-deep-look-home').setAttribute('data-z', homeZoom);
-    // document.querySelector('.js-deep-look-home').setAttribute('data-x', '0.5');
-    // document.querySelector('.js-deep-look-home').setAttribute('data-y', '0.7');
+    // https://stackoverflow.com/questions/33738940/set-openseadragon-viewer-home-to-top-of-image
+    // var oldBounds = viewer.viewport.getBounds(); 
+    // var newBounds = new OpenSeadragon.Rect(0, 0, 1, oldBounds.height / oldBounds.width); 
+    // viewer.viewport.fitBounds(newBounds, true);
 
     let essayEntries = document.querySelectorAll('.js-deep-look-zoom');
+    let essayIntro = document.querySelector('.js-deep-look-intro');
 
     let config = {
         root: null,
@@ -54,7 +39,6 @@ export default function deepLookViewer() {
 
     let observer = new IntersectionObserver(onChange, config);
     essayEntries.forEach(entry => observer.observe(entry));
-
     function onChange(chunks, observer) {
         chunks.forEach(chunk => {
             if (chunk.intersectionRatio > 0) {
@@ -72,5 +56,4 @@ export default function deepLookViewer() {
         viewer.viewport.panTo(coordinates);
         viewer.viewport.zoomTo(zoomlevel);
     }
-
 }
