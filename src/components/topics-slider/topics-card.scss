@@ -3,6 +3,7 @@ $topic-side-height: 120px;
 
 .topic-card {
 	@extend .article-card;
+	color: $color-white;
 	display: block;
 	width: $topic-side-width;
 
@@ -78,4 +79,8 @@ $topic-side-height: 120px;
 .topic-card__header-heading {
 	color: $color-white;
 	font-weight: 700;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
