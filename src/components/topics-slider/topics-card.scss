@@ -1,7 +1,7 @@
 $topic-side-width: 300px;
 $topic-side-height: 120px;
 
-.topics-card {
+.topic-card {
 	@extend .article-card;
 	display: block;
 	width: $topic-side-width;
@@ -12,21 +12,60 @@ $topic-side-height: 120px;
 	}
 }
 
-.topics-card__image-wrapper--66 {
+.topic-card__image-wrapper--66 {
 	padding-bottom: 50%;
 	border-radius: 4px;
 }
 
-.topics-card__image-link {
+.topic-card__image {
+	filter: brightness(70%);
+	transform-origin: center;
+	transition: all 0.4s ease-out;
+
+	.image--active:hover &,
+	.topic-card--active:hover & {
+		transform: scale(1.06);
+	}
+
+	.image--active:focus-within &,
+	.topic-card--active:focus-within & {
+		transform: scale(1.06);
+	}
+}
+
+.topic-card__image-wrapper {
+	border-radius: 4px;
+	margin-bottom: $spacing-xxs;
+
+	@include key-image-wrapper;
+	flex-grow: 0;
+
+	@media (orientation: landscape) {
+		max-height: $height-max;
+	}
+}
+
+.topic-card__image-link {
+	@include link-reset();
 	border-radius: 4px;
 	height: $topic-side-height;
+
+	.topic-card__image-wrapper--fixed-ratio & {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
 }
 
-.topics-card__image {
-	filter: brightness(70%);
+.topic-card__image-wrapper--66 {
+	height: 0;
+	padding-bottom: 66%;
+	position: relative;
 }
 
-.topics-card__subject {
+.topic-card__subject {
 	align-items: center;
 	display: flex;
 	height: $topic-side-height;
@@ -36,7 +75,7 @@ $topic-side-height: 120px;
 	width: $topic-side-width;
 }
 
-.topics-card__header-heading {
+.topic-card__header-heading {
 	color: $color-white;
 	font-weight: 700;
 }
