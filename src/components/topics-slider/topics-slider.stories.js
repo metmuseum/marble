@@ -2,7 +2,6 @@ import html from "../../../.storybook/helpers/html";
 import { TopicsCard } from "./topics-card.stories.js";
 import topicsSlider from "./topics-slider.js";
 import { useEffect } from "@storybook/client-api";
-
 import { withKnobs } from "@storybook/addon-knobs";
 
 export default { title: "Components/Topics Slider", decorators: [withKnobs] };
