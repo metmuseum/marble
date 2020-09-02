@@ -14,7 +14,7 @@ $topic-side-height: 120px;
 }
 
 .topic-card__image-wrapper {
-	border-radius: 4px;
+	border-radius: $radius-sharp;
 	height: 0;
 	padding-bottom: 66%;
 	position: relative;
@@ -37,7 +37,7 @@ $topic-side-height: 120px;
 }
 
 .topic-card__image-wrapper {
-	border-radius: 4px;
+	border-radius: $radius-sharp;
 	margin-bottom: $spacing-xxs;
 
 	@include key-image-wrapper;
@@ -50,7 +50,7 @@ $topic-side-height: 120px;
 
 .topic-card__image-link {
 	@include link-reset();
-	border-radius: 4px;
+	border-radius: $radius-sharp;
 	height: $topic-side-height;
 
 	.topic-card__image-wrapper--fixed-ratio & {

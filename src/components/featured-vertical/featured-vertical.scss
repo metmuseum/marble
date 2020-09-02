@@ -118,7 +118,7 @@
 	position: absolute;
 	top: 0;
 	transform-origin: center;
-    border-radius: 4px;
+    border-radius: $radius-sharp;
     opacity: 0;
     transition: transform 0.4s ease-out, opacity .75s ease-in-out;
     width: 100%;
