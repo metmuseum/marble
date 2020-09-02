@@ -2,9 +2,9 @@ $topic-side-width: 300px;
 $topic-side-height: 120px;
 
 .topic-card {
-	@extend .article-card;
 	color: $color-white;
 	display: block;
+	margin-right: $spacing-xxs;
 	width: $topic-side-width;
 
 	&:first-child {
