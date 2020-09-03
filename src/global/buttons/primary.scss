@@ -18,7 +18,7 @@ $border-width-ghost: 2px;
 
 @mixin primary-button {
 	border: none;
-	border-radius: $form-radius;
+	border-radius: $radius-sharp;
 	color: $color-white;
 	cursor: pointer;
 	font-family: $metsans;

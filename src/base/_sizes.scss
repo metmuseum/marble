@@ -46,11 +46,9 @@ $textsize-m: calc(16px + 0.75vw);
 $textsize-s: calc(16px + 0.5vw);
 $textsize-xs: calc(14px + 0.5vw);
 
-//TODO- Not sure how to categorize this or if we even need it as a variable.
-//TODO- If we keep these as variables lets come up with a $TYPE-Variation naming convention
-//$radius-form, $corners-form, $br-form, $border-radius-form, etc....
-$form-radius: 4px;
-$soft-radius: 16px;
+//Corner radii
+$radius-sharp: 4px;
+$radius-soft: 16px;
 
 //Generally used with a landscape media query
 $height-max: 85vh;

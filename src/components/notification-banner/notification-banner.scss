@@ -15,7 +15,7 @@ $minimum-header-width: 350px;
 
 	&.notification-banner--productive {
 		@include productive-component();
-		border-radius: $soft-radius;
+		border-radius: $radius-soft;
 		padding: $spacing-s;
 	}
 }

@@ -10,6 +10,7 @@ import "./marble.scss";
 import global from "./global/global.mjs";
 import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner";
 import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls";
-const marble = { global, jumpLinkBanner, vimeoPlayToggle }
+import topicsSlider from "./components/topics-slider/topics-slider.js";
+const marble = { global, jumpLinkBanner, vimeoPlayToggle, topicsSlider }
 
 export default marble;

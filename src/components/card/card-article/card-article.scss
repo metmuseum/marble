@@ -97,7 +97,7 @@ $article-card-width: 250px;
 }
 
 .article-card__image-wrapper {
-	border-radius: 4px;
+	border-radius: $radius-sharp;
 	margin-bottom: $spacing-xxs;
 
 	@include key-image-wrapper;
