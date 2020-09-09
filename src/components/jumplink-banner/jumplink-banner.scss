@@ -41,7 +41,7 @@
 	}
 
 	@media (orientation: landscape) {
-		max-width: 80%;
+		max-width: 85%;
 	}
 }
 
@@ -60,7 +60,11 @@
 }
 
 .jumplink-banner__link {
-	margin: 0 $spacing-xxs $spacing-xxs;
+	margin: 0 $spacing-micro $spacing-xxs $spacing-micro;
+
+	@media (orientation: portrait) {
+		min-width: 24ch;
+	}
 }
 
 .jumplink-banner__image-wrapper {
