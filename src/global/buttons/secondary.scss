@@ -3,10 +3,10 @@
 	border: 2px solid $color-white;
 	border-radius: 5em;
 	color: $color-white;
-	font-size: $textsize-s;
+	font-size: $textsize-xs;
 	font-weight: 500;
-	min-width: 24ch;
-	padding: $textsize-xs 2.5em;
+	min-width: 16ch;
+	padding: $textsize-xs;
 
 	&:focus {
 		border: 2px solid $color-white;
