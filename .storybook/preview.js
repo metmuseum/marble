@@ -13,6 +13,7 @@ addDecorator(marbleGlobalJSDecorator);
 addDecorator(withA11y);
 
 addParameters({
+	layout: "fullscreen",
 	options: {
 		showRoots: true,
 		storySort: (previous, next) => {
