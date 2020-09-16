@@ -9,7 +9,7 @@
 .flickity-prev-next-button {
 	background-color: transparent;
 	border-radius: 0;
-	bottom: -20px;
+	bottom: $spacing-s;
 	display: block;
 	height: $spacing-xs;
 	opacity: 0.8;
@@ -20,9 +20,14 @@
 	width: $spacing-xs;
 	z-index: 99;
 
+	&:focus,
 	&:hover {
 		opacity: 1;
 		transform: translateY($spacing-xs) scale(1.1);
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 2px $color-focus-state;
 	}
 
 	&[disabled] {
