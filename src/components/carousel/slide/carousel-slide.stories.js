@@ -41,7 +41,7 @@ const mediaMarkUp = (model, video) => {
 		</div>
 	` : html`
 		<div class="carousel-slide__media-wrapper">
-			<img class="lazy carousel-slide__image" data-srcset="${model.images}" />
+			<img class="lazy carousel-slide__image" data-srcset="${model.images}" alt="just a humble alt tag"/>
 		</div>
 	`
 }

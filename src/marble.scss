@@ -1,22 +1,26 @@
+// Vendor
+@import "flickity";
+
+// Essentials
 @import "base/base";
 @import "global/global";
 
-//partials
+// Partials
 @import "components/image-container/image-container";
 @import "components/vimeo-player/vimeo-player";
 
-//Banners
+// Banners
 @import "components/banner/banner";
 @import "components/featured-banner/featured-banner";
 @import "components/notification-banner/notification-banner";
 @import "components/jumplink-banner/jumplink-banner";
 
-//Cards
+// Cards
 @import "components/card/card";
 @import "components/card/simple-card/simple-card";
 @import "components/featured-card/featured-card";
 
-//other
+// Other
 @import "components/featured-module/featured-module";
 @import "components/section-heading/section-heading";
 @import "components/carousel/carousel";

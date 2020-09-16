@@ -1,5 +1,4 @@
 import Flickity from "flickity";
-require('flickity-imagesloaded');
 
 export default function carouselComponent() {
 	const componentClass = `.js-carousel`;
@@ -18,10 +17,12 @@ export default function carouselComponent() {
 			wrapAround: false,
 			arrowShape: {
 				x0: 15,
-				x1: 65, y1: 45,
-				x2: 70, y2: 40,
-				x3: 27
-			}
+				x1: 65,
+				y1: 45,
+				x2: 70,
+				y2: 40,
+				x3: 27,
+			},
 		}).on(`change`, function () {
 			this.cells.forEach((cell) => {
 				const firstVideo = cell.element.querySelector("video");
