@@ -1,0 +1,24 @@
+.content-card {
+	max-width: 720px; // TODO: arbitrary! talk to design
+}
+
+.content-card__image {
+	height: auto;
+	width: 100%;
+}
+
+.content-card__eyebrow {
+	display: block;
+	margin: 1em 0;
+}
+
+.content-card__link {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.content-card__heading {
+	font-weight: bold;
+	line-height: (29/24);
+}

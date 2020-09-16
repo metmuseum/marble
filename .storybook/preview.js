@@ -15,7 +15,6 @@ addDecorator(withA11y);
 addParameters({
 	layout: "fullscreen",
 	options: {
-		showRoots: true,
 		storySort: (previous, next) => {
 			const [previousStory, previousMeta] = previous;
 			const [nextStory, nextMeta] = next;
