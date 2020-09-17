@@ -37,12 +37,6 @@ export default function carouselComponent() {
 			}
 		});
 
-		carousel.querySelectorAll(".js-carousel-slide").forEach((slide, index) => {
-			slide.addEventListener("video-playing", () => {
-				flickityInstance.select(index);
-			});
-		});
-
 		//This event is bubbled up when our lazyload library kicks off.
 		carousel.addEventListener("image-loaded", handleImageLoad, false);
 		//If images within the carousel have been loaded after the carousel initiated, re-calcute the size.
