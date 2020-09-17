@@ -1,0 +1,28 @@
+.byline {
+	font-size: $textsize-xs;
+	// font-weight: 600;
+	// line-height: 18px;
+}
+
+.byline__author {
+	font-weight: 500;
+
+	&:after {
+		content: "\000B7";
+		display: inline-block;
+		padding: 0 5px;
+	}
+}
+
+// 	a {
+// 		border: none;
+
+// 		&:hover {
+// 			text-decoration: underline;
+// 		}
+// 	}
+// }
+
+// .article-card__date {
+// 	font-weight: 400;
+// }
