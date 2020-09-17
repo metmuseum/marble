@@ -1,0 +1,15 @@
+@import "../../base/base";
+@import "./slide/carousel-slide";
+
+.carousel {
+	@import "./flickity-overrides";
+	display: flex;
+	overflow-x: scroll;
+	padding-bottom: $spacing-m;
+	width: 100%;
+
+	&.flickity-enabled {
+		display: block;
+		overflow-x: visible;
+	}
+}
