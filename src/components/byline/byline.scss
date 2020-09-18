@@ -1,6 +1,5 @@
 .byline {
 	font-size: $textsize-xs;
-	// font-weight: 600;
 	// line-height: 18px;
 }
 
@@ -14,15 +13,6 @@
 	}
 }
 
-// 	a {
-// 		border: none;
-
-// 		&:hover {
-// 			text-decoration: underline;
-// 		}
-// 	}
-// }
-
-// .article-card__date {
-// 	font-weight: 400;
-// }
+.byline__date {
+	font-weight: 400;
+}

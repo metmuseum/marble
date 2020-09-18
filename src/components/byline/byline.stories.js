@@ -1,11 +1,10 @@
 import html from "../../../.storybook/helpers/html";
-import withKnobs from "@storybook/addon-knobs";
-export default { title: "Components/Byline" };
+//import withKnobs from "@storybook/addon-knobs";
+//export default { title: "Components/Byline" };
 
-// export default {
-// 	title: "Byline",
-// 	addons: [withKnobs],
-// };
+import { number, withKnobs } from "@storybook/addon-knobs";
+
+export default { title: "Components/Byline", decorators: [withKnobs],};
 
 const data = {
 	name: "Jeanie Choi",
@@ -18,7 +17,7 @@ const data = {
 const cardMarkup = (model) => {
 	return html`<div class="byline">
 		<span class="byline__author">
-			<a href="${model.link.url}">${model.name}</a>
+			<a class="byline__author-link" href="${model.link.url}">${model.name}</a>
 		</span>
 		<span class="byline__date"> ${model.date} </span>
 	</div>`;
