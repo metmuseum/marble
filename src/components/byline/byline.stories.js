@@ -4,24 +4,13 @@ import { number, withKnobs } from "@storybook/addon-knobs";
 export default { title: "Components/Byline", decorators: [withKnobs] };
 
 const authors = () => {
-	const numberOfAuthors = number("Number of Authors", 2);
-	let authors = new Array(numberOfAuthors).fill("Jeanie Choi");
-
-	return authors
-		.map((author) => {
-			return authorMarkup(author);
-		})
+	return new Array(number("Number of Authors", 2))
+		.fill(authorMarkup())
 		.join(", ");
 };
 
-const authorMarkup = (author) => {
-	return html`<a class="byline__author-link" href="/">${author}</a>`;
-};
-
-const data = {
-	authors,
-	date: "January 1, 1957",
-};
+const authorMarkup = (author = "Jeanie Choi") =>
+	html`<a href="/">${author}</a>`;
 
 const bylineMarkup = (model) => {
 	return html`<div class="byline">
@@ -30,8 +19,11 @@ const bylineMarkup = (model) => {
 	</div>`;
 };
 
-const Byline = () => {
-	return bylineMarkup(data);
+const data = {
+	authors,
+	date: "January 1, 1957",
 };
+
+const Byline = () => bylineMarkup(data);
 
 export { Byline };
