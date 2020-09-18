@@ -4,16 +4,14 @@ import { number, withKnobs } from "@storybook/addon-knobs";
 export default { title: "Components/Byline", decorators: [withKnobs] };
 
 const authors = () => {
-	const numberOfAuthors = number("Number of Authors", 2); // get 2 authors from our numbers knob
-	let authors = [...Array(numberOfAuthors).keys()].map(() => {
-		return "Jeanie Choi";
-	}); // just make an array that just says "Jeanie Choi" that many times
+	const numberOfAuthors = number("Number of Authors", 2);
+	let authors = new Array(numberOfAuthors).fill("Jeanie Choi");
 
 	return authors
 		.map((author) => {
 			return authorMarkup(author);
 		})
-		.join(", "); // return all the tags as 1 html string
+		.join(", ");
 };
 
 const authorMarkup = (author) => {
