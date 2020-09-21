@@ -1,5 +1,5 @@
-// Vendor
-@import "flickity";
+// Vendor (verbose for non-webpack projects)
+@import "../node_modules/flickity/css/flickity.css";
 
 // Essentials
 @import "base/base";
