@@ -10,6 +10,7 @@
 	"dependencies": {
 		"@storybook/storybook-deployer": "github:stephenhmarsh/storybook-deployer",
 		"@vimeo/player": "^2.13.0",
+		"flickity": "^2.2.1",
 		"he": "^1.2.0",
 		"intersection-observer": "^0.7.0",
 		"smoothscroll-polyfill": "^0.4.4",

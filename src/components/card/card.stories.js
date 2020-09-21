@@ -13,9 +13,9 @@ const data = {
 	},
 };
 
-const cardMarkup = (model) => {
+const cardMarkup = (model, className) => {
 	return html`<section>
-		<div class="marble-card">
+		<div class="marble-card ${className}">
 			<a href="${model.link.url}" class="marble-card__image-link" tabindex="-1">
 				<div class="marble-card__image-wrapper">
 					<img class="marble-card__image" srcset="${model.images}" />
@@ -46,6 +46,6 @@ const cardMarkup = (model) => {
 	</section>`;
 };
 
-// export const Card = () => {
-//   return cardMarkup(data);
-// }
+export const Card = (className) => {
+  return cardMarkup(data, className);
+}
