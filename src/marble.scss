@@ -1,5 +1,7 @@
-// Vendor (verbose for non-webpack projects)
-@import "../node_modules/flickity/css/flickity.css";
+// Vendor
+//(I dont love that we cant just pull in the actual dependency from node_modules
+//but it causes issues with non-webkpack projects.
+@import "vendor/flickity";
 
 // Essentials
 @import "base/base";

@@ -1,5 +1,10 @@
 export default function videoSlide() {
-	const videosInCarouselSlides = document.querySelectorAll(`.js-carousel-slide__video`);
+	const videoSlides = [...document.querySelectorAll(`.js-carousel-slide__video`)];
+
+	const videosInCarouselSlides = videoSlides.map((videoElement)=> {
+		//Handles the case of some video libraries that nest the video element inside the container.
+		return videoElement.nodeName === "VIDEO" ? videoElement : videoELement.querySelector("video");
+	});
 
 	const handlePlay = (videoToPlay) => {
 		//Bubbles up to Carousel/any other component that might care about a video starting
@@ -7,7 +12,7 @@ export default function videoSlide() {
 
 		//Pause all other videos within *ALL* carousels on the page
 		videosInCarouselSlides.forEach((video) => {
-			(videoToPlay.id !== video.id) && video.pause();
+			videoToPlay !== video && video.pause();
 		});
 	};
 
