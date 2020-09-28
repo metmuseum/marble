@@ -39,16 +39,8 @@ export default function theTooltip() {
 						)}" />`;
 					}
 
-					var tooltipFilling = `
-					<h5 class="descriptor">
-						${typeKicker}
-					</h5>
-                    <h4>
-                        ${title}
-                    </h4>
-                    ${ogImage}
-                `;
-					thisToolTip.innerHTML = tooltipFilling;
+					var tooltipFilling = `<h5 class="descriptor">${typeKicker}</h5><h4>${title}</h4>${ogImage}`;
+					thisToolTip.insertAdjacentHTML("beforeend", tooltipFilling);
 					thisToolTip.classList.remove("tooltip-empty");
 				})
 				.catch(function (err) {
@@ -59,20 +51,20 @@ export default function theTooltip() {
 
 	function fetchLegacyTOAH(linkElement, theURL, thisToolTip) {
 
-			if (thisToolTip.classList.contains("tooltip-empty")) { //if it's empty, fill it
-				fetch(theURL)
-					.then(function (response) {
-						return response.text(); //get response as text
-					})
-					.then(function (data) {
-						thisToolTip.innerHTML = data;
-						thisToolTip.classList.remove("tooltip-empty");
-					})
-					.catch(function (err) {
-						// There was an error
-					});
-			}
+		if (thisToolTip.classList.contains("tooltip-empty")) { //if it's empty, fill it
+			fetch(theURL)
+				.then(function (response) {
+					return response.text(); //get response as text
+				})
+				.then(function (data) {
+					thisToolTip.innerHTML = data;
+					thisToolTip.classList.remove("tooltip-empty");
+				})
+				.catch(function (err) {
+					// There was an error
+				});
 		}
+	}
 
 	function placeToolTip(event, thisToolTip) {
 		var documentX = event.pageX;
@@ -125,10 +117,7 @@ export default function theTooltip() {
 		}
 
 		if (needsToolTip) {
-			var popup = `
-                    <div class="marble-inline-tooltip tooltip-empty">
-                    </div>
-                    `;
+			var popup = `<div class="marble-inline-tooltip tooltip-empty"></div>`;
 			linkElement.insertAdjacentHTML("beforeend", popup);
 
 			linkElement.onmouseenter = function (event) {

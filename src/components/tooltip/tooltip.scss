@@ -3,10 +3,10 @@
     border-radius: 4px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     display: none;
+    font-family: $metsans;
     padding: $spacing-xxs;
     position: absolute;
     width: 250px;
-    font-family: $metsans;
 
     &:after {
         border-left: 13px solid transparent;
