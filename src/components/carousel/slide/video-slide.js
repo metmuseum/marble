@@ -3,7 +3,7 @@ export default function videoSlide() {
 
 	const videosInCarouselSlides = videoSlides.map((videoElement)=> {
 		//Handles the case of some video libraries that nest the video element inside the container.
-		return videoElement.nodeName === "VIDEO" ? videoElement : videoELement.querySelector("video");
+		return videoElement.nodeName === "VIDEO" ? videoElement : videoElement.querySelector("video");
 	});
 
 	const handlePlay = (videoToPlay) => {
