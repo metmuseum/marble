@@ -1,19 +1,21 @@
 import Flickity from "flickity";
 
-const componentClass = `.js-navigation-bare`;
-export default function navigationBare() {
-
-	const navigationBare = new Flickity(componentClass, {
-		accessibility: true,
-		autoPlay: false,
-		cellAlign: 'left',
-		contain: true,
-		friction: 0.4,
-		imagesLoaded: false,
-		pageDots: false,
-		prevNextButtons: false,
-		resize: true,
-		watchCSS: true,
-		wrapAround: false
+export default function primaryStreamFlickity() {
+	const componentClass = `.js-navigation-bare`;
+	const sliders = document.querySelectorAll(componentClass);
+	sliders.forEach((slider) => {
+		const flickityInstance = new Flickity(slider, {
+			accessibility: true,
+			autoPlay: false,
+			cellAlign: 'left',
+			contain: true,
+			friction: 0.4,
+			imagesLoaded: false,
+			pageDots: false,
+			prevNextButtons: false,
+			resize: true,
+			watchCSS: true,
+			wrapAround: false
+		})
 	});
 }
