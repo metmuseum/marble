@@ -1,29 +1,32 @@
 // Vendor
-@import "flickity";
+//(I dont love that we cant just pull in the actual dependency from node_modules
+//but it causes issues with non-webkpack projects.
+@import "vendor/flickity";
 
+// Essentials
 @import "base/base";
 @import "global/global";
 
-//partials
+// Partials
 @import "components/image-container/image-container";
 @import "components/vimeo-player/vimeo-player";
 
-//Components:
-@import "components/article/article";
-@import "components/article-list/article-list";
+// Banners
 @import "components/banner/banner";
 @import "components/deep-look/deep-look";
 @import "components/featured-banner/featured-banner";
 
 @import "components/jumplink-banner/jumplink-banner";
 
-//Cards
+// Cards
 @import "components/card/card";
 @import "components/card/simple-card/simple-card";
 @import "components/featured-card/featured-card";
 @import "components/topics-slider/topics-card.scss";
 
-//other
+// Other
+@import "components/article/article";
+@import "components/article-list/article-list";
 @import "components/featured-module/featured-module";
 @import "components/featured-vertical/featured-vertical";
 @import "components/footer/footer";
@@ -35,3 +38,4 @@
 @import "components/topics-slider/topics-slider";
 @import "components/two-streams/two-streams";
 @import "components/two-verticals/two-verticals";
+@import "components/carousel/carousel";

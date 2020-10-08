@@ -18,5 +18,5 @@ module.exports = {
 		return config;
 	},
 	stories: ["../src/**/*.stories.[mj]s"],
-	addons: ["@storybook/addon-knobs/register", "@storybook/addon-a11y/register"],
+	addons: ["@storybook/addon-knobs", "@storybook/addon-a11y"],
 };
