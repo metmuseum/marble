@@ -1,6 +1,6 @@
 import html from "../../../../.storybook/helpers/html";
 import { Byline } from "../../byline/byline.stories";
-import { text, withKnobs } from "@storybook/addon-knobs";
+import { text, number, withKnobs } from "@storybook/addon-knobs";
 
 import image768 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
 import image960 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
@@ -19,7 +19,10 @@ const ArticleCard = () => {
 	sizes = "33vw";
 	topic = text("Topic", "On Art");
 	title = text("Title", "Reconnecting Protagonists of a Sahelian Past");
-	description = text("Description", "How art from the Sahel brings the region's underappreciated past to life.");
+	description = text(
+		"Description",
+		"How art from the Sahel brings the region's underappreciated past to life."
+	);
 
 	return html`<div class="article-card article-card--active">
 		<div
@@ -61,4 +64,11 @@ const ArticleCard = () => {
 	</div>`;
 };
 
-export { ArticleCard };
+const MultipleArticleCards = () => {
+	const numberOfCards = number("Number of Article Cards", 3);
+	return html` <div class="article-card__wrapper">
+		${Array(numberOfCards).fill(ArticleCard()).join(", ")}
+	</div>`;
+};
+
+export { ArticleCard, MultipleArticleCards };
