@@ -1,0 +1,57 @@
+//TODO - this is no longer true except on the homepage
+$site-width: 1200px;
+$grid-gutter: 20px;
+
+//Breakpoints
+$bp-fixed-type: 600px;
+$bp-large-card: 950px;
+
+$bp-500: 500px;
+$bp-900: 900px;
+$bp-1000: 1000px;
+$bp-1200: 1200px;
+$bp-1440: 1440px;
+$bp-2000: 2000px;
+
+//TODO: Remove unnecesarry breakpoints once we're sure they arent used anywhere.
+//These arent anywhere in Marble (But may be used in Ghidorah or another project pulling Marble in)
+$bp-two-column: $bp-900;
+$bp-banner: $bp-1200;
+$bp-extra-large: $bp-1440;
+
+:export {
+	bp900: $bp-900;
+	bp1200: $bp-1200;
+}
+
+//padding and margins
+//This is used super sparingly and won't be a part of most designs.
+$spacing-micro: calc(8px + 0.25vw);
+
+$spacing-xxs: calc(16px + 0.5vw);
+$spacing-xs: calc(24px + 0.75vw);
+$spacing-s: calc(32px + 1vw);
+$spacing-m: calc(48px + 1.5vw);
+$spacing-l: calc(64px + 2vw);
+$spacing-xl: calc(98px + 6vw);
+$spacing-xxl: calc(144px + 9vw);
+
+//This is as an outside margin to help align components with those that use width: 85vw which is an emerging standard.
+$spacing-component-margin: 7.5vw;
+
+// Fluid Typography Sizes.  Useful too when other properties like a container's margin need to match them.
+$textsize-xxl: calc(40px + 1.75vw);
+$textsize-xl: calc(28px + 1.5vw);
+$textsize-l: calc(18px + 1vw);
+$textsize-m: calc(16px + 0.75vw);
+$textsize-s: calc(16px + 0.5vw);
+$textsize-xs: calc(14px + 0.5vw);
+
+//TODO- Not sure how to categorize this or if we even need it as a variable.
+//TODO- If we keep these as variables lets come up with a $TYPE-Variation naming convention
+//$radius-form, $corners-form, $br-form, $border-radius-form, etc....
+$form-radius: 4px;
+$soft-radius: 16px;
+
+//Generally used with a landscape media query
+$height-max: 85vh;

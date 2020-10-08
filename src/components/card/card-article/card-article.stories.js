@@ -8,7 +8,7 @@ import image1440 from "../../../../.storybook/assets/images/full-width-image/seu
 
 export default {
 	title: "Cards/Article Card",
-	addons: [withKnobs],
+	decorators: [withKnobs],
 };
 
 const ArticleCard = () => {
@@ -17,7 +17,9 @@ const ArticleCard = () => {
 	link = "/";
 	srcset = html`${image768} 768w, ${image960} 960w, ${image1440} 1440w`;
 	sizes = "33vw";
-	// title = ;
+	topic = text("Topic", "On Art");
+	title = text("Title", "Reconnecting Protagonists of a Sahelian Past");
+	description = text("Description", "How art from the Sahel brings the region's underappreciated past to life.");
 
 	return html`<div class="article-card article-card--active">
 		<div
@@ -43,7 +45,7 @@ const ArticleCard = () => {
 						</a>
 					</h4>
 					<h3 class="article-card__header-heading">
-						<a href="${link}"> ${text("Title", "Boop")} </a>
+						<a href="${link}"> ${title} </a>
 					</h3>
 				</div>
 				<div class="article-card__meta">
