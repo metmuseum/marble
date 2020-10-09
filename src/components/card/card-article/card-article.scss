@@ -1,32 +1,3 @@
-$article-card-width: 250px;
-
-// TODO: move this out and suggest changing class name
-//around the cards to handle transition from flickity
-.article-card__wrapper {
-	display: flex;
-	flex-direction: column;
-
-	@media screen and (min-width: $bp-large-card) {
-		flex-direction: row;
-	}
-
-	.article-card {
-		&:first-child {
-			padding-left: $spacing-component-margin;
-			width: calc(#{$article-card-width} + #{$spacing-component-margin});
-
-			@media screen and (min-width: $bp-large-card) {
-				padding-left: 0;
-				width: 100%;
-			}
-		}
-
-		&:last-child {
-			margin-right: 0;
-		}
-	}
-}
-
 //the card
 .article-card {
 	display: flex;
@@ -36,7 +7,6 @@ $article-card-width: 250px;
 	flex-shrink: 1;
 	margin-right: $spacing-xxs;
 	position: relative;
-	width: $article-card-width;
 
 	@media screen and (min-width: $bp-large-card) {
 		width: 100%;
@@ -166,34 +136,4 @@ $article-card-width: 250px;
 
 .article-card__date {
 	font-weight: 400;
-}
-
-@mixin article-card--sideways {
-	//include at the card level to get image to the left of meta
-	flex-direction: row;
-	margin-right: 0;
-	width: 100%;
-
-	&:first-child {
-		width: 100%;
-	}
-
-	.article-card__image-wrapper {
-		flex: 0 0 28%;
-		margin-bottom: 0;
-		margin-right: $spacing-micro;
-	}
-
-	.article-card__image-wrapper--66 {
-		padding-bottom: 17%;
-	}
-
-	.article-card__header {
-		margin-bottom: $spacing-micro;
-	}
-
-	.article-card__header-heading {
-		@include typography-h4;
-		font-weight: 500;
-	}
 }
