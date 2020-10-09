@@ -1,5 +1,6 @@
 $article-card-width: 250px;
 
+// TODO: move this out and suggest changing class name
 //around the cards to handle transition from flickity
 .article-card__wrapper {
 	display: flex;
@@ -7,6 +8,22 @@ $article-card-width: 250px;
 
 	@media screen and (min-width: $bp-large-card) {
 		flex-direction: row;
+	}
+
+	.article-card {
+		&:first-child {
+			padding-left: $spacing-component-margin;
+			width: calc(#{$article-card-width} + #{$spacing-component-margin});
+
+			@media screen and (min-width: $bp-large-card) {
+				padding-left: 0;
+				width: 100%;
+			}
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 }
 
@@ -23,20 +40,6 @@ $article-card-width: 250px;
 
 	@media screen and (min-width: $bp-large-card) {
 		width: 100%;
-	}
-
-	&:first-child {
-		padding-left: $spacing-component-margin;
-		width: calc(#{$article-card-width} + #{$spacing-component-margin});
-
-		@media screen and (min-width: $bp-large-card) {
-			padding-left: 0;
-			width: 100%;
-		}
-	}
-
-	&:last-child {
-		margin-right: 0;
 	}
 }
 
@@ -137,11 +140,8 @@ $article-card-width: 250px;
 	height: 100%;
 }
 
-.article-card__meta-dates {
-	padding-bottom: $spacing-s;
-}
-
 .article-card__meta-description {
+	font-size: $textsize-xs;
 	font-weight: 400;
 	margin-bottom: $spacing-xxs;
 	line-height: 1.3;
@@ -162,28 +162,6 @@ $article-card-width: 250px;
 	flex-direction: column;
 	flex-grow: 1;
 	justify-content: space-between;
-}
-
-.article-card__meta-footer {
-	color: $color-grey-700;
-}
-
-.article-card__author {
-	font-weight: 500;
-
-	&:after {
-		content: "\000B7";
-		display: inline-block;
-		padding: 0 5px;
-	}
-
-	a {
-		border: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
 }
 
 .article-card__date {

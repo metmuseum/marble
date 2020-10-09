@@ -1,6 +1,6 @@
 import html from "../../../../.storybook/helpers/html";
 import { Byline } from "../../byline/byline.stories";
-import { text, number, withKnobs } from "@storybook/addon-knobs";
+import { text, withKnobs } from "@storybook/addon-knobs";
 
 import image768 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
 import image960 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
@@ -64,11 +64,5 @@ const ArticleCard = () => {
 	</div>`;
 };
 
-const MultipleArticleCards = () => {
-	const numberOfCards = number("Number of Article Cards", 3);
-	return html` <div class="article-card__wrapper">
-		${Array(numberOfCards).fill(ArticleCard()).join(", ")}
-	</div>`;
-};
 
-export { ArticleCard, MultipleArticleCards };
+export { ArticleCard };
