@@ -14,6 +14,7 @@ export default function carouselComponent() {
 			contain: true,
 			resize: true,
 			imagesLoaded: true,
+			watchCSS: true,
 			wrapAround: false,
 			arrowShape: {
 				x0: 15,

@@ -6,7 +6,7 @@
     &:after { //enable flickity with watchCSS option
         content: 'flickity';
         display: none;
-      }
+    }
     
     @media screen and (min-width: $bp-large-card) {
 
