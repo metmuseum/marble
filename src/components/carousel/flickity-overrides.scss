@@ -1,0 +1,52 @@
+.flickity-button {
+	color: inherit;
+}
+
+.flickity-button-icon {
+	fill: currentColor;
+}
+
+.flickity-prev-next-button {
+	background-color: transparent;
+	border-radius: 0;
+	bottom: $spacing-s;
+	display: block;
+	height: $spacing-xs;
+	opacity: 0.8;
+	top: auto;
+	transform: translateY($spacing-xs) scale(1);
+	transform-origin: center;
+	transition: all 0.3s;
+	width: $spacing-xs;
+	z-index: 99;
+
+	&:focus,
+	&:hover {
+		opacity: 1;
+		transform: translateY($spacing-xs) scale(1.1);
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 2px $color-focus-state;
+	}
+
+	&[disabled] {
+		display: none;
+	}
+
+	&.next {
+		right: $spacing-component-margin;
+	}
+
+	&.previous {
+		left: $spacing-component-margin;
+	}
+
+	.flickity-button-icon {
+		height: 50%;
+		left: 25%;
+		position: absolute;
+		top: 25%;
+		width: 50%;
+	}
+}
