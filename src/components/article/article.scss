@@ -1,164 +1,100 @@
-$article-sidebar-width: calc(170px + 3.5vw);
+.single-stream-wrapper,
+.single-vertical-wrapper {
+    @include productive-component;
+    margin-top: $spacing-xs;
+}
 
-//DS - there is real crap html in this module
-//we need to work around it for now
-.authorship-section {
-    strong {
-        @include typography-h4;
-        display: block;
-        font-weight: 500;
-    }
+.single-stream-heading {
+    @include typography-h2;
+    padding-bottom: 0;
+}
 
-    p {
+.article-list {
+
+    .article-card {
+        margin-top: $spacing-m;
+        margin-right: 0;
+        width: 100%;
+
         &:first-child {
-            strong {
-                &::before {
-                    content: "By ";
+            padding-left: 0;
+        }
+
+        @media screen and (min-width: $bp-500) {
+            @include article-card--sideways;
+
+            .article-card__image-wrapper {
+                margin-right: $spacing-xs;
+            }
+
+            .article-card__meta-body {
+                display: block;
+            }
+
+            .article-card__header-heading {
+                @include typography-h3
+            }
+
+            .article-card__meta-description {
+                p {
+                    max-width: none;
                 }
             }
         }
     }
-}
 
-.marble-article {
-    margin-bottom: $spacing-l;
-}
-
-.marble-article__body {
-    @include productive-component;
-    display: flex;
-    flex-direction: column;
-    margin-top: $spacing-s;
-
-    @media screen and (min-width: $bp-900) {
-        flex-direction: row;
+    .article-card__header-heading {
+        @include typography-h3
     }
 }
 
-//left column
-.marble-article__meta-wrapper {
-    @include typography-info-label;
-    font-weight: 400;
+.single-stream-wrapper {
 
-    @media screen and (min-width: $bp-900) {
-        line-height: 1.1;
-        overflow: hidden;
-        width: $article-sidebar-width;
-    }
+    .article-card:first-child {
+        margin-top: $spacing-s;
+        padding-left: 0;
 
-    h3 {
-        @include typography-h4;
-        font-weight: 500;
-    }
+        .article-card__image-wrapper {
 
-    a {
-        @media screen and (min-width: $bp-900) {
-            border: none;
-            text-decoration: none;
-    
-            &:hover {
-                text-decoration: underline;
+            @media screen and (min-width: $bp-500) {
+                flex: 0 0 46%;
+                margin-right: $spacing-s;
+                padding-bottom: 29%;
             }
         }
-    }
 
-    p {
-        margin-bottom: 11px;
-    }
+        .article-card__subject {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    li {
-        line-height: 1.7;
-        margin-bottom: 8px;
-
-        @media screen and (min-width: $bp-900) {
-            line-height: 1.3;
+        .article-card__subject-body {
+            height: auto;
         }
     }
 }
 
-.marble-article__meta {
-    padding-bottom: $spacing-xs;
-
-    &.authorship-section {
-        margin-top: 0;
-    }
-}
-
-//main coluumn
-.marble-article__text-wrapper {
-    @include typography-body-long;
-    flex: 1;
-
-    @media screen and (min-width: $bp-900) {
-        margin-left: $spacing-m;
-    }
-
-    a {
-        padding-bottom: 0;
-    }
-
-    .marble-article__meta {
-        font-size: calc(15px + .3vw);
-        margin-top: $spacing-xs;
-
-        .meta-title {
-            font-weight: 500;
-            padding-bottom: $spacing-micro;
-        }
-
-        p,
-        li {
-            margin-bottom: 15px;
-        }
-    }
-}
-
-.marble-article-end {
+.article-pagination {
     margin: $spacing-l 0;
-}
+    display: block;
+    text-align: center;
 
-//right column
-.marble-article__related-wrapper {
-    @media screen and (min-width: $bp-900) {
-        margin-left: $spacing-m;
-    }
-}
+    .ghost-button {
+        display: block;
 
-.js-toggler {
-    background-image: url('/Rodan/dist/svg/can-open.svg');
-    background-position: center left;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    padding-bottom: 0;
-    padding-left: 24px;
-
-    .js-toggled-open & {
-        background-image: url('/Rodan/dist/svg/can-close.svg');
-        background-position: center left;
-    }
-}
-
-.js-togglee {
-    margin: $spacing-micro 0 $spacing-xxs 25px;
-}
-
-.js-toggled-open {
-    .js-togglee {
-        animation-duration: 0.3s;
-        animation-name: slidein;
-        animation-timing-function: ease-in-out;
-        opacity: 1;
-    }
-}
-  
-@keyframes slidein {
-    from {
-        margin-left: 30px;
-        opacity: 0;
+        @media screen and (min-width: $bp-500) {
+            display: inline-block;
+        }
     }
 
-    to {
-        margin-left: 25px;
-        opacity: 1;
+    .ghost-button--previous {
+        margin-bottom: $spacing-xxs;
+
+        @media screen and (min-width: $bp-500) {
+            margin-bottom: 0;
+            margin-right: $spacing-xxs;
+        }
     }
 }
