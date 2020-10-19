@@ -1,4 +1,5 @@
 import Flickity from "flickity";
+require('flickity-imagesloaded');
 
 export default function carouselComponent() {
 	const componentClass = `.js-carousel`;
@@ -8,12 +9,12 @@ export default function carouselComponent() {
 			accessibility: true,
 			autoPlay: false,
 			cellAlign: "left",
-			prevNextButtons: true,
-			pageDots: false,
-			friction: 0.4,
 			contain: true,
-			resize: true,
+			friction: 0.4,
 			imagesLoaded: true,
+			pageDots: false,
+			prevNextButtons: true,
+			resize: true,
 			watchCSS: true,
 			wrapAround: false,
 			arrowShape: {
