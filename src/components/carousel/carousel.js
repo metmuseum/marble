@@ -1,41 +1,45 @@
 import Flickity from "flickity";
+import arrowShape from "./arrowShape";
 
-export default function carouselComponent() {
-	const componentClass = `.js-carousel`;
-	const carousels = document.querySelectorAll(componentClass);
+const flickityDefaults = {
+	accessibility: true,
+	autoPlay: false,
+	cellAlign: "left",
+	prevNextButtons: true,
+	pageDots: false,
+	friction: 0.4,
+	contain: true,
+	resize: true,
+	imagesLoaded: true,
+	wrapAround: false,
+	arrowShape,
+};
+
+const carousel = (options = {}) => {
+	let { selectorString } = options;
+	selectorString = selectorString || ".js-carousel";
+
+	let finalOptions = { ...flickityDefaults, ...options };
+
+	const carousels = document.querySelectorAll(selectorString);
+
 	carousels.forEach((carousel) => {
-		const flickityInstance = new Flickity(carousel, {
-			accessibility: true,
-			autoPlay: false,
-			cellAlign: "left",
-			prevNextButtons: true,
-			pageDots: false,
-			friction: 0.4,
-			contain: true,
-			resize: true,
-			imagesLoaded: true,
-			wrapAround: false,
-			arrowShape: {
-				x0: 15,
-				x1: 65,
-				y1: 45,
-				x2: 70,
-				y2: 40,
-				x3: 27,
-			},
-		}).on(`change`, function () {
-			this.cells.forEach((cell) => {
-				const firstVideo = cell.element.querySelector("video");
-				if (firstVideo !== null) {
-					firstVideo.pause();
-				}
-			});
+		const flickityInstance = new Flickity(carousel, finalOptions).on(
+			`change`,
+			function () {
+				this.cells.forEach((cell) => {
+					const firstVideo = cell.element.querySelector("video");
+					if (firstVideo !== null) {
+						firstVideo.pause();
+					}
+				});
 
-			const firstVideo = this.selectedElements[0].querySelector("video");
-			if (firstVideo !== null) {
-				firstVideo.play();
+				const firstVideo = this.selectedElements[0].querySelector("video");
+				if (firstVideo !== null) {
+					firstVideo.play();
+				}
 			}
-		});
+		);
 
 		//This event is bubbled up when our lazyload library kicks off.
 		carousel.addEventListener("image-loaded", handleImageLoad, false);
@@ -45,4 +49,7 @@ export default function carouselComponent() {
 			carousel.removeEventListener("image-loaded", handleImageLoad, false);
 		}
 	});
-}
+};
+
+export default carousel;
+export { flickityDefaults };
