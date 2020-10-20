@@ -1,25 +1,5 @@
 $article-sidebar-width: calc(170px + 3.5vw);
 
-//DS - there is real crap html in this module
-//we need to work around it for now
-.authorship-section {
-    strong {
-        @include typography-h4;
-        display: block;
-        font-weight: 500;
-    }
-
-    p {
-        &:first-child {
-            strong {
-                &::before {
-                    content: "By ";
-                }
-            }
-        }
-    }
-}
-
 .marble-article {
     margin-bottom: $spacing-l;
 }
@@ -35,7 +15,7 @@ $article-sidebar-width: calc(170px + 3.5vw);
     }
 }
 
-//left column
+//side columns
 .marble-article__meta-wrapper {
     @include typography-info-label;
     font-weight: 400;
@@ -76,15 +56,12 @@ $article-sidebar-width: calc(170px + 3.5vw);
     }
 }
 
+//items in side columns
 .marble-article__meta {
     padding-bottom: $spacing-xs;
-
-    &.authorship-section {
-        margin-top: 0;
-    }
 }
 
-//main coluumn
+//main article column
 .marble-article__text-wrapper {
     @include typography-body-long;
     flex: 1;
@@ -107,13 +84,13 @@ $article-sidebar-width: calc(170px + 3.5vw);
         }
 
         p,
-        li {
+        li { //unlcassed from sitecore/wordpress
             margin-bottom: 15px;
         }
     }
 }
 
-.marble-article-end {
+.marble-article-end { //just an hr rule to separate the article from a footnote
     margin: $spacing-l 0;
 }
 
@@ -121,44 +98,5 @@ $article-sidebar-width: calc(170px + 3.5vw);
 .marble-article__related-wrapper {
     @media screen and (min-width: $bp-900) {
         margin-left: $spacing-m;
-    }
-}
-
-.js-toggler {
-    background-image: url('/Rodan/dist/svg/can-open.svg');
-    background-position: center left;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    padding-bottom: 0;
-    padding-left: 24px;
-
-    .js-toggled-open & {
-        background-image: url('/Rodan/dist/svg/can-close.svg');
-        background-position: center left;
-    }
-}
-
-.js-togglee {
-    margin: $spacing-micro 0 $spacing-xxs 25px;
-}
-
-.js-toggled-open {
-    .js-togglee {
-        animation-duration: 0.3s;
-        animation-name: slidein;
-        animation-timing-function: ease-in-out;
-        opacity: 1;
-    }
-}
-  
-@keyframes slidein {
-    from {
-        margin-left: 30px;
-        opacity: 0;
-    }
-
-    to {
-        margin-left: 25px;
-        opacity: 1;
     }
 }

@@ -1,0 +1,27 @@
+.byline {
+	color: $color-grey-700;
+	font-size: 0;
+}
+
+.byline__authors {
+	font-size: $textsize-xs;
+	font-weight: 500;
+
+	a {
+		border: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&:after {
+		content: "\000B7";
+		display: inline-block;
+		padding: 0 0.4em;
+	}
+}
+
+.byline__date {
+	font-size: $textsize-xs;
+	font-weight: 400;
+}
