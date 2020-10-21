@@ -9,7 +9,7 @@ export default function theTooltip() {
 				})
 				.then(function (data) {
 					var document = new DOMParser().parseFromString(data, "text/html"); //convert text to html for parsing
-					var title = document.title;
+					var title = document.title.split("|")[1];
 					var type;
 					var typeKicker = '';
 
@@ -17,16 +17,11 @@ export default function theTooltip() {
 						theURL.includes("works-of-art") ||
 						theURL.includes("art/collection/search/")
 					) {
-						//it's an artwork, so do some title manipulation
-						title =
-							document.title.split("|")[1] +
-							"by " +
-							document.title.split("|")[0];
+						//it's an artwork
 						type = "artwork";
 						typeKicker = "Artwork";
 					} else {
-						//assume it's an essay, for now - get title up to the first pipe
-						title = document.title.split("|")[0];
+						//assume it's an essay
 						type = "essay";
 						typeKicker = "Essay";
 					}
@@ -39,16 +34,8 @@ export default function theTooltip() {
 						)}" />`;
 					}
 
-					var tooltipFilling = `
-					<h5 class="descriptor">
-						${typeKicker}
-					</h5>
-                    <h4>
-                        ${title}
-                    </h4>
-                    ${ogImage}
-                `;
-					thisToolTip.innerHTML = tooltipFilling;
+					var tooltipFilling = `<h5 class="descriptor">${typeKicker}</h5><h4>${title}</h4>${ogImage}`;
+					thisToolTip.insertAdjacentHTML("beforeend", tooltipFilling);
 					thisToolTip.classList.remove("tooltip-empty");
 				})
 				.catch(function (err) {
@@ -59,20 +46,20 @@ export default function theTooltip() {
 
 	function fetchLegacyTOAH(linkElement, theURL, thisToolTip) {
 
-			if (thisToolTip.classList.contains("tooltip-empty")) { //if it's empty, fill it
-				fetch(theURL)
-					.then(function (response) {
-						return response.text(); //get response as text
-					})
-					.then(function (data) {
-						thisToolTip.innerHTML = data;
-						thisToolTip.classList.remove("tooltip-empty");
-					})
-					.catch(function (err) {
-						// There was an error
-					});
-			}
+		if (thisToolTip.classList.contains("tooltip-empty")) { //if it's empty, fill it
+			fetch(theURL)
+				.then(function (response) {
+					return response.text(); //get response as text
+				})
+				.then(function (data) {
+					thisToolTip.innerHTML = data;
+					thisToolTip.classList.remove("tooltip-empty");
+				})
+				.catch(function (err) {
+					// There was an error
+				});
 		}
+	}
 
 	function placeToolTip(event, thisToolTip) {
 		var documentX = event.pageX;
@@ -125,10 +112,7 @@ export default function theTooltip() {
 		}
 
 		if (needsToolTip) {
-			var popup = `
-                    <div class="marble-inline-tooltip tooltip-empty">
-                    </div>
-                    `;
+			var popup = `<div class="marble-inline-tooltip tooltip-empty"></div>`;
 			linkElement.insertAdjacentHTML("beforeend", popup);
 
 			linkElement.onmouseenter = function (event) {
