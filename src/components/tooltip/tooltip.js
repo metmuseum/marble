@@ -9,7 +9,9 @@ export default function theTooltip() {
 				})
 				.then(function (data) {
 					var document = new DOMParser().parseFromString(data, "text/html"); //convert text to html for parsing
-					var title = document.title.split("|")[1];
+					var title = document.title;
+					var titleFirst = title.split("|")[0];
+					var titleSecond = title.split("|")[1];
 					var type;
 					var typeKicker = '';
 
@@ -18,10 +20,12 @@ export default function theTooltip() {
 						theURL.includes("art/collection/search/")
 					) {
 						//it's an artwork
+						title = titleFirst + ',' + titleSecond;
 						type = "artwork";
 						typeKicker = "Artwork";
 					} else {
 						//assume it's an essay
+						title = titleFirst;
 						type = "essay";
 						typeKicker = "Essay";
 					}
