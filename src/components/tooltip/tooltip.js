@@ -10,7 +10,7 @@ export default function theTooltip() {
 				.then(function (data) {
 					var document = new DOMParser().parseFromString(data, "text/html"); //convert text to html for parsing
 					var title = document.title;
-					var titleFirst = title.split("|")[0];
+					var titleFirst = title.split("|")[0].slice(0, -1); //thing before first pipe, with last space removed
 					var titleSecond = title.split("|")[1];
 					var type;
 					var typeKicker = '';
