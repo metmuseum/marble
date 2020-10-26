@@ -20,7 +20,7 @@ export default function theTooltip() {
 						theURL.includes("art/collection/search/")
 					) {
 						//it's an artwork
-						title = titleFirst + ',' + titleSecond;
+						title = titleFirst + '<span class="tooltip-subtitle">' + titleSecond + '</span>';
 						type = "artwork";
 						typeKicker = "Artwork";
 					} else {
@@ -33,12 +33,12 @@ export default function theTooltip() {
 					var ogImageTag = document.querySelector('meta[property~="og:image"]');
 					var ogImage = "";
 					if (ogImageTag) {
-						ogImage = `<img src="${ogImageTag.getAttribute(
+						ogImage = `<img class="tooltip-image" src="${ogImageTag.getAttribute(
 							"content"
 						)}" />`;
 					}
 
-					var tooltipFilling = `<h5 class="descriptor">${typeKicker}</h5><h4>${title}</h4>${ogImage}`;
+					var tooltipFilling = `<h5 class="tooltip-descriptor">${typeKicker}</h5><h4 class="tooltip-title">${title}</h4>${ogImage}`;
 					thisToolTip.insertAdjacentHTML("beforeend", tooltipFilling);
 					thisToolTip.classList.remove("tooltip-empty");
 				})

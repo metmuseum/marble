@@ -1,12 +1,12 @@
 .marble-inline-tooltip {
     background: white;
-    border-radius: $radius-sharp;
+    border-radius: 4px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     display: none;
+    font-family: $metsans;
     padding: $spacing-xxs;
     position: absolute;
     width: 250px;
-    font-family: $metsans;
 
     &:after {
         border-left: 13px solid transparent;
@@ -18,34 +18,34 @@
         top: -13px;
     }
 
-    h5 {
-        @include typography-label-text;
-        font-weight: 600;
-        margin-bottom: $spacing-micro;
-    }
-
-    h4 {
-        @include typography-label-field;
-        font-weight: 700;
-        margin-bottom: $spacing-xxs;
-    }
-
     a {
         border: none;
         display: block;
     }
+}
 
-    img {
-        width: 100%;
-        max-height: 227px;
-        object-fit: cover;
-        margin-bottom: -8px;
-    }
+.tooltip-title {
+    @include typography-label-field;
+    font-weight: 700;
+    margin-bottom: $spacing-xxs;
+}
 
-    p {
-        @include typography-label-field;
-        margin: $spacing-micro 0;
-    }
+.tooltip-subtitle {
+    display: block;
+    font-weight: 400;
+}
+
+.tooltip-descriptor {
+    @include typography-label-text;
+    font-weight: 600;
+    margin-bottom: $spacing-micro;
+}
+
+.tooltip-image {
+    width: 100%;
+    max-height: 227px;
+    object-fit: cover;
+    margin-bottom: -8px;
 }
 
 .tooltip-upwards {
@@ -77,6 +77,7 @@
         content: '';
         display: inline-block;
         height: 14px;
+        margin-left: 5px;
         padding-bottom: 7px;
         vertical-align: middle;
         width: 14px;
