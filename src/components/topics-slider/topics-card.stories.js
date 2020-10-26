@@ -11,9 +11,7 @@ export default { title: "Components/Topics Card", decorators: [withKnobs] };
 const TopicsCard = () => {
 	const linkTitle = text("Link Title", "This is a title");
 	return html` <div class="topic-card topic-card--active">
-		<div
-			class="topic-card__image-wrapper topic-card__image-wrapper--fixed-ratio"
-		>
+		<div class="topic-card__image-wrapper topic-card__image-wrapper--fixed-ratio fixed-width">
 			<a href="link" class="topic-card__image-link" tabindex="-1">
 				<img
 					class="topic-card__image"
