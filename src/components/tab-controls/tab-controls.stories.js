@@ -1,12 +1,12 @@
 import html from "../../../.storybook/helpers/html";
 
 export default {
-  title: "Components/Wayfinding/Tab Controls"
-}
+	title: "Components/Wayfinding/Tab Controls",
+};
 
 const TabControls = () => {
 	return html`<fieldset class="tabs-control-container">
-		${["Current", "Upcoming", "Past"]
+		${["Past", "Current", "Upcoming"]
 			.map((tabName, index) => {
 				return html` <div class="tab-controls">
 					<input
@@ -14,8 +14,8 @@ const TabControls = () => {
 						type="radio"
 						name="storybook-demo-tab-select"
 						class="tab-controls__input"
-            value="${tabName}"
-            ${index === 1 && "checked"}
+						value="${tabName}"
+						${index === 1 && "checked"}
 					/>
 					<label
 						for="${tabName}-tab-select-${index}"
@@ -29,4 +29,4 @@ const TabControls = () => {
 	</fieldset>`;
 };
 
-export { TabControls }
+export { TabControls };
