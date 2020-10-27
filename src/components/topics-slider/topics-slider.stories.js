@@ -2,14 +2,14 @@ import html from "../../../.storybook/helpers/html";
 import { TopicsCard } from "./topics-card.stories.js";
 import carousel, { flickityDefaults } from "../carousel/carousel.js";
 import { useEffect } from "@storybook/client-api";
-import { withKnobs } from "@storybook/addon-knobs";
+import { object, withKnobs } from "@storybook/addon-knobs";
 
 export default { title: "Components/Topics Slider", decorators: [withKnobs] };
 
 const TopicsSlider = () => {
-	// useEffect(()=> {
-	// 	carousel(object("Flickity Settings", flickityDefaults))
-	// });
+	useEffect(()=> {
+		carousel(object("Flickity Settings", flickityDefaults))
+	});
 	return html`
 	<section class="topics-slider">
 		<div class="stream__header">
