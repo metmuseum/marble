@@ -24,28 +24,22 @@
     }
 }
 
-.tooltip-title {
-    @include typography-label-field;
-    font-weight: 700;
-    margin-bottom: $spacing-xxs;
-}
-
-.tooltip-subtitle {
-    display: block;
-    font-weight: 400;
-}
-
 .tooltip-descriptor {
     @include typography-label-text;
     font-weight: 600;
     margin-bottom: $spacing-micro;
 }
 
+.tooltip-subtitle {
+    margin-top: 5px;
+}
+
 .tooltip-image {
-    width: 100%;
+    margin-bottom: -8px;
+    margin-top: $spacing-xxs;
     max-height: 227px;
     object-fit: cover;
-    margin-bottom: -8px;
+    width: 100%;
 }
 
 .tooltip-upwards {

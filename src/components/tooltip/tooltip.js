@@ -10,7 +10,8 @@ export default function theTooltip() {
 				.then(function (data) {
 					var document = new DOMParser().parseFromString(data, "text/html"); //convert text to html for parsing
 					var title = document.title;
-					var titleFirst = title.split("|")[0].slice(0, -1); //thing before first pipe, with last space removed
+					var subtitle = '';
+					var titleFirst = title.split("|")[0]; //thing before first pipe
 					var titleSecond = title.split("|")[1];
 					var type;
 					var typeKicker = '';
@@ -20,7 +21,8 @@ export default function theTooltip() {
 						theURL.includes("art/collection/search/")
 					) {
 						//it's an artwork
-						title = titleFirst + '<span class="tooltip-subtitle">' + titleSecond + '</span>';
+						title = titleFirst;
+						subtitle = '<h6 class="tooltip-subtitle">' + titleSecond + '</h6>'
 						type = "artwork";
 						typeKicker = "Artwork";
 					} else {
@@ -38,7 +40,7 @@ export default function theTooltip() {
 						)}" />`;
 					}
 
-					var tooltipFilling = `<h5 class="tooltip-descriptor">${typeKicker}</h5><h4 class="tooltip-title">${title}</h4>${ogImage}`;
+					var tooltipFilling = `<div class="tooltip-descriptor">${typeKicker}</div><h5 class="tooltip-title">${title}</h5">${subtitle}${ogImage}`;
 					thisToolTip.insertAdjacentHTML("beforeend", tooltipFilling);
 					thisToolTip.classList.remove("tooltip-empty");
 				})
@@ -116,7 +118,7 @@ export default function theTooltip() {
 		}
 
 		if (needsToolTip) {
-			var popup = `<div class="marble-inline-tooltip tooltip-empty"></div>`;
+			var popup = `<div class="marble-inline-tooltip fixed-width tooltip-empty"></div>`;
 			linkElement.insertAdjacentHTML("beforeend", popup);
 
 			linkElement.onmouseenter = function (event) {
