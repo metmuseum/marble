@@ -1,79 +1,88 @@
 .marble-inline-tooltip {
-    background: white;
-    border-radius: 4px;
-    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    display: none;
-    font-family: $metsans;
-    padding: $spacing-xxs;
-    position: absolute;
-    width: 250px;
+	background: $color-white;
+	border-radius: 4px;
+	box-shadow: $shadow-active;
+	display: none;
+	font-family: $metsans;
+	padding: $spacing-xxs;
+	position: absolute;
+	width: 250px;
 
-    &:after {
-        border-left: 13px solid transparent;
-        border-right: 13px solid transparent; 
-        border-bottom: 13px solid white;
-        content: "";
-        left: 22px;
-        position: absolute;
-        top: -13px;
-    }
+	&:after {
+			border-left: 13px solid transparent;
+			border-right: 13px solid transparent;
+			border-bottom: 13px solid $color-white;
+			content: "";
+			left: 22px;
+			position: absolute;
+			top: -13px;
+	}
 
-    a {
-        border: none;
-        display: block;
-    }
+	a {
+			border: none;
+			display: block;
+	}
+
+	&.is-upwards {
+		&:after {
+				border-bottom: none;
+				border-top: 13px solid $color-white;
+				left: 94px;
+				top: 100%;
+		}
+}
 }
 
 .tooltip-descriptor {
-    @include typography-label-text;
-    font-weight: 600;
-    margin-bottom: $spacing-micro;
+	@include typography-label-text;
+	font-weight: 600;
+	margin-bottom: $spacing-micro;
 }
 
 .tooltip-subtitle {
-    margin-top: 5px;
+	margin-top: 5px;
 }
 
 .tooltip-image {
-    margin-bottom: -8px;
-    margin-top: $spacing-xxs;
-    max-height: 227px;
-    object-fit: cover;
-    width: 100%;
+	margin-bottom: -8px;
+	margin-top: $spacing-xxs;
+	max-height: 227px;
+	object-fit: cover;
+	width: 100%;
 }
 
 .tooltip-upwards {
-    position: relative;
+	position: relative;
 
-    .marble-inline-tooltip {
-        bottom: 46px;
-        left: -75px;
+	.marble-inline-tooltip {
+			bottom: 46px;
+			left: -75px;
 
-        &:after {
-            border-bottom: none;
-            border-top: 13px solid #fff;
-            left: 94px;
-            top: 100%;
-        }
-    }
+			&:after {
+					border-bottom: none;
+					border-top: 13px solid $color-white;
+					left: 94px;
+					top: 100%;
+			}
+	}
 }
 
 .show-tooltip {
-    display: block;
+	display: block;
 }
 
 //not a real link, just a tooltip
 //mostly TOAH legacy "links to nowhere"
 .tooltip-only {
-    &:after {
-        background: url('/Rodan/dist/svg/tooltip-popup.svg') no-repeat;
-        border-bottom: solid 2px white;
-        content: '';
-        display: inline-block;
-        height: 14px;
-        margin-left: 5px;
-        padding-bottom: 7px;
-        vertical-align: middle;
-        width: 14px;
-    }
+	&:after {
+			background: url('/Rodan/dist/svg/tooltip-popup.svg') no-repeat;
+			border-bottom: solid 2px $color-white;
+			content: '';
+			display: inline-block;
+			height: 14px;
+			margin-left: 5px;
+			padding-bottom: 7px;
+			vertical-align: middle;
+			width: 14px;
+	}
 }
