@@ -6,7 +6,13 @@
 	font-family: $metsans;
 	padding: $spacing-xxs;
 	position: absolute;
-	width: 250px;
+    width: 250px;
+    
+    img {
+        max-height: 227px;
+        max-width: 100%;
+        object-fit: cover;
+    }
 
 	&:after {
 			border-left: 13px solid transparent;
@@ -30,7 +36,7 @@
 				left: 94px;
 				top: 100%;
 		}
-}
+    }
 }
 
 .tooltip-descriptor {
