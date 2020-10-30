@@ -7,7 +7,7 @@
 	padding: $spacing-xxs;
 	position: absolute;
 	width: 250px;
-    
+
     img {
         max-height: 227px;
         max-width: 100%;
@@ -32,7 +32,9 @@
 	}
 
 	&.is-upwards {
+
 		&:after {
+			box-shadow: -10px -10px 10px 0 $color-active-shadow;
 			left: 94px;
 			top: calc(100% - 10px);
 			transform: rotate(225deg);
