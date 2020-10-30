@@ -71,7 +71,7 @@ const H5 = () => {
 	return scalingRuleWrapper(h5Markup);
 };
 
-H5.story = { name: "H6" };
+H5.story = { name: "H5" };
 
 const h6Markup = () => {
 	return html`<h6>${text("Text", pangram)}</h6>`;
