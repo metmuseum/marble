@@ -21,6 +21,7 @@
 		"@babel/preset-env": "^7.12.1",
 		"@babel/preset-react": "^7.12.1",
 		"@storybook/addon-a11y": "^6.0.27",
+		"@storybook/addon-essentials": "^6.0.28",
 		"@storybook/addon-knobs": "^6.0.27",
 		"@storybook/html": "^6.0.27",
 		"anysort": "^2.0.0",
