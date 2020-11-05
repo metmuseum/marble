@@ -8,7 +8,6 @@
 	},
 	"sass": "src/marble.scss",
 	"dependencies": {
-		"@storybook/storybook-deployer": "github:stephenhmarsh/storybook-deployer",
 		"@vimeo/player": "^2.14.1",
 		"flickity": "^2.2.1",
 		"he": "^1.2.0",
@@ -24,6 +23,7 @@
 		"@storybook/addon-essentials": "^6.0.28",
 		"@storybook/addon-knobs": "^6.0.28",
 		"@storybook/html": "^6.0.28",
+		"@storybook/storybook-deployer": "^2.8.7",
 		"anysort": "^2.0.0",
 		"asset-config-webpack-plugin": "^1.4.0",
 		"babel-loader": "^8.1.0",
