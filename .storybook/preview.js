@@ -12,6 +12,7 @@ addDecorator(marbleGlobalJSDecorator);
 addDecorator(withA11y);
 
 export const parameters = {
+	layout: "fullscreen",
 	options: {
 		storySort: {
 			method: "alphabetical",
