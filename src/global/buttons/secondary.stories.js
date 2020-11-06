@@ -17,10 +17,8 @@ const permutations = {
 };
 
 const StoriesToExport = {
-	Anchor: () =>
-		buttonStoryTemplate({ elementTag: "Anchor", styleMode: "Ghost-Light" }),
-	Button: () =>
-		buttonTagTemplate({ elementTag: "Button", styleMode: "Ghost-Light" }),
+	Anchor: () => buttonStoryTemplate({ elementTag: "Anchor", styleMode: null }),
+	Button: () => buttonTagTemplate({ elementTag: "Button", styleMode: null }),
 };
 
 permutations.elementTags.forEach((elementTag) => {
