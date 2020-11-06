@@ -24,7 +24,7 @@ module.exports = {
 			options: {
 				// https://storybook.js.org/docs/html/essentials/introduction
 				actions: false,
-				backgrounds: false,
+				backgrounds: true,
 				controls: false,
 				docs: false,
 				toolbars: false,

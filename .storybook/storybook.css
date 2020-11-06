@@ -1,0 +1,7 @@
+/* todo: remove this. it will get fixed in 6.1.0:
+https://github.com/storybookjs/storybook/issues/8575
+*/
+
+.sb-show-main {
+	background-color: transparent;
+}
