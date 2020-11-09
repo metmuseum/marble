@@ -1,13 +1,12 @@
 import html from "../../../.storybook/helpers/html";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
+import backgroundOverride from "../../../.storybook/helpers/backgroundOverride";
 
 export default {
 	decorators: [withKnobs],
 	title: "Elements/Buttons/Primary",
 	parameters: {
-		backgrounds: {
-			default: "grey500",
-		},
+		backgrounds: null, // TODO: hopefully Chromatic supports backgrounds soon
 	},
 };
 
@@ -91,6 +90,7 @@ const buttonStoryTemplate = (options) => {
 
 const anchorTagTemplate = (options) => {
 	return html`
+		${backgroundOverride()}
 		<a
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
@@ -105,6 +105,7 @@ const anchorTagTemplate = (options) => {
 
 const buttonTagTemplate = (options) => {
 	return html`
+		${backgroundOverride()}
 		<button
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}

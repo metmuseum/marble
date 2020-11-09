@@ -1,13 +1,12 @@
 import html from "../../../.storybook/helpers/html";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
+import backgroundOverride from "../../../.storybook/helpers/backgroundOverride";
 
 export default {
 	decorators: [withKnobs],
 	title: "Elements/Buttons/Secondary",
 	parameters: {
-		backgrounds: {
-			default: "grey500",
-		},
+		backgrounds: null, // TODO: hopefully Chromatic supports backgrounds soon
 	},
 };
 
@@ -80,6 +79,7 @@ const buttonTagTemplate = (options) => {
 		? `secondary-button--${options.styleMode.toLowerCase()}`
 		: "";
 	return html`
+		${backgroundOverride()}
 		<button class="button secondary-button ${styleModifier}">
 			${text("Label", "Secondary Button")}
 		</button>
