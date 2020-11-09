@@ -54,6 +54,7 @@ const buttonStoryTemplate = (options) => {
 	};
 
 	return html`
+		${backgroundOverride()}
 		${finalOptions.elementTag === "Anchor"
 			? anchorTagTemplate(finalOptions)
 			: finalOptions.elementTag === "Button"
@@ -79,7 +80,6 @@ const buttonTagTemplate = (options) => {
 		? `secondary-button--${options.styleMode.toLowerCase()}`
 		: "";
 	return html`
-		${backgroundOverride()}
 		<button class="button secondary-button ${styleModifier}">
 			${text("Label", "Secondary Button")}
 		</button>
