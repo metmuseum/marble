@@ -1,22 +1,36 @@
 import html from "../../../.storybook/helpers/html";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
+import backgroundOverride from "../../../.storybook/helpers/backgroundOverride";
 
-// hopefully this remains self-documenting
-const permutations = {
-	elementTags: ["Button", "Anchor"],
-	// states: ["Active", "Inactive"], not designed yet
+export default {
+	decorators: [withKnobs],
+	title: "Elements/Buttons/Secondary",
+	parameters: {
+		backgrounds: null, // TODO: hopefully Chromatic supports backgrounds soon
+	},
 };
 
-const StoriesToExport = {};
+const permutations = {
+	elementTags: ["Button", "Anchor"],
+	styles: ["Ghost-Light", "Ghost-Dark"],
+};
+
+const StoriesToExport = {
+	Anchor: () => buttonStoryTemplate({ elementTag: "Anchor", styleMode: null }),
+	Button: () => buttonStoryTemplate({ elementTag: "Button", styleMode: null }),
+};
 
 permutations.elementTags.forEach((elementTag) => {
-	let storyName = elementTag;
+	permutations.styles.forEach((styleMode) => {
+		let storyName = [elementTag, styleMode.replace("-", "")].join("");
 
-	StoriesToExport[storyName] = () => {
-		return buttonStoryTemplate({
-			elementTag,
-		});
-	};
+		StoriesToExport[storyName] = () => {
+			return buttonStoryTemplate({
+				elementTag,
+				styleMode,
+			});
+		};
+	});
 });
 
 const elementTagSelector = (defaultValue) => {
@@ -24,16 +38,23 @@ const elementTagSelector = (defaultValue) => {
 	return radios(label, permutations.elementTags, defaultValue);
 };
 
+const styleSelector = (defaultValue) => {
+	const label = "Style Modes";
+	return radios(label, permutations.styles, defaultValue);
+};
+
 const buttonStoryTemplate = (options) => {
 	// reassign the options based on knobs
 	const elementTag = elementTagSelector(options.elementTag);
+	const styleMode = styleSelector(options.styleMode);
 
 	const finalOptions = {
 		elementTag,
+		styleMode,
 	};
 
 	return html`
-		${backgroundOverride}
+		${backgroundOverride()}
 		${finalOptions.elementTag === "Anchor"
 			? anchorTagTemplate(finalOptions)
 			: finalOptions.elementTag === "Button"
@@ -42,32 +63,34 @@ const buttonStoryTemplate = (options) => {
 	`;
 };
 
-const backgroundOverride = html`<style>
-	body {
-		background: #c5c7c7;
-	}
-</style>`;
-
 const anchorTagTemplate = (options) => {
+	let styleModifier = options?.styleMode
+		? `secondary-button--${options.styleMode.toLowerCase()}`
+		: "";
+
 	return html`
-		${backgroundOverride}
-		<a class="button secondary-button" role="button">
+		<a class="button secondary-button ${styleModifier}" role="button">
 			${text("Label", "Secondary Button")}
 		</a>
 	`;
 };
 
 const buttonTagTemplate = (options) => {
+	let styleModifier = options?.styleMode
+		? `secondary-button--${options.styleMode.toLowerCase()}`
+		: "";
 	return html`
-		<button class="button secondary-button">
+		<button class="button secondary-button ${styleModifier}">
 			${text("Label", "Secondary Button")}
 		</button>
 	`;
 };
 
-export default {
-	decorators: [withKnobs],
-	title: "Elements/Buttons/Secondary",
-};
-
-export const { Button, Anchor } = StoriesToExport;
+export const {
+	Button,
+	ButtonGhostLight,
+	ButtonGhostDark,
+	Anchor,
+	AnchorGhostLight,
+	AnchorGhostDark,
+} = StoriesToExport;
