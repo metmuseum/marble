@@ -1,18 +1,76 @@
+//Mode Mixins
+@mixin content-card-three-up() {
+	max-width: none;
+	width: (100%/3);
+
+	.content-card__body {
+		padding: $spacing-s;
+	}
+
+	.content-card__heading {
+		@include typography-h4;
+	}
+}
+
+@mixin two-up() {
+	max-width: none;
+	width: 50%;
+}
+
+//Styles for the "content-card__container"
+@import "__container";
+
+@import "_card-image";
+
 .content-card {
+	display: flex;
+	flex-basis: 0;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 1;
 	max-width: 720px; // TODO: arbitrary! talk to design
+
+	//Modes
+	&.has-border {
+		box-shadow: inset 0 0 1px $color-grey-900;
+	}
+
+	&.two-up {
+		@include two-up();
+	}
+
+	&.three-up {
+		@include content-card-three-up();
+	}
 }
 
-.content-card__image {
-	height: auto;
-	width: 100%;
+.content-card__body {
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: $spacing-s $spacing-component-margin;
+
+	//Last item is aligned to bottom.
+	:last-child {
+		margin-top: auto;
+	}
 }
 
+.content-card__descriptor,
 .content-card__eyebrow {
+	@include typography-tag();
 	display: block;
-	margin: 1em 0;
+	margin-bottom: $spacing-xxs;
+}
+
+.content-card__heading-link {
+	border-bottom: 0;
+	padding-bottom: 0;
 }
 
 .content-card__link {
+	&:focus,
 	&:hover {
 		text-decoration: underline;
 	}

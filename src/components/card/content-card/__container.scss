@@ -1,0 +1,38 @@
+.content-card__container {
+	display: flex;
+	flex-basis: auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	&.content-card__container--auto-fit {
+		//For Exactly Three Cards - use the three up style.
+		.content-card:nth-last-child(3):first-child,
+		.content-card:nth-last-child(3):first-child ~ .content-card {
+			@include content-card-three-up();
+		}
+
+		//For Exactly 4 cards - Two rows of two.
+		.content-card:nth-last-child(4):first-child,
+		.content-card:nth-last-child(4):first-child ~ .content-card {
+			@media screen and (min-width: $bp-large-card) {
+				flex-basis: 50%;
+			}
+		}
+	}
+}
+
+//
+// //Active State
+// .content-card--active:not(:only-child) {
+// 	transition: all 0.15s ease-out;
+//
+// 	&:focus-within {
+// 		box-shadow: $shadow-active--expressive;
+// 		z-index: z("marble-card--active");
+// 	}
+//
+// 	&:hover {
+// 		box-shadow: $shadow-active--expressive;
+// 		z-index: z("marble-card--active");
+// 	}
+// }

@@ -16,49 +16,82 @@ export default {
 	title: "Cards/Content Card",
 };
 
-const Heading = () => {
+const Heading = (index) => {
 	return html`<h3 class="content-card__heading">
 		${text(
-			"Heading",
+			` ${index} Heading`,
 			"Heading Text That Can Extend to Three Lines Maximum, Character Count 100"
 		)}
 	</h3>`;
 };
 
-const HeadingWithLink = () => {
+const HeadingWithLink = (index) => {
 	return html`
-		<a class="content-card__link" href="#some-link">${Heading()}</a>
+		<a class="content-card__heading-link" href="#some-link">${Heading(index)}</a>
 	`;
 };
 
-const ContentCard = () => {
-	// linkable heading
-	return html`<div class="content-card">
-		<img
-			class="content-card__image"
-			alt="An image alt, for accessibility"
-			width="${imageWidth}"
-			height="${imageHeight}"
-			src="${image768}"
-			srcset="
-				${image768}  768w,
-				${image960}  960w,
-				${image1440} 1440w,
-				${image2160} 2160w
-			"
-			sizes="(min-width: ${sizeVariables.bp900}) 720px, 90vw"
-		/>
-		<span class="tag content-card__eyebrow"
-			>${text("Tag Text", "tag text")}</span
-		>
-		${boolean("Heading Is A Link?", true) ? HeadingWithLink() : Heading()}
-		<p>
-			${text(
-				"Description",
-				"This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today."
-			)}
-		</p>
+const srcSet = `${image768} 768w,
+${image960}  960w,
+${image1440} 1440w,
+${image2160} 2160w`;
+
+const ContentCard = (cardModifier = "", index = "") => {
+	return html`
+	<div class="content-card ${cardModifier}">
+
+		<a href="anywhere" class="card-image__wrapper"  tabindex="-1">
+
+			<img
+				class="card-image"
+				alt="An image alt, for accessibility"
+				width="${imageWidth}"
+				height="${imageHeight}"
+				src="${image768}"
+				srcset="${srcSet}"
+				sizes="(min-width: ${sizeVariables.bp900}) 720px, 90vw"
+			/>
+		</a>
+
+		<div class="content-card__body">
+			<div class="content-card__eyebrow">${text(`${index} Tag Text`, "tag text")}</div>
+
+			${boolean(`${index} Heading Is A Link?`, true) ? HeadingWithLink(index) : Heading(index)}
+			<p>
+				${text(`${index} Description`, "This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today.")}
+			</p>
+		</div>
 	</div>`;
 };
 
-export { ContentCard };
+
+const TwoContentCards = () => {
+	return html`
+		<section class="content-card__container content-card__container--auto-fit">
+			${[
+					ContentCard("has-border", "First Card"),
+					ContentCard("has-border", "Second Card")
+				].reduce((total, card) => total + card, "")}
+		</section>`
+};
+
+const ThreeContentCards = () => {
+	return html`
+		<section class="content-card__container content-card__container--auto-fit">
+			${[
+					ContentCard("has-border", "First Card"),
+					ContentCard("has-border", "Second Card"),
+					ContentCard("has-border", "Third Card")
+				].reduce((total, card) => total + card, "")}
+		</section>`
+};
+
+const TwoUpContentCard = () => {
+	return ContentCard("two-up");
+};
+
+const ThreeUpContentCard = () => {
+	return ContentCard("three-up");
+};
+
+export { ContentCard, TwoContentCards, ThreeContentCards, ThreeUpContentCard, TwoUpContentCard };

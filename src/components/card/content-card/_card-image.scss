@@ -1,0 +1,23 @@
+.card-image__wrapper {
+	@include link-reset();
+	line-height: 0;
+}
+
+.card-image {
+	height: auto;
+	transform-origin: center;
+	transition: all 0.4s ease-out;
+	width: 100%;
+
+	//If the image is within a link with an href, zoom when hovered. (the link can either be a container or the entire card)
+	a:not([href=""]):hover & {
+		transform: scale(1.06);
+	}
+}
+
+// .image--active:hover &,
+// .marble-card--active:hover &,
+// .image--active:focus-within &,
+// .marble-card--active:focus-within & {
+// 	transform: scale(1.06);
+// }
