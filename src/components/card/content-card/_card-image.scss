@@ -1,6 +1,18 @@
 .card-image__wrapper {
 	@include link-reset();
 	line-height: 0;
+	width: 100%;
+
+	&.card-image__wrapper-fixed-ratio {
+		height: 0;
+		padding-bottom: (100% * 2/3);
+		position: relative;
+
+		&.ratio-16-9 {
+			padding-bottom: (100% * 16/9);
+		}
+		//TODO: Add whatever ratios we want
+	}
 }
 
 .card-image {
@@ -9,15 +21,17 @@
 	transition: all 0.4s ease-out;
 	width: 100%;
 
-	//If the image is within a link with an href, zoom when hovered. (the link can either be a container or the entire card)
+	//If the image is within a link with an href, zoom when hovered.
+	//(the link can either be a container or the entire card)
 	a:not([href=""]):hover & {
 		transform: scale(1.06);
 	}
-}
 
-// .image--active:hover &,
-// .marble-card--active:hover &,
-// .image--active:focus-within &,
-// .marble-card--active:focus-within & {
-// 	transform: scale(1.06);
-// }
+	.card-image__wrapper-fixed-ratio & {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}

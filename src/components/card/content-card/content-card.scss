@@ -17,9 +17,7 @@
 	width: 50%;
 }
 
-//Styles for the "content-card__container"
-@import "__container";
-
+@import "_card-container";
 @import "_card-image";
 
 .content-card {
@@ -31,16 +29,24 @@
 	max-width: 720px; // TODO: arbitrary! talk to design
 
 	//Modes
-	&.has-border {
-		box-shadow: inset 0 0 1px $color-grey-900;
-	}
-
 	&.two-up {
 		@include two-up();
 	}
 
 	&.three-up {
 		@include content-card-three-up();
+	}
+
+	&.has-border {
+		box-shadow: inset 0 0 1px $color-grey-900;
+		transition: all 0.15s ease-out;
+
+		&:hover,
+		&:focus-within {
+			box-shadow: $shadow-active--expressive;
+			z-index: z("marble-card--active");
+
+		}
 	}
 }
 
@@ -50,6 +56,10 @@
 	flex-direction: column;
 	justify-content: space-between;
 	padding: $spacing-s $spacing-component-margin;
+
+	.content-card--productive & {
+		padding: $spacing-s 0;
+	}
 
 	//Last item is aligned to bottom.
 	:last-child {
@@ -67,6 +77,11 @@
 .content-card__heading-link {
 	border-bottom: 0;
 	padding-bottom: 0;
+
+	&:focus {
+		outline: 0;
+		text-decoration: underline;
+	}
 }
 
 .content-card__link {
@@ -80,3 +95,13 @@
 	font-weight: bold;
 	line-height: (29/24);
 }
+
+
+
+
+// .image--active:hover &,
+// .marble-card--active:hover &,
+// .image--active:focus-within &,
+// .marble-card--active:focus-within & {
+// 	transform: scale(1.06);
+// }

@@ -1,5 +1,5 @@
 import html from "../../../../.storybook/helpers/html";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
 import sizeVariables from "../../../base/_sizes.scss";
 
@@ -36,9 +36,9 @@ ${image960}  960w,
 ${image1440} 1440w,
 ${image2160} 2160w`;
 
-const ContentCard = (cardModifier = "", index = "") => {
+const ContentCard = (cardMode = "", index = "") => {
 	return html`
-	<div class="content-card ${cardModifier}">
+	<div class="content-card ${cardMode}">
 
 		<a href="anywhere" class="card-image__wrapper"  tabindex="-1">
 
@@ -65,24 +65,12 @@ const ContentCard = (cardModifier = "", index = "") => {
 };
 
 
-const TwoContentCards = () => {
+const ContentCards = () => {
+	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
+	const cards = Array.apply(null, Array(cardCount)).map((card, index) => ContentCard("has-border", index + 1));
 	return html`
-		<section class="content-card__container content-card__container--auto-fit">
-			${[
-					ContentCard("has-border", "First Card"),
-					ContentCard("has-border", "Second Card")
-				].reduce((total, card) => total + card, "")}
-		</section>`
-};
-
-const ThreeContentCards = () => {
-	return html`
-		<section class="content-card__container content-card__container--auto-fit">
-			${[
-					ContentCard("has-border", "First Card"),
-					ContentCard("has-border", "Second Card"),
-					ContentCard("has-border", "Third Card")
-				].reduce((total, card) => total + card, "")}
+		<section class="card-container card-container--auto-fit">
+			${cards.reduce((total, card) => total + card, "")}
 		</section>`
 };
 
@@ -94,4 +82,14 @@ const ThreeUpContentCard = () => {
 	return ContentCard("three-up");
 };
 
-export { ContentCard, TwoContentCards, ThreeContentCards, ThreeUpContentCard, TwoUpContentCard };
+const ProductiveContentCard = () => {
+	return ContentCard("content-card--productive");
+};
+
+export {
+	ContentCard,
+	ContentCards,
+	ThreeUpContentCard,
+	TwoUpContentCard,
+	ProductiveContentCard
+};
