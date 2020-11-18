@@ -8,12 +8,6 @@
 	position: absolute;
 	width: 250px;
 
-    img {
-        max-height: 227px;
-        max-width: 100%;
-        object-fit: cover;
-    }
-
 	&:after {
 		background-color: $color-white;
 		box-shadow: -1px -2px 2px 0 $color-card-shadow;
