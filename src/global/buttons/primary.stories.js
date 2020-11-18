@@ -1,7 +1,15 @@
 import html from "../../../.storybook/helpers/html";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
+import backgroundOverride from "../../../.storybook/helpers/backgroundOverride";
 
-// hopefully this remains self-documenting
+export default {
+	decorators: [withKnobs],
+	title: "Elements/Buttons/Primary",
+	parameters: {
+		backgrounds: null, // TODO: hopefully Chromatic supports backgrounds soon
+	},
+};
+
 const permutations = {
 	elementTags: ["Button", "Anchor"],
 	modes: {
@@ -72,7 +80,6 @@ const buttonStoryTemplate = (options) => {
 	};
 
 	return html`
-		${backgroundOverride}
 		${finalOptions.elementTag === "Anchor"
 			? anchorTagTemplate(finalOptions)
 			: finalOptions.elementTag === "Button"
@@ -81,15 +88,9 @@ const buttonStoryTemplate = (options) => {
 	`;
 };
 
-const backgroundOverride = html`<style>
-	body {
-		background: #c5c7c7;
-	}
-</style>`;
-
 const anchorTagTemplate = (options) => {
 	return html`
-		${backgroundOverride}
+		${backgroundOverride()}
 		<a
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
@@ -104,6 +105,7 @@ const anchorTagTemplate = (options) => {
 
 const buttonTagTemplate = (options) => {
 	return html`
+		${backgroundOverride()}
 		<button
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
@@ -113,11 +115,6 @@ const buttonTagTemplate = (options) => {
 			${text("Label", "Primary Button")}
 		</button>
 	`;
-};
-
-export default {
-	decorators: [withKnobs],
-	title: "Elements/Buttons/Primary",
 };
 
 export const {
