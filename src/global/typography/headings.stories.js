@@ -63,4 +63,24 @@ const H4 = () => {
 
 H4.story = { name: "H4" };
 
-export { H1Masthead, H1, H1Expressive, H2, H3, H4 };
+const h5Markup = () => {
+	return html`<h5>${text("Text", pangram)}</h5>`;
+};
+
+const H5 = () => {
+	return scalingRuleWrapper(h5Markup);
+};
+
+H5.story = { name: "H5" };
+
+const h6Markup = () => {
+	return html`<h6>${text("Text", pangram)}</h6>`;
+};
+
+const H6 = () => {
+	return scalingRuleWrapper(h6Markup);
+};
+
+H6.story = { name: "H6" };
+
+export { H1Masthead, H1, H1Expressive, H2, H3, H4, H5, H6 };
