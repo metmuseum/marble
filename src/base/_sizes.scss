@@ -40,18 +40,23 @@ $spacing-xxl: calc(144px + 9vw);
 $spacing-component-margin: 7.5vw;
 
 // Fluid Typography Sizes.  Useful too when other properties like a container's margin need to match them.
-$textsize-xxl: calc(40px + 1.75vw);
-$textsize-xl: calc(28px + 1.5vw);
-$textsize-l: calc(18px + 1vw);
-$textsize-m: calc(16px + 0.75vw);
-$textsize-s: calc(16px + 0.5vw);
+$textsize-xxs: calc(11px + 0.25vw);
 $textsize-xs: calc(14px + 0.5vw);
+$textsize-s: calc(16px + 0.5vw);
+$textsize-m: calc(16px + 0.75vw);
+$textsize-l: calc(18px + 1vw);
+$textsize-xl: calc(28px + 1.5vw);
+$textsize-xxl: calc(40px + 1.75vw);
 
-//TODO- Not sure how to categorize this or if we even need it as a variable.
-//TODO- If we keep these as variables lets come up with a $TYPE-Variation naming convention
-//$radius-form, $corners-form, $br-form, $border-radius-form, etc....
-$form-radius: 4px;
-$soft-radius: 16px;
+//Border Radius
+$radius-form: 4px;
+$radius-soft: 16px;
 
 //Generally used with a landscape media query
 $height-max: 85vh;
+
+
+
+//Deprecated Variable Names: These just point to the new names.
+$form-radius: $radius-form;
+$soft-radius: $radius-soft;

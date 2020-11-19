@@ -9,6 +9,7 @@
 
 	.content-card__heading {
 		@include typography-h4;
+		font-weight: 600;
 	}
 }
 
@@ -71,6 +72,7 @@
 .content-card__eyebrow {
 	@include typography-tag();
 	display: block;
+	font-size: $textsize-xxs; //TODO add to tag maybe?
 	margin-bottom: $spacing-xxs;
 }
 
@@ -78,6 +80,7 @@
 	border-bottom: 0;
 	padding-bottom: 0;
 
+	&:hover,
 	&:focus {
 		outline: 0;
 		text-decoration: underline;
@@ -92,7 +95,7 @@
 }
 
 .content-card__heading {
-	font-weight: bold;
+	font-weight: 600;
 	line-height: (29/24);
 }
 

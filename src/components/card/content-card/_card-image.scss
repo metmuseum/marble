@@ -24,7 +24,7 @@
 	//If the image is within a link with an href, zoom when hovered.
 	//(the link can either be a container or the entire card)
 	a:not([href=""]):hover & {
-		transform: scale(1.06);
+		transform: scale(1.03);
 	}
 
 	.card-image__wrapper-fixed-ratio & {
