@@ -50,6 +50,8 @@ $textsize-xs: calc(14px + 0.5vw);
 //Corner radii
 $radius-sharp: 4px;
 $radius-soft: 16px;
+$form-radius: $radius-sharp; // TODO: deprecate
+$soft-radius: $radius-soft;  // TODO: deprecate
 
 //Generally used with a landscape media query
 $height-max: 85vh;
