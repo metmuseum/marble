@@ -1,6 +1,7 @@
 .card-image__wrapper {
 	@include link-reset();
-	flex-basis: 100%;
+	flex-basis: auto;
+	flex-shrink: 0;
 	line-height: 0;
 	width: 100%;
 
