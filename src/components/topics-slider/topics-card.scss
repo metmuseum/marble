@@ -4,7 +4,9 @@ $topic-side-height: 120px;
 .topic-card {
 	color: $color-white;
 	display: block;
+	height: $topic-side-height;
 	margin-right: $spacing-xxs;
+	overflow: hidden;
 	width: $topic-side-width;
 
 	&:first-child {
@@ -37,11 +39,10 @@ $topic-side-height: 120px;
 }
 
 .topic-card__image-wrapper {
-	border-radius: $radius-sharp;
-	margin-bottom: $spacing-xxs;
-
 	@include key-image-wrapper;
+	border-radius: $radius-sharp;
 	flex-grow: 0;
+	margin-bottom: $spacing-xxs;
 
 	@media (orientation: landscape) {
 		max-height: $height-max;
@@ -75,6 +76,7 @@ $topic-side-height: 120px;
 .topic-card__header-heading {
 	color: $color-white;
 	font-weight: 700;
+	text-align: center;
 
 	&:hover {
 		text-decoration: underline;

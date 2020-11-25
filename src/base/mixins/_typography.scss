@@ -118,12 +118,36 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	font-weight: 600;
 	line-height: 18px;
 	text-transform: uppercase;
+
+	.fixed-width & {
+		font-size: 14px;
+	}
 }
 
 @mixin typography-info-label {
 	font-size: calc(14px + #{$font-scale-size-micro});
 	font-weight: 600;
 	line-height: 18px;
+}
+
+@mixin typography-h5 {
+	font-size: calc(19px + #{$font-scale-size-micro});
+	font-weight: 700;
+	line-height: 19px;
+
+	.fixed-width & {
+		font-size: 20px;
+	}
+}
+
+@mixin typography-h6 {
+	font-size: calc(17px + #{$font-scale-size-micro});;
+	font-weight: 400;
+	line-height: 16px;
+
+	.fixed-width & {
+		font-size: 18px;
+	}
 }
 
 @mixin typography-link {

@@ -21,3 +21,16 @@
 		}
 	}
 }
+
+.secondary-button--ghost-dark {
+	background: transparent;
+	border: $border-width-ghost solid $color-grey-900;
+	color: $color-grey-900;
+
+	&:focus:not(:disabled),
+	&:active:not(:disabled),
+	&:hover:not(:disabled) {
+		background: $color-grey-900;
+		color: $color-white;
+	}
+}

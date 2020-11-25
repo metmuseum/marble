@@ -18,5 +18,19 @@ module.exports = {
 		return config;
 	},
 	stories: ["../src/**/*.stories.[mj]s"],
-	addons: ["@storybook/addon-knobs", "@storybook/addon-a11y"],
+	addons: [
+		{
+			name: "@storybook/addon-essentials",
+			options: {
+				// https://storybook.js.org/docs/html/essentials/introduction
+				actions: false,
+				backgrounds: true,
+				controls: false,
+				docs: false,
+				toolbars: false,
+			},
+		},
+		"@storybook/addon-knobs",
+		"@storybook/addon-a11y",
+	],
 };
