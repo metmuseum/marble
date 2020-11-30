@@ -9,8 +9,8 @@
 	}
 }
 
-.attendables-filter__control,
-.attendables-filter__input {
+.filter__control,
+.filter__input {
 	appearance: none;
 	border: 0;
 	border-radius: 0;
@@ -27,7 +27,7 @@
 	}
 }
 
-.attendables-filter__label {
+.filter__label {
 	background: $color-white;
 	border: 2px solid $color-grey-200;
 	border-radius: 32px;
@@ -48,16 +48,19 @@
 		border-color: $color-grey-900;
 	}
 
-	&:hover {
+	&:hover,
+	&.hover {
 		background-color: $color-grey-200;
 		cursor: pointer;
 	}
 
-	:focus + & {
+	:focus + &,
+	.focus + & {
 		background-color: $color-grey-200;
 	}
 
-	:active + & {
+	:active + &,
+	.active + & {
 		filter: brightness(0.7);
 	}
 
@@ -68,6 +71,6 @@
 	}
 }
 
-.attendables-filter__control-icon {
+.filter__control-icon {
 	margin-left: $spacing-micro;
 }
