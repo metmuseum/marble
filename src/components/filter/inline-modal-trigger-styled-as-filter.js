@@ -1,6 +1,6 @@
 import html from "../../../.storybook/helpers/html";
 
-export default () => {
+export default (checked) => {
 	return html`
 		<div class="inline-modal-trigger-styled-as-filter">
 			<input
@@ -8,6 +8,8 @@ export default () => {
 				type="checkbox"
 				class="filter__control"
 				id="Events-modal-trigger"
+				${!!checked ? "checked" : ""}
+				aria-label="Open advanced search controls"
 			/>
 			<label for="Events-modal-trigger" class="filter__label">
 				<span>

@@ -46,6 +46,11 @@
 
 	.inline-modal-trigger-styled-as-filter & {
 		border-color: $color-grey-900;
+		&.checked {
+			background: $color-grey-900;
+			border: 2px solid $color-grey-900;
+			color: $color-white;
+		}
 	}
 
 	&:hover,
@@ -68,6 +73,11 @@
 		background: $color-grey-900;
 		border: 2px solid $color-grey-900;
 		color: $color-white;
+	}
+
+	:checked.focus + &,
+	:checked:focus + & {
+		filter: brightness(0.7);
 	}
 }
 

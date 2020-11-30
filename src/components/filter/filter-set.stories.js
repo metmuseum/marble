@@ -1,5 +1,5 @@
 import html from "../../../.storybook/helpers/html";
-import { withKnobs, array } from "@storybook/addon-knobs";
+import { withKnobs, boolean, array } from "@storybook/addon-knobs";
 import options from "./options";
 import markup from "./markup";
 import trigger from "./inline-modal-trigger-styled-as-filter";
@@ -23,6 +23,9 @@ const Set = () => {
 	const names = array("Labels", defaultNames);
 	return html`
 		<fieldset class="filter-set">
+			<legend class="screen-reader-only">
+				Select optional categories to filter results
+			</legend>
 			${names
 				.map((filterName) => markup(options({ label: filterName })))
 				.join("")}
@@ -32,13 +35,19 @@ const Set = () => {
 
 const WithTrigger = () => {
 	const names = array("Labels", defaultNames);
+	const triggedOpened = boolean("Trigger Opened", false);
 	return html`
-		<fieldset class="filter-set">
-			${trigger()}
-			${names
-				.map((filterName) => markup(options({ label: filterName })))
-				.join("")}
-		</fieldset>
+		<div class="filter-set">
+			${trigger(triggedOpened)}
+			<fieldset style="display: inline-block;">
+				<legend class="screen-reader-only">
+					Select optional categories to filter results
+				</legend>
+				${names
+					.map((filterName) => markup(options({ label: filterName })))
+					.join("")}
+			</fieldset>
+		</div>
 	`;
 };
 
