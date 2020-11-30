@@ -1,6 +1,5 @@
-import idHelper from "../../../.storybook/helpers/idHelper";
 import { withKnobs } from "@storybook/addon-knobs";
-import dataHelper from "./dataHelper";
+import options from "./options";
 import markup from "./markup";
 
 export default {
@@ -8,29 +7,15 @@ export default {
 	decorators: [withKnobs],
 };
 
-const Checked = () => {
-	const options = dataHelper({ checked: true });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
+const Checked = () => markup(options({ checked: true }));
 
-const Focus = () => {
-	const options = dataHelper({ checked: true, classHelpers: "focus" });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
+const Active = () => markup(options({ checked: true, classHelpers: "active" }));
+Active.storyName = ":active";
+
+const Focus = () => markup(options({ checked: true, classHelpers: "focus" }));
 Focus.storyName = ":focus";
 
-const Hover = () => {
-	const options = dataHelper({ checked: false, classHelpers: "hover" });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
+const Hover = () => markup(options({ checked: true, classHelpers: "hover" }));
 Hover.storyName = ":hover";
 
-// hover
-// focus
-// active
-// with Icon
-
-export { Checked, Focus, Hover };
+export { Checked, Active, Focus, Hover };

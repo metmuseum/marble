@@ -1,6 +1,5 @@
-import idHelper from "../../../.storybook/helpers/idHelper";
 import { withKnobs } from "@storybook/addon-knobs";
-import dataHelper from "./dataHelper";
+import options from "./options";
 import markup from "./markup";
 
 export default {
@@ -8,35 +7,16 @@ export default {
 	decorators: [withKnobs],
 };
 
-const Unchecked = () => {
-	const options = dataHelper({ checked: false });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
-const Focus = () => {
-	const options = dataHelper({ checked: false, classHelpers: "focus" });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
-Focus.storyName = ":focus";
+const Unchecked = () => markup(options({ checked: false }));
 
-const Hover = () => {
-	const options = dataHelper({ checked: false, classHelpers: "hover" });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
-Hover.storyName = ":hover";
-
-const Active = () => {
-	const options = dataHelper({ checked: false, classHelpers: "active" });
-	options.filterId = idHelper(options.label);
-	return markup(options);
-};
+const Active = () =>
+	markup(options({ checked: false, classHelpers: "active" }));
 Active.storyName = ":active";
 
-// hover
-// focus
-// active
-// with Icon
+const Focus = () => markup(options({ checked: false, classHelpers: "focus" }));
+Focus.storyName = ":focus";
 
-export { Unchecked, Focus, Hover, Active };
+const Hover = () => markup(options({ checked: false, classHelpers: "hover" }));
+Hover.storyName = ":hover";
+
+export { Unchecked, Active, Focus, Hover };

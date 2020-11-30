@@ -1,0 +1,9 @@
+.filter-set {
+	min-width: 100%;
+	overflow: auto;
+	padding: $spacing-micro;
+	padding-right: 0;
+	position: relative;
+	white-space: nowrap;
+	z-index: z("filter-set");
+}
