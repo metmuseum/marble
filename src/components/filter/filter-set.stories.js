@@ -5,7 +5,7 @@ import markup from "./markup";
 import trigger from "./inline-modal-trigger-styled-as-filter";
 
 export default {
-	title: "Elements/Filters/Set",
+	title: "Components/Filter Set",
 	decorators: [withKnobs],
 };
 
