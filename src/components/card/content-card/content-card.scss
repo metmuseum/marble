@@ -74,6 +74,11 @@
 	display: block;
 	font-size: $textsize-xxs; //TODO add to tag maybe?
 	margin-bottom: $spacing-xxs;
+
+	&:empty {
+		display: none;
+		margin-bottom: 0;
+	}
 }
 
 .content-card__heading-link {
