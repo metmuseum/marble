@@ -15,13 +15,16 @@ const data = {
 
 const cardMarkup = (model, className) => {
 	return html`<section>
+
 		<div class="marble-card ${className}">
 			<a href="${model.link.url}" class="marble-card__image-link" tabindex="-1">
 				<div class="marble-card__image-wrapper">
 					<img class="marble-card__image" srcset="${model.images}" />
 				</div>
 			</a>
+
 			<div class="marble-card__subject">
+
 				<div class="marble-card__subject-body">
 					<h2 class="marble-card__header">
 						<a href="${model.link.url}">
@@ -41,6 +44,7 @@ const cardMarkup = (model, className) => {
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</section>`;
