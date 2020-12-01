@@ -17,18 +17,15 @@ export default {
 };
 
 const Heading = (index) => {
-	return html`<h3 class="content-card__heading">
+	return html`
 		${text(
 			` ${index} Heading`,
 			"Heading Text That Can Extend to Three Lines Maximum, Character Count 100"
-		)}
-	</h3>`;
+		)}`;
 };
 
 const HeadingWithLink = (index) => {
-	return html`
-		<a class="content-card__heading-link" href="#some-link">${Heading(index)}</a>
-	`;
+	return html` <a class="content-card__heading-link" href="#some-link">${Heading(index)}</a>`;
 };
 
 const srcSet = `${image768} 768w,
@@ -36,7 +33,7 @@ ${image960}  960w,
 ${image1440} 1440w,
 ${image2160} 2160w`;
 
-const ContentCard = (cardMode = "", index = "") => {
+const ContentCardTemplate = (cardMode = "", index = "") => {
 	return html`
 	<div class="content-card ${cardMode}">
 
@@ -55,8 +52,9 @@ const ContentCard = (cardMode = "", index = "") => {
 
 		<div class="content-card__body">
 			<div class="content-card__eyebrow">${text(`${index} Tag Text`, "tag text")}</div>
-
-			${boolean(`${index} Heading Is A Link?`, true) ? HeadingWithLink(index) : Heading(index)}
+			<h3 class="content-card__heading">
+				${boolean(`${index} Heading Is A Link?`, true) ? HeadingWithLink(index) : Heading(index)}
+			</h3>
 			<p>
 				${text(`${index} Description`, "This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today.")}
 			</p>
@@ -64,10 +62,13 @@ const ContentCard = (cardMode = "", index = "") => {
 	</div>`;
 };
 
+const ContentCard = () => {
+	return ContentCardTemplate();
+}
 
 const ContentCards = () => {
 	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
-	const cards = Array.apply(null, Array(cardCount)).map((card, index) => ContentCard("has-border", index + 1));
+	const cards = Array.apply(null, Array(cardCount)).map((card, index) => ContentCardTemplate("has-border", index + 1));
 	return html`
 		<section class="card-container card-container--auto-fit">
 			${cards.reduce((total, card) => total + card, "")}
@@ -75,15 +76,15 @@ const ContentCards = () => {
 };
 
 const TwoUpContentCard = () => {
-	return ContentCard("two-up");
+	return ContentCardTemplate("two-up");
 };
 
 const ThreeUpContentCard = () => {
-	return ContentCard("three-up");
+	return ContentCardTemplate("three-up");
 };
 
 const ProductiveContentCard = () => {
-	return ContentCard("content-card--productive");
+	return ContentCardTemplate("content-card--productive");
 };
 
 export {

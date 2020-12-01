@@ -102,14 +102,8 @@
 .content-card__heading {
 	font-weight: 600;
 	line-height: (29/24);
+
+	&:last-child {
+		padding-bottom: 0;
+	}
 }
-
-
-
-
-// .image--active:hover &,
-// .marble-card--active:hover &,
-// .image--active:focus-within &,
-// .marble-card--active:focus-within & {
-// 	transform: scale(1.06);
-// }
