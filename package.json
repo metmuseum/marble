@@ -4,13 +4,14 @@
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "dist/marble.js",
 	"exports": {
-		".": ".dist/marble.js"
+		".": "./dist/marble.js"
 	},
 	"sass": "src/marble.scss",
 	"dependencies": {
 		"-": "0.0.1",
 		"@vimeo/player": "^2.14.1",
 		"flickity": "^2.2.1",
+		"flickity-imagesloaded": "^2.0.0",
 		"g": "^2.0.1",
 		"he": "^1.2.0",
 		"intersection-observer": "^0.7.0",

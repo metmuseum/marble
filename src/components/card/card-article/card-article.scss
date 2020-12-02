@@ -1,0 +1,139 @@
+//the card
+.article-card {
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 1;
+	margin-right: $spacing-xxs;
+	position: relative;
+
+	@media screen and (min-width: $bp-large-card) {
+		width: 100%;
+	}
+}
+
+.article-card__header {
+	margin-bottom: $spacing-xxs;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	*:last-child {
+		padding-bottom: 0;
+	}
+}
+
+.article-card__header-descriptor {
+	@include typography-info-label;
+	margin-bottom: $spacing-micro;
+	text-transform: uppercase;
+
+	p {
+		@include typography-label-text;
+		text-transform: uppercase;
+	}
+}
+
+.article-card__header-descriptor-link {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.article-card__header-title,
+.article-card__header-heading {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.article-card__header-heading {
+	@include typography-h4;
+	font-weight: 500;
+}
+
+.article-card__image {
+	transform-origin: center;
+	transition: all 0.4s ease-out;
+
+	.image--active:hover &,
+	.article-card--active:hover & {
+		transform: scale(1.06);
+	}
+
+	.image--active:focus-within &,
+	.article-card--active:focus-within & {
+		transform: scale(1.06);
+	}
+}
+
+.article-card__image-wrapper {
+	border-radius: $radius-sharp;
+	margin-bottom: $spacing-xxs;
+
+	@include key-image-wrapper;
+	flex-grow: 0;
+
+	@media (orientation: landscape) {
+		max-height: $height-max;
+	}
+}
+
+.article-card__image-link {
+	@include link-reset();
+
+	.article-card__image-wrapper--fixed-ratio & {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+//Force a 2/3 ratio for the image
+.article-card__image-wrapper--66 {
+	height: 0;
+	padding-bottom: 66%;
+	position: relative;
+}
+
+.article-card__subject {
+	flex-grow: 1;
+}
+
+.article-card__subject-body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.article-card__meta-description {
+	font-size: $textsize-xs;
+	font-weight: 400;
+	margin-bottom: $spacing-xxs;
+	line-height: 1.3;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.article-card__meta {
+	@include typography-info-label;
+	display: flex;
+	flex-grow: 1;
+}
+
+.article-card__meta-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
+}
+
+.article-card__date {
+	font-weight: 400;
+}
