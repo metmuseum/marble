@@ -7,11 +7,11 @@
 
 	&.card-image__wrapper-fixed-ratio {
 		height: 0;
-		padding-bottom: (100% * 2/3);
+		padding-bottom: (100% * 3/2);
 		position: relative;
 
 		&.ratio-16-9 {
-			padding-bottom: (100% * 16/9);
+			padding-bottom: (100% * 9/16);
 		}
 		//TODO: Add whatever ratios we want
 	}

@@ -1,21 +1,27 @@
 //Mode Mixins
 @mixin content-card-three-up() {
-	max-width: none;
-	width: (100%/3);
+	@media screen and (min-width: $bp-large-card) {
+		flex-basis: (100%/3);
+		max-width: none;
+		width: (100%/3);
 
-	.content-card__body {
-		padding: $spacing-s;
-	}
+		.content-card__body {
+			padding: $spacing-s;
+		}
 
-	.content-card__heading {
-		@include typography-h4;
-		font-weight: 600;
+		.content-card__heading {
+			@include typography-h4;
+			font-weight: 600;
+		}
 	}
 }
 
 @mixin two-up() {
-	max-width: none;
-	width: 50%;
+	@media screen and (min-width: $bp-large-card) {
+		flex-basis: 50%;
+		max-width: none;
+		width: 50%;
+	}
 }
 
 @import "_card-container";
@@ -59,7 +65,8 @@
 	padding: $spacing-s $spacing-component-margin;
 
 	.content-card--productive & {
-		padding: $spacing-s 0;
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	//Last item is aligned to bottom.
