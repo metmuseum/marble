@@ -2,6 +2,7 @@
 @mixin content-card-three-up() {
 	@media screen and (min-width: $bp-large-card) {
 		flex-basis: (100%/3);
+		flex-grow: 0;
 		max-width: none;
 		width: (100%/3);
 
@@ -19,6 +20,7 @@
 @mixin two-up() {
 	@media screen and (min-width: $bp-large-card) {
 		flex-basis: 50%;
+		flex-grow: 0;
 		max-width: none;
 		width: 50%;
 	}
