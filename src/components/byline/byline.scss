@@ -1,10 +1,9 @@
 .byline {
 	color: $color-grey-700;
-	font-size: 0;
+	font-size: $textsize-xs;
 }
 
 .byline__authors {
-	font-size: $textsize-xs;
 	font-weight: 500;
 
 	a {
@@ -22,6 +21,5 @@
 }
 
 .byline__date {
-	font-size: $textsize-xs;
 	font-weight: 400;
 }
