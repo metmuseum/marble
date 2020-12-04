@@ -1,6 +1,6 @@
 .byline {
+	@include typography-info-label;
 	color: $color-grey-700;
-	font-size: $textsize-xs;
 }
 
 .byline__authors {
