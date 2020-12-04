@@ -1,11 +1,11 @@
 .filter,
 .inline-modal-trigger-styled-as-filter {
 	display: inline-block;
-	margin: 0 4px;
+	margin: 0 8px 0 0;
 	position: relative;
 
-	&:first-child {
-		margin-left: 0;
+	&:last-child {
+		margin-right: 4px;
 	}
 }
 
