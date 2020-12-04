@@ -22,14 +22,16 @@ const defaultNames = [
 const Set = () => {
 	const names = array("Labels", defaultNames);
 	return html`
-		<fieldset class="filter-set">
-			<legend class="screen-reader-only">
-				Select optional categories to filter results
-			</legend>
-			${names
-				.map((filterName) => markup(options({ label: filterName })))
-				.join("")}
-		</fieldset>
+		<div class="filter-set">
+			<fieldset class="filter-set__fieldset">
+				<legend class="screen-reader-only">
+					Select optional categories to filter results
+				</legend>
+				${names
+					.map((filterName) => markup(options({ label: filterName })))
+					.join("")}
+			</fieldset>
+		</div>
 	`;
 };
 
@@ -39,7 +41,7 @@ const WithTrigger = () => {
 	return html`
 		<div class="filter-set">
 			${trigger(triggedOpened)}
-			<fieldset style="display: inline-block;">
+			<fieldset class="filter-set__fieldset">
 				<legend class="screen-reader-only">
 					Select optional categories to filter results
 				</legend>

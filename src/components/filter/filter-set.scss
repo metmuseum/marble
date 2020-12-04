@@ -7,3 +7,7 @@
 	white-space: nowrap;
 	z-index: z("filter-set");
 }
+
+.filter-set__fieldset {
+	display: inline-block;
+}
