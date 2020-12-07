@@ -1,5 +1,5 @@
 import html from "../../../.storybook/helpers/html";
-import { TopicsCard } from "./topics-card.stories.js";
+import { TopicsCard } from "./topic-card.stories.js";
 import carousel, { flickityDefaults } from "../carousel/carousel.js";
 import { useEffect } from "@storybook/client-api";
 import { object, withKnobs } from "@storybook/addon-knobs";
