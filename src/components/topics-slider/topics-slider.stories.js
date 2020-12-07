@@ -12,8 +12,8 @@ const TopicsSlider = () => {
 	});
 	return html`
 	<section class="topics-slider">
-		<div class="stream__header">
-			<h2 class="featured-vertical__heading">Heading</h2>
+		<div class="topics-slider__header">
+			<h3>Heading</h3>
 		</div>
 		<div class="topics-slider-list js-carousel carousel">
 			${TopicsCard()} ${TopicsCard()} ${TopicsCard()} ${TopicsCard()}
