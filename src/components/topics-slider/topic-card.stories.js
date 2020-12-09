@@ -6,9 +6,9 @@ import image1440 from "../../../.storybook/assets/images/full-width-image/seurat
 
 import { text, withKnobs } from "@storybook/addon-knobs";
 
-export default { title: "Components/Topics Card", decorators: [withKnobs] };
+export default { title: "Components/Topic Card", decorators: [withKnobs] };
 
-const TopicsCard = () => {
+const TopicCard = () => {
 	const linkTitle = text("Link Title", "This is a title");
 	return html`<div class="topic-card topic-card--active">
 		<div class="topic-card__image-wrapper topic-card__image-wrapper--fixed-ratio fixed-width">
@@ -34,4 +34,4 @@ const TopicsCard = () => {
 	</div>`;
 };
 
-export { TopicsCard };
+export { TopicCard };

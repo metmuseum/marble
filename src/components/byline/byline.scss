@@ -1,11 +1,11 @@
 .byline {
+	@include typography-info-label;
 	color: $color-grey-700;
-	font-size: 0;
 }
 
 .byline__authors {
-	font-size: $textsize-xs;
 	font-weight: 500;
+	word-break: break-word;
 
 	a {
 		border: none;
@@ -22,6 +22,5 @@
 }
 
 .byline__date {
-	font-size: $textsize-xs;
 	font-weight: 400;
 }
