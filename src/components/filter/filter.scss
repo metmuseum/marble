@@ -9,6 +9,10 @@
 	}
 }
 
+.inline-modal-trigger-styled-as-filter {
+	vertical-align: top; // needed for weird chrome bug
+}
+
 .filter__control,
 .filter__input {
 	appearance: none;
