@@ -1,0 +1,91 @@
+.marble-inline-tooltip {
+	background: $color-white;
+	border-radius: 4px;
+	box-shadow: $shadow-active;
+	display: none;
+	font-family: $metsans;
+	padding: $spacing-xxs;
+	position: absolute;
+	width: 250px;
+
+	&:after {
+		background-color: $color-white;
+		box-shadow: -1px -2px 2px 0 $color-card-shadow;
+		content: "";
+		display: block;
+		height: 20px;
+		position: absolute;
+		top: -10px;
+		transform: rotate(45deg);
+		width: 20px;
+	}
+
+	a {
+		border: none;
+		display: block;
+	}
+
+	&.is-upwards {
+
+		&:after {
+			box-shadow: -10px -10px 10px 0 $color-active-shadow;
+			left: 94px;
+			top: calc(100% - 10px);
+			transform: rotate(225deg);
+		}
+    }
+}
+
+.tooltip-descriptor {
+	@include typography-label-text;
+	font-weight: 600;
+	margin-bottom: $spacing-micro;
+}
+
+.tooltip-subtitle {
+	margin-top: 5px;
+}
+
+.tooltip-image {
+	margin-bottom: -8px;
+	margin-top: $spacing-xxs;
+	max-height: 227px;
+	object-fit: cover;
+	width: 100%;
+}
+
+.tooltip-upwards {
+	position: relative;
+
+	.marble-inline-tooltip {
+			bottom: 46px;
+			left: -75px;
+
+			&:after {
+					border-bottom: none;
+					border-top: 13px solid $color-white;
+					left: 94px;
+					top: 100%;
+			}
+	}
+}
+
+.show-tooltip {
+	display: block;
+}
+
+//not a real link, just a tooltip
+//mostly TOAH legacy "links to nowhere"
+.tooltip-only {
+	&:after {
+			background: url('/Rodan/dist/svg/tooltip-popup.svg') no-repeat;
+			border-bottom: solid 2px $color-white;
+			content: '';
+			display: inline-block;
+			height: 14px;
+			margin-left: 5px;
+			padding-bottom: 7px;
+			vertical-align: middle;
+			width: 14px;
+	}
+}
