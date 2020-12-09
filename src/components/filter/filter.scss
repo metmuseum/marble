@@ -1,0 +1,86 @@
+.filter,
+.inline-modal-trigger-styled-as-filter {
+	display: inline-block;
+	margin: 0 8px 0 0;
+	position: relative;
+
+	&:last-child {
+		margin-right: 4px;
+	}
+}
+
+.filter__control,
+.filter__input {
+	appearance: none;
+	border: 0;
+	border-radius: 0;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	max-height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index: z("styled-checkbox-input");
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+.filter__label {
+	background: $color-white;
+	border: 2px solid $color-grey-200;
+	border-radius: 32px;
+	box-sizing: border-box;
+	color: $color-grey-900;
+	display: block;
+	font-family: $metsans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	height: 32px;
+	line-height: 9px;
+	padding: 10px 15px;
+	transition: all 0.2s;
+	user-select: none; // https://www.a11ymatters.com/pattern/checkbox/
+
+	.inline-modal-trigger-styled-as-filter & {
+		border-color: $color-grey-900;
+		&.checked {
+			background: $color-grey-900;
+			border: 2px solid $color-grey-900;
+			color: $color-white;
+		}
+	}
+
+	&:hover,
+	&.hover {
+		background-color: $color-grey-200;
+		cursor: pointer;
+	}
+
+	:focus + &,
+	.focus + & {
+		background-color: $color-grey-200;
+	}
+
+	:active + &,
+	.active + & {
+		filter: brightness(0.7);
+	}
+
+	:checked + & {
+		background: $color-grey-900;
+		border: 2px solid $color-grey-900;
+		color: $color-white;
+	}
+
+	:checked.focus + &,
+	:checked:focus + & {
+		filter: brightness(0.7);
+	}
+}
+
+.filter__control-icon {
+	margin-left: $spacing-micro;
+}

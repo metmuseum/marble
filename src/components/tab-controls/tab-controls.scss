@@ -1,11 +1,7 @@
 .tab-controls {
 	display: inline-block;
-	margin: 0 $spacing-micro $spacing-micro; // using $spacing-micro to match the padding of the controls
+	margin: 0 $spacing-xxs $spacing-micro 0;
 	position: relative;
-
-	&:first-child {
-		margin-left: 0;
-	}
 }
 
 .tab-controls__input {
