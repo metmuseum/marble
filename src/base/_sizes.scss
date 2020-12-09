@@ -40,18 +40,19 @@ $spacing-xxl: calc(144px + 9vw);
 $spacing-component-margin: 7.5vw;
 
 // Fluid Typography Sizes.  Useful too when other properties like a container's margin need to match them.
-$textsize-xxl: calc(40px + 1.75vw);
-$textsize-xl: calc(28px + 1.5vw);
-$textsize-l: calc(18px + 1vw);
-$textsize-m: calc(16px + 0.75vw);
-$textsize-s: calc(16px + 0.5vw);
+$textsize-xxs: calc(11px + 0.25vw);
 $textsize-xs: calc(14px + 0.5vw);
+$textsize-s: calc(16px + 0.5vw);
+$textsize-m: calc(16px + 0.75vw);
+$textsize-l: calc(18px + 1vw);
+$textsize-xl: calc(28px + 1.5vw);
+$textsize-xxl: calc(40px + 1.75vw);
 
 //Corner radii
 $radius-sharp: 4px;
 $radius-soft: 16px;
 $form-radius: $radius-sharp; // TODO: deprecate
-$soft-radius: $radius-soft;  // TODO: deprecate
+$soft-radius: $radius-soft; // TODO: deprecate
 
 //Generally used with a landscape media query
 $height-max: 85vh;

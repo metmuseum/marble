@@ -1,4 +1,5 @@
 $z-layers: (
+	"filter-set": 101,
 	"marble-card--active": 99,
 	"vimeo-play": 19,
 	"marble-card-video-is-loaded": 9,
@@ -6,6 +7,7 @@ $z-layers: (
 	"img&:after": 2,
 	"vimeo-container": -1,
 	"tab-controls-input": -99,
+	"styled-checkbox-input": -99,
 );
 
 @function z($layer) {
