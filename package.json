@@ -13,6 +13,7 @@
 		"flickity-imagesloaded": "^2.0.0",
 		"he": "^1.2.0",
 		"intersection-observer": "^0.7.0",
+		"npm": "^6.14.8",
 		"smoothscroll-polyfill": "^0.4.4",
 		"vanilla-lazyload": "^12.5.1"
 	},
