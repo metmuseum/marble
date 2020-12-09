@@ -48,15 +48,11 @@ $textsize-l: calc(18px + 1vw);
 $textsize-xl: calc(28px + 1.5vw);
 $textsize-xxl: calc(40px + 1.75vw);
 
-//Border Radius
-$radius-form: 4px;
+//Corner radii
+$radius-sharp: 4px;
 $radius-soft: 16px;
+$form-radius: $radius-sharp; // TODO: deprecate
+$soft-radius: $radius-soft; // TODO: deprecate
 
 //Generally used with a landscape media query
 $height-max: 85vh;
-
-
-
-//Deprecated Variable Names: These just point to the new names.
-$form-radius: $radius-form;
-$soft-radius: $radius-soft;

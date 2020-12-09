@@ -13,6 +13,12 @@ import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls";
 import carousel from "./components/carousel/carousel";
 import videoSlide from "./components/carousel/slide/video-slide";
 
-const marble = { global, jumpLinkBanner, vimeoPlayToggle, carousel, videoSlide }
+const marble = {
+	global,
+	carousel,
+	jumpLinkBanner,
+	videoSlide,
+	vimeoPlayToggle,
+};
 
 export default marble;

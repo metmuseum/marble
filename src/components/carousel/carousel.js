@@ -1,5 +1,6 @@
 import Flickity from "flickity";
 import arrowShape from "./arrowShape";
+require('flickity-imagesloaded'); // TODO: review with Joseph
 
 const flickityDefaults = {
 	accessibility: true,
