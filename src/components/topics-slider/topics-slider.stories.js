@@ -1,5 +1,5 @@
 import html from "../../../.storybook/helpers/html";
-import { TopicsCard } from "./topic-card.stories.js";
+import { TopicCard } from "./topic-card.stories.js";
 import carousel, { flickityDefaults } from "../carousel/carousel.js";
 import { useEffect } from "@storybook/client-api";
 import { object, withKnobs } from "@storybook/addon-knobs";
@@ -16,8 +16,8 @@ const TopicsSlider = () => {
 			<h3>Heading</h3>
 		</div>
 		<div class="topics-slider-list js-carousel carousel">
-			${TopicsCard()} ${TopicsCard()} ${TopicsCard()} ${TopicsCard()}
-			${TopicsCard()} ${TopicsCard()}
+			${TopicCard()} ${TopicCard()} ${TopicCard()} ${TopicCard()}
+			${TopicCard()} ${TopicCard()}
 		</div>
 	</section>`;
 };
