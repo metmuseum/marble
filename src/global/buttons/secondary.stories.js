@@ -6,7 +6,7 @@ export default {
 	decorators: [withKnobs],
 	title: "Elements/Buttons/Secondary",
 	parameters: {
-		backgrounds: null, // TODO: hopefully Chromatic supports backgrounds soon
+		backgrounds: { disable: true }, // TODO: hopefully Chromatic supports backgrounds soon
 	},
 };
 
