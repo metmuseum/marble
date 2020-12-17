@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  slack: circleci/slack@4.1.1
 executors:
   marble-node:
     docker:
@@ -51,12 +49,6 @@ jobs:
       - run:
           name: "Run Storybook GitHub Pages Deployer Script"
           command: npm run deploy-storybook -- --ci --existing-output-dir=.out
-      - slack/notify:
-          event: fail
-          template: basic_fail_1
-      - slack/notify:
-          event: pass
-          template: success_tagged_deploy_1
   build_and_deploy_dist:
     executor: marble-node
     steps:
@@ -74,12 +66,6 @@ jobs:
       - run: git add dist
       - run: git commit -m "[skip ci] auto build dist for $(git rev-parse HEAD)"
       - run: git push origin main
-      - slack/notify:
-          event: fail
-          template: basic_fail_1
-      - slack/notify:
-          event: pass
-          template: success_tagged_deploy_1
 
 workflows:
   version: 2
