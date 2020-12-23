@@ -1,5 +1,5 @@
 {
-	"name": "marble",
+	"name": "@metmuseum/marble",
 	"version": "0.1.0",
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "./dist/marble.js",
