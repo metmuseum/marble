@@ -2,11 +2,7 @@
 	"name": "@metmuseum/marble",
 	"version": "0.1.0",
 	"description": "The Design System of The Metropolitan Museum Of Art",
-	"main": "./dist/marble.js",
-	"exports": {
-		".": "./dist/marble.js"
-	},
-	"sass": "src/marble.scss",
+	"main": "./src/index.mjs",
 	"dependencies": {
 		"@vimeo/player": "^2.14.1",
 		"flickity": "^2.2.1",
