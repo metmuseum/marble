@@ -8,10 +8,10 @@
 
 import "./marble.scss";
 import global from "./global/global.mjs";
-import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner";
-import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls";
-import carousel from "./components/carousel/carousel";
-import videoSlide from "./components/carousel/slide/video-slide";
+import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner.js";
+import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls.js";
+import carousel from "./components/carousel/carousel.js";
+import videoSlide from "./components/carousel/slide/video-slide.js";
 
 const marble = {
 	global,
