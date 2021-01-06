@@ -6,9 +6,11 @@
 	width: 100%;
 
 	&.card-image__wrapper-fixed-ratio {
-		height: 0;
+		height: 100%;
+		object-fit: cover;
 		padding-bottom: calc(100% * 2/3);
 		position: relative;
+		width: 100%;
 
 		&.ratio-16-9 {
 			padding-bottom: calc(100% * 9/16);
