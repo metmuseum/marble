@@ -6,6 +6,7 @@
 	width: 100%;
 
 	&.card-image__wrapper-fixed-ratio {
+		height: 0;
 		padding-bottom: (100% * 2/3);
 		position: relative;
 
