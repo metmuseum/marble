@@ -6,17 +6,11 @@
 	width: 100%;
 
 	&.card-image__wrapper-fixed-ratio {
-		padding-bottom: calc(100% * 2/3);
+		padding-bottom: 100% * 2/3;
 		position: relative;
 
-		.card-image {
-			height: 100%;
-			object-fit: cover;
-			width: 100%;
-		}
-
 		&.ratio-16-9 {
-			padding-bottom: calc(100% * 9/16);
+			padding-bottom: 100% * 9/16;
 		}
 		//TODO: Add whatever ratios we want
 	}
