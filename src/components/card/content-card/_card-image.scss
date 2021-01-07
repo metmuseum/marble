@@ -7,7 +7,7 @@
 
 	&.card-image__wrapper-fixed-ratio {
 		height: 0;
-		padding-bottom: (100% * 3/2);
+		padding-bottom: (100% * 2/3);
 		position: relative;
 
 		&.ratio-16-9 {
@@ -31,9 +31,12 @@
 
 	.card-image__wrapper-fixed-ratio & {
 		bottom: 0;
+		height: 100%;
 		left: 0;
+		object-fit: cover;
 		position: absolute;
 		right: 0;
 		top: 0;
+		width: 100%;
 	}
 }
