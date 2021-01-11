@@ -32,6 +32,7 @@ const data = () => {
 				text: text("Button Three Text", "Footer"),
 			},
 		],
+		hasBottomLinks: boolean("Has Bottom Links?", true),
 		bottomLinks: [
 			{
 				url: "#a",
@@ -73,7 +74,8 @@ const jumplinkBannerMarkup = (model) => {
 						`
 					).join("")}
 			</div>
-			<div class="jumplink-banner__bottom-links">
+		${model.hasBottomLinks ?
+			html`<div class="jumplink-banner__bottom-links">
 				${model.bottomLinks
 					.map((link) => html`
 							<a
@@ -83,7 +85,8 @@ const jumplinkBannerMarkup = (model) => {
 							</a>
 						`
 					).join("")}
-			</div>
+			</div>` : ``
+		}
 		</div>
 		<div class="jumplink-banner__image-wrapper">
 			${fullWidth()}
