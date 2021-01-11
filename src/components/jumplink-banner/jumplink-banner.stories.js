@@ -32,6 +32,21 @@ const data = () => {
 				text: text("Button Three Text", "Footer"),
 			},
 		],
+		hasBottomLinks: boolean("Has Bottom Links?", true),
+		bottomLinks: [
+			{
+				url: "#a",
+				text: text("Link One Text", "Link One"),
+			},
+			{
+				url: "#b",
+				text: text("Link Two Text", "Second Link"),
+			},
+			{
+				url: "#c",
+				text: text("Link Three Text", "Third"),
+			},
+		],
 	};
 };
 
@@ -45,23 +60,33 @@ const jumplinkBannerMarkup = (model) => {
 	>
 		<div class="jumplink-banner__content">
 			<h1 class="expressive">${model.header}</h1>
-			<h3 class="jumplink-banner__description">
+			<h2 class="jumplink-banner__description">
 				${he.decode(model.description)}
-			</h3>
+			</h2>
 			<div class="jumplink-banner__links">
 				${model.links
-					.map(
-						(link) => html`
+					.map((link) => html`
 							<a
 								href="${link.url}"
-								class="js-jump-link button secondary-button jumplink-banner__link"
-							>
+								class="js-jump-link button secondary-button jumplink-banner__link">
 								${link.text}
 							</a>
 						`
-					)
-					.join("")}
+					).join("")}
 			</div>
+		${model.hasBottomLinks ?
+			html`<div class="jumplink-banner__bottom-links">
+				${model.bottomLinks
+					.map((link) => html`
+							<a
+								href="${link.url}"
+								class="jumplink-banner__bottom-link button tertiary-button">
+								${link.text}
+							</a>
+						`
+					).join("")}
+			</div>` : ``
+		}
 		</div>
 		<div class="jumplink-banner__image-wrapper">
 			${fullWidth()}

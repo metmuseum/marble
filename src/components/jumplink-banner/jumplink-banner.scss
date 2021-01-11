@@ -1,6 +1,3 @@
-// @import "../../base/base";
-// @import "../../base/mixins/layouts";
-
 .jumplink-banner {
 	align-items: center;
 	display: flex;
@@ -60,8 +57,7 @@
 }
 
 .jumplink-banner__link {
-	margin: 0 $spacing-micro $spacing-xxs $spacing-micro;
-
+	margin: 0 $spacing-xxs $spacing-micro;
 	@media (orientation: portrait) {
 		min-width: 24ch;
 	}
@@ -94,12 +90,9 @@
 }
 
 .jumplink-banner__description {
+	@include typography-h3;
 	margin-bottom: $spacing-xs;
 	padding-bottom: 0;
-}
-
-.jumplink-banner__secondary-button {
-	margin: $spacing-micro $spacing-xxs;
 }
 
 .image-container__image {
@@ -108,4 +101,12 @@
 		object-fit: cover;
 		position: absolute;
 	}
+}
+
+.jumplink-banner__bottom-links {
+	margin-top: $spacing-m;
+}
+
+.jumplink-banner__bottom-link {
+	margin-right: $spacing-xxs;
 }
