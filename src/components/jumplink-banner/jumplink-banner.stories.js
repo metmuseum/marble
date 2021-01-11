@@ -59,9 +59,9 @@ const jumplinkBannerMarkup = (model) => {
 	>
 		<div class="jumplink-banner__content">
 			<h1 class="expressive">${model.header}</h1>
-			<h3 class="jumplink-banner__description">
+			<h2 class="jumplink-banner__description">
 				${he.decode(model.description)}
-			</h3>
+			</h2>
 			<div class="jumplink-banner__links">
 				${model.links
 					.map((link) => html`
@@ -73,7 +73,7 @@ const jumplinkBannerMarkup = (model) => {
 						`
 					).join("")}
 			</div>
-			<ul class="jumplink-banner__bottom-links">
+			<div class="jumplink-banner__bottom-links">
 				${model.bottomLinks
 					.map((link) => html`
 							<a
@@ -83,7 +83,7 @@ const jumplinkBannerMarkup = (model) => {
 							</a>
 						`
 					).join("")}
-			</ul>
+			</div>
 		</div>
 		<div class="jumplink-banner__image-wrapper">
 			${fullWidth()}

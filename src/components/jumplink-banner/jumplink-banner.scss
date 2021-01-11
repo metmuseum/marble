@@ -90,6 +90,7 @@
 }
 
 .jumplink-banner__description {
+	@include typography-h3;
 	margin-bottom: $spacing-xs;
 	padding-bottom: 0;
 }
