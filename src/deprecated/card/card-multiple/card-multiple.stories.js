@@ -1,7 +1,7 @@
 import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
-	title: 'Cards',
+	title: 'Deprecated/Card',
   decorators: [withKnobs]
 };
 

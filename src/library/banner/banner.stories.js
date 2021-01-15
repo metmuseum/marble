@@ -1,8 +1,8 @@
 import html from "../../../.storybook/helpers/html";
-import vimeoTemplate from "../vimeo-player/vimeo-player";
-import vimeoControls from "../vimeo-player/vimeo-controls.js";
+import vimeoTemplate from "../../components/vimeo-player/vimeo-player";
+import vimeoControls from "../../components/vimeo-player/vimeo-controls.js";
 import { useEffect } from "@storybook/client-api";
-export default { title: 'Banner' };
+export default { title: '⚛️Library/Banners/General Banner' };
 
 const data = {
 	backgroundColor: "#ECDFD7",
@@ -49,7 +49,7 @@ const bannerMarkup = (model) => {
 }
 
 
-export const Banner = () => {
+export const BannerWithImage = () => {
 	let model = Object.assign(data, {video: false});
   return bannerMarkup(model);
 }

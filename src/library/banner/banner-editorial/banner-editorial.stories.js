@@ -1,8 +1,8 @@
-import vimeoTemplate from "../../vimeo-player/vimeo-player";
-import vimeoControls from "../../vimeo-player/vimeo-controls";
+import vimeoTemplate from "../../../components/vimeo-player/vimeo-player";
+import vimeoControls from "../../../components/vimeo-player/vimeo-controls";
 import { useEffect } from "@storybook/client-api";
 
-export default { title: "Banner" };
+export default { title: "⚛️Library/Banners/Editorial Banner" };
 
 const data = {
 	backgroundColor: "#84b8ff",

@@ -4,7 +4,7 @@ import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 import sectionHeadingMarkup from "./section-heading.html.js";
 
 export default {
-	title: "Section Heading",
+	title: "⚛️Library/Section Heading",
 	decorators: [withKnobs],
 };
 

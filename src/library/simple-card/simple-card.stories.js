@@ -1,8 +1,8 @@
-import html from "../../../../.storybook/helpers/html";
+import html from "../../../.storybook/helpers/html";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 
 export default {
-	title: "Cards",
+	title: "⚛️Library/Cards",
 	decorators: [withKnobs],
 };
 

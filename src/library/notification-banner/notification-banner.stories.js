@@ -1,4 +1,4 @@
-export default { title: 'Notification Banner' };
+export default { title: '⚛️Library/Banners/NotificationBanner' };
 
 const data = {
 	header: "The Museum Has Temporarily Closed",

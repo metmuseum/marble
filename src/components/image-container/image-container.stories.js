@@ -9,7 +9,7 @@ import image4860 from "../../../.storybook/assets/images/full-width-image/seurat
 import image5760 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-5760.jpg";
 
 export default {
-	title: "Image Containers",
+	title: "Helpers/Image Containers",
 };
 
 const width = 3920;

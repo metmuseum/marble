@@ -10,7 +10,7 @@ import image2160 from "../../../.storybook/assets/images/full-width-image/seurat
 import image3240 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-3240.jpg";
 
 export default {
-	title: "Featured",
+	title: "⚛️Library/Featured",
 	decorators: [withKnobs],
 };
 

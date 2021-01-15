@@ -1,10 +1,10 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import { fullWidth } from "../image-container/image-container.stories.js";
+import { fullWidth } from "../../components/image-container/image-container.stories.js";
 
 export default {
-	title: "Featured",
+	title: "⚛️Library/Featured",
 	decorators: [withKnobs],
 };
 

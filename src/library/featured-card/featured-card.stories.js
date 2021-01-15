@@ -1,9 +1,9 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import { fullWidth } from "../image-container/image-container.stories.js";
+import { fullWidth } from "../../components/image-container/image-container.stories.js";
 
-export default { title: "Featured", decorators: [withKnobs] };
+export default { title: "⚛️Library/Cards", decorators: [withKnobs] };
 
 const data = () => {
 	return {

@@ -66,7 +66,7 @@ const ContentCard = () => {
 	return ContentCardTemplate();
 }
 
-const ContentCards = () => {
+const ContentCardsInContainer = () => {
 	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
 	const cards = Array.apply(null, Array(cardCount)).map((card, index) => ContentCardTemplate("has-border", index + 1));
 	return html`
@@ -89,7 +89,7 @@ const ProductiveContentCard = () => {
 
 export {
 	ContentCard,
-	ContentCards,
+	ContentCardsInContainer,
 	ThreeUpContentCard,
 	TwoUpContentCard,
 	ProductiveContentCard

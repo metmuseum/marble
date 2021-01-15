@@ -3,7 +3,7 @@ import paragraph from "../../.storybook/helpers/audienceIpsum";
 import { withKnobs, number } from "@storybook/addon-knobs";
 
 export default {
-	title: "Lorem Ipsum",
+	title: "Helpers/Lorem Ipsum",
 	decorators: [withKnobs],
 	parameters: {
 		chromatic: { disable: true },

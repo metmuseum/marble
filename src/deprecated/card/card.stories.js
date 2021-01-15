@@ -1,10 +1,10 @@
 import html from "../../../.storybook/helpers/html";
-export default { title: "Cards" };
+export default { title: "Deprecated/Card" };
 
 const data = {
-	header: "Base Card",
+	header: "(OLD) Marble Card",
 	description:
-		"This Represents a Marble Card without any tweaking. Currently Not really a component, just the basis of a bunch of different ones.",
+		"We've re-designed these cards as Content Cards. These shouldnt be used on new projects and should be phased out. Thank You",
 	images:
 		"https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&hash=9CDD1BCFB213A815CCF4B476CDA5B35F 2x, https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&w=1920&hash=342B752D9534482E6C5C988C117585A4 1x",
 	link: {
