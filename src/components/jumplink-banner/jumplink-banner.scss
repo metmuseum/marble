@@ -10,6 +10,8 @@
 
 	&.productive-component {
 		@include productive-component;
+		border-radius: $radius-sharp;
+		overflow: hidden;
 	}
 
 	&.align--left {
@@ -48,6 +50,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin: 0 $spacing-negative-xxs;
 
 	.align--left & {
 		@media (orientation: landscape) {
@@ -64,7 +67,6 @@
 }
 
 .jumplink-banner__image-wrapper {
-	border-radius: $radius-sharp;
 	bottom: 0;
 	left: 0;
 	overflow: hidden;

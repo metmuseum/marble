@@ -36,6 +36,10 @@ $spacing-l: calc(64px + 2vw);
 $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
+//I know, i know, this is clunky. We need a negative margin for the Jumplink Banner,
+//TODO: find a better way to do this.
+$spacing-negative-xxs: calc(-1 * (16px + 0.5vw));
+
 //This is as an outside margin to help align components with those that use width: 85vw which is an emerging standard.
 $spacing-component-margin: 7.5vw;
 
