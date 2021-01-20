@@ -111,4 +111,9 @@
 
 .jumplink-banner__bottom-link {
 	margin-right: $spacing-xxs;
+
+	svg {
+		margin-right: $spacing-micro;
+		max-height: 1em;
+	}
 }
