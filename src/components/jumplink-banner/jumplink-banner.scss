@@ -106,10 +106,13 @@
 }
 
 .jumplink-banner__bottom-links {
+	display: flex;
+	flex-wrap: wrap;
 	margin-top: $spacing-m;
 }
 
 .jumplink-banner__bottom-link {
+	margin-bottom: $spacing-xxs;
 	margin-right: $spacing-xxs;
 
 	svg {
