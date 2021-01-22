@@ -75,17 +75,19 @@ const jumplinkBannerMarkup = (model) => {
 					).join("")}
 			</div>
 		${model.hasBottomLinks ?
-			html`<div class="jumplink-banner__bottom-links">
+			html`<ul class="jumplink-banner__bottom-links">
 				${model.bottomLinks
 					.map((link) => html`
+						<li class="jumplink-banner__bottom-link">
 							<a
 								href="${link.url}"
-								class="jumplink-banner__bottom-link button tertiary-button">
+								class="button tertiary-button">
 								${link.text}
 							</a>
+						</li>
 						`
 					).join("")}
-			</div>` : ``
+			</ul>` : ``
 		}
 		</div>
 		<div class="jumplink-banner__image-wrapper">

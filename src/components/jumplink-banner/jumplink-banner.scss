@@ -33,14 +33,15 @@
 	padding: $spacing-xl $spacing-component-margin $spacing-component-margin;
 	text-align: center;
 
-	.align--left & {
-		@media (orientation: landscape) {
-			text-align: left;
-		}
-	}
-
 	@media (orientation: landscape) {
 		max-width: 85%;
+	}
+
+	.align--left & {
+		@media (orientation: landscape) {
+			max-width: 100%;
+			text-align: left;
+		}
 	}
 }
 
@@ -50,7 +51,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 0 $spacing-negative-xxs;
+	margin: 0 $spacing-negative-micro;
 
 	.align--left & {
 		@media (orientation: landscape) {
@@ -60,9 +61,13 @@
 }
 
 .jumplink-banner__link {
-	margin: 0 $spacing-xxs $spacing-micro;
+	margin: 0 $spacing-micro $spacing-micro;
 	@media (orientation: portrait) {
 		min-width: 24ch;
+	}
+
+	&:focus {
+		outline: none;
 	}
 }
 
@@ -107,16 +112,29 @@
 
 .jumplink-banner__bottom-links {
 	display: flex;
+	flex-direction: column;
 	flex-wrap: wrap;
+	justify-content: center;
 	margin-top: $spacing-m;
+
+	@media (orientation: landscape) {
+		flex-direction: row;
+	}
+
+	.align--left  & {
+		justify-content: flex-start;
+	}
 }
 
 .jumplink-banner__bottom-link {
+	align-self: center;
+	display: flex;
+	justify-content: center;
 	margin-bottom: $spacing-xxs;
 	margin-right: $spacing-xxs;
 
 	svg {
-		margin-right: $spacing-micro;
+		margin-right: 4px;
 		max-height: 1em;
 	}
 }
