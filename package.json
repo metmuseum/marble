@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "./src/index.mjs",
+	"style": "./dist/marble.css",
 	"dependencies": {
 		"@vimeo/player": "^2.14.1",
 		"flickity": "^2.2.1",
@@ -38,7 +39,6 @@
 	"scripts": {
 		"build": "webpack --config webpack.production.config.js",
 		"build-storybook": "build-storybook -c .storybook -o .out",
-		"clean": "rm dist/bundle.js",
 		"deploy-storybook": "storybook-to-ghpages",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook",
