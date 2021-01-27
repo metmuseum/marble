@@ -42,7 +42,8 @@
 		"deploy-storybook": "storybook-to-ghpages",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook",
-		"chromatic": "chromatic"
+		"chromatic": "chromatic",
+		"postinstall": "node postinstall.js"
 	},
 	"repository": {
 		"type": "git",
