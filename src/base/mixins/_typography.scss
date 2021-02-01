@@ -93,7 +93,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-body-expressive {
-	font-size: $textsize-s; // Is this okay?
+	font-size: $textsize-s;
 	font-weight: 500;
 	line-height: 1.3333;
 
@@ -141,7 +141,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-h6 {
-	font-size: calc(17px + #{$font-scale-size-micro});;
+	font-size: calc(17px + #{$font-scale-size-micro});
 	font-weight: 400;
 	line-height: 16px;
 
