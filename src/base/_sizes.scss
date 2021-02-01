@@ -12,7 +12,6 @@ $bp-1000: 1000px;
 $bp-1200: 1200px;
 $bp-1440: 1440px;
 $bp-2000: 2000px;
-
 //TODO: Remove unnecesarry breakpoints once we're sure they arent used anywhere.
 //These arent anywhere in Marble (But may be used in Ghidorah or another project pulling Marble in)
 $bp-two-column: $bp-900;
@@ -43,14 +42,23 @@ $spacing-negative-micro: calc(-1 * (8px + 0.25vw));
 //This is as an outside margin to help align components with those that use width: 85vw which is an emerging standard.
 $spacing-component-margin: 7.5vw;
 
-// Fluid Typography Sizes.  Useful too when other properties like a container's margin need to match them.
-$textsize-xxs: calc(0.75rem + (14.6 - 12) * ((100vw - 375px) / (1440 - 375)));
-$textsize-xs: calc(0.875rem + (16 - 14) * ((100vw - 375px) / (1440 - 375)));
-$textsize-s: calc(1.125rem + (20 - 18) * ((100vw - 375px) / (1440 - 375)));
-$textsize-m: calc(1.25rem + (24 - 20) * ((100vw - 375px) / (1440 - 375)));
-$textsize-l: calc(1.5rem + (32 - 24) * ((100vw - 375px) / (1440 - 375)));
-$textsize-xl: calc(2rem + (48 - 32) * ((100vw - 375px) / (1440 - 375)));
-$textsize-xxl: calc(2.625rem + (56 - 42) * ((100vw - 375px) / (1440 - 375)));
+@function fontsize-calculator($mobileSize, $desktopSize) {
+	$small-screen: 375; //iPhone width.
+	$large-screen: 1440; //Macbook width.
+
+	$baseSize: $mobileSize / 16;
+	$calc: calc(#{$baseSize}rem + (#{$desktopSize} - #{$mobileSize}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
+	@return $calc;
+}
+
+// Fluid Typography Sizes.
+$textsize-xxs: fontsize-calculator(12, 14.6);
+$textsize-xs: fontsize-calculator(14, 16);
+$textsize-s: fontsize-calculator(18, 20);
+$textsize-m: fontsize-calculator(20, 24);
+$textsize-l: fontsize-calculator(24, 32);
+$textsize-xl: fontsize-calculator(32, 48);
+$textsize-xxl: fontsize-calculator(42, 56);
 
 
 //Corner radii
