@@ -10,7 +10,7 @@ body {
 
 p {
 	font-family: inherit;
-	max-width: 40em;
+	max-width: $line-length-max;
 
 	.expressive-body & {
 		@include typography-body-expressive;
