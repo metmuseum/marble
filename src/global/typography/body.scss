@@ -1,10 +1,9 @@
 body {
 	@include typography-body-long;
-	// TODO: ask about this?
 	-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
 
 	.fixed-width & {
-		font-size: 18px;
+		font-size: $textsize-s-fixed;
 	}
 }
 

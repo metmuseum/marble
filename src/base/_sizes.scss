@@ -63,17 +63,17 @@ $textsize-l: fontsize-calculator(24, 32); //H3
 $textsize-xl: fontsize-calculator(32, 48); //H2
 $textsize-xxl: fontsize-calculator(42, 56); //H1
 
-//The larger value of the fluid type functions.
+//The smaller value of the fluid type functions.
 //I choose to put these values in to the above function (instead of the variables) into the above function just for readability.
 //Also I'd love to deprecate the fixed-type idea now that our fluid type is more subtle.
 
-$textsize-xxs-fixed: 14.6px;
-$textsize-xs-fixed: 16px;
-$textsize-s-fixed: 20px;
-$textsize-m-fixed: 24px;
-$textsize-l-fixed: 32px;
-$textsize-xl-fixed: 48px;
-$textsize-xxl-fixed: 56px;
+$textsize-xxs-fixed: 12x;
+$textsize-xs-fixed: 14px;
+$textsize-s-fixed: 18px;
+$textsize-m-fixed: 20px;
+$textsize-l-fixed: 24px;
+$textsize-xl-fixed: 32px;
+$textsize-xxl-fixed: 42px;
 
 
 //More Typography sizes;
