@@ -13,6 +13,11 @@
 	&::-moz-focus-inner {
 		border: none;
 	}
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
 }
 
 .button {
