@@ -3,19 +3,17 @@
 @import "./typography/ui.scss";
 
 a {
-	border-bottom: solid 1px currentColor;
 	color: inherit;
-	padding-bottom: 2px;
-	text-decoration: none;
-	transition: background-position 0.3s, color 0.3s;
+	text-decoration: underline;
+	text-decoration-color: $color-black-opaque;
 
+	//For links without an href - don't make them look or act like real links.
 	&[href=""],
 	&[href=""]:focus,
 	&[href=""]:hover {
-		border-color: transparent;
 		cursor: default;
-		padding-bottom: 0;
 		pointer-events: none;
+		text-decoration: none;
 	}
 
 	&:hover,
@@ -24,12 +22,13 @@ a {
 	}
 
 	&:focus {
-		border-color: transparent;
+		outline: none;
+		text-decoration: none;
 	}
 
 	@media screen and (hover: hover) {
 		&:hover {
-			border-color: transparent;
+			text-decoration: none;
 		}
 	}
 }
@@ -44,23 +43,21 @@ i {
 	font-style: italic;
 }
 
-h1,
-h2,
-h3,
-h4 {
-	a,
-	a:hover,
-	a:visited {
-		border: none;
-		color: inherit;
-		padding-bottom: 0;
-	}
-}
-
 ol,
 ul {
 	.expressive-body & {
 		@include typography-body-expressive;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	a {
+		text-decoration: none;
 	}
 }
 
@@ -69,6 +66,8 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p {
 	&:empty {
 		display: none;

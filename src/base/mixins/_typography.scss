@@ -19,7 +19,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	font-family: $metserif;
 	font-weight: 800;
 	line-height: 1;
-	padding-bottom: $spacing-xs;
+	margin-bottom: $spacing-xs;
 }
 
 @mixin typography-h2 {
@@ -85,7 +85,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	line-height: 1.3333;
 
 	.fixed-width & {
-		font-size: 18px;
+		font-size: $textsize-l-fixed;
 		line-height: 1.2;
 	}
 }
