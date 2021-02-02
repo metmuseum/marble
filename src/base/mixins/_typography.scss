@@ -52,11 +52,9 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	}
 }
 
-//TODO Revisit. This is so weird and maybe not used anywhere?
 @mixin typography-h5 {
 	font-size: $textsize-s;
-	font-weight: 700;
-	line-height: 19px;
+	font-weight: 600;
 }
 
 //TODO Revisit. This is so weird and maybe not used anywhere?
