@@ -4,7 +4,7 @@
 	text-transform: uppercase;
 
 	a {
-		border: none;
+		text-decoration: none;
 	}
 }
 
@@ -14,8 +14,8 @@
 
 
 .marble-card__location-link {
-	border-bottom: none;
 	font-weight: normal;
+	text-decoration: none;
 
 	&:hover {
 		font-weight: 600;

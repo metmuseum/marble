@@ -37,7 +37,7 @@ const bannerMarkup = (model) => {
 			<div class="marble-banner__subject" style="background-color: ${model.backgroundColor}; color: ${model.color}">
 				<div class="marble-banner__subject-body">
 					<h1 class="expressive">
-						<a href="${model.link.url}">${model.header}</a>
+						<a href="${model.link.url}" class="marble-banner__header-link">${model.header}</a>
 					</h1>
 					<div class="marble-banner__meta-description expressive-body">
 						<a href="${model.link.url}" tabindex="-1">${model.description}</a>

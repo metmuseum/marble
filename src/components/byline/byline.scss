@@ -8,7 +8,8 @@
 	word-break: break-word;
 
 	a {
-		border: none;
+		text-decoration: none;
+
 		&:hover {
 			text-decoration: underline;
 		}
