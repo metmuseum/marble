@@ -5,7 +5,7 @@
 a {
 	color: inherit;
 	text-decoration: underline;
-	text-decoration-color: $color-black-opaque-80;
+	text-decoration-color: currentColor;
 
 	//For links without an href - don't make them look or act like real links.
 	&[href=""],
@@ -70,13 +70,13 @@ h6 {
 		&:focus {
 			outline: none;
 			text-decoration: underline;
-			text-decoration-color: $color-black-opaque-80;
+			text-decoration-color: currentColor;
 		}
 
 		@media screen and (hover: hover) {
 			&:hover {
 				text-decoration: underline;
-				text-decoration-color: $color-black-opaque-80;
+				text-decoration-color: currentColor;
 			}
 		}
 	}
