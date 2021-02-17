@@ -1,7 +1,5 @@
 import html from "../../../.storybook/helpers/html";
-import he from "he";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import { fullWidth } from "../image-container/image-container.stories.js";
+import { withKnobs, number } from "@storybook/addon-knobs";
 import { useEffect } from "@storybook/client-api";
 import quotesModuleJs from "./quotes-module.js";
 export default {
@@ -19,7 +17,20 @@ const data = {
 	},
 };
 
-const markup = (model) => {
+const quoteMarkup = (model) => {
+	return html`<figure class="quotes-module__quote js-quotes-module__quote">
+		<blockquote cite="#" class="quotes-module__quote-text">
+			${model.quoteBody}
+		</blockquote>
+		<figcaption class="quotes-module__quote-citation">
+			<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
+				${model.quoteAuthor.name}
+			</a>
+		</figcaption>
+	</figure>`;
+};
+
+const markup = (model, numberOfQuotes = 7) => {
 	return html`
 		<div class="quotes-module js-quotes-module">
 			<div class="quotes-module__contents">
@@ -28,85 +39,28 @@ const markup = (model) => {
 					<h4><a href="#">All press</a></h4>
 				</div>
 				<div class="quotes-module__quotes">
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-				<figure class="quotes-module__quote js-quotes-module__quote">
-					<blockquote cite="#" class="quotes-module__quote-text">
-						${model.quoteBody}
-					</blockquote>
-					<figcaption class="quotes-module__quote-citation">
-						<a class="quotes-module__quote-link" href="${model.quoteAuthor.url}">
-							${model.quoteAuthor.name}
-						</a>
-					</figcaption>
-				</figure>
-
+					${new Array(number("Number of Quotes", numberOfQuotes))
+						.fill(quoteMarkup(model))
+						.join("\n")}
 				</div>
-				 <button class="js-quotes-module__expander quotes-module__expander button tertiary-button">View more</button>
+				<button
+					class="js-quotes-module__expander quotes-module__expander button tertiary-button"
+				>
+					View more
+				</button>
 			</div>
 		</div>
 	`;
 };
 
-export const quotesModule = () => {
+const quotesModule = () => {
 	useEffect(quotesModuleJs);
 	return markup(data);
 };
+
+const withLessThanFourQuotes = () => {
+	useEffect(quotesModuleJs);
+	return markup(data, 2);
+};
+
+export { quotesModule, withLessThanFourQuotes };
