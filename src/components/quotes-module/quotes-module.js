@@ -13,7 +13,7 @@ function quotesModuleJs() {
 			e.preventDefault();
 			if (!isExpanded) {
 				quotesModule.classList.add("is-expanded");
-				quoteExpander.innerHTML = "Show Fewer";
+				quoteExpander.innerHTML = "View fewer";
 			} else {
 				quotesModule.classList.remove("is-expanded");
 				quoteExpander.innerHTML = quoteExpanderDefaultText;

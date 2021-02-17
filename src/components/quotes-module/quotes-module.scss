@@ -52,7 +52,21 @@
 }
 
 .quotes-module__quote-citation {
+	display: flex;
 	font-weight: 600;
+
+	&:before {
+		content: "—";
+	}
+}
+
+.quotes-module__quote-link {
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
 }
 
 .quotes-module__expander {
