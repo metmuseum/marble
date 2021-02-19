@@ -10,8 +10,8 @@ function quotesModuleJs() {
 		arrayOfQuotes.length > defaultQuotesToShow && quoteExpander.classList.add("is-visible");
 
 		quoteExpander.addEventListener("click", (e) => {
-			e.preventDefault();
 			if (!isExpanded) {
+				e.preventDefault();
 				quotesModule.classList.add("is-expanded");
 				quoteExpander.innerHTML = "View fewer";
 			} else {
