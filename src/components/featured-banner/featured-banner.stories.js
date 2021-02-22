@@ -1,7 +1,7 @@
 import html from "../../../.storybook/helpers/html";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import sizeStyles from "../../base/_sizes.scss";
+import scssExports from "../../global/exports.scss";
 
 import image768 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
 import image960 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
@@ -14,7 +14,7 @@ export default {
 	decorators: [withKnobs],
 };
 
-const bp1200 = sizeStyles.bp1200;
+const bp1200 = scssExports.bp1200;
 const width = 3920;
 const height = 2621;
 

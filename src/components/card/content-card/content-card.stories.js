@@ -1,7 +1,7 @@
 import html from "../../../../.storybook/helpers/html";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
-import sizeVariables from "../../../global/exports.scss";
+import scssExports from "../../../global/exports.scss";
 
 import image768 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
 import image960 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
@@ -44,7 +44,7 @@ const ContentCardTemplate = (cardMode = "", index = "") => {
 				height="${imageHeight}"
 				src="${image768}"
 				srcset="${srcSet}"
-				sizes="(min-width: ${sizeVariables.bp900}) 720px, 90vw"
+				sizes="(min-width: ${scssExports.bp900}) 720px, 90vw"
 			/>
 		</a>
 
