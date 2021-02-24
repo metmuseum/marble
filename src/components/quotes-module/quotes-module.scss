@@ -67,6 +67,10 @@
 	&:focus {
 		text-decoration: underline;
 	}
+
+	p {
+		display: inline;
+	}
 }
 
 .button.quotes-module__expander {
