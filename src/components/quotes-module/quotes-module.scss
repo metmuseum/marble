@@ -42,6 +42,10 @@
 .quotes-module__quote-text {
 	margin-bottom: $spacing-micro;
 
+	p {
+		display: inline;
+	}
+
 	&:before {
 		content: "“";
 	}
@@ -66,10 +70,6 @@
 	&:hover,
 	&:focus {
 		text-decoration: underline;
-	}
-
-	p {
-		display: inline;
 	}
 }
 
