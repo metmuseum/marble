@@ -1,0 +1,44 @@
+.edp-header {
+	background: linear-gradient(180deg, $color-white 65.53%, #ececec 100%),
+		$color-white;
+	display: flex;
+	flex-direction: column;
+	padding: 64px 7.5vw 0;
+}
+
+.edp-header__row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	&:first-child {
+		border-bottom: 1px solid $color-grey-500;
+	}
+}
+
+.edp-header__row--bottom {
+	padding: $spacing-xs;
+}
+
+.edp-header__eyebrow {
+	@include typography-tag();
+	display: block;
+	font-size: $textsize-xxs; //TODO add to tag maybe?
+	margin-bottom: $spacing-xxs;
+
+	&:empty {
+		display: none;
+		margin-bottom: 0;
+	}
+}
+
+.edp-header__status_module {
+	width: 33%;
+}
+
+.edp-header__cta-container {
+	display: flex;
+	width: 33%;
+	justify-content: space-around;
+	align-items: center;
+	border-left: 1px solid $color-grey-500;
+}

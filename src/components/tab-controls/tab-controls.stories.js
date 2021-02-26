@@ -4,11 +4,12 @@ export default {
 	title: "Components/Wayfinding/Tab Controls",
 };
 
-const TabControls = () => {
+const defaultTabNames = ["Past", "Current", "Upcoming"];
+
+const TabControls = (tabNames = defaultTabNames) => {
 	const screenreaderLegendText =
 		"Select between Past, Current, or Upcoming Exhibitions";
-	const tabNames = ["Past", "Current", "Upcoming"];
-	const inputGroupName = "my-cool-tabs"
+	const inputGroupName = "my-cool-tabs";
 
 	return html`<fieldset class="tabs-control-container">
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
