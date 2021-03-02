@@ -47,6 +47,7 @@ $color-text: $color-black;
 $color-title: $color-black;
 $color-background: $color-white;
 $color-focus-state: $color-purple;
+$color-focus-background: rgba($color-focus-state, 0.1);
 
 :export {
 	colorBlack: $color-black;

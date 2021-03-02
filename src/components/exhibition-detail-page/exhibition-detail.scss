@@ -16,7 +16,7 @@
 }
 
 .edp-header__row--bottom {
-	padding: $spacing-xs;
+	padding: $spacing-xs 0;
 }
 
 .edp-header__eyebrow {
@@ -41,4 +41,27 @@
 	justify-content: space-around;
 	align-items: center;
 	border-left: 1px solid $color-grey-500;
+}
+
+.edp-tabs__tab {
+	border-bottom: 3px solid transparent;
+	display: inline-block;
+	font-weight: 500;
+	margin: $spacing-micro $spacing-xxs $spacing-micro 0;
+	text-decoration: none;
+
+	&.is-active {
+		border-color: $color-black;
+	}
+
+	&:focus,
+	&:hover {
+		border-color: $color-focus-state;
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	&:focus:not(:hover):not(.is-active) {
+		background-color: $color-focus-background;
+	}
 }

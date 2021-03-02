@@ -3,6 +3,9 @@ import { fullWidth } from "../image-container/image-container.stories.js";
 import greekHallImage16x9 from "../../../.storybook/assets/images/greek-hall/16x9";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { TabControls } from "../tab-controls/tab-controls.stories";
+import { useEffect } from "@storybook/client-api";
+import "./exhibition-tabs/exhibition-tabs.scss";
+import exhibitionTabs from "./exhibition-tabs/exhibition-tabs.js";
 
 export default {
 	title: "Exhibition Detail Page",
@@ -22,7 +25,10 @@ const entryType = {
 const exhibition = {
 	heroImage: greekHallImage16x9,
 	title: "Sahel: Art and Empires on The Shores of the Sahara",
-	tabs: ["Overview", "Visiting Guide", "Objects on View"],
+	tabs: [
+		{name:"Overview", id:"overview"},
+		{name:"Visiting Guide", id:"visiting-guide"},
+		{name:"Objects on View", id:"objects-on-view"}],
 	status: {
 		message: "Now on View at",
 	},
@@ -54,6 +60,7 @@ const ExhibitionStatusModule = () => {
 };
 
 const ExhibitionDetailPage = () => {
+	useEffect(exhibitionTabs);
 	return html`<div>
 		${fullWidth(exhibition.heroImage)}
 		<header class="edp-header">
@@ -65,7 +72,14 @@ const ExhibitionDetailPage = () => {
 				${ExhibitionStatusModule()}
 			</div>
 			<div class="edp-header__row edp-header__row--bottom">
-				${TabControls(exhibition.tabs)}
+
+				<div class="edp-tabs js-edp-tabs">
+					${exhibition.tabs
+						.map((tab) => html`
+							<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">${tab.name}</a>`).join("")
+					}
+				</div>
+
 				<div class="edp-header__cta-container">
 					<a
 						href="${exhibition.detailPage.header.cta1.link}"
@@ -77,13 +91,20 @@ const ExhibitionDetailPage = () => {
 					</a>
 					<a
 						href="${exhibition.detailPage.header.cta2.link}"
-						class="a tertiary-button"
+						class="button tertiary-button"
 					>
 						${exhibition.detailPage.header.cta2.text}
 					</a>
 				</div>
 			</div>
 		</header>
+
+		${exhibition.tabs
+			.map((tab) => html`
+				<section class="exhibition-section js-exhibition-section" data-name="${tab.id}">
+					<h1>${tab.name} Section</h1>
+				</section>
+			`).join("")}
 	</div>`;
 };
 
