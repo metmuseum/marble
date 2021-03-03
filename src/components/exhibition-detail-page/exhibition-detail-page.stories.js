@@ -59,6 +59,14 @@ const ExhibitionStatusModule = () => {
 	`;
 };
 
+const demoSections = () => {
+	return exhibition.tabs.map((tab) => html`
+		<section class="exhibition-section js-exhibition-section" data-name="${tab.id}">
+			<h1>${tab.name} Section</h1>
+		</section>
+	`).join("");
+};
+
 const ExhibitionDetailPage = () => {
 	useEffect(exhibitionTabs);
 	return html`<div>
@@ -74,10 +82,9 @@ const ExhibitionDetailPage = () => {
 			<div class="edp-header__row edp-header__row--bottom">
 
 				<div class="edp-tabs js-edp-tabs">
-					${exhibition.tabs
-						.map((tab) => html`
-							<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">${tab.name}</a>`).join("")
-					}
+					${exhibition.tabs.map((tab) => html`
+						<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">${tab.name}</a>
+					`).join("")}
 				</div>
 
 				<div class="edp-header__cta-container">
@@ -99,12 +106,8 @@ const ExhibitionDetailPage = () => {
 			</div>
 		</header>
 
-		${exhibition.tabs
-			.map((tab) => html`
-				<section class="exhibition-section js-exhibition-section" data-name="${tab.id}">
-					<h1>${tab.name} Section</h1>
-				</section>
-			`).join("")}
+		${demoSections()}
+
 	</div>`;
 };
 
