@@ -6,11 +6,10 @@ export default {
 
 const defaultTabNames = ["Past", "Current", "Upcoming"];
 
-const TabControls = (tabNames = defaultTabNames) => {
-	const screenreaderLegendText =
-		"Select between Past, Current, or Upcoming Exhibitions";
+const TabControls = (tabNames) => {
+	tabNames = tabNames.length > 0 ? tabNames : defaultTabNames
+	const screenreaderLegendText = "Select between Past, Current, or Upcoming Exhibitions";
 	const inputGroupName = "my-cool-tabs";
-
 	return html`<fieldset class="tabs-control-container">
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
 		${tabNames
