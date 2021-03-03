@@ -1,0 +1,54 @@
+// TODO: remove. just copied and pasted from Ghidorah
+.exhibition-tag {
+	align-items: center;
+	border-radius: 2em;
+	box-shadow: $shadow-passive;
+	color: currentColor;
+	display: flex;
+	font-size: $textsize-xxs;
+	margin-top: $spacing-micro;
+	padding: $spacing-micro $spacing-xxs;
+	position: relative;
+	transition: all 0.5s;
+	white-space: nowrap;
+
+	&:before {
+		background-color: currentColor;
+		content: "";
+		display: inline-block;
+		height: 1em;
+		margin-right: $spacing-micro;
+		width: 1em;
+	}
+
+	&.exhibition-tag--closing-soon {
+		@media screen and (hover: none) {
+			color: $color-met-red;
+		}
+
+		.exhibition-item:hover &,
+		.exhibition-item:focus & {
+			color: $color-met-red;
+		}
+	}
+
+	&.exhibition-tag--just-opened {
+		@media screen and (hover: none) {
+			color: $color-green-good-news;
+		}
+
+		.exhibition-item:hover &,
+		.exhibition-item:focus & {
+			color: $color-green-good-news;
+		}
+
+		&:before {
+			border-radius: 100%;
+		}
+	}
+}
+
+.exhibition-tag__text {
+	color: currentColor;
+	font-weight: 600;
+}

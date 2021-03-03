@@ -41,6 +41,10 @@ const exhibition = {
 	},
 	building: building,
 	entryType: entryType,
+	timing: {
+		justOpened: false,
+		closingSoon: true,
+	},
 	detailPage: {
 		header: {
 			cta1: {
@@ -62,6 +66,12 @@ const ExhibitionStatusModule = () => {
 			<a href="/${exhibition.building.path}">${exhibition.building.name}</a>
 			<br />
 			${exhibition.entryType.displayText}
+			${exhibition.timing.closingSoon &&
+			html`
+				<div class="exhibition-tag exhibition-tag--closing-soon">
+					<span class="exhibition-tag__text">Closing soon</span>
+				</div>
+			`}
 		</div>
 	`;
 };
@@ -86,7 +96,7 @@ const ExhibitionDetailPage = () => {
 	return html`<div>
 		${fullWidthOrientationResponsive(exhibition.heroImage)}
 		<header class="edp-header">
-			<div class="edp-header__row">
+			<div class="edp-header__row edp-header__row--top">
 				<div>
 					<div class="edp-header__eyebrow">EXHIBITION</div>
 					<h2>${exhibition.title}</h2>

@@ -1,7 +1,10 @@
+@import "./exhibition-tag/exhibition-tag.scss"; // TODO: remove/refactor
+
 $bp-edp: 800px;
 
 .edp-header {
-	background: linear-gradient(180deg, $color-white 65.53%, #ececec 100%), $color-white;
+	background: linear-gradient(180deg, $color-white 65.53%, #ececec 100%),
+		$color-white;
 	display: flex;
 	flex-direction: column;
 	padding-top: $spacing-m;
@@ -33,7 +36,16 @@ $bp-edp: 800px;
 }
 
 .edp-header__status_module {
-	width: 33%;
+	@media (orientation: landscape) {
+		width: 33%;
+		margin-bottom: 1rem;
+	}
+}
+
+.edp-header__row--top {
+	@media (orientation: portrait) {
+		flex-direction: column;
+	}
 }
 
 .edp-header__row--bottom {
@@ -98,16 +110,17 @@ $bp-edp: 800px;
 	}
 
 	&:before {
-		background: linear-gradient(270deg, transparent 0%, $color-white 100%), transparent;
+		background: linear-gradient(270deg, transparent 0%, $color-white 100%),
+			transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(90deg, transparent 0%, $color-white 100%), transparent;
+		background: linear-gradient(90deg, transparent 0%, $color-white 100%),
+			transparent;
 		right: 0;
 	}
 }
-
 
 .edp-tabs {
 	display: block;
