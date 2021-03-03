@@ -59,6 +59,10 @@ $border-width-ghost: 2px;
 	@include primary-button--small();
 }
 
+.primary-button--x-small {
+	padding: 0.7777777778em 1.5em;
+}
+
 .primary-button--large {
 	padding: 0.7777777778em 4em;
 

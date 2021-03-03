@@ -28,7 +28,10 @@ const exhibition = {
 	tabs: [
 		{name:"Overview", id:"overview"},
 		{name:"Visiting Guide", id:"visiting-guide"},
-		{name:"Objects on View", id:"objects-on-view"}],
+		{name:"Objects on View", id:"objects-on-view"},
+		{name:"Extra Tab 1", id:"extra-1"},
+		{name:"Extra Tab 2", id:"extra-2"}
+	],
 	status: {
 		message: "Now on View at",
 	},
@@ -72,6 +75,7 @@ const ExhibitionDetailPage = () => {
 	return html`<div>
 		${fullWidth(exhibition.heroImage)}
 		<header class="edp-header">
+
 			<div class="edp-header__row">
 				<div>
 					<div class="edp-header__eyebrow">EXHIBITION</div>
@@ -79,32 +83,33 @@ const ExhibitionDetailPage = () => {
 				</div>
 				${ExhibitionStatusModule()}
 			</div>
+
 			<div class="edp-header__row edp-header__row--bottom">
 
-				<div class="edp-tabs js-edp-tabs">
-					${exhibition.tabs.map((tab) => html`
-						<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">${tab.name}</a>
-					`).join("")}
-				</div>
-
 				<div class="edp-header__cta-container">
-					<a
-						href="${exhibition.detailPage.header.cta1.link}"
+					<a href="${exhibition.detailPage.header.cta1.link}"
 						class="button primary-button
-								primary-button--small
-								primary-button--filled"
-					>
+								primary-button--x-small
+								primary-button--filled
+								edp-header__cta">
 						${exhibition.detailPage.header.cta1.text}
 					</a>
-					<a
-						href="${exhibition.detailPage.header.cta2.link}"
-						class="button tertiary-button"
-					>
+					<a href="${exhibition.detailPage.header.cta2.link}"
+						class="button tertiary-button edp-header__cta">
 						${exhibition.detailPage.header.cta2.text}
 					</a>
 				</div>
+				<div class="edp-tabs__container">
+					<div class="edp-tabs js-edp-tabs">
+						${exhibition.tabs.map((tab) => html`
+							<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">${tab.name}</a>
+						`).join("")}
+					</div>
+				</div>
 			</div>
+
 		</header>
+
 
 		${demoSections()}
 
