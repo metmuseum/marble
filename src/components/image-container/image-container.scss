@@ -22,3 +22,17 @@
 	padding: 0;
 	width: 100%;
 }
+
+.image-container__image--portrait {
+	display: none;
+	@media (orientation: portrait) {
+		display: block;
+	}
+}
+
+.image-container__image--landscape {
+	display: none;
+	@media (orientation: landscape) {
+		display: block;
+	}
+}

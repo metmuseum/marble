@@ -1,8 +1,9 @@
 import html from "../../../.storybook/helpers/html";
-import { fullWidth } from "../image-container/image-container.stories.js";
+import { fullWidthOrientationResponsive } from "../image-container/image-container.stories.js";
+import greekHallImage1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 import greekHallImage16x9 from "../../../.storybook/assets/images/greek-hall/16x9";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import { TabControls } from "../tab-controls/tab-controls.stories";
+// import { TabControls } from "../tab-controls/tab-controls.stories";
 import { useEffect } from "@storybook/client-api";
 import "./exhibition-tabs/exhibition-tabs.scss";
 import exhibitionTabs from "./exhibition-tabs/exhibition-tabs.js";
@@ -23,14 +24,17 @@ const entryType = {
 };
 
 const exhibition = {
-	heroImage: greekHallImage16x9,
+	heroImage: {
+		portrait: greekHallImage1x1,
+		landscape: greekHallImage16x9,
+	},
 	title: "Sahel: Art and Empires on The Shores of the Sahara",
 	tabs: [
-		{name:"Overview", id:"overview"},
-		{name:"Visiting Guide", id:"visiting-guide"},
-		{name:"Objects on View", id:"objects-on-view"},
-		{name:"Extra Tab 1", id:"extra-1"},
-		{name:"Extra Tab 2", id:"extra-2"}
+		{ name: "Overview", id: "overview" },
+		{ name: "Visiting Guide", id: "visiting-guide" },
+		{ name: "Objects on View", id: "objects-on-view" },
+		{ name: "Extra Tab 1", id: "extra-1" },
+		{ name: "Extra Tab 2", id: "extra-2" },
 	],
 	status: {
 		message: "Now on View at",
@@ -63,19 +67,25 @@ const ExhibitionStatusModule = () => {
 };
 
 const demoSections = () => {
-	return exhibition.tabs.map((tab) => html`
-		<section class="exhibition-section js-exhibition-section" data-name="${tab.id}">
-			<h1>${tab.name} Section</h1>
-		</section>
-	`).join("");
+	return exhibition.tabs
+		.map(
+			(tab) => html`
+				<section
+					class="exhibition-section js-exhibition-section"
+					data-name="${tab.id}"
+				>
+					<h1>${tab.name} Section</h1>
+				</section>
+			`
+		)
+		.join("");
 };
 
 const ExhibitionDetailPage = () => {
 	useEffect(exhibitionTabs);
 	return html`<div>
-		${fullWidth(exhibition.heroImage)}
+		${fullWidthOrientationResponsive(exhibition.heroImage)}
 		<header class="edp-header">
-
 			<div class="edp-header__row">
 				<div>
 					<div class="edp-header__eyebrow">EXHIBITION</div>
@@ -85,34 +95,40 @@ const ExhibitionDetailPage = () => {
 			</div>
 
 			<div class="edp-header__row edp-header__row--bottom">
-
 				<div class="edp-header__cta-container">
-					<a href="${exhibition.detailPage.header.cta1.link}"
+					<a
+						href="${exhibition.detailPage.header.cta1.link}"
 						class="button primary-button
 								primary-button--x-small
 								primary-button--filled
-								edp-header__cta">
+								edp-header__cta"
+					>
 						${exhibition.detailPage.header.cta1.text}
 					</a>
-					<a href="${exhibition.detailPage.header.cta2.link}"
-						class="button tertiary-button edp-header__cta">
+					<a
+						href="${exhibition.detailPage.header.cta2.link}"
+						class="button tertiary-button edp-header__cta"
+					>
 						${exhibition.detailPage.header.cta2.text}
 					</a>
 				</div>
 				<div class="edp-tabs__container">
 					<div class="edp-tabs js-edp-tabs">
-						${exhibition.tabs.map((tab) => html`
-							<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">${tab.name}</a>
-						`).join("")}
+						${exhibition.tabs
+							.map(
+								(tab) => html`
+									<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab"
+										>${tab.name}</a
+									>
+								`
+							)
+							.join("")}
 					</div>
 				</div>
 			</div>
-
 		</header>
 
-
 		${demoSections()}
-
 	</div>`;
 };
 
