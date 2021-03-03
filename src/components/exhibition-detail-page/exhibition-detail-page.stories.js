@@ -1,5 +1,5 @@
 import html from "../../../.storybook/helpers/html";
-import { fullWidth } from "../image-container/image-container.stories.js";
+import { hero } from "../image-container/image-container.stories.js";
 import greekHallImage16x9 from "../../../.storybook/assets/images/greek-hall/16x9";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { TabControls } from "../tab-controls/tab-controls.stories";
@@ -73,11 +73,11 @@ const demoSections = () => {
 const ExhibitionDetailPage = () => {
 	useEffect(exhibitionTabs);
 	return html`<div>
-		${fullWidth(exhibition.heroImage)}
+		${hero(exhibition.heroImage)}
 		<header class="edp-header">
 
-			<div class="edp-header__row">
-				<div>
+			<div class="edp-header__row edp-header__row--top">
+				<div class="edp-header__header-block">
 					<div class="edp-header__eyebrow">EXHIBITION</div>
 					<h2>${exhibition.title}</h2>
 				</div>

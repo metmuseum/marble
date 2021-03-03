@@ -55,6 +55,21 @@ halfWidth.story = {
 	},
 };
 
+const hero = (image = defaultImage) =>
+	html`
+		<div class="image-container image-container--full-width">
+			<img
+				class="image-container__image image-container__image--hero"
+				alt="${image.alt}"
+				width="${image.width}"
+				height="${image.height}"
+				src="${image.srcSet.fallback}"
+				srcset="${sizesTemplate(image.srcSet)}"
+				sizes="100vw"
+			/>
+		</div>
+	`;
+
 const lazyLoaded = (image = defaultImage) =>
 	html`
 		<div style="margin-bottom: 200vh;">
@@ -73,4 +88,4 @@ const lazyLoaded = (image = defaultImage) =>
 		</div>
 	`;
 
-export { fullWidth, halfWidth, lazyLoaded };
+export { fullWidth, halfWidth, hero, lazyLoaded };

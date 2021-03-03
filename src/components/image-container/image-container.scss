@@ -21,4 +21,12 @@
 	margin: 0;
 	padding: 0;
 	width: 100%;
+
+	&.image-container__image--hero {
+		@media (min-aspect-ratio: 16/10) {
+			max-height: 75vh;
+			object-fit: cover;
+			object-position: 100% 15%;
+		}
+	}
 }
