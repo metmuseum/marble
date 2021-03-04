@@ -17,7 +17,7 @@ $bp-edp: 800px;
 	width: 100%;
 
 	&:first-child {
-		@media screen and (min-width: $bp-edp) {
+		@media (orientation: landscape) {
 			border-bottom: 1px solid $color-grey-500;
 		}
 	}
@@ -37,8 +37,9 @@ $bp-edp: 800px;
 
 .edp-header__status_module {
 	@media (orientation: landscape) {
+		flex-shrink: 0;
+		padding-left: $spacing-xs;
 		width: 33%;
-		margin-bottom: 1rem;
 	}
 }
 
@@ -64,7 +65,7 @@ $bp-edp: 800px;
 	display: flex;
 	flex-direction: column;
 	padding: 0;
-	@media screen and (min-width: $bp-edp) {
+	@media (orientation: landscape) {
 		flex-direction: row-reverse;
 		margin-bottom: $spacing-xxs;
 		margin-top: $spacing-xxs;
@@ -81,10 +82,10 @@ $bp-edp: 800px;
 	flex-grow: 1;
 	justify-content: space-between;
 	padding: $spacing-xxs $spacing-component-margin;
-	@media screen and (min-width: $bp-edp) {
+	@media (orientation: landscape) {
 		border-bottom: 0;
 		border-left: 1px solid $color-grey-500;
-		flex-basis: 325px;
+		flex-basis: 33%;
 		flex-grow: 1;
 		flex-shrink: 0;
 		justify-content: space-around;
@@ -93,7 +94,7 @@ $bp-edp: 800px;
 }
 
 .edp-header__cta {
-	@media screen and (min-width: $bp-edp) {
+	@media (orientation: landscape) {
 		margin: 0 $spacing-micro;
 	}
 }
@@ -108,7 +109,7 @@ $bp-edp: 800px;
 	padding: $spacing-micro 0;
 	position: relative;
 
-	@media screen and (min-width: $bp-edp) {
+	@media (orientation: landscape) {
 		background-color: transparent;
 		border-bottom: 0;
 		box-shadow: none;
@@ -122,20 +123,18 @@ $bp-edp: 800px;
 		position: absolute;
 		top: 0;
 		width: $spacing-component-margin;
-		@media screen and (min-width: $bp-edp) {
+		@media (orientation: landscape) {
 			content: none;
 		}
 	}
 
 	&:before {
-		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%),
-			transparent;
+		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%), transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%),
-			transparent;
+		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%), transparent;
 		right: 0;
 	}
 }
@@ -146,7 +145,7 @@ $bp-edp: 800px;
 	overflow: auto;
 	padding: 0 $spacing-component-margin;
 	white-space: nowrap;
-	@media screen and (min-width: $bp-edp) {
+	@media (orientation: landscape) {
 		padding: 0;
 		white-space: normal;
 	}
@@ -163,7 +162,7 @@ $bp-edp: 800px;
 
 	&:last-child {
 		margin-right: 0;
-		@media screen and (min-width: $bp-edp) {
+		@media (orientation: landscape) {
 			margin-right: $spacing-micro;
 		}
 	}
