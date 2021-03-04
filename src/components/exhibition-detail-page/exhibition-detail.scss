@@ -101,7 +101,7 @@ $bp-edp: 800px;
 .edp-tabs__container {
 	background-color: $color-white;
 	border-bottom: 1px solid $color-grey-500;
-	box-shadow: 6px 6px 10px 0 $color-active-shadow;
+	box-shadow: 6px 6px 10px 0 $color-card-shadow;
 	flex-basis: 100%;
 	flex-grow: 1;
 	max-width: 100%;
@@ -128,13 +128,13 @@ $bp-edp: 800px;
 	}
 
 	&:before {
-		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 70%),
+		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%),
 			transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 70%),
+		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%),
 			transparent;
 		right: 0;
 	}
