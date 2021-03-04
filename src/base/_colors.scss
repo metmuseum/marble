@@ -38,6 +38,9 @@ $color-black-opaque-80: rgba($color-black, 0.8);
 $color-white-opaque-70: rgba($color-white, 0.7);
 $color-white-opaque-30: rgba($color-white, 0.3);
 
+//Safari handles transparencies weird and this is useful for gradients
+$color-white-transparent: rgba($color-white, 0);
+
 //Shadows Used on Marble Cards
 $color-card-shadow: rgba($color-black, 0.08);
 $color-active-shadow: rgba($color-black, 0.18);

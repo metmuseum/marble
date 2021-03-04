@@ -110,13 +110,13 @@ $bp-edp: 800px;
 	}
 
 	&:before {
-		background: linear-gradient(270deg, transparent 0%, $color-white 100%),
+		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%),
 			transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(90deg, transparent 0%, $color-white 100%),
+		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%),
 			transparent;
 		right: 0;
 	}
