@@ -105,6 +105,19 @@ const ExhibitionDetailPage = () => {
 			</div>
 
 			<div class="edp-header__row edp-header__row--bottom">
+			<div class="edp-tabs__container">
+				<div class="edp-tabs js-edp-tabs">
+					${exhibition.tabs
+						.map(
+							(tab) => html`
+								<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab"
+									>${tab.name}</a
+								>
+							`
+						)
+						.join("")}
+				</div>
+			</div>
 				<div class="edp-header__cta-container">
 					<a
 						href="${exhibition.detailPage.header.cta1.link}"
@@ -121,19 +134,6 @@ const ExhibitionDetailPage = () => {
 					>
 						${exhibition.detailPage.header.cta2.text}
 					</a>
-				</div>
-				<div class="edp-tabs__container">
-					<div class="edp-tabs js-edp-tabs">
-						${exhibition.tabs
-							.map(
-								(tab) => html`
-									<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab"
-										>${tab.name}</a
-									>
-								`
-							)
-							.join("")}
-					</div>
 				</div>
 			</div>
 		</header>

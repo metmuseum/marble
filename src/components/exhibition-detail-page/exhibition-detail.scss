@@ -63,10 +63,10 @@ $bp-edp: 800px;
 
 .edp-header__row--bottom {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	padding: 0;
 	@media (orientation: landscape) {
-		flex-direction: row-reverse;
+		flex-direction: row;
 		margin-bottom: $spacing-xxs;
 		margin-top: $spacing-xxs;
 		padding-left: $spacing-component-margin;
