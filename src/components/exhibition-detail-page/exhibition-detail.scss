@@ -67,17 +67,23 @@ $bp-edp: 800px;
 	display: flex;
 	flex-basis: auto;
 	flex-grow: 1;
-	justify-content: space-around;
+	justify-content: space-between;
 	padding: $spacing-xxs $spacing-component-margin;
 	@media screen and (min-width: $bp-edp) {
 		border-bottom: 0;
 		border-left: 1px solid $color-grey-500;
-		padding: 0;
+		flex-basis: 325px;
+		flex-grow: 1;
+		flex-shrink: 0;
+		justify-content: space-around;
+		padding: 0 0 0 $spacing-micro;
 	}
 }
 
 .edp-header__cta {
-	margin: 0 $spacing-micro;
+	@media screen and (min-width: $bp-edp) {
+		margin: 0 $spacing-micro;
+	}
 }
 
 .edp-tabs__container {
@@ -110,13 +116,13 @@ $bp-edp: 800px;
 	}
 
 	&:before {
-		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%),
+		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 70%),
 			transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%),
+		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 70%),
 			transparent;
 		right: 0;
 	}
