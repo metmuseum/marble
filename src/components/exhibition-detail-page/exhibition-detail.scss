@@ -27,7 +27,7 @@ $bp-edp: 800px;
 	@include typography-tag();
 	display: block;
 	font-size: $textsize-xxs; //TODO add to tag maybe?
-	margin-bottom: $spacing-xxs;
+	margin: 0 $spacing-component-margin $spacing-xxs;
 
 	&:empty {
 		display: none;
@@ -42,10 +42,22 @@ $bp-edp: 800px;
 	}
 }
 
+.edp-header__location {
+	font-weight: 500;
+}
+
+.edp-header__display-text {
+	font-size: $textsize-xs;
+}
+
 .edp-header__row--top {
 	@media (orientation: portrait) {
 		flex-direction: column;
 	}
+}
+
+.edp-badge {
+	display: inline-flex;
 }
 
 .edp-header__row--bottom {

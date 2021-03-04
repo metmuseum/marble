@@ -62,13 +62,13 @@ const exhibition = {
 const ExhibitionStatusModule = () => {
 	return html`
 		<div class="edp-header__status_module">
-			${exhibition.status.message}
-			<a href="/${exhibition.building.path}">${exhibition.building.name}</a>
-			<br />
-			${exhibition.entryType.displayText}
+			<div class="edp-header__location">
+				${exhibition.status.message} <a href="/${exhibition.building.path}">${exhibition.building.name}</a>
+			</div>
+			<div class="edp-header__display-text">${exhibition.entryType.displayText}</div>
 			${exhibition.timing.closingSoon &&
 			html`
-				<div class="exhibition-tag exhibition-tag--closing-soon">
+				<div class="exhibition-tag exhibition-tag--closing-soon edp-badge is-color">
 					<span class="exhibition-tag__text">Closing soon</span>
 				</div>
 			`}
@@ -96,9 +96,9 @@ const ExhibitionDetailPage = () => {
 	return html`<div>
 		${fullWidthOrientationResponsive(exhibition.heroImage)}
 		<header class="edp-header">
+			<div class="edp-header__eyebrow">EXHIBITION</div>
 			<div class="edp-header__row edp-header__row--top">
 				<div>
-					<div class="edp-header__eyebrow">EXHIBITION</div>
 					<h2>${exhibition.title}</h2>
 				</div>
 				${ExhibitionStatusModule()}

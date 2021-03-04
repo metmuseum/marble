@@ -26,6 +26,7 @@
 			color: $color-met-red;
 		}
 
+		&.is-color,
 		.exhibition-item:hover &,
 		.exhibition-item:focus & {
 			color: $color-met-red;
