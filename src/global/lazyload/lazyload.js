@@ -2,6 +2,7 @@ require(`intersection-observer`);
 import LazyLoad from "vanilla-lazyload";
 
 export default function lazyload() {
+	// console.log("global lazy load temporarily disabled");
 	const lazyLoadObj = new LazyLoad({
 		elements_selector: ".lazy",
 		callback_loaded: el => {
@@ -9,9 +10,6 @@ export default function lazyload() {
 		}
 	});
 
-	document.querySelector("body").addEventListener("flickity-change", () => {
-		lazyLoadObj.update();
-	});
 	//on scroll load all below the fold Images
 	window.addEventListener("scroll", loadImages, true);
 	//After they load unbind the scroll listener.

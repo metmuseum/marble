@@ -40,21 +40,17 @@ const carousel = (options = {}) => {
 			}
 		);
 
-		function handleImagesLoaded() {
-			flickityInstance.resize();
-			carousel.removeEventListener("image-loaded", handleImageLoad, false);
-			carousel.classList.remove("is-loading");
-		};
-
-		//This event is bubbled up when our lazyload library kicks off.
-		carousel.addEventListener("image-loaded", handleImageLoad, false);
-		//If images within the carousel have been loaded after the carousel initiated, re-calcute the size.
-
-		function handleImageLoad() {
+		// This event is bubbled up when our lazyload library loads an image (see lazyload.js)
+		carousel.addEventListener("image-loaded", () => {
 			carousel.classList.add("is-loading");
-			//If there are no more images loading - handle the fully loaded carousel.
-			!carousel.querySelector(".lazy-loading") && handleImagesLoaded();
-		}
+			const allImagesAreLoadedAndWeCanResize = !carousel.querySelector(".loading");
+			// console.log("an image just loaded inside: ", carousel, allImagesAreLoadedAndWeCanResize);
+			if (allImagesAreLoadedAndWeCanResize) {
+				// console.log("we are done loading: ", carousel);
+				flickityInstance.resize();
+				carousel.classList.remove("is-loading");
+			}
+		}, false);
 	});
 };
 
