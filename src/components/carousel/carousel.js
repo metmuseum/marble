@@ -53,7 +53,7 @@ const carousel = (options = {}) => {
 		function handleImageLoad() {
 			carousel.classList.add("is-loading");
 			//If there are no more images loading - handle the fully loaded carousel.
-			!carousel.querySelector(".lazy-loading") && handleImagesLoaded();
+			!carousel.querySelector(`.lazy:not([data-was-processed="true"])`) && handleImagesLoaded();
 		}
 	});
 };
