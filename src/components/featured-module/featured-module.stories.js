@@ -31,7 +31,7 @@ export const featuredModule = () => {
 						role="button"
 						href="#"
 						tabindex="0"
-						class="button tertiary-buttton"
+						class="button tertiary-button"
 					>
 						${CTA1}
 					</a>
@@ -39,7 +39,7 @@ export const featuredModule = () => {
 						role="button"
 						href="#"
 						tabindex="0"
-						class="button tertiary-buttton"
+						class="button tertiary-button"
 					>
 						${CTA2}
 					</a>
@@ -47,7 +47,7 @@ export const featuredModule = () => {
 						role="button"
 						href="#"
 						tabindex="0"
-						class="button tertiary-buttton"
+						class="button tertiary-button"
 					>
 						${CTA3}
 					</a>

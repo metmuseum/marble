@@ -2,18 +2,20 @@
 @import "../../base/mixins/layouts";
 @import "../../base/mixins/_typography.scss";
 
-$fluid-font-size: calc(18px + #{$font-scale-base});
-
 .section-heading {
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
-	font-size: $fluid-font-size;
+	font-size: $textsize-m;
 	font-style: normal;
 	font-weight: 500;
 	line-height: (24/18);
 	margin-bottom: $spacing-s;
 	margin-top: $spacing-m;
+
+	&.productive-component {
+		@include productive-component;
+	}
 
 	@media (orientation: portrait) {
 		max-width: 85vw;
@@ -23,10 +25,6 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 		* {
 			max-width: 60vw;
 		}
-	}
-
-	&.productive-component {
-		@include productive-component;
 	}
 }
 
@@ -46,18 +44,21 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 }
 
 .section-heading__heading {
+
 	&.expressive {
 		font-family: $metserif;
 	}
+
 	&.productive {
 		font-family: $metsans;
 	}
+
 	&.expressive,
 	&.productive {
 		font-style: normal; // match figma
 		font-weight: 500; // match figma
 		line-height: 1;
-		margin-bottom: $fluid-font-size;
+		margin-bottom: $textsize-m;
 		margin-top: 0;
 		padding: 0;
 	}
@@ -66,6 +67,6 @@ $fluid-font-size: calc(18px + #{$font-scale-base});
 .section-heading__text-link,
 .section-heading__text-link.tertiary-button {
 	display: block;
-	margin-top: $fluid-font-size;
+	margin-top: $textsize-m;
 	white-space: nowrap;
 }

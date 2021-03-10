@@ -59,13 +59,19 @@ jobs:
           fingerprints:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
       - run:
-          name: "Build Marble's /dist for production!"
+          name: "Build Marble's ./dist for production!"
           command: npm run build
-      - run: git config user.email "stephen.marsh@metmuseum.org"
-      - run: git config user.name "Marble Bot"
-      - run: git add dist
-      - run: git commit -m "[skip ci] auto build dist for $(git rev-parse HEAD)"
-      - run: git push origin main
+      - run: BUILD_PRODUCED_CHANGES=`git diff-files --quiet; echo $?;`
+      - when:
+          condition:
+            equal: [$BUILD_PRODUCED_CHANGES, 1]
+          steps:
+            - run: git config user.email "stephen.marsh@metmuseum.org"
+            - run: git config user.name "Marble Bot"
+            - run: git add dist
+            - run: git commit -m "[skip ci] auto build dist for $(git rev-parse HEAD)"
+            - run: git push origin main
+      - run: echo 0
 
 workflows:
   version: 2

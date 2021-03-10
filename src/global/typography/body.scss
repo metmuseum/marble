@@ -1,16 +1,15 @@
 body {
 	@include typography-body-long;
-	// TODO: ask about this?
 	-webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
 
 	.fixed-width & {
-		font-size: 18px;
+		font-size: $textsize-s-fixed;
 	}
 }
 
 p {
 	font-family: inherit;
-	max-width: 40em;
+	max-width: $line-length-max;
 
 	.expressive-body & {
 		@include typography-body-expressive;

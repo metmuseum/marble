@@ -7,10 +7,16 @@
 	font-family: $metsans;
 	line-height: 1;
 	margin: 0;
+	text-decoration: none;
 
 	/* Firefox: removes the inner border shown on focus */
 	&::-moz-focus-inner {
 		border: none;
+	}
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
 	}
 }
 

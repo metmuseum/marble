@@ -1,0 +1,83 @@
+.quotes-module {
+	background-color: $color-grey-900;
+	color: $color-white;
+	padding: $spacing-l $spacing-component-margin;
+
+	& :focus {
+		background-color: $color-white-opaque-30;
+		color: $color-white;
+	}
+}
+
+.quotes-module__header {
+	align-items: center;
+	border-bottom: 1px solid currentColor;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: $spacing-xs;
+	padding-bottom: $spacing-xs;
+}
+
+.quotes-module__quotes {
+	column-gap: $spacing-s;
+	display: grid;
+	grid-template-columns:	1fr;
+	margin-bottom: $spacing-s;
+	row-gap: $spacing-s;
+
+	@media screen and (min-width: $bp-large-card) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+}
+
+.quotes-module__quote:nth-child(n+4) {
+	display: none;
+
+	.is-expanded & {
+		display: block;
+	}
+}
+
+.quotes-module__quote-text {
+	margin-bottom: $spacing-micro;
+
+	p {
+		display: inline;
+	}
+
+	&:before {
+		content: "“";
+	}
+
+	&:after {
+		content: "”";
+	}
+}
+
+.quotes-module__quote-citation {
+	display: flex;
+	font-weight: 600;
+
+	&:before {
+		content: "—";
+	}
+}
+
+.quotes-module__quote-link {
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+.button.quotes-module__expander {
+	display: none;
+	font-size: $textsize-xs;
+
+	&.is-visible {
+		display: inline-block;
+	}
+}
