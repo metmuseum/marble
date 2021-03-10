@@ -3,11 +3,11 @@ const ScssConfigWebpackPlugin = require("scss-config-webpack-plugin");
 const FontConfigWebpackPlugin = require("font-config-webpack-plugin");
 
 module.exports = {
-	entry: './src/index.mjs',
+	entry: ["./src/index.mjs", "./src/marble.scss"],
 	plugins: [
-		new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }),
+		new JsConfigWebpackPlugin({ babelConfigFile: "./babel.config.js" }),
 		new ScssConfigWebpackPlugin(),
-		new FontConfigWebpackPlugin()
+		new FontConfigWebpackPlugin(),
 	],
 	target: "node",
 };

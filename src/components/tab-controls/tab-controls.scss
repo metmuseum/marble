@@ -43,11 +43,11 @@
 	}
 
 	&:hover {
-		cursor: pointer;
 		color: $color-focus-state;
+		cursor: pointer;
 	}
 
 	h3 {
-		padding-bottom: 0;
+		margin-bottom: 0;
 	}
 }

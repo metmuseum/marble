@@ -28,10 +28,15 @@ $color-white: #ffffff;
 
 //Opaque Colors
 $color-shadow: rgba(136, 132, 132, 0.5);
-$color-black-opaque-80: rgba($color-black, 0.8);
 $color-black-opaque: rgba($color-black, 0.4);
+
+//TODO: This is dumb we should just make a little rgba mixin.
+$color-black-opaque-10: rgba($color-black, 0.1);
 $color-black-opaque-20: rgba($color-black, 0.2);
+$color-black-opaque-80: rgba($color-black, 0.8);
+
 $color-white-opaque-70: rgba($color-white, 0.7);
+$color-white-opaque-30: rgba($color-white, 0.3);
 
 //Shadows Used on Marble Cards
 $color-card-shadow: rgba($color-black, 0.08);

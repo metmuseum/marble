@@ -1,12 +1,12 @@
 @mixin typography-tag {
+	color: currentColor;
 	font-family: $metsans;
+	font-size: $textsize-xs;
 	font-style: normal;
 	font-weight: 600;
-	font-size: $textsize-xs;
-	line-height: (14/18);
 	letter-spacing: 0.7px;
+	line-height: (14/18);
 	text-transform: uppercase;
-	color: currentColor;
 }
 
 .tag {

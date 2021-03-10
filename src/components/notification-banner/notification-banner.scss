@@ -43,7 +43,7 @@ $minimum-header-width: 350px;
 }
 
 .notification-banner__subtext {
-	@include typography-h2-subtext;
+	@include typography-h3;
 
 }
 

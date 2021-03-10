@@ -33,6 +33,6 @@ $minimum-header-width: 350px;
 	}
 
 	.marble-card__meta-description {
-		@include typography-h2-subtext;
+		@include typography-h3;
 	}
 }

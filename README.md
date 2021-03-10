@@ -33,23 +33,21 @@ npm install metmuseum/Marble#main -S
 
 Marble can be imported a few different ways, depending on how your project preprocesses and bundles things. If you're unsure, please reach out in our [#app-dev](https://met-museum.slack.com/archives/G29NSRAGL) Slack channel.
 
-### Ways To Import "Everything" At Once:
+### Import Javascript:
 
-#### Webpack (SCSS & ECMAScript2020)
-
-```javascript
-import marble from "Marble";
-```
-
-#### Javascript Only:
-
-- If your project only uses CommonJS syntax, which is probably the case if you don't run things through webpack, this should (TODO: check? Dual package hazard?) give you production-ready code:
+- If your project only uses CommonJS syntax (vanilla Node.js environments):
 
   ```javascript
   const marble = require("Marble");
   ```
 
-- Or just reference the files directly:
+- ESM syntax (Webpack, etc):
+
+  ```javascript
+  import marble from "@metmuseum/marble";
+  ```
+
+- Reference the files directly (not recommended):
   - `Path/To/Your/Project/node_modules/Marble/dist/marble.js`
     - This exposes a variable called `marble`.
   - `Path/To/Your/Project/node_modules/Marble/dist/marble.js.map`
@@ -57,17 +55,21 @@ import marble from "Marble";
 
 * TODO: Consider CDN-hosted file for `<script>` tag? (easy with CI, but like, version control?)
 
-#### SCSS Only:
+### Import SCSS:
 
 This should work, please let us know if it does not:
 
 ```scss
-@import "Marble";
+@import "~@metmuseum/marble/src/marble.scss";
 ```
 
-#### CSS Only:
+### Import Precompiled, Minified CSS:
 
-- Production-ready assets are available to reference directly:
+- If your project supports the `~` syntax:
+  ```scss
+  import "~@metmuseum/marble";
+  ```
+- If not, production-ready assets are available to reference directly (not recommended):
   - `Path/To/Your/Project/node_modules/Marble/dist/marble.css`
 - TODO: Consider CDN-hosted file for stylesheet `<link>` tag? (easy with CI, but like, version control?)
 

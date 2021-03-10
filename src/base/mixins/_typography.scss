@@ -1,30 +1,17 @@
 @import "../sizes";
 @import "../colors";
 
-//font-sizes
-$font-scale-base: 0.3vw;
-$font-scale-size: 1.5vw;
-$font-scale-size-micro: 0.2vw;
-
-//font stacks
+// Font Stacks
 $metsans: "MetSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 
 @mixin typography-h1 {
 	font-size: $textsize-xxl;
-	font-weight: bold;
+	font-weight: 700;
 	line-height: 1.1;
 
-	&.masthead {
-		font-size: calc(46px + 2.5vw);
-	}
-
 	.fixed-width & {
-		font-size: 64px;
-
-		@media screen and (min-width: $bp-fixed-type) {
-			font-size: 88px;
-		}
+		font-size: $textsize-xxl-fixed;
 	}
 }
 
@@ -32,7 +19,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	font-family: $metserif;
 	font-weight: 800;
 	line-height: 1;
-	padding-bottom: $spacing-xs;
+	margin-bottom: $spacing-xs;
 }
 
 @mixin typography-h2 {
@@ -41,11 +28,7 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	line-height: 1.1;
 
 	.fixed-width & {
-		font-size: 42px;
-		font-weight: medium;
-		@media screen and (min-width: $bp-fixed-type) {
-			font-size: 54px;
-		}
+		font-size: $textsize-xl-fixed;
 	}
 }
 
@@ -55,31 +38,33 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	line-height: 1.1;
 
 	.fixed-width & {
-		font-size: 32px;
-
-		@media screen and (min-width: $bp-fixed-type) {
-			font-size: 36px;
-		}
+		font-size: $textsize-l-fixed;
 	}
-}
-
-@mixin typography-h2-subtext {
-	// TODO: remove/deprecate. it's now merged into h3
-	@include typography-h3();
 }
 
 @mixin typography-h4 {
 	font-size: $textsize-m;
-	font-weight: bold;
+	font-weight: 700;
 	line-height: 1.1;
 
 	.fixed-width & {
-		font-size: 24px;
-		font-weight: bold;
-		line-height: 1.1;
+		font-size: $textsize-m-fixed;
 	}
 }
 
+@mixin typography-h5 {
+	font-size: $textsize-s;
+	font-weight: 600;
+}
+
+//TODO Revisit. This is so weird and maybe not used anywhere?
+@mixin typography-h6 {
+	font-size: $textsize-xs;
+	font-weight: 400;
+	line-height: 16px;
+}
+
+//TODO: We should only have one body text.
 @mixin typography-body-long {
 	color: $color-grey-900;
 	font-family: $metsans;
@@ -93,63 +78,36 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 }
 
 @mixin typography-body-expressive {
-	font-size: $textsize-s; // Is this okay?
+	font-size: $textsize-s;
 	font-weight: 500;
 	line-height: 1.3333;
 
 	.fixed-width & {
-		font-size: 18px;
+		font-size: $textsize-l-fixed;
 		line-height: 1.2;
-
-		@media screen and (min-width: $bp-fixed-type) {
-			font-size: 20px;
-		}
 	}
 }
 
 @mixin typography-label-field {
-	font-size: calc(16px + #{$font-scale-base});
+	font-size: $textsize-s;
 	font-weight: 400;
-	line-height: 22px;
-}
-
-@mixin typography-label-text {
-	font-size: calc(14px + #{$font-scale-size-micro});
-	font-weight: 600;
-	line-height: 18px;
-	text-transform: uppercase;
-
-	.fixed-width & {
-		font-size: 14px;
-	}
+	line-height: 22px; // why?
 }
 
 @mixin typography-info-label {
-	font-size: calc(14px + #{$font-scale-size-micro});
+	font-size: $textsize-xs;
 	font-weight: 600;
-	line-height: 18px;
+	line-height: 18px; // why?
 }
 
-@mixin typography-h5 {
-	font-size: calc(19px + #{$font-scale-size-micro});
-	font-weight: 700;
-	line-height: 19px;
-
-	.fixed-width & {
-		font-size: 20px;
-	}
+//This is just info-label but uppercase? Do we need this?
+@mixin typography-label-text {
+	@include typography-info-label();
+	text-transform: uppercase;
 }
 
-@mixin typography-h6 {
-	font-size: calc(17px + #{$font-scale-size-micro});;
-	font-weight: 400;
-	line-height: 16px;
 
-	.fixed-width & {
-		font-size: 18px;
-	}
-}
-
+//DEPRECATED Also... not used anywhere as far as I know?
 @mixin typography-link {
 	@include underline($color-black);
 	display: inline-block;
@@ -160,4 +118,9 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	line-height: 1.3;
 	padding-bottom: 3px;
 	text-decoration: none;
+}
+
+//DEPRECATED
+@mixin typography-h2-subtext {
+	@include typography-h3();
 }
