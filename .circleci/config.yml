@@ -2,7 +2,7 @@ version: 2.1
 executors:
   marble-node:
     docker:
-      - image: "circleci/node:latest"
+      - image: "cimg/node:lts-browsers"
 jobs:
   setup_marble:
     executor: marble-node
