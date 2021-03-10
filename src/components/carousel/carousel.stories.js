@@ -19,6 +19,16 @@ const Carousel = () => {
 				${CarouselSlide(true)}
 				${CarouselSlide(true)}
 				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
+				${CarouselSlide(false)}
 				${CarouselSlide(true)}
 				${CarouselSlide(true)}
 				${CarouselSlide(true)}

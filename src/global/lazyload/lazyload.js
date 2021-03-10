@@ -1,22 +1,32 @@
 require(`intersection-observer`);
 import LazyLoad from "vanilla-lazyload";
 
-export default function lazyload() {
+const imageLoadedEvent = new CustomEvent("image-loaded", { bubbles: true });
+const imageErrorEvent = new CustomEvent("image-errored", { bubbles: true });
+
+const lazyload = () => {
 	const lazyLoadObj = new LazyLoad({
 		elements_selector: ".lazy",
-		callback_loaded: el => {
-			el.dispatchEvent(new CustomEvent("image-loaded", { bubbles: true }));
-		}
+		callback_loaded: (el) => {
+			el.dispatchEvent(imageLoadedEvent);
+		},
+		callback_error: (el) => {
+			el.dispatchEvent(imageErrorEvent);
+		},
 	});
 
-	document.querySelector("body").addEventListener("flickity-change", () => {
-		lazyLoadObj.update();
-	});
-	//on scroll load all below the fold Images
-	window.addEventListener("scroll", loadImages, true);
-	//After they load unbind the scroll listener.
 	function loadImages() {
 		lazyLoadObj.loadAll();
+		// After they load unbind the scroll listener.
 		window.removeEventListener("scroll", loadImages, true);
 	}
-}
+
+	//on scroll load all below the fold Images
+	window.addEventListener("scroll", loadImages, {
+		once: true,
+		passive: true,
+		capture: true,
+	});
+};
+
+export default lazyload;
