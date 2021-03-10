@@ -1,13 +1,17 @@
 require(`intersection-observer`);
 import LazyLoad from "vanilla-lazyload";
 
-export default function lazyload() {
-	const imageLoadedEvent = new CustomEvent("image-loaded", { bubbles: true });
+const imageLoadedEvent = new CustomEvent("image-loaded", { bubbles: true });
+const imageErrorEvent = new CustomEvent("image-errored", { bubbles: true });
 
+const lazyload = () => {
 	const lazyLoadObj = new LazyLoad({
 		elements_selector: ".lazy",
 		callback_loaded: (el) => {
 			el.dispatchEvent(imageLoadedEvent);
+		},
+		callback_error: (el) => {
+			el.dispatchEvent(imageErrorEvent);
 		},
 	});
 
@@ -23,4 +27,6 @@ export default function lazyload() {
 		passive: true,
 		capture: true,
 	});
-}
+};
+
+export default lazyload;
