@@ -11,6 +11,14 @@
 	width: 100%;
 }
 
+.image-container--max-1600 {
+	width: 100%;
+	.image-container__image {
+		max-width: 1600px;
+		margin: 0 auto;
+	}
+}
+
 .image-container--half-width {
 	width: 50%;
 }

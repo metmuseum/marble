@@ -2,9 +2,11 @@ import html from "../../../.storybook/helpers/html";
 import defaultImage from "../../../.storybook/assets/images/full-width-image";
 import portraitImage from "../../../.storybook/assets/images/greek-hall/1x1";
 import landscapeImage from "../../../.storybook/assets/images/greek-hall/16x9";
+import { withKnobs, color } from "@storybook/addon-knobs";
 
 export default {
 	title: "Image Containers",
+	decorators: [withKnobs],
 };
 
 const sizesTemplate = (srcSet) => {
@@ -39,6 +41,30 @@ const fullWidth = (image) => {
 	`;
 };
 
+const fullWidthBoundToMaximum = (image) => {
+	// ugh, for some reason default params broke because storybook will call our stories with an empty object as an argument!?
+	if (Object.keys(image).length < 1) {
+		image = defaultImage;
+	}
+
+	return html`
+		<div
+			class="image-container image-container--max-1600"
+			style="background-color: ${color("Background Color", "#000")};"
+		>
+			<img
+				class="image-container__image"
+				alt="${image.alt}"
+				width="${image.width}"
+				height="${image.height}"
+				src="${image.srcSet.fallback}"
+				srcset="${sizesTemplate(image.srcSet)}"
+				sizes="100vw"
+			/>
+		</div>
+	`;
+};
+
 const fullWidthOrientationResponsive = (images) => {
 	if (Object.keys(images).length < 1) {
 		images = { portrait: portraitImage, landscape: landscapeImage };
@@ -48,6 +74,40 @@ const fullWidthOrientationResponsive = (images) => {
 
 	return html`
 		<div class="image-container image-container--full-width">
+			<img
+				class="image-container__image image-container__image--portrait"
+				alt="${portrait.alt}"
+				width="${portrait.width}"
+				height="${portrait.height}"
+				src="${portrait.srcSet.fallback}"
+				srcset="${sizesTemplate(portrait.srcSet)}"
+				sizes="100vw"
+			/>
+			<img
+				class="image-container__image image-container__image--landscape"
+				alt="${landscape.alt}"
+				width="${landscape.width}"
+				height="${landscape.height}"
+				src="${landscape.srcSet.fallback}"
+				srcset="${sizesTemplate(landscape.srcSet)}"
+				sizes="100vw"
+			/>
+		</div>
+	`;
+};
+
+const fullWidthOrientationResponsiveBoundToMaximum = (images) => {
+	if (Object.keys(images).length < 1) {
+		images = { portrait: portraitImage, landscape: landscapeImage };
+	}
+
+	const { portrait, landscape } = images;
+
+	return html`
+		<div
+			class="image-container image-container--max-1600"
+			style="background-color: ${color("Background Color", "#000")};"
+		>
 			<img
 				class="image-container__image image-container__image--portrait"
 				alt="${portrait.alt}"
@@ -119,4 +179,11 @@ const lazyLoaded = (image = defaultImage) => {
 	`;
 };
 
-export { fullWidth, halfWidth, lazyLoaded, fullWidthOrientationResponsive };
+export {
+	fullWidth,
+	fullWidthBoundToMaximum,
+	fullWidthOrientationResponsive,
+	fullWidthOrientationResponsiveBoundToMaximum,
+	halfWidth,
+	lazyLoaded,
+};

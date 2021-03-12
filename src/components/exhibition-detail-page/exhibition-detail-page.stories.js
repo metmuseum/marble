@@ -1,5 +1,5 @@
 import html from "../../../.storybook/helpers/html";
-import { fullWidthOrientationResponsive } from "../image-container/image-container.stories.js";
+import { fullWidthOrientationResponsiveBoundToMaximum } from "../image-container/image-container.stories.js";
 import greekHallImage1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 import greekHallImage16x9 from "../../../.storybook/assets/images/greek-hall/16x9";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
@@ -27,6 +27,7 @@ const exhibition = {
 	heroImage: {
 		portrait: greekHallImage1x1,
 		landscape: greekHallImage16x9,
+		backgroundColor: "#000",
 	},
 	title: "Sahel: Art and Empires on The Shores of the Sahara",
 	tabs: [
@@ -99,7 +100,7 @@ const demoSections = () => {
 const ExhibitionDetailPage = () => {
 	useEffect(exhibitionTabs);
 	return html`<div>
-		${fullWidthOrientationResponsive(exhibition.heroImage)}
+		${fullWidthOrientationResponsiveBoundToMaximum(exhibition.heroImage)}
 		<header class="edp-header">
 			<div class="edp-header__eyebrow">EXHIBITION</div>
 			<div class="edp-header__row edp-header__row--top">
