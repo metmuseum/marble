@@ -35,6 +35,13 @@ $bp-edp: 800px;
 	}
 }
 
+.edp-header__title {
+	// this achieves a 1 "column" margin between title and status module
+	// (given that this container is implicilty 8/12 "columns")
+	// (...which it is, on landscape! and for portrait, for now, this number is fine, too)
+	margin-right: 12.5%;
+}
+
 .edp-header__status_module {
 	@media (orientation: landscape) {
 		flex-shrink: 0;
@@ -76,14 +83,13 @@ $bp-edp: 800px;
 
 .edp-header__cta-container {
 	align-items: center;
-	border-bottom: 1px solid $color-grey-500;
 	display: flex;
 	flex-basis: auto;
 	flex-grow: 1;
-	justify-content: space-between;
-	padding: $spacing-xxs $spacing-component-margin;
+	margin: $spacing-xs $spacing-component-margin $spacing-xxs
+		$spacing-component-margin;
+
 	@media (orientation: landscape) {
-		border-bottom: 0;
 		border-left: 1px solid $color-grey-500;
 		flex-basis: 33%;
 		flex-grow: 1;
@@ -94,6 +100,9 @@ $bp-edp: 800px;
 }
 
 .edp-header__cta {
+	@media (orientation: portrait) {
+		margin-right: $spacing-xs;
+	}
 	@media (orientation: landscape) {
 		margin: 0 $spacing-micro;
 	}
@@ -102,6 +111,7 @@ $bp-edp: 800px;
 .edp-tabs__container {
 	background-color: $color-white;
 	border-bottom: 1px solid $color-grey-500;
+	border-top: 1px solid $color-grey-500;
 	box-shadow: 6px 6px 10px 0 $color-card-shadow;
 	flex-basis: 100%;
 	flex-grow: 1;
@@ -129,12 +139,22 @@ $bp-edp: 800px;
 	}
 
 	&:before {
-		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%), transparent;
+		background: linear-gradient(
+				270deg,
+				$color-white-transparent 0%,
+				$color-white 100%
+			),
+			transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%), transparent;
+		background: linear-gradient(
+				90deg,
+				$color-white-transparent 0%,
+				$color-white 100%
+			),
+			transparent;
 		right: 0;
 	}
 }
