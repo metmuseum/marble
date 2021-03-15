@@ -63,17 +63,12 @@ const ExhibitionStatusModule = () => {
 	return html`
 		<div class="edp-header__status_module">
 			<div class="edp-header__location">
-				${exhibition.status.message}
-				<a href="/${exhibition.building.path}">${exhibition.building.name}</a>
+				${exhibition.status.message} <a href="/${exhibition.building.path}">${exhibition.building.name}</a>
 			</div>
-			<div class="edp-header__display-text">
-				${exhibition.entryType.displayText}
-			</div>
+			<div class="edp-header__display-text">${exhibition.entryType.displayText}</div>
 			${exhibition.timing.closingSoon &&
 			html`
-				<div
-					class="exhibition-tag exhibition-tag--closing-soon edp-badge is-color"
-				>
+				<div class="exhibition-tag exhibition-tag--closing-soon edp-badge is-color">
 					<span class="exhibition-tag__text">Closing soon</span>
 				</div>
 			`}
@@ -103,26 +98,26 @@ const ExhibitionDetailPage = () => {
 		<header class="edp-header">
 			<div class="edp-header__eyebrow">EXHIBITION</div>
 			<div class="edp-header__row edp-header__row--top">
-				<div class="edp-header__title">
+				<div>
 					<h2>${exhibition.title}</h2>
 				</div>
 				${ExhibitionStatusModule()}
 			</div>
 
 			<div class="edp-header__row edp-header__row--bottom">
-				<div class="edp-tabs__container">
-					<div class="edp-tabs js-edp-tabs">
-						${exhibition.tabs
-							.map(
-								(tab) => html`
-									<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab"
-										>${tab.name}</a
-									>
-								`
-							)
-							.join("")}
-					</div>
+			<div class="edp-tabs__container">
+				<div class="edp-tabs js-edp-tabs">
+					${exhibition.tabs
+						.map(
+							(tab) => html`
+								<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab"
+									>${tab.name}</a
+								>
+							`
+						)
+						.join("")}
 				</div>
+			</div>
 				<div class="edp-header__cta-container">
 					<a
 						href="${exhibition.detailPage.header.cta1.link}"
