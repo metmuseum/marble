@@ -1,7 +1,8 @@
 function exhibitionTabs() {
 
 	//Only one tab control should exist on a page.
-	const exhibitionTabComponent = document.querySelector(".js-edp-tabs");
+	const exhibitionHero = document.querySelector(".js-edp-hero");
+	const exhibitionTabComponent = exhibitionHero.querySelector(".js-edp-tabs");
 	const exhibitionTabs = Array.from(exhibitionTabComponent.querySelectorAll(".js-edp-tabs__tab"));
 	const exhibitionSections = document.querySelectorAll(".js-exhibition-section");
 
@@ -35,7 +36,6 @@ function exhibitionTabs() {
 
 	//Check URL for an active section. If none exist select the first section.
 	const handleInitialState = () => {
-
 		const sectionName = urlParams.has("section") ?
 			urlParams.get("section") :
 			exhibitionTabs[0].getAttribute("href");

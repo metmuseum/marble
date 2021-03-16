@@ -1,10 +1,13 @@
 // TODO: remove. just copied and pasted from Ghidorah
+@import "../../../base/base";
+
 .exhibition-tag {
 	align-items: center;
+	background-color: $color-white;
 	border-radius: 2em;
 	box-shadow: $shadow-passive;
 	color: currentColor;
-	display: flex;
+	display: inline-flex; //Carry this one back to Ghidorah
 	font-size: $textsize-xxs;
 	margin-top: $spacing-micro;
 	padding: $spacing-micro $spacing-xxs;
@@ -26,7 +29,7 @@
 			color: $color-met-red;
 		}
 
-		&.is-color,
+		&.is-color, //Also this "is-color state should be brought back into Ghidorah too"
 		.exhibition-item:hover &,
 		.exhibition-item:focus & {
 			color: $color-met-red;

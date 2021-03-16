@@ -1,10 +1,26 @@
-@import "./exhibition-tag/exhibition-tag.scss"; // TODO: remove/refactor
 
-$bp-edp: 800px;
+.edp-hero {
+	clip-path: inset(0);
+}
+
+.edp-hero__image-container {
+	@media (orientation: landscape) {
+		height: (100vw * 9/16);
+		position: relative;
+	}
+
+	.image-container__image--landscape {
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: -1;
+	}
+}
 
 .edp-header {
-	background: linear-gradient(180deg, $color-white 65.53%, #ececec 100%),
-		$color-white;
+	background: linear-gradient(180deg, rgba($color-white, 0.9) 65.53%, $color-grey-200 100%), rgba($color-white, 0.7);
 	display: flex;
 	flex-direction: column;
 	padding-top: $spacing-m;
@@ -37,28 +53,30 @@ $bp-edp: 800px;
 
 .edp-header__status_module {
 	@media (orientation: landscape) {
+		flex-basis: 33%;
 		flex-shrink: 0;
 		padding-left: $spacing-xs;
-		width: 33%;
 	}
 }
 
 .edp-header__location {
 	font-weight: 500;
+	white-space: nowrap;
 }
 
 .edp-header__display-text {
 	font-size: $textsize-xs;
 }
 
+.edp-heading {
+	margin-right: $spacing-xxs;
+}
+
 .edp-header__row--top {
+	padding-bottom: $spacing-xxs;
 	@media (orientation: portrait) {
 		flex-direction: column;
 	}
-}
-
-.edp-badge {
-	display: inline-flex;
 }
 
 .edp-header__row--bottom {
@@ -80,7 +98,6 @@ $bp-edp: 800px;
 	display: flex;
 	flex-basis: auto;
 	flex-grow: 1;
-	justify-content: space-between;
 	padding: $spacing-xxs $spacing-component-margin;
 	@media (orientation: landscape) {
 		border-bottom: 0;
@@ -94,9 +111,7 @@ $bp-edp: 800px;
 }
 
 .edp-header__cta {
-	@media (orientation: landscape) {
-		margin: 0 $spacing-micro;
-	}
+	margin: 0 $spacing-micro;
 }
 
 .edp-tabs__container {

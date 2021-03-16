@@ -19,12 +19,15 @@
 	border: 0;
 	height: auto;
 	margin: 0;
+	object-fit: cover;
+	object-position: 0 15%; //In my experience this is the sweet spot for most content.
 	padding: 0;
 	width: 100%;
 }
 
 .image-container__image--portrait {
 	display: none;
+
 	@media (orientation: portrait) {
 		display: block;
 	}

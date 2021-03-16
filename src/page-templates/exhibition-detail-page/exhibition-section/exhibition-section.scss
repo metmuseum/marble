@@ -1,9 +1,10 @@
 @import "../../../base/base";
-//Don't Include this in marble.scss. It's just for storybook.
 
+
+//Don't Include this in marble.scss. It's just for storybook.
 .exhibition-section {
 	display: none;
-	min-height: 50vh;
+	min-height: 90vh;
 	padding: $spacing-component-margin;
 
 	&.is-active {

@@ -39,7 +39,7 @@ const fullWidth = (image) => {
 	`;
 };
 
-const fullWidthOrientationResponsive = (images) => {
+const fullWidthOrientationResponsive = (images, className = "") => {
 	if (Object.keys(images).length < 1) {
 		images = { portrait: portraitImage, landscape: landscapeImage };
 	}
@@ -47,7 +47,7 @@ const fullWidthOrientationResponsive = (images) => {
 	const { portrait, landscape } = images;
 
 	return html`
-		<div class="image-container image-container--full-width">
+		<div class="image-container image-container--full-width ${className}">
 			<img
 				class="image-container__image image-container__image--portrait"
 				alt="${portrait.alt}"
