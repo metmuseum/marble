@@ -1,8 +1,9 @@
 import html from "../../../.storybook/helpers/html";
 
 import { fullWidthOrientationResponsive } from "../../components/image-container/image-container.stories.js";
-import greekHallImage1x1 from "../../../.storybook/assets/images/exhibition/sahel/1x1";
-import greekHallImage16x9 from "../../../.storybook/assets/images/exhibition/sahel/16x9";
+import sahelImage1x1 from "../../../.storybook/assets/images/exhibition/sahel/1x1";
+import sahelImage16x9 from "../../../.storybook/assets/images/exhibition/sahel/16x9";
+import sahelImage2x1 from "../../../.storybook/assets/images/exhibition/sahel/2x1";
 
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { useEffect } from "@storybook/client-api";
@@ -33,8 +34,9 @@ const entryType = {
 
 const exhibition = {
 	heroImage: {
-		portrait: greekHallImage1x1,
-		landscape: greekHallImage16x9,
+		portrait: sahelImage1x1,
+		landscape: sahelImage16x9,
+		wideLandscape: sahelImage2x1,
 	},
 	title: "Sahel: Art and Empires on The Shores of the Sahara",
 	tabs: [

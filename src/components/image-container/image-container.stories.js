@@ -44,7 +44,7 @@ const fullWidthOrientationResponsive = (images, className = "") => {
 		images = { portrait: portraitImage, landscape: landscapeImage };
 	}
 
-	const { portrait, landscape } = images;
+	const { portrait, landscape, wideLandscape } = images;
 
 	return html`
 		<div class="image-container image-container--full-width ${className}">
@@ -57,13 +57,22 @@ const fullWidthOrientationResponsive = (images, className = "") => {
 				srcset="${sizesTemplate(portrait.srcSet)}"
 				sizes="100vw"
 			/>
-			<img
+			<!-- <img
 				class="image-container__image image-container__image--landscape"
 				alt="${landscape.alt}"
 				width="${landscape.width}"
 				height="${landscape.height}"
 				src="${landscape.srcSet.fallback}"
 				srcset="${sizesTemplate(landscape.srcSet)}"
+				sizes="100vw"
+			/> -->
+			<img
+				class="image-container__image image-container__image--landscape"
+				alt="${wideLandscape.alt}"
+				width="${wideLandscape.width}"
+				height="${wideLandscape.height}"
+				src="${wideLandscape.srcSet.fallback}"
+				srcset="${sizesTemplate(wideLandscape.srcSet)}"
 				sizes="100vw"
 			/>
 		</div>

@@ -5,17 +5,23 @@
 
 .edp-hero__image-container {
 	@media (orientation: landscape) {
-		height: (100vw * 9/16);
+		height: 50vw;
+		max-height: calc(100vh - 250px);
 		position: relative;
 	}
 
 	.image-container__image--landscape {
 		bottom: 0;
 		left: 0;
-		position: fixed;
+		position: absolute;
 		right: 0;
 		top: 0;
 		z-index: -1;
+
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
 	}
 }
 
