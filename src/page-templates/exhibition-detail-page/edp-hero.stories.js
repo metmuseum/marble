@@ -1,8 +1,8 @@
 import html from "../../../.storybook/helpers/html";
 
 import { fullWidthOrientationResponsive } from "../../components/image-container/image-container.stories.js";
-import greekHallImage1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
-import greekHallImage16x9 from "../../../.storybook/assets/images/greek-hall/16x9";
+import greekHallImage1x1 from "../../../.storybook/assets/images/exhibition/sahel/1x1";
+import greekHallImage16x9 from "../../../.storybook/assets/images/exhibition/sahel/16x9";
 
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { useEffect } from "@storybook/client-api";
