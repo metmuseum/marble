@@ -12,7 +12,6 @@ import "./exhibition-section/exhibition-section.scss";
 //Mostly redundant from ghidorah (Check the comments of the file - two lines need to be merged with Ghidorahs version)
 import "./exhibition-tag/exhibition-tag.scss";
 
-import edpHero from "./edp-hero.js";
 import exhibitionTabs from "./exhibition-tabs/exhibition-tabs.js";
 
 
@@ -101,7 +100,6 @@ const demoSections = () => {
 
 const ExhibitionDetailPage = () => {
 	useEffect(exhibitionTabs);
-	useEffect(edpHero);
 	return html`<div>
 		<section class="edp-hero js-edp-hero">
 			${fullWidthOrientationResponsive(exhibition.heroImage, "edp-hero__image-container")}
