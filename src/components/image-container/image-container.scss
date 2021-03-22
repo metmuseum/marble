@@ -11,14 +11,6 @@
 	width: 100%;
 }
 
-.image-container--max-1600 {
-	width: 100%;
-	.image-container__image {
-		max-width: 1600px;
-		margin: 0 auto;
-	}
-}
-
 .image-container--half-width {
 	width: 50%;
 }
@@ -27,20 +19,23 @@
 	border: 0;
 	height: auto;
 	margin: 0;
+	object-fit: cover;
+	object-position: 0 15%; //In my experience this is the sweet spot for most content.
 	padding: 0;
 	width: 100%;
 }
 
 .image-container__image--portrait {
-	display: none;
-	@media (orientation: portrait) {
-		display: block;
+	display: block;
+
+	@media (min-aspect-ratio: 5/6) {
+		display: none;
 	}
 }
 
 .image-container__image--landscape {
 	display: none;
-	@media (orientation: landscape) {
+	@media (min-aspect-ratio: 5/6) {
 		display: block;
 	}
 }

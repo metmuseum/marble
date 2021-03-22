@@ -1,10 +1,23 @@
-@import "./exhibition-tag/exhibition-tag.scss"; // TODO: remove/refactor
+.edp-hero__image-container {
+	height: 100vw;
+	min-height: 32vw; //Always leaves safe zones visible
+	position: relative;
+	@media (min-aspect-ratio: 5/6) {
+		height: (100vw * 9/16);
+		max-height: calc(100vh - 240px); //Leaves a healty amount of below-the-hero content above-the-fold
+	}
 
-$bp-edp: 800px;
+	.image-container__image {
+		height: 100%;
+		object-fit: cover;
+		object-position: center center;
+		position: absolute;
+		width: 100%;
+	}
+}
 
 .edp-header {
-	background: linear-gradient(180deg, $color-white 65.53%, #ececec 100%),
-		$color-white;
+	background: linear-gradient(180deg, $color-white 65.53%, $color-grey-200 100%), $color-white;
 	display: flex;
 	flex-direction: column;
 	padding-top: $spacing-m;
@@ -17,7 +30,7 @@ $bp-edp: 800px;
 	width: 100%;
 
 	&:first-child {
-		@media (orientation: landscape) {
+		@media (min-aspect-ratio: 5/6) {
 			border-bottom: 1px solid $color-grey-500;
 		}
 	}
@@ -35,44 +48,40 @@ $bp-edp: 800px;
 	}
 }
 
-.edp-header__title {
-	// this achieves a 1 "column" margin between title and status module
-	// (given that this container is implicilty 8/12 "columns")
-	// (...which it is, on landscape! and for portrait, for now, this number is fine, too)
-	margin-right: 12.5%;
-}
-
 .edp-header__status_module {
-	@media (orientation: landscape) {
+	@media (min-aspect-ratio: 5/6) {
+		flex-basis: 33%;
 		flex-shrink: 0;
 		padding-left: $spacing-xs;
-		width: 33%;
 	}
 }
 
 .edp-header__location {
 	font-weight: 500;
+	white-space: nowrap;
 }
 
 .edp-header__display-text {
 	font-size: $textsize-xs;
 }
 
-.edp-header__row--top {
-	@media (orientation: portrait) {
-		flex-direction: column;
-	}
+.edp-heading {
+	margin-right: $spacing-xxs;
 }
 
-.edp-badge {
-	display: inline-flex;
+.edp-header__row--top {
+	padding-bottom: $spacing-xxs;
+	flex-direction: column;
+	@media (min-aspect-ratio: 5/6) {
+		flex-direction: row;
+	}
 }
 
 .edp-header__row--bottom {
 	display: flex;
 	flex-direction: column-reverse;
 	padding: 0;
-	@media (orientation: landscape) {
+	@media (min-aspect-ratio: 5/6) {
 		flex-direction: row;
 		margin-bottom: $spacing-xxs;
 		margin-top: $spacing-xxs;
@@ -83,13 +92,13 @@ $bp-edp: 800px;
 
 .edp-header__cta-container {
 	align-items: center;
+	border-bottom: 1px solid $color-grey-500;
 	display: flex;
 	flex-basis: auto;
 	flex-grow: 1;
-	margin: $spacing-xs $spacing-component-margin $spacing-xxs
-		$spacing-component-margin;
-
-	@media (orientation: landscape) {
+	padding: $spacing-xxs $spacing-component-margin;
+	@media (min-aspect-ratio: 5/6) {
+		border-bottom: 0;
 		border-left: 1px solid $color-grey-500;
 		flex-basis: 33%;
 		flex-grow: 1;
@@ -100,18 +109,12 @@ $bp-edp: 800px;
 }
 
 .edp-header__cta {
-	@media (orientation: portrait) {
-		margin-right: $spacing-xs;
-	}
-	@media (orientation: landscape) {
-		margin: 0 $spacing-micro;
-	}
+	margin: 0 $spacing-micro;
 }
 
 .edp-tabs__container {
 	background-color: $color-white;
 	border-bottom: 1px solid $color-grey-500;
-	border-top: 1px solid $color-grey-500;
 	box-shadow: 6px 6px 10px 0 $color-card-shadow;
 	flex-basis: 100%;
 	flex-grow: 1;
@@ -119,7 +122,7 @@ $bp-edp: 800px;
 	padding: $spacing-micro 0;
 	position: relative;
 
-	@media (orientation: landscape) {
+	@media (min-aspect-ratio: 5/6) {
 		background-color: transparent;
 		border-bottom: 0;
 		box-shadow: none;
@@ -133,28 +136,18 @@ $bp-edp: 800px;
 		position: absolute;
 		top: 0;
 		width: $spacing-component-margin;
-		@media (orientation: landscape) {
+		@media (min-aspect-ratio: 5/6) {
 			content: none;
 		}
 	}
 
 	&:before {
-		background: linear-gradient(
-				270deg,
-				$color-white-transparent 0%,
-				$color-white 100%
-			),
-			transparent;
+		background: linear-gradient(270deg, $color-white-transparent 0%, $color-white 100%), transparent;
 		left: 0;
 	}
 
 	&:after {
-		background: linear-gradient(
-				90deg,
-				$color-white-transparent 0%,
-				$color-white 100%
-			),
-			transparent;
+		background: linear-gradient(90deg, $color-white-transparent 0%, $color-white 100%), transparent;
 		right: 0;
 	}
 }
@@ -165,7 +158,7 @@ $bp-edp: 800px;
 	overflow: auto;
 	padding: 0 $spacing-component-margin;
 	white-space: nowrap;
-	@media (orientation: landscape) {
+	@media (min-aspect-ratio: 5/6) {
 		padding: 0;
 		white-space: normal;
 	}
@@ -182,7 +175,7 @@ $bp-edp: 800px;
 
 	&:last-child {
 		margin-right: 0;
-		@media (orientation: landscape) {
+		@media (min-aspect-ratio: 5/6) {
 			margin-right: $spacing-micro;
 		}
 	}

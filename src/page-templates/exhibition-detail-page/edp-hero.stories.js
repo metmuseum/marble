@@ -1,12 +1,19 @@
 import html from "../../../.storybook/helpers/html";
-import { fullWidthOrientationResponsiveBoundToMaximum } from "../image-container/image-container.stories.js";
-import greekHallImage1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
-import greekHallImage16x9 from "../../../.storybook/assets/images/greek-hall/16x9";
+
+import { fullWidthOrientationResponsive } from "../../components/image-container/image-container.stories.js";
+import greekHallImage1x1 from "../../../.storybook/assets/images/exhibition/sahel/1x1";
+import greekHallImage16x9 from "../../../.storybook/assets/images/exhibition/sahel/16x9";
+
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-// import { TabControls } from "../tab-controls/tab-controls.stories";
 import { useEffect } from "@storybook/client-api";
-import "./exhibition-tabs/exhibition-tabs.scss";
+
+//Just used for Storybook
+import "./exhibition-section/exhibition-section.scss";
+//Mostly redundant from ghidorah (Check the comments of the file - two lines need to be merged with Ghidorahs version)
+import "./exhibition-tag/exhibition-tag.scss";
+
 import exhibitionTabs from "./exhibition-tabs/exhibition-tabs.js";
+
 
 export default {
 	title: "Exhibition Detail Page",
@@ -27,7 +34,6 @@ const exhibition = {
 	heroImage: {
 		portrait: greekHallImage1x1,
 		landscape: greekHallImage16x9,
-		backgroundColor: "#000",
 	},
 	title: "Sahel: Art and Empires on The Shores of the Sahara",
 	tabs: [
@@ -64,17 +70,12 @@ const ExhibitionStatusModule = () => {
 	return html`
 		<div class="edp-header__status_module">
 			<div class="edp-header__location">
-				${exhibition.status.message}
-				<a href="/${exhibition.building.path}">${exhibition.building.name}</a>
+				${exhibition.status.message} <a href="/${exhibition.building.path}">${exhibition.building.name}</a>
 			</div>
-			<div class="edp-header__display-text">
-				${exhibition.entryType.displayText}
-			</div>
+			<div class="edp-header__display-text">${exhibition.entryType.displayText}</div>
 			${exhibition.timing.closingSoon &&
 			html`
-				<div
-					class="exhibition-tag exhibition-tag--closing-soon edp-badge is-color"
-				>
+				<div class="exhibition-tag exhibition-tag--closing-soon edp-badge is-color">
 					<span class="exhibition-tag__text">Closing soon</span>
 				</div>
 			`}
@@ -100,50 +101,49 @@ const demoSections = () => {
 const ExhibitionDetailPage = () => {
 	useEffect(exhibitionTabs);
 	return html`<div>
-		${fullWidthOrientationResponsiveBoundToMaximum(exhibition.heroImage)}
-		<header class="edp-header">
-			<div class="edp-header__eyebrow">EXHIBITION</div>
-			<div class="edp-header__row edp-header__row--top">
-				<div class="edp-header__title">
-					<h2>${exhibition.title}</h2>
+		<section class="edp-hero js-edp-hero">
+			${fullWidthOrientationResponsive(exhibition.heroImage, "edp-hero__image-container")}
+			<header class="edp-header">
+				<div class="edp-header__eyebrow">EXHIBITION</div>
+				<div class="edp-header__row edp-header__row--top js-edp-above-fold">
+					<div>
+						<h2 class="edp-heading">${exhibition.title}</h2>
+					</div>
+					${ExhibitionStatusModule()}
 				</div>
-				${ExhibitionStatusModule()}
-			</div>
 
-			<div class="edp-header__row edp-header__row--bottom">
+				<div class="edp-header__row edp-header__row--bottom">
 				<div class="edp-tabs__container">
 					<div class="edp-tabs js-edp-tabs">
 						${exhibition.tabs
 							.map(
 								(tab) => html`
-									<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab"
-										>${tab.name}</a
-									>
-								`
-							)
-							.join("")}
+									<a href="${tab.id}" class="js-edp-tabs__tab edp-tabs__tab">
+										${tab.name}
+									</a>`
+							).join("")}
 					</div>
 				</div>
-				<div class="edp-header__cta-container">
-					<a
-						href="${exhibition.detailPage.header.cta1.link}"
-						class="button primary-button
-								primary-button--x-small
-								primary-button--filled
-								edp-header__cta"
-					>
-						${exhibition.detailPage.header.cta1.text}
-					</a>
-					<a
-						href="${exhibition.detailPage.header.cta2.link}"
-						class="button tertiary-button edp-header__cta"
-					>
-						${exhibition.detailPage.header.cta2.text}
-					</a>
+					<div class="edp-header__cta-container">
+						<a
+							href="${exhibition.detailPage.header.cta1.link}"
+							class="button primary-button
+									primary-button--x-small
+									primary-button--filled
+									edp-header__cta"
+						>
+							${exhibition.detailPage.header.cta1.text}
+						</a>
+						<a
+							href="${exhibition.detailPage.header.cta2.link}"
+							class="button tertiary-button edp-header__cta"
+						>
+							${exhibition.detailPage.header.cta2.text}
+						</a>
+					</div>
 				</div>
-			</div>
-		</header>
-
+			</header>
+		</section>
 		${demoSections()}
 	</div>`;
 };
