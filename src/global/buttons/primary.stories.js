@@ -16,7 +16,7 @@ const permutations = {
 		style: ["Filled", "Ghost-Dark", "Ghost-Light"],
 		size: ["Small", "Large"],
 	},
-	states: ["Active", "Inactive"],
+	states: ["Active", "Inactive", "Focus", "Hover"],
 };
 
 const StoriesToExport = {};
@@ -39,6 +39,10 @@ permutations.elementTags.forEach((elementTag) => {
 						sizeMode,
 						state,
 					});
+				};
+
+				StoriesToExport[storyName].story = {
+					name: [elementTag, styleMode, sizeMode, state].join(" "),
 				};
 			});
 		});
@@ -94,7 +98,9 @@ const anchorTagTemplate = (options) => {
 		<a
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
-			primary-button--${options.styleMode.toLowerCase()}"
+			primary-button--${options.styleMode.toLowerCase()}
+			${options.state === "Hover" ? "sb--hover" : ""}
+			${options.state === "Focus" ? "sb--focus" : ""}"
 			role="button"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
@@ -109,7 +115,9 @@ const buttonTagTemplate = (options) => {
 		<button
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
-			primary-button--${options.styleMode.toLowerCase()}"
+			primary-button--${options.styleMode.toLowerCase()}
+			${options.state === "Hover" ? "sb--hover" : ""}
+			${options.state === "Focus" ? "sb--focus" : ""}"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Primary Button")}
@@ -117,27 +125,39 @@ const buttonTagTemplate = (options) => {
 	`;
 };
 
+// javascript why u no have metaprogramming for this 😭
 export const {
 	ButtonFilledSmallActive,
 	ButtonFilledSmallInactive,
+	ButtonFilledSmallHover,
+	ButtonFilledSmallFocus,
+
 	ButtonGhostLightSmallActive,
 	ButtonGhostLightSmallInactive,
 	ButtonGhostDarkSmallActive,
 	ButtonGhostDarkSmallInactive,
+
 	ButtonFilledLargeActive,
 	ButtonFilledLargeInactive,
+	ButtonFilledLargeFocus,
+	ButtonFilledLargeHover,
+
 	ButtonGhostLightLargeActive,
 	ButtonGhostLightLargeInactive,
 	ButtonGhostDarkLargeActive,
 	ButtonGhostDarkLargeInactive,
 	AnchorFilledSmallActive,
 	AnchorFilledSmallInactive,
+	AnchorFilledSmallFocus,
+	AnchorFilledSmallHover,
 	AnchorGhostLightSmallActive,
 	AnchorGhostLightSmallInactive,
 	AnchorGhostDarkSmallActive,
 	AnchorGhostDarkSmallInactive,
 	AnchorFilledLargeActive,
 	AnchorFilledLargeInactive,
+	AnchorFilledLargeFocus,
+	AnchorFilledLargeHover,
 	AnchorGhostLightLargeActive,
 	AnchorGhostLightLargeInactive,
 	AnchorGhostDarkLargeActive,

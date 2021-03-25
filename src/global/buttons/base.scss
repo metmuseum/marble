@@ -1,5 +1,19 @@
 @import "../../base/base";
 
+@mixin button-hover {
+	text-decoration: none;
+}
+
+@mixin button-focus {
+	box-shadow: 0 0 0 1px $color-white, 0 0 0 4px grey;
+	outline: none; // remove Chrome and Safari's blue outline
+	text-decoration: none;
+	// Firefox: removes the inner border shown on focus
+	&::-moz-focus-inner {
+		border: none;
+	}
+}
+
 @mixin button-base {
 	// TODO: our reset goes here?
 
@@ -9,20 +23,28 @@
 	margin: 0;
 	text-decoration: none;
 
-	/* Firefox: removes the inner border shown on focus */
-	&::-moz-focus-inner {
-		border: none;
+	&:hover,
+	&.sb--hover {
+		@include button-hover();
 	}
 
-	&:hover,
-	&:focus {
-		text-decoration: none;
+	&:focus,
+	&.sb--focus {
+		@include button-focus();
 	}
 }
 
-.button {
-	@include button-base();
+@mixin button--ghosted-hover {
+	background-color: $color-grey-900;
+	color: $color-white;
+}
 
+@mixin button--ghosted-focus {
+	background-color: $color-grey-900;
+	color: $color-white;
+}
+
+@mixin button-deprecated {
 	// TODO: will need to somehow migrate from the below styles?
 	&.button--pill,
 	&.button--ghosted {
@@ -32,16 +54,19 @@
 		color: $color-grey-900;
 		transition: all 0.3s;
 
-		&:focus {
-			background-color: $color-grey-900;
-			color: $color-white;
+		&:focus,
+		&.sb--focus {
+			@include button--ghosted-focus();
 		}
 
 		@media screen and (hover: hover) {
 			&:hover {
-				background-color: $color-grey-900;
-				color: $color-white;
+				@include button--ghosted-hover();
 			}
+		}
+
+		&.sb--hover {
+			@include button--ghosted-hover();
 		}
 
 		&.inverse {
@@ -49,15 +74,22 @@
 			border-color: $color-white;
 			color: $color-white;
 
-			&:focus {
+			&:focus,
+			&.sb--focus {
 				background-color: $color-white;
 				color: $color-grey-900;
 			}
+
 			@media screen and (hover: hover) {
 				&:hover {
 					background-color: $color-white;
 					color: $color-grey-900;
 				}
+			}
+
+			&.sb--hover {
+				background-color: $color-white;
+				color: $color-grey-900;
 			}
 		}
 
@@ -66,7 +98,8 @@
 			border-color: $color-white;
 			color: $color-white;
 
-			&:focus {
+			&:focus,
+			.sb--focus {
 				background-color: $color-white-opaque-70;
 				color: $color-grey-900;
 			}
@@ -75,6 +108,10 @@
 					background-color: $color-white-opaque-70;
 					color: $color-grey-900;
 				}
+			}
+			&.sb--hover {
+				background-color: $color-white-opaque-70;
+				color: $color-grey-900;
 			}
 		}
 	}
@@ -95,6 +132,11 @@
 		// 3 uses in ghidorah
 		min-width: 280px; // TODO ?
 	}
+}
+
+.button {
+	@include button-base();
+	@include button-deprecated();
 }
 
 a.button {
