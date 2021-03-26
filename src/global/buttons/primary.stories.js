@@ -21,6 +21,7 @@ const permutations = {
 
 const StoriesToExport = {};
 
+// Programmatically make these stories :)
 permutations.elementTags.forEach((elementTag) => {
 	permutations.modes.style.forEach((styleMode) => {
 		permutations.modes.size.forEach((sizeMode) => {
@@ -99,9 +100,10 @@ const anchorTagTemplate = (options) => {
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
 			primary-button--${options.styleMode.toLowerCase()}
-			${options.state === "Hover" ? "sb--hover" : ""}
-			${options.state === "Focus" ? "sb--focus" : ""}"
+			${options.state === "Hover" ? "_sb--hover" : ""}
+			${options.state === "Focus" ? "_sb--focus" : ""}"
 			role="button"
+			tabindex="1"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Primary Button")}
@@ -116,8 +118,8 @@ const buttonTagTemplate = (options) => {
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
 			primary-button--${options.styleMode.toLowerCase()}
-			${options.state === "Hover" ? "sb--hover" : ""}
-			${options.state === "Focus" ? "sb--focus" : ""}"
+			${options.state === "Hover" ? "_sb--hover" : ""}
+			${options.state === "Focus" ? "_sb--focus" : ""}"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Primary Button")}
@@ -144,22 +146,41 @@ export const {
 
 	ButtonGhostLightLargeActive,
 	ButtonGhostLightLargeInactive,
+	ButtonGhostLightLargeFocus,
+	ButtonGhostLightLargeHover,
+
 	ButtonGhostDarkLargeActive,
 	ButtonGhostDarkLargeInactive,
+	ButtonGhostDarkLargeFocus,
+	ButtonGhostDarkLargeHover,
+
 	AnchorFilledSmallActive,
 	AnchorFilledSmallInactive,
 	AnchorFilledSmallFocus,
 	AnchorFilledSmallHover,
+
 	AnchorGhostLightSmallActive,
 	AnchorGhostLightSmallInactive,
+	AnchorGhostLightSmallFocus,
+	AnchorGhostLightSmallHover,
+
 	AnchorGhostDarkSmallActive,
 	AnchorGhostDarkSmallInactive,
+	AnchorGhostDarkSmallFocus,
+	AnchorGhostDarkSmallHover,
+
 	AnchorFilledLargeActive,
 	AnchorFilledLargeInactive,
 	AnchorFilledLargeFocus,
 	AnchorFilledLargeHover,
+
 	AnchorGhostLightLargeActive,
 	AnchorGhostLightLargeInactive,
+	AnchorGhostLightLargeFocus,
+	AnchorGhostLightLargeHover,
+
 	AnchorGhostDarkLargeActive,
 	AnchorGhostDarkLargeInactive,
+	AnchorGhostDarkLargeFocus,
+	AnchorGhostDarkLargeHover,
 } = StoriesToExport;

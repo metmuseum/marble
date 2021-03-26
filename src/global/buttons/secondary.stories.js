@@ -13,6 +13,7 @@ export default {
 const permutations = {
 	elementTags: ["Button", "Anchor"],
 	styles: ["Ghost-Light", "Ghost-Dark"],
+	states: ["Focus", "Hover"],
 };
 
 const StoriesToExport = {
@@ -22,14 +23,17 @@ const StoriesToExport = {
 
 permutations.elementTags.forEach((elementTag) => {
 	permutations.styles.forEach((styleMode) => {
-		let storyName = [elementTag, styleMode.replace("-", "")].join("");
+		permutations.states.forEach((state) => {
+			let storyName = [elementTag, styleMode.replace("-", "")].join("");
 
-		StoriesToExport[storyName] = () => {
-			return buttonStoryTemplate({
-				elementTag,
-				styleMode,
-			});
-		};
+			StoriesToExport[storyName] = () => {
+				return buttonStoryTemplate({
+					elementTag,
+					styleMode,
+					state,
+				});
+			};
+		});
 	});
 });
 
@@ -43,14 +47,21 @@ const styleSelector = (defaultValue) => {
 	return radios(label, permutations.styles, defaultValue);
 };
 
+const stateSelector = (defaultValue) => {
+	const label = "State";
+	return radios(label, permutations.states, defaultValue);
+};
+
 const buttonStoryTemplate = (options) => {
 	// reassign the options based on knobs
 	const elementTag = elementTagSelector(options.elementTag);
 	const styleMode = styleSelector(options.styleMode);
+	const state = stateSelector(options.state);
 
 	const finalOptions = {
 		elementTag,
 		styleMode,
+		state,
 	};
 
 	return html`
@@ -69,7 +80,11 @@ const anchorTagTemplate = (options) => {
 		: "";
 
 	return html`
-		<a class="button secondary-button ${styleModifier}" role="button">
+		<a
+			class="button secondary-button ${styleModifier}"
+			role="button"
+			tabindex="1"
+		>
 			${text("Label", "Secondary Button")}
 		</a>
 	`;
