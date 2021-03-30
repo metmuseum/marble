@@ -72,18 +72,18 @@ jobs:
             - run: git commit -m "[skip ci] auto build dist for $(git rev-parse HEAD)"
             - run: git push origin main
       - run: echo 0
-    tag_a_release:
-      executor: marble-node
-      steps:
-        - checkout
-        - attach_workspace:
-            at: .
-        - add_ssh_keys:
-            fingerprints:
-              - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
-        - run:
-            name: "Use release-it to tag and push to GitHub as release"
-            command: npm run release -- minor --ci
+  tag_a_release:
+    executor: marble-node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - add_ssh_keys:
+          fingerprints:
+            - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
+      - run:
+          name: "Use release-it to tag and push to GitHub as release"
+          command: npm run release -- minor --ci
 
 workflows:
   version: 2
