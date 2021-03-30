@@ -8,7 +8,7 @@ export default {
 
 const permutations = {
 	elementTags: ["Button", "Anchor"],
-	states: ["Active", "Inactive"],
+	states: ["Active", "Inactive", "Focus", "Hover"],
 };
 
 const StoriesToExport = {};
@@ -57,7 +57,9 @@ const stateSelector = (defaultValue) => {
 
 const buttonTagTemplate = (options) =>
 	html`<button
-		class="button tertiary-button"
+		class="button tertiary-button
+			${options.state === "Hover" ? "_sb--hover" : ""}
+			${options.state === "Focus" ? "_sb--focus" : ""}"
 		${options.state === "Inactive" ? "disabled" : ""}
 	>
 		${text("Label", "Tertiary")}
@@ -68,7 +70,9 @@ const anchorTagTemplate = (options) =>
 		<a
 			role="button"
 			tabindex="0"
-			class="button tertiary-button"
+			class="button tertiary-button
+				${options.state === "Hover" ? "_sb--hover" : ""}
+				${options.state === "Focus" ? "_sb--focus" : ""}"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Anchor Tag Styled As Tertiary Button")}
@@ -78,6 +82,10 @@ const anchorTagTemplate = (options) =>
 export const {
 	ButtonActive,
 	ButtonInactive,
+	ButtonFocus,
+	ButtonHover,
 	AnchorActive,
 	AnchorInactive,
+	AnchorFocus,
+	AnchorHover,
 } = StoriesToExport;
