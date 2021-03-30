@@ -17,7 +17,8 @@ const Focus = () =>
 	markup(options({ checked: false, classHelpers: "_sb--focus" }));
 Focus.storyName = ":focus";
 
-const Hover = () => markup(options({ checked: false, classHelpers: "hover" }));
+const Hover = () =>
+	markup(options({ checked: false, classHelpers: "_sb--hover" }));
 Hover.storyName = ":hover";
 
 export { Unchecked, Active, Focus, Hover };
