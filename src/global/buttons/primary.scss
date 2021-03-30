@@ -100,11 +100,21 @@ $border-width-ghost: 2px;
 
 	&:not(:disabled) {
 		&:active,
-		&:hover:not(:disabled),
-		&._sb--hover:not(:disabled) {
+		&:hover,
+		&._sb--hover {
 			background: $color-white-opaque-70;
 			border-color: $color-grey-050;
 			color: $color-grey-600;
+		}
+
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			&::after {
+				top: -5px;
+				bottom: -5px;
+				left: -5px;
+				right: -5px;
+			}
 		}
 	}
 }
@@ -120,6 +130,16 @@ $border-width-ghost: 2px;
 		&._sb--hover {
 			background: $color-grey-900;
 			color: $color-white;
+		}
+
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			&::after {
+				top: -5px;
+				bottom: -5px;
+				left: -5px;
+				right: -5px;
+			}
 		}
 	}
 

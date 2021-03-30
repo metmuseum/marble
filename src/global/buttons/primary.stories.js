@@ -13,7 +13,7 @@ export default {
 const permutations = {
 	elementTags: ["Button", "Anchor"],
 	modes: {
-		style: ["Filled", "Ghost-Dark", "Ghost-Light"],
+		style: ["Filled", "Ghost-Light", "Ghost-Dark"],
 		size: ["Small", "Large"],
 	},
 	states: ["Active", "Inactive", "Focus", "Hover"],

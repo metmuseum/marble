@@ -63,9 +63,14 @@
 		cursor: pointer;
 	}
 
+	:focus + &,
+	._sb-focus + & {
+		@include button-focus();
+	}
+
 	:focus:not(:hover) + &,
-	._sb--focus + & {
-		@include button-focus;
+	._sb--focus:not(:hover) + & {
+		@include button-focus--not-hover();
 		&::after {
 			border-radius: 999px;
 			top: -3px;

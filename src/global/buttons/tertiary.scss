@@ -32,7 +32,7 @@
 	}
 
 	&:focus:not(:hover),
-	&._sb--focus {
+	&._sb--focus:not(:hover) {
 		&::after {
 			top: -7px;
 			bottom: -7px;
