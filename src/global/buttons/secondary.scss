@@ -9,7 +9,7 @@
 	padding: $textsize-xs;
 
 	&:focus:not(:hover),
-	&._sb--focus {
+	&._sb--focus:not(:hover) {
 		&::after {
 			border-radius: 999px;
 			top: -6px;
@@ -21,7 +21,7 @@
 
 	@media screen and (hover: hover) {
 		&:hover:not(:disabled),
-		&._sb--hover {
+		&._sb--hover:not(:disabled) {
 			border: 2px solid $color-white;
 			background-color: $color-white-opaque-70;
 			color: $color-grey-900;

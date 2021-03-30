@@ -98,14 +98,14 @@ $border-width-ghost: 2px;
 	border: $border-width-ghost solid $color-white;
 	color: $color-white;
 
-	&:active:not(:disabled),
-	// &:focus:not(:disabled),
-	// &._sb--focus:not(:disabled),
-	&:hover:not(:disabled),
-	&._sb--hover:not(:disabled) {
-		background: $color-white-opaque-70;
-		border-color: $color-grey-050;
-		color: $color-grey-600;
+	&:not(:disabled) {
+		&:active,
+		&:hover:not(:disabled),
+		&._sb--hover:not(:disabled) {
+			background: $color-white-opaque-70;
+			border-color: $color-grey-050;
+			color: $color-grey-600;
+		}
 	}
 }
 
@@ -114,13 +114,13 @@ $border-width-ghost: 2px;
 	border: $border-width-ghost solid $color-grey-900;
 	color: $color-grey-900;
 
-	&:active:not(:disabled),
-	// &:focus:not(:disabled),
-	// &._sb--focus:not(:disabled),
-	&:hover:not(:disabled),
-	&._sb--hover:not(:disabled) {
-		background: $color-grey-900;
-		color: $color-white;
+	&:not(:disabled) {
+		&:active,
+		&:hover,
+		&._sb--hover {
+			background: $color-grey-900;
+			color: $color-white;
+		}
 	}
 
 	&.button--disabled,

@@ -5,6 +5,14 @@
 }
 
 @mixin button-focus {
+	outline: none; // remove Chrome and Safari's blue outline
+	text-decoration: none;
+	&::-moz-focus-inner {
+		border: none; // Firefox
+	}
+}
+
+@mixin button-focus--not-hover {
 	&::after {
 		content: "";
 		position: absolute;
@@ -14,12 +22,6 @@
 		right: -3px;
 		border-radius: $radius-sharp + 3px;
 		border: 2px solid grey;
-	}
-
-	outline: none; // remove Chrome and Safari's blue outline
-	text-decoration: none;
-	&::-moz-focus-inner {
-		border: none; // Firefox
 	}
 }
 
@@ -37,14 +39,19 @@
 		cursor: not-allowed;
 	}
 
-	&:hover:not(:disabled),
-	&._sb--hover {
-		@include button-hover();
+	&:focus,
+	&._sb--focus {
+		@include button-focus();
 	}
 
 	&:focus:not(:hover),
-	&._sb--focus {
-		@include button-focus();
+	&._sb--focus:not(:hover) {
+		@include button-focus--not-hover;
+	}
+
+	&:hover:not(:disabled),
+	&._sb--hover:not(:disabled) {
+		@include button-hover();
 	}
 }
 
