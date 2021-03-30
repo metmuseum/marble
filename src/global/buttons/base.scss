@@ -155,8 +155,6 @@
 	}
 }
 
-// -------
-
 .button {
 	@include button-deprecated();
 	@include button-base();
