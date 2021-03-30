@@ -9,22 +9,19 @@
 	padding: $textsize-xs;
 
 	&:focus:not(:hover),
-	._sb--focus {
-		border: 2px solid $color-white;
-		background-color: $color-white-opaque-70;
-		color: $color-grey-900;
-
-		&:after {
+	&._sb--focus {
+		&::after {
 			border-radius: 999px;
-			top: -5px;
-			bottom: -5px;
-			left: -5px;
-			right: -5px;
+			top: -6px;
+			bottom: -6px;
+			left: -6px;
+			right: -6px;
 		}
 	}
 
 	@media screen and (hover: hover) {
-		&:hover {
+		&:hover:not(:disabled),
+		&._sb--hover {
 			border: 2px solid $color-white;
 			background-color: $color-white-opaque-70;
 			color: $color-grey-900;

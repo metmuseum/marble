@@ -8,7 +8,6 @@ export default {
 
 const permutations = {
 	elementTags: ["Button", "Anchor"],
-
 	states: ["Active", "Inactive"],
 };
 

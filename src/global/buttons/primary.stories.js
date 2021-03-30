@@ -131,13 +131,18 @@ const buttonTagTemplate = (options) => {
 export const {
 	ButtonFilledSmallActive,
 	ButtonFilledSmallInactive,
-	ButtonFilledSmallHover,
 	ButtonFilledSmallFocus,
+	ButtonFilledSmallHover,
 
 	ButtonGhostLightSmallActive,
 	ButtonGhostLightSmallInactive,
+	ButtonGhostLightSmallFocus,
+	ButtonGhostLightSmallHover,
+
 	ButtonGhostDarkSmallActive,
 	ButtonGhostDarkSmallInactive,
+	ButtonGhostDarkSmallFocus,
+	ButtonGhostDarkSmallHover,
 
 	ButtonFilledLargeActive,
 	ButtonFilledLargeInactive,
@@ -181,6 +186,6 @@ export const {
 
 	AnchorGhostDarkLargeActive,
 	AnchorGhostDarkLargeInactive,
-	AnchorGhostDarkLargeFocus,
 	AnchorGhostDarkLargeHover,
+	AnchorGhostDarkLargeFocus,
 } = StoriesToExport;

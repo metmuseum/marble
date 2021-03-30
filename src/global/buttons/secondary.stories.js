@@ -13,18 +13,20 @@ export default {
 const permutations = {
 	elementTags: ["Button", "Anchor"],
 	styles: ["Ghost-Light", "Ghost-Dark"],
-	states: ["Focus", "Hover"],
+	states: ["Active", "Inactive", "Focus", "Hover"],
 };
 
 const StoriesToExport = {
-	Anchor: () => buttonStoryTemplate({ elementTag: "Anchor", styleMode: null }),
-	Button: () => buttonStoryTemplate({ elementTag: "Button", styleMode: null }),
+	AnchorDefault: () =>
+		buttonStoryTemplate({ elementTag: "Anchor", styleMode: null }),
+	ButtonDefault: () =>
+		buttonStoryTemplate({ elementTag: "Button", styleMode: null }),
 };
 
 permutations.elementTags.forEach((elementTag) => {
 	permutations.styles.forEach((styleMode) => {
 		permutations.states.forEach((state) => {
-			let storyName = [elementTag, styleMode.replace("-", "")].join("");
+			let storyName = [elementTag, styleMode.replace("-", ""), state].join("");
 
 			StoriesToExport[storyName] = () => {
 				return buttonStoryTemplate({
@@ -81,9 +83,12 @@ const anchorTagTemplate = (options) => {
 
 	return html`
 		<a
-			class="button secondary-button ${styleModifier}"
+			class="button secondary-button ${styleModifier}
+			${options.state === "Hover" ? "_sb--hover" : ""}
+			${options.state === "Focus" ? "_sb--focus" : ""}"
 			role="button"
 			tabindex="1"
+			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Secondary Button")}
 		</a>
@@ -95,17 +100,26 @@ const buttonTagTemplate = (options) => {
 		? `secondary-button--${options.styleMode.toLowerCase()}`
 		: "";
 	return html`
-		<button class="button secondary-button ${styleModifier}">
+		<button
+			class="button secondary-button ${styleModifier}
+				${options.state === "Hover" ? "_sb--hover" : ""}
+				${options.state === "Focus" ? "_sb--focus" : ""}"
+			${options.state === "Inactive" ? "disabled" : ""}
+		>
 			${text("Label", "Secondary Button")}
 		</button>
 	`;
 };
 
 export const {
-	Button,
-	ButtonGhostLight,
-	ButtonGhostDark,
-	Anchor,
-	AnchorGhostLight,
-	AnchorGhostDark,
+	ButtonDefault,
+	ButtonGhostLightActive,
+	ButtonGhostLightFocus,
+	ButtonGhostLightHover,
+	ButtonGhostDarkActive,
+	AnchorDefault,
+	AnchorGhostLightActive,
+	AnchorGhostLightFocus,
+	AnchorGhostLightHover,
+	AnchorGhostDarkActive,
 } = StoriesToExport;
