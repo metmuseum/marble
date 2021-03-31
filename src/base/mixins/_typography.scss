@@ -106,7 +106,6 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	text-transform: uppercase;
 }
 
-
 //DEPRECATED Also... not used anywhere as far as I know?
 @mixin typography-link {
 	@include underline($color-black);

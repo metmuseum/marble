@@ -1,7 +1,7 @@
 import html from "../../../../.storybook/helpers/html";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
-import sizeVariables from "../../../base/_sizes.scss";
+import scssExports from "../../../global/exports.scss";
 
 import image768 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
 import image960 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
@@ -17,15 +17,16 @@ export default {
 };
 
 const Heading = (index) => {
-	return html`
-		${text(
-			` ${index} Heading`,
-			"Heading Text That Can Extend to Three Lines Maximum, Character Count 100"
-		)}`;
+	return html` ${text(
+		` ${index} Heading`,
+		"Heading Text That Can Extend to Three Lines Maximum, Character Count 100"
+	)}`;
 };
 
 const HeadingWithLink = (index) => {
-	return html` <a class="content-card__heading-link" href="#some-link">${Heading(index)}</a>`;
+	return html` <a class="content-card__heading-link" href="#some-link"
+		>${Heading(index)}</a
+	>`;
 };
 
 const srcSet = `${image768} 768w,
@@ -34,11 +35,8 @@ ${image1440} 1440w,
 ${image2160} 2160w`;
 
 const ContentCardTemplate = (cardMode = "", index = "") => {
-	return html`
-	<div class="content-card ${cardMode}">
-
-		<a href="anywhere" class="card-image__wrapper"  tabindex="-1">
-
+	return html` <div class="content-card ${cardMode}">
+		<a href="anywhere" class="card-image__wrapper" tabindex="-1">
 			<img
 				class="card-image"
 				alt="An image alt, for accessibility"
@@ -46,17 +44,24 @@ const ContentCardTemplate = (cardMode = "", index = "") => {
 				height="${imageHeight}"
 				src="${image768}"
 				srcset="${srcSet}"
-				sizes="(min-width: ${sizeVariables.bp900}) 720px, 90vw"
+				sizes="(min-width: ${scssExports.bp900}) 720px, 90vw"
 			/>
 		</a>
 
 		<div class="content-card__body">
-			<div class="content-card__eyebrow">${text(`${index} Tag Text`, "tag text")}</div>
+			<div class="content-card__eyebrow">
+				${text(`${index} Tag Text`, "tag text")}
+			</div>
 			<h3 class="content-card__heading">
-				${boolean(`${index} Heading Is A Link?`, true) ? HeadingWithLink(index) : Heading(index)}
+				${boolean(`${index} Heading Is A Link?`, true)
+					? HeadingWithLink(index)
+					: Heading(index)}
 			</h3>
 			<p>
-				${text(`${index} Description`, "This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today.")}
+				${text(
+					`${index} Description`,
+					"This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today."
+				)}
 			</p>
 		</div>
 	</div>`;
@@ -64,15 +69,16 @@ const ContentCardTemplate = (cardMode = "", index = "") => {
 
 const ContentCard = () => {
 	return ContentCardTemplate();
-}
+};
 
 const ContentCards = () => {
-	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
-	const cards = Array.apply(null, Array(cardCount)).map((card, index) => ContentCardTemplate("has-border", index + 1));
-	return html`
-		<section class="card-container card-container--auto-fit">
-			${cards.reduce((total, card) => total + card, "")}
-		</section>`
+	const cardCount = number("Card Count", 2, { range: true, min: 2, max: 4 });
+	const cards = Array.apply(null, Array(cardCount)).map((card, index) =>
+		ContentCardTemplate("has-border", index + 1)
+	);
+	return html` <section class="card-container card-container--auto-fit">
+		${cards.reduce((total, card) => total + card, "")}
+	</section>`;
 };
 
 const TwoUpContentCard = () => {
@@ -92,5 +98,5 @@ export {
 	ContentCards,
 	ThreeUpContentCard,
 	TwoUpContentCard,
-	ProductiveContentCard
+	ProductiveContentCard,
 };
