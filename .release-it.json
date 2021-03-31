@@ -1,4 +1,7 @@
 {
+	"git": {
+		"commitMessage": "Release ${version} [skip ci]"
+	},
 	"github": {
 		"release": true,
 		"skipChecks": true
