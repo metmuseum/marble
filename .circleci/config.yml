@@ -81,6 +81,8 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
+      - run: git config user.email "stephen.marsh@metmuseum.org"
+      - run: git config user.name "Marble Bot"
       - run:
           name: "Use release-it to tag and push to GitHub as release"
           command: npm run release -- minor --ci
