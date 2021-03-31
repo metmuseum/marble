@@ -5,7 +5,10 @@ import { fullWidth } from "../image-container/image-container.stories.js";
 import { useEffect } from "@storybook/client-api";
 import jumpLinkBanner from "./jumplink-banner.js";
 
-export default { title: "Banner", decorators: [withKnobs] };
+export default {
+	title: "Banner",
+	decorators: [withKnobs],
+};
 
 const data = () => {
 	return {
@@ -65,30 +68,33 @@ const jumplinkBannerMarkup = (model) => {
 			</h2>
 			<div class="jumplink-banner__links">
 				${model.links
-					.map((link) => html`
+					.map(
+						(link) => html`
 							<a
 								href="${link.url}"
-								class="js-jump-link button secondary-button jumplink-banner__link">
+								class="js-jump-link button secondary-button jumplink-banner__link"
+							>
 								${link.text}
 							</a>
 						`
-					).join("")}
+					)
+					.join("")}
 			</div>
-		${model.hasBottomLinks ?
-			html`<ul class="jumplink-banner__bottom-links">
-				${model.bottomLinks
-					.map((link) => html`
-						<li class="jumplink-banner__bottom-link">
-							<a
-								href="${link.url}"
-								class="button tertiary-button">
-								${link.text}
-							</a>
-						</li>
-						`
-					).join("")}
-			</ul>` : ``
-		}
+			${model.hasBottomLinks
+				? html`<ul class="jumplink-banner__bottom-links">
+						${model.bottomLinks
+							.map(
+								(link) => html`
+									<li class="jumplink-banner__bottom-link">
+										<a href="${link.url}" class="button tertiary-button">
+											${link.text}
+										</a>
+									</li>
+								`
+							)
+							.join("")}
+				  </ul>`
+				: ``}
 		</div>
 		<div class="jumplink-banner__image-wrapper">
 			${fullWidth()}

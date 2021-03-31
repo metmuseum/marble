@@ -1,6 +1,9 @@
 import html from "../../../../.storybook/helpers/html";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 
+import image600 from "../../../../.storybook/assets/images/misc/150Hub_SimpleCard2_600w.jpg";
+import image1200 from "../../../../.storybook/assets/images/misc/150Hub_SimpleCard2_1200w.jpg";
+
 export default {
 	title: "Cards",
 	decorators: [withKnobs],
@@ -9,8 +12,7 @@ export default {
 const defaultHeader = "Simple Card";
 const defaultDescription =
 	"Have you ever heard a museum love story? Did you know that art has the power to heal? Met visitors share their personal stories in this new series.";
-const defaultImageSrc =
-	"https://www.metmuseum.org/-/media/images/homepage/simple-cards/digital-content/150hub_simplecard2_1200x810.jpg?la=en&hash=4063CB997A9A5473F1B328FBC9A6293B 2x, https://www.metmuseum.org/-/media/images/homepage/simple-cards/digital-content/150hub_simplecard2_1200x810.jpg?la=en&w=600&hash=96C3AE1D9125A8667CE223AA3EA9F1DE 1x";
+const defaultImageSrc = `${image1200} 2x, ${image600} 1x`;
 const defaultImageAlt = "Image Alt Text";
 const defaultLinkUrl = "http://metmuseum.org";
 const defaultLinkText = "Watch Episode 1";

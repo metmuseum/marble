@@ -1,11 +1,14 @@
 import Flickity from "flickity";
 import arrowShape from "./arrowShape";
 
+require('flickity-imagesloaded');
+
 const flickityDefaults = {
 	accessibility: true,
 	autoPlay: false,
 	cellAlign: "left",
 	prevNextButtons: true,
+	imagesLoaded: false,
 	pageDots: false,
 	friction: 0.4,
 	contain: true,
