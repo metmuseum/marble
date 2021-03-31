@@ -2,7 +2,13 @@ import html from "../../../.storybook/helpers/html";
 import vimeoTemplate from "../vimeo-player/vimeo-player";
 import vimeoControls from "../vimeo-player/vimeo-controls.js";
 import { useEffect } from "@storybook/client-api";
-export default { title: 'Banner' };
+
+export default {
+	title: "Banner",
+	parameters: {
+		chromatic: { delay: 1500 },
+	},
+};
 
 const data = {
 	backgroundColor: "#ECDFD7",

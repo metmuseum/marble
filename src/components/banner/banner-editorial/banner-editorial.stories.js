@@ -2,7 +2,12 @@ import vimeoTemplate from "../../vimeo-player/vimeo-player";
 import vimeoControls from "../../vimeo-player/vimeo-controls";
 import { useEffect } from "@storybook/client-api";
 
-export default { title: "Banner" };
+export default {
+	title: "Banner",
+	parameters: {
+		chromatic: { delay: 1500 },
+	},
+};
 
 const data = {
 	backgroundColor: "#84b8ff",
@@ -40,7 +45,9 @@ const bannerMarkup = (model) => {
 			}; color: ${model.color}">
 				<div class="marble-banner__subject-body">
 					<h1 class="expressive">
-						<a href="${model.link.url}" class="marble-banner__header-link">${model.header}</a>
+						<a href="${model.link.url}" class="marble-banner__header-link">${
+		model.header
+	}</a>
 					</h1>
 					<div class="marble-banner__meta-description expressive-body">
 						<a href="${model.link.url}" tabindex="-1">${model.description}</a>

@@ -12,6 +12,9 @@ import image3240 from "../../../.storybook/assets/images/full-width-image/seurat
 export default {
 	title: "Featured",
 	decorators: [withKnobs],
+	parameters: {
+		chromatic: { delay: 1500 },
+	},
 };
 
 const bp1200 = sizeStyles.bp1200;
