@@ -2,12 +2,10 @@ import vimeoTemplate from "../../vimeo-player/vimeo-player";
 import vimeoControls from "../../vimeo-player/vimeo-controls";
 import { useEffect } from "@storybook/client-api";
 
-export default {
-	title: "Banner",
-	parameters: {
-		chromatic: { delay: 1500 },
-	},
-};
+import image448 from "../../../../.storybook/assets/images/misc/The-Met_150th_Events_Promo_448w.jpg";
+import image896 from "../../../../.storybook/assets/images/misc/The-Met_150th_Events_Promo_896w.jpg";
+
+export default { title: "Banner" };
 
 const data = {
 	backgroundColor: "#84b8ff",
@@ -16,8 +14,7 @@ const data = {
 	header: "Join The Celebration",
 	description:
 		"<p>Celebrate The Met's 150th Anniversary all year long in 2020, but be sure to mark one very special weekend on your calendar now.</p>",
-	backgroundImages:
-		"https://www.metmuseum.org/-/media/images/150-anniversary/final/the-met_150th_events_promo_896x1088.jpg?la=en&amp;hash=A0D78DF9A9547A6F8D4A9D89F41E0503 2x, https://www.metmuseum.org/-/media/images/150-anniversary/final/the-met_150th_events_promo_896x1088.jpg?la=en&amp;w=448&amp;hash=A6A207A6CAFED39B177A043B427E4F5E 1x",
+	backgroundImages: `${image896} 2x, ${image448} 1x`,
 	imageAlt: "Celebrating 150 Years",
 	link: {
 		url: "http://metmuseum.org",
