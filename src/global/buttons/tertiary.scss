@@ -18,35 +18,40 @@
 		color: $color-purplee;
 	}
 
-	&:after {
-		border-bottom: 2px solid transparent;
-		bottom: -2px;
-		content: "";
-		left: 0;
-		position: absolute;
-		right: 100%;
-		transition: right 0.8s 0.1s;
-	}
-
-	&:focus {
-		border-color: transparent;
-		color: $color-purplee;
-		outline: 0;
-
-		&:after {
-			border-color: currentColor;
+	// this block handles the underline animation
+	&:not(:disabled) {
+		&:before {
+			border-bottom: 2px solid transparent;
+			bottom: -2px;
 			content: "";
-			right: 0;
+			left: 0;
+			position: absolute;
+			right: 100%;
+			transition: right 0.8s 0.1s;
 		}
 	}
-	@media screen and (hover: hover) {
-		&:hover {
-			border-color: transparent;
 
-			&:after {
-				border-color: currentColor;
-				content: "";
-				right: 0;
+	&:focus:not(:hover),
+	&._sb--focus:not(:hover) {
+		&::after {
+			top: -7px;
+			bottom: -7px;
+			left: -7px;
+			right: -7px;
+		}
+	}
+
+	@media screen and (hover: hover) {
+		&:not(:disabled) {
+			&:hover,
+			&._sb--hover {
+				border-color: transparent;
+
+				&:before {
+					border-color: currentColor;
+					content: "";
+					right: 0;
+				}
 			}
 		}
 	}
@@ -57,7 +62,7 @@
 		color: $color-grey-600;
 		cursor: not-allowed;
 
-		&:after {
+		&:before {
 			border: none;
 		}
 	}

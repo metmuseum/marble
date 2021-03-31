@@ -8,13 +8,20 @@
 	min-width: 16ch;
 	padding: $textsize-xs;
 
-	&:focus {
-		border: 2px solid $color-white;
-		background-color: $color-white-opaque-70;
-		color: $color-grey-900;
+	&:focus:not(:hover),
+	&._sb--focus:not(:hover) {
+		&::after {
+			border-radius: 999px;
+			top: -6px;
+			bottom: -6px;
+			left: -6px;
+			right: -6px;
+		}
 	}
+
 	@media screen and (hover: hover) {
-		&:hover {
+		&:hover:not(:disabled),
+		&._sb--hover:not(:disabled) {
 			border: 2px solid $color-white;
 			background-color: $color-white-opaque-70;
 			color: $color-grey-900;
