@@ -4,11 +4,12 @@ import { useEffect } from "@storybook/client-api";
 export default { title: "Carousel/Carousel Slide" };
 
 import image1920 from "../../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
+import video from "../../../../.storybook/assets/video/stock-footage-a-nice-bee-walking-and-foraging-a-pretty-yellow-flower-and-a-little-push-by-another-bee-to-fly-away.mp4";
 
 const data = {
 	header: "Carousel Slide",
 	description: "<p>Either an image or a video, whatever.</p>",
-	video: "https://www.w3schools.com/html/mov_bbb.mp4",
+	video: video,
 	images: image1920,
 };
 
