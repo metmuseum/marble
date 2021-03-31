@@ -8,9 +8,6 @@ import jumpLinkBanner from "./jumplink-banner.js";
 export default {
 	title: "Banner",
 	decorators: [withKnobs],
-	parameters: {
-		chromatic: { delay: 1500 },
-	},
 };
 
 const data = () => {

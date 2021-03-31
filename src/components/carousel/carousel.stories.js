@@ -7,9 +7,6 @@ import { object, withKnobs } from "@storybook/addon-knobs";
 export default {
 	title: "Carousel/Carousel",
 	decorators: [withKnobs],
-	parameters: {
-		chromatic: { delay: 1500 },
-	},
 };
 
 const Carousel = () => {
