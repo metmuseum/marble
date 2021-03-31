@@ -3,8 +3,7 @@
 		"commitMessage": "Release ${version} [skip ci]"
 	},
 	"github": {
-		"release": true,
-		"skipChecks": true
+		"release": true
 	},
 	"npm": {
 		"publish": false
