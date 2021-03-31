@@ -1,8 +1,10 @@
 import { withKnobs, number } from "@storybook/addon-knobs";
 
+import image1920 from "../../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
+
 export default {
-	title: 'Cards',
-  decorators: [withKnobs]
+	title: "Cards",
+	decorators: [withKnobs],
 };
 
 const cardTemplate = (
@@ -11,10 +13,10 @@ const cardTemplate = (
 	description = "description",
 	location = "The Met Fifth Avenue",
 	dates = "MARCH 30–AUGUST 2, 2020",
-	images = "https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&hash=9CDD1BCFB213A815CCF4B476CDA5B35F 2x, https://www.metmuseum.org/-/media/images/150-anniversary/met-stories/2020_met_stories_ep_01_4k_new.jpg?la=en&w=1920&hash=342B752D9534482E6C5C988C117585A4 1x",
+	images = image1920,
 	link = {
 		url: "http://metmuseum.org",
-		text: "Watch Episode 1"
+		text: "Watch Episode 1",
 	}
 ) => {
 	return {
@@ -25,9 +27,9 @@ const cardTemplate = (
 		dates: dates,
 		location: location,
 		link: {
-			url: link.url
-		}
-	}
+			url: link.url,
+		},
+	};
 };
 
 const cardMarkup = (model, cardCount) => {
@@ -35,8 +37,10 @@ const cardMarkup = (model, cardCount) => {
 		<section>
 		  <h3>${model.header}</h3>
 			<div class="marble-card__wrapper">
-			  ${ model.cards.reduce((total, card) => {
-					return total + `<div class="marble-card marble-card--active">
+			  ${model.cards.reduce((total, card) => {
+					return (
+						total +
+						`<div class="marble-card marble-card--active">
 			      <div class="marble-card__image-wrapper marble-card__image-wrapper--fixed-ratio marble-card__image-wrapper--66">
 			        <a href="${card.link.url}" class="marble-card__image-link" tabindex="-1">
 			          <img class="marble-card__image" srcset="${card.images}">
@@ -72,22 +76,20 @@ const cardMarkup = (model, cardCount) => {
 			        </div>
 			      </div>
 			    </div>`
+					);
 				}, "")}
 			</div>
 		</section>
-	`
-}
-
-
-
+	`;
+};
 
 export const ExhibitionCards = () => {
-	const cardCount = number("Card Count", 2, {range: true, min: 2, max: 4});
+	const cardCount = number("Card Count", 2, { range: true, min: 2, max: 4 });
 	const cards = Array.apply(null, Array(cardCount)).map(() => cardTemplate());
 	const data = {
 		header: `${cardCount} Exhibition Cards`,
-		cards: cards
+		cards: cards,
 	};
 
-  return cardMarkup(data);
-}
+	return cardMarkup(data);
+};

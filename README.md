@@ -23,11 +23,24 @@ Our Living Style Guide, powered by [Storybook](https://storybook.js.org/docs/bas
 
 ## Installing Marble
 
-To continuously use the latest release version:
+Marble installs from GitHub, not the NPM registry:
 
 ```
-npm install metmuseum/Marble#main -S
+npm install metmuseum/marble
 ```
+
+It's recommended that your CI/CD process use [`npm ci`](https://docs.npmjs.com/cli/v7/commands/npm-ci) instead of `npm install` so that:
+
+- [You get deterministic, reproducible builds](https://12factor.net/dependencies).
+- You don't accidentally introduce a newer version of Marble than you intend to.
+
+## Updating Marble
+
+Updating Marble is designed to be opt-in/manual:
+
+#todo: check all this shit for parity
+
+##
 
 ## Importing Marble
 
