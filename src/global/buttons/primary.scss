@@ -102,9 +102,9 @@ $border-width-ghost: 2px;
 		&:active,
 		&:hover,
 		&._sb--hover {
-			background: $color-white-opaque-70;
+			background: $color-white-opaque-90;
 			border-color: $color-grey-050;
-			color: $color-grey-600;
+			color: $color-grey-700;
 		}
 
 		&:focus:not(:hover),
