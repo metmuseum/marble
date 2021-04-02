@@ -85,7 +85,7 @@ jobs:
       - run: git config user.name "Marble Bot"
       - run:
           name: "Use release-it to tag and push to GitHub as release"
-          command: npm run release -- patch --ci
+          command: DEBUG=release-it:* npm run release -- patch --ci -VV --no-git.requireUpstream --set-upstream origin main
 
 workflows:
   version: 2
