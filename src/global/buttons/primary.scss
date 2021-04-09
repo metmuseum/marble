@@ -26,11 +26,15 @@ $border-width-ghost: 2px;
 	font-weight: 500;
 	transition: background-position 0.3s, color 0.3s; // match the behavior on a tags from src/global/typography
 
-	&:hover,
-	&._sb--hover,
-	&:visited {
-		// TODO: really, this is for visited?
-		background-position: 100% 0;
+	&:not(:disabled) {
+		&:focus,
+		&._sb--focus,
+		&:hover,
+		&._sb--hover,
+		&:visited {
+			// TODO: really, this is for visited?
+			background-position: 100% 0;
+		}
 	}
 
 	&.button--disabled,
@@ -82,10 +86,14 @@ $border-width-ghost: 2px;
 	background-size: 200% 200%;
 	color: $color-white;
 
-	&:hover,
-	&._sb--hover,
-	&:visited {
-		color: $color-white; // when a tag, need to override the inherit rule
+	&:not(:disabled) {
+		&:focus,
+		&._sb--focus,
+		&:hover,
+		&._sb--hover,
+		&:visited {
+			color: $color-white; // when a tag, need to override the inherit rule
+		}
 	}
 }
 
@@ -101,7 +109,9 @@ $border-width-ghost: 2px;
 	&:not(:disabled) {
 		&:active,
 		&:hover,
-		&._sb--hover {
+		&._sb--hover,
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
 			background: $color-white-opaque-90;
 			border-color: $color-grey-050;
 			color: $color-grey-700;
@@ -127,7 +137,9 @@ $border-width-ghost: 2px;
 	&:not(:disabled) {
 		&:active,
 		&:hover,
-		&._sb--hover {
+		&._sb--hover,
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
 			background: $color-grey-900;
 			color: $color-white;
 		}
