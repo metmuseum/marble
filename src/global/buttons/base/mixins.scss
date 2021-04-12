@@ -13,7 +13,7 @@
 
 @mixin button-focus--not-hover($offset) {
 	&::after {
-		border: 2px solid $color-grey-500;
+		border: 2px solid $color-grey-700;
 		border-radius: $radius-sharp + 3px;
 		bottom: -$offset;
 		content: "";

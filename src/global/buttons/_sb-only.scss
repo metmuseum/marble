@@ -1,7 +1,10 @@
 @import "../../base/base";
 
-.button {
+.sb-show-main .button {
 	margin: $spacing-s;
+}
+
+.button {
 
 	&._sb--focus {
 		@include button-focus();
