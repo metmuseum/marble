@@ -1,6 +1,8 @@
 @import "../../base/base";
 
 .button {
+	margin: $spacing-s;
+
 	&._sb--focus {
 		@include button-focus();
 	}
