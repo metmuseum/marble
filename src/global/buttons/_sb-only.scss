@@ -1,0 +1,118 @@
+@import "../../base/base";
+
+.button {
+	&._sb--focus {
+		@include button-focus();
+	}
+
+	&._sb--focus:not(:hover) {
+		@include button-focus--not-hover(3px);
+	}
+
+	&._sb--hover:not(:disabled) {
+		@include button-hover();
+	}
+
+	&.button--pill,
+	&.button--ghosted {
+		&._sb--focus {
+			@include button--ghosted-focus();
+		}
+
+		&._sb--hover {
+			@include button--ghosted-hover();
+		}
+
+		//If these werent deprecated I'd make mixins of these states so we dont have two things that can diverge.
+		&.inverse {
+			&._sb--focus {
+				background-color: $color-white;
+				color: $color-grey-900;
+			}
+
+			&._sb--hover {
+				background-color: $color-white;
+				color: $color-grey-900;
+			}
+		}
+
+		&.inverse--opaque {
+			&._sb--focus {
+				background-color: $color-white-opaque-70;
+				color: $color-grey-900;
+			}
+
+			&._sb--hover {
+				background-color: $color-white-opaque-70;
+				color: $color-grey-900;
+			}
+		}
+	}
+}
+
+
+.primary-button {
+	&:not(:disabled) {
+		&._sb--focus,
+		&._sb--hover {
+			@include primrary-button--active();
+		}
+	}
+}
+
+.primary-button--ghost-light {
+	&:not(:disabled) {
+		&._sb--hover,
+		&._sb--focus:not(:hover) {
+			@include primary-button--ghost-light-active();
+		}
+
+		&._sb--focus:not(:hover) {
+			@include button-focus--not-hover(5px);
+		}
+	}
+}
+
+.primary-button--ghost-dark {
+	&:not(:disabled) {
+		&._sb--hover,
+		&._sb--focus:not(:hover) {
+			@include primary-button--ghost-dark-active();
+		}
+
+		&._sb--focus:not(:hover) {
+			@include button-focus--not-hover(5px);
+		}
+	}
+}
+
+.secondary-button {
+	&:not(:disabled) {
+		&._sb--focus:not(:hover) {
+			@include secondary-button-active();
+		}
+	}
+}
+
+.secondary-button--ghost-dark {
+	:not(:disabled) {
+		&._sb--focus:not(:hover),
+		&._sb--hover {
+			@include secondary-button--ghost-dark-active();
+		}
+	}
+}
+
+.tertiary-button {
+	&._sb--focus:not(:hover) {
+		@include button-focus--not-hover(7px);
+	}
+
+	@media screen and (hover: hover) {
+		&:not(:disabled) {
+			&._sb--hover {
+				@include tertiary-button--hover();
+			}
+		}
+	}
+}

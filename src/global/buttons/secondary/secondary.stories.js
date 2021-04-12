@@ -1,6 +1,7 @@
-import html from "../../../.storybook/helpers/html";
+import html from "../../../../.storybook/helpers/html";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
-import backgroundOverride from "../../../.storybook/helpers/backgroundOverride";
+import backgroundOverride from "../../../../.storybook/helpers/backgroundOverride";
+import "../_sb-only.scss";
 
 export default {
 	decorators: [withKnobs],

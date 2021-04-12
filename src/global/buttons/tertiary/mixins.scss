@@ -1,5 +1,14 @@
-.tertiary-button {
-	@include typography-body-expressive;
+@mixin tertiary-button--hover {
+	border-color: transparent;
+
+	&:before {
+		border-color: currentColor;
+		content: "";
+		right: 0;
+	}
+}
+
+@mixin tertiary-button {
 	background-color: transparent;
 	border: unset;
 	border-bottom: 2px solid currentColor;
@@ -9,6 +18,7 @@
 	color: currentColor;
 	cursor: pointer;
 	font-family: $metsans;
+	font-size: $textsize-s;
 	font-weight: 500;
 	line-height: 1.2;
 	padding: 0;
@@ -31,27 +41,14 @@
 		}
 	}
 
-	&:focus:not(:hover),
-	&._sb--focus:not(:hover) {
-		&::after {
-			top: -7px;
-			bottom: -7px;
-			left: -7px;
-			right: -7px;
-		}
+	&:focus:not(:hover) {
+		@include button-focus--not-hover(7px);
 	}
 
 	@media screen and (hover: hover) {
 		&:not(:disabled) {
-			&:hover,
-			&._sb--hover {
-				border-color: transparent;
-
-				&:before {
-					border-color: currentColor;
-					content: "";
-					right: 0;
-				}
+			&:hover {
+				@include tertiary-button--hover();
 			}
 		}
 	}

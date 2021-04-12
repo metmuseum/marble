@@ -1,33 +1,30 @@
-@import "../../base/base";
-
 @mixin button-hover {
 	text-decoration: none;
 }
 
 @mixin button-focus {
-	outline: none; // remove Chrome and Safari's blue outline
+	outline: none;
 	text-decoration: none;
-	&::-moz-focus-inner {
-		border: none; // Firefox
+
+	&::-moz-focus-inner { // sass-lint:disable-line no-vendor-prefixes
+		border: none;
 	}
 }
 
-@mixin button-focus--not-hover {
+@mixin button-focus--not-hover($offset) {
 	&::after {
-		content: "";
-		position: absolute;
-		top: -3px;
-		bottom: -3px;
-		left: -3px;
-		right: -3px;
+		border: 2px solid $color-grey-500;
 		border-radius: $radius-sharp + 3px;
-		border: 2px solid grey;
+		bottom: -$offset;
+		content: "";
+		left: -$offset;
+		position: absolute;
+		right: -$offset;
+		top: -$offset;
 	}
 }
 
 @mixin button-base {
-	// TODO: our reset goes here?
-
 	cursor: pointer;
 	font-family: $metsans;
 	line-height: 1;
@@ -39,18 +36,16 @@
 		cursor: not-allowed;
 	}
 
-	&:focus,
-	&._sb--focus {
+	&:focus {
 		@include button-focus();
 	}
 
 	&:focus:not(:hover),
 	&._sb--focus:not(:hover) {
-		@include button-focus--not-hover;
+		@include button-focus--not-hover(3px);
 	}
 
-	&:hover:not(:disabled),
-	&._sb--hover:not(:disabled) {
+	&:hover:not(:disabled) {
 		@include button-hover();
 	}
 }
@@ -64,6 +59,7 @@
 	background-color: $color-grey-900;
 	color: $color-white;
 }
+
 
 @mixin button-deprecated {
 	// TODO: will need to somehow migrate from the below styles?
@@ -95,8 +91,7 @@
 			border-color: $color-white;
 			color: $color-white;
 
-			&:focus,
-			&._sb--focus {
+			&:focus {
 				background-color: $color-white;
 				color: $color-grey-900;
 			}
@@ -107,11 +102,6 @@
 					color: $color-grey-900;
 				}
 			}
-
-			&._sb--hover {
-				background-color: $color-white;
-				color: $color-grey-900;
-			}
 		}
 
 		&.inverse--opaque {
@@ -119,8 +109,7 @@
 			border-color: $color-white;
 			color: $color-white;
 
-			&:focus,
-			._sb--focus {
+			&:focus {
 				background-color: $color-white-opaque-70;
 				color: $color-grey-900;
 			}
@@ -129,10 +118,6 @@
 					background-color: $color-white-opaque-70;
 					color: $color-grey-900;
 				}
-			}
-			&._sb--hover {
-				background-color: $color-white-opaque-70;
-				color: $color-grey-900;
 			}
 		}
 	}
@@ -153,15 +138,4 @@
 		// 3 uses in ghidorah
 		min-width: 280px; // TODO ?
 	}
-}
-
-.button {
-	@include button-deprecated();
-	@include button-base();
-}
-
-a.button {
-	align-items: center;
-	display: inline-flex;
-	justify-content: center;
 }

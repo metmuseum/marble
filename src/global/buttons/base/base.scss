@@ -1,0 +1,12 @@
+@import "../../../base/base";
+
+.button {
+	@include button-deprecated();
+	@include button-base();
+}
+
+a.button {
+	align-items: center;
+	display: inline-flex;
+	justify-content: center;
+}

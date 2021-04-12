@@ -1,0 +1,7 @@
+.secondary-button {
+	@include secondary-button();
+}
+
+.secondary-button--ghost-dark {
+	@include secondary-button--ghost-dark();
+}
