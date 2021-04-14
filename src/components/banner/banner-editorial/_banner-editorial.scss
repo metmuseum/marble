@@ -13,10 +13,6 @@ $editorial-banner-min-height: 88vw;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		min-height: $editorial-banner-min-height;
-		@media (orientation: landscape) {
-			min-height: 0;
-		}
 	}
 }
 
