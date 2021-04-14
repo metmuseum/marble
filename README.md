@@ -17,17 +17,39 @@
 
 Our Living Style Guide, powered by [Storybook](https://storybook.js.org/docs/basics/introduction/), lives at:
 
-## 🏛️ [metmuseum.github.io/Marble](https://metmuseum.github.io/Marble) 📙
+## 🏛️ [metmuseum.github.io/marble](https://metmuseum.github.io/marble) 📙
 
 # Using Marble In Your Project
 
 ## Installing Marble
 
-To continuously use the latest release version:
+Marble installs from GitHub, not the NPM registry.
 
-```
-npm install metmuseum/Marble#main -S
-```
+It's recommended that your CI/CD process use [`npm ci`](https://docs.npmjs.com/cli/v7/commands/npm-ci) instead of `npm install` so that:
+
+- [You get deterministic, reproducible builds](https://12factor.net/dependencies).
+- You don't accidentally introduce a newer version of Marble than you intend to.
+
+There are multiple ways to install Marble:
+
+Lock to one version:
+
+`npm install metmuseum/marble#0.11.15`
+
+Lock to a specific commit:
+
+`npm install metmuseum/marble#9e68bab`
+
+Use any npm-compatible semantic versioning syntax:
+
+`npm install metmuseum/marble#semver:^0.11.15`
+
+Just get whatever's on main:
+`npm install metmuseum/marble`
+
+## Upgrading Marble
+
+Remember, if you're using `npm ci` in production (recommended), then you'll need to periodically run `npm install ...` or `npm upgrade ...` and check in the updated package-lock.json.
 
 ## Importing Marble
 
@@ -38,7 +60,7 @@ Marble can be imported a few different ways, depending on how your project prepr
 - If your project only uses CommonJS syntax (vanilla Node.js environments):
 
   ```javascript
-  const marble = require("Marble");
+  const marble = require("@metmuseum/marble");
   ```
 
 - ESM syntax (Webpack, etc):
@@ -48,9 +70,9 @@ Marble can be imported a few different ways, depending on how your project prepr
   ```
 
 - Reference the files directly (not recommended):
-  - `Path/To/Your/Project/node_modules/Marble/dist/marble.js`
+  - `Path/To/Your/Project/node_modules/@metmuseum/marble/dist/marble.js`
     - This exposes a variable called `marble`.
-  - `Path/To/Your/Project/node_modules/Marble/dist/marble.js.map`
+  - `Path/To/Your/Project/node_modules/@metmuseum/marble/dist/marble.js.map`
     - Source maps (recommended)
 
 * TODO: Consider CDN-hosted file for `<script>` tag? (easy with CI, but like, version control?)
@@ -70,23 +92,8 @@ This should work, please let us know if it does not:
   import "~@metmuseum/marble";
   ```
 - If not, production-ready assets are available to reference directly (not recommended):
-  - `Path/To/Your/Project/node_modules/Marble/dist/marble.css`
+  - `Path/To/Your/Project/node_modules/@metmuseum/marble/dist/marble.css`
 - TODO: Consider CDN-hosted file for stylesheet `<link>` tag? (easy with CI, but like, version control?)
-
-### Ways To Import A La Carte:
-
-If you have a way to preprocess and bundle your assets, like webpack, you can import only what you need from Marble (and also get the benefits of tree-shaking):
-
-#### Webpack
-
-```javascript
-import { jumpLinkBanner } from "Marble";
-
-// it won't do anything unless you call it:
-jumpLinkBanner();
-```
-
-TODO: support automatic scss loading here too, because this example would not include styles?
 
 #### SCSS
 
@@ -103,7 +110,7 @@ TODO: investigate Sass `@import` vs new `@use` syntax:
 
 Marble does not currently export component html or templates, only styles and javascript. Think of it a little bit like Twitter's [Bootstrap Framework](/github.com/twbs/bootstrap), or like a meal kit, but not dish you serve.
 
-It's up to your project to implement the proper markup, based on examples you can find in `/src` and on our [Storybook](https://metmuseum.github.io/Marble).
+It's up to your project to implement the proper markup, based on examples you can find in `/src` and on our [Storybook](https://metmuseum.github.io/marble).
 
 #### Example:
 
@@ -117,9 +124,7 @@ html`<div
 		? "productive-component"
 		: ""}"
 >
-	<h2 class="section-heading__heading ${context}">
-		${header}
-	</h2>
+	<h2 class="section-heading__heading ${context}">${header}</h2>
 	<div>${he.decode(bodyCopy)}</div>
 	<a
 		class="button tertiary-button section-heading__text-link"
@@ -154,7 +159,7 @@ By design, Marble's Javascript should only cause one side-effect: exposing a var
 At the bare minimum, you probably want to run Marble's global code:
 
 ```javascript
-import marble from "Marble";
+import marble from "@metmuseum/marble";
 
 marble.global();
 ```
@@ -162,6 +167,7 @@ marble.global();
 If you use a specific component, say the `jumpLinkBanner`, you need to call that somewhere, as well:
 
 ```javascript
+import marble from "@metmuseum/marble";
 marble.jumpLinkBanner();
 ```
 
@@ -181,8 +187,8 @@ Example:
 
 ```json
 "marble": {
-    "version": "github:metmuseum/Marble#d765ab8a340e1e989953207115414469307da93c",
-    "from": "github:metmuseum/Marble#main",
+    "version": "github:metmuseum/marble#d765ab8a340e1e989953207115414469307da93c",
+    "from": "github:metmuseum/marble#main",
     "requires": {
         "he": "^1.2.0",
         "intersection-observer": "^0.7.0",
@@ -238,7 +244,7 @@ You may want to see your changes to Marble locally _**and**_ in the context of a
     - Navigate to a local project folder and find the directory that contains the `package.json` that originally specified Marble. \* For example, in Ghidorah, this wouldn't be the project root, it would be: `ghidorah/MMA.Ghidorah/`
     - From _that_ directory, run:
 
-          		npm link Marble
+          		npm link @metmuseum/marble
 
     - Now, instead of what's installed in `node_modules`, npm knows to pull our Marble package files from the directory in Step 1. We can make our changes in our Marble repo (more on that below), and our other project will show them to us.
 
@@ -263,6 +269,6 @@ TODO: update this to have CI build dist on merge
 
       		npm run build
 
-* See also: [/webpack.production.config.js](https://github.com/metmuseum/Marble/blob/master/webpack.production.config.js)
+* See also: [/webpack.production.config.js](https://github.com/metmuseum/marble/blob/master/webpack.production.config.js)
 
 - Make sure you commit this production-ready build of Marble and not the development version that would also be generated to `/dist` anytime you run webpack-dev-server.

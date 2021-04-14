@@ -1,3 +1,9 @@
+@mixin secondary-inverted-colors {
+	border: 2px solid $color-white;
+	background-color: $color-white-opaque-90;
+	color: $color-grey-900;
+}
+
 .secondary-button {
 	background-color: transparent;
 	border: 2px solid $color-white;
@@ -8,16 +14,27 @@
 	min-width: 16ch;
 	padding: $textsize-xs;
 
-	&:focus {
-		border: 2px solid $color-white;
-		background-color: $color-white-opaque-70;
-		color: $color-grey-900;
+	&:not(:disabled) {
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			@include secondary-inverted-colors();
+
+			&::after {
+				border-radius: 999px;
+				top: -6px;
+				bottom: -6px;
+				left: -6px;
+				right: -6px;
+			}
+		}
 	}
+
 	@media screen and (hover: hover) {
-		&:hover {
-			border: 2px solid $color-white;
-			background-color: $color-white-opaque-70;
-			color: $color-grey-900;
+		&:not(:disabled) {
+			&:hover,
+			&._sb--hover {
+				@include secondary-inverted-colors();
+			}
 		}
 	}
 }
@@ -27,10 +44,14 @@
 	border: $border-width-ghost solid $color-grey-900;
 	color: $color-grey-900;
 
-	&:focus:not(:disabled),
-	&:active:not(:disabled),
-	&:hover:not(:disabled) {
-		background: $color-grey-900;
-		color: $color-white;
+	&:not(:disabled) {
+		&:active,
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover),
+		&:hover,
+		&._sb--hover {
+			background: $color-grey-900;
+			color: $color-white;
+		}
 	}
 }

@@ -26,10 +26,15 @@ $border-width-ghost: 2px;
 	font-weight: 500;
 	transition: background-position 0.3s, color 0.3s; // match the behavior on a tags from src/global/typography
 
-	&:focus,
-	&:hover,
-	&:visited {
-		background-position: 100% 0;
+	&:not(:disabled) {
+		&:focus,
+		&._sb--focus,
+		&:hover,
+		&._sb--hover,
+		&:visited {
+			// TODO: really, this is for visited?
+			background-position: 100% 0;
+		}
 	}
 
 	&.button--disabled,
@@ -51,7 +56,7 @@ $border-width-ghost: 2px;
 	&.primary-button--ghost-light,
 	&.primary-button--ghost-dark {
 		padding: calc(0.7777777778em - #{$border-width-ghost})
-		calc(2.5em - #{$border-width-ghost});
+			calc(2.5em - #{$border-width-ghost});
 	}
 }
 
@@ -69,7 +74,7 @@ $border-width-ghost: 2px;
 	&.primary-button--ghost-light,
 	&.primary-button--ghost-dark {
 		padding: calc(0.7777777778em - #{$border-width-ghost})
-		calc(4em - #{$border-width-ghost});
+			calc(4em - #{$border-width-ghost});
 	}
 }
 
@@ -85,9 +90,14 @@ $border-width-ghost: 2px;
 	background-size: 200% 200%;
 	color: $color-white;
 
-	&:hover,
-	&:visited {
-		color: $color-white; // when a tag, need to override the inherit rule
+	&:not(:disabled) {
+		&:focus,
+		&._sb--focus,
+		&:hover,
+		&._sb--hover,
+		&:visited {
+			color: $color-white; // when a tag, need to override the inherit rule
+		}
 	}
 }
 
@@ -100,12 +110,26 @@ $border-width-ghost: 2px;
 	border: $border-width-ghost solid $color-white;
 	color: $color-white;
 
-	&:focus:not(:disabled),
-	&:active:not(:disabled),
-	&:hover:not(:disabled) {
-		background: $color-grey-050;
-		border-color: $color-grey-050;
-		color: $color-grey-600;
+	&:not(:disabled) {
+		&:active,
+		&:hover,
+		&._sb--hover,
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			background: $color-white-opaque-90;
+			border-color: $color-grey-050;
+			color: $color-grey-700;
+		}
+
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			&::after {
+				top: -5px;
+				bottom: -5px;
+				left: -5px;
+				right: -5px;
+			}
+		}
 	}
 }
 
@@ -114,11 +138,25 @@ $border-width-ghost: 2px;
 	border: $border-width-ghost solid $color-grey-900;
 	color: $color-grey-900;
 
-	&:focus:not(:disabled),
-	&:active:not(:disabled),
-	&:hover:not(:disabled) {
-		background: $color-grey-900;
-		color: $color-white;
+	&:not(:disabled) {
+		&:active,
+		&:hover,
+		&._sb--hover,
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			background: $color-grey-900;
+			color: $color-white;
+		}
+
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			&::after {
+				top: -5px;
+				bottom: -5px;
+				left: -5px;
+				right: -5px;
+			}
+		}
 	}
 
 	&.button--disabled,

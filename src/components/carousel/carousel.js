@@ -1,17 +1,18 @@
 import Flickity from "flickity";
 import arrowShape from "./arrowShape";
-require('flickity-imagesloaded'); // TODO: review with Joseph
+
+require('flickity-imagesloaded');
 
 const flickityDefaults = {
 	accessibility: true,
 	autoPlay: false,
 	cellAlign: "left",
 	prevNextButtons: true,
+	imagesLoaded: false,
 	pageDots: false,
 	friction: 0.4,
 	contain: true,
 	resize: true,
-	imagesLoaded: true,
 	wrapAround: false,
 	arrowShape,
 };
@@ -42,13 +43,18 @@ const carousel = (options = {}) => {
 			}
 		);
 
-		//This event is bubbled up when our lazyload library kicks off.
-		carousel.addEventListener("image-loaded", handleImageLoad, false);
-		//If images within the carousel have been loaded after the carousel initiated, re-calcute the size.
-		function handleImageLoad() {
-			flickityInstance.resize();
-			carousel.removeEventListener("image-loaded", handleImageLoad, false);
-		}
+		const handler = () => {
+			carousel.classList.add("is-loading");
+			const allImagesAreLoaded = !carousel.querySelector(".loading");
+			if (allImagesAreLoaded) {
+				flickityInstance.resize();
+				carousel.classList.remove("is-loading");
+			}
+		};
+
+		// This event is bubbled up when our lazyload library loads an image (see lazyload.js)
+		carousel.addEventListener("image-loaded", handler, false);
+		carousel.addEventListener("image-errored", handler, false);
 	});
 };
 

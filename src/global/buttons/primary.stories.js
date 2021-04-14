@@ -13,14 +13,15 @@ export default {
 const permutations = {
 	elementTags: ["Button", "Anchor"],
 	modes: {
-		style: ["Filled", "Ghost-Dark", "Ghost-Light"],
+		style: ["Filled", "Ghost-Light", "Ghost-Dark"],
 		size: ["Small", "Large"],
 	},
-	states: ["Active", "Inactive"],
+	states: ["Active", "Inactive", "Focus", "Hover"],
 };
 
 const StoriesToExport = {};
 
+// Programmatically make these stories :)
 permutations.elementTags.forEach((elementTag) => {
 	permutations.modes.style.forEach((styleMode) => {
 		permutations.modes.size.forEach((sizeMode) => {
@@ -39,6 +40,10 @@ permutations.elementTags.forEach((elementTag) => {
 						sizeMode,
 						state,
 					});
+				};
+
+				StoriesToExport[storyName].story = {
+					name: [elementTag, styleMode, sizeMode, state].join(" "),
 				};
 			});
 		});
@@ -94,8 +99,11 @@ const anchorTagTemplate = (options) => {
 		<a
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
-			primary-button--${options.styleMode.toLowerCase()}"
+			primary-button--${options.styleMode.toLowerCase()}
+			${options.state === "Hover" ? "_sb--hover" : ""}
+			${options.state === "Focus" ? "_sb--focus" : ""}"
 			role="button"
+			tabindex="1"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Primary Button")}
@@ -109,7 +117,9 @@ const buttonTagTemplate = (options) => {
 		<button
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
-			primary-button--${options.styleMode.toLowerCase()}"
+			primary-button--${options.styleMode.toLowerCase()}
+			${options.state === "Hover" ? "_sb--hover" : ""}
+			${options.state === "Focus" ? "_sb--focus" : ""}"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Primary Button")}
@@ -117,29 +127,65 @@ const buttonTagTemplate = (options) => {
 	`;
 };
 
+// javascript why u no have metaprogramming for this 😭
 export const {
 	ButtonFilledSmallActive,
 	ButtonFilledSmallInactive,
+	ButtonFilledSmallFocus,
+	ButtonFilledSmallHover,
+
 	ButtonGhostLightSmallActive,
 	ButtonGhostLightSmallInactive,
+	ButtonGhostLightSmallFocus,
+	ButtonGhostLightSmallHover,
+
 	ButtonGhostDarkSmallActive,
 	ButtonGhostDarkSmallInactive,
+	ButtonGhostDarkSmallFocus,
+	ButtonGhostDarkSmallHover,
+
 	ButtonFilledLargeActive,
 	ButtonFilledLargeInactive,
+	ButtonFilledLargeFocus,
+	ButtonFilledLargeHover,
+
 	ButtonGhostLightLargeActive,
 	ButtonGhostLightLargeInactive,
+	ButtonGhostLightLargeFocus,
+	ButtonGhostLightLargeHover,
+
 	ButtonGhostDarkLargeActive,
 	ButtonGhostDarkLargeInactive,
+	ButtonGhostDarkLargeFocus,
+	ButtonGhostDarkLargeHover,
+
 	AnchorFilledSmallActive,
 	AnchorFilledSmallInactive,
+	AnchorFilledSmallFocus,
+	AnchorFilledSmallHover,
+
 	AnchorGhostLightSmallActive,
 	AnchorGhostLightSmallInactive,
+	AnchorGhostLightSmallFocus,
+	AnchorGhostLightSmallHover,
+
 	AnchorGhostDarkSmallActive,
 	AnchorGhostDarkSmallInactive,
+	AnchorGhostDarkSmallFocus,
+	AnchorGhostDarkSmallHover,
+
 	AnchorFilledLargeActive,
 	AnchorFilledLargeInactive,
+	AnchorFilledLargeFocus,
+	AnchorFilledLargeHover,
+
 	AnchorGhostLightLargeActive,
 	AnchorGhostLightLargeInactive,
+	AnchorGhostLightLargeFocus,
+	AnchorGhostLightLargeHover,
+
 	AnchorGhostDarkLargeActive,
 	AnchorGhostDarkLargeInactive,
+	AnchorGhostDarkLargeHover,
+	AnchorGhostDarkLargeFocus,
 } = StoriesToExport;
