@@ -37,12 +37,18 @@ const buttonStoryTemplate = (options) => {
 		state,
 	};
 
+	const viewMode = radios("View As", ["Just the button", "Give it some breathing room"], "Give it some breathing room");
+
 	return html`
+		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
+
 		${finalOptions.elementTag === "Anchor"
 			? anchorTagTemplate(finalOptions)
 			: finalOptions.elementTag === "Button"
 			? buttonTagTemplate(finalOptions)
 			: "Error: no element tag selected"}
+
+		${viewMode == "Give it some breathing room" ? "</div>" : ""}
 	`;
 };
 
