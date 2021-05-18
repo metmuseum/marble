@@ -119,6 +119,17 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	text-decoration: none;
 }
 
+@mixin typography-tag {
+	color: currentColor;
+	font-family: $metsans;
+	font-size: $textsize-xs;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 0.7px;
+	line-height: (14/18);
+	text-transform: uppercase;
+}
+
 //DEPRECATED
 @mixin typography-h2-subtext {
 	@include typography-h3();
