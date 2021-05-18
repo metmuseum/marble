@@ -34,6 +34,7 @@
 	margin: 0;
 	position: relative;
 	text-decoration: none;
+	white-space: nowrap;
 
 	&:disabled {
 		cursor: not-allowed;
