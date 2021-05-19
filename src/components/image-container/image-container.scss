@@ -19,6 +19,23 @@
 	border: 0;
 	height: auto;
 	margin: 0;
+	object-fit: cover;
+	object-position: 0 15%; //In my experience this is the sweet spot for most content.
 	padding: 0;
 	width: 100%;
+}
+
+.image-container__image--portrait {
+	display: block;
+
+	@media (min-aspect-ratio: 5/6) {
+		display: none;
+	}
+}
+
+.image-container__image--landscape {
+	display: none;
+	@media (min-aspect-ratio: 5/6) {
+		display: block;
+	}
 }
