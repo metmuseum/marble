@@ -1,0 +1,146 @@
+$button-padding: 0.7777777778em;
+$border-width-ghost: 2px;
+
+@mixin primrary-button--active {
+	background-position: 100% 0;
+}
+
+@mixin primary-button {
+	border: none;
+	border-radius: $radius-sharp;
+	color: $color-white;
+	cursor: pointer;
+	font-family: $metsans;
+	font-size: $textsize-s;
+	font-weight: 500;
+	transition: background-position 0.3s, color 0.3s;
+
+	&:not(:disabled) {
+		&:focus,
+		&:hover {
+			@include primrary-button--active();
+		}
+	}
+
+	&.button--disabled,
+	&.button--disabled:hover,
+	&[disabled],
+	&[disabled]:hover {
+		@include primary-button-disabled-light();
+	}
+}
+
+@mixin primary-button-disabled-light {
+	background: $color-grey-050;
+	border-color: $color-grey-050;
+	color: $color-grey-600;
+	cursor: not-allowed;
+}
+
+@mixin primary-button-disabled-dark {
+	background: $color-grey-800;
+	border-color: $color-grey-800;
+	color: $color-grey-050;
+	cursor: not-allowed;
+}
+
+@mixin primary-button--small {
+	padding: $button-padding 2.5em;
+
+	&.primary-button--ghost-light,
+	&.primary-button--ghost-dark {
+		padding: calc(#{$button-padding} - #{$border-width-ghost}) calc(2.5em - #{$border-width-ghost});
+	}
+}
+
+@mixin primary-button--x-small {
+	padding: $button-padding 1.5em;
+
+	&.primary-button--ghost-light,
+	&.primary-button--ghost-dark {
+		padding: calc(#{$button-padding} - #{$border-width-ghost}) calc(1.5em - #{$border-width-ghost});
+	}
+}
+
+@mixin primary-button--large {
+	padding: $button-padding 4em;
+
+	&.primary-button--ghost-light,
+	&.primary-button--ghost-dark {
+		padding: calc(#{$button-padding} - #{$border-width-ghost}) calc(4em - #{$border-width-ghost});
+	}
+}
+
+@mixin primary-button--filled {
+	background-image: linear-gradient(
+		to right,
+		$color-pink,
+		$color-met-red,
+		$color-orange
+	);
+	background-position: 0 0;
+	background-size: 200% 200%;
+	color: $color-white;
+
+	&:not(:disabled) {
+		&:focus,
+		&:hover,
+		&:visited {
+			color: $color-white; // when a tag, need to override the inherit rule
+		}
+	}
+}
+
+@mixin primary-button--ghost-light-active {
+	background: $color-white-opaque-90;
+	border-color: $color-grey-050;
+	color: $color-grey-700;
+}
+
+@mixin primary-button--ghost-light {
+	background: transparent;
+	border: $border-width-ghost solid $color-white;
+	color: $color-white;
+
+	&:not(:disabled) {
+		&:active,
+		&:hover,
+		&:focus:not(:hover) {
+			@include primary-button--ghost-light-active();
+		}
+
+		&:focus:not(:hover) {
+			@include button-focus--not-hover(5px);
+		}
+	}
+}
+
+@mixin primary-button--ghost-dark-active {
+	background: $color-grey-900;
+	color: $color-white;
+}
+
+@mixin primary-button--ghost-dark {
+	background: transparent;
+	border: $border-width-ghost solid $color-grey-900;
+	color: $color-grey-900;
+
+	&:not(:disabled) {
+		&:active,
+		&:hover,
+		&:focus:not(:hover) {
+			@include primary-button--ghost-dark-active();
+		}
+
+		&:focus:not(:hover) {
+			@include button-focus--not-hover(5px);
+		}
+	}
+
+	&.button--disabled,
+	&.button--disabled:hover,
+	&[disabled],
+	&[disabled]:hover {
+		@include primary-button-disabled-dark();
+	}
+}

@@ -1,0 +1,51 @@
+@mixin secondary-inverted-colors() {
+	background-color: $color-white-opaque-90;
+	border: 2px solid $color-white;
+	color: $color-grey-900;
+}
+
+@mixin secondary-button-active {
+	@include secondary-inverted-colors();
+	@include button-focus--not-hover(6px);
+
+	&:after {
+		border-radius: 999px;
+	}
+}
+
+@mixin secondary-button {
+	background-color: transparent;
+	border: 2px solid $color-white;
+	border-radius: 5em;
+	color: $color-white;
+	font-size: $textsize-xs;
+	font-weight: 500;
+	min-width: 16ch;
+	padding: $textsize-xs;
+
+	&:not(:disabled) {
+		&:focus:not(:hover),
+		&._sb--focus:not(:hover) {
+			@include secondary-button-active();
+		}
+	}
+}
+
+@mixin secondary-button--ghost-dark-active {
+	background: $color-grey-900;
+	color: $color-white;
+}
+
+@mixin secondary-button--ghost-dark {
+	background: transparent;
+	border: $border-width-ghost solid $color-grey-900;
+	color: $color-grey-900;
+
+	&:not(:disabled) {
+		&:active,
+		&:focus:not(:hover),
+		&:hover {
+			@include secondary-button--ghost-dark-active();
+		}
+	}
+}
