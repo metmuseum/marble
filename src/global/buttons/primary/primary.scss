@@ -1,0 +1,24 @@
+
+.primary-button {
+	@include primary-button();
+}
+
+.primary-button--small {
+	@include primary-button--small();
+}
+
+.primary-button--large {
+	@include primary-button--large();
+}
+
+.primary-button--filled {
+	@include primary-button--filled();
+}
+
+.primary-button--ghost-light {
+	@include primary-button--ghost-light();
+}
+
+.primary-button--ghost-dark {
+	@include primary-button--ghost-dark();
+}

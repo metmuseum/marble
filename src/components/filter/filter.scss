@@ -50,6 +50,7 @@
 
 	.inline-modal-trigger-styled-as-filter & {
 		border-color: $color-grey-900;
+
 		&.checked {
 			background: $color-grey-900;
 			border: 2px solid $color-grey-900;
@@ -70,13 +71,10 @@
 
 	:focus:not(:hover) + &,
 	._sb--focus:not(:hover) + & {
-		@include button-focus--not-hover();
-		&::after {
+		@include button-focus--not-hover(3px);
+
+		&:after {
 			border-radius: 999px;
-			top: -3px;
-			bottom: -3px;
-			left: -3px;
-			right: -3px;
 		}
 	}
 
