@@ -15,7 +15,7 @@ const permutations = {
 	elementTags: ["Button", "Anchor"],
 	modes: {
 		style: ["Filled", "Ghost-Light", "Ghost-Dark"],
-		size: ["Small", "Large"],
+		size: ["X-small", "Small", "Large"],
 	},
 	states: ["Active", "Inactive", "Focus", "Hover"],
 };
@@ -30,7 +30,7 @@ permutations.elementTags.forEach((elementTag) => {
 				let storyName = [
 					elementTag,
 					styleMode.replace("-", ""),
-					sizeMode,
+					sizeMode.replace("-", ""),
 					state,
 				].join("");
 
@@ -44,6 +44,7 @@ permutations.elementTags.forEach((elementTag) => {
 				};
 
 				StoriesToExport[storyName].story = {
+					title: `Elements/Buttons/Primary/Hello`,
 					name: [elementTag, styleMode, sizeMode, state].join(" "),
 				};
 			});
@@ -135,6 +136,11 @@ const buttonTagTemplate = (options) => {
 
 // javascript why u no have metaprogramming for this 😭
 export const {
+	ButtonFilledXsmallActive,
+	ButtonFilledXsmallInactive,
+	ButtonFilledXsmallFocus,
+	ButtonFilledXsmallHover,
+
 	ButtonFilledSmallActive,
 	ButtonFilledSmallInactive,
 	ButtonFilledSmallFocus,
