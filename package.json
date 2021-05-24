@@ -50,7 +50,7 @@
 		"type": "git",
 		"url": "git+https://github.com/metmuseum/marble.git"
 	},
-	"author": "Joseph Curley, Stephen Marsh, David Seguin, Evander Batson, Courtney Allen, The Met",
+	"author": "Joseph Curley, Stephen Marsh, David Seguin, Evander Batson, Courtney Allen, Madhav Tankha, The Met",
 	"license": "SEE LICENSE IN LICENSE",
 	"bugs": {
 		"url": "https://github.com/metmuseum/marble/issues"

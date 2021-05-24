@@ -1,4 +1,4 @@
-[![metmuseum](https://circleci.com/gh/metmuseum/marble.svg?style=svg)](<LINK>)
+[![metmuseum](https://circleci.com/gh/metmuseum/marble.svg?style=svg)](https://app.circleci.com/pipelines/github/metmuseum/marble)
 
 # Marble
 
