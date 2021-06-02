@@ -48,14 +48,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/metmuseum/Marble.git"
+		"url": "git+https://github.com/metmuseum/marble.git"
 	},
-	"author": "Joseph Curley, Stephen Marsh, David Seguin, Evander Batson, Courtney Allen, The Met",
-	"license": "ISC",
+	"author": "Joseph Curley, Stephen Marsh, David Seguin, Evander Batson, Courtney Allen, Madhav Tankha, The Met",
+	"license": "SEE LICENSE IN LICENSE",
 	"bugs": {
-		"url": "https://github.com/metmuseum/Marble/issues"
+		"url": "https://github.com/metmuseum/marble/issues"
 	},
-	"homepage": "https://github.com/metmuseum/Marble#readme",
+	"homepage": "https://github.com/metmuseum/marble#readme",
 	"storybook-deployer": {
 		"gitUsername": "Marble Bot",
 		"gitEmail": "hello@ghbot.com",

@@ -1,3 +1,5 @@
+[![metmuseum](https://circleci.com/gh/metmuseum/marble.svg?style=svg)](https://app.circleci.com/pipelines/github/metmuseum/marble)
+
 # Marble
 
 ## The Design System of [The Metropolitan Museum of Art](https://www.metmuseum.org/) ([@metmuseum](https://github.com/metmuseum/))
@@ -6,18 +8,33 @@
 
 # Table Of Contents
 
-- ### [Living Style Guide](#Living-Style-Guide)
+
+- ### [What is Marble?](#What-is-Marble?)
+- ### [Component Explorer](#Component-Explorer)
+- ### [Design Documentation and Homepage](#Design-Documentation-and-Homepage)
 - ### [Using Marble In Your Project](#Using-Marble-In-Your-Project)
 - ### [How To Contribute To Marble](#Contributing-To-Marble)
   - ### [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
   - ### [Storybook Development](#Storybook-Development)
   - ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
 
-# Living Style Guide
+# What is Marble?
 
-Our Living Style Guide, powered by [Storybook](https://storybook.js.org/docs/basics/introduction/), lives at:
+Marble is the design system of the Metropolitan Museum of Art's Digital Deptartment. Marble is currently only an [innersource](
+https://about.gitlab.com/topics/version-control/what-is-innersource/) project.
+
+# Component Explorer
+
+Our component explorer, powered by [Storybook](https://storybook.js.org/docs/basics/introduction/), lives at:
 
 ## 🏛️ [metmuseum.github.io/marble](https://metmuseum.github.io/marble) 📙
+
+
+# Design Documentation and Homepage:
+
+Marble's design docs and homepage are at:
+
+🎨 https://marble.metmuseum.org/ 🏡
 
 # Using Marble In Your Project
 
@@ -272,3 +289,8 @@ TODO: update this to have CI build dist on merge
 * See also: [/webpack.production.config.js](https://github.com/metmuseum/marble/blob/master/webpack.production.config.js)
 
 - Make sure you commit this production-ready build of Marble and not the development version that would also be generated to `/dist` anytime you run webpack-dev-server.
+
+---
+
+## License
+Currently for internal use only. © Copyright 2021 The Metropolitan Museum of Art. All rights are reserved. 
