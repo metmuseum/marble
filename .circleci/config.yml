@@ -2,7 +2,7 @@ version: 2.1
 executors:
   marble-node:
     docker:
-      - image: "circleci/node:latest"
+      - image: "circleci/node@sha256:64300d4fa16456a547e9e747a10e5eb02419a477ac08a592244dc5ca8adbda72"
 jobs:
   setup_marble:
     executor: marble-node
