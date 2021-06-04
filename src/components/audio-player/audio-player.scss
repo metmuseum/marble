@@ -1,11 +1,129 @@
+$bp-audio-player: 600px;
+
 .audio-player {
 	background-color: $color-white;
+	border-radius: $radius-sharp;
+	box-shadow: $shadow-passive;
 	color: $color-black;
-	padding: $spacing-xxs;
-	width: 100%;
+}
 
+.audio-player__media-section,
+.audio-player__transcript-section {
+	padding: $spacing-xxs;
+}
+
+.audio-player__media-section {
+	display: flex;
+	flex-direction: column;
+	@media screen and (min-width: $bp-audio-player) {
+		flex-direction: row;
+	}
+}
+
+.audio-player__image-section {
+	margin: 0 0 $spacing-xxs;
+	width: 100%;
+	@media screen and (min-width: $bp-audio-player) {
+		flex-basis: 240px;
+		margin: 0 $spacing-xxs 0 0;
+		max-width: 40%;
+	}
+}
+
+.audio-player__image-wrapper {
+	background-color: $color-grey-500;
+	height: 0;
+	padding-top: 100%;
+}
+
+.audio-player__body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	@media screen and (min-width: $bp-audio-player) {
+		padding: $spacing-xxs 0;
+	}
+}
+
+.audio-player__title {
+	font-size: $textsize-s;
+}
+
+.audio-player__sub-title {
+	font-size: $textsize-xs;
+}
+
+.audio-player__controlls-wrapper {
+	margin-top: auto;
+}
+
+.audio-player__transcript-section {
+	border-top: 1px solid $color-grey-200;
+}
+
+.audio-player__transcript-toggle {
+	font-size: $textsize-xs;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+
+//MODES
+
+//Inverted
+.audio-player { // sass-lint:disable-line no-mergeable-selectors
 	&.inverted-colors {
-		background-color: $color-black;
+		background-color: $color-grey-900;
 		color: $color-white;
+	}
+}
+
+//Mini player
+.audio-player__media-section { // sass-lint:disable-line no-mergeable-selectors
+	.mini-player & {
+		flex-direction: row;
+		padding: 0;
+	}
+}
+
+.audio-player__headings {
+	.mini-player & {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+.audio-player__body { // sass-lint:disable-line no-mergeable-selectors
+	.mini-player & {
+		padding: $spacing-micro;
+	}
+}
+
+.audio-player__title { // sass-lint:disable-line no-mergeable-selectors
+	.mini-player & {
+		display: inline;
+		font-size: $textsize-xs;
+	}
+}
+
+.audio-player__sub-title { // sass-lint:disable-line no-mergeable-selectors
+	.mini-player & {
+		display: inline;
+		font-size: $textsize-xs;
+	}
+}
+
+.audio-player__image-section { // sass-lint:disable-line no-mergeable-selectors
+	.mini-player & {
+		flex-basis: 100px;
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin: 0;
+	}
+}
+
+.audio-player__transcript-section { // sass-lint:disable-line no-mergeable-selectors
+	.mini-player & {
+		padding: $spacing-micro;
 	}
 }
