@@ -33,10 +33,17 @@ const audioPlayerMarkUp = (model) => {
 							<h1 class="audio-player__title">${model.track.title}</h1>
 							<h2 class="audio-player__sub-title">${model.track.subtitle}</h2>
 						</div>
-						<div class="audio-player__controlls-wrapper">
+						<div class="audio-player__controls-wrapper">
 							<div class="audio-controls">
-								<canvas width="600" height="6" class="audio-player__progress-bar"></canvas>
+								<canvas
+									width="1000"
+									height="6"
+									class="js-audio-player__progress-bar audio-player__progress-bar"
+								></canvas>
+								<div class="js-audio-player__current-time">0:00</div>
+								<div class="js-audio-player__duration">0:00</div>
 								<audio
+									class="js-audio-player__audio"
 									style="width: 100%; height: 36px;"
 									controls
 									src="${model.track.audioFileURL}"

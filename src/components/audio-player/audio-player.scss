@@ -58,8 +58,18 @@ $bp-audio-player: 600px;
 	font-size: $textsize-xs;
 }
 
-.audio-player__controlls-wrapper {
+.audio-player__controls-wrapper {
 	margin-top: auto;
+	width: 100%;
+}
+
+.audio-controls {
+	width: 100%;
+}
+
+.audio-player__progress-bar {
+	border-radius: 2px;
+	width: 100%;
 }
 
 .audio-player__transcript-section {
@@ -163,3 +173,4 @@ $bp-audio-player: 600px;
 		padding: $spacing-micro;
 	}
 }
+

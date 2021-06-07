@@ -1,7 +1,15 @@
+import scssExports from "../../global/exports.scss";
+
 class AudioPlayer {
-	constructor(audioPlayerEl) {
-		this.audioPlayerEl = audioPlayerEl;
-		this.transcriptSection = audioPlayerEl.querySelector(
+	constructor(wrapperEl) {
+		this.wrapperEl = wrapperEl;
+		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
+		this.progressBarCanvas = this.wrapperEl.querySelector(
+			".js-audio-player__progress-bar"
+		
+		).getContext("2d");
+		// this.nativeControls = this
+		this.transcriptSection = wrapperEl.querySelector(
 			".js-audio-player__transcript-section"
 		);
 		this.transcriptToggle = this.transcriptSection.querySelector(
@@ -11,14 +19,43 @@ class AudioPlayer {
 			".js-audio-player__transcript-wrapper"
 		);
 
+		this.durationEl = this.wrapperEl.querySelector(".js-audio-player__duration");
+		this.currentTimeEl = this.wrapperEl.querySelector(".js-audio-player__current-time");
+
+		this.currentTime = "0:00";
+		this.duration = "0:00";
+
 		this.initializeListeners();
 	}
 
-	initializeListeners = () => {
-		if (this.transcriptToggle && this.transcriptWrapper) {
-			this.transcriptToggle.addEventListener("click", this.handleTranscriptToggle);
-		}
+	setTime = () => {
+		const duration = this.audioEl.duration;
+		const elapsed = this.audioEl.currentTime;
+		console.log(this.progressBarCanvas);
+		const width = 1000;
+
+		this.durationEl.innerHTML = duration;
+		this.currentTimeEl.innerHTML = elapsed;
+		// draw progress to the canvas
+		this.progressBarCanvas.clearRect(0,0,width, 6);
+		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
+		this.progressBarCanvas.fillRect(0,0,width,6);
+		this.progressBarCanvas.fillStyle = scssExports.colorGrey900;
+		this.progressBarCanvas.fillRect(0,0, ((elapsed/duration) * width),6);
 	}
+
+	initializeListeners = () => {
+		this.audioEl.addEventListener("loadedmetadata", this.setTime);
+		this.audioEl.addEventListener("timeupdate", this.setTime)
+		
+
+		if (this.transcriptToggle && this.transcriptWrapper) {
+			this.transcriptToggle.addEventListener(
+				"click",
+				this.handleTranscriptToggle
+			);
+		}
+	};
 
 	handleTranscriptToggle = (e) => {
 		e.preventDefault();
