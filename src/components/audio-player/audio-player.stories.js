@@ -40,14 +40,14 @@ const audioPlayerMarkUp = (model) => {
 									height="6"
 									class="js-audio-player__progress-bar audio-player__progress-bar"
 								></canvas>
-								<div class="js-audio-player__current-time">0:00</div>
-								<div class="js-audio-player__duration">0:00</div>
+								<span class="js-audio-player__current-time">0:00</span>
 								<button class="js-audio-player__seek-back-helper">
 									&lt; 10
 								</button>
 								<button class="js-audio-player__seek-forward-helper">
 									10 &gt;
 								</button>
+								<span class="js-audio-player__duration">0:00</span>
 								<audio
 									class="js-audio-player__audio"
 									style="width: 100%; height: 36px;"
