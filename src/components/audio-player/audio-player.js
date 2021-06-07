@@ -1,14 +1,13 @@
 import scssExports from "../../global/exports.scss";
+import timeFormatter from "./time-formatter.js";
 
 class AudioPlayer {
 	constructor(wrapperEl) {
 		this.wrapperEl = wrapperEl;
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
-		this.progressBarCanvas = this.wrapperEl.querySelector(
-			".js-audio-player__progress-bar"
-		
-		).getContext("2d");
-		// this.nativeControls = this
+		this.progressBarCanvas = this.wrapperEl
+			.querySelector(".js-audio-player__progress-bar")
+			.getContext("2d");
 		this.transcriptSection = wrapperEl.querySelector(
 			".js-audio-player__transcript-section"
 		);
@@ -31,22 +30,22 @@ class AudioPlayer {
 	setTime = () => {
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
-		console.log(this.progressBarCanvas);
 		const width = 1000;
 
-		this.durationEl.innerHTML = duration;
-		this.currentTimeEl.innerHTML = elapsed;
-		// draw progress to the canvas
-		this.progressBarCanvas.clearRect(0,0,width, 6);
+		this.durationEl.innerHTML = timeFormatter(duration);
+		this.currentTimeEl.innerHTML = timeFormatter(elapsed);
+
+		this.progressBarCanvas.clearRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
-		this.progressBarCanvas.fillRect(0,0,width,6);
+		this.progressBarCanvas.fillRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = scssExports.colorGrey900;
-		this.progressBarCanvas.fillRect(0,0, ((elapsed/duration) * width),6);
+		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 	}
 
 	initializeListeners = () => {
 		this.audioEl.addEventListener("loadedmetadata", this.setTime);
 		this.audioEl.addEventListener("timeupdate", this.setTime)
+		this.audioEl.addEventListener("ended", this.setTime);
 		
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
