@@ -1,21 +1,34 @@
+class AudioPlayer {
+	constructor(audioPlayerEl) {
+		this.audioPlayerEl = audioPlayerEl;
+		this.transcriptSection = audioPlayerEl.querySelector(
+			".js-audio-player__transcript-section"
+		);
+		this.transcriptToggle = this.transcriptSection.querySelector(
+			".js-audio-player__transcript-toggle"
+		);
+		this.transcriptWrapper = this.transcriptSection.querySelector(
+			".js-audio-player__transcript-wrapper"
+		);
 
-const audioPlayer = () => {
-	const audioPlayers = document.querySelectorAll(".js-marble-audio-player");
+		this.initializeListeners();
+	}
 
-	audioPlayers.forEach((audioPlayer) => {
-		const transcriptSection = audioPlayer.querySelector(".js-audio-player__transcript-section");
-		const transcriptToggle = transcriptSection.querySelector(".js-audio-player__transcript-toggle");
-		const transcriptWrapper = transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
-
-		const handleTranscriptToggle = (e) => {
-			e.preventDefault();
-			transcriptSection.classList.toggle("transcript-is-open");
-		};
-
-		if (transcriptToggle && transcriptWrapper) {
-			transcriptToggle.addEventListener("click", handleTranscriptToggle);
+	initializeListeners = () => {
+		if (this.transcriptToggle && this.transcriptWrapper) {
+			this.transcriptToggle.addEventListener("click", this.handleTranscriptToggle);
 		}
-	});
+	}
+
+	handleTranscriptToggle = (e) => {
+		e.preventDefault();
+		this.transcriptSection.classList.toggle("transcript-is-open");
+	};
+}
+
+const initializeAudioPlayers = () => {
+	const audioPlayers = document.querySelectorAll(".js-marble-audio-player");
+	audioPlayers.forEach((player) => new AudioPlayer(player));		
 };
 
-export default audioPlayer
+export default initializeAudioPlayers;

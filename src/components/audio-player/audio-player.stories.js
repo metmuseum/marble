@@ -1,6 +1,6 @@
 import html from "../../../.storybook/helpers/html";
 import { useEffect } from "@storybook/client-api";
-import audioPlayer from "./audio-player.js";
+import initializeAudioPlayers from "./audio-player.js";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 
@@ -24,7 +24,7 @@ const audioPlayerMarkUp = (model) => {
 								width="${model.track.coverImage.width}"
 								height="${model.track.coverImage.height}"
 								src="${model.track.coverImage.srcSet.fallback}"
-							/>						
+							/>
 						</div>
 					</div>
 
@@ -35,10 +35,11 @@ const audioPlayerMarkUp = (model) => {
 						</div>
 						<div class="audio-player__controlls-wrapper">
 							<div class="audio-controls">
+								<canvas width="600" height="6" class="audio-player__progress-bar"></canvas>
 								<audio
 									style="width: 100%; height: 36px;"
 									controls
-									src="${model.track.audioFile}"
+									src="${model.track.audioFileURL}"
 								></audio>
 							</div>
 						</div>
@@ -74,14 +75,18 @@ export const AudioPlayer = () => {
 		darkMode: boolean("Dark Mode", false),
 		miniPlayer: boolean("Mini Player", false),
 		track: {
-			audioFile: "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3",
+			audioFileURL:
+				text("Audio File URL", "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"),
 			coverImage: greekHall1x1,
-			subtitle: text("Subtitle","Praise Songs about Javascript"),
+			subtitle: text("Subtitle", "Praise Songs about Javascript"),
 			title: text("Title", "Track 1. Title"),
-			transcript: text("Transcript", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."),
-		}
+			transcript: text(
+				"Transcript",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."
+			),
+		},
 	};
 
-	useEffect(audioPlayer);
+	useEffect(initializeAudioPlayers);
 	return audioPlayerMarkUp(data);
 };
