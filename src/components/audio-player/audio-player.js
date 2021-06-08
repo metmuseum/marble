@@ -5,9 +5,10 @@ class AudioPlayer {
 	constructor(wrapperEl) {
 		this.wrapperEl = wrapperEl;
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
-		this.progressBarCanvas = this.wrapperEl
-			.querySelector(".js-audio-player__progress-bar")
-			.getContext("2d");
+		this.progressBarCanvasEl = this.wrapperEl.querySelector(
+			".js-audio-player__progress-bar"
+		);
+		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
 		this.transcriptSection = wrapperEl.querySelector(
 			".js-audio-player__transcript-section"
 		);
@@ -17,9 +18,7 @@ class AudioPlayer {
 		this.transcriptWrapper = this.transcriptSection.querySelector(
 			".js-audio-player__transcript-wrapper"
 		);
-		this.playButtonEl = this.wrapperEl.querySelector(
-			".js-audio-player__play"
-		);
+		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
 		this.durationEl = this.wrapperEl.querySelector(
 			".js-audio-player__duration"
 		);
@@ -33,22 +32,32 @@ class AudioPlayer {
 			".js-audio-player__seek-forward-helper"
 		);
 		this.seekHelperDuration = 10;
+		this.isScrubbing = false;
 
 		this.initializeListeners();
 
-		if ('mediaSession' in navigator) {
+		if ("mediaSession" in navigator) {
 			this.setMetaData();
 		}
 	}
 
-	setTime = () => {
+	handleTimeUpdate = () => {
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
-		const width = 1000;
+		this.setDisplayTime(duration, elapsed);
+		this.canUpdateAuotmatically() && this.drawProgress(elapsed, duration);
+	};
 
+	setDisplayTime = (duration, elapsed) => {
 		this.durationEl.innerHTML = timeFormatter(duration);
 		this.currentTimeEl.innerHTML = timeFormatter(elapsed);
+	};
 
+	canUpdateAuotmatically = () => {
+		return !this.isScrubbing;
+	};
+
+	drawProgress = (elapsed, duration, width = 1000) => {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
@@ -57,14 +66,53 @@ class AudioPlayer {
 	};
 
 	initializeListeners = () => {
-		this.audioEl.addEventListener("loadedmetadata", this.setTime);
-		this.audioEl.addEventListener("timeupdate", this.setTime);
-		this.audioEl.addEventListener("ended", this.setTime);
+		this.audioEl.addEventListener("loadedmetadata", this.handleTimeUpdate);
+		this.audioEl.addEventListener("timeupdate", this.handleTimeUpdate);
+		this.audioEl.addEventListener("ended", this.handleTimeUpdate);
 
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
+
+		this.progressBarCanvasEl.addEventListener("mousedown", (e) => {
+			console.log(
+				"mousedown",
+				e.offsetX,
+				e.target.width,
+				e.offsetX / e.target.offsetWidth
+			);
+			this.isScrubbing = true;
+			this.drawProgress(e.offsetX, e.target.offsetWidth);
+			// todo: debounce this:
+			this.audioEl.currentTime =
+				(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+		});
+
+		this.progressBarCanvasEl.addEventListener("mousemove", (e) => {
+			if (this.isScrubbing) {
+				console.log(
+					"mousemove",
+					e.offsetX,
+					e.target.width,
+					e.offsetX / e.target.offsetWidth
+				);
+				
+				this.drawProgress(e.offsetX, e.target.offsetWidth);
+				this.audioEl.currentTime =
+				(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+			}
+		});
+
+		this.progressBarCanvasEl.addEventListener("mouseup", () => {
+			console.log("mouseup");
+			this.isScrubbing = false;
+		});
+
+		this.progressBarCanvasEl.addEventListener("mouseleave", () => {
+			console.log("mouseleave");
+			this.isScrubbing = false;
+		});
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
 			this.transcriptToggle.addEventListener(
@@ -72,18 +120,18 @@ class AudioPlayer {
 				this.handleTranscriptToggle
 			);
 		}
-
 	};
 
 	setMetaData = () => {
-	  navigator.mediaSession.metadata = new MediaMetadata({
-	    title: this.wrapperEl.querySelector(".audio-player__title").innerHTML,
-	    artist: this.wrapperEl.querySelector(".audio-player__sub-title").innerHTML,
-	    artwork: [
-	      { src: this.wrapperEl.querySelector(".audio-player__cover-image").src}
-	    ]
-	  });
-	}
+		navigator.mediaSession.metadata = new MediaMetadata({
+			title: this.wrapperEl.querySelector(".audio-player__title").innerHTML,
+			artist: this.wrapperEl.querySelector(".audio-player__sub-title")
+				.innerHTML,
+			artwork: [
+				{ src: this.wrapperEl.querySelector(".audio-player__cover-image").src },
+			],
+		});
+	};
 
 	togglePlaying = () => {
 		this.audioEl.paused ? this.setPlay() : this.setPause();
@@ -92,12 +140,12 @@ class AudioPlayer {
 	setPlay = () => {
 		this.audioEl.play();
 		this.playButtonEl.innerHTML = `&#10074&#10074`;
-	}
+	};
 
 	setPause = () => {
 		this.audioEl.pause();
 		this.playButtonEl.innerHTML = `&#9654;`;
-	}
+	};
 
 	quickSeekBack = () => {
 		const newPosition = Math.max(
@@ -114,7 +162,6 @@ class AudioPlayer {
 		);
 		this.audioEl.currentTime = newPosition;
 	};
-
 
 	handleTranscriptToggle = (e) => {
 		e.preventDefault();

@@ -73,6 +73,7 @@ $bp-audio-player: 600px;
 .audio-player__progress-bar {
 	border-radius: 2px;
 	width: 100%;
+	padding: 12px 0; // this is just an arbitrary amount to make the vertical hitpoint bigger for scrubbing
 }
 
 .audio-player__audio-element {
