@@ -40,12 +40,13 @@ const audioPlayerMarkUp = (model) => {
 									<button class="js-audio-player__play audio-controls__play">&#9654;</button>
 								</div>
 								<div class="audio-controls__time-controls">
-
-									<canvas
-										width="10000"
-										height="6"
-										class="js-audio-player__progress-bar audio-player__progress-bar">
-									</canvas>
+									<div class="js-audio-player__scrubbable-area audio-player__scrubbable-area">
+										<canvas
+											width="10000"
+											height="6"
+											class="js-audio-player__progress-bar audio-player__progress-bar">
+										</canvas>
+									</div>
 									<div class="audio-controls__time-buttons">
 										<div class="audio-controls__back-controls">
 											<span class="js-audio-player__current-time">0:00</span>

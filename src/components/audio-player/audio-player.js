@@ -31,6 +31,9 @@ class AudioPlayer {
 		this.seekForwardHelperEl = this.wrapperEl.querySelector(
 			".js-audio-player__seek-forward-helper"
 		);
+		this.scrubbableAreaEl = this.wrapperEl.querySelector(
+			".js-audio-player__scrubbable-area"
+		);
 
 		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
 
@@ -51,10 +54,10 @@ class AudioPlayer {
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
-		this.progressBarCanvasEl.addEventListener("mousedown", this.beginScrubbing);
-		this.wrapperEl.addEventListener("mousemove", this.scrub);
-		this.wrapperEl.addEventListener("mouseup", this.endScrubbing);
-		this.wrapperEl.addEventListener("mouseleave", this.endScrubbing);
+		this.scrubbableAreaEl.addEventListener("mousedown", this.beginScrubbing);
+		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
+		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
+		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
 			this.transcriptToggle.addEventListener(
