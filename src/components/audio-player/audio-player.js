@@ -78,9 +78,9 @@ class AudioPlayer {
 
 	canUpdateAuotmatically = () => !this.isScrubbing;
 
-	drawProgress = (elapsed, duration, width = 1000) => {
+	drawProgress = (elapsed, duration, width = 10000) => {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
-		this.progressBarCanvas.fillStyle = "transparent"
+		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = this.isDarkMode ? scssExports.colorWhite : scssExports.colorGrey900;
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);

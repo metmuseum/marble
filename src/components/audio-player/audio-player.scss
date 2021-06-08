@@ -70,9 +70,8 @@ $bp-mini-player-image-size: 120px;
 }
 
 .audio-player__progress-bar {
-	background-color: $color-grey-500;
-	border-radius: 50px;
-	height: 6px;
+	height: 30px;
+	padding: 12px 0;
 	width: 100%;
 }
 
