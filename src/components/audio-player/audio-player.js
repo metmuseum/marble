@@ -34,19 +34,6 @@ class AudioPlayer {
 		this.initializeListeners();
 	}
 
-	handleSeekHelpers = (e) => {
-		const el = e.target;
-		let sign = el.classList.contains("js-audio-player__seek-back-helper") ? -1 : 1;
-		let newPosition = this.audioEl.currentTime + (this.seekHelperDuration * sign);
-		if (sign < 0) {
-			newPosition = Math.max(0, newPosition)
-		} else {
-			newPosition = Math.min(this.audioEl.duration, newPosition)
-		}
-		console.log("running: ", newPosition);
-		this.audioEl.currentTime = newPosition;
-	};
-
 	setTime = () => {
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
@@ -67,9 +54,8 @@ class AudioPlayer {
 		this.audioEl.addEventListener("timeupdate", this.setTime);
 		this.audioEl.addEventListener("ended", this.setTime);
 
-		this.seekBackHelperEl.addEventListener("click", this.handleSeekHelpers)
-		this.seekForwardHelperEl.addEventListener("click", this.handleSeekHelpers)
-
+		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
+		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
 			this.transcriptToggle.addEventListener(
@@ -79,6 +65,23 @@ class AudioPlayer {
 		}
 	};
 
+	quickSeekBack = () => {
+		const newPosition = Math.max(
+			0,
+			this.audioEl.currentTime - this.seekHelperDuration
+		);
+		this.audioEl.currentTime = newPosition;
+	};
+
+	quickSeekForward = () => {
+		const newPosition = Math.min(
+			this.audioEl.duration,
+			this.audioEl.currentTime + this.seekHelperDuration
+		);
+		this.audioEl.currentTime = newPosition;
+	};
+
+	
 	handleTranscriptToggle = (e) => {
 		e.preventDefault();
 		this.transcriptSection.classList.toggle("transcript-is-open");

@@ -1,7 +1,7 @@
 import html from "../../../.storybook/helpers/html";
 import { useEffect } from "@storybook/client-api";
-import initializeAudioPlayers from "./audio-player.js";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import initializeAudioPlayers from "./audio-player.js";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 
 
@@ -52,8 +52,16 @@ const audioPlayerMarkUp = (model) => {
 									class="js-audio-player__audio"
 									style="width: 100%; height: 36px;"
 									controls
-									src="${model.track.audioFileURL}"
-								></audio>
+								>
+									<source src="${model.track.audioFileURL}" />
+									<p>
+										Your browser doesn't support HTML5 audio. Here is a
+										<a href="${model.track.audioFileURL}"
+											>link to download the audio</a
+										>
+										instead.
+									</p>
+								</audio>
 							</div>
 						</div>
 					</div>
