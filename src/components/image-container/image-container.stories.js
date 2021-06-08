@@ -14,11 +14,12 @@ const sizesTemplate = (srcSet) => {
 		.join("\n");
 };
 
-const fullWidth = (image = defaultImage) =>
+const fullWidth = () => {
 	// Don't forget alt attribute.
 	// Use width= and height= to prevent jank.
 	// References: https://css-tricks.com/what-if-we-got-aspect-ratio-sized-images-by-doing-almost-nothing/
-	html`
+	let image = defaultImage;
+	return html`
 		<div class="image-container image-container--full-width">
 			<img
 				class="image-container__image"
@@ -31,10 +32,12 @@ const fullWidth = (image = defaultImage) =>
 			/>
 		</div>
 	`;
+};
 
-const halfWidth = (image = defaultImage) =>
+const halfWidth = () => {
 	// note sizes attribute is just 50vw
-	html`
+	let image = defaultImage;
+	return html`
 		<div class="image-container image-container--half-width">
 			<img
 				class="image-container__image"
@@ -47,6 +50,7 @@ const halfWidth = (image = defaultImage) =>
 			/>
 		</div>
 	`;
+};
 
 halfWidth.story = {
 	parameters: {
@@ -55,8 +59,10 @@ halfWidth.story = {
 	},
 };
 
-const lazyLoaded = (image = defaultImage) =>
-	html`
+const lazyLoaded = () => {
+	let image = defaultImage;
+
+	return html`
 		<div style="margin-bottom: 200vh;">
 			<h2 style="margin: 5% 25%;">The image below should lazy load.</h2>
 		</div>
@@ -72,5 +78,7 @@ const lazyLoaded = (image = defaultImage) =>
 			/>
 		</div>
 	`;
+;
+};
 
 export { fullWidth, halfWidth, lazyLoaded };
