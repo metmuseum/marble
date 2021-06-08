@@ -35,30 +35,37 @@ const audioPlayerMarkUp = (model) => {
 						</div>
 						<div class="audio-player__controls-wrapper">
 							<div class="audio-controls">
-								<canvas
-									width="1000"
-									height="6"
-									class="js-audio-player__progress-bar audio-player__progress-bar"
-								></canvas>
-								<span class="js-audio-player__current-time">0:00</span>
-								<button class="js-audio-player__seek-back-helper">
-									&lt; 10
-								</button>
-								<button class="js-audio-player__seek-forward-helper">
-									10 &gt;
-								</button>
-								<span class="js-audio-player__duration">0:00</span>
+
+								<div class="audio-controls__play-wrapper">
+									<button class="js-audio-player__play audio-controls__play">&#9654;</button>
+								</div>
+								<div class="audio-controls__time-controls">
+
+									<canvas
+										width="1000"
+										height="6"
+										class="js-audio-player__progress-bar audio-player__progress-bar">
+									</canvas>
+									<div class="audio-controls__time-buttons">
+										<div class="audio-controls__back-controls">
+											<span class="js-audio-player__current-time">0:00</span>
+											<button class="js-audio-player__seek-back-helper audio-controls__seek-back">&lt; 10</button>
+										</div>
+										<div class="audio-controls__forward-controls">
+											<button class="js-audio-player__seek-forward-helper audio-controls__seek-forward">10 &gt;</button>
+											<span class="js-audio-player__duration">0:00</span>
+										</div>
+									</div>
+								</div>
+
 								<audio
-									class="js-audio-player__audio"
+									class="js-audio-player__audio audio-player__audio-element"
 									style="width: 100%; height: 36px;"
-									controls
-								>
+									controls>
 									<source src="${model.track.audioFileURL}" />
 									<p>
 										Your browser doesn't support HTML5 audio. Here is a
-										<a href="${model.track.audioFileURL}"
-											>link to download the audio</a
-										>
+										<a href="${model.track.audioFileURL}">link to download the audio</a>
 										instead.
 									</p>
 								</audio>
@@ -97,7 +104,7 @@ export const AudioPlayer = () => {
 		miniPlayer: boolean("Mini Player", false),
 		track: {
 			audioFileURL:
-				text("Audio File URL", "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"),
+				text("Audio File URL", "https://cdn.bitdegree.org/learn/I_Cactus_-_05_-_ruby_cactus.mp3?raw=true"),
 			coverImage: greekHall1x1,
 			subtitle: text("Subtitle", "Praise Songs about Javascript"),
 			title: text("Title", "Track 1. Title"),

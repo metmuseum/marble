@@ -17,6 +17,9 @@ class AudioPlayer {
 		this.transcriptWrapper = this.transcriptSection.querySelector(
 			".js-audio-player__transcript-wrapper"
 		);
+		this.playButtonEl = this.wrapperEl.querySelector(
+			".js-audio-player__play"
+		);
 		this.durationEl = this.wrapperEl.querySelector(
 			".js-audio-player__duration"
 		);
@@ -45,7 +48,7 @@ class AudioPlayer {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
-		this.progressBarCanvas.fillStyle = scssExports.colorGrey900;
+		this.progressBarCanvas.fillStyle = scssExports.colorGrey900; //TODO use currentColor but its not supported rn so lets get creative?
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 	};
 
@@ -53,6 +56,8 @@ class AudioPlayer {
 		this.audioEl.addEventListener("loadedmetadata", this.setTime);
 		this.audioEl.addEventListener("timeupdate", this.setTime);
 		this.audioEl.addEventListener("ended", this.setTime);
+
+		this.playButtonEl.addEventListener("click", this.togglePlaying);
 
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
@@ -64,6 +69,20 @@ class AudioPlayer {
 			);
 		}
 	};
+
+	togglePlaying = () => {
+		this.audioEl.paused ? this.setPlay() : this.setPause();
+	};
+
+	setPlay = () => {
+		this.audioEl.play();
+		this.playButtonEl.innerHTML = `&#10074&#10074`;
+	}
+
+	setPause = () => {
+		this.audioEl.pause();
+		this.playButtonEl.innerHTML = `&#9654;`;
+	}
 
 	quickSeekBack = () => {
 		const newPosition = Math.max(
@@ -81,7 +100,7 @@ class AudioPlayer {
 		this.audioEl.currentTime = newPosition;
 	};
 
-	
+
 	handleTranscriptToggle = (e) => {
 		e.preventDefault();
 		this.transcriptSection.classList.toggle("transcript-is-open");
@@ -90,7 +109,7 @@ class AudioPlayer {
 
 const initializeAudioPlayers = () => {
 	const audioPlayers = document.querySelectorAll(".js-marble-audio-player");
-	audioPlayers.forEach((player) => new AudioPlayer(player));		
+	audioPlayers.forEach((player) => new AudioPlayer(player));
 };
 
 export default initializeAudioPlayers;

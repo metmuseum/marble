@@ -1,0 +1,48 @@
+.audio-controls {
+	display: flex;
+}
+
+.audio-controls__play-wrapper {
+	align-self: flex-start;
+	margin-right: $spacing-xxs;
+	@media screen and (min-width: $bp-audio-player) {
+		align-self: center;
+	}
+}
+
+.audio-controls__play {
+	@include button-reset();
+	font-size: $textsize-l;
+	white-space: nowrap;
+}
+
+.audio-controls__time-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.audio-controls__forward-controls {
+	flex-direction: column-reverse;
+}
+
+.audio-controls__back-controls {
+	flex-direction: column;
+}
+
+.audio-controls__back-controls,
+.audio-controls__forward-controls {
+	display: flex;
+	@media screen and (min-width: $bp-audio-player) {
+		flex-direction: row;
+	}
+}
+
+.audio-controls__seek-back,
+.audio-controls__seek-forward {
+	@include button-reset();
+	margin: $spacing-xxs 0;
+
+	@media screen and (min-width: $bp-audio-player) {
+		margin: 0 $spacing-xxs;
+	}
+}
