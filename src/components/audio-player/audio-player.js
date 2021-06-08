@@ -77,7 +77,7 @@ class AudioPlayer {
 	handleEnd = () => {
 		this.handleTimeChange();
 		this.setPause();
-	}
+	};
 
 	setDisplayTime = (elapsed, duration) => {
 		this.currentTimeEl.innerHTML = timeFormatter(elapsed);
@@ -90,7 +90,9 @@ class AudioPlayer {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = "transparent";
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
-		this.progressBarCanvas.fillStyle = this.isDarkMode ? scssExports.colorWhite : scssExports.colorGrey900;
+		this.progressBarCanvas.fillStyle = this.isDarkMode
+			? scssExports.colorWhite
+			: scssExports.colorGrey900;
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 	};
 
@@ -130,12 +132,25 @@ class AudioPlayer {
 	setPlay = () => {
 		this.audioEl.play();
 		this.playButtonEl.innerHTML = `&#10074&#10074`;
+		this.startLerp();
 	};
 
 	setPause = () => {
 		this.audioEl.pause();
 		this.playButtonEl.innerHTML = `&#9654;`;
+		this.endLerp();
 	};
+
+	startLerp() {
+		this.lerpInterval = setInterval(() => {
+			this.canUpdateAuotmatically() &&
+				this.drawProgress(this.audioEl.currentTime, this.audioEl.duration);
+		}, 50);
+	}
+
+	endLerp() {
+		clearInterval(this.lerpInterval);
+	}
 
 	quickSeekBack = () => {
 		const newPosition = Math.max(
