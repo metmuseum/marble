@@ -13,7 +13,12 @@
 .audio-controls__play {
 	@include button-reset();
 	font-size: $textsize-l;
+	transition: opacity 0.2s;
 	white-space: nowrap;
+
+	&:hover {
+		opacity: 0.7;
+	}
 }
 
 .audio-controls__time-buttons {
@@ -41,8 +46,13 @@
 .audio-controls__seek-forward {
 	@include button-reset();
 	margin: $spacing-xxs 0;
-
+	transition: opacity 0.2s;
 	@media screen and (min-width: $bp-audio-player) {
 		margin: 0 $spacing-xxs;
 	}
+
+	&:hover {
+		opacity: 0.7;
+	}
+
 }

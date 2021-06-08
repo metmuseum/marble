@@ -35,6 +35,10 @@ class AudioPlayer {
 		this.seekHelperDuration = 10;
 
 		this.initializeListeners();
+
+		if ('mediaSession' in navigator) {
+			this.setMetaData();
+		}
 	}
 
 	setTime = () => {
@@ -68,7 +72,18 @@ class AudioPlayer {
 				this.handleTranscriptToggle
 			);
 		}
+
 	};
+
+	setMetaData = () => {
+	  navigator.mediaSession.metadata = new MediaMetadata({
+	    title: this.wrapperEl.querySelector(".audio-player__title").innerHTML,
+	    artist: this.wrapperEl.querySelector(".audio-player__sub-title").innerHTML,
+	    artwork: [
+	      { src: this.wrapperEl.querySelector(".audio-player__cover-image").src}
+	    ]
+	  });
+	}
 
 	togglePlaying = () => {
 		this.audioEl.paused ? this.setPlay() : this.setPause();
