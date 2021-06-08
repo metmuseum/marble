@@ -52,9 +52,9 @@ class AudioPlayer {
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
 		this.progressBarCanvasEl.addEventListener("mousedown", this.beginScrubbing);
-		this.progressBarCanvasEl.addEventListener("mousemove", this.scrub);
-		this.progressBarCanvasEl.addEventListener("mouseup", this.endScrubbing);
-		this.progressBarCanvasEl.addEventListener("mouseleave", this.endScrubbing);
+		this.wrapperEl.addEventListener("mousemove", this.scrub);
+		this.wrapperEl.addEventListener("mouseup", this.endScrubbing);
+		this.wrapperEl.addEventListener("mouseleave", this.endScrubbing);
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
 			this.transcriptToggle.addEventListener(
@@ -80,7 +80,7 @@ class AudioPlayer {
 
 	drawProgress = (elapsed, duration, width = 10000) => {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
-		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
+		this.progressBarCanvas.fillStyle = "transparent";
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = this.isDarkMode ? scssExports.colorWhite : scssExports.colorGrey900;
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
