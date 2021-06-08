@@ -47,7 +47,7 @@ class AudioPlayer {
 	initializeListeners = () => {
 		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
 		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
-		this.audioEl.addEventListener("ended", this.handleTimeChange);
+		this.audioEl.addEventListener("ended", this.handleEnd);
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
@@ -70,6 +70,11 @@ class AudioPlayer {
 		this.setDisplayTime(elapsed, duration);
 		this.canUpdateAuotmatically() && this.drawProgress(elapsed, duration);
 	};
+
+	handleEnd = () => {
+		this.handleTimeChange();
+		this.setPause();
+	}
 
 	setDisplayTime = (elapsed, duration) => {
 		this.currentTimeEl.innerHTML = timeFormatter(elapsed);
