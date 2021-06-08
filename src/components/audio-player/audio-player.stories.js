@@ -53,7 +53,7 @@ const audioPlayerMarkUp = (model) => {
 										</div>
 										<div class="audio-controls__forward-controls">
 											<button class="js-audio-player__seek-forward-helper audio-controls__seek-forward">10 &gt;</button>
-											<span class="js-audio-player__duration">0:00</span>
+											<span class="js-audio-player__remaining">0:00</span>
 										</div>
 									</div>
 								</div>
