@@ -19,11 +19,11 @@ class AudioPlayer {
 			".js-audio-player__transcript-wrapper"
 		);
 		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
-		this.durationEl = this.wrapperEl.querySelector(
-			".js-audio-player__duration"
-		);
 		this.currentTimeEl = this.wrapperEl.querySelector(
 			".js-audio-player__current-time"
+		);
+		this.timeRemainingEl = this.wrapperEl.querySelector(
+			".js-audio-player__remaining"
 		);
 		this.seekBackHelperEl = this.wrapperEl.querySelector(
 			".js-audio-player__seek-back-helper"
@@ -43,15 +43,12 @@ class AudioPlayer {
 	}
 
 	initializeListeners = () => {
-		this.audioEl.addEventListener("loadedmetadata", this.handleTimeUpdate);
-		this.audioEl.addEventListener("timeupdate", this.handleTimeUpdate);
-		this.audioEl.addEventListener("ended", this.handleTimeUpdate);
-
+		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
+		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
+		this.audioEl.addEventListener("ended", this.handleTimeChange);
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
-
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
-
 		this.progressBarCanvasEl.addEventListener("mousedown", this.beginScrubbing);
 		this.progressBarCanvasEl.addEventListener("mousemove", this.scrub);
 		this.progressBarCanvasEl.addEventListener("mouseup", this.endScrubbing);
@@ -65,16 +62,16 @@ class AudioPlayer {
 		}
 	};
 
-	handleTimeUpdate = () => {
+	handleTimeChange = () => {
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
-		this.setDisplayTime(duration, elapsed);
+		this.setDisplayTime(elapsed, duration);
 		this.canUpdateAuotmatically() && this.drawProgress(elapsed, duration);
 	};
 
-	setDisplayTime = (duration, elapsed) => {
-		this.durationEl.innerHTML = timeFormatter(duration);
+	setDisplayTime = (elapsed, duration) => {
 		this.currentTimeEl.innerHTML = timeFormatter(elapsed);
+		this.timeRemainingEl.innerHTML = timeFormatter(duration - elapsed);
 	};
 
 	canUpdateAuotmatically = () => !this.isScrubbing;
@@ -91,9 +88,9 @@ class AudioPlayer {
 		this.isScrubbing = true;
 		this.drawProgress(e.offsetX, e.target.offsetWidth);
 		this.audioEl.currentTime =
-		(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+			(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
 	};
-	
+
 	scrub = (e) => {
 		if (this.isScrubbing) {
 			this.drawProgress(e.offsetX, e.target.offsetWidth);
@@ -103,7 +100,7 @@ class AudioPlayer {
 		}
 	};
 
-	endScrubbing = () => this.isScrubbing = false;
+	endScrubbing = () => (this.isScrubbing = false);
 
 	setMetaData = () => {
 		navigator.mediaSession.metadata = new MediaMetadata({
