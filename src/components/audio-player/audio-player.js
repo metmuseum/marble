@@ -31,6 +31,7 @@ class AudioPlayer {
 		this.seekForwardHelperEl = this.wrapperEl.querySelector(
 			".js-audio-player__seek-forward-helper"
 		);
+
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
 
@@ -40,6 +41,29 @@ class AudioPlayer {
 			this.setMetaData();
 		}
 	}
+
+	initializeListeners = () => {
+		this.audioEl.addEventListener("loadedmetadata", this.handleTimeUpdate);
+		this.audioEl.addEventListener("timeupdate", this.handleTimeUpdate);
+		this.audioEl.addEventListener("ended", this.handleTimeUpdate);
+
+		this.playButtonEl.addEventListener("click", this.togglePlaying);
+
+		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
+		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
+
+		this.progressBarCanvasEl.addEventListener("mousedown", this.beginScrubbing);
+		this.progressBarCanvasEl.addEventListener("mousemove", this.scrub);
+		this.progressBarCanvasEl.addEventListener("mouseup", this.endScrubbing);
+		this.progressBarCanvasEl.addEventListener("mouseleave", this.endScrubbing);
+
+		if (this.transcriptToggle && this.transcriptWrapper) {
+			this.transcriptToggle.addEventListener(
+				"click",
+				this.handleTranscriptToggle
+			);
+		}
+	};
 
 	handleTimeUpdate = () => {
 		const duration = this.audioEl.duration;
@@ -53,9 +77,7 @@ class AudioPlayer {
 		this.currentTimeEl.innerHTML = timeFormatter(elapsed);
 	};
 
-	canUpdateAuotmatically = () => {
-		return !this.isScrubbing;
-	};
+	canUpdateAuotmatically = () => !this.isScrubbing;
 
 	drawProgress = (elapsed, duration, width = 1000) => {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
@@ -65,62 +87,23 @@ class AudioPlayer {
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 	};
 
-	initializeListeners = () => {
-		this.audioEl.addEventListener("loadedmetadata", this.handleTimeUpdate);
-		this.audioEl.addEventListener("timeupdate", this.handleTimeUpdate);
-		this.audioEl.addEventListener("ended", this.handleTimeUpdate);
-
-		this.playButtonEl.addEventListener("click", this.togglePlaying);
-
-		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
-		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
-
-		this.progressBarCanvasEl.addEventListener("mousedown", (e) => {
-			console.log(
-				"mousedown",
-				e.offsetX,
-				e.target.width,
-				e.offsetX / e.target.offsetWidth
-			);
-			this.isScrubbing = true;
+	beginScrubbing = (e) => {
+		this.isScrubbing = true;
+		this.drawProgress(e.offsetX, e.target.offsetWidth);
+		this.audioEl.currentTime =
+		(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+	};
+	
+	scrub = (e) => {
+		if (this.isScrubbing) {
 			this.drawProgress(e.offsetX, e.target.offsetWidth);
-			// todo: debounce this:
+			// todo: debounce this?
 			this.audioEl.currentTime =
 				(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
-		});
-
-		this.progressBarCanvasEl.addEventListener("mousemove", (e) => {
-			if (this.isScrubbing) {
-				console.log(
-					"mousemove",
-					e.offsetX,
-					e.target.width,
-					e.offsetX / e.target.offsetWidth
-				);
-				
-				this.drawProgress(e.offsetX, e.target.offsetWidth);
-				this.audioEl.currentTime =
-				(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
-			}
-		});
-
-		this.progressBarCanvasEl.addEventListener("mouseup", () => {
-			console.log("mouseup");
-			this.isScrubbing = false;
-		});
-
-		this.progressBarCanvasEl.addEventListener("mouseleave", () => {
-			console.log("mouseleave");
-			this.isScrubbing = false;
-		});
-
-		if (this.transcriptToggle && this.transcriptWrapper) {
-			this.transcriptToggle.addEventListener(
-				"click",
-				this.handleTranscriptToggle
-			);
 		}
 	};
+
+	endScrubbing = () => this.isScrubbing = false;
 
 	setMetaData = () => {
 		navigator.mediaSession.metadata = new MediaMetadata({
