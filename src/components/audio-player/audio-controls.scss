@@ -1,10 +1,14 @@
 .audio-controls {
 	display: flex;
+	width: 100%;
 }
 
 .audio-controls__play-wrapper {
 	align-self: flex-start;
-	margin-right: $spacing-xxs;
+	flex-basis: $spacing-s;
+	flex-shrink: 0;
+	font-size: $textsize-l;
+	text-align: left;
 	@media screen and (min-width: $bp-audio-player) {
 		align-self: center;
 	}
@@ -12,7 +16,7 @@
 
 .audio-controls__play {
 	@include button-reset();
-	font-size: $textsize-l;
+	font-size: 1em;
 	transition: opacity 0.2s;
 	white-space: nowrap;
 
@@ -23,6 +27,7 @@
 
 .audio-controls__time-buttons {
 	display: flex;
+	font-size: $textsize-xs;
 	justify-content: space-between;
 }
 
@@ -45,7 +50,7 @@
 .audio-controls__seek-back,
 .audio-controls__seek-forward {
 	@include button-reset();
-	margin: $spacing-xxs 0;
+	margin-bottom: $spacing-xxs;
 	transition: opacity 0.2s;
 	@media screen and (min-width: $bp-audio-player) {
 		margin: 0 $spacing-xxs;
@@ -54,5 +59,31 @@
 	&:hover {
 		opacity: 0.7;
 	}
+}
 
+//MODES
+
+//Mini-player.
+
+.audio-controls__seek-back,
+.audio-controls__seek-forward {
+	.mini-player & {
+		display: none;
+	}
+}
+
+.audio-controls__play-wrapper {
+	.mini-player & {
+		align-items: center;
+		color: $color-white;
+		display: flex;
+		font-size: $textsize-xl;
+		height: $bp-mini-player-image-size;
+		justify-content: center;
+		left: 0;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: $bp-mini-player-image-size;
+	}
 }

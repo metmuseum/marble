@@ -1,4 +1,5 @@
 $bp-audio-player: 600px;
+$bp-mini-player-image-size: 120px;
 @import "./audio-controls";
 
 .audio-player {
@@ -6,6 +7,7 @@ $bp-audio-player: 600px;
 	border-radius: $radius-sharp;
 	box-shadow: $shadow-passive;
 	color: $color-black;
+	position: relative;
 }
 
 .audio-player__media-section {
@@ -48,6 +50,7 @@ $bp-audio-player: 600px;
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
+	overflow: hidden;
 	@media screen and (min-width: $bp-audio-player) {
 		padding: $spacing-xxs;
 	}
@@ -66,14 +69,11 @@ $bp-audio-player: 600px;
 	width: 100%;
 }
 
-.audio-controls {
-	width: 100%;
-}
-
 .audio-player__progress-bar {
-	border-radius: 2px;
+	background-color: $color-grey-500;
+	border-radius: 50px;
+	height: 6px;
 	width: 100%;
-	padding: 12px 0; // this is just an arbitrary amount to make the vertical hitpoint bigger for scrubbing
 }
 
 .audio-player__audio-element {
@@ -132,6 +132,12 @@ $bp-audio-player: 600px;
 	}
 }
 
+.audio-player__progress-bar { // sass-lint:disable-line no-mergeable-selectors
+	.inverted-colors & {
+		background-color: $color-grey-700;
+	}
+}
+
 //Mini player
 .audio-player__media-section { // sass-lint:disable-line no-mergeable-selectors
 	.mini-player & {
@@ -142,6 +148,7 @@ $bp-audio-player: 600px;
 
 .audio-player__headings {
 	.mini-player & {
+		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
@@ -169,7 +176,7 @@ $bp-audio-player: 600px;
 
 .audio-player__image-section { // sass-lint:disable-line no-mergeable-selectors
 	.mini-player & {
-		flex-basis: 100px;
+		flex-basis: $bp-mini-player-image-size;
 		flex-grow: 0;
 		flex-shrink: 0;
 		margin: 0;

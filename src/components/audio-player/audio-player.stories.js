@@ -42,7 +42,7 @@ const audioPlayerMarkUp = (model) => {
 								<div class="audio-controls__time-controls">
 
 									<canvas
-										width="1000"
+										width="10000"
 										height="6"
 										class="js-audio-player__progress-bar audio-player__progress-bar">
 									</canvas>
@@ -60,6 +60,7 @@ const audioPlayerMarkUp = (model) => {
 
 								<audio
 									class="js-audio-player__audio audio-player__audio-element"
+									title="${model.track.title}"
 									style="width: 100%; height: 36px;"
 									controls>
 									<source src="${model.track.audioFileURL}" />

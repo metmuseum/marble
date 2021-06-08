@@ -32,6 +32,8 @@ class AudioPlayer {
 			".js-audio-player__seek-forward-helper"
 		);
 
+		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
+
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
 
@@ -81,9 +83,9 @@ class AudioPlayer {
 
 	drawProgress = (elapsed, duration, width = 1000) => {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
-		this.progressBarCanvas.fillStyle = scssExports.colorGrey500;
+		this.progressBarCanvas.fillStyle = "transparent"
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
-		this.progressBarCanvas.fillStyle = scssExports.colorGrey900; //TODO use currentColor but its not supported rn so lets get creative?
+		this.progressBarCanvas.fillStyle = this.isDarkMode ? scssExports.colorWhite : scssExports.colorGrey900;
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 	};
 
@@ -93,7 +95,7 @@ class AudioPlayer {
 		this.audioEl.currentTime =
 		(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
 	};
-	
+
 	scrub = (e) => {
 		if (this.isScrubbing) {
 			this.drawProgress(e.offsetX, e.target.offsetWidth);
