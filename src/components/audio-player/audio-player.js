@@ -54,7 +54,9 @@ class AudioPlayer {
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
-		this.scrubbableAreaEl.addEventListener("mousedown", this.beginScrubbing);
+
+		//The Start scrub needs to be very intentional or weird things might happen
+		this.progressBarCanvasEl.addEventListener("mousedown", this.beginScrubbing);
 		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
 		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
 		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
