@@ -49,25 +49,35 @@ class AudioPlayer {
 		}
 	}
 
+	// prettier-ignore
 	initializeListeners = () => {
+		// Initialize
 		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
+
+		// Playback
+		this.playButtonEl.addEventListener("touchstart", this.togglePlaying, { passive: false });
+		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
 		this.audioEl.addEventListener("ended", this.handleEnd);
-		this.playButtonEl.addEventListener("click", this.togglePlaying);
+
+		// Quickseek
+		this.seekBackHelperEl.addEventListener("touchstart", this.quickSeekBack, { passive: false });
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
+		this.seekForwardHelperEl.addEventListener("touchstart", this.quickSeekForward, { passive: false });
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
 
-		//The Start scrub needs to be very intentional or weird things might happen
+		// Scrubbing
+		// The Start scrub needs to be very intentional or weird things might happen
+		this.progressBarCanvasEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
 		this.progressBarCanvasEl.addEventListener("mousedown", this.beginScrubbing);
+		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub, { passive: false });
 		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
+		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing, { passive: false });
 		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
 		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
-			this.transcriptToggle.addEventListener(
-				"click",
-				this.handleTranscriptToggle
-			);
+			this.transcriptToggle.addEventListener("click", this.handleTranscriptToggle);
 		}
 	};
 
@@ -101,25 +111,48 @@ class AudioPlayer {
 	};
 
 	beginScrubbing = (e) => {
+		e.preventDefault(); // don't fire redundant mouse event, if this was a touch
+
 		this.isScrubbing = true;
 
-		this.drawProgress(e.offsetX, e.target.offsetWidth);
+		let offsetX;
+		let canvasRectangle = this.progressBarCanvasEl.getBoundingClientRect();
+
+		if (["touchstart", "touchmove", "touchend"].includes(e.type)) {
+			offsetX = e.touches[0].clientX - canvasRectangle.left;
+		} else {
+			offsetX = e.offsetX;
+		}
+
+		this.drawProgress(offsetX, canvasRectangle.width);
 		let currentSecond =
-			(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+			(offsetX / canvasRectangle.width) * this.audioEl.duration;
 		this.audioEl.currentTime = currentSecond;
 		this.setDisplayTime(currentSecond, this.audioEl.duration);
 	};
 
 	scrub = (e) => {
+		e.preventDefault();
+
 		if (this.isScrubbing) {
-			this.drawProgress(e.offsetX, e.target.offsetWidth);
+			let offsetX;
+			let canvasRectangle = this.progressBarCanvasEl.getBoundingClientRect();
+
+			if (["touchstart", "touchmove", "touchend"].includes(e.type)) {
+				offsetX = e.touches[0].clientX - canvasRectangle.left;
+			} else {
+				offsetX = e.offsetX;
+			}
+
+			this.drawProgress(offsetX, canvasRectangle.width);
 			// todo: call a throttled function? or use requestAnimationFrame?
 			this.audioEl.currentTime =
-				(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+				(offsetX / canvasRectangle.width) * this.audioEl.duration;
 		}
 	};
 
-	endScrubbing = () => {
+	endScrubbing = (e) => {
+		e.preventDefault();
 		this.isScrubbing = false;
 		this.startLerp();
 	};
@@ -135,7 +168,8 @@ class AudioPlayer {
 		});
 	};
 
-	togglePlaying = () => {
+	togglePlaying = (e) => {
+		e.preventDefault();
 		this.audioEl.paused ? this.setPlay() : this.setPause();
 	};
 
@@ -166,7 +200,8 @@ class AudioPlayer {
 		cancelAnimationFrame(this.lerpAnimation);
 	}
 
-	quickSeekBack = () => {
+	quickSeekBack = (e) => {
+		e.preventDefault();
 		const newPosition = Math.max(
 			0,
 			this.audioEl.currentTime - this.seekHelperDuration
@@ -174,7 +209,8 @@ class AudioPlayer {
 		this.audioEl.currentTime = newPosition;
 	};
 
-	quickSeekForward = () => {
+	quickSeekForward = (e) => {
+		e.preventDefault();
 		const newPosition = Math.min(
 			this.audioEl.duration,
 			this.audioEl.currentTime + this.seekHelperDuration
