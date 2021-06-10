@@ -40,6 +40,8 @@ class AudioPlayer {
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
 
+		this.lerp = this.lerp.bind(this);
+
 		this.initializeListeners();
 
 		if ("mediaSession" in navigator) {
@@ -86,7 +88,7 @@ class AudioPlayer {
 		this.timeRemainingEl.innerHTML = timeFormatter(duration - elapsed);
 	};
 
-	canUpdateAuotmatically = () => !this.isScrubbing;
+	canUpdateAuotmatically = () => !this.isScrubbing && !this.audioEl.paused;
 
 	drawProgress = (elapsed, duration, width = 10000) => {
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
@@ -100,21 +102,27 @@ class AudioPlayer {
 
 	beginScrubbing = (e) => {
 		this.isScrubbing = true;
+
 		this.drawProgress(e.offsetX, e.target.offsetWidth);
-		this.audioEl.currentTime =
+		let currentSecond =
 			(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
+		this.audioEl.currentTime = currentSecond;
+		this.setDisplayTime(currentSecond, this.audioEl.duration);
 	};
 
 	scrub = (e) => {
 		if (this.isScrubbing) {
 			this.drawProgress(e.offsetX, e.target.offsetWidth);
-			// todo: debounce this?
+			// todo: call a throttled function? or use requestAnimationFrame?
 			this.audioEl.currentTime =
 				(e.offsetX / e.target.offsetWidth) * this.audioEl.duration;
 		}
 	};
 
-	endScrubbing = () => (this.isScrubbing = false);
+	endScrubbing = () => {
+		this.isScrubbing = false;
+		this.startLerp();
+	};
 
 	setMetaData = () => {
 		navigator.mediaSession.metadata = new MediaMetadata({
@@ -144,14 +152,18 @@ class AudioPlayer {
 	};
 
 	startLerp() {
-		this.lerpInterval = setInterval(() => {
-			this.canUpdateAuotmatically() &&
-				this.drawProgress(this.audioEl.currentTime, this.audioEl.duration);
-		}, 50);
+		this.lerpAnimation = requestAnimationFrame(this.lerp);
+	}
+
+	lerp() {
+		if (this.canUpdateAuotmatically()) {
+			this.drawProgress(this.audioEl.currentTime, this.audioEl.duration);
+			this.lerpAnimation = requestAnimationFrame(this.lerp);
+		}
 	}
 
 	endLerp() {
-		clearInterval(this.lerpInterval);
+		cancelAnimationFrame(this.lerpAnimation);
 	}
 
 	quickSeekBack = () => {
