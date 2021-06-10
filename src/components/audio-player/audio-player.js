@@ -4,42 +4,25 @@ import timeFormatter from "./time-formatter.js";
 class AudioPlayer {
 	constructor(wrapperEl) {
 		this.wrapperEl = wrapperEl;
+		//prettier-ignore-start
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
-		this.progressBarCanvasEl = this.wrapperEl.querySelector(
-			".js-audio-player__progress-bar"
-		);
+		this.progressBarCanvasEl = this.wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
-		this.transcriptSection = wrapperEl.querySelector(
-			".js-audio-player__transcript-section"
-		);
-		this.transcriptToggle = this.transcriptSection.querySelector(
-			".js-audio-player__transcript-toggle"
-		);
-		this.transcriptWrapper = this.transcriptSection.querySelector(
-			".js-audio-player__transcript-wrapper"
-		);
+		this.transcriptSection = wrapperEl.querySelector(".js-audio-player__transcript-section");
+		this.transcriptToggle = this.transcriptSection.querySelector(".js-audio-player__transcript-toggle");
+		this.transcriptWrapper = this.transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
 		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
-		this.currentTimeEl = this.wrapperEl.querySelector(
-			".js-audio-player__current-time"
-		);
-		this.timeRemainingEl = this.wrapperEl.querySelector(
-			".js-audio-player__remaining"
-		);
-		this.seekBackHelperEl = this.wrapperEl.querySelector(
-			".js-audio-player__seek-back-helper"
-		);
-		this.seekForwardHelperEl = this.wrapperEl.querySelector(
-			".js-audio-player__seek-forward-helper"
-		);
-		this.scrubbableAreaEl = this.wrapperEl.querySelector(
-			".js-audio-player__scrubbable-area"
-		);
+		this.currentTimeEl = this.wrapperEl.querySelector(".js-audio-player__current-time");
+		this.timeRemainingEl = this.wrapperEl.querySelector(".js-audio-player__remaining");
+		this.seekBackHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-back-helper");
+		this.seekForwardHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-forward-helper");
+		this.scrubStartAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbing-start-area");
+		this.scrubbableAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbable-area");
+		//prettier-ignore-end
 
 		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
-
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
-
 		this.lerp = this.lerp.bind(this);
 
 		this.initializeListeners();
@@ -49,7 +32,7 @@ class AudioPlayer {
 		}
 	}
 
-	// prettier-ignore
+	//prettier-ignore
 	initializeListeners = () => {
 		// Initialize
 		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
@@ -61,24 +44,18 @@ class AudioPlayer {
 		this.audioEl.addEventListener("ended", this.handleEnd);
 
 		// Quickseek
-		// this.seekBackHelperEl.addEventListener("touchstart", this.quickSeekBack, { passive: false });
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
-		// this.seekForwardHelperEl.addEventListener("touchstart", this.quickSeekForward, { passive: false });
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
 
 		// Scrubbing
-		// The Start scrub needs to be very intentional or weird things might happen
-		this.scrubbableAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
-		this.scrubbableAreaEl.addEventListener("mousedown", this.beginScrubbing);
-		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub, { passive: false });
-		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
-		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing, { passive: false }); // wait the seek buttons are inside this, too? 
-		this.scrubbableAreaEl.addEventListener("touchcancel", this.endScrubbing, { passive: false });
-		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
-		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
+		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
+		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
 
 		if (this.transcriptToggle && this.transcriptWrapper) {
-			this.transcriptToggle.addEventListener("click", this.handleTranscriptToggle);
+			this.transcriptToggle.addEventListener(
+				"click",
+				this.handleTranscriptToggle
+			);
 		}
 	};
 
@@ -116,8 +93,21 @@ class AudioPlayer {
 		e.preventDefault(); // don't fire redundant mouse event, if this was a touch
 		console.log("begin scrubbing", e.type);
 		this.isScrubbing = true;
+		this.initializeScrubbingListeners();
 		this.scrub(e);
 	};
+
+	//prettier-ignore
+	initializeScrubbingListeners = () => {
+		// touch
+		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub, { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing, { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchcancel", this.endScrubbing, { passive: false });
+		// mouse
+		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
+		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
+		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
+	}
 
 	scrub = (e) => {
 		e.preventDefault();
@@ -141,12 +131,27 @@ class AudioPlayer {
 		}
 	};
 
+	
 	endScrubbing = (e) => {
 		e.preventDefault();
 		console.log("end scrubbing", e.type);
 		this.isScrubbing = false;
+		this.cleanUpScrubListeners();
 		this.startLerp();
 	};
+
+	//prettier-ignore
+	cleanUpScrubListeners() {
+		// touch
+		this.scrubbableAreaEl.removeEventListener("touchmove", this.scrub, { passive: false });
+		this.scrubbableAreaEl.removeEventListener("mousemove", this.scrub);
+		this.scrubbableAreaEl.removeEventListener("touchend", this.endScrubbing, { passive: false });
+		this.scrubbableAreaEl.removeEventListener("touchcancel", this.endScrubbing, { passive: false });
+		// mouse
+		this.scrubbableAreaEl.removeEventListener("mousemove", this.scrub);
+		this.scrubbableAreaEl.removeEventListener("mouseup", this.endScrubbing);
+		this.scrubbableAreaEl.removeEventListener("mouseleave", this.endScrubbing);
+	}
 
 	setMetaData = () => {
 		navigator.mediaSession.metadata = new MediaMetadata({
