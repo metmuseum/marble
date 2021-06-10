@@ -6,24 +6,43 @@ class AudioPlayer {
 		//prettier-ignore-start
 		this.wrapperEl = wrapperEl;
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
-		this.progressBarCanvasEl = this.wrapperEl.querySelector(".js-audio-player__progress-bar");
+		this.progressBarCanvasEl = this.wrapperEl.querySelector(
+			".js-audio-player__progress-bar"
+		);
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
-		this.transcriptSection = wrapperEl.querySelector(".js-audio-player__transcript-section");
-		this.transcriptToggle = this.transcriptSection.querySelector(".js-audio-player__transcript-toggle");
-		this.transcriptWrapper = this.transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
+		this.transcriptSection = wrapperEl.querySelector(
+			".js-audio-player__transcript-section"
+		);
+		this.transcriptToggle = this.transcriptSection.querySelector(
+			".js-audio-player__transcript-toggle"
+		);
+		this.transcriptWrapper = this.transcriptSection.querySelector(
+			".js-audio-player__transcript-wrapper"
+		);
 		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
-		this.currentTimeEl = this.wrapperEl.querySelector(".js-audio-player__current-time");
-		this.timeRemainingEl = this.wrapperEl.querySelector(".js-audio-player__remaining");
-		this.seekBackHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-back-helper");
-		this.seekForwardHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-forward-helper");
-		this.scrubStartAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbing-start-area");
-		this.scrubbableAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbable-area");
+		this.currentTimeEl = this.wrapperEl.querySelector(
+			".js-audio-player__current-time"
+		);
+		this.timeRemainingEl = this.wrapperEl.querySelector(
+			".js-audio-player__remaining"
+		);
+		this.seekBackHelperEl = this.wrapperEl.querySelector(
+			".js-audio-player__seek-back-helper"
+		);
+		this.seekForwardHelperEl = this.wrapperEl.querySelector(
+			".js-audio-player__seek-forward-helper"
+		);
+		this.scrubStartAreaEl = this.wrapperEl.querySelector(
+			".js-audio-player__scrubbing-start-area"
+		);
+		this.scrubbableAreaEl = this.wrapperEl.querySelector(
+			".js-audio-player__scrubbable-area"
+		);
 		//prettier-ignore-end
 
 		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
-		this.lerp = this.lerp.bind(this);
 
 		this.initializeListeners();
 
@@ -59,13 +78,19 @@ class AudioPlayer {
 		}
 	};
 
-	handleTimeChange = (e) => {
-		console.log("handling time change", e.type)
+
+	// okay so what's slow is actually waiting for timeupdates, and those being throttled. 
+	// timeupdates + lerp = flickering. :\ hmm
+	handleTimeChange = () => {
+		requestAnimationFrame(this._handleTimeChange);
+	};
+
+	_handleTimeChange = () => {
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
 		this.setDisplayTime(elapsed, duration);
-		this.canUpdateAuotmatically() && this.drawProgress(elapsed, duration);
-	};
+		this.drawProgress(elapsed, duration);
+	}
 
 	handleEnd = () => {
 		this.handleTimeChange();
@@ -80,6 +105,7 @@ class AudioPlayer {
 	canUpdateAuotmatically = () => !this.isScrubbing;
 
 	drawProgress = (elapsed, duration, width = 10000) => {
+		this.progressBarCanvas.save();
 		this.progressBarCanvas.clearRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = "transparent";
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
@@ -87,6 +113,7 @@ class AudioPlayer {
 			? scssExports.colorWhite
 			: scssExports.colorGrey900;
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
+		this.progressBarCanvas.restore();
 	};
 
 	beginScrubbing = (e) => {
@@ -116,28 +143,26 @@ class AudioPlayer {
 		if (this.isScrubbing) {
 			let canvasRectangle = this.progressBarCanvasEl.getBoundingClientRect();
 			let offsetX;
-	
+
 			if (["touchstart", "touchmove"].includes(e.type)) {
 				offsetX = e.touches[0].clientX - canvasRectangle.left;
 			} else {
 				offsetX = e.offsetX;
 			}
-	
-			this.drawProgress(offsetX, canvasRectangle.width);
+
+			// this.drawProgress(offsetX, canvasRectangle.width);
 			let currentSecond =
 				(offsetX / canvasRectangle.width) * this.audioEl.duration;
 			this.audioEl.currentTime = currentSecond;
-			this.setDisplayTime(currentSecond, this.audioEl.duration);
+			// this.setDisplayTime(currentSecond, this.audioEl.duration);
 		}
 	};
 
-	
 	endScrubbing = (e) => {
 		e.preventDefault();
 		console.log("end scrubbing", e.type);
 		this.isScrubbing = false;
 		this.cleanUpScrubListeners();
-		this.startLerp();
 	};
 
 	//prettier-ignore
@@ -171,31 +196,12 @@ class AudioPlayer {
 	setPlay = () => {
 		this.audioEl.play();
 		this.playButtonEl.innerHTML = `&#10074&#10074`;
-		this.startLerp();
 	};
 
 	setPause = () => {
 		this.audioEl.pause();
 		this.playButtonEl.innerHTML = `&#9654;`;
-		this.endLerp();
 	};
-
-	startLerp() {
-		this.lerpAnimation = requestAnimationFrame(this.lerp);
-	}
-
-	lerp() {
-		if (this.canUpdateAuotmatically()) {
-			this.drawProgress(this.audioEl.currentTime, this.audioEl.duration);
-			this.lerpAnimation = requestAnimationFrame(this.lerp);
-		} else {
-			cancelAnimationFrame(this.lerpAnimation);
-		}
-	}
-
-	endLerp() {
-		cancelAnimationFrame(this.lerpAnimation);
-	}
 
 	quickSeekBack = (e) => {
 		e.preventDefault();
