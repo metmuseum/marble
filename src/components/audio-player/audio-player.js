@@ -3,8 +3,8 @@ import timeFormatter from "./time-formatter.js";
 
 class AudioPlayer {
 	constructor(wrapperEl) {
-		this.wrapperEl = wrapperEl;
 		//prettier-ignore-start
+		this.wrapperEl = wrapperEl;
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
 		this.progressBarCanvasEl = this.wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
@@ -144,7 +144,6 @@ class AudioPlayer {
 	cleanUpScrubListeners() {
 		// touch
 		this.scrubbableAreaEl.removeEventListener("touchmove", this.scrub, { passive: false });
-		this.scrubbableAreaEl.removeEventListener("mousemove", this.scrub);
 		this.scrubbableAreaEl.removeEventListener("touchend", this.endScrubbing, { passive: false });
 		this.scrubbableAreaEl.removeEventListener("touchcancel", this.endScrubbing, { passive: false });
 		// mouse
