@@ -1,5 +1,6 @@
 .audio-controls {
 	display: flex;
+	fill: currentColor;
 	font-size: $textsize-xs;
 	width: 100%;
 }
@@ -117,6 +118,7 @@
 		align-items: center;
 		color: $color-white;
 		display: flex;
+		fill: $color-white;
 		font-size: $textsize-xl;
 		height: $bp-mini-player-image-size;
 		justify-content: center;
