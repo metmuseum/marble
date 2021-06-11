@@ -101,18 +101,31 @@ $bp-mini-player-image-size: 120px;
 }
 
 .audio-player__transcript-toggle {
-	display: block;
+	align-items: flex-start;
+	display: flex;
 	font-size: $textsize-xs;
 	font-weight: 500;
 	padding: $spacing-xxs;
 	text-decoration: none;
+
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 .transcript__toggle-icon {
+	height: 1em;
+
 	.transcript-is-open & {
+		align-self: flex-end;
 		display: inline-block;
 		transform: rotate(180deg);
 	}
+}
+
+.transcript__toggle-text {
+	margin-left: $spacing-micro;
 }
 
 //MODES

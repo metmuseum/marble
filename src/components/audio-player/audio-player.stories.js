@@ -4,6 +4,7 @@ import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import initializeAudioPlayers from "./audio-player.js";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 
+import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon } from './helper-icons/helper-icons.js';
 
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
 
@@ -37,7 +38,8 @@ const audioPlayerMarkUp = (model) => {
 							<div class="audio-controls">
 								<div class="audio-controls__play-wrapper">
 									<button class="js-audio-player__play audio-controls__play">
-										&#9654;
+										<span class="js-play-icon audio-controls__play-icon"> ${playIcon()} </span>
+										<span class="js-pause-icon audio-controls__pause-icon"> ${pauseIcon()} </span>
 									</button>
 								</div>
 								<div class="audio-controls__time-controls js-audio-player__scrubbable-area">
@@ -55,14 +57,14 @@ const audioPlayerMarkUp = (model) => {
 											<button
 												class="js-audio-player__seek-back-helper audio-controls__seek-back"
 											>
-												&lt; 10
+												${rewindTenSecondsIcon()}
 											</button>
 										</div>
 										<div class="audio-controls__forward-controls">
 											<button
 												class="js-audio-player__seek-forward-helper audio-controls__seek-forward"
 											>
-												10 &gt;
+												${forwardTenSecondsIcon()}
 											</button>
 											<span class="js-audio-player__remaining">0:00</span>
 										</div>
@@ -104,7 +106,7 @@ const audioPlayerMarkUp = (model) => {
 						class="audio-player__transcript-toggle js-audio-player__transcript-toggle"
 					>
 						<span class="transcript__toggle-icon"> &#9660;</span>
-						View Transcript
+						<spacn class="transcript__toggle-text"> View Transcript </span>
 					</a>
 				</div>
 			</section>

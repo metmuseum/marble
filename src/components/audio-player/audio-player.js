@@ -79,7 +79,7 @@ class AudioPlayer {
 	};
 
 
-	// okay so what's slow is actually waiting for timeupdates, and those being throttled. 
+	// okay so what's slow is actually waiting for timeupdates, and those being throttled.
 	// timeupdates + lerp = flickering. :\ hmm
 	handleTimeChange = () => {
 		requestAnimationFrame(this._handleTimeChange);
@@ -195,12 +195,12 @@ class AudioPlayer {
 
 	setPlay = () => {
 		this.audioEl.play();
-		this.playButtonEl.innerHTML = `&#10074&#10074`;
+		this.wrapperEl.classList.add("is-playing");
 	};
 
 	setPause = () => {
 		this.audioEl.pause();
-		this.playButtonEl.innerHTML = `&#9654;`;
+		this.wrapperEl.classList.remove("is-playing");
 	};
 
 	quickSeekBack = (e) => {

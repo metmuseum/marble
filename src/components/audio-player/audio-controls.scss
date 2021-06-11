@@ -1,5 +1,6 @@
 .audio-controls {
 	display: flex;
+	font-size: $textsize-xs;
 	width: 100%;
 }
 
@@ -25,9 +26,30 @@
 	}
 }
 
+.audio-controls__play-icon,
+.audio-controls__pause-icon {
+	height: 1em;
+	width: 1em;
+}
+
+.audio-controls__play-icon {
+	display: inline-block;
+
+	.is-playing & {
+		display: none;
+	}
+}
+
+.audio-controls__pause-icon {
+	display: none;
+
+	.is-playing & {
+		display: inline-block;
+	}
+}
+
 .audio-controls__time-buttons {
 	display: flex;
-	font-size: $textsize-xs;
 	justify-content: space-between;
 }
 
@@ -50,6 +72,8 @@
 .audio-controls__seek-back,
 .audio-controls__seek-forward {
 	@include button-reset();
+	align-items: center;
+	display: flex;
 	margin-bottom: $spacing-xxs;
 	transition: opacity 0.2s;
 	@media screen and (min-width: $bp-audio-player) {
@@ -59,20 +83,24 @@
 	&:hover {
 		opacity: 0.7;
 	}
+
+	svg {
+		height: $textsize-xs;
+	}
 }
 
 //MODES
 
 //Mini-player.
 
-.audio-controls__seek-back,
+.audio-controls__seek-back, // sass-lint:disable-line no-mergeable-selectors
 .audio-controls__seek-forward {
 	.mini-player & {
 		display: none;
 	}
 }
 
-.audio-controls__play-wrapper {
+.audio-controls__play-wrapper { // sass-lint:disable-line no-mergeable-selectors
 	.mini-player & {
 		align-items: center;
 		color: $color-white;
