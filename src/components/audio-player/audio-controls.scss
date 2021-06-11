@@ -69,14 +69,25 @@
 	}
 }
 
+.audio-controls__seek-back {
+	align-self: flex-start;
+}
+
+.audio-controls__seek-forward {
+	align-self: flex-end;
+}
+
 .audio-controls__seek-back,
 .audio-controls__seek-forward {
 	@include button-reset();
 	align-items: center;
 	display: flex;
+	height: $textsize-xs;
 	margin-bottom: $spacing-xxs;
 	transition: opacity 0.2s;
+	width: $textsize-xs;
 	@media screen and (min-width: $bp-audio-player) {
+		align-self: center;
 		margin: 0 $spacing-xxs;
 	}
 
@@ -85,7 +96,8 @@
 	}
 
 	svg {
-		height: $textsize-xs;
+		height: 100%;
+		width: 100%;
 	}
 }
 
