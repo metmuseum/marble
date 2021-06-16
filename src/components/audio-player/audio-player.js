@@ -10,15 +10,11 @@ class AudioPlayer {
 			".js-audio-player__progress-bar"
 		);
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
+
 		this.transcriptSection = wrapperEl.querySelector(
 			".js-audio-player__transcript-section"
 		);
-		this.transcriptToggle = this.transcriptSection.querySelector(
-			".js-audio-player__transcript-toggle"
-		);
-		this.transcriptWrapper = this.transcriptSection.querySelector(
-			".js-audio-player__transcript-wrapper"
-		);
+
 		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
 		this.currentTimeEl = this.wrapperEl.querySelector(
 			".js-audio-player__current-time"
@@ -43,11 +39,30 @@ class AudioPlayer {
 		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
-
 		this.initializeListeners();
 
 		if ("mediaSession" in navigator) {
 			this.setMetaData();
+		}
+
+		if (this.transcriptSection) {
+			this.transcriptToggle = this.transcriptSection.querySelector(
+				".js-audio-player__transcript-toggle"
+			);
+			this.transcriptToggleText = this.transcriptSection.querySelector(
+				".js-transcript__toggle-text"
+			);
+			this.transcriptWrapper = this.transcriptSection.querySelector(
+				".js-audio-player__transcript-wrapper"
+			);
+			this.quoteExpanderDefaultText = this.transcriptToggleText.innerHTML;
+
+			if (this.transcriptToggle && this.transcriptWrapper) {
+				this.transcriptToggle.addEventListener(
+					"click",
+					this.handleTranscriptToggle
+				);
+			}
 		}
 	}
 
@@ -69,13 +84,6 @@ class AudioPlayer {
 		// Scrubbing
 		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
 		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
-
-		if (this.transcriptToggle && this.transcriptWrapper) {
-			this.transcriptToggle.addEventListener(
-				"click",
-				this.handleTranscriptToggle
-			);
-		}
 	};
 
 
@@ -178,12 +186,16 @@ class AudioPlayer {
 	}
 
 	setMetaData = () => {
+		this.metaImage = this.wrapperEl.querySelector(".audio-player__cover-image") ?
+			this.wrapperEl.querySelector(".audio-player__cover-image").src :
+			null;
+
+
 		navigator.mediaSession.metadata = new MediaMetadata({
 			title: this.wrapperEl.querySelector(".audio-player__title").innerHTML,
-			artist: this.wrapperEl.querySelector(".audio-player__sub-title")
-				.innerHTML,
+			artist: this.wrapperEl.querySelector(".audio-player__sub-title").innerHTML,
 			artwork: [
-				{ src: this.wrapperEl.querySelector(".audio-player__cover-image").src },
+				{ src: this.metaImage },
 			],
 		});
 	};
@@ -223,7 +235,13 @@ class AudioPlayer {
 
 	handleTranscriptToggle = (e) => {
 		e.preventDefault();
-		this.transcriptSection.classList.toggle("transcript-is-open");
+		if (this.transcriptSection.classList.contains("transcript-is-open")) {
+			this.transcriptToggleText.innerHTML = this.quoteExpanderDefaultText;
+			this.transcriptSection.classList.remove("transcript-is-open");
+		} else {
+			this.transcriptSection.classList.add("transcript-is-open");
+			this.transcriptToggleText.innerHTML = "Hide Transcript";
+		}
 	};
 }
 

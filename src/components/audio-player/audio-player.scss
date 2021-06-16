@@ -4,9 +4,10 @@ $bp-mini-player-image-size: 120px;
 
 .audio-player {
 	background-color: $color-white;
-	border-radius: $radius-sharp;
+	border-radius: 8px;
 	box-shadow: $shadow-passive;
 	color: $color-black;
+	overflow: hidden;
 	position: relative;
 }
 
@@ -24,7 +25,7 @@ $bp-mini-player-image-size: 120px;
 	margin: 0 0 $spacing-xxs;
 	width: 100%;
 	@media screen and (min-width: $bp-audio-player) {
-		flex-basis: 200px;
+		flex-basis: 0;
 		flex-grow: 1;
 		flex-shrink: 0;
 		margin: 0;
@@ -34,8 +35,12 @@ $bp-mini-player-image-size: 120px;
 .audio-player__image-wrapper {
 	background-color: $color-grey-800;
 	height: 0;
+	overflow: hidden;
 	padding-top: 100%;
 	position: relative;
+	@media screen and (min-width: $bp-audio-player) {
+		min-width: 200px;
+	}
 }
 
 .audio-player__cover-image {
@@ -56,12 +61,20 @@ $bp-mini-player-image-size: 120px;
 	}
 }
 
+.audio-player__title,
+.audio-player__sub-title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .audio-player__title {
 	font-size: $textsize-s;
 }
 
 .audio-player__sub-title {
 	font-size: $textsize-xs;
+	font-weight: 400;
 }
 
 .audio-player__controls-wrapper {
@@ -193,6 +206,12 @@ $bp-mini-player-image-size: 120px;
 		flex-grow: 0;
 		flex-shrink: 0;
 		margin: 0;
+	}
+}
+
+.audio-player__image-wrapper {
+	.mini-player & {
+		min-width: 0;
 	}
 }
 

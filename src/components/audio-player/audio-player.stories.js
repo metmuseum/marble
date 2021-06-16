@@ -4,7 +4,7 @@ import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import initializeAudioPlayers from "./audio-player.js";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 
-import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon } from './helper-icons/helper-icons.js';
+import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCarrotIcon } from './helper-icons/helper-icons.js';
 
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
 
@@ -18,15 +18,18 @@ const audioPlayerMarkUp = (model) => {
 			<section class="audio-player js-marble-audio-player ${playerModes}">
 				<div class="audio-player__media-section">
 					<div class="audio-player__image-section">
-						<div class="audio-player__image-wrapper">
-							<img
-								class="audio-player__cover-image"
-								alt="${model.track.coverImage.alt}"
-								width="${model.track.coverImage.width}"
-								height="${model.track.coverImage.height}"
-								src="${model.track.coverImage.srcSet.fallback}"
-							/>
-						</div>
+						${model.track.hasImage ? html
+							`<div class="audio-player__image-wrapper">
+								<img
+									class="audio-player__cover-image"
+									alt="${model.track.coverImage.alt}"
+									width="${model.track.coverImage.width}"
+									height="${model.track.coverImage.height}"
+									src="${model.track.coverImage.srcSet.fallback}"
+								/>
+							</div>` : ""
+						}
+
 					</div>
 
 					<div class="audio-player__body">
@@ -90,25 +93,26 @@ const audioPlayerMarkUp = (model) => {
 						</div>
 					</div>
 				</div>
-
-				<div
-					class="audio-player__transcript-section js-audio-player__transcript-section"
-				>
-					<div
-						class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper"
+				${model.track.transcript.length > 0 ? html
+					`<div
+						class="audio-player__transcript-section js-audio-player__transcript-section"
 					>
-						<div class="audio-player__transcript">
-							<p>${model.track.transcript}</p>
+						<div
+							class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper"
+						>
+							<div class="audio-player__transcript">
+								<p>${model.track.transcript}</p>
+							</div>
 						</div>
-					</div>
-					<a
-						href="#"
-						class="audio-player__transcript-toggle js-audio-player__transcript-toggle"
-					>
-						<span class="transcript__toggle-icon"> &#9660;</span>
-						<spacn class="transcript__toggle-text"> View Transcript </span>
-					</a>
-				</div>
+						<a
+							href="#"
+							class="audio-player__transcript-toggle js-audio-player__transcript-toggle"
+						>
+							<span class="transcript__toggle-icon"> ${upCarrotIcon()}</span>
+							<spacn class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
+						</a>
+					</div>` : ``
+				}
 			</section>
 		</div>
 	`;
@@ -120,6 +124,7 @@ export const AudioPlayer = () => {
 		darkMode: boolean("Dark Mode", false),
 		miniPlayer: boolean("Mini Player", false),
 		track: {
+			hasImage: boolean ("Has Image", true),
 			audioFileURL:
 				text("Audio File URL", "https://cdn.bitdegree.org/learn/I_Cactus_-_05_-_ruby_cactus.mp3?raw=true"),
 			coverImage: greekHall1x1,
