@@ -83,10 +83,10 @@
 	@include button-reset();
 	align-items: center;
 	display: flex;
-	height: $textsize-xs;
+	height: $textsize-s;
 	margin-bottom: $spacing-xxs;
 	transition: opacity 0.2s;
-	width: $textsize-xs;
+	width: $textsize-s;
 	@media screen and (min-width: $bp-audio-player) {
 		align-self: center;
 		margin: 0 $spacing-xxs;
