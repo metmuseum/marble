@@ -1,4 +1,4 @@
-export default { title: 'Notification Banner' };
+export default { title: "Notification Banner" };
 
 const data = {
 	header: "The Museum Has Temporarily Closed",
@@ -7,7 +7,7 @@ const data = {
 		url: "http://metmuseum.org",
 		text: "Learn More"
 	}
-}
+};
 
 const notificationMarkup = (model) => {
 	return `<section class="notification-banner ${model.className}">
@@ -16,16 +16,16 @@ const notificationMarkup = (model) => {
 				<div class="notification-banner__subtext">${model.description}</div>
 				<a href="${model.link.url}" class="notification-banner__link">${model.link.text}</a>
 			</div>
-	</section>`
-}
+	</section>`;
+};
 
 
 export const expressive = () => {
 	let model = Object.assign(data, {className: "notification-banner--expressive"});
-  return notificationMarkup(model);
-}
+	return notificationMarkup(model);
+};
 
 export const productive = () => {
 	let model = Object.assign(data, {className: "notification-banner--productive"});
-  return notificationMarkup(model);
-}
+	return notificationMarkup(model);
+};

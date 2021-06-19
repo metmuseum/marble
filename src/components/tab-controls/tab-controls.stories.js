@@ -8,13 +8,13 @@ const TabControls = () => {
 	const screenreaderLegendText =
 		"Select between Past, Current, or Upcoming Exhibitions";
 	const tabNames = ["Past", "Current", "Upcoming"];
-	const inputGroupName = "my-cool-tabs"
+	const inputGroupName = "my-cool-tabs";
 
 	return html`<fieldset class="tabs-control-container">
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
 		${tabNames
-			.map((tabName, index) => {
-				return html` <div class="tab-controls">
+		.map((tabName, index) => {
+			return html` <div class="tab-controls">
 					<input
 						id="${tabName}-tab-id"
 						type="radio"
@@ -27,8 +27,8 @@ const TabControls = () => {
 						<h3>${tabName}</h3>
 					</label>
 				</div>`;
-			})
-			.join("")}
+		})
+		.join("")}
 	</fieldset>`;
 };
 

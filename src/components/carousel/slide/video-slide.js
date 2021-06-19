@@ -1,5 +1,5 @@
 export default function videoSlide() {
-	const videoSlides = [...document.querySelectorAll(`.js-carousel-slide__video`)];
+	const videoSlides = [...document.querySelectorAll(".js-carousel-slide__video")];
 
 	const videosInCarouselSlides = videoSlides.map((videoElement)=> {
 		//Handles the case of some video libraries that nest the video element inside the container.

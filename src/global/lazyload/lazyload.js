@@ -1,4 +1,4 @@
-require(`intersection-observer`);
+require("intersection-observer");
 import LazyLoad from "vanilla-lazyload";
 
 const imageLoadedEvent = new CustomEvent("image-loaded", { bubbles: true });

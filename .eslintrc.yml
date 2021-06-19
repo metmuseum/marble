@@ -1,25 +1,16 @@
-ecmaFeatures:
-  jsx: true
-env:
-  browser: true
-  es6: true
 extends: 
   - "eslint:recommended"
+env:
+  browser: true
+  node: true
+  es2021: true
 parserOptions:
-  ecmaVersion: 2019
+  ecmaVersion: 2021
   sourceType: module
-globals:
-  $: false
-  jQuery: false
-  require: false
-  Waypoint: false
 rules:
   indent:
     - 1
     - tab
-  linebreak-style:
-    - 1
-    - windows
   quotes: ["error", "double", {avoidEscape: true}]
   semi:
     - 2
