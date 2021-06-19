@@ -41,7 +41,7 @@
 		"build": "webpack --config webpack.production.config.js",
 		"build-storybook": "build-storybook -c .storybook -o .out",
 		"deploy-storybook": "storybook-to-ghpages",
-		"lint": "eslint ./src",
+		"lint": "eslint .",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook",
 		"chromatic": "chromatic",
