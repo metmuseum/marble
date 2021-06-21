@@ -209,7 +209,7 @@ $bp-mini-player-image-size: 120px;
 	}
 }
 
-.audio-player__image-wrapper {
+.audio-player__image-wrapper { // sass-lint:disable-line no-mergeable-selectors
 	.mini-player & {
 		min-width: 0;
 	}
