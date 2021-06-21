@@ -19,6 +19,7 @@ jobs:
           paths:
             - ~/.npm
       - run: npm run lint
+      - run: npm run stylelint
       - persist_to_workspace:
           root: .
           paths:
