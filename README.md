@@ -1,4 +1,4 @@
-[![metmuseum](https://circleci.com/gh/metmuseum/marble.svg?style=svg)](https://app.circleci.com/pipelines/github/metmuseum/marble)
+[![metmuseum](https://circleci.com/gh/metmuseum/marble.svg?style=svg)](https://app.circleci.com/pipelines/github/metmuseum/marble) [![CodeFactor](https://www.codefactor.io/repository/github/metmuseum/marble/badge)](https://www.codefactor.io/repository/github/metmuseum/marble)
 
 # Marble
 
