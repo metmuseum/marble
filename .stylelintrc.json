@@ -2,11 +2,18 @@
   "extends": "stylelint-config-sass-guidelines",
   "plugins": [
     "stylelint-order",
-    "stylelint-selector-bem-pattern"
+    "stylelint-selector-bem-pattern",
+    "stylelint-no-unsupported-browser-features"
   ],
   "rules": {
     "indentation": "tab",
     "order/properties-alphabetical-order": true,
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
     "plugin/selector-bem-pattern": {
       "preset": "bem"
     },

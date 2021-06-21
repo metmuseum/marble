@@ -1,0 +1,4 @@
+# Browsers that we support https://github.com/browserslist/browserslist#full-list
+
+> 0.5% and not dead and last 2 versions and not IE 1-11 and not ie_mob 1-11
+maintained node versions
