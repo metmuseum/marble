@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-order",
+    "stylelint-selector-bem-pattern"
+  ],
+  "rules": {
+    "indentation": "tab",
+    "order/properties-alphabetical-order": true,
+    "plugin/selector-bem-pattern": {
+      "preset": "bem"
+    },
+    "string-quotes": "double"
+  }
+}

@@ -1,10 +1,10 @@
 files:
   include: "**/*.scss"
 options:
-  formatter: stylish
+  formatter: stylish 
   merge-default-rules: false
 rules:
-  bem-depth: 1
+  # bem-depth: 1  working
   border-zero: 0
   brace-style: 1
   class-name-format: 0
@@ -26,7 +26,7 @@ rules:
   id-name-format: 0
   indentation:
     - 1
-    - size: "tab"
+    # - size: "tab" done
   leading-zero:
     - 1
     - include: true
