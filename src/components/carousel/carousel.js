@@ -11,7 +11,7 @@ const flickityDefaults = {
 	imagesLoaded: false,
 	pageDots: false,
 	friction: 0.4,
-	contain: true,
+	contain: true,asdfasdf
 	resize: true,
 	wrapAround: false,
 	arrowShape,
