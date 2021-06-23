@@ -1,24 +1,24 @@
 
 .primary-button {
 	@include primary-button();
+}
 
-	&--small {
-		@include primary-button--small();
-	}
+.primary-button--small {
+	@include primary-button--small();
+}
 
-	&--large {
-		@include primary-button--large();
-	}
+.primary-button--large {
+	@include primary-button--large();
+}
 
-	&--filled {
-		@include primary-button--filled();
-	}
+.primary-button--filled {
+	@include primary-button--filled();
+}
 
-	&--ghost-light {
-		@include primary-button--ghost-light();
-	}
+.primary-button--ghost-light {
+	@include primary-button--ghost-light();
+}
 
-	&--ghost-dark {
-		@include primary-button--ghost-dark();
-	}
+.primary-button--ghost-dark {
+	@include primary-button--ghost-dark();
 }
