@@ -13,10 +13,10 @@ const data = () => ({
 	heading: text("Heading", "Quotes List"),
 	id: "quotes-module",
 	quote: {	
-			quoteText: text("Quote Text", "But web browsers aren’t like web servers. If your back-end code is getting so big that it’s starting to run noticably slowly, you can throw more computing power at it by scaling up your server. That’s not an option on the front-end where you don’t really have one run-time environment—your end users have their own run-time environment with its own constraints around computing power and network connectivity."),
-			citationName: text("Citation Name", "The New York Times"),
-			citationLink: text("Citation Link", "https://www.nytimes.com")
-		}
+		quoteText: text("Quote Text", "But web browsers aren’t like web servers. If your back-end code is getting so big that it’s starting to run noticably slowly, you can throw more computing power at it by scaling up your server. That’s not an option on the front-end where you don’t really have one run-time environment—your end users have their own run-time environment with its own constraints around computing power and network connectivity."),
+		citationName: text("Citation Name", "The New York Times"),
+		citationLink: text("Citation Link", "https://www.nytimes.com")
+	}
 });
 
 const quoteMarkup = (quote) => {
@@ -42,8 +42,8 @@ const markup = (model, numberOfQuotes = 7) => {
 				</div>
 				<div class="quotes-module__quotes">
 					${new Array(number("Number of Quotes", numberOfQuotes))
-						.fill(quoteMarkup(model.quote))
-						.join("\n")}
+		.fill(quoteMarkup(model.quote))
+		.join("\n")}
 				</div>
 				<a
 					href="#${model.id}"

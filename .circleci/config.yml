@@ -12,6 +12,7 @@ jobs:
       - run: node --version
       - run: npm --version
       - run: npm ci
+      - run: npm run lint
       - persist_to_workspace:
           root: .
           paths:

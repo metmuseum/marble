@@ -11,8 +11,8 @@ const sectionHeadingMarkup = ({
 }) => {
 	return html`<div
 		class="section-heading section-heading--text-${textAlignment} ${inSitu
-			? "productive-component"
-			: ""}"
+	? "productive-component"
+	: ""}"
 	>
 		<h2 class="section-heading__heading ${context}">
 			${header}
