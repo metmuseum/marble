@@ -2,12 +2,15 @@ version: 2.1
 executors:
   marble-node:
     docker:
-      - image: "circleci/node@sha256:64300d4fa16456a547e9e747a10e5eb02419a477ac08a592244dc5ca8adbda72"
+      - image: "cimg/python:3.9-node"
 jobs:
   setup_marble:
     executor: marble-node
     steps:
       - checkout
+      - run: python --version
+      - run: node --version
+      - run: npm --version
       - run: npm ci
       - run: npm run lint
       - persist_to_workspace:
