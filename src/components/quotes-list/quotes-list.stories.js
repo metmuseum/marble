@@ -42,13 +42,8 @@ const markup = (model, numberOfQuotes = 7) => {
 				</div>
 				<div class="quotes-module__quotes">
 					${new Array(number("Number of Quotes", numberOfQuotes))
-<<<<<<< HEAD
 		.fill(quoteMarkup(model.quote))
 		.join("\n")}
-=======
-						.fill(quoteMarkup(model.quote))
-						.join("\n")}
->>>>>>> 9e9d6e80decb4c90d687161b562df8881c4064e5
 				</div>
 				<a
 					href="#${model.id}"
