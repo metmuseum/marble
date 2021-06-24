@@ -10,7 +10,7 @@ import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner.js";
 import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls.js";
 import carousel from "./components/carousel/carousel.js";
 import videoSlide from "./components/carousel/slide/video-slide.js";
-import quotesModule from "./components/quotes-module/quotes-module.js";
+import quotesModule from "./components/quotes-list/quotes-list.js";
 
 
 const marble = {
