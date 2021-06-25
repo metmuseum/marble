@@ -37,7 +37,7 @@ const bannerMarkup = (model) => {
 						alt="${model.imageAlt}"
 					/>
 
-					${model.video === true ? vimeoTemplate : ``}
+					${model.video === true ? vimeoTemplate : ""}
 				</a>
 			</div>
 			<div

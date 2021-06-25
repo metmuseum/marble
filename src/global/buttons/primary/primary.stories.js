@@ -44,7 +44,7 @@ permutations.elementTags.forEach((elementTag) => {
 				};
 
 				StoriesToExport[storyName].story = {
-					title: `Elements/Buttons/Primary/Hello`,
+					title: "Elements/Buttons/Primary",
 					name: [elementTag, styleMode, sizeMode, state].join(" "),
 				};
 			});
@@ -91,8 +91,8 @@ const buttonStoryTemplate = (options) => {
 		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
 
 		${finalOptions.elementTag === "Anchor"
-			? anchorTagTemplate(finalOptions)
-			: finalOptions.elementTag === "Button"
+		? anchorTagTemplate(finalOptions)
+		: finalOptions.elementTag === "Button"
 			? buttonTagTemplate(finalOptions)
 			: "Error: no element tag selected"}
 
@@ -154,10 +154,10 @@ export const {
 	ButtonFilledLargeHover,
 
 	// ghost light
-	ButtonGhostLightXSmallActive,
-	ButtonGhostLightXSmallInactive,
-	ButtonGhostLightXSmallFocus,
-	ButtonGhostLightXSmallHover,
+	ButtonGhostLightXsmallActive,
+	ButtonGhostLightXsmallInactive,
+	ButtonGhostLightXsmallFocus,
+	ButtonGhostLightXsmallHover,
 
 	ButtonGhostLightSmallActive,
 	ButtonGhostLightSmallInactive,
@@ -170,10 +170,10 @@ export const {
 	ButtonGhostLightLargeHover,
 
 	// ghost dark
-	ButtonGhostDarkXSmallActive,
-	ButtonGhostDarkXSmallInactive,
-	ButtonGhostDarkXSmallFocus,
-	ButtonGhostDarkXSmallHover,
+	ButtonGhostDarkXsmallActive,
+	ButtonGhostDarkXsmallInactive,
+	ButtonGhostDarkXsmallFocus,
+	ButtonGhostDarkXsmallHover,
 
 	ButtonGhostDarkSmallActive,
 	ButtonGhostDarkSmallInactive,
@@ -187,10 +187,10 @@ export const {
 
 	//// anchors
 	// filled
-	AnchorFilledXSmallActive,
-	AnchorFilledXSmallInactive,
-	AnchorFilledXSmallFocus,
-	AnchorFilledXSmallHover,
+	AnchorFilledXsmallActive,
+	AnchorFilledXsmallInactive,
+	AnchorFilledXsmallFocus,
+	AnchorFilledXsmallHover,
 
 	AnchorFilledSmallActive,
 	AnchorFilledSmallInactive,
@@ -203,10 +203,10 @@ export const {
 	AnchorFilledLargeHover,
 
 	// ghost light
-	AnchorGhostLightXSmallActive,
-	AnchorGhostLightXSmallInactive,
-	AnchorGhostLightXSmallFocus,
-	AnchorGhostLightXSmallHover,
+	AnchorGhostLightXsmallActive,
+	AnchorGhostLightXsmallInactive,
+	AnchorGhostLightXsmallFocus,
+	AnchorGhostLightXsmallHover,
 
 	AnchorGhostLightSmallActive,
 	AnchorGhostLightSmallInactive,
@@ -219,10 +219,10 @@ export const {
 	AnchorGhostLightLargeHover,
 
 	// ghost dark
-	AnchorGhostDarkXSmallActive,
-	AnchorGhostDarkXSmallInactive,
-	AnchorGhostDarkXSmallFocus,
-	AnchorGhostDarkXSmallHover,
+	AnchorGhostDarkXsmallActive,
+	AnchorGhostDarkXsmallInactive,
+	AnchorGhostDarkXsmallFocus,
+	AnchorGhostDarkXsmallHover,
 
 	AnchorGhostDarkSmallActive,
 	AnchorGhostDarkSmallInactive,

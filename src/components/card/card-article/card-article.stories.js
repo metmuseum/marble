@@ -12,7 +12,7 @@ export default {
 };
 
 const ArticleCard = () => {
-	let link, alt, srcset, sizes, topic, title, description, byline;
+	let link, alt, srcset, sizes, topic, title, description;
 
 	link = "/";
 	srcset = html`${image768} 768w, ${image960} 960w, ${image1440} 1440w`;

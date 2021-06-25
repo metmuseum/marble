@@ -28,8 +28,8 @@ const Set = () => {
 					Select optional categories to filter results
 				</legend>
 				${names
-					.map((filterName) => markup(options({ label: filterName })))
-					.join("")}
+		.map((filterName) => markup(options({ label: filterName })))
+		.join("")}
 			</fieldset>
 		</div>
 	`;
@@ -46,8 +46,8 @@ const WithTrigger = () => {
 					Select optional categories to filter results
 				</legend>
 				${names
-					.map((filterName) => markup(options({ label: filterName })))
-					.join("")}
+		.map((filterName) => markup(options({ label: filterName })))
+		.join("")}
 			</fieldset>
 		</div>
 	`;

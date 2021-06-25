@@ -1,5 +1,5 @@
 import html from "../../../../.storybook/helpers/html";
-import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
 import image600 from "../../../../.storybook/assets/images/misc/150Hub_SimpleCard2_600w.jpg";
 import image1200 from "../../../../.storybook/assets/images/misc/150Hub_SimpleCard2_1200w.jpg";
@@ -21,8 +21,8 @@ const cardMarkup = (model) => {
 	return html`
 		<section
 			class="js-scroll-effect component js-waypoint simple-card__wrapper productive-component  ${model.leftText
-				? "left-text"
-				: ""}"
+		? "left-text"
+		: ""}"
 		>
 			<div class="simple-card">
 				<div class="simple-card__item-wrapper">
