@@ -18,6 +18,10 @@ $bp-two-column: $bp-900;
 $bp-banner: $bp-1200;
 $bp-extra-large: $bp-1440;
 
+// Aspect Ratios
+$portrait-landscape-boundary: 5/6;
+$query-aspect-landscape: "min-aspect-ratio: #{$portrait-landscape-boundary}";
+
 //padding and margins
 //This is used super sparingly and won't be a part of most designs.
 $spacing-micro: calc(8px + 0.25vw);

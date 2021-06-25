@@ -72,7 +72,7 @@
 	flex-grow: 0;
 	position: relative;
 
-	@media (orientation: landscape) {
+	@media ($query-aspect-landscape) {
 		max-height: $height-max;
 	}
 }

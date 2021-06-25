@@ -8,7 +8,7 @@
 	text-align: center;
 	width: 100%;
 
-	@media (orientation: landscape) {
+	@media ($query-aspect-landscape) {
 		flex-direction: row-reverse;
 		text-align: left;
 	}
@@ -32,7 +32,7 @@
 	min-height: 100vw;
 	overflow: hidden;
 	position: relative;
-	@media (orientation: landscape) {
+	@media ($query-aspect-landscape) {
 		min-height: 0;
 	}
 }
@@ -70,9 +70,10 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
+	min-height: 50vw;
 	padding: $spacing-m $spacing-component-margin;
-	@media (orientation: portrait) {
-		min-height: 50vw;
+	@media ($query-aspect-landscape) {
+		min-height: unset;
 	}
 }
 

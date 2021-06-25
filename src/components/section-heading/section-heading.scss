@@ -12,16 +12,13 @@
 	line-height: (24/18);
 	margin-bottom: $spacing-s;
 	margin-top: $spacing-m;
+	max-width: 85vw;
 
 	&.productive-component {
 		@include productive-component;
 	}
 
-	@media (orientation: portrait) {
-		max-width: 85vw;
-	}
-
-	@media (orientation: landscape) {
+	@media ($query-aspect-landscape) {
 		* {
 			max-width: 60vw;
 		}

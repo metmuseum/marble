@@ -3,7 +3,7 @@ $editorial-banner-min-height: 88vw;
 //So we're using this number to sort of force a minimum aspect ratio for the content to match.
 
 .marble-banner.marble-banner--editorial {
-	@media (orientation: landscape) {
+	@media ($query-aspect-landscape) {
 		min-height: 56.25vw; //Force a 16x9 layout
 	}
 }
@@ -20,7 +20,7 @@ $editorial-banner-min-height: 88vw;
 	.marble-banner--editorial & {
 		border-style: solid;
 		border-width: $spacing-l 16vw;
-		@media (orientation: landscape) {
+		@media ($query-aspect-landscape) {
 			border-width: 8vw 10vw;
 		}
 	}
@@ -31,7 +31,7 @@ $editorial-banner-min-height: 88vw;
 		height: 0;
 		padding-bottom: $editorial-banner-min-height;
 		position: relative;
-		@media (orientation: landscape) {
+		@media ($query-aspect-landscape) {
 			height: auto;
 			padding-bottom: 0;
 		}
