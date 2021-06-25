@@ -136,6 +136,8 @@ const buttonTagTemplate = (options) => {
 
 // javascript why u no have metaprogramming for this 😭
 export const {
+	//// buttons
+	// filled
 	ButtonFilledXsmallActive,
 	ButtonFilledXsmallInactive,
 	ButtonFilledXsmallFocus,
@@ -146,55 +148,86 @@ export const {
 	ButtonFilledSmallFocus,
 	ButtonFilledSmallHover,
 
-	ButtonGhostLightSmallActive,
-	ButtonGhostLightSmallInactive,
-	ButtonGhostLightSmallFocus,
-	ButtonGhostLightSmallHover,
-
-	ButtonGhostDarkSmallActive,
-	ButtonGhostDarkSmallInactive,
-	ButtonGhostDarkSmallFocus,
-	ButtonGhostDarkSmallHover,
-
 	ButtonFilledLargeActive,
 	ButtonFilledLargeInactive,
 	ButtonFilledLargeFocus,
 	ButtonFilledLargeHover,
+
+	// ghost light
+	ButtonGhostLightXSmallActive,
+	ButtonGhostLightXSmallInactive,
+	ButtonGhostLightXSmallFocus,
+	ButtonGhostLightXSmallHover,
+
+	ButtonGhostLightSmallActive,
+	ButtonGhostLightSmallInactive,
+	ButtonGhostLightSmallFocus,
+	ButtonGhostLightSmallHover,
 
 	ButtonGhostLightLargeActive,
 	ButtonGhostLightLargeInactive,
 	ButtonGhostLightLargeFocus,
 	ButtonGhostLightLargeHover,
 
+	// ghost dark
+	ButtonGhostDarkXSmallActive,
+	ButtonGhostDarkXSmallInactive,
+	ButtonGhostDarkXSmallFocus,
+	ButtonGhostDarkXSmallHover,
+
+	ButtonGhostDarkSmallActive,
+	ButtonGhostDarkSmallInactive,
+	ButtonGhostDarkSmallFocus,
+	ButtonGhostDarkSmallHover,
+
 	ButtonGhostDarkLargeActive,
 	ButtonGhostDarkLargeInactive,
 	ButtonGhostDarkLargeFocus,
 	ButtonGhostDarkLargeHover,
+
+	//// anchors
+	// filled
+	AnchorFilledXSmallActive,
+	AnchorFilledXSmallInactive,
+	AnchorFilledXSmallFocus,
+	AnchorFilledXSmallHover,
 
 	AnchorFilledSmallActive,
 	AnchorFilledSmallInactive,
 	AnchorFilledSmallFocus,
 	AnchorFilledSmallHover,
 
-	AnchorGhostLightSmallActive,
-	AnchorGhostLightSmallInactive,
-	AnchorGhostLightSmallFocus,
-	AnchorGhostLightSmallHover,
-
-	AnchorGhostDarkSmallActive,
-	AnchorGhostDarkSmallInactive,
-	AnchorGhostDarkSmallFocus,
-	AnchorGhostDarkSmallHover,
-
 	AnchorFilledLargeActive,
 	AnchorFilledLargeInactive,
 	AnchorFilledLargeFocus,
 	AnchorFilledLargeHover,
 
+	// ghost light
+	AnchorGhostLightXSmallActive,
+	AnchorGhostLightXSmallInactive,
+	AnchorGhostLightXSmallFocus,
+	AnchorGhostLightXSmallHover,
+
+	AnchorGhostLightSmallActive,
+	AnchorGhostLightSmallInactive,
+	AnchorGhostLightSmallFocus,
+	AnchorGhostLightSmallHover,
+
 	AnchorGhostLightLargeActive,
 	AnchorGhostLightLargeInactive,
 	AnchorGhostLightLargeFocus,
 	AnchorGhostLightLargeHover,
+
+	// ghost dark
+	AnchorGhostDarkXSmallActive,
+	AnchorGhostDarkXSmallInactive,
+	AnchorGhostDarkXSmallFocus,
+	AnchorGhostDarkXSmallHover,
+
+	AnchorGhostDarkSmallActive,
+	AnchorGhostDarkSmallInactive,
+	AnchorGhostDarkSmallFocus,
+	AnchorGhostDarkSmallHover,
 
 	AnchorGhostDarkLargeActive,
 	AnchorGhostDarkLargeInactive,
