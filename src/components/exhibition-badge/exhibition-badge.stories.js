@@ -16,7 +16,7 @@ const exhibitionBadgeMarkUp = () => {
 			<span class='exhibition-badge__text'>
 				${closingSoon ? "Closing soon" : "Just opened"}
 			</span>
-		</div>`
+		</div>`;
 };
 
 const ExhibitionBadge = () => exhibitionBadgeMarkUp();
