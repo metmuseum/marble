@@ -1,6 +1,8 @@
 import html from "../../../.storybook/helpers/html";
 import { withKnobs, text} from "@storybook/addon-knobs";
 
+import { passIcon, dateIcon, locationIcon } from './helper-icons.js';
+
 import image712 from "../../../.storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
 import image1231 from "../../../.storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
 
@@ -37,7 +39,7 @@ const planCardMarkUp = (model) => {
 				<div class="plan-card__details">
 
 					<div class="plan-card__row">
-						<div class="plan-card__row-icon"></div>
+						<div class="plan-card__row-icon">${dateIcon()}</div>
 						<div class="plan-card__row-info">
 							<div class="plan-card__row-header">Dates</div>
 							<div class="plan-card__row-text">${model.dates}</div>
@@ -45,7 +47,7 @@ const planCardMarkUp = (model) => {
 					</div>
 
 					<div class="plan-card__row">
-						<div class="plan-card__row-icon"></div>
+						<div class="plan-card__row-icon">${locationIcon()}</div>
 						<div class="plan-card__row-info">
 							<div class="plan-card__row-header">${model.location}</div>
 							<div class="plan-card__row-text">${model.gallery}</div>
@@ -53,7 +55,7 @@ const planCardMarkUp = (model) => {
 					</div>
 
 						<div class="plan-card__row">
-							<div class="plan-card__row-icon"></div>
+							<div class="plan-card__row-icon">${passIcon()}</div>
 							<div class="plan-card__row-info">
 								<div class="plan-card__row-header">${model.price}</div>
 								<div class="plan-card__row-text">${model.otherInfo}</div>

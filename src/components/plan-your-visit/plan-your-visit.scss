@@ -38,7 +38,11 @@
 	background-color: $color-white;
 	border-radius: 16px;
 	box-shadow: $shadow-passive;
-	padding: $spacing-s;
+	padding: $spacing-xs;
+
+	@media (orientation: landscape) {
+		padding: $spacing-s;
+	}
 }
 
 .plan-card__row {
@@ -48,15 +52,16 @@
 }
 
 .plan-card__row-icon {
-	background-color: $color-grey-800;
-	display: inline-block;
-	height: $spacing-s;
+	display: inline-flex;
+	height: $spacing-xs;
+	justify-content: center;
 	margin-right: $spacing-micro;
-	width: $spacing-s;
-}
+	width: $spacing-xs;
 
-.plan-card__row-info {
-
+	svg {
+		max-height: 100%;
+		max-width: 100%;
+	}
 }
 
 .plan-card__row-header {
