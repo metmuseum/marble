@@ -1,6 +1,10 @@
 import html from "../../../.storybook/helpers/html";
 import { withKnobs, text} from "@storybook/addon-knobs";
 
+import image712 from "../../../.storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
+import image1231 from "../../../.storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
+
+
 export default {
 	title: "Exhibition/Plan Your Visit",
 	decorators: [withKnobs],
@@ -12,14 +16,20 @@ const data = {
 	location: text("Location", "The Met Fifth Ave"),
 	gallery: text("Gallery", "Gallery 199"),
 	price: text("Price", "Included with admission"),
-	otherInfo: text("Other Info", "Timed Entry")
+	otherInfo: text("Other Info", "Timed Entry"),
+	backgroundImages: `${image1231} 2x, ${image712} 1x`,
 };
 
 
 const planCardMarkUp = (model) => {
 	return html`<section class="plan-card">
 
-			<div class="plan-card__image">
+			<div class="plan-card__image-container">
+			<img
+				class="plan-card__image"
+				srcset="${model.backgroundImages}"
+				alt="ALT"
+			/>
 			</div>
 
 			<div class="plan-card__info">
@@ -52,7 +62,7 @@ const planCardMarkUp = (model) => {
 
 						<div class="plan-card__cta-wrapper">
 							<a href="#"
-								class="button primary-button primary-button--small primary-button--filled">
+								class="button primary-button primary-button--x-small primary-button--filled plan-card__main-cta">
 								Plan your visit
 							</a>
 							<a class="button tertiary-button">

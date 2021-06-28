@@ -1,22 +1,40 @@
 .plan-card {
 	background: $color-grey-050;
-	display: grid;
-	grid-gap: $spacing-m;
-	grid-template-columns: 1;
-	grid-template-rows: repeat(2, 1fr);
-	padding: $spacing-component-margin $spacing-m;
+	display: flex;
+	flex-direction: column;
+	padding: $spacing-m $spacing-component-margin;
 
-	@media (min-aspect-ratio: 5/6) {
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 1;
+	@media (orientation: landscape) {
+		flex-direction: row-reverse;
 	}
 }
 
+.plan-card__image-container {
+	flex: 1;
+	min-height: 33.3vh;
+	position: relative;
+}
+
 .plan-card__image {
-	background: $color-grey-800;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	width: 100%;
 }
 
 .plan-card__info {
+	flex: 1;
+	margin-top: $spacing-m;
+	@media (orientation: landscape) {
+		margin-right: $spacing-m;
+	}
+}
+
+.plan-card__header {
+	margin-bottom: $spacing-xs;
+}
+
+.plan-card__details {
 	background-color: $color-white;
 	border-radius: 16px;
 	box-shadow: $shadow-passive;
@@ -25,15 +43,15 @@
 
 .plan-card__row {
 	display: flex;
-	margin-bottom: $spacing-micro;
+	margin-bottom: $spacing-xxs;
 	width: 100%;
 }
 
 .plan-card__row-icon {
 	background-color: $color-grey-800;
 	display: inline-block;
+	height: $spacing-s;
 	margin-right: $spacing-micro;
-	min-height: $spacing-s;
 	width: $spacing-s;
 }
 
@@ -46,7 +64,12 @@
 	line-height: 1;
 }
 
-.plan-card__cta-wrapper {
-	display: flex;
-	justify-content: space-between;
+.button {
+	.plan-card__cta-wrapper & {
+		font-size: $textsize-xs;
+	}
+}
+
+.plan-card__main-cta {
+	margin-right: $spacing-xxs;
 }
