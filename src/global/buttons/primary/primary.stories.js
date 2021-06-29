@@ -15,7 +15,7 @@ const permutations = {
 	elementTags: ["Button", "Anchor"],
 	modes: {
 		style: ["Filled", "Ghost-Light", "Ghost-Dark"],
-		size: ["Small", "Large"],
+		size: ["X-small", "Small", "Large"],
 	},
 	states: ["Active", "Inactive", "Focus", "Hover"],
 };
@@ -30,7 +30,7 @@ permutations.elementTags.forEach((elementTag) => {
 				let storyName = [
 					elementTag,
 					styleMode.replace("-", ""),
-					sizeMode,
+					sizeMode.replace("-", ""),
 					state,
 				].join("");
 
@@ -44,6 +44,7 @@ permutations.elementTags.forEach((elementTag) => {
 				};
 
 				StoriesToExport[storyName].story = {
+					title: "Elements/Buttons/Primary",
 					name: [elementTag, styleMode, sizeMode, state].join(" "),
 				};
 			});
@@ -135,60 +136,98 @@ const buttonTagTemplate = (options) => {
 
 // javascript why u no have metaprogramming for this 😭
 export const {
+	//// buttons
+	// filled
+	ButtonFilledXsmallActive,
+	ButtonFilledXsmallInactive,
+	ButtonFilledXsmallFocus,
+	ButtonFilledXsmallHover,
+
 	ButtonFilledSmallActive,
 	ButtonFilledSmallInactive,
 	ButtonFilledSmallFocus,
 	ButtonFilledSmallHover,
-
-	ButtonGhostLightSmallActive,
-	ButtonGhostLightSmallInactive,
-	ButtonGhostLightSmallFocus,
-	ButtonGhostLightSmallHover,
-
-	ButtonGhostDarkSmallActive,
-	ButtonGhostDarkSmallInactive,
-	ButtonGhostDarkSmallFocus,
-	ButtonGhostDarkSmallHover,
 
 	ButtonFilledLargeActive,
 	ButtonFilledLargeInactive,
 	ButtonFilledLargeFocus,
 	ButtonFilledLargeHover,
 
+	// ghost light
+	ButtonGhostLightXsmallActive,
+	ButtonGhostLightXsmallInactive,
+	ButtonGhostLightXsmallFocus,
+	ButtonGhostLightXsmallHover,
+
+	ButtonGhostLightSmallActive,
+	ButtonGhostLightSmallInactive,
+	ButtonGhostLightSmallFocus,
+	ButtonGhostLightSmallHover,
+
 	ButtonGhostLightLargeActive,
 	ButtonGhostLightLargeInactive,
 	ButtonGhostLightLargeFocus,
 	ButtonGhostLightLargeHover,
+
+	// ghost dark
+	ButtonGhostDarkXsmallActive,
+	ButtonGhostDarkXsmallInactive,
+	ButtonGhostDarkXsmallFocus,
+	ButtonGhostDarkXsmallHover,
+
+	ButtonGhostDarkSmallActive,
+	ButtonGhostDarkSmallInactive,
+	ButtonGhostDarkSmallFocus,
+	ButtonGhostDarkSmallHover,
 
 	ButtonGhostDarkLargeActive,
 	ButtonGhostDarkLargeInactive,
 	ButtonGhostDarkLargeFocus,
 	ButtonGhostDarkLargeHover,
 
+	//// anchors
+	// filled
+	AnchorFilledXsmallActive,
+	AnchorFilledXsmallInactive,
+	AnchorFilledXsmallFocus,
+	AnchorFilledXsmallHover,
+
 	AnchorFilledSmallActive,
 	AnchorFilledSmallInactive,
 	AnchorFilledSmallFocus,
 	AnchorFilledSmallHover,
-
-	AnchorGhostLightSmallActive,
-	AnchorGhostLightSmallInactive,
-	AnchorGhostLightSmallFocus,
-	AnchorGhostLightSmallHover,
-
-	AnchorGhostDarkSmallActive,
-	AnchorGhostDarkSmallInactive,
-	AnchorGhostDarkSmallFocus,
-	AnchorGhostDarkSmallHover,
 
 	AnchorFilledLargeActive,
 	AnchorFilledLargeInactive,
 	AnchorFilledLargeFocus,
 	AnchorFilledLargeHover,
 
+	// ghost light
+	AnchorGhostLightXsmallActive,
+	AnchorGhostLightXsmallInactive,
+	AnchorGhostLightXsmallFocus,
+	AnchorGhostLightXsmallHover,
+
+	AnchorGhostLightSmallActive,
+	AnchorGhostLightSmallInactive,
+	AnchorGhostLightSmallFocus,
+	AnchorGhostLightSmallHover,
+
 	AnchorGhostLightLargeActive,
 	AnchorGhostLightLargeInactive,
 	AnchorGhostLightLargeFocus,
 	AnchorGhostLightLargeHover,
+
+	// ghost dark
+	AnchorGhostDarkXsmallActive,
+	AnchorGhostDarkXsmallInactive,
+	AnchorGhostDarkXsmallFocus,
+	AnchorGhostDarkXsmallHover,
+
+	AnchorGhostDarkSmallActive,
+	AnchorGhostDarkSmallInactive,
+	AnchorGhostDarkSmallFocus,
+	AnchorGhostDarkSmallHover,
 
 	AnchorGhostDarkLargeActive,
 	AnchorGhostDarkLargeInactive,
