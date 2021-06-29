@@ -8,14 +8,30 @@ import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCar
 
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
 
-const audioPlayerMarkUp = (model) => {
+const data = () => {
+ return {
+		darkMode: boolean("Dark Mode", false),
+		track: {
+			hasImage: boolean ("Has Image", true),
+			audioFileURL:
+				text("Audio File URL", "https://cdn.bitdegree.org/learn/I_Cactus_-_05_-_ruby_cactus.mp3?raw=true"),
+			coverImage: greekHall1x1,
+			subtitle: text("Subtitle", "Praise Songs about Javascript"),
+			title: text("Title", "Track 1. Title"),
+			transcript: text(
+				"Transcript",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."
+			),
+		}
+	};
+};
+
+const audioPlayerMarkUp = (model, playerMode = "") => {
 	const isDark = model.darkMode ? "inverted-colors" : "";
-	const isMini = model.miniPlayer ? "mini-player" : "";
-	const playerModes = `${isDark} ${isMini}`;
 
 	return html`
 		<div style="padding: 40px; background-color: #eee">
-			<section class="audio-player js-marble-audio-player ${playerModes}">
+			<section class="audio-player js-marble-audio-player ${playerMode} ${isDark}">
 				<div class="audio-player__media-section">
 					<div class="audio-player__image-section">
 						${model.track.hasImage ? html
@@ -46,7 +62,7 @@ const audioPlayerMarkUp = (model) => {
 									</button>
 								</div>
 								<div class="audio-controls__time-controls js-audio-player__scrubbable-area">
-									<div class="js-audio-player__scrubbing-start-area">
+									<div class="js-audio-player__scrubbing-start-area audio-controls__scrubber-wrapper">
 										<canvas
 											width="10000"
 											height="6"
@@ -118,25 +134,26 @@ const audioPlayerMarkUp = (model) => {
 	`;
 };
 
-export const AudioPlayer = () => {
-
-	const data = {
-		darkMode: boolean("Dark Mode", false),
-		miniPlayer: boolean("Mini Player", false),
-		track: {
-			hasImage: boolean ("Has Image", true),
-			audioFileURL:
-				text("Audio File URL", "https://cdn.bitdegree.org/learn/I_Cactus_-_05_-_ruby_cactus.mp3?raw=true"),
-			coverImage: greekHall1x1,
-			subtitle: text("Subtitle", "Praise Songs about Javascript"),
-			title: text("Title", "Track 1. Title"),
-			transcript: text(
-				"Transcript",
-				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."
-			),
-		},
-	};
-
+const FullPlayer = () => {
+	const model = data();
 	useEffect(initializeAudioPlayers);
-	return audioPlayerMarkUp(data);
+	return audioPlayerMarkUp(model);
 };
+
+const MiniPlayer = () => {
+	const model = data();
+	useEffect(initializeAudioPlayers);
+	return audioPlayerMarkUp(model, "mini-player");
+};
+
+const MicroPlayer = () => {
+	const model = data();
+	useEffect(initializeAudioPlayers);
+	return audioPlayerMarkUp(model, "micro-player");
+};
+
+export {
+	FullPlayer,
+	MiniPlayer,
+	MicroPlayer
+}

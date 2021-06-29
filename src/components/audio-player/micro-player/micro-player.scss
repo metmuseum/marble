@@ -1,0 +1,97 @@
+$micro-player-height: 80px;
+
+.audio-player__media-section {
+	.micro-player & {
+		flex-direction: row;
+		padding: 0;
+	}
+}
+
+.audio-player__body {
+	.micro-player & {
+		justify-content: center;
+		min-height: $micro-player-height;
+		padding: $spacing-micro;
+	}
+}
+
+.audio-player__title,
+.audio-player__sub-title {
+	.micro-player & {
+		font-size: $textsize-xs;
+		margin-bottom: 0;
+	}
+}
+
+.audio-player__image-section {
+	.micro-player & {
+		flex-basis: $micro-player-height;
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin: 0;
+	}
+}
+
+.audio-player__image-wrapper {
+	.micro-player & {
+		display: none;
+	}
+}
+
+.audio-player__transcript-toggle {
+	.micro-player & {
+		padding: $spacing-micro;
+	}
+}
+
+.audio-controls__seek-back,
+.audio-controls__seek-forward {
+	.micro-player & {
+		display: none;
+	}
+}
+
+.audio-controls__play-wrapper {
+	.micro-player & {
+		align-items: center;
+		display: flex;
+		font-size: $textsize-xl;
+		height: $micro-player-height;
+		justify-content: center;
+		left: 0;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: $micro-player-height;
+	}
+}
+
+.audio-controls__time-controls {
+	.micro-player & {
+		display: none;
+		position: relative;
+		width: 100%;
+	}
+
+	.is-playing.micro-player & {
+		display: block;
+	}
+}
+
+.audio-player__controls-wrapper {
+	.micro-player & {
+		margin: 0;
+	}
+}
+
+// This is a little sketchy, but without changing the HTML this is the clearest way I could see to get the elapsed/remaining
+// time on the same line as the scrubber. I want to avoid having specific HTML for any given mode so we can easily transform
+// the full or mini player into the micro (like if we want to pin it to the top of the page or something)
+
+.audio-controls__scrubber-wrapper {
+	.micro-player & {
+		left: $spacing-m;
+		position: absolute;
+		right: $spacing-m;
+	}
+}

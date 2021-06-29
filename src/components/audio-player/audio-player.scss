@@ -1,6 +1,8 @@
 $bp-audio-player: 600px;
-$bp-mini-player-image-size: 120px;
+
 @import "./audio-controls";
+@import "./mini-player/mini-player.scss";
+@import "./micro-player/micro-player.scss";
 
 .audio-player {
 	background-color: $color-white;
@@ -161,62 +163,5 @@ $bp-mini-player-image-size: 120px;
 .audio-player__progress-bar { // sass-lint:disable-line no-mergeable-selectors
 	.inverted-colors & {
 		background-color: $color-grey-700;
-	}
-}
-
-//Mini player
-.audio-player__media-section { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		flex-direction: row;
-		padding: 0;
-	}
-}
-
-.audio-player__headings {
-	.mini-player & {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-}
-
-.audio-player__body { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		padding: $spacing-micro;
-	}
-}
-
-.audio-player__title { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		display: inline;
-		font-size: $textsize-xs;
-	}
-}
-
-.audio-player__sub-title { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		display: inline;
-		font-size: $textsize-xs;
-	}
-}
-
-.audio-player__image-section { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		flex-basis: $bp-mini-player-image-size;
-		flex-grow: 0;
-		flex-shrink: 0;
-		margin: 0;
-	}
-}
-
-.audio-player__image-wrapper { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		min-width: 0;
-	}
-}
-
-.audio-player__transcript-toggle { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		padding: $spacing-micro;
 	}
 }

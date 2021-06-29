@@ -10,15 +10,16 @@
 	flex-basis: $spacing-s;
 	flex-shrink: 0;
 	font-size: $textsize-l;
+	height: 1em;
 	text-align: left;
 	@media screen and (min-width: $bp-audio-player) {
-		align-self: center;
 	}
 }
 
 .audio-controls__play {
 	@include button-reset();
 	font-size: 1em;
+	height: 1em;
 	transition: opacity 0.2s;
 	white-space: nowrap;
 
@@ -99,33 +100,5 @@
 	svg {
 		height: 100%;
 		width: 100%;
-	}
-}
-
-//MODES
-
-//Mini-player.
-
-.audio-controls__seek-back, // sass-lint:disable-line no-mergeable-selectors
-.audio-controls__seek-forward {
-	.mini-player & {
-		display: none;
-	}
-}
-
-.audio-controls__play-wrapper { // sass-lint:disable-line no-mergeable-selectors
-	.mini-player & {
-		align-items: center;
-		color: $color-white;
-		display: flex;
-		fill: $color-white;
-		font-size: $textsize-xl;
-		height: $bp-mini-player-image-size;
-		justify-content: center;
-		left: 0;
-		position: absolute;
-		text-align: center;
-		top: 0;
-		width: $bp-mini-player-image-size;
 	}
 }
