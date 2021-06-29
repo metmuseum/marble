@@ -54,14 +54,14 @@ const ContentCardTemplate = (cardMode = "", index = "") => {
 			</div>
 			<h3 class="content-card__heading">
 				${boolean(`${index} Heading Is A Link?`, true)
-					? HeadingWithLink(index)
-					: Heading(index)}
+		? HeadingWithLink(index)
+		: Heading(index)}
 			</h3>
 			<p>
 				${text(
-					`${index} Description`,
-					"This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today."
-				)}
+		`${index} Description`,
+		"This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions. Order yours today."
+	)}
 			</p>
 		</div>
 	</div>`;

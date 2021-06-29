@@ -8,7 +8,7 @@ export default (checked) => {
 				type="checkbox"
 				class="filter__control"
 				id="Events-modal-trigger"
-				${!!checked ? "checked" : ""}
+				${checked ? "checked" : ""}
 				aria-label="Open advanced search controls"
 			/>
 			<label for="Events-modal-trigger" class="filter__label">

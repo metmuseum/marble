@@ -90,11 +90,11 @@ const allMarkup = () => {
 		<h5>${text("Text", pangram)}</h5>
 		<h6>${text("Text", pangram)}</h6>
 	`;
-}
+};
 
 const All = () => {
-	return scalingRuleWrapper(allMarkup)
-}
+	return scalingRuleWrapper(allMarkup);
+};
 
 H6.story = { name: "H6" };
 

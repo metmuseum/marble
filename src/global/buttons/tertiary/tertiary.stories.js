@@ -43,8 +43,8 @@ const buttonStoryTemplate = (options) => {
 		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
 
 		${finalOptions.elementTag === "Anchor"
-			? anchorTagTemplate(finalOptions)
-			: finalOptions.elementTag === "Button"
+		? anchorTagTemplate(finalOptions)
+		: finalOptions.elementTag === "Button"
 			? buttonTagTemplate(finalOptions)
 			: "Error: no element tag selected"}
 
