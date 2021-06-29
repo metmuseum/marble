@@ -12,14 +12,16 @@ export default {
 	decorators: [withKnobs],
 };
 
-const data = {
-	header: text("Header", "Plan Your Visit"),
-	dates: text("Dates", "January 30 - August 23, 2020"),
-	location: text("Location", "The Met Fifth Ave"),
-	gallery: text("Gallery", "Gallery 199"),
-	price: text("Price", "Included with admission"),
-	otherInfo: text("Other Info", "Timed Entry"),
-	backgroundImages: `${image1231} 2x, ${image712} 1x`,
+const data = () => {
+	return {
+		header: text("Header", "Plan Your Visit"),
+		dates: text("Dates", "January 30 - August 23, 2020"),
+		location: text("Location", "The Met Fifth Ave"),
+		gallery: text("Gallery", "Gallery 199"),
+		price: text("Price", "Included with admission"),
+		otherInfo: text("Other Info", "Timed Entry"),
+		backgroundImages: `${image1231} 2x, ${image712} 1x`
+	};
 };
 
 
@@ -78,5 +80,6 @@ const planCardMarkUp = (model) => {
 };
 
 export const PlanCard = () => {
-	return planCardMarkUp(data);
+	const model = data();
+	return planCardMarkUp(model);
 };
