@@ -76,7 +76,7 @@
 	@include key-image-wrapper;
 	flex-grow: 0;
 
-	@media ($query-aspect-landscape) {
+	@media (orientation: landscape) {
 		max-height: $height-max;
 	}
 }

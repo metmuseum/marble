@@ -20,7 +20,7 @@
 .featured-card__content {
 	color: $color-white;
 	padding: $spacing-component-margin;
-	@media ($query-aspect-landscape) {
+	@media (orientation: landscape) {
 		max-width: 66%;
 	}
 }

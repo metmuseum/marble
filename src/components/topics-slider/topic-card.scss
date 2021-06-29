@@ -44,7 +44,7 @@ $topic-side-height: 120px;
 	flex-grow: 0;
 	margin-bottom: $spacing-xxs;
 
-	@media ($query-aspect-landscape) {
+	@media (orientation: landscape) {
 		max-height: $height-max;
 	}
 }

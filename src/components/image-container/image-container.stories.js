@@ -15,7 +15,7 @@ export default {
 const width = 3920;
 const height = 2621;
 
-export const fullWidth = (additionalImageClasses="") =>
+export const fullWidth = () =>
 	// Example of srcsets using arbitrary 1.5 multiples of 960px
 	// Goes to just above 5k (5120px, @ 1x density).
 	// Don't forget alt attribute.
@@ -24,7 +24,7 @@ export const fullWidth = (additionalImageClasses="") =>
 	html`
 		<div class="image-container image-container--full-width">
 			<img
-				class="image-container__image ${additionalImageClasses}"
+				class="image-container__image"
 				alt="An image alt, for accessibility"
 				width="${width}"
 				height="${height}"
@@ -99,7 +99,3 @@ export const lazyLoaded = () =>
 			/>
 		</div>
 	`;
-
-export const onlyPortrait = () => fullWidth("image-container__image--portrait");
-
-export const onlyLandscape = () => fullWidth("image-container__image--landscape");

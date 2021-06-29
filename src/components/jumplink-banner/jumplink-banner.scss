@@ -15,14 +15,14 @@
 	}
 
 	&.align--left {
-		@media ($query-aspect-landscape) {
+		@media (orientation: landscape) {
 			justify-content: flex-start;
 			text-align: left;
 		}
 	}
 
 	&.align--bottom {
-		@media ($query-aspect-landscape) {
+		@media (orientation: landscape) {
 			align-items: flex-end;
 		}
 	}
@@ -33,12 +33,12 @@
 	padding: $spacing-xl $spacing-component-margin $spacing-component-margin;
 	text-align: center;
 
-	@media ($query-aspect-landscape) {
+	@media (orientation: landscape) {
 		max-width: 85%;
 	}
 
 	.align--left & {
-		@media ($query-aspect-landscape) {
+		@media (orientation: landscape) {
 			max-width: 100%;
 			text-align: left;
 		}
@@ -54,7 +54,7 @@
 	margin: 0 $spacing-negative-micro;
 
 	.align--left & {
-		@media ($query-aspect-landscape) {
+		@media (orientation: landscape) {
 			justify-content: flex-start;
 		}
 	}
@@ -62,10 +62,8 @@
 
 .jumplink-banner__link {
 	margin: 0 $spacing-micro $spacing-micro;
-	min-width: 24ch;
-
-	@media ($query-aspect-landscape) {
-		min-width: unset;
+	@media (orientation: portrait) {
+		min-width: 24ch;
 	}
 
 	&:focus {
@@ -119,7 +117,7 @@
 	justify-content: center;
 	margin-top: $spacing-m;
 
-	@media ($query-aspect-landscape) {
+	@media (orientation: landscape) {
 		flex-direction: row;
 	}
 
