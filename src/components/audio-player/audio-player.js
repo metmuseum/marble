@@ -3,7 +3,6 @@ import timeFormatter from "./time-formatter.js";
 
 class AudioPlayer {
 	constructor(wrapperEl) {
-		//prettier-ignore-start
 		this.wrapperEl = wrapperEl;
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
 		this.progressBarCanvasEl = this.wrapperEl.querySelector(
@@ -34,7 +33,6 @@ class AudioPlayer {
 		this.scrubbableAreaEl = this.wrapperEl.querySelector(
 			".js-audio-player__scrubbable-area"
 		);
-		//prettier-ignore-end
 
 		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = 10;
@@ -66,7 +64,6 @@ class AudioPlayer {
 		}
 	}
 
-	//prettier-ignore
 	initializeListeners() {
 		// Initialize
 		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
@@ -87,13 +84,11 @@ class AudioPlayer {
 	}
 
 
-	// okay so what's slow is actually waiting for timeupdates, and those being throttled.
-	// timeupdates + lerp = flickering. :\ hmm
 	handleTimeChange() {
 		requestAnimationFrame(this._handleTimeChange);
 	}
 
-	_handleTimeChang() {
+	_handleTimeChange() {
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
 		this.setDisplayTime(elapsed, duration);
@@ -126,7 +121,6 @@ class AudioPlayer {
 
 	beginScrubbing(e) {
 		e.preventDefault(); // don't fire redundant mouse event, if this was a touch
-		console.log("begin scrubbing", e.type);
 		this.isScrubbing = true;
 		this.initializeScrubbingListeners();
 		this.scrub(e);
@@ -146,7 +140,6 @@ class AudioPlayer {
 
 	scrub(e) {
 		e.preventDefault();
-		console.log("scrub", e.type);
 
 		if (this.isScrubbing) {
 			let canvasRectangle = this.progressBarCanvasEl.getBoundingClientRect();
@@ -158,22 +151,18 @@ class AudioPlayer {
 				offsetX = e.offsetX;
 			}
 
-			// this.drawProgress(offsetX, canvasRectangle.width);
 			let currentSecond =
 				(offsetX / canvasRectangle.width) * this.audioEl.duration;
 			this.audioEl.currentTime = currentSecond;
-			// this.setDisplayTime(currentSecond, this.audioEl.duration);
 		}
 	}
 
 	endScrubbing(e) {
 		e.preventDefault();
-		console.log("end scrubbing", e.type);
 		this.isScrubbing = false;
 		this.cleanUpScrubListeners();
 	}
 
-	//prettier-ignore
 	cleanUpScrubListeners() {
 		// touch
 		this.scrubbableAreaEl.removeEventListener("touchmove", this.scrub, { passive: false });
