@@ -4,12 +4,12 @@ import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import initializeAudioPlayers from "./audio-player.js";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 
-import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCarrotIcon } from './helper-icons/helper-icons.js';
+import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCarrotIcon } from "./helper-icons/helper-icons.js";
 
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
 
 const data = () => {
- return {
+	return {
 		darkMode: boolean("Dark Mode", false),
 		track: {
 			hasImage: boolean ("Has Image", true),
@@ -34,8 +34,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 			<section class="audio-player js-marble-audio-player ${playerMode} ${isDark}">
 				<div class="audio-player__media-section">
 					<div class="audio-player__image-section">
-						${model.track.hasImage ? html
-							`<div class="audio-player__image-wrapper">
+						${model.track.hasImage ? html`<div class="audio-player__image-wrapper">
 								<img
 									class="audio-player__cover-image"
 									alt="${model.track.coverImage.alt}"
@@ -43,8 +42,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 									height="${model.track.coverImage.height}"
 									src="${model.track.coverImage.srcSet.fallback}"
 								/>
-							</div>` : ""
-						}
+							</div>` : ""}
 
 					</div>
 
@@ -109,8 +107,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 						</div>
 					</div>
 				</div>
-				${model.track.transcript.length > 0 ? html
-					`<div
+				${model.track.transcript.length > 0 ? html `<div
 						class="audio-player__transcript-section js-audio-player__transcript-section"
 					>
 						<div
@@ -127,8 +124,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 							<span class="transcript__toggle-icon"> ${upCarrotIcon()}</span>
 							<spacn class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
 						</a>
-					</div>` : ``
-				}
+					</div>` : ""}
 			</section>
 		</div>
 	`;
@@ -156,4 +152,4 @@ export {
 	FullPlayer,
 	MiniPlayer,
 	MicroPlayer
-}
+};
