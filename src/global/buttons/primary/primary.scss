@@ -7,6 +7,11 @@
 	@include primary-button--small();
 }
 
+.primary-button--x-small {
+	@include primary-button--x-small();
+}
+
+
 .primary-button--large {
 	@include primary-button--large();
 }

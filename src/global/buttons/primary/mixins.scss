@@ -53,6 +53,15 @@ $border-width-ghost: 2px;
 	}
 }
 
+@mixin primary-button--x-small {
+	padding: $button-padding 1.5em;
+
+	&.primary-button--ghost-light,
+	&.primary-button--ghost-dark {
+		padding: calc(#{$button-padding} - #{$border-width-ghost}) calc(1.5em - #{$border-width-ghost});
+	}
+}
+
 @mixin primary-button--large {
 	padding: $button-padding 4em;
 

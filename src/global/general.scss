@@ -80,6 +80,7 @@ input {
 
 a {
 	color: inherit;
+	touch-action: manipulation;
 
 	&:visit,
 	&:hover {

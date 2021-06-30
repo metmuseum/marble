@@ -68,8 +68,8 @@ const jumplinkBannerMarkup = (model) => {
 			</h2>
 			<div class="jumplink-banner__links">
 				${model.links
-					.map(
-						(link) => html`
+		.map(
+			(link) => html`
 							<a
 								href="${link.url}"
 								class="js-jump-link button secondary-button jumplink-banner__link"
@@ -77,24 +77,24 @@ const jumplinkBannerMarkup = (model) => {
 								${link.text}
 							</a>
 						`
-					)
-					.join("")}
+		)
+		.join("")}
 			</div>
 			${model.hasBottomLinks
-				? html`<ul class="jumplink-banner__bottom-links">
+		? html`<ul class="jumplink-banner__bottom-links">
 						${model.bottomLinks
-							.map(
-								(link) => html`
+		.map(
+			(link) => html`
 									<li class="jumplink-banner__bottom-link">
 										<a href="${link.url}" class="button tertiary-button">
 											${link.text}
 										</a>
 									</li>
 								`
-							)
-							.join("")}
+		)
+		.join("")}
 				  </ul>`
-				: ``}
+		: ""}
 		</div>
 		<div class="jumplink-banner__image-wrapper">
 			${fullWidth()}
@@ -108,12 +108,12 @@ export const JumpLinkBanner = () => {
 	return html`
 		${jumplinkBannerMarkup(storyData)}
 		${storyData.links
-			.map(({ url, text }) => {
-				let id = url.replace("#", "");
-				return html`<div id="${id}" style="margin-top: 50vh;">
+		.map(({ url, text }) => {
+			let id = url.replace("#", "");
+			return html`<div id="${id}" style="margin-top: 50vh;">
 					${text}
 				</div>`;
-			})
-			.join("")}
+		})
+		.join("")}
 	`;
 };

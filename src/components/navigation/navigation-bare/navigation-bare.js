@@ -1,12 +1,13 @@
 import Flickity from "flickity";
 
-const componentClass = `.js-navigation-bare`;
+const componentClass = ".js-navigation-bare";
+
 export default function navigationBare() {
 
-	const navigationBare = new Flickity(componentClass, {
+	new Flickity(componentClass, {
 		accessibility: true,
 		autoPlay: false,
-		cellAlign: 'left',
+		cellAlign: "left",
 		contain: true,
 		friction: 0.4,
 		imagesLoaded: false,

@@ -1,11 +1,11 @@
-const border = `============================================================================================================`;
+const border = "============================================================================================================";
 
 console.log(`
 ${border}
   Thank you for using the latest version of Marble, the design system of the Metropolitan Museum of Art 🏛
 `);
 
-console.log("\x1b[36m%s\x1b[0m", `  Important message!`);
+console.log("\x1b[36m%s\x1b[0m", "  Important message!");
 
 console.log(`
   The Marble package has a new name.

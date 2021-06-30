@@ -1,6 +1,6 @@
 import html from "../../../.storybook/helpers/html";
 
-import { text, withKnobs } from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 
 export default { title: "Components/Tooltip", decorators: [withKnobs] };
 
@@ -14,11 +14,11 @@ const ToolTip = () => {
                 <img class="tooltip-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/309540/1907006/main-image">
             </div>.
         </div>
-    </div>`
+    </div>`;
 };
 
 const ToolTipUpwards = () => {
-return html`
+	return html`
     <div style="position: relative; margin: 300px 20px">In the ancient Americas,
 gold was a manifestation of the sacred, and objects fashioned from it were a means of connecting with a
 supernatural world. Far from passive deposits of wealth, objects made of gold were active agents in an
@@ -31,7 +31,7 @@ indeed, it was often thought of as an excretion of this divine entity
                 <img class="tooltip-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/309540/1907006/main-image">
             </div>.
         </div>
-    </div>`
-}
+    </div>`;
+};
 
 export { ToolTip, ToolTipUpwards };
