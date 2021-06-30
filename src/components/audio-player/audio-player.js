@@ -5,34 +5,16 @@ class AudioPlayer {
 	constructor(wrapperEl) {
 		this.wrapperEl = wrapperEl;
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
-		this.progressBarCanvasEl = this.wrapperEl.querySelector(
-			".js-audio-player__progress-bar"
-		);
+		this.progressBarCanvasEl = this.wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
-
-		this.transcriptSection = wrapperEl.querySelector(
-			".js-audio-player__transcript-section"
-		);
-
+		this.transcriptSection = wrapperEl.querySelector(".js-audio-player__transcript-section");
 		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
-		this.currentTimeEl = this.wrapperEl.querySelector(
-			".js-audio-player__current-time"
-		);
-		this.timeRemainingEl = this.wrapperEl.querySelector(
-			".js-audio-player__remaining"
-		);
-		this.seekBackHelperEl = this.wrapperEl.querySelector(
-			".js-audio-player__seek-back-helper"
-		);
-		this.seekForwardHelperEl = this.wrapperEl.querySelector(
-			".js-audio-player__seek-forward-helper"
-		);
-		this.scrubStartAreaEl = this.wrapperEl.querySelector(
-			".js-audio-player__scrubbing-start-area"
-		);
-		this.scrubbableAreaEl = this.wrapperEl.querySelector(
-			".js-audio-player__scrubbable-area"
-		);
+		this.currentTimeEl = this.wrapperEl.querySelector(".js-audio-player__current-time");
+		this.timeRemainingEl = this.wrapperEl.querySelector(".js-audio-player__remaining");
+		this.seekBackHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-back-helper");
+		this.seekForwardHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-forward-helper");
+		this.scrubStartAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbing-start-area");
+		this.scrubbableAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbable-area");
 
 		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = 10;
@@ -44,15 +26,9 @@ class AudioPlayer {
 		}
 
 		if (this.transcriptSection) {
-			this.transcriptToggle = this.transcriptSection.querySelector(
-				".js-audio-player__transcript-toggle"
-			);
-			this.transcriptToggleText = this.transcriptSection.querySelector(
-				".js-transcript__toggle-text"
-			);
-			this.transcriptWrapper = this.transcriptSection.querySelector(
-				".js-audio-player__transcript-wrapper"
-			);
+			this.transcriptToggle = this.transcriptSection.querySelector(".js-audio-player__transcript-toggle");
+			this.transcriptToggleText = this.transcriptSection.querySelector(".js-transcript__toggle-text");
+			this.transcriptWrapper = this.transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
 			this.quoteExpanderDefaultText = this.transcriptToggleText.innerHTML;
 
 			if (this.transcriptToggle && this.transcriptWrapper) {
@@ -126,7 +102,6 @@ class AudioPlayer {
 		this.scrub(e);
 	}
 
-	//prettier-ignore
 	initializeScrubbingListeners() {
 		// touch
 		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub, { passive: false });
