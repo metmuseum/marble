@@ -78,7 +78,6 @@ const lazyLoaded = () => {
 			/>
 		</div>
 	`;
-;
 };
 
 export { fullWidth, halfWidth, lazyLoaded };
