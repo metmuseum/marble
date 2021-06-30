@@ -73,7 +73,7 @@ const lazyLoaded = () => {
 				width="${image.width}"
 				height="${image.height}"
 				data-src="${image.srcSet.fallback}"
-				srcset="${sizesTemplate(image.srcSet)}"
+				data-srcset="${sizesTemplate(image.srcSet)}"
 				data-sizes="100vw"
 			/>
 		</div>
