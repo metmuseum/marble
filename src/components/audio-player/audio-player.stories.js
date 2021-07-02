@@ -75,6 +75,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 												class="js-audio-player__seek-back-helper audio-controls__seek-back"
 											>
 												${rewindTenSecondsIcon()}
+												<span class="screen-reader-only">Skip backwards ten seconds.</span>
 											</button>
 										</div>
 										<div class="audio-controls__forward-controls">
@@ -82,6 +83,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 												class="js-audio-player__seek-forward-helper audio-controls__seek-forward"
 											>
 												${forwardTenSecondsIcon()}
+												<span class="screen-reader-only">Skip forwards ten seconds.</span>
 											</button>
 											<span class="js-audio-player__remaining">0:00</span>
 										</div>
@@ -122,7 +124,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 							class="audio-player__transcript-toggle js-audio-player__transcript-toggle"
 						>
 							<span class="transcript__toggle-icon"> ${upCarrotIcon()}</span>
-							<spacn class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
+							<span class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
 						</a>
 					</div>` : ""}
 			</section>
