@@ -30,6 +30,7 @@
 		"he": "^1.2.0",
 		"js-config-webpack-plugin": "^1.4.0",
 		"path": "^0.12.7",
+		"raw-loader": "^4.0.2",
 		"release-it": "^14.5.0",
 		"scss-config-webpack-plugin": "^1.4.0",
 		"webpack": "^4.46.0",

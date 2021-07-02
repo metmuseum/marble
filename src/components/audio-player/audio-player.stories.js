@@ -3,10 +3,12 @@ import { useEffect } from "@storybook/client-api";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import initializeAudioPlayers from "./audio-player.js";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
+import icons from "../../../.storybook/assets/svg";
 
-import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCarrotIcon } from "./helper-icons/helper-icons.js";
 
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
+
+const { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCaretIcon } = icons;
 
 const data = () => {
 	return {
@@ -56,8 +58,8 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 							<div class="audio-controls">
 								<div class="audio-controls__play-wrapper">
 									<button class="js-audio-player__play audio-controls__play">
-										<span class="js-play-icon audio-controls__play-icon"> ${playIcon()} </span>
-										<span class="js-pause-icon audio-controls__pause-icon"> ${pauseIcon()} </span>
+										<span class="js-play-icon audio-controls__play-icon"> ${playIcon} </span>
+										<span class="js-pause-icon audio-controls__pause-icon"> ${pauseIcon} </span>
 									</button>
 								</div>
 								<div class="audio-controls__time-controls js-audio-player__scrubbable-area">
@@ -75,7 +77,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 											<button
 												class="js-audio-player__seek-back-helper audio-controls__seek-back"
 											>
-												${rewindTenSecondsIcon()}
+												${rewindTenSecondsIcon}
 												<span class="screen-reader-only">Skip backwards ten seconds.</span>
 											</button>
 										</div>
@@ -83,7 +85,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 											<button
 												class="js-audio-player__seek-forward-helper audio-controls__seek-forward"
 											>
-												${forwardTenSecondsIcon()}
+												${forwardTenSecondsIcon}
 												<span class="screen-reader-only">Skip forwards ten seconds.</span>
 											</button>
 											<span class="js-audio-player__remaining">0:00</span>
@@ -124,7 +126,7 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 							href="#"
 							class="audio-player__transcript-toggle js-audio-player__transcript-toggle"
 						>
-							<span class="transcript__toggle-icon"> ${upCarrotIcon()}</span>
+							<span class="transcript__toggle-icon"> ${upCaretIcon}</span>
 							<span class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
 						</a>
 					</div>` : ""}
