@@ -34,7 +34,7 @@ class AudioPlayer {
 			if (this.transcriptToggle && this.transcriptWrapper) {
 				this.transcriptToggle.addEventListener(
 					"click",
-					this.handleTranscriptToggle
+					this.handleTranscriptToggle.bind(this)
 				);
 			}
 		}
@@ -42,26 +42,26 @@ class AudioPlayer {
 
 	initializeListeners() {
 		// Initialize
-		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
+		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange.bind(this));
 
 		// Playback
-		this.playButtonEl.addEventListener("touchstart", this.togglePlaying, { passive: false });
-		this.playButtonEl.addEventListener("click", this.togglePlaying);
-		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
-		this.audioEl.addEventListener("ended", this.handleEnd);
+		this.playButtonEl.addEventListener("touchstart", this.togglePlaying.bind(this), { passive: false });
+		this.playButtonEl.addEventListener("click", this.togglePlaying.bind(this));
+		this.audioEl.addEventListener("timeupdate", this.handleTimeChange.bind(this));
+		this.audioEl.addEventListener("ended", this.handleEnd.bind(this));
 
 		// Quickseek
-		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
-		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
+		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack.bind(this));
+		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward.bind(this));
 
 		// Scrubbing
-		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
-		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
+		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing.bind(this), { passive: false });
+		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing.bind(this));
 	}
 
 
 	handleTimeChange() {
-		requestAnimationFrame(this._handleTimeChange);
+		requestAnimationFrame(this._handleTimeChange.bind(this));
 	}
 
 	_handleTimeChange() {
@@ -104,13 +104,13 @@ class AudioPlayer {
 
 	initializeScrubbingListeners() {
 		// touch
-		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub, { passive: false });
-		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing, { passive: false });
-		this.scrubbableAreaEl.addEventListener("touchcancel", this.endScrubbing, { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub.bind(this), { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing.bind(this), { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchcancel", this.endScrubbing.bind(this), { passive: false });
 		// mouse
-		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
-		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
-		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
+		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub.bind(this));
+		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing.bind(this));
+		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing.bind(this));
 	}
 
 	scrub(e) {
