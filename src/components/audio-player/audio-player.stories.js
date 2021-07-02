@@ -28,9 +28,10 @@ const data = () => {
 
 const audioPlayerMarkUp = (model, playerMode = "") => {
 	const isDark = model.darkMode ? "inverted-colors" : "";
+	const breathingRoom = boolean("Give it some breathing room?", false) ? "padding: 40px; background-color: #eee" : "";
 
 	return html`
-		<div style="padding: 40px; background-color: #eee">
+		<div style="${breathingRoom}">
 			<section class="audio-player js-marble-audio-player ${playerMode} ${isDark}">
 				<div class="audio-player__media-section">
 					<div class="audio-player__image-section">
