@@ -14,7 +14,7 @@ const data = () => {
 		track: {
 			hasImage: boolean ("Has Image", true),
 			audioFileURL:
-				text("Audio File URL", "https://cdn.bitdegree.org/learn/I_Cactus_-_05_-_ruby_cactus.mp3?raw=true"),
+				text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3"),
 			coverImage: greekHall1x1,
 			subtitle: text("Subtitle", "Praise Songs about Javascript"),
 			title: text("Title", "Track 1. Title"),

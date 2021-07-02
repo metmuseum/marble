@@ -15,53 +15,67 @@ class AudioPlayer {
 		this.seekForwardHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-forward-helper");
 		this.scrubStartAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbing-start-area");
 		this.scrubbableAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbable-area");
-
-		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
-		this.seekHelperDuration = 10;
-		this.isScrubbing = false;
-		this.initializeListeners();
-
-		if ("mediaSession" in navigator) {
-			this.setMetaData();
-		}
-
 		if (this.transcriptSection) {
 			this.transcriptToggle = this.transcriptSection.querySelector(".js-audio-player__transcript-toggle");
 			this.transcriptToggleText = this.transcriptSection.querySelector(".js-transcript__toggle-text");
 			this.transcriptWrapper = this.transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
 			this.quoteExpanderDefaultText = this.transcriptToggleText.innerHTML;
+		}
 
-			if (this.transcriptToggle && this.transcriptWrapper) {
-				this.transcriptToggle.addEventListener(
-					"click",
-					this.handleTranscriptToggle.bind(this)
-				);
-			}
+		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
+		this.seekHelperDuration = 10;
+		this.isScrubbing = false;
+
+		// bind listeners to this object and save the returned function reference, so they can be added/removed in the right scope
+		["_handleTimeChange",
+			"beginScrubbing",
+			"endScrubbing",
+			"handleEnd",
+			"handleTimeChange",
+			"handleTranscriptToggle",
+			"quickSeekBack",
+			"quickSeekForward",
+			"scrub",
+			"togglePlaying"].forEach((listener) => {
+			this[listener] = this[listener].bind(this);
+		});
+
+		this.initializeListeners();
+
+		if ("mediaSession" in navigator) {
+			this.setMetaData();
 		}
 	}
 
 	initializeListeners() {
 		// Initialize
-		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange.bind(this));
+		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
 
 		// Playback
-		this.playButtonEl.addEventListener("touchstart", this.togglePlaying.bind(this), { passive: false });
-		this.playButtonEl.addEventListener("click", this.togglePlaying.bind(this));
-		this.audioEl.addEventListener("timeupdate", this.handleTimeChange.bind(this));
-		this.audioEl.addEventListener("ended", this.handleEnd.bind(this));
-
+		this.playButtonEl.addEventListener("touchstart", this.togglePlaying, { passive: false });
+		this.playButtonEl.addEventListener("click", this.togglePlaying);
+		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
+		this.audioEl.addEventListener("ended", this.handleEnd);
+		
 		// Quickseek
-		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack.bind(this));
-		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward.bind(this));
-
+		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
+		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
+		
 		// Scrubbing
-		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing.bind(this), { passive: false });
-		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing.bind(this));
+		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
+		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
+		
+		// Transcript
+		if (this.transcriptSection) {
+			if (this.transcriptToggle && this.transcriptWrapper) {
+				this.transcriptToggle.addEventListener("click", this.handleTranscriptToggle);
+			}
+		}
 	}
 
 
 	handleTimeChange() {
-		requestAnimationFrame(this._handleTimeChange.bind(this));
+		requestAnimationFrame(this._handleTimeChange);
 	}
 
 	_handleTimeChange() {
@@ -104,13 +118,13 @@ class AudioPlayer {
 
 	initializeScrubbingListeners() {
 		// touch
-		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub.bind(this), { passive: false });
-		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing.bind(this), { passive: false });
-		this.scrubbableAreaEl.addEventListener("touchcancel", this.endScrubbing.bind(this), { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchmove", this.scrub, { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchend", this.endScrubbing, { passive: false });
+		this.scrubbableAreaEl.addEventListener("touchcancel", this.endScrubbing, { passive: false });
 		// mouse
-		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub.bind(this));
-		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing.bind(this));
-		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing.bind(this));
+		this.scrubbableAreaEl.addEventListener("mousemove", this.scrub);
+		this.scrubbableAreaEl.addEventListener("mouseup", this.endScrubbing);
+		this.scrubbableAreaEl.addEventListener("mouseleave", this.endScrubbing);
 	}
 
 	scrub(e) {
