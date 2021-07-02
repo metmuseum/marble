@@ -1,0 +1,80 @@
+.plan-card {
+	background: $color-grey-050;
+	display: flex;
+	flex-direction: column;
+	padding: $spacing-m $spacing-component-margin;
+
+	@media (orientation: landscape) {
+		flex-direction: row-reverse;
+	}
+}
+
+.plan-card__image-container {
+	flex: 1;
+	min-height: 33.3vh;
+	position: relative;
+}
+
+.plan-card__image {
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	width: 100%;
+}
+
+.plan-card__info {
+	flex: 1;
+	margin-top: $spacing-m;
+	@media (orientation: landscape) {
+		margin-right: $spacing-m;
+	}
+}
+
+.plan-card__header {
+	margin-bottom: $spacing-xs;
+}
+
+.plan-card__details {
+	background-color: $color-white;
+	border-radius: 16px;
+	box-shadow: $shadow-passive;
+	padding: $spacing-xs;
+
+	@media (orientation: landscape) {
+		padding: $spacing-s;
+	}
+}
+
+.plan-card__row {
+	display: flex;
+	margin-bottom: $spacing-xxs;
+	width: 100%;
+}
+
+.plan-card__row-icon {
+	display: inline-flex;
+	height: $spacing-xs;
+	justify-content: center;
+	margin-right: $spacing-micro;
+	width: $spacing-xs;
+
+	svg {
+		max-height: 100%;
+		max-width: 100%;
+	}
+}
+
+.plan-card__row-header {
+	font-weight: 500;
+	line-height: 1;
+}
+
+.button {
+	.plan-card__cta-wrapper & {
+		font-size: $textsize-xs;
+	}
+}
+
+.plan-card__main-cta {
+	margin-right: $spacing-xxs;
+}
