@@ -1,30 +1,49 @@
 import html from "../../../.storybook/helpers/html";
 import { useEffect } from "@storybook/client-api";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import initializeAudioPlayers from "./audio-player.js";
+import AudioPlayer from "./audio-player.js";
 import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
 import icons from "../../../.storybook/assets/svg";
-
 
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
 
 const { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCaretIcon } = icons;
 
+const initializeAudioPlayers = () => {
+	const audioPlayers = document.querySelectorAll(".js-marble-audio-player");
+	audioPlayers.forEach((player) => new AudioPlayer({wrapperEl: player}));	
+};
+
+const track = () => {
+	return {
+		hasImage: boolean ("Has Image", true),
+		audioFileURL:
+			text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3"),
+		coverImage: greekHall1x1,
+		subtitle: text("Subtitle", "Praise Songs about Javascript"),
+		title: text("Title", "Track 1. Title"),
+		transcript: text(
+			"Transcript",
+			"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."
+		),
+	};
+};
+
+const playlist = (tracks=[]) => {
+	return {
+		title: text("Playlist Title", "Playlist"),
+		tracks: tracks,
+	};
+};
+
 const data = () => {
+	let currentTrack = track();
+	let currentPlaylist = playlist([track, track, track]);
+
 	return {
 		darkMode: boolean("Dark Mode", false),
-		track: {
-			hasImage: boolean ("Has Image", true),
-			audioFileURL:
-				text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3"),
-			coverImage: greekHall1x1,
-			subtitle: text("Subtitle", "Praise Songs about Javascript"),
-			title: text("Title", "Track 1. Title"),
-			transcript: text(
-				"Transcript",
-				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."
-			),
-		}
+		playlist: currentPlaylist,
+		track: currentTrack
 	};
 };
 

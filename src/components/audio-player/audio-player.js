@@ -1,9 +1,18 @@
 import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
 
+const defaultOptions = () => ({
+	darkMode: false,
+	seekHelperDuration: 10,
+});
+
 class AudioPlayer {
-	constructor(wrapperEl) {
+	constructor({wrapperEl, track={}, playlist={}, options={}}) {
 		this.wrapperEl = wrapperEl;
+		this.currentTrack = track;
+		this.playlist = playlist;
+		this.options = {...defaultOptions, ...options};
+
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
 		this.progressBarCanvasEl = this.wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
@@ -22,7 +31,7 @@ class AudioPlayer {
 			this.quoteExpanderDefaultText = this.transcriptToggleText.innerHTML;
 		}
 
-		this.isDarkMode = this.wrapperEl.classList.contains("inverted-colors");
+		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = 10;
 		this.isScrubbing = false;
 
@@ -223,9 +232,4 @@ class AudioPlayer {
 	}
 }
 
-const initializeAudioPlayers = () => {
-	const audioPlayers = document.querySelectorAll(".js-marble-audio-player");
-	audioPlayers.forEach((player) => new AudioPlayer(player));
-};
-
-export default initializeAudioPlayers;
+export default AudioPlayer;
