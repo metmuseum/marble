@@ -19,7 +19,6 @@ export const containerWithAlert = () => {
 	const model = data();
 	const hideAlertClass = model.hideAlert ? "" : "show-alert";
 	const alertType = model.goodNews ? "is-success" : "is-error";
-	const inputType = model.inputType ? "number" : "text";
 
 	return html`
 	<section style="padding: 20px;">
