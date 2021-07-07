@@ -22,7 +22,7 @@ const defaultTrack = () => {
 		id: 1,
 		hasImage: boolean ("Has Image", true),
 		audioFileURL:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3"),
-		coverImage: greekHall1x1,
+		image: greekHall1x1,
 		subtitle: text("Subtitle", "Praise Songs about Javascript"),
 		title: text("Title", "Track 1. Title"),
 		transcript: text(
@@ -50,10 +50,11 @@ const data = () => {
 	
 	let options = {
 		id: example.id,
-		audioFileUrl: "https://www.metmuseum.org" + example.audio,
+		audioFileURL: "https://www.metmuseum.org" + example.audio,
 		title: example.title,
-		subtitle: example.description,
-		transcript: example.transcript
+		subtitle: example.description, // TODO: change to description?
+		transcript: example.transcript,
+		image: example.image
 	};
 
 	let currentPlaylist = playlist([
@@ -69,7 +70,7 @@ const data = () => {
 };
 
 const audioPlayerMarkUp = (model, playerMode = "") => {
-	console.dir(example);
+	// console.dir(example);
 	const isDark = model.darkMode ? "inverted-colors" : "";
 	const breathingRoom = boolean("Give it some breathing room?", false) ? "padding: 40px; background-color: #eee" : "";
 
@@ -78,13 +79,13 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 			<section class="audio-player js-marble-audio-player ${playerMode} ${isDark}">
 				<div class="audio-player__media-section">
 					<div class="audio-player__image-section">
-						${model.track.hasImage ? html`<div class="audio-player__image-wrapper">
+						${model.track.hasImage ? html`<div class="audio-player__image-wrapper js-audio-player__image-wrapper">
 								<img
 									class="audio-player__cover-image"
-									alt="${model.track.coverImage.alt}"
-									width="${model.track.coverImage.width}"
-									height="${model.track.coverImage.height}"
-									src="${model.track.coverImage.srcSet.fallback}"
+									alt="${model.track.image.alt}"
+									width="${model.track.image.width}"
+									height="${model.track.image.height}"
+									src="${model.track.image.srcSet.fallback}"
 								/>
 							</div>` : ""}
 
@@ -92,8 +93,8 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 
 					<div class="audio-player__body">
 						<div class="audio-player__headings">
-							<h1 class="audio-player__title">${model.track.title}</h1>
-							<h2 class="audio-player__sub-title">${model.track.subtitle}</h2>
+							<h1 class="audio-player__title js-audio-player__title">${model.track.title}</h1>
+							<h2 class="audio-player__subtitle js-audio-player__subtitle">${model.track.subtitle}</h2>
 						</div>
 						<div class="audio-player__controls-wrapper">
 							<div class="audio-controls">
@@ -136,11 +137,13 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 
 								<audio
 									class="js-audio-player__audio audio-player__audio-element"
+									data-track='${JSON.stringify(model.playlist.tracks[0])}'
 									title="${model.track.title}"
 									style="width: 100%; height: 36px;"
 									controls
 								>
 									<source src="${model.track.audioFileURL}" />
+									<!-- TODO: playlist links, too!! -->
 									<p>
 										Your browser doesn't support HTML5 audio. Here is a
 										<a href="${model.track.audioFileURL}"
@@ -155,12 +158,12 @@ const audioPlayerMarkUp = (model, playerMode = "") => {
 				</div>
 				<ol class="js-audio-player__playlist-container">
 					${model.playlist.tracks.map(track => { return html`
-						<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track=${JSON.stringify(track)}>
+						<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(track)}'>
 							${track.title}
 						</li>
 					`;}).join("")}
 				</ol>
-				</div>
+				<!-- TODO: keep this in the DOM as a target, but hide it if no transcript --> 
 				${model.track.transcript.length > 0 ? html `<div
 						class="audio-player__transcript-section js-audio-player__transcript-section"
 					>

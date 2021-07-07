@@ -1,21 +1,6 @@
 import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
-
-// TODO: 
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-// HTMLMediaElement.seekable Read only
-// Returns a TimeRanges object that contains the time ranges that the user is able to seek to, if any.
-
-
-
-// audio: "/-/media/audio/ipop-primer/doty_primercast.mp3?la=en"
-// description: "TIL Jehoshaphat is in the Chrome spell checker. 123456"
-// id: "C0276F7DFD034191B37BB04E9048BB03"
-/// image: Object { height: 674, width: 1200, xlarge: "/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=2400&amp;w=1200&amp;hash=ACDB9082199115342909831E388C11F7", … }
-/// rank: "1"
-/// stopNumber: "6611"
-/// title: "Jumping Jehoshaphat"
-/// transcript: "[00:01:17] Až pomašírujem tøi sta mil za Prahu,\r\n[00:01:24] tam spatøím, má milá, tureckou armádu."
+import coverImageTemplate from "./cover-image-template";
 
 const defaultOptions = () => ({
 	darkMode: false,
@@ -23,34 +8,36 @@ const defaultOptions = () => ({
 });
 
 class AudioPlayer {
-	constructor({wrapperEl, playlist={}, track={},  options={}}) {
-		this.wrapperEl = wrapperEl;
-		this.playlist = playlist;
-		this.currentTrack = track;
+	constructor({wrapperEl, options={}}) {
+		this.wrapperEl								= wrapperEl;
+		this.audioEl									=	wrapperEl.querySelector(".js-audio-player__audio");
+		this.coverImageWrapperEl     	= wrapperEl.querySelector(".js-audio-player__image-wrapper");
+		this.progressBarCanvasEl 			= wrapperEl.querySelector(".js-audio-player__progress-bar");
+		this.progressBarCanvas				= this.progressBarCanvasEl.getContext("2d");
+		this.transcriptSection 				= wrapperEl.querySelector(".js-audio-player__transcript-section");
+		this.playButtonEl 						= wrapperEl.querySelector(".js-audio-player__play");
+		this.playlistTracks 					= wrapperEl.querySelectorAll(".js-audio-player__playlist-track");
+		this.currentTimeEl 						= wrapperEl.querySelector(".js-audio-player__current-time");
+		this.timeRemainingEl 					= wrapperEl.querySelector(".js-audio-player__remaining");
+		this.seekBackHelperEl 				= wrapperEl.querySelector(".js-audio-player__seek-back-helper");
+		this.seekForwardHelperEl 			= wrapperEl.querySelector(".js-audio-player__seek-forward-helper");
+		this.scrubStartAreaEl 				= wrapperEl.querySelector(".js-audio-player__scrubbing-start-area");
+		this.scrubbableAreaEl 				= wrapperEl.querySelector(".js-audio-player__scrubbable-area");
+		this.subtitleEl 							= wrapperEl.querySelector(".js-audio-player__subtitle");
+		this.titleEl									= wrapperEl.querySelector(".js-audio-player__title");
+		this.transcriptToggle					= this.transcriptSection?.querySelector(".js-audio-player__transcript-toggle");
+		this.transcriptToggleText 		= this.transcriptSection?.querySelector(".js-transcript__toggle-text");
+		this.transcriptWrapper 				= this.transcriptSection?.querySelector(".js-audio-player__transcript-wrapper");
+		this.quoteExpanderDefaultText = this.transcriptToggleText?.innerHTML;
+
+		// Options
 		this.options = {...defaultOptions, ...options};
-
-		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
-		this.progressBarCanvasEl = this.wrapperEl.querySelector(".js-audio-player__progress-bar");
-		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
-		this.transcriptSection = wrapperEl.querySelector(".js-audio-player__transcript-section");
-		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
-		this.playlistTracks = this.wrapperEl.querySelectorAll(".js-audio-player__playlist-track");
-		this.currentTimeEl = this.wrapperEl.querySelector(".js-audio-player__current-time");
-		this.timeRemainingEl = this.wrapperEl.querySelector(".js-audio-player__remaining");
-		this.seekBackHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-back-helper");
-		this.seekForwardHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-forward-helper");
-		this.scrubStartAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbing-start-area");
-		this.scrubbableAreaEl = this.wrapperEl.querySelector(".js-audio-player__scrubbable-area");
-		if (this.transcriptSection) {
-			this.transcriptToggle = this.transcriptSection.querySelector(".js-audio-player__transcript-toggle");
-			this.transcriptToggleText = this.transcriptSection.querySelector(".js-transcript__toggle-text");
-			this.transcriptWrapper = this.transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
-			this.quoteExpanderDefaultText = this.transcriptToggleText.innerHTML;
-		}
-
 		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors");
-		this.seekHelperDuration = 10;
+		this.seekHelperDuration = this.options.seekHelperDuration;
+
+		// State
 		this.isScrubbing = false;
+		this.currentTrack = JSON.parse(this.audioEl.dataset.track);
 
 		// bind listeners to this object and save the returned function reference, so they can be added/removed in the right scope
 		["_handleTimeChange",
@@ -68,71 +55,72 @@ class AudioPlayer {
 			this[listener] = this[listener].bind(this);
 		});
 
-		this.initializeListeners();
-		this.setMetaData();
+		this.applyListeners();
 	}
 
-	initializeListeners() {
-		// Initialize
-		this.audioEl.addEventListener("loadedmetadata", this.handleTimeChange);
+	applyListeners() {
+		// Initialize 💁‍♂️
+		this.audioEl.addEventListener("loadedmetadata", this.setMetaData);
 
-		// Playback
+		// Playback ⏯
 		this.playButtonEl.addEventListener("touchstart", this.togglePlaying, { passive: false });
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
+		this.audioEl.addEventListener("timeupdate", () => { console.log("timeupdate fired"); });
 		this.audioEl.addEventListener("ended", this.handleEnd);
 
-		// Playlist
+		// Playlist 💿
 		this.playlistTracks.forEach(trackEl => {
 			trackEl.addEventListener("click", this.handleTrackChange);
 		});
 
-		// Quickseek
+		// Quickseek 🔎
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
 		
-		// Scrubbing
+		// Scrubbing 🧽
 		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
 		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
 		
-		// Transcript
+		// Transcript 📜
+		// TODO: switch this to always there, just hidden
 		if (this.transcriptSection) {
 			if (this.transcriptToggle && this.transcriptWrapper) {
-				this.transcriptToggle.addEventListener("click", this.handleTranscriptToggle);
+				this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
 			}
 		}
 	}
 
 	handleTrackChange(e) {
-		// alert("Running!");
 		console.log("running track change");
-		let newTrack = e.target.dataset.track;
-		console.log(newTrack);
-		// stop the old track
-		this.setPause();
-		// clean up?
-		// set the new track 
+		// TODO: nothing/skip if same track.
+		// TODO: analytics
+		let newTrack = JSON.parse(e.target.dataset.track);
+		console.dir(newTrack);
+		
 		this.setTrack(newTrack);
-		
-		
-		// play it
 		this.setPlay();
 	}
 
 	setTrack(track) {
 		this.currentTrack = track;
-		this.audioEl.querySelector("source").src = track.audioFileUrl;
+		this.audioEl.dataset.track = track;
+		this.audioEl.querySelector("source").src = track.audioFileURL;
+		this.titleEl.innerHTML = track.title;
+		this.subtitleEl.innerHTML = track.subtitle;
+		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.coverImage);
 		this.audioEl.load(); // load the new track
-		// set the artwork, title, etc.
-		this.setMetaData();
+		// set the artwork
+		// update the transcript container
 	}
 
 
 	handleTimeChange() {
-		// requestAnimationFrame(this._handleTimeChange);
+		requestAnimationFrame(this._handleTimeChange);
 	}
 
 	_handleTimeChange() {
+		console.log("currentSrc is: " + this.audioEl.currentSrc);
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
 		this.setDisplayTime(elapsed, duration);
@@ -218,18 +206,21 @@ class AudioPlayer {
 	}
 
 	setMetaData() { 
+		console.log("setMetadData fired");
 		if (!("mediaSession" in navigator)) {
 			return false;
 		}
+		console.log("and setMetaData actually running");
 
+		// TODO: use this.currentTrack data instead
 		this.metaImage = this.wrapperEl.querySelector(".audio-player__cover-image") ?
 			this.wrapperEl.querySelector(".audio-player__cover-image").src :
 			null;
 
 
 		navigator.mediaSession.metadata = new MediaMetadata({
-			title: this.wrapperEl.querySelector(".audio-player__title").innerHTML,
-			artist: this.wrapperEl.querySelector(".audio-player__sub-title").innerHTML,
+			title: this.currentTrack.title,
+			artist: this.wrapperEl.querySelector(".audio-player__subtitle").innerHTML,
 			artwork: [
 				{ src: this.metaImage },
 			],

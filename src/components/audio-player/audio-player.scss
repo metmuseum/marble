@@ -64,7 +64,7 @@ $bp-audio-player: 600px;
 }
 
 .audio-player__title,
-.audio-player__sub-title {
+.audio-player__subtitle {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -74,7 +74,7 @@ $bp-audio-player: 600px;
 	font-size: $textsize-s;
 }
 
-.audio-player__sub-title {
+.audio-player__subtitle {
 	font-size: $textsize-xs;
 	font-weight: 400;
 }
