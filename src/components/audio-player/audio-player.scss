@@ -165,3 +165,7 @@ $bp-audio-player: 600px;
 		background-color: $color-grey-700;
 	}
 }
+
+.audio-player__playlist-track {
+	cursor: pointer;
+}

@@ -1,16 +1,32 @@
 import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
 
+// TODO: 
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+// HTMLMediaElement.seekable Read only
+// Returns a TimeRanges object that contains the time ranges that the user is able to seek to, if any.
+
+
+
+// audio: "/-/media/audio/ipop-primer/doty_primercast.mp3?la=en"
+// description: "TIL Jehoshaphat is in the Chrome spell checker. 123456"
+// id: "C0276F7DFD034191B37BB04E9048BB03"
+/// image: Object { height: 674, width: 1200, xlarge: "/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=2400&amp;w=1200&amp;hash=ACDB9082199115342909831E388C11F7", … }
+/// rank: "1"
+/// stopNumber: "6611"
+/// title: "Jumping Jehoshaphat"
+/// transcript: "[00:01:17] Až pomašírujem tøi sta mil za Prahu,\r\n[00:01:24] tam spatøím, má milá, tureckou armádu."
+
 const defaultOptions = () => ({
 	darkMode: false,
 	seekHelperDuration: 10,
 });
 
 class AudioPlayer {
-	constructor({wrapperEl, track={}, playlist={}, options={}}) {
+	constructor({wrapperEl, playlist={}, track={},  options={}}) {
 		this.wrapperEl = wrapperEl;
-		this.currentTrack = track;
 		this.playlist = playlist;
+		this.currentTrack = track;
 		this.options = {...defaultOptions, ...options};
 
 		this.audioEl = this.wrapperEl.querySelector(".js-audio-player__audio");
@@ -18,6 +34,7 @@ class AudioPlayer {
 		this.progressBarCanvas = this.progressBarCanvasEl.getContext("2d");
 		this.transcriptSection = wrapperEl.querySelector(".js-audio-player__transcript-section");
 		this.playButtonEl = this.wrapperEl.querySelector(".js-audio-player__play");
+		this.playlistTracks = this.wrapperEl.querySelectorAll(".js-audio-player__playlist-track");
 		this.currentTimeEl = this.wrapperEl.querySelector(".js-audio-player__current-time");
 		this.timeRemainingEl = this.wrapperEl.querySelector(".js-audio-player__remaining");
 		this.seekBackHelperEl = this.wrapperEl.querySelector(".js-audio-player__seek-back-helper");
@@ -39,21 +56,20 @@ class AudioPlayer {
 		["_handleTimeChange",
 			"beginScrubbing",
 			"endScrubbing",
+			"handleTrackChange",
 			"handleEnd",
 			"handleTimeChange",
 			"handleTranscriptToggle",
 			"quickSeekBack",
 			"quickSeekForward",
 			"scrub",
+			"setMetaData",
 			"togglePlaying"].forEach((listener) => {
 			this[listener] = this[listener].bind(this);
 		});
 
 		this.initializeListeners();
-
-		if ("mediaSession" in navigator) {
-			this.setMetaData();
-		}
+		this.setMetaData();
 	}
 
 	initializeListeners() {
@@ -65,7 +81,12 @@ class AudioPlayer {
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
 		this.audioEl.addEventListener("ended", this.handleEnd);
-		
+
+		// Playlist
+		this.playlistTracks.forEach(trackEl => {
+			trackEl.addEventListener("click", this.handleTrackChange);
+		});
+
 		// Quickseek
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
@@ -82,9 +103,33 @@ class AudioPlayer {
 		}
 	}
 
+	handleTrackChange(e) {
+		// alert("Running!");
+		console.log("running track change");
+		let newTrack = e.target.dataset.track;
+		console.log(newTrack);
+		// stop the old track
+		this.setPause();
+		// clean up?
+		// set the new track 
+		this.setTrack(newTrack);
+		
+		
+		// play it
+		this.setPlay();
+	}
+
+	setTrack(track) {
+		this.currentTrack = track;
+		this.audioEl.querySelector("source").src = track.audioFileUrl;
+		this.audioEl.load(); // load the new track
+		// set the artwork, title, etc.
+		this.setMetaData();
+	}
+
 
 	handleTimeChange() {
-		requestAnimationFrame(this._handleTimeChange);
+		// requestAnimationFrame(this._handleTimeChange);
 	}
 
 	_handleTimeChange() {
@@ -172,7 +217,11 @@ class AudioPlayer {
 		this.scrubbableAreaEl.removeEventListener("mouseleave", this.endScrubbing);
 	}
 
-	setMetaData() {
+	setMetaData() { 
+		if (!("mediaSession" in navigator)) {
+			return false;
+		}
+
 		this.metaImage = this.wrapperEl.querySelector(".audio-player__cover-image") ?
 			this.wrapperEl.querySelector(".audio-player__cover-image").src :
 			null;
