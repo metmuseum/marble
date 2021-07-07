@@ -71,18 +71,3 @@
 		color: $color-green-good-news;
 	}
 }
-
-
-//TODO: handle resets better.
-.input-number--reset { // sass-lint:disable-block no-vendor-prefixes
-	&::-webkit-inner-spin-button,
-	&::-webkit-outer-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-
-	/* Firefox */
-	&[type=number] {
-		-moz-appearance: textfield;
-	}
-}

@@ -11,7 +11,6 @@ const data = () => {
 		message: text("Message", "We couldn't find that audio stop"),
 		hideAlert: boolean("Hide Alert", false),
 		goodNews: boolean("Good News", false),
-		inputType: boolean("Number Input", true)
 	};
 };
 
@@ -28,7 +27,8 @@ export const containerWithAlert = () => {
 			<input
 				class="marble-input input-number--reset"
 				placeholder="Example: 621"
-				type="${inputType}">
+				pattern="[0-9]*"
+				type="text">
 			</input>
 
 			<div class="marble-input__message marble-input__message-error">
