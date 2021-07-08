@@ -36,7 +36,7 @@ export const containerWithAlert = () => {
 				type="text">
 			</input>
 
-			<div class="marble-input__message marble-input__message-error">
+			<div class="marble-input__message marble-input__message-error" role=alert>
 				<div class="marble-input__message-icon">${helpIcon}</div>
 				<div class="marble-input__message-text">${model.message}</div>
 			</div>
