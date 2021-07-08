@@ -1,3 +1,5 @@
+$color-input-alert: $color-purple;
+
 .marble-input__container {
 	display: inline-block;
 	position: relative;
@@ -13,18 +15,14 @@
 		outline: none;
 	}
 
-	.is-error.show-alert & {
-		border-color: $color-purple;
-	}
-
-	.is-success.show-alert & {
-		border-color: $color-green-good-news;
+	.show-alert & {
+		border-color: $color-input-alert;
 	}
 }
 
 .marble-input__message {
 	align-items: center;
-	background-color: $color-grey-700;
+	background-color: $color-input-alert;
 	border-radius: $radius-sharp;
 	color: $color-white;
 	display: none;
@@ -36,33 +34,13 @@
 	top: calc(100% + 4px);
 	width: 100%;
 
-	&::before {
-		border: 10px solid transparent;
-		border-bottom-color: $color-grey-700;
-		content: none;
-	}
-
-	.marble-input__container.is-error & {
-		background-color: $color-purple;
-
-		&::before {
-			border-bottom-color: $color-purple;
-		}
-	}
-
-	.marble-input__container.is-success & {
-		background-color: $color-green-good-news;
-
-		&::before {
-			border-bottom-color: $color-green-good-news;
-		}
-	}
-
 	.marble-input__container.show-alert & {
 		display: flex;
 	}
 
 	.marble-input__container.has-arrow &::before {
+		border: 10px solid transparent;
+		border-bottom-color: $color-input-alert;
 		bottom: 100%;
 		content: "";
 		display: block;
