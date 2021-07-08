@@ -45,7 +45,7 @@ const audioPlayerMarkUp = ({model, options}) => html`
 			<div class="audio-player__media-section">
 				<div class="audio-player__image-section">
 					${options.hasImage ? html`<div class="audio-player__image-wrapper js-audio-player__image-wrapper">
-							${coverImageTemplate(model.track)}
+							${coverImageTemplate(model.track.image)}
 						</div>` : ""}
 				</div>
 				<div class="audio-player__body">
@@ -153,6 +153,12 @@ const FullPlayer = () => {
 	return audioPlayerMarkUp(data({}));
 };
 
+const FullPlayerWithPlaylist = () => {
+	useEffect(initializeAudioPlayers);
+	return audioPlayerMarkUp(data({numberOfTracks: "playlist"}));
+};
+
+
 const MiniPlayer = () => {
 	useEffect(initializeAudioPlayers);
 	return audioPlayerMarkUp(data({playerMode: "mini-player"}));
@@ -165,6 +171,7 @@ const MicroPlayer = () => {
 
 export {
 	FullPlayer,
+	FullPlayerWithPlaylist,
 	MiniPlayer,
 	MicroPlayer
 };

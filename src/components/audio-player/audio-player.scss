@@ -146,6 +146,10 @@
 
 //Inverted
 .audio-player { // sass-lint:disable-line no-mergeable-selectors
+	@media (prefers-color-scheme: dark) {
+		background-color: $color-grey-900;
+		color: $color-white;
+  }
 	&.inverted-colors {
 		background-color: $color-grey-900;
 		color: $color-white;
@@ -153,6 +157,10 @@
 }
 
 .audio-player__transcript-wrapper { // sass-lint:disable-line no-mergeable-selectors
+	@media (prefers-color-scheme: dark) {
+		background-color: $color-grey-800;
+		color: $color-white;
+  }
 	.inverted-colors & {
 		background-color: $color-grey-800;
 		color: $color-white;
@@ -160,6 +168,9 @@
 }
 
 .audio-player__progress-bar { // sass-lint:disable-line no-mergeable-selectors
+	@media (prefers-color-scheme: dark) {
+		background-color: $color-grey-700;
+  }
 	.inverted-colors & {
 		background-color: $color-grey-700;
 	}

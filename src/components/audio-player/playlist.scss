@@ -1,10 +1,22 @@
 .audio-player__playlist {
 	background: $color-white-050;
 	padding: $spacing-xs;
+
   &:empty {
     display: none;
     border: 2px solid red;
   }
+
+  // goth stuff
+  @media (prefers-color-scheme: dark) {
+		background: $color-grey-950;
+    color: $color-white;
+  }
+
+  .inverted-colors & {
+		background: $color-grey-950;
+    color: $color-white;
+	}
 }
 
 .audio-player__playlist-track {
