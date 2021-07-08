@@ -1,0 +1,23 @@
+.audio-player__playlist {
+	background: $color-white-050;
+	padding: $spacing-xs;
+  &:empty {
+    display: none;
+    border: 2px solid red;
+  }
+}
+
+.audio-player__playlist-track {
+	cursor: pointer;
+  display: flex;
+}
+
+.audio-player__playlist-track-thumbnail {
+	width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.audio-player__playlist-track-title {
+  padding: 1em;
+}

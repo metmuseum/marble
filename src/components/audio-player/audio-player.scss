@@ -1,8 +1,7 @@
-$bp-audio-player: 600px;
-
 @import "./audio-controls";
 @import "./mini-player/mini-player.scss";
 @import "./micro-player/micro-player.scss";
+@import "./playlist.scss";
 
 .audio-player {
 	background-color: $color-white;
@@ -166,6 +165,3 @@ $bp-audio-player: 600px;
 	}
 }
 
-.audio-player__playlist-track {
-	cursor: pointer;
-}

@@ -98,6 +98,7 @@ class AudioPlayer {
 		let newTrack = JSON.parse(e.target.dataset.track);
 		console.dir(newTrack);
 		
+		
 		this.setTrack(newTrack);
 		this.setPlay();
 	}
@@ -108,9 +109,8 @@ class AudioPlayer {
 		this.audioEl.querySelector("source").src = track.audioFileURL;
 		this.titleEl.innerHTML = track.title;
 		this.subtitleEl.innerHTML = track.subtitle;
-		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.coverImage);
-		this.audioEl.load(); // load the new track
-		// set the artwork
+		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.image);
+		this.audioEl.load(); // load the new track, this will fire metadataloaded, btw
 		// update the transcript container
 	}
 
@@ -213,10 +213,9 @@ class AudioPlayer {
 		console.log("and setMetaData actually running");
 
 		// TODO: use this.currentTrack data instead
-		this.metaImage = this.wrapperEl.querySelector(".audio-player__cover-image") ?
-			this.wrapperEl.querySelector(".audio-player__cover-image").src :
-			null;
-
+		this.metaImage = this.wrapperEl
+			.querySelector(".audio-player__cover-image")
+			?.src;
 
 		navigator.mediaSession.metadata = new MediaMetadata({
 			title: this.currentTrack.title,
