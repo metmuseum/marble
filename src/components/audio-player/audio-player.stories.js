@@ -28,7 +28,7 @@ const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathing
 			image: example.image
 		}),
 		track({title: "Track 3", id: 3})
-	]} : { tracks: [] };
+	]} : null;
 
 	return {
 		options,
@@ -113,18 +113,20 @@ const audioPlayerMarkUp = ({model, options}) => html`
 					</div>
 				</div>
 			</div>
-			<ol class="js-audio-player__playlist-container audio-player__playlist">${model.playlist.tracks.map(track => { return html`
-					<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(track)}'>
-						<div>
-							<img 
-								class="audio-player__playlist-track-thumbnail"
-								alt="${track.image.alt}" 
-								src="${track.image.small}"/>
-						</div>
-						<div class="audio-player__playlist-track-title">${track.title}</div>
-						<div>duration?</div>
-					</li>
-				`;}).join("")}</ol> <!-- no whitespace! :empty needs to work to hide it -->
+			<ol class="js-audio-player__playlist-container audio-player__playlist">${ model.playlist?.tracks?.length ? html`
+					<h3>Playlist</h3>
+					${model.playlist.tracks.map(playlistTrack => { return html`
+						<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}'>
+							<div>
+								<img 
+									class="audio-player__playlist-track-thumbnail"
+									alt="${playlistTrack.image.alt}" 
+									src="${playlistTrack.image.small}"/>
+							</div>
+							<div class="audio-player__playlist-track-title">${playlistTrack.title}</div>
+							<div></div>
+						</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
+
 			<!-- TODO: keep this in the DOM as a target, but hide it if no transcript --> 
 			${model.track.transcript.length > 0 ? html `<div
 					class="audio-player__transcript-section js-audio-player__transcript-section"

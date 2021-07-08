@@ -37,6 +37,7 @@ class AudioPlayer {
 
 		// State
 		this.isScrubbing = false;
+		console.dir(this.audioEl.dataset.track);
 		this.currentTrack = JSON.parse(this.audioEl.dataset.track);
 
 		// bind listeners to this object and save the returned function reference, so they can be added/removed in the right scope
@@ -95,7 +96,7 @@ class AudioPlayer {
 		console.log("running track change");
 		// TODO: nothing/skip if same track.
 		// TODO: analytics
-		let newTrack = JSON.parse(e.target.dataset.track);
+		let newTrack = JSON.parse(e.currentTarget.dataset.track);
 		console.dir(newTrack);
 		
 		

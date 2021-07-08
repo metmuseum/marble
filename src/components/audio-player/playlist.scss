@@ -22,6 +22,7 @@
 .audio-player__playlist-track {
 	cursor: pointer;
   display: flex;
+  align-items: center;
 }
 
 .audio-player__playlist-track-thumbnail {
@@ -32,4 +33,5 @@
 
 .audio-player__playlist-track-title {
   padding: 1em;
+  flex-grow: 1;
 }
