@@ -7,8 +7,6 @@ const defaultOptions = () => ({
 	seekHelperDuration: 10,
 });
 
-
-
 class AudioPlayer {
 	constructor({wrapperEl, options={}}) {
 		this.wrapperEl								= wrapperEl;
@@ -16,8 +14,6 @@ class AudioPlayer {
 		this.coverImageWrapperEl     	= wrapperEl.querySelector(".js-audio-player__image-wrapper");
 		this.progressBarCanvasEl 			= wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas				= this.progressBarCanvasEl.getContext("2d");
-		this.transcriptSection 				= wrapperEl.querySelector(".js-audio-player__transcript-section");
-		this.transcriptEl							= wrapperEl.querySelector(".js-audio-player__transcript");
 		this.playButtonEl 						= wrapperEl.querySelector(".js-audio-player__play");
 		this.playlistTracks 					= wrapperEl.querySelectorAll(".js-audio-player__playlist-track");
 		this.currentTimeEl 						= wrapperEl.querySelector(".js-audio-player__current-time");
@@ -28,10 +24,12 @@ class AudioPlayer {
 		this.scrubbableAreaEl 				= wrapperEl.querySelector(".js-audio-player__scrubbable-area");
 		this.subtitleEl 							= wrapperEl.querySelector(".js-audio-player__subtitle");
 		this.titleEl									= wrapperEl.querySelector(".js-audio-player__title");
-		this.transcriptToggle					= this.transcriptSection?.querySelector(".js-audio-player__transcript-toggle");
-		this.transcriptToggleText 		= this.transcriptSection?.querySelector(".js-transcript__toggle-text");
-		this.transcriptWrapper 				= this.transcriptSection?.querySelector(".js-audio-player__transcript-wrapper");
-		this.quoteExpanderDefaultText = this.transcriptToggleText?.innerHTML;
+		this.transcriptEl							= wrapperEl.querySelector(".js-audio-player__transcript");
+		this.transcriptSection 				= wrapperEl.querySelector(".js-audio-player__transcript-section");
+		this.transcriptToggle					= this.transcriptSection.querySelector(".js-audio-player__transcript-toggle");
+		this.transcriptToggleText 		= this.transcriptSection.querySelector(".js-transcript__toggle-text");
+		this.transcriptWrapper 				= this.transcriptSection.querySelector(".js-audio-player__transcript-wrapper");
+		this.quoteExpanderDefaultText = this.transcriptToggleText.innerHTML;
 
 		// Options
 		this.options = {...defaultOptions, ...options};
@@ -89,12 +87,7 @@ class AudioPlayer {
 		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
 		
 		// Transcript 📜
-		// TODO: switch this to always there, just hidden
-		if (this.transcriptSection) {
-			if (this.transcriptToggle && this.transcriptWrapper) {
-				this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
-			}
-		}
+		this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
 	}
 
 	handleTrackChange(e) {

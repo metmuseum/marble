@@ -128,10 +128,10 @@ const audioPlayerMarkUp = ({model, options}) => html`
 					<div></div>
 					</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
 	
-		<div class="audio-player__transcript-section js-audio-player__transcript-section">
+		<div class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
 			<div class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper">
 				<div class="audio-player__transcript js-audio-player__transcript">
-					<p>${model.track.transcript}</p>
+					${model.track.transcript}
 				</div>
 			</div>
 			<a class="audio-player__transcript-toggle js-audio-player__transcript-toggle">
