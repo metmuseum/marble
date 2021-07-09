@@ -7,6 +7,8 @@ const defaultOptions = () => ({
 	seekHelperDuration: 10,
 });
 
+
+
 class AudioPlayer {
 	constructor({wrapperEl, options={}}) {
 		this.wrapperEl								= wrapperEl;
@@ -15,6 +17,7 @@ class AudioPlayer {
 		this.progressBarCanvasEl 			= wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas				= this.progressBarCanvasEl.getContext("2d");
 		this.transcriptSection 				= wrapperEl.querySelector(".js-audio-player__transcript-section");
+		this.transcriptEl							= wrapperEl.querySelector(".js-audio-player__transcript");
 		this.playButtonEl 						= wrapperEl.querySelector(".js-audio-player__play");
 		this.playlistTracks 					= wrapperEl.querySelectorAll(".js-audio-player__playlist-track");
 		this.currentTimeEl 						= wrapperEl.querySelector(".js-audio-player__current-time");
@@ -48,10 +51,12 @@ class AudioPlayer {
 			"handleEnd",
 			"handleTimeChange",
 			"handleTranscriptToggle",
+			"hasTranscript",
 			"quickSeekBack",
 			"quickSeekForward",
 			"scrub",
 			"setMetaData",
+			"setTranscript",
 			"togglePlaying"].forEach((listener) => {
 			this[listener] = this[listener].bind(this);
 		});
@@ -98,9 +103,8 @@ class AudioPlayer {
 		// TODO: analytics
 		let newTrack = JSON.parse(e.currentTarget.dataset.track);
 		console.dir(newTrack);
-		
-		
 		this.setTrack(newTrack);
+		this.setTranscript();
 		this.setPlay();
 	}
 
@@ -112,9 +116,17 @@ class AudioPlayer {
 		this.subtitleEl.innerHTML = track.subtitle;
 		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.image);
 		this.audioEl.load(); // load the new track, this will fire metadataloaded, btw
-		// update the transcript container
 	}
 
+	hasTranscript() {
+		return !!this.currentTrack?.transcript?.length;
+	}
+
+	setTranscript() {
+		this.transcriptSection.classList.remove(`audio-player__transcript-section--transcript-${!this.hasTranscript()}`);
+		this.transcriptSection.classList.add(`audio-player__transcript-section--transcript-${this.hasTranscript()}`);
+		this.transcriptEl.innerHTML = this.hasTranscript() ? this.currentTrack.transcript : "";
+	}
 
 	handleTimeChange() {
 		requestAnimationFrame(this._handleTimeChange);

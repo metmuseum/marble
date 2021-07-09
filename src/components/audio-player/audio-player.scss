@@ -99,6 +99,14 @@
 	border-top: 1px solid $color-grey-200;
 }
 
+.audio-player__transcript-section--transcript-true {
+	display: block;
+}
+
+.audio-player__transcript-section--transcript-false {
+	display: none;
+}
+
 .audio-player__transcript-wrapper {
 	@include typography-body-long;
 	background-color: $color-grey-100;

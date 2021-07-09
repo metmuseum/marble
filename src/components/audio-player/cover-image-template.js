@@ -1,7 +1,7 @@
-import html from "../../../.storybook/helpers/html.js";
 import { bpAudioPlayer } from "../../global/exports.scss";
 
 export default (image) => {
+	let html = String.raw;
 	return html`<img
 		class="audio-player__cover-image"
 		alt="${image.alt}"

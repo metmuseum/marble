@@ -32,18 +32,19 @@ const initializeAudioPlayers = () => {
 const defaultTrack = () => {
 	return {
 		id: 1,
-		audioFileURL:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3"),
+		audioFileURL:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3", "Track"),
 		image: { ...greekHall1x1,
 			xlarge: greekHall1x1.srcSet.sizes["2440w"],
 			large: greekHall1x1.srcSet.sizes["1920w"],
 			medium: greekHall1x1.srcSet.sizes["1240w"],
 			small: greekHall1x1.srcSet.sizes["1240w"],
 		},
-		subtitle: text("Subtitle", "Praise Songs about Javascript"),
-		title: text("Title", "Track 1. Title"),
+		subtitle: text("Subtitle", "Praise Songs about Javascript", "Track"),
+		title: text("Title", "Track 1. Title", "Track"),
 		transcript: text(
 			"Transcript",
-			"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum."
+			"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpaqui officia deserunt mollit anim id est laborum.",
+			"Track"
 		)
 	};
 };
