@@ -74,8 +74,8 @@ class AudioPlayer {
 		this.audioEl.addEventListener("ended", this.handleEnd);
 
 		//For when play/pause is initiated from elsewhere (phone lock screen, task bar, etc...)
-		this.audioEl.addEventListener("play", () => this.wrapperEl.classList.add("is-playing"));
-		this.audioEl.addEventListener("pause", () => this.wrapperEl.classList.remove("is-playing"));
+		this.audioEl.addEventListener("play", () => this.handlePlay());
+		this.audioEl.addEventListener("pause", () => this.handlePause());
 
 		// Playlist 💿
 		this.playlistTracks.forEach(trackEl => {
@@ -253,14 +253,20 @@ class AudioPlayer {
 		this.audioEl.paused ? this.setPlay() : this.setPause();
 	}
 
+	handlePlay() {
+		this.wrapperEl.classList.add("is-playing");
+	}
+
+	handlePause() {
+		this.wrapperEl.classList.remove("is-playing");
+	}
+
 	setPlay() {
 		this.audioEl.play();
-		this.wrapperEl.classList.add("is-playing");
 	}
 
 	setPause() {
 		this.audioEl.pause();
-		this.wrapperEl.classList.remove("is-playing");
 	}
 
 	quickSeekBack(e) {
