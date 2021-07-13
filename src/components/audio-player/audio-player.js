@@ -114,7 +114,7 @@ class AudioPlayer {
 		console.dir(newTrack);
 		this.setTrack(newTrack);
 		this.setTranscript();
-		this.setPlay();
+		this.audioEl.play();
 	}
 
 	setTrack(track) {
@@ -151,7 +151,7 @@ class AudioPlayer {
 
 	handleEnd() {
 		this.handleTimeChange();
-		this.setPause();
+		this.audioEl.pause();
 	}
 
 	setDisplayTime(elapsed, duration) {
@@ -250,7 +250,7 @@ class AudioPlayer {
 
 	togglePlaying(e) {
 		e.preventDefault();
-		this.audioEl.paused ? this.setPlay() : this.setPause();
+		this.audioEl.paused ? this.audioEl.play() : this.audioEl.pause();
 	}
 
 	handlePlay() {
@@ -259,14 +259,6 @@ class AudioPlayer {
 
 	handlePause() {
 		this.wrapperEl.classList.remove("is-playing");
-	}
-
-	setPlay() {
-		this.audioEl.play();
-	}
-
-	setPause() {
-		this.audioEl.pause();
 	}
 
 	quickSeekBack(e) {
