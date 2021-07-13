@@ -73,6 +73,10 @@ class AudioPlayer {
 		this.audioEl.addEventListener("timeupdate", () => { console.log("timeupdate fired"); });
 		this.audioEl.addEventListener("ended", this.handleEnd);
 
+		//For when play/pause is initiated from elsewhere (phone lock screen, task bar, etc...)
+		this.audioEl.addEventListener("play", () => this.wrapperEl.classList.add("is-playing"));
+		this.audioEl.addEventListener("pause", () => this.wrapperEl.classList.remove("is-playing"));
+
 		// Playlist 💿
 		this.playlistTracks.forEach(trackEl => {
 			trackEl.addEventListener("click", this.handleTrackChange);
