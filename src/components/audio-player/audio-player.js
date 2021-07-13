@@ -78,23 +78,35 @@ class AudioPlayer {
 			trackEl.addEventListener("click", this.handleTrackChange);
 		});
 
+		this.playlistTracks[0].classList.add("is-active-track");
+
 		// Quickseek 🔎
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
 		this.seekForwardHelperEl.addEventListener("click", this.quickSeekForward);
-		
+
 		// Scrubbing 🧽
 		this.scrubStartAreaEl.addEventListener("touchstart", this.beginScrubbing, { passive: false });
 		this.scrubStartAreaEl.addEventListener("mousedown", this.beginScrubbing);
-		
+
 		// Transcript 📜
 		this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
 	}
 
 	handleTrackChange(e) {
+		const newTrackEl = e.currentTarget;
+
+		//If already active track, ignore.
+		if (newTrackEl.classList.contains("is-active-track")) {
+			return;
+		} else {
+			this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
+		}
+
 		console.log("running track change");
-		// TODO: nothing/skip if same track.
 		// TODO: analytics
-		let newTrack = JSON.parse(e.currentTarget.dataset.track);
+		newTrackEl.classList.add("is-active-track");
+
+		let newTrack = JSON.parse(newTrackEl.dataset.track);
 		console.dir(newTrack);
 		this.setTrack(newTrack);
 		this.setTranscript();
@@ -211,7 +223,7 @@ class AudioPlayer {
 		this.scrubbableAreaEl.removeEventListener("mouseleave", this.endScrubbing);
 	}
 
-	setMetaData() { 
+	setMetaData() {
 		console.log("setMetadData fired");
 		if (!("mediaSession" in navigator)) {
 			return false;

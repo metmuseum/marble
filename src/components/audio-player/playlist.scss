@@ -2,36 +2,45 @@
 	background: $color-white-050;
 	padding: $spacing-xs;
 
-  &:empty {
-    display: none;
-    border: 2px solid red;
-  }
+	&:empty {
+		display: none;
+	}
 
-  // goth stuff
-  @media (prefers-color-scheme: dark) {
+	// goth stuff
+	@media (prefers-color-scheme: dark) {
 		background: $color-grey-950;
-    color: $color-white;
-  }
+		color: $color-white;
+	}
 
-  .inverted-colors & {
+	.inverted-colors & {
 		background: $color-grey-950;
-    color: $color-white;
+		color: $color-white;
 	}
 }
 
 .audio-player__playlist-track {
+	align-items: center;
 	cursor: pointer;
-  display: flex;
-  align-items: center;
+	display: flex;
+	font-size: $textsize-xs;
+	font-weight: 500;
+	opacity: 0.55;
+	transition: opacity 0.1s;
+
+	&.is-active-track {
+		opacity: 1;
+	}
 }
 
 .audio-player__playlist-track-thumbnail {
+	height: 2rem;
+	margin-right: $spacing-micro;
+	object-fit: cover;
 	width: 2rem;
-  height: 2rem;
-  object-fit: cover;
 }
 
 .audio-player__playlist-track-title {
-  padding: 1em;
-  flex-grow: 1;
+	border-bottom: 1px solid $color-grey-200;
+	flex-grow: 1;
+	padding: $spacing-micro 0;
 }

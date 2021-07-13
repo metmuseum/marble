@@ -8,7 +8,7 @@ import { initializeAudioPlayers, track, example } from "./audio-player-story-hel
 export default { title: "Media/Audio Player", decorators: [withKnobs] };
 
 const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathingRoom=false, playerMode=""}) => {
-	
+
 	const options = {
 		hasImage: boolean("Has Image", hasImage, "Track"),
 		numberOfTracks: select("Single Track or Playlist?", {Single: "single", Playlist: "playlist"}, numberOfTracks, "Player"),
@@ -118,16 +118,16 @@ const audioPlayerMarkUp = ({model, options}) => html`
 			<h3>Playlist</h3>
 			${model.playlist.tracks.map(playlistTrack => { return html`
 				<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}'>
-					<div>
-						<img 
+					<!-- <div>
+						<img
 							class="audio-player__playlist-track-thumbnail"
-							alt="${playlistTrack.image.alt}" 
+							alt="${playlistTrack.image.alt}"
 							src="${playlistTrack.image.small}"/>
-					</div>
+					</div> -->
 					<div class="audio-player__playlist-track-title">${playlistTrack.title}</div>
 					<div></div>
 					</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
-	
+
 		<div class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
 			<div class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper">
 				<div class="audio-player__transcript js-audio-player__transcript">
