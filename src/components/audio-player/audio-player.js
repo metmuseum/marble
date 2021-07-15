@@ -82,7 +82,7 @@ class AudioPlayer {
 			trackEl.addEventListener("click", this.handleTrackChange);
 		});
 
-		this.playlistTracks[0].classList.add("is-active-track");
+		this.playlistTracks[0]?.classList.add("is-active-track");
 
 		// Quickseek 🔎
 		this.seekBackHelperEl.addEventListener("click", this.quickSeekBack);
