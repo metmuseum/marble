@@ -1,5 +1,3 @@
-import { bpAudioPlayer } from "../../global/exports.scss";
-
 export default (image) => {
 	let html = String.raw;
 	return html`<img
@@ -13,6 +11,6 @@ export default (image) => {
 			${image.large} 1600w,
 			${image.medium} 1200w,
 			${image.small} 800w"
-		sizes="(max-width: ${bpAudioPlayer} 100vw, 200px)"
+		sizes="(max-width: 600px 100vw, 200px)"
 	/>`;
 };
