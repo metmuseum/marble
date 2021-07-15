@@ -42,6 +42,9 @@
 	@media screen and (min-width: $bp-audio-player) {
 		min-width: 200px;
 	}
+	&:empty {
+		display: none;
+	}
 }
 
 .audio-player__cover-image {

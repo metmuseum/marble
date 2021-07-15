@@ -44,9 +44,7 @@ const audioPlayerMarkUp = ({model, options}) => html`
 	<section class="audio-player js-marble-audio-player ${options.playerMode} ${options.isDark}">
 		<div class="audio-player__media-section">
 			<div class="audio-player__image-section">
-				${options.hasImage ? html`<div class="audio-player__image-wrapper js-audio-player__image-wrapper">
-						${coverImageTemplate(model.track.image)}
-					</div>` : ""}
+				<div class="audio-player__image-wrapper js-audio-player__image-wrapper">${options.hasImage ? coverImageTemplate(model.track.image) : "" }</div>
 			</div>
 			<div class="audio-player__body">
 				<div class="audio-player__headings">
