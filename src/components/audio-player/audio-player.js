@@ -70,7 +70,6 @@ class AudioPlayer {
 		this.playButtonEl.addEventListener("touchstart", this.togglePlaying, { passive: false });
 		this.playButtonEl.addEventListener("click", this.togglePlaying);
 		this.audioEl.addEventListener("timeupdate", this.handleTimeChange);
-		this.audioEl.addEventListener("timeupdate", () => { console.log("timeupdate fired"); });
 		this.audioEl.addEventListener("ended", this.handleEnd);
 
 		//For when play/pause is initiated from elsewhere (phone lock screen, task bar, etc...)
@@ -106,7 +105,6 @@ class AudioPlayer {
 			this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
 		}
 
-		console.log("running track change");
 		// TODO: analytics
 		newTrackEl.classList.add("is-active-track");
 
@@ -142,7 +140,6 @@ class AudioPlayer {
 	}
 
 	_handleTimeChange() {
-		console.log("currentSrc is: " + this.audioEl.currentSrc);
 		const duration = this.audioEl.duration;
 		const elapsed = this.audioEl.currentTime;
 		this.setDisplayTime(elapsed, duration);
@@ -228,11 +225,9 @@ class AudioPlayer {
 	}
 
 	setMetaData() {
-		console.log("setMetadData fired");
 		if (!("mediaSession" in navigator)) {
 			return false;
 		}
-		console.log("and setMetaData actually running");
 
 		// TODO: use this.currentTrack data instead
 		this.metaImage = this.wrapperEl
