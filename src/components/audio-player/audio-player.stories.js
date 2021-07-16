@@ -54,7 +54,8 @@ const audioPlayerMarkUp = ({model, options}) => html`
 				<div class="audio-player__controls-wrapper">
 					<div class="audio-controls">
 						<div class="audio-controls__play-wrapper">
-							<button class="js-audio-player__play audio-controls__play">
+							<button class="js-audio-player__play audio-controls__play"
+								aria-label="Play/Pause Toggle">
 								<span class="js-play-icon audio-controls__play-icon"> ${playIcon} </span>
 								<span class="js-pause-icon audio-controls__pause-icon"> ${pauseIcon} </span>
 							</button>
@@ -128,11 +129,11 @@ const audioPlayerMarkUp = ({model, options}) => html`
 
 		<div class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
 			<div class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper">
-				<div class="audio-player__transcript js-audio-player__transcript">
+				<div class="audio-player__transcript js-audio-player__transcript" tabindex=0>
 					${model.track.transcript}
 				</div>
 			</div>
-			<a class="audio-player__transcript-toggle js-audio-player__transcript-toggle">
+			<a class="audio-player__transcript-toggle js-audio-player__transcript-toggle" href="#">
 				<span class="transcript__toggle-icon"> ${upCaretIcon}</span>
 				<span class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
 			</a>

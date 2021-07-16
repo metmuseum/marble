@@ -138,6 +138,7 @@
 
 	&:focus,
 	&:hover {
+		color: $color-focus-state;
 		text-decoration: none;
 	}
 }
