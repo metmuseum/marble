@@ -140,8 +140,8 @@ class AudioPlayer {
 	}
 
 	_handleTimeChange() {
-		const duration = this.audioEl.duration;
-		const elapsed = this.audioEl.currentTime;
+		const duration = this.audioEl.duration || 0;
+		const elapsed = this.audioEl.currentTime || 0;
 		this.setDisplayTime(elapsed, duration);
 		this.drawProgress(elapsed, duration);
 	}
