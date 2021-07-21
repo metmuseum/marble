@@ -2,10 +2,10 @@ import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
 import coverImageTemplate from "./cover-image-template";
 
-const defaultOptions = () => ({
+const defaultOptions = {
 	darkMode: false,
 	seekHelperDuration: 10,
-});
+};
 
 class AudioPlayer {
 	constructor({wrapperEl, options={}}) {
