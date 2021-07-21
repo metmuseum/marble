@@ -39,7 +39,7 @@ const defaultTrack = () => {
 			medium: greekHall1x1.srcSet.sizes["1240w"],
 			small: greekHall1x1.srcSet.sizes["1240w"],
 		},
-		subtitle: text("Subtitle", "Praise Songs about Javascript", "Track"),
+		description: text("Description", "Praise Songs about Javascript", "Track"),
 		title: text("Title", "Track 1. Title", "Track"),
 		transcript: text(
 			"Transcript",

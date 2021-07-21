@@ -19,14 +19,7 @@ const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathing
 
 	let playlist = options.numberOfTracks == "playlist" ? { tracks: [
 		track({title: "Track 1"}),
-		track({
-			id: example.id,
-			audio: example.audio,
-			title: example.title,
-			subtitle: example.description, // TODO: change to description?
-			transcript: example.transcript,
-			image: example.image
-		}),
+		track({...example}),
 		track({title: "Track 3", id: 3, transcript: null})
 	]} : null;
 
@@ -49,7 +42,7 @@ const audioPlayerMarkUp = ({model, options}) => html`
 			<div class="audio-player__body">
 				<div class="audio-player__headings">
 					<h1 class="audio-player__title js-audio-player__title">${model.track.title}</h1>
-					<h2 class="audio-player__subtitle js-audio-player__subtitle">${model.track.subtitle}</h2>
+					<h2 class="audio-player__subtitle js-audio-player__subtitle">${model.track.description}</h2>
 				</div>
 				<div class="audio-player__controls-wrapper">
 					<div class="audio-controls">
