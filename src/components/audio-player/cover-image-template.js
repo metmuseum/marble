@@ -1,6 +1,6 @@
 export default (image) => {
 	let html = String.raw;
-	return html`<img
+	return image ? html`<img
 		class="audio-player__cover-image"
 		alt="${image.alt}"
 		width="${image.width}"
@@ -12,5 +12,5 @@ export default (image) => {
 			${image.medium} 1200w,
 			${image.small} 800w"
 		sizes="(max-width: 600px 100vw, 200px)"
-	/>`;
+	/>` : "";
 };
