@@ -32,7 +32,7 @@ const initializeAudioPlayers = () => {
 const defaultTrack = () => {
 	return {
 		id: 1,
-		audioFileURL:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3", "Track"),
+		audio:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3", "Track"),
 		image: { ...greekHall1x1,
 			xlarge: greekHall1x1.srcSet.sizes["2440w"],
 			large: greekHall1x1.srcSet.sizes["1920w"],

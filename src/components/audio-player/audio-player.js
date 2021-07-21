@@ -118,9 +118,9 @@ class AudioPlayer {
 	setTrack(track) {
 		this.currentTrack = track;
 		this.audioEl.dataset.track = track;
-		this.audioEl.querySelector("source").src = track.audioFileURL;
+		this.audioEl.querySelector("source").src = track.audio;
 		this.titleEl.innerHTML = track.title;
-		this.subtitleEl.innerHTML = track.subtitle;
+		this.subtitleEl.innerHTML = track.description;
 		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.image);
 		this.audioEl.load(); // load the new track, this will fire metadataloaded, btw
 	}
@@ -230,10 +230,7 @@ class AudioPlayer {
 		}
 		let artwork = [];
 		let src = this.currentTrack?.image?.small;
-
-		if (src) {
-			artwork.push({src});
-		}
+		src && artwork.push({src});
 
 		navigator.mediaSession.metadata = new MediaMetadata({
 			title: this.currentTrack.title,

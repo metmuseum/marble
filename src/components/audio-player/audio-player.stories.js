@@ -21,7 +21,7 @@ const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathing
 		track({title: "Track 1"}),
 		track({
 			id: example.id,
-			audioFileURL: example.audio,
+			audio: example.audio,
 			title: example.title,
 			subtitle: example.description, // TODO: change to description?
 			transcript: example.transcript,
@@ -98,11 +98,11 @@ const audioPlayerMarkUp = ({model, options}) => html`
 							style="width: 100%; height: 36px;"
 							controls
 						>
-							<source src="${model.track.audioFileURL}" />
+							<source src="${model.track.audio}" />
 							<!-- TODO: playlist links, too!! -->
 							<p>
 								Your browser doesn't support HTML5 audio. Here is a
-								<a href="${model.track.audioFileURL}"
+								<a href="${model.track.audio}"
 									>link to download the audio</a
 								>
 								instead.
