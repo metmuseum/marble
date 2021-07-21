@@ -45,6 +45,7 @@ class AudioPlayer {
 		["_handleTimeChange",
 			"beginScrubbing",
 			"endScrubbing",
+			"formatTranscript",
 			"handleTrackChange",
 			"handleEnd",
 			"handleTimeChange",
@@ -60,6 +61,7 @@ class AudioPlayer {
 		});
 
 		this.applyListeners();
+		this.setTranscript(); // format transcript if there is one
 	}
 
 	applyListeners() {
@@ -109,7 +111,6 @@ class AudioPlayer {
 		newTrackEl.classList.add("is-active-track");
 
 		let newTrack = JSON.parse(newTrackEl.dataset.track);
-		console.dir(newTrack);
 		this.setTrack(newTrack);
 		this.setTranscript();
 		this.audioEl.play();
@@ -132,7 +133,11 @@ class AudioPlayer {
 	setTranscript() {
 		this.transcriptSection.classList.remove(`audio-player__transcript-section--transcript-${!this.hasTranscript()}`);
 		this.transcriptSection.classList.add(`audio-player__transcript-section--transcript-${this.hasTranscript()}`);
-		this.transcriptEl.innerHTML = this.hasTranscript() ? this.currentTrack.transcript : "";
+		this.transcriptEl.innerHTML = this.hasTranscript() ? this.formatTranscript(this.currentTrack.transcript) : "";
+	}
+
+	formatTranscript(text) {
+		return text.replace(/\n|\r\n/gmi,"<br />");
 	}
 
 	handleTimeChange() {
