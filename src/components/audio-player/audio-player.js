@@ -228,18 +228,17 @@ class AudioPlayer {
 		if (!("mediaSession" in navigator)) {
 			return false;
 		}
+		let artwork = [];
+		let src = this.currentTrack?.image?.small;
 
-		// TODO: use this.currentTrack data instead
-		this.metaImage = this.wrapperEl
-			.querySelector(".audio-player__cover-image")
-			?.src;
+		if (src) {
+			artwork.push({src});
+		}
 
 		navigator.mediaSession.metadata = new MediaMetadata({
 			title: this.currentTrack.title,
-			artist: this.wrapperEl.querySelector(".audio-player__subtitle").innerHTML,
-			artwork: [
-				{ src: this.metaImage },
-			],
+			artist: this.currentTrack.description,
+			artwork
 		});
 	}
 
