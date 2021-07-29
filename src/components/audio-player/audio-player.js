@@ -1,10 +1,12 @@
 import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
 import coverImageTemplate from "./cover-image-template";
+import AnalyticsLogger from "../analytics-logger";
 
 const defaultOptions = {
 	darkMode: false,
 	seekHelperDuration: 10,
+	analyticsSender: new AnalyticsLogger(),
 };
 
 class AudioPlayer {
@@ -35,11 +37,12 @@ class AudioPlayer {
 		this.options = {...defaultOptions, ...options};
 		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = this.options.seekHelperDuration;
+		this.analyticsSender = this.options.analyticsSender;
 
 		// State
 		this.isScrubbing = false;
-		console.dir(this.audioEl.dataset.track);
 		this.currentTrack = JSON.parse(this.audioEl.dataset.track);
+		this.amountPlayed = 0;
 
 		// bind listeners to this object and save the returned function reference, so they can be added/removed in the right scope
 		["_handleTimeChange",
@@ -62,6 +65,10 @@ class AudioPlayer {
 
 		this.applyListeners();
 		this.setTranscript(); // format transcript if there is one
+		this.analyticsSender.sendCustomEvent({
+			eventCategory: "UniversalAudioPlayer", 
+			eventAction: "loaded"
+		});
 	}
 
 	applyListeners() {
@@ -107,7 +114,6 @@ class AudioPlayer {
 			this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
 		}
 
-		// TODO: analytics
 		newTrackEl.classList.add("is-active-track");
 
 		let newTrack = JSON.parse(newTrackEl.dataset.track);
@@ -123,6 +129,7 @@ class AudioPlayer {
 		this.titleEl.innerHTML = track.title;
 		this.subtitleEl.innerHTML = track.description;
 		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.image);
+		this.amountPlayed = 0;
 		this.audioEl.load(); // load the new track, this will fire metadataloaded, btw
 	}
 
@@ -149,6 +156,21 @@ class AudioPlayer {
 		const elapsed = this.audioEl.currentTime || 0;
 		this.setDisplayTime(elapsed, duration);
 		this.drawProgress(elapsed, duration);
+		this.calculatePlayAnalytics(elapsed, duration);
+	}
+
+	calculatePlayAnalytics(elapsed, duration) {
+		if (elapsed && duration) {
+			let currentTenth = Math.round((elapsed/duration) * 10) / 10;
+			if (this.amountPlayed < currentTenth) {
+				this.amountPlayed = currentTenth;
+				this.analyticsSender.sendCustomEvent({
+					eventCategory: "UniversalAudioPlayer",
+					eventAction: `playProgress:${this.currentTrack.title}`,
+					eventLabel: this.amountPlayed
+				});
+			}
+		}
 	}
 
 	handleEnd() {
@@ -251,6 +273,11 @@ class AudioPlayer {
 
 	handlePlay() {
 		this.wrapperEl.classList.add("is-playing");
+		this.analyticsSender.sendCustomEvent({
+			eventCategory: "UniversalAudioPlayer",
+			eventAction: "trackPlayed",
+			eventLabel: this.currentTrack.title}
+		);
 	}
 
 	handlePause() {
@@ -283,6 +310,11 @@ class AudioPlayer {
 		} else {
 			this.transcriptSection.classList.add("transcript-is-open");
 			this.transcriptToggleText.innerHTML = "Hide Transcript";
+			this.analyticsSender.sendCustomEvent({
+				eventCategory: "UniversalAudioPlayer",
+				eventAction: "transcriptOpened",
+				eventLabel: this.currentTrack.title
+			});
 		}
 	}
 }
