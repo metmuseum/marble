@@ -5,8 +5,7 @@ import AnalyticsLogger from "../analytics-logger";
 
 const defaultOptions = {
 	darkMode: false,
-	seekHelperDuration: 10,
-	analyticsSender: new AnalyticsLogger(),
+	seekHelperDuration: 10
 };
 
 class AudioPlayer {
@@ -37,7 +36,7 @@ class AudioPlayer {
 		this.options = {...defaultOptions, ...options};
 		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors");
 		this.seekHelperDuration = this.options.seekHelperDuration;
-		this.analyticsSender = this.options.analyticsSender;
+		this.analyticsSender = this.options.analyticsSender || new AnalyticsLogger();
 
 		// State
 		this.isScrubbing = false;
