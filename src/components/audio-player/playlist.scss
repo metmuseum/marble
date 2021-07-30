@@ -18,13 +18,19 @@
 	}
 }
 
+.audio-player__playlist-title {
+	font-weight: 500;
+}
+
 .audio-player__playlist-track {
 	align-items: center;
+	border-bottom: 1px solid $color-grey-200;
 	cursor: pointer;
 	display: flex;
 	font-size: $textsize-xs;
 	font-weight: 500;
 	opacity: 0.55;
+	padding: $spacing-micro 0;
 	transition: opacity 0.1s;
 
 	&.is-active-track {
@@ -40,7 +46,5 @@
 }
 
 .audio-player__playlist-track-title {
-	border-bottom: 1px solid $color-grey-200;
 	flex-grow: 1;
-	padding: $spacing-micro 0;
 }

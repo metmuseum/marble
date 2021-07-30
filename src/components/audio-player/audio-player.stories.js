@@ -107,15 +107,14 @@ const audioPlayerMarkUp = ({model, options}) => html`
 		</div>
 
 		<ol class="js-audio-player__playlist-container audio-player__playlist">${ model.playlist?.tracks?.length ? html`
-			<h3>Playlist</h3>
+			<h4 class="audio-player__playlist-title">Playlist</h4>
 			${model.playlist.tracks.map(playlistTrack => { return html`
 				<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}'>
-					<!-- <div>
-						<img
-							class="audio-player__playlist-track-thumbnail"
-							alt="${playlistTrack.image.alt}"
-							src="${playlistTrack.image.small}"/>
-					</div> -->
+					<img
+						class="audio-player__playlist-track-thumbnail"
+						alt="${playlistTrack.image.alt}"
+						src="${playlistTrack.image.small}"
+					/>
 					<div class="audio-player__playlist-track-title">${playlistTrack.title}</div>
 					<div></div>
 					</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
