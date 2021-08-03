@@ -65,8 +65,8 @@ class AudioPlayer {
 		this.applyListeners();
 		this.setTranscript(); // format transcript if there is one
 		this.analyticsSender.sendCustomEvent({
-			eventCategory: "UniversalAudioPlayer", 
-			eventAction: "loaded"
+			event: "UniversalAudioPlayer:playerLoaded", 
+			playerId: this.wrapperEl.id
 		});
 	}
 
@@ -164,9 +164,10 @@ class AudioPlayer {
 			if (this.amountPlayed < currentTenth) {
 				this.amountPlayed = currentTenth;
 				this.analyticsSender.sendCustomEvent({
-					eventCategory: "UniversalAudioPlayer",
-					eventAction: `playProgress:${this.currentTrack.title}`,
-					eventLabel: this.amountPlayed
+					event: "UniversalAudioPlayer:playProgress:",
+					trackId: this.currentTrack.id,
+					trackTitle: this.currentTrack.title,
+					progress: this.amountPlayed
 				});
 			}
 		}
@@ -273,10 +274,10 @@ class AudioPlayer {
 	handlePlay() {
 		this.wrapperEl.classList.add("is-playing");
 		this.analyticsSender.sendCustomEvent({
-			eventCategory: "UniversalAudioPlayer",
-			eventAction: "trackPlayed",
-			eventLabel: this.currentTrack.title}
-		);
+			event: "UniversalAudioPlayer:trackPlayed",
+			trackId: this.currentTrack.id,
+			trackTitle: this.currentTrack.title
+		});
 	}
 
 	handlePause() {
@@ -310,9 +311,9 @@ class AudioPlayer {
 			this.transcriptSection.classList.add("transcript-is-open");
 			this.transcriptToggleText.innerHTML = "Hide Transcript";
 			this.analyticsSender.sendCustomEvent({
-				eventCategory: "UniversalAudioPlayer",
-				eventAction: "transcriptOpened",
-				eventLabel: this.currentTrack.title
+				event: "UniversalAudioPlayer:transcriptOpened",
+				trackId: this.currentTrack.id,
+				trackTitle: this.currentTrack.title
 			});
 		}
 	}

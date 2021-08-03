@@ -3,9 +3,9 @@ export default class AnalyticsLogger {
 		console.trace("New analytics logger instantiated");
 	}
 
-	sendCustomEvent({ eventCategory, eventAction, eventLabel, eventValue }) {
+	sendCustomEvent(args) {
 		try {
-			console.log("Analytics event: ", { eventCategory, eventAction, eventLabel, eventValue });
+			console.log("Analytics event: ", args);
 		} catch (err) {
 			console.error(err);
 		}
