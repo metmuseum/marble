@@ -70,7 +70,7 @@ const planCardMarkUp = (model) => {
 								Plan your visit
 							</a>
 							<a class="button tertiary-button">
-								View all exhbitions
+								View all exhibitions
 							</a>
 						</div>
 					</div>
