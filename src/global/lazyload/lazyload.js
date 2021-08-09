@@ -27,6 +27,9 @@ const lazyload = () => {
 		passive: true,
 		capture: true,
 	});
+
+	// make this object available globally for future calls
+	window.marbleLazyLoadObj = lazyLoadObj;
 };
 
 export default lazyload;
