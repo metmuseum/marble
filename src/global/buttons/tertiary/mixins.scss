@@ -1,7 +1,7 @@
 @mixin tertiary-button--hover {
 	border-color: transparent;
 
-	&:before {
+	&::before {
 		border-color: currentColor;
 		content: "";
 		right: 0;
@@ -30,7 +30,7 @@
 
 	// this block handles the underline animation
 	&:not(:disabled) {
-		&:before {
+		&::before {
 			border-bottom: 2px solid transparent;
 			bottom: -2px;
 			content: "";
@@ -59,7 +59,7 @@
 		color: $color-grey-600;
 		cursor: not-allowed;
 
-		&:before {
+		&::before {
 			border: none;
 		}
 	}

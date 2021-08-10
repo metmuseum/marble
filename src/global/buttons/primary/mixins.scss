@@ -72,12 +72,10 @@ $border-width-ghost: 2px;
 }
 
 @mixin primary-button--filled {
-	background-image: linear-gradient(
-		to right,
-		$color-pink,
-		$color-met-red,
-		$color-orange
-	);
+	background-image: linear-gradient(to right,
+	$color-pink,
+	$color-met-red,
+	$color-orange);
 	background-position: 0 0;
 	background-size: 200% 200%;
 	color: $color-white;

@@ -80,12 +80,10 @@
 	top: 0;
 	z-index: -1;
 
-	&:before {
-		background-image: linear-gradient(
-			to top,
-			$color-black-opaque-80,
-			transparent
-		);
+	&::before {
+		background-image: linear-gradient(to top,
+		$color-black-opaque-80,
+		transparent);
 		bottom: 0;
 		content: "";
 		left: 0;

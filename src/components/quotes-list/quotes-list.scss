@@ -13,7 +13,7 @@
 .quotes-module__quotes {
 	column-gap: $spacing-s;
 	display: grid;
-	grid-template-columns:	1fr;
+	grid-template-columns: 1fr;
 	margin-bottom: $spacing-s;
 	row-gap: $spacing-s;
 
@@ -33,11 +33,11 @@
 		display: inline;
 	}
 
-	&:before {
+	&::before {
 		content: "“";
 	}
 
-	&:after {
+	&::after {
 		content: "”";
 	}
 }
@@ -46,7 +46,7 @@
 	display: flex;
 	font-weight: 600;
 
-	&:before {
+	&::before {
 		content: "—";
 	}
 }

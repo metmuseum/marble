@@ -8,7 +8,7 @@
 	position: absolute;
 	width: 250px;
 
-	&:after {
+	&::after {
 		background-color: $color-white;
 		box-shadow: -1px -2px 2px 0 $color-card-shadow;
 		content: "";
@@ -26,7 +26,7 @@
 	}
 
 	&.is-upwards {
-		&:after {
+		&::after {
 			box-shadow: -10px -10px 10px 0 $color-active-shadow;
 			left: 94px;
 			top: calc(100% - 10px);
@@ -60,7 +60,7 @@
 		bottom: 46px;
 		left: -75px;
 
-		&:after {
+		&::after {
 			border-bottom: none;
 			border-top: 13px solid $color-white;
 			left: 94px;
@@ -76,7 +76,7 @@
 //not a real link, just a tooltip
 //mostly TOAH legacy "links to nowhere"
 .tooltip-only {
-	&:after {
+	&::after {
 		// TODO, but this into Marble before merge!!!
 		// background: url("/Rodan/dist/svg/tooltip-popup.svg") no-repeat;
 		border-bottom: solid 2px $color-white;
