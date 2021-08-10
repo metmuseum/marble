@@ -6,20 +6,23 @@
 //         b) import { jumpLinkBanner } from "marble"
 
 import global from "./global/global.mjs";
-import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner.js";
-import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls.js";
+
+import AudioPlayer from "./components/audio-player/audio-player.js";
 import carousel from "./components/carousel/carousel.js";
-import videoSlide from "./components/carousel/slide/video-slide.js";
+import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner.js";
 import quotesModule from "./components/quotes-list/quotes-list.js";
+import videoSlide from "./components/carousel/slide/video-slide.js";
+import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls.js";
 
 
 const marble = {
 	global,
+	AudioPlayer,
 	carousel,
 	jumpLinkBanner,
+	quotesModule,
 	videoSlide,
 	vimeoPlayToggle,
-	quotesModule
 };
 
 export default marble;

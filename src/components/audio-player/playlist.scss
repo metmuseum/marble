@@ -1,0 +1,50 @@
+.audio-player__playlist {
+	background: $color-white-050;
+	padding: $spacing-xs;
+
+	&:empty {
+		display: none;
+	}
+
+	// goth stuff
+	@media (prefers-color-scheme: dark) {
+		background: $color-grey-950;
+		color: $color-white;
+	}
+
+	.inverted-colors & {
+		background: $color-grey-950;
+		color: $color-white;
+	}
+}
+
+.audio-player__playlist-title {
+	font-weight: 500;
+}
+
+.audio-player__playlist-track {
+	align-items: center;
+	border-bottom: 1px solid $color-grey-200;
+	cursor: pointer;
+	display: flex;
+	font-size: $textsize-xs;
+	font-weight: 500;
+	opacity: 0.55;
+	padding: $spacing-micro 0;
+	transition: opacity 0.1s;
+
+	&.is-active-track {
+		opacity: 1;
+	}
+}
+
+.audio-player__playlist-track-thumbnail {
+	height: 2rem;
+	margin-right: $spacing-micro;
+	object-fit: cover;
+	width: 2rem;
+}
+
+.audio-player__playlist-track-title {
+	flex-grow: 1;
+}
