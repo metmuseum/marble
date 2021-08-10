@@ -73,7 +73,7 @@
 	._sb--focus:not(:hover) + & {
 		@include button-focus--not-hover(3px);
 
-		&:after {
+		&::after {
 			border-radius: 999px;
 		}
 	}

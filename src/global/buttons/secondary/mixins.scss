@@ -8,7 +8,7 @@
 	@include secondary-inverted-colors();
 	@include button-focus--not-hover(6px);
 
-	&:after {
+	&::after {
 		border-radius: 999px;
 	}
 }

@@ -28,7 +28,7 @@ img {
 	color: $color-white;
 	position: relative;
 
-	&:after {
+	&::after {
 		@include typography-h3;
 		color: $color-white;
 		content: attr(alt);
@@ -46,7 +46,7 @@ img {
 		z-index: z("img&:after");
 	}
 
-	&:before {
+	&::before {
 		background-color: $color-grey-500;
 		bottom: 0;
 		content: " ";
@@ -67,8 +67,8 @@ input {
 
 	&[type="email"],
 	&[type="text"] {
-		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
-		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		appearance: none; // sass-lint:disable-line no-vendor-prefixes
 		appearance: none;
 	}
 

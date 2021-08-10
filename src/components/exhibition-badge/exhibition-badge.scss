@@ -14,7 +14,7 @@
 	transition: all 0.5s;
 	white-space: nowrap;
 
-	&:before {
+	&::before {
 		background-color: currentColor;
 		content: "";
 		display: inline-block;
@@ -46,7 +46,7 @@
 			color: $color-green-good-news;
 		}
 
-		&:before {
+		&::before {
 			border-radius: 100%;
 		}
 	}

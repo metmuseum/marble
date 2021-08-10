@@ -3,13 +3,11 @@
 
 @mixin interaction-fill-up($color-1, $color-2) {
 	background-color: transparent;
-	background-image: linear-gradient(
-		180deg,
-		transparent 0%,
-		transparent 49%,
-		$color-1 50%,
-		$color-1 100%
-	);
+	background-image: linear-gradient(180deg,
+	transparent 0%,
+	transparent 49%,
+	$color-1 50%,
+	$color-1 100%);
 	background-size: 200% 200%;
 	color: $color-1;
 	transition: all 0.3s;
@@ -31,7 +29,7 @@
 	border-bottom: 1px solid $color;
 	position: relative;
 
-	&:after {
+	&::after {
 		border-bottom: 1.5px solid transparent;
 		bottom: -1px;
 		content: "";
@@ -44,7 +42,7 @@
 		&:hover {
 			border-color: transparent;
 
-			&:after {
+			&::after {
 				border-color: $color;
 				content: "";
 				right: 0;
