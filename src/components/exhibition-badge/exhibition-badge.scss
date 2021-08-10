@@ -1,0 +1,58 @@
+@import "../../base/base";
+
+.exhibition-badge {
+	align-items: center;
+	background-color: $color-white;
+	border-radius: 2em;
+	box-shadow: $shadow-passive;
+	color: currentColor;
+	display: inline-flex;
+	font-size: $textsize-xxs;
+	margin-top: $spacing-micro;
+	padding: $spacing-micro $spacing-xxs;
+	position: relative;
+	transition: all 0.5s;
+	white-space: nowrap;
+
+	&:before {
+		background-color: currentColor;
+		content: "";
+		display: inline-block;
+		height: 1em;
+		margin-right: $spacing-micro;
+		width: 1em;
+	}
+
+	&.exhibition-badge--closing-soon {
+		@media screen and (hover: none) {
+			color: $color-met-red;
+		}
+
+		&.is-color,
+		.exhibition-item:hover &,
+		.exhibition-item:focus & {
+			color: $color-met-red;
+		}
+	}
+
+	&.exhibition-badge--just-opened {
+		@media screen and (hover: none) {
+			color: $color-green-good-news;
+		}
+
+		&.is-color,
+		.exhibition-item:hover &,
+		.exhibition-item:focus & {
+			color: $color-green-good-news;
+		}
+
+		&:before {
+			border-radius: 100%;
+		}
+	}
+}
+
+.exhibition-badge__text {
+	color: currentColor;
+	font-weight: 600;
+}

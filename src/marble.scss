@@ -22,9 +22,17 @@
 @import "components/featured-card/featured-card";
 @import "components/topics-slider/topic-card.scss";
 
+//Media
+@import "components/audio-player/audio-player";
+
+//Exhibition components
+@import "components/plan-your-visit/plan-your-visit";
+@import "components/inputs/inputs";
+
 // Other
+@import "components/exhibition-badge/exhibition-badge";
 @import "components/byline/byline";
-@import "components/quotes-module/quotes-module";
+@import "components/quotes-list/quotes-list";
 @import "components/featured-module/featured-module";
 @import "components/navigation/navigation";
 @import "components/notification-banner/notification-banner";

@@ -8,7 +8,7 @@ export default { title: "Components/Topics Slider", decorators: [withKnobs] };
 
 const TopicsSlider = () => {
 	useEffect(()=> {
-		carousel(object("Flickity Settings", flickityDefaults))
+		carousel(object("Flickity Settings", flickityDefaults));
 	});
 	return html`
 	<section class="topics-slider">

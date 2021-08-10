@@ -29,19 +29,19 @@ const cardTemplate = (
 	};
 };
 
-const cardMarkup = (model, cardCount) => {
+const cardMarkup = (model) => {
 	return `
 		<section>
 		  <h3>${model.header}</h3>
 			<div class="marble-card__wrapper">
 			  ${model.cards.reduce((total, card) => {
-					return (
-						total +
+		return (
+			total +
 						`<div class="marble-card marble-card--active">
 			      <div class="marble-card__image-wrapper marble-card__image-wrapper--fixed-ratio marble-card__image-wrapper--66">
 			        <a href="${
-								card.link.url
-							}" class="marble-card__image-link" tabindex="-1">
+			card.link.url
+			}" class="marble-card__image-link" tabindex="-1">
 			          <img class="marble-card__image" srcset="${card.images}">
 			        </a>
 			      </div>
@@ -60,7 +60,7 @@ const cardMarkup = (model, cardCount) => {
 		              </h3>
 			          </div>
 			          ${
-									card.description &&
+			card.description &&
 									`<div class="marble-card__meta">
 				            <div class="marble-card__meta-body">
 				              <div class="marble-card__meta-description">
@@ -68,12 +68,12 @@ const cardMarkup = (model, cardCount) => {
 				              </div>
 				            </div>
 				          </div>`
-								}
+			}
 			        </div>
 			      </div>
 			    </div>`
-					);
-				}, "")}
+		);
+	}, "")}
 			</div>
 		</section>
 	`;

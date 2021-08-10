@@ -1,11 +1,11 @@
-import html from "../../.storybook/helpers/html"
+import html from "../../.storybook/helpers/html";
 
 export default {
-  title: "Accessibility/Screen Reader Only"
-}
+	title: "Accessibility/Screen Reader Only"
+};
 
 const ScreenReaderOnly = () => html`<div class="screen-reader-only">
   This text should not be visible, but should be announced by a screenreader.
-</div>`
+</div>`;
 
-export { ScreenReaderOnly }
+export { ScreenReaderOnly };

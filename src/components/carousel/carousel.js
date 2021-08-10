@@ -1,7 +1,7 @@
 import Flickity from "flickity";
 import arrowShape from "./arrowShape";
 
-require('flickity-imagesloaded');
+require("flickity-imagesloaded");
 
 const flickityDefaults = {
 	accessibility: true,
@@ -11,7 +11,7 @@ const flickityDefaults = {
 	imagesLoaded: false,
 	pageDots: false,
 	friction: 0.4,
-	contain: true,asdfasdf
+	contain: true,
 	resize: true,
 	wrapAround: false,
 	arrowShape,
@@ -27,7 +27,7 @@ const carousel = (options = {}) => {
 
 	carousels.forEach((carousel) => {
 		const flickityInstance = new Flickity(carousel, finalOptions).on(
-			`change`,
+			"change",
 			function () {
 				this.cells.forEach((cell) => {
 					const firstVideo = cell.element.querySelector("video");

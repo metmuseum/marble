@@ -25,6 +25,11 @@ $color-grey-200: #e3e3e3;
 $color-grey-100: #f0f0f0;
 $color-grey-050: #f2f2f2;
 $color-white: #ffffff;
+$color-white-050: #fafafa;
+
+
+//Safari handles transparencies weird and this is useful for gradients
+$color-white-transparent: rgba($color-white, 0);
 
 //Non-Opaque Colors
 $color-shadow: rgba(136, 132, 132, 0.5);
@@ -48,3 +53,4 @@ $color-text: $color-black;
 $color-title: $color-black;
 $color-background: $color-white;
 $color-focus-state: $color-purple;
+$color-focus-background: rgba($color-focus-state, 0.1);
