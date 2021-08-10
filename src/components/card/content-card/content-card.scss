@@ -70,7 +70,7 @@
 	flex-basis: 100%;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: $spacing-xs $spacing-component-margin;
+	padding: $spacing-xs $spacing-component-margin $spacing-s;
 
 	.content-card--productive & {
 		padding-left: 0;
