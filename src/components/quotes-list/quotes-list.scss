@@ -3,7 +3,7 @@
 	color: $color-white;
 	padding: $spacing-l $spacing-component-margin;
 
-	& :focus {
+	:focus {
 		background-color: $color-white-opaque-30;
 		color: $color-white;
 	}

@@ -57,7 +57,7 @@ $expressive-width-max: $productive-width-max;
 	&,
 	&:hover,
 	&:visited {
-		border: none;
+		border: 0;
 		color: currentColor;
 		text-decoration: none;
 	}

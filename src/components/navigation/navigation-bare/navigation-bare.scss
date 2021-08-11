@@ -29,10 +29,8 @@
 		text-align: left;
 	}
 
-	&.is-selected {
-		.navigation-bare--link {
-			text-decoration: underline;
-		}
+	&.is-selected .navigation-bare--link {
+		text-decoration: underline;
 	}
 }
 
@@ -56,11 +54,12 @@
 .hide-home-link {
 	.navigation-bare--item__home {
 		display: none;
+	}
 
-		&+ .navigation-bare--item {
-			padding-left: $spacing-component-margin;
-			text-align: left;
-		}
+	.navigation-bare--item__home + .navigation-bare--item {
+		padding-left: $spacing-component-margin;
+		text-align: left;
+
 	}
 }
 

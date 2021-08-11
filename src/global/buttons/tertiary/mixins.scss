@@ -12,9 +12,9 @@
 	background-color: transparent;
 	border: unset;
 	border-bottom: 2px solid currentColor;
-	border-left: none;
-	border-right: none;
-	border-top: none;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
 	color: currentColor;
 	cursor: pointer;
 	font-family: $metsans;
@@ -55,12 +55,12 @@
 
 	&.button--disabled,
 	&[disabled] {
-		border: none;
+		border: 0;
 		color: $color-grey-600;
 		cursor: not-allowed;
 
 		&::before {
-			border: none;
+			border: 0;
 		}
 	}
 }

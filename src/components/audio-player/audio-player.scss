@@ -1,7 +1,7 @@
 @import "./audio-controls";
-@import "./mini-player/mini-player.scss";
-@import "./micro-player/micro-player.scss";
-@import "./playlist.scss";
+@import "./mini-player/mini-player";
+@import "./micro-player/micro-player";
+@import "./playlist";
 
 .audio-player {
 	background-color: $color-white;

@@ -17,9 +17,11 @@ h1 {
 	@include typography-h1;
 }
 
+/* stylelint-disable selector-no-qualifying-type */
 h1.expressive {
 	@include typography-h1-expressive;
 }
+/* stylelint-enable selector-no-qualifying-type */
 
 h2 {
 	@include typography-h2;
