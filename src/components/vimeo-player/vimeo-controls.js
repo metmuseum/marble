@@ -15,7 +15,7 @@ function vimeoControls() {
 		button.querySelector(".js-vimeo-play__pause-icon").classList.add("is-hidden");
 	};
 
-	const selectorString = `.js-vimeo-container:not(.${SETTINGS.initializedClassName}})`;
+	const selectorString = `.js-vimeo-container:not(.${SETTINGS.initializedClassName})`;
 	const vimeoContainers = document.querySelectorAll(selectorString);
 	vimeoContainers.forEach((container)=> {
 		const player = new VimeoPlayer(container);
