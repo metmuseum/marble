@@ -18,6 +18,23 @@
     "plugin/selector-bem-pattern": {
       "preset": "bem"
     },
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreSelectors": [
+          ":export",
+          ":import"
+        ]
+      }
+    ],
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": [
+          "attribute"
+        ]
+      }
+    ],
     "string-quotes": "double"
   }
 }
