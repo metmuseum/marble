@@ -2,7 +2,7 @@ import SETTINGS from "../../global/settings";
 import smoothscroll from "smoothscroll-polyfill";
 
 function jumpLinkBanner() {
-	smoothscroll.polyfill();	
+	smoothscroll.polyfill();
 	document.querySelectorAll(`.js-jump-link:not(.${SETTINGS.initializedClassName})`).forEach((link) => {
 		link.addEventListener("click", (e) => {
 			e.preventDefault();

@@ -1,3 +1,4 @@
+import SETTINGS from "../../global/settings";
 import VimeoPlayer from "@vimeo/player";
 
 function vimeoControls() {
@@ -14,7 +15,8 @@ function vimeoControls() {
 		button.querySelector(".js-vimeo-play__pause-icon").classList.add("is-hidden");
 	};
 
-	const vimeoContainers = document.querySelectorAll(".js-vimeo-container");
+	const selectorString = `.js-vimeo-container:not(.${SETTINGS.initializedClassName})`;
+	const vimeoContainers = document.querySelectorAll(selectorString);
 	vimeoContainers.forEach((container)=> {
 		const player = new VimeoPlayer(container);
 
@@ -28,6 +30,7 @@ function vimeoControls() {
 			});
 
 		});
+		container.classList.add(SETTINGS.initializedClassName);
 	});
 }
 
