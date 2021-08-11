@@ -65,6 +65,7 @@ h5,
 h6 {
 	a {
 		text-decoration: none;
+		text-decoration-color: currentColor;
 
 		@media screen and (hover: hover) {
 			&:hover {
