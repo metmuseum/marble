@@ -21,17 +21,15 @@
 	}
 
 	a {
-		border: none;
+		border: 0;
 		display: block;
 	}
 
-	&.is-upwards {
-		&::after {
-			box-shadow: -10px -10px 10px 0 $color-active-shadow;
-			left: 94px;
-			top: calc(100% - 10px);
-			transform: rotate(225deg);
-		}
+	&.is-upwards::after {
+		box-shadow: -10px -10px 10px 0 $color-active-shadow;
+		left: 94px;
+		top: calc(100% - 10px);
+		transform: rotate(225deg);
 	}
 }
 
@@ -59,13 +57,13 @@
 	.marble-inline-tooltip {
 		bottom: 46px;
 		left: -75px;
+	}
 
-		&::after {
-			border-bottom: none;
-			border-top: 13px solid $color-white;
-			left: 94px;
-			top: 100%;
-		}
+	.marble-inline-tooltip::after {
+		border-bottom: 0;
+		border-top: 13px solid $color-white;
+		left: 94px;
+		top: 100%;
 	}
 }
 

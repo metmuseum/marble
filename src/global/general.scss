@@ -70,11 +70,14 @@ input {
 		appearance: none;
 	}
 
+	/* stylelint-disable selector-no-qualifying-type */
 	&.is-invalid {
 		border-color: $color-black;
 		color: $color-red-error;
 	}
+	/* stylelint-enable selector-no-qualifying-type */
 }
+
 
 a {
 	color: inherit;

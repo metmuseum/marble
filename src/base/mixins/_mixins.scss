@@ -1,7 +1,7 @@
-@import "_cta";
-@import "_layouts";
-@import "_typography";
-@import "_buttons";
+@import "cta";
+@import "layouts";
+@import "typography";
+@import "buttons";
 
 @mixin line-clamp($lines) {
 	-webkit-box-orient: vertical;

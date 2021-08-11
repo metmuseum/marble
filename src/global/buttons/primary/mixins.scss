@@ -6,7 +6,7 @@ $border-width-ghost: 2px;
 }
 
 @mixin primary-button {
-	border: none;
+	border: 0;
 	border-radius: $radius-sharp;
 	color: $color-white;
 	cursor: pointer;
