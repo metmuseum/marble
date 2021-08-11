@@ -49,7 +49,7 @@ $spacing-component-vertical: $spacing-l;
 	$small-screen: 375; //iPhone width.
 	$large-screen: 1440; //Macbook width.
 
-	$baseSize: $mobileSize / 16;
+	$base-size: $mobileSize / 16;
 	$calc: calc(#{$baseSize}rem + (#{$desktopSize} - #{$mobileSize}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
 	@return $calc;
 }

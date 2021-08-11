@@ -17,6 +17,7 @@
   - ### [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
   - ### [Storybook Development](#Storybook-Development)
   - ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
+- ### [Browsers We Support](#Browsers-We-Support)
 
 # What is Marble?
 
@@ -289,6 +290,21 @@ TODO: update this to have CI build dist on merge
 * See also: [/webpack.production.config.js](https://github.com/metmuseum/marble/blob/master/webpack.production.config.js)
 
 - Make sure you commit this production-ready build of Marble and not the development version that would also be generated to `/dist` anytime you run webpack-dev-server.
+
+# Browsers We Support
+
+We target the latest 2 major versions of most browsers, via our `.browesrslistrc` [file](.browesrslistrc).  
+
+To see what those currently are, run:
+
+    npx browserslist
+
+
+To update the list of current browsers, it's important to frequently use:
+
+    npx browserslist@latest --update-db
+
+...because of [reasons](https://github.com/browserslist/browserslist#browsers-data-updating).
 
 ---
 

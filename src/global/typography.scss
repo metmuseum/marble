@@ -1,11 +1,10 @@
-@import "./typography/headings.scss";
-@import "./typography/body.scss";
-@import "./typography/ui.scss";
+@import "./typography/headings";
+@import "./typography/body";
+@import "./typography/ui";
 
 a {
 	color: inherit;
 	text-decoration: underline;
-	text-decoration-color: currentColor;
 
 	//For links without an href - don't make them look or act like real links.
 	&[href=""],
@@ -67,12 +66,6 @@ h6 {
 	a {
 		text-decoration: none;
 
-		&:focus {
-			outline: none;
-			text-decoration: underline;
-			text-decoration-color: currentColor;
-		}
-
 		@media screen and (hover: hover) {
 			&:hover {
 				text-decoration: underline;
@@ -80,7 +73,14 @@ h6 {
 			}
 		}
 	}
+
+	a:focus {
+		outline: none;
+		text-decoration: underline;
+		text-decoration-color: currentColor;
+	}
 }
+
 
 // Visually remove these empty typography tags:
 h1,
