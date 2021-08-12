@@ -63,6 +63,20 @@
 }
 
 
+@mixin button-reset($color: currentColor, $bg-color: transparent) {
+	background: $bg-color;
+	border: 0;
+	color: $color;
+	display: inline-block;
+	justify-content: center;
+	padding: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
 @mixin button-deprecated {
 	// TODO: will need to somehow migrate from the below styles?
 	&.button--pill,

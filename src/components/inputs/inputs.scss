@@ -1,0 +1,62 @@
+$color-input-alert: $color-purple;
+
+.marble-input__container {
+	display: inline-block;
+	position: relative;
+}
+
+.marble-input {
+	background-color: $color-white;
+	border: 2px solid $color-grey-200;
+	width: 100%;
+
+	&:focus {
+		border-color: $color-grey-900;
+		outline: none;
+	}
+
+	.show-alert & {
+		border-color: $color-input-alert;
+	}
+}
+
+.marble-input__message {
+	align-items: center;
+	background-color: $color-input-alert;
+	border-radius: $radius-sharp;
+	color: $color-white;
+	display: none;
+	font-size: $textsize-xs;
+	font-weight: 500;
+	line-height: 1;
+	padding: $spacing-micro;
+	position: absolute;
+	top: calc(100% + 4px);
+	width: 100%;
+
+	.marble-input__container.show-alert & {
+		display: flex;
+	}
+
+	.marble-input__container.has-arrow &::before {
+		border: 10px solid transparent;
+		border-bottom-color: $color-input-alert;
+		bottom: 100%;
+		content: "";
+		display: block;
+		height: 0;
+		left: $spacing-micro;
+		position: absolute;
+		width: 0;
+	}
+}
+
+.marble-input__message-icon {
+	align-items: center;
+	align-self: center;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	line-height: 1;
+	margin-right: $spacing-micro;
+}

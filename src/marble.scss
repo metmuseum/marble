@@ -22,11 +22,14 @@
 @import "components/featured-card/featured-card";
 @import "components/topics-slider/topic-card.scss";
 
+//Media
+@import "components/audio-player/audio-player";
 
 //Exhibition components
 @import "components/plan-your-visit/plan-your-visit";
+@import "components/inputs/inputs";
 
-// Other// Other
+// Other
 @import "components/exhibition-badge/exhibition-badge";
 @import "components/byline/byline";
 @import "components/quotes-list/quotes-list";

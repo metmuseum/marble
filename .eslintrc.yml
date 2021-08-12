@@ -1,9 +1,11 @@
-extends: 
+extends:
   - "eslint:recommended"
 env:
   browser: true
   node: true
   es2021: true
+globals:
+ MediaMetadata: readonly
 parserOptions:
   ecmaVersion: 2021
   sourceType: module

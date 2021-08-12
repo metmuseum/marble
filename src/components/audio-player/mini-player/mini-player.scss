@@ -1,0 +1,80 @@
+$mini-player-image-size: 120px;
+
+.audio-player__media-section {
+	.mini-player & {
+		flex-direction: row;
+		min-height: $mini-player-image-size;
+		padding: 0;
+	}
+}
+
+.audio-player__headings {
+	.mini-player & {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+.audio-player__body {
+	.mini-player & {
+		padding: $spacing-micro;
+	}
+}
+
+.audio-player__title {
+	.mini-player & {
+		display: inline;
+		font-size: $textsize-xs;
+	}
+}
+
+.audio-player__subtitle {
+	.mini-player & {
+		display: inline;
+		font-size: $textsize-xs;
+	}
+}
+
+.audio-player__image-section {
+	.mini-player & {
+		flex-basis: $mini-player-image-size;
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin: 0;
+	}
+}
+
+.audio-player__image-wrapper {
+	.mini-player & {
+		min-width: 0;
+	}
+}
+
+.audio-player__transcript-toggle {
+	.mini-player & {
+		padding: $spacing-micro;
+	}
+}
+
+.audio-controls__seek-back,
+.audio-controls__seek-forward {
+	.mini-player & {
+		display: none;
+	}
+}
+
+.audio-controls__play-wrapper {
+	.mini-player & {
+		align-items: center;
+		display: flex;
+		font-size: $textsize-xl;
+		height: $mini-player-image-size;
+		justify-content: center;
+		left: 0;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: $mini-player-image-size;
+	}
+}

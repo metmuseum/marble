@@ -1,69 +1,56 @@
 import html from "../../../.storybook/helpers/html";
-
-import image768 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
-import image960 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
-import image1440 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
-import image2160 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-2160.jpg";
-import image3240 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-3240.jpg";
-import image4860 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-4860.jpg";
-import image5760 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-5760.jpg";
+import defaultImage from "../../../.storybook/assets/images/full-width-image";
 
 export default {
 	title: "Image Containers",
 };
 
-const width = 3920;
-const height = 2621;
+const sizesTemplate = (srcSet) => {
+	const widths = Object.keys(srcSet.sizes);
+	return widths
+		.map((width) => {
+			return `${srcSet.sizes[width]} ${width},`;
+		})
+		.join("\n");
+};
 
-export const fullWidth = () =>
-	// Example of srcsets using arbitrary 1.5 multiples of 960px
-	// Goes to just above 5k (5120px, @ 1x density).
+const fullWidth = () => {
 	// Don't forget alt attribute.
 	// Use width= and height= to prevent jank.
 	// References: https://css-tricks.com/what-if-we-got-aspect-ratio-sized-images-by-doing-almost-nothing/
-	html`
+	let image = defaultImage;
+	return html`
 		<div class="image-container image-container--full-width">
 			<img
 				class="image-container__image"
-				alt="An image alt, for accessibility"
-				width="${width}"
-				height="${height}"
-				src="${image768}"
-				srcset="
-					${image768}  768w,
-					${image960}  960w,
-					${image1440} 1440w,
-					${image2160} 2160w,
-					${image3240} 3240w,
-					${image4860} 4860w,
-					${image5760} 5760w
-				"
+				alt="${image.alt}"
+				width="${image.width}"
+				height="${image.height}"
+				src="${image.srcSet.fallback}"
+				srcset="${sizesTemplate(image.srcSet)}"
 				sizes="100vw"
 			/>
 		</div>
 	`;
+};
 
-const halfWidth = () =>
+const halfWidth = () => {
 	// note sizes attribute is just 50vw
-	html`
+	let image = defaultImage;
+	return html`
 		<div class="image-container image-container--half-width">
 			<img
 				class="image-container__image"
-				alt="An image alt, for accessibility"
-				width="${width}"
-				height="${height}"
-				src="${image768}"
-				srcset="
-					${image768}  768w,
-					${image960}  960w,
-					${image1440} 1440w,
-					${image2160} 2160w,
-					${image3240} 3240w
-				"
+				alt="${image.alt}"
+				width="${image.width}"
+				height="${image.height}"
+				src="${image.srcSet.fallback}"
+				srcset="${sizesTemplate(image.srcSet)}"
 				sizes="50vw"
 			/>
 		</div>
 	`;
+};
 
 halfWidth.story = {
 	parameters: {
@@ -72,30 +59,25 @@ halfWidth.story = {
 	},
 };
 
-export { halfWidth };
+const lazyLoaded = () => {
+	let image = defaultImage;
 
-export const lazyLoaded = () =>
-	html`
+	return html`
 		<div style="margin-bottom: 200vh;">
 			<h2 style="margin: 5% 25%;">The image below should lazy load.</h2>
 		</div>
 		<div class="image-container image-container--full-width">
 			<img
 				class="lazy image-container__image"
-				alt="An image alt, for accessibility"
-				width="${width}"
-				height="${height}"
-				data-src="${image768}"
-				data-srcset="
-					${image768}  768w,
-					${image960}  960w,
-					${image1440} 1440w,
-					${image2160} 2160w,
-					${image3240} 3240w,
-					${image4860} 4860w,
-					${image5760} 5760w
-				"
+				alt="${image.alt}"
+				width="${image.width}"
+				height="${image.height}"
+				data-src="${image.srcSet.fallback}"
+				data-srcset="${sizesTemplate(image.srcSet)}"
 				data-sizes="100vw"
 			/>
 		</div>
 	`;
+};
+
+export { fullWidth, halfWidth, lazyLoaded };
