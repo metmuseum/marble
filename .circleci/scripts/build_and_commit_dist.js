@@ -2,7 +2,7 @@ const simpleGit = require('simple-git');
 const git = simpleGit();
 
 const safetyCheck = (err, data) => {
-  // 🚧 safety first
+  // 🚧 safety first!
   if (err) {
     console.error(err);
     process.exit(1);
@@ -13,7 +13,6 @@ const safetyCheck = (err, data) => {
 
 const main = async () => {
   const status = await git.status(safetyCheck);
-  
   if (status.files.length > 0) {
     console.log("changes!");
     await git.add("dist/.", safetyCheck);
@@ -28,4 +27,9 @@ const main = async () => {
   }
 }
 
-main();
+// only run if CIRCLECI=true to prevent dev accidents
+if (process.env.CIRCLECI) {
+  main();
+} else {
+  console.log("not running");
+}
