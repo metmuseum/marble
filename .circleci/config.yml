@@ -75,7 +75,7 @@ jobs:
       - run: git config user.email "stephen.marsh@metmuseum.org"
       - run: git config user.name "Marble Bot"
       - run: npm run build
-      - run: node ./.circleci/scripts/build_and_commit_dist.js
+      - run: node ./.circleci/scripts/git_steps_for_dist_build.js
   tag_a_release:
     executor: marble-node
     steps:
