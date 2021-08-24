@@ -27,8 +27,8 @@ jobs:
             equal: [$BUILD_PRODUCED_CHANGES, "1"]
           steps:
             - run: echo "running string 1"
-      - run: echo 
-       - when:
+      - run: echo 0
+      - when:
           condition:
             equal: [$BUILD_PRODUCED_CHANGES, 0]
           steps:
