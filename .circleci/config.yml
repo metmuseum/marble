@@ -13,6 +13,34 @@ jobs:
       - run: npm --version
       - run: npm ci
       - run: npm run lint
+      # debugging code
+      - run: BUILD_PRODUCED_CHANGES=`git diff-files --quiet; echo $?;`
+      - run: echo $BUILD_PRODUCED_CHANGES
+      - when:
+          condition:
+            equal: [$BUILD_PRODUCED_CHANGES, 1]
+          steps:
+            - run: echo "running integer 1"
+      - run: echo 0
+      - when:
+          condition:
+            equal: [$BUILD_PRODUCED_CHANGES, "1"]
+          steps:
+            - run: echo "running string 1"
+      - run: echo 
+       - when:
+          condition:
+            equal: [$BUILD_PRODUCED_CHANGES, 0]
+          steps:
+            - run: echo "running integer 0"
+      - run: echo 0
+      - when:
+          condition:
+            equal: [$BUILD_PRODUCED_CHANGES, "0"]
+          steps:
+            - run: echo "running string 0"
+      - run: echo 0
+      # end debugging code
       - persist_to_workspace:
           root: .
           paths:
