@@ -23,7 +23,7 @@ const main = async () => {
     await git.commit(`[skip ci] auto build dist for ${headSha}`, safetyCheck)
     await git.push("origin", branchName, safetyCheck)
   } else {
-    console.log("build produced no changes");
+    console.log("Marble's frontend build for /dist produced no changes.");
   }
 }
 
@@ -31,5 +31,5 @@ const main = async () => {
 if (process.env.CIRCLECI) {
   main();
 } else {
-  console.log("not running");
+  console.log("Not running Git steps for CI because this is not a CircleCI environment.");
 }
