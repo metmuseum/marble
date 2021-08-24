@@ -14,32 +14,9 @@ jobs:
       - run: npm ci
       - run: npm run lint
       # debugging code
-      - run: BUILD_PRODUCED_CHANGES=`git diff-files --quiet; echo $?;`
-      - run: echo $BUILD_PRODUCED_CHANGES
-      - when:
-          condition:
-            equal: [$BUILD_PRODUCED_CHANGES, 1]
-          steps:
-            - run: echo "running integer 1"
-      - run: echo 0
-      - when:
-          condition:
-            equal: [$BUILD_PRODUCED_CHANGES, "1"]
-          steps:
-            - run: echo "running string 1"
-      - run: echo 0
-      - when:
-          condition:
-            equal: [$BUILD_PRODUCED_CHANGES, 0]
-          steps:
-            - run: echo "running integer 0"
-      - run: echo 0
-      - when:
-          condition:
-            equal: [$BUILD_PRODUCED_CHANGES, "0"]
-          steps:
-            - run: echo "running string 0"
-      - run: echo 0
+      - run: pwd
+      - run: npm run build
+      - run: node ./.circleci/scripts/build_and_commit_dist.js
       # end debugging code
       - persist_to_workspace:
           root: .
@@ -128,34 +105,34 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-      - build_static_storybook:
-          requires:
-            - setup_marble
-      - do_chromatic:
-          requires:
-            - build_static_storybook
-          filters:
-            branches:
-              ignore:
-                - main
-      - deploy_gh_pages:
-          requires:
-            - build_static_storybook
-          filters:
-            branches:
-              only:
-                - main
-      - build_and_deploy_dist:
-          requires:
-            - setup_marble
-          filters:
-            branches:
-              only:
-                - main
-      - tag_a_release:
-          requires:
-            - build_and_deploy_dist
-          filters:
-            branches:
-              only:
-                - main
+      # - build_static_storybook:
+      #     requires:
+      #       - setup_marble
+      # - do_chromatic:
+      #     requires:
+      #       - build_static_storybook
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - main
+      # - deploy_gh_pages:
+      #     requires:
+      #       - build_static_storybook
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      # - build_and_deploy_dist:
+      #     requires:
+      #       - setup_marble
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      # - tag_a_release:
+      #     requires:
+      #       - build_and_deploy_dist
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
