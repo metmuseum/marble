@@ -1,0 +1,264 @@
+@use "sass:math";
+
+$event-card-slide-up-distance: -66%;
+
+.events-by-day {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+
+	@media screen and (min-width: $attendables-bp) {
+		display: grid;
+		grid-gap: $spacing-xxs;
+		grid-template-columns: repeat(2, 1fr);
+		overflow-x: initial;
+	}
+
+	@media screen and (min-width: 960px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	&:after {
+		content: "";
+		flex: 0 0 $spacing-xxs;
+
+		@media screen and (min-width: $attendables-bp) {
+			content: none;
+		}
+	}
+}
+
+.event-card {
+	border-radius: $form-radius;
+	box-shadow: $shadow-passive;
+	flex-basis: 270px;
+	flex-shrink: 0;
+	margin-bottom: $spacing-xxs;
+	margin-right: $spacing-xxs;
+	overflow: hidden;
+	transition: all 0.2s;
+
+	@media screen and (min-width: $attendables-bp) {
+		flex-basis: auto;
+		margin: 0;
+	}
+
+	&:hover,
+	&:focus-within {
+		box-shadow: $shadow-active;
+	}
+
+	&:first-of-type {
+		margin-left: $spacing-xxs;
+
+		@media screen and (min-width: $attendables-bp) {
+			margin-left: 0;
+		}
+	}
+
+	&:last-of-type {
+		margin-right: 0;
+	}
+}
+
+.event-card__image-wrapper {
+	height: 0;
+	overflow: hidden;
+	padding-top: math.div(2, 3) * 100%;
+	position: relative;
+}
+
+.event-card__image {
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.event-card__content {
+	@include three-by-two-image-crop-wrapper;
+	transform: translateY(0);
+	transition: all 0.2s;
+
+	.is-open & {
+		transform: translateY($event-card-slide-up-distance);
+		@media screen and (min-width: 1280px) {
+			transform: none;
+		}
+	}
+
+	@media screen and (min-width: 1280px) {
+		padding-bottom: 75%;
+	}
+}
+
+.event-card__body,
+.event-card__expanded-info {
+	background: $color-white;
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+	left: 0;
+	padding: calc(14px + 0.3vw);
+	position: absolute;
+	right: 0;
+}
+
+.event-card__body {
+	backdrop-filter: blur(4px);
+	background: linear-gradient(
+		360deg,
+		$color-white 35%,
+		rgba($color-white, math.div(2, 3)) 100%
+	);
+	bottom: 0;
+	top: 0;
+
+	@media screen and (min-width: 1280px) {
+		bottom: 40%;
+	}
+}
+
+.event-card__expanded-info {
+	bottom: $event-card-slide-up-distance;
+	top: 100%;
+
+	@media screen and (min-width: 1280px) {
+		bottom: 0;
+		top: 60%;
+	}
+}
+
+.event-card__row {
+	align-items: flex-end;
+	display: flex;
+	font-size: $textsize-xs;
+	font-weight: 500;
+	justify-content: space-between;
+}
+
+.event-card__row--top {
+	font-size: $textsize-xs;
+	font-weight: 600;
+	padding-bottom: $spacing-xxs;
+	text-transform: uppercase;
+}
+
+.event-card__subprogram,
+.event-card__view-toggle {
+	padding: 0;
+}
+
+.event-card__subprogram {
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+.event-card__view-toggle {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	height: 1em;
+	margin-left: $spacing-micro;
+	width: 1em;
+
+	&:focus,
+	&:hover {
+		color: $color-focus-state;
+		outline: 0;
+	}
+	@media screen and (min-width: 1280px) {
+		display: none;
+	}
+}
+
+.view-toggle__icon {
+	fill: currentColor;
+	transition: transform 0.4s;
+
+	.is-open & {
+		transform: rotateZ(180deg);
+	}
+}
+
+.event-card__heading {
+	@include typography-h5;
+	margin-bottom: auto;
+	min-height: 4em;
+
+	@media screen and (min-width: 1280px) {
+		@include typography-h4;
+		min-height: 2.4em;
+	}
+}
+
+.event-card__heading-link {
+	@include line-clamp(3);
+	line-height: math.div(19, 16);
+
+	&:focus,
+	&:hover {
+		outline: 0;
+		text-decoration: underline;
+	}
+
+	@media screen and (min-width: 1280px) {
+		@include line-clamp(2);
+	}
+}
+
+.event-card__pricing {
+	background: inherit;
+	cursor: default;
+	line-height: 1;
+	overflow: hidden;
+	padding-right: $spacing-xxs;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	.is-open &,
+	&:hover {
+		overflow: visible;
+		white-space: normal;
+	}
+}
+
+.event-card__building {
+	text-align: right;
+}
+
+.event-card__event-time {
+	align-self: flex-start;
+	flex: 1 0 auto;
+	font-size: $textsize-s;
+	font-weight: 600;
+	text-align: right;
+	text-transform: lowercase;
+}
+
+.event-card__program {
+	padding: 0;
+	text-decoration: none;
+
+	&:focus,
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.event-card__info {
+	line-height: 48px; //button height
+}
+
+//TODO: Revisit button--small (Do we need an extra small?)
+.event-card__tickets-button {
+	padding-left: 20px;
+	padding-right: 20px;
+}
