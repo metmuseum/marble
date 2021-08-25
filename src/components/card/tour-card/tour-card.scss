@@ -1,14 +1,3 @@
-// todo: not this
-$attendables-width: 85vw;
-$attendables-bp: 640px;
-$attendables-margin: calc(
-	((100vw - #{$attendables-width}) / 2) - #{$spacing-micro}
-);
-$attendables-filters-bp: 1180px;
-$attendables-modal-width: 1080px;
-// end not this
-
-
 $tour-card-height-mobile: 80px;
 $tour-card-height: 160px;
 $tour-card-bp: 1080px;
@@ -39,7 +28,6 @@ $tour-card-lg-bp: 1440px;
 	@media screen and (min-width: $tour-card-bp) {
 		min-height: $tour-card-height;
 	}
-
 }
 
 .tour-card__image-wrapper {

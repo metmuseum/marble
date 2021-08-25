@@ -86,3 +86,13 @@ $soft-radius: $radius-soft; // TODO: deprecate
 
 //Generally used with a landscape media query
 $height-max: 85vh;
+
+// What's On
+$attendables-width: 85vw;
+$attendables-bp: 640px;
+$attendables-margin: calc(
+	((100vw - #{$attendables-width}) / 2) - #{$spacing-micro}
+);
+$attendables-filters-bp: 1180px;
+$attendables-modal-width: 1080px;
+

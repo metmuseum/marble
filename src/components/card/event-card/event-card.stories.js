@@ -1,31 +1,27 @@
 import html from "../../../../.storybook/helpers/html";
+import { useEffect } from "@storybook/client-api";
 
-// import EventCard from "./event-card.js";
-// import defaultData from "./event-card-story-helpers";
+import EventCard from "./event-card.js";
 import { defaultData } from "./event-card-story-helpers.js";
-import { withKnobs, text } from "@storybook/addon-knobs";
-
+import { withKnobs } from "@storybook/addon-knobs";
 import SVGs from "../../../../.storybook/assets/svg";
 
-// import image16x9 from "../../../../.storybook/assets/images/greek-hall/16x9/index.js";
-	
 export default {
-	title: "Cards",
+	title: "Cards/Event Card",
 	decorators: [withKnobs],
 };
+
 // TODO:
-//  states: opened, not opened
 //  image alt should not be event title
 
-// const eventCardEffect = () => {
-// 	document.querySelectorAll(".js-marble-event-card").forEach((eventCard) => {
-// 		new EventCard(eventCard);
-// 	});
-// }
-
-// const eventCard = (data) => new EventCard(el, (data || defaultData()));
+const eventCardEffect = () => {
+	document.querySelectorAll(".js-marble-event-card").forEach((eventCard) => {
+		new EventCard(eventCard);
+	});
+};
 
 const markup = (eventCardData) => html`
+	${eventCardData.inSitu ? html`<ol class="events-by-day">`: ""}
 	<li id="${eventCardData.cardId}" class="${eventCardData.initialClassNames}">
 		<div class="event-card__image-wrapper">
 			<a
@@ -106,8 +102,18 @@ const markup = (eventCardData) => html`
 				</div>
 			</section>
 		</div>
-	</li>`;
+	</li>
+	${eventCardData.inSitu ? html`</ol>`: ""}
+	`;
 
-const eventCard = () => markup(defaultData());
+const eventCard = () => {
+	useEffect(eventCardEffect);
+	return markup(defaultData({}));
+};
 
-export { eventCard };
+const eventCardOpened = () => { 
+	useEffect(eventCardEffect);
+	return markup(defaultData({opened: true}));
+};
+
+export { eventCard, eventCardOpened };
