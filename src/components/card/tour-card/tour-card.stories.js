@@ -58,6 +58,12 @@ const markup = (attendable) => html`
 </li>`;
 
 
+const chromticParams = {
+	chromatic: { viewports: [320, 358, 640, 1080]}
+};
+
 const TourCard = () => html`<ul>${markup(tour())}</ul>`;
+
+TourCard.parameters = chromticParams;
 
 export { TourCard };

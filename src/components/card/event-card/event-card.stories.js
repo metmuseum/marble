@@ -106,14 +106,24 @@ const markup = (eventCardData) => html`
 	${eventCardData.inSitu ? html`</ol>`: ""}
 	`;
 
+
+const chromticParams = {
+	chromatic: { viewports: [320, 600, 640, 960, 1080, 1280] }
+};
+
 const eventCard = () => {
 	useEffect(eventCardEffect);
 	return markup(defaultData({}));
 };
 
+eventCard.parameters = chromticParams;
+
+
 const eventCardOpened = () => { 
 	useEffect(eventCardEffect);
 	return markup(defaultData({opened: true}));
 };
+
+eventCardOpened.parameters = chromticParams;
 
 export { eventCard, eventCardOpened };
