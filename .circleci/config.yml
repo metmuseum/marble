@@ -11,7 +11,14 @@ jobs:
       - run: python --version
       - run: node --version
       - run: npm --version
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "package-lock.json" }}
       - run: npm ci
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
       - run: npm run lint
       - persist_to_workspace:
           root: .
@@ -65,17 +72,10 @@ jobs:
       - run:
           name: "Build Marble's ./dist for production!"
           command: npm run build
-      - run: BUILD_PRODUCED_CHANGES=`git diff-files --quiet; echo $?;`
-      - when:
-          condition:
-            equal: [$BUILD_PRODUCED_CHANGES, 1]
-          steps:
-            - run: git config user.email "stephen.marsh@metmuseum.org"
-            - run: git config user.name "Marble Bot"
-            - run: git add dist
-            - run: git commit -m "[skip ci] auto build dist for $(git rev-parse HEAD)"
-            - run: git push origin main
-      - run: echo 0
+      - run: git config user.email "stephen.marsh@metmuseum.org"
+      - run: git config user.name "Marble Bot"
+      - run: npm run build
+      - run: node ./.circleci/scripts/git_steps_for_dist_build.js
   tag_a_release:
     executor: marble-node
     steps:
