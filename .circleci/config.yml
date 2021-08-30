@@ -11,14 +11,7 @@ jobs:
       - run: python --version
       - run: node --version
       - run: npm --version
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "package-lock.json" }}
       - run: npm ci
-      - save_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
       - run: npm run lint
       - persist_to_workspace:
           root: .
