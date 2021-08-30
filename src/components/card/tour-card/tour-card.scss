@@ -1,0 +1,161 @@
+$tour-card-height-mobile: 80px;
+$tour-card-height: 160px;
+$tour-card-bp: 1080px;
+$tour-card-lg-bp: 1440px;
+
+.tour-card {
+	border-radius: $form-radius;
+	box-shadow: $shadow-passive;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: $spacing-xs;
+	margin-left: $spacing-xxs;
+	margin-right: $spacing-xxs;
+	min-height: $tour-card-height-mobile;
+	overflow: hidden;
+	transition: box-shadow 0.2s;
+
+	&:focus-within,
+	&:hover {
+		box-shadow: $shadow-active;
+	}
+
+	@media screen and (min-width: $attendables-bp) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	@media screen and (min-width: $tour-card-bp) {
+		min-height: $tour-card-height;
+	}
+}
+
+.tour-card__image-wrapper {
+	border: 0;
+	display: block;
+	flex-basis: 120px; //Approximate number based on content width
+	flex-grow: 0;
+	flex-shrink: 0;
+	line-height: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+
+	@media screen and (min-width: $tour-card-bp) {
+		flex-basis: 240px; //Approximate number based on content width
+	}
+}
+
+.tour-card__image {
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	position: absolute;
+	width: 100%;
+}
+
+.tour-card__body {
+	display: flex;
+	flex-basis: 100%;
+	flex-grow: 1;
+	flex-wrap: wrap;
+	padding: $spacing-micro;
+
+	@media screen and (min-width: $tour-card-bp) {
+		flex-wrap: nowrap;
+		padding: $spacing-xxs;
+	}
+}
+
+.tour-card__main,
+.tour-card__secondary,
+.tour-card__tertiary {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+}
+
+.tour-card__main {
+	flex-basis: 100%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	@media screen and (min-width: $tour-card-bp) {
+		padding-right: $spacing-xxs;
+	}
+}
+
+.tour-card__secondary,
+.tour-card__tertiary {
+	flex-grow: 1;
+	flex-shrink: 0;
+}
+
+.tour-card__secondary {
+	flex-basis: 80%;
+	padding-right: $spacing-xxs;
+	@media screen and (min-width: $tour-card-bp) {
+		flex-basis: 300px; //Approximate number based on content width
+	}
+	@media screen and (min-width: $tour-card-lg-bp) {
+		flex-basis: 400px; //Approximate number based on content width
+	}
+}
+
+.tour-card__tertiary {
+	align-items: flex-end;
+	text-align: right;
+	@media screen and (min-width: $tour-card-bp) {
+		flex-basis: 100px;
+	}
+}
+
+.tour-card__title {
+	@include typography-body-expressive;
+	padding-bottom: $spacing-xxs;
+	@media screen and (min-width: $tour-card-bp) {
+		@include typography-h4;
+	}
+}
+
+.tour-card__location,
+.tour-card__details,
+.tour-card__building,
+.tour-card__price,
+.tour-card__language {
+	display: none;
+	@media screen and (min-width: $tour-card-bp) {
+		display: block;
+	}
+}
+
+.tour-card__details {
+	@include typography-label-field;
+	margin-top: auto;
+}
+
+.tour-card__tour-meta,
+.tour-card__location {
+	@include typography-label-field;
+}
+
+.tour-card__building {
+	@include typography-body-expressive;
+}
+
+.tour-card__tour-meta {
+	margin-top: auto;
+}
+
+.tour-card__subprogram {
+	margin-right: $spacing-xs;
+}
+
+.tour-card__time {
+	@include typography-label-text;
+	margin-top: auto;
+	text-transform: lowercase;
+	@media screen and (min-width: $tour-card-bp) {
+		@include typography-h4;
+	}
+}

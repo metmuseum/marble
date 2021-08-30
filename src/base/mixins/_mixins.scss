@@ -2,3 +2,11 @@
 @import "_layouts";
 @import "_typography";
 @import "_buttons";
+
+@mixin line-clamp($lines) {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $lines;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
