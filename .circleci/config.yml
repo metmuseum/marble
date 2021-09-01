@@ -102,10 +102,6 @@ workflows:
       - do_chromatic:
           requires:
             - build_static_storybook
-          filters:
-            branches:
-              ignore:
-                - main
       - deploy_gh_pages:
           requires:
             - build_static_storybook
