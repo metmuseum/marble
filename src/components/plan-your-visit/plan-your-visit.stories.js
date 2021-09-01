@@ -26,57 +26,59 @@ const data = () => {
 
 
 const planCardMarkUp = (model) => {
-	return html`<section class="plan-card">
+	return html`
+	<section class="pyv-card">
+	  <div class="pyv-card__main">
+	    <h2 class="pyv-card__title">Plan Your Visit</h2>
+	    <div class="pyv-card__info-box">
 
-			<div class="plan-card__image-container">
-			<img
-				class="plan-card__image"
-				srcset="${model.backgroundImages}"
-				alt="ALT"
-			/>
-			</div>
+	      <div class="pyv-card__row">
+	        <div class="pyv-card__row-icon">${dateIcon()}</div>
+	        <div class="pyv-card__row-text">
+	          <div class="pyv-card__row-title">Dates</div>
+	          <div class="pyv-card__row-body">${model.dates}</div>
+	        </div>
+	      </div>
 
-			<div class="plan-card__info">
-				<h2 class="plan-card__header">${model.header}</h2>
-				<div class="plan-card__details">
+	      <div class="pyv-card__row">
+	        <div class="pyv-card__row-icon">${locationIcon()}</div>
+	        <div class="pyv-card__row-text">
+	          <div class="pyv-card__row-title">${model.location}</div>
+	          <div class="pyv-card__row-body">${model.gallery}</div>
+	        </div>
+	      </div>
 
-					<div class="plan-card__row">
-						<div class="plan-card__row-icon">${dateIcon()}</div>
-						<div class="plan-card__row-info">
-							<div class="plan-card__row-header">Dates</div>
-							<div class="plan-card__row-text">${model.dates}</div>
-						</div>
-					</div>
+	      <div class="pyv-card__row">
+	        <div class="pyv-card__row-icon">${passIcon()}</div>
+	        <div class="pyv-card__row-text">
+	          <div class="pyv-card__row-title">Reserve Entry</div>
+	          <div class="pyv-card__row-body">${model.price}</div>
+	        </div>
+	      </div>
 
-					<div class="plan-card__row">
-						<div class="plan-card__row-icon">${locationIcon()}</div>
-						<div class="plan-card__row-info">
-							<div class="plan-card__row-header">${model.location}</div>
-							<div class="plan-card__row-text">${model.gallery}</div>
-						</div>
-					</div>
+	      <div class="pyv-card__button-wrapper">
+	        <a href="#"
+	          class="button primary-button primary-button--x-small primary-button--filled">
+	          Plan your visit
+	        </a>
 
-						<div class="plan-card__row">
-							<div class="plan-card__row-icon">${passIcon()}</div>
-							<div class="plan-card__row-info">
-								<div class="plan-card__row-header">${model.price}</div>
-								<div class="plan-card__row-text">${model.otherInfo}</div>
-							</div>
-						</div>
+	        <a href="#" class="button tertiary-button">
+	          All exhibitions
+	        </a>
+	      </div>
 
-						<div class="plan-card__cta-wrapper">
-							<a href="#"
-								class="button primary-button primary-button--x-small primary-button--filled plan-card__main-cta">
-								Plan your visit
-							</a>
-							<a class="button tertiary-button">
-								View all exhibitions
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>`;
+	    </div>
+	  </div>
+
+	  <div class="pyv-card__image-wrapper">
+	    <img class="pyv-card__image lazy"
+	      alt="Width"
+	      width="100" height="100"
+	      data-src="@Html.ParseImgSrc(Model.Image1x1.Small)"
+	      data-srcset="${model.backgroundImages}"
+	      sizes="100vw" />
+	  </div>
+	</section>`;
 };
 
 export const PlanCard = () => {
