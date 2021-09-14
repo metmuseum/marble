@@ -11,14 +11,7 @@ jobs:
       - run: python --version
       - run: node --version
       - run: npm --version
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "package-lock.json" }}
       - run: npm ci
-      - save_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
       - run: npm run lint
       - persist_to_workspace:
           root: .
@@ -44,10 +37,8 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: "Run full chromatic. This job does not run for main. If PR: build and test. If not: build only and skip snapshots"
+          name: "Run Chromatic"
           command: "npm run chromatic -- --ci --exit-once-uploaded --storybook-build-dir .out"
-          # TODO: as soon as they support "publishOnly," or --only works, use that when not on a PR to save quota: https://github.com/chromaui/chromatic-cli/issues/141
-          # command: '[[ ! -z "$CIRCLE_PULL_REQUEST" ]] && npm run chromatic -- --ci --storybook-build-dir .out || npm run chromatic -- --ci --storybook-build-dir ./.out --only ImageContainers/HalfWidth'
   deploy_gh_pages:
     executor: marble-node
     steps:
@@ -76,6 +67,10 @@ jobs:
       - run: git config user.name "Marble Bot"
       - run: npm run build
       - run: node ./.circleci/scripts/git_steps_for_dist_build.js
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   tag_a_release:
     executor: marble-node
     steps:
@@ -92,7 +87,6 @@ jobs:
           command: DEBUG=release-it:* npm run release -- patch --ci -VV --no-git.requireUpstream --set-upstream origin main
 
 workflows:
-  version: 2
   build__do_chromatic__deploy_gh_pages__build_and_deploy_dist__tag_a_release:
     jobs:
       - setup_marble:
@@ -106,10 +100,6 @@ workflows:
       - do_chromatic:
           requires:
             - build_static_storybook
-          filters:
-            branches:
-              ignore:
-                - main
       - deploy_gh_pages:
           requires:
             - build_static_storybook
