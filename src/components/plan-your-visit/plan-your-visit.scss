@@ -24,6 +24,9 @@ $pyv-card-bp: 960px;
 	}
 }
 
+.pyv-card__title {
+	margin-bottom: $spacing-xs;
+}
 
 .pyv-card__info-box {
 	background-color: $color-white;
