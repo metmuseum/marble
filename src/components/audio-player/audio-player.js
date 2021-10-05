@@ -43,6 +43,10 @@ class AudioPlayer {
 		this.currentTrack = JSON.parse(this.audioEl.dataset.track);
 		this.amountPlayed = 0;
 
+		// Events
+		this.beforeTrackChange = new Event("beforeTrackChange");
+		this.afterTrackChange = new Event("afterTrackChange");
+
 		// bind listeners to this object and save the returned function reference, so they can be added/removed in the right scope
 		["_handleTimeChange",
 			"beginScrubbing",
@@ -65,7 +69,7 @@ class AudioPlayer {
 		this.applyListeners();
 		this.setTranscript(); // format transcript if there is one
 		this.analyticsSender.sendCustomEvent({
-			event: "UniversalAudioPlayer:playerLoaded", 
+			event: "UniversalAudioPlayer:playerLoaded",
 			playerId: this.wrapperEl.id
 		});
 	}
@@ -105,20 +109,19 @@ class AudioPlayer {
 
 	handleTrackChange(e) {
 		const newTrackEl = e.currentTarget;
-
 		//If already active track, ignore.
 		if (newTrackEl.classList.contains("is-active-track")) {
-			return;
-		} else {
-			this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
+			return false;
 		}
 
+		this.wrapperEl.dispatchEvent(this.beforeTrackChange);
+		this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
 		newTrackEl.classList.add("is-active-track");
-
 		let newTrack = JSON.parse(newTrackEl.dataset.track);
 		this.setTrack(newTrack);
 		this.setTranscript();
 		this.audioEl.play();
+		this.wrapperEl.dispatchEvent(this.afterTrackChange);
 	}
 
 	setTrack(track) {
