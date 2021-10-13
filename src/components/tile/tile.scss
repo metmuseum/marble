@@ -17,6 +17,10 @@
 	 @media (orientation: landscape) {
     margin: 0 0 $spacing-xxs 0;
   }
+
+  .tile--hero & {
+    margin: 0 0 $spacing-xxs 0;
+  }
 }
 
 .tile__text {
@@ -26,6 +30,11 @@
 	 @media (orientation: landscape) {
     margin-left: 0;
   }
+}
+
+.tile__heading {
+  font-family: $metsans;
+  font-weight: 500;
 }
 
 .tile__body,
@@ -39,7 +48,7 @@
 }
 
 .tile__subheading {
-	font-weight: 600;
+	font-weight: 500;
 }
 
 .tile-group {

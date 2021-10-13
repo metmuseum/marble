@@ -24,7 +24,7 @@ const Tile = () => html`
 				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 21vw, 50vw" />
 		</div>
 		<div class="tile__text">
-			<h4>${heading()}</h4>
+			<h4 class="tile__heading">${heading()}</h4>
 			<div class="tile__subheading">${text("Subheading", "Through October 11", "Tile")}</div>
 			<div class="tile__body">${text("Body", "The Met Fifth Avenue", "Tile")}</div>
 		</div>
@@ -37,7 +37,7 @@ const HeroTile = () => html`
 				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 42.5vw, 85vw" />
 		</div>
 		<div class="tile__text">
-			<h3>${heading("Hero Tile")}</h3>
+			<h3 class="tile__heading">${heading("Hero Tile")}</h3>
 			<div class="tile__subheading">${text("Subheading", "Through October 11", "Hero Tile")}</div>
 			<div class="tile__body">${text("Body", "The Met Fifth Avenue", "Hero Tile")}</div>
 		</div>
@@ -60,5 +60,9 @@ const TileGroup = () => {
 			${repeat(numberOfTiles, html`<li class="tile-group__tile">${Tile()}</li>`)}
 		</ul>
 	</div>`;};
+
+TileGroup.parameters = {
+	chromatic: { viewports: [320, 1280] }
+};
 
 export { Tile, HeroTile, TileGroup };
