@@ -1,0 +1,36 @@
+.tile {
+  color: $color-grey-900;
+  display: flex;
+
+  @media (orientation: landscape) {
+    flex-direction: column;
+  }
+}
+
+.tile__image {
+	margin: 0 $spacing-micro 0 0;
+  width: 100%;
+
+	 @media (orientation: landscape) {
+    margin: 0 0 $spacing-xxs 0;
+  }
+}
+
+.tile__text {
+	margin-left: $spacing-micro;
+	width: 100%;
+
+	 @media (orientation: landscape) {
+    margin-left: 0;
+  }
+}
+
+.tile__body,
+.tile__subheading {
+	font-size: $textsize-xxs;
+	margin: $spacing-micro 0;
+}
+
+.tile__subheading {
+	font-weight: 600;
+}

@@ -80,4 +80,4 @@ const lazyLoaded = () => {
 	`;
 };
 
-export { fullWidth, halfWidth, lazyLoaded };
+export { fullWidth, halfWidth, lazyLoaded, sizesTemplate };
