@@ -1,6 +1,6 @@
 .tile {
 	display: grid;
-	column-gap: $spacing-xs;
+	column-gap: $spacing-xxs;
 	grid-template-columns: 1fr 1fr;
 
 	@media (orientation: landscape) {
