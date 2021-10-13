@@ -7,6 +7,10 @@
   }
 }
 
+.tile--hero {
+  flex-direction: column;
+}
+
 .tile__image {
 	margin: 0 $spacing-micro 0 0;
   width: 100%;
@@ -29,8 +33,34 @@
 .tile__subheading {
 	font-size: $textsize-xxs;
 	margin: $spacing-micro 0;
+
+  .tile--hero & {
+    font-size: $textsize-xs;
+  }
 }
 
 .tile__subheading {
 	font-weight: 600;
+}
+
+.tile-group {
+  @include productive-component;
+  display: grid;
+  row-gap: $spacing-xs;
+
+  @media (orientation: landscape) {
+    column-gap: $spacing-xs;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tile-group__list {
+  display: grid;
+  row-gap: $spacing-xs;
+
+  @media (orientation: landscape) {
+    column-gap: $spacing-xs;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: $spacing-micro;
+  }
 }
