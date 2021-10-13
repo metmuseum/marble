@@ -20,7 +20,7 @@ const Tile = () => html`
 			<img class="image-container__image" alt="${image16x9.alt}" width="${image16x9.width}" height="${image16x9.height}"
 				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 21vw, 50vw" />
 		</div>
-		<div class="tile__text">
+		<div>
 			<h4 class="tile__heading">${heading()}</h4>
 			<div class="tile__subheading">${text("Subheading", "Through October 11", "Tile")}</div>
 			<div class="tile__body">${text("Body", "The Met Fifth Avenue", "Tile")}</div>
@@ -33,7 +33,7 @@ const HeroTile = () => html`
 			<img class="image-container__image" alt="${image16x9.alt}" width="${image16x9.width}" height="${image16x9.height}"
 				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 42.5vw, 85vw" />
 		</div>
-		<div class="tile__text">
+		<div>
 			<h3 class="tile__heading">${heading("Hero Tile")}</h3>
 			<div class="tile__subheading">${text("Subheading", "Through October 11", "Hero Tile")}</div>
 			<div class="tile__body">${text("Body", "The Met Fifth Avenue", "Hero Tile")}</div>

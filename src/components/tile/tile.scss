@@ -1,40 +1,30 @@
 .tile {
-  display: flex;
+	display: grid;
+	column-gap: $spacing-xs;
+	grid-template-columns: 1fr 1fr;
 
-  @media (orientation: landscape) {
-    flex-direction: column;
-  }
+	@media (orientation: landscape) {
+		display: block;
+	}
 }
 
 .tile--hero {
-  flex-direction: column;
+	display: block;
 }
 
 .tile__image {
-	margin: 0 $spacing-micro 0 0;
-  width: 100%;
+	.tile--hero & {
+		margin: 0 0 $spacing-xxs 0;
+	}
 
-	 @media (orientation: landscape) {
-    margin: 0 0 $spacing-xxs 0;
-  }
-
-  .tile--hero & {
-    margin: 0 0 $spacing-xxs 0;
-  }
-}
-
-.tile__text {
-	margin-left: $spacing-micro;
-	width: 100%;
-
-	 @media (orientation: landscape) {
-    margin-left: 0;
-  }
+	@media (orientation: landscape) {
+		margin: 0 0 $spacing-micro 0;
+	}
 }
 
 .tile__heading {
-  font-family: $metsans;
-  font-weight: 500;
+	font-family: $metsans;
+	font-weight: 500;
 }
 
 .tile__body,
@@ -42,9 +32,9 @@
 	font-size: $textsize-xxs;
 	margin: $spacing-micro 0;
 
-  .tile--hero & {
-    font-size: $textsize-xs;
-  }
+	.tile--hero & {
+		font-size: $textsize-xs;
+	}
 }
 
 .tile__subheading {
@@ -52,23 +42,23 @@
 }
 
 .tile-group {
-  @include productive-component;
-  display: grid;
-  row-gap: $spacing-xs;
+	@include productive-component;
+	display: grid;
+	row-gap: $spacing-xs;
 
-  @media (orientation: landscape) {
-    column-gap: $spacing-xs;
-    grid-template-columns: 6fr 4fr;
-  }
+	@media (orientation: landscape) {
+		column-gap: $spacing-xs;
+		grid-template-columns: 6fr 4fr;
+	}
 }
 
 .tile-group__list {
-  display: grid;
-  row-gap: $spacing-xs;
+	display: grid;
+	row-gap: $spacing-xxs;
 
-  @media (orientation: landscape) {
-    column-gap: $spacing-xs;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: $spacing-micro;
-  }
+	@media (orientation: landscape) {
+		column-gap: $spacing-xs;
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: $spacing-micro;
+	}
 }
