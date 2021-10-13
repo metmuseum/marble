@@ -6,9 +6,6 @@ import greekHall from "../../../.storybook/assets/images/greek-hall";
 
 export default { title: "Tiles", decorators: [withKnobs] };
 
-// todo: discuss 3:2 vs 16:9 with madhav
-// todo: heading 4 styles with madhav
-// todo: check rodan for "five features"
 const { image16x9 } = greekHall;
 
 const heading = (groupName="Tile") => {
