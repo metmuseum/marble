@@ -8,7 +8,6 @@ jobs:
     executor: marble-node
     steps:
       - checkout
-      - run: python --version
       - run: node --version
       - run: npm --version
       - run: npm ci
