@@ -2,7 +2,7 @@ version: 2.1
 executors:
   marble-node:
     docker:
-      - image: "cimg/python:3.9-node"
+      - image: "cimg/node:current"
 jobs:
   setup_marble:
     executor: marble-node
