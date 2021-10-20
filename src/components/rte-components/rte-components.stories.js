@@ -20,6 +20,7 @@ const YoutubeEmbedMarkUp = (model) => {
 	return html`
 	<div class="media__youtube-wrapper">
 		<iframe
+			title="Youtube Embed"
 			width="720"
 			height="428"
 			src="https://www.youtube.com/embed/${model.id}?rel=0"
