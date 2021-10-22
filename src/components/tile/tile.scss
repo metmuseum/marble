@@ -42,7 +42,6 @@
 }
 
 .tile-group {
-	@include productive-component;
 	display: grid;
 	row-gap: $spacing-xs;
 
