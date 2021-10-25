@@ -36,8 +36,8 @@ const markup = (model) => {
 		<div class="quotes-module js-quotes-module" id="${model.id}">
 			<div class="quotes-module__contents">
 				<div class="quotes-module__header">
-					<h3>${model.heading}</h3>
-					<h4><a href="${model.allPressLink}">${model.allPressCTA}</a></h4>
+					<h2>${model.heading}</h2>
+					<h4><a href="${model.allPressLink}" class="button tertiary-button">${model.allPressCTA}</a></h4>
 				</div>
 				<div class="quotes-module__quotes">
 					${new Array(number("Number of Quotes", model.numberOfQuotes))
