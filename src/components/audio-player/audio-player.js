@@ -13,6 +13,7 @@ class AudioPlayer {
 		this.wrapperEl								= wrapperEl;
 		this.audioEl									=	wrapperEl.querySelector(".js-audio-player__audio");
 		this.coverImageWrapperEl     	= wrapperEl.querySelector(".js-audio-player__image-wrapper");
+		this.darkModeQuery						= window.matchMedia("(prefers-color-scheme: dark)");
 		this.progressBarCanvasEl 			= wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas				= this.progressBarCanvasEl.getContext("2d");
 		this.playButtonEl 						= wrapperEl.querySelector(".js-audio-player__play");
@@ -34,7 +35,7 @@ class AudioPlayer {
 
 		// Options
 		this.options = {...defaultOptions, ...options};
-		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors");
+		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors") || this.darkModeQuery.matches;
 		this.seekHelperDuration = this.options.seekHelperDuration;
 		this.analyticsSender = this.options.analyticsSender || new AnalyticsLogger();
 
@@ -105,6 +106,9 @@ class AudioPlayer {
 
 		// Transcript 📜
 		this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
+
+		// Dark/light transitions 🌞 / 🌚
+		this.darkModeQuery.addEventListener("change", (query) => { return this.isDarkMode = query.matches; });
 	}
 
 	handleTrackChange(e) {
