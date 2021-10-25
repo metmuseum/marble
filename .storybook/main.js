@@ -6,7 +6,7 @@ module.exports = {
 		builder: 'webpack5',
 	},
 	features: {
-		postcss: false,
+		postcss: true,
 	},
 	webpackFinal: async (config, { configType }) => {
 		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

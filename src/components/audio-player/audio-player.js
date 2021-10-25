@@ -1,4 +1,3 @@
-import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
 import coverImageTemplate from "./cover-image-template";
 import AnalyticsLogger from "../analytics-logger";
@@ -198,8 +197,8 @@ class AudioPlayer {
 		this.progressBarCanvas.fillStyle = "transparent";
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = this.isDarkMode
-			? scssExports.colorWhite
-			: scssExports.colorGrey900;
+			? "#ffffff"  // $color-white
+			: "#333333"; // $color-grey-900
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 		this.progressBarCanvas.restore();
 	}
