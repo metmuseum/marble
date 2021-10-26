@@ -1,17 +1,9 @@
 .quotes-module {
-	background-color: $color-grey-900;
-	color: $color-white;
 	padding: $spacing-l $spacing-component-margin;
-
-	& :focus {
-		background-color: $color-white-opaque-30;
-		color: $color-white;
-	}
 }
 
 .quotes-module__header {
 	align-items: center;
-	border-bottom: 1px solid currentColor;
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: $spacing-xs;
@@ -31,15 +23,10 @@
 
 }
 
-.quotes-module__quote:nth-child(n+4) {
-	display: none;
-
-	.is-expanded & {
-		display: block;
-	}
-}
-
 .quotes-module__quote-text {
+	font-family: $metserif;
+	font-size: $textsize-m;
+	font-weight: 300;
 	margin-bottom: $spacing-micro;
 
 	p {
@@ -70,14 +57,5 @@
 	&:hover,
 	&:focus {
 		text-decoration: underline;
-	}
-}
-
-.button.quotes-module__expander {
-	display: none;
-	font-size: $textsize-xs;
-
-	&.is-visible {
-		display: inline-block;
 	}
 }
