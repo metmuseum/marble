@@ -33,7 +33,7 @@ const bannerMarkup = (model) => html`
 				href="${model.link.url}"
 				title="${model.imageAlt}">
 				<img class="marble-banner__image" srcset="${model.backgroundImages}" alt="${model.imageAlt}">
-					${model.video === true ? vimeoTemplate : ""}
+				${model.video ? vimeoTemplate : ""}
 			</a>
 		</div>
 		<div class="marble-banner__subject" style="background-color: ${model.backgroundColor()}; color: ${model.color()}">
@@ -56,5 +56,5 @@ export const BannerEditorial = () => {
 
 export const BannerEditorialWithVideo = () => {
 	useEffect(vimeoControls);
-	return bannerMarkup(Object.assign(data, { video: true }));
+	return bannerMarkup({ ...data, ...{ video: true } });
 };
