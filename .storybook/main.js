@@ -2,6 +2,9 @@ const path = require("path");
 
 //Export a function. Accept the base config as the only param.
 module.exports = {
+	core: {
+		builder: 'webpack5',
+	},
 	features: {
 		postcss: false,
 	},
@@ -35,5 +38,6 @@ module.exports = {
 		},
 		"@storybook/addon-knobs",
 		"@storybook/addon-a11y",
+		"storybook-preset-inline-svg"
 	],
 };

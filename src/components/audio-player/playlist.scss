@@ -36,6 +36,10 @@
 	&.is-active-track {
 		opacity: 1;
 	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
 }
 
 .audio-player__playlist-track-thumbnail {

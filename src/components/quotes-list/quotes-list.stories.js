@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html, repeat } from "../../../.storybook/helpers";
 import { withKnobs, number, text } from "@storybook/addon-knobs";
 import { useEffect } from "@storybook/client-api";
 import quotesListJs from "./quotes-list.js";
@@ -41,9 +41,7 @@ const markup = (model, numberOfQuotes = 7) => {
 					<h4><a href="${model.allPressLink}">${model.allPressCTA}</a></h4>
 				</div>
 				<div class="quotes-module__quotes">
-					${new Array(number("Number of Quotes", numberOfQuotes))
-		.fill(quoteMarkup(model.quote))
-		.join("\n")}
+					${repeat(number("Number of Quotes", numberOfQuotes), quoteMarkup(model.quote))}
 				</div>
 				<a
 					href="#${model.id}"
