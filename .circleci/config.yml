@@ -38,10 +38,8 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: "Run full chromatic. This job does not run for main. If PR: build and test. If not: build only and skip snapshots"
+          name: "Run Chromatic"
           command: "npm run chromatic -- --ci --exit-once-uploaded --storybook-build-dir .out"
-          # TODO: as soon as they support "publishOnly," or --only works, use that when not on a PR to save quota: https://github.com/chromaui/chromatic-cli/issues/141
-          # command: '[[ ! -z "$CIRCLE_PULL_REQUEST" ]] && npm run chromatic -- --ci --storybook-build-dir .out || npm run chromatic -- --ci --storybook-build-dir ./.out --only ImageContainers/HalfWidth'
   deploy_gh_pages:
     executor: marble-node
     steps:
@@ -66,17 +64,14 @@ jobs:
       - run:
           name: "Build Marble's ./dist for production!"
           command: npm run build
-      - run: BUILD_PRODUCED_CHANGES=`git diff-files --quiet; echo $?;`
-      - when:
-          condition:
-            equal: [$BUILD_PRODUCED_CHANGES, 1]
-          steps:
-            - run: git config user.email "stephen.marsh@metmuseum.org"
-            - run: git config user.name "Marble Bot"
-            - run: git add dist
-            - run: git commit -m "[skip ci] auto build dist for $(git rev-parse HEAD)"
-            - run: git push origin main
-      - run: echo 0
+      - run: git config user.email "stephen.marsh@metmuseum.org"
+      - run: git config user.name "Marble Bot"
+      - run: npm run build
+      - run: node ./.circleci/scripts/git_steps_for_dist_build.js
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   tag_a_release:
     executor: marble-node
     steps:
@@ -93,7 +88,6 @@ jobs:
           command: DEBUG=release-it:* npm run release -- patch --ci -VV --no-git.requireUpstream --set-upstream origin main
 
 workflows:
-  version: 2
   build__do_chromatic__deploy_gh_pages__build_and_deploy_dist__tag_a_release:
     jobs:
       - setup_marble:
@@ -107,10 +101,6 @@ workflows:
       - do_chromatic:
           requires:
             - build_static_storybook
-          filters:
-            branches:
-              ignore:
-                - main
       - deploy_gh_pages:
           requires:
             - build_static_storybook

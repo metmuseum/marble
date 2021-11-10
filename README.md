@@ -1,4 +1,5 @@
 [![metmuseum](https://circleci.com/gh/metmuseum/marble.svg?style=svg)](https://app.circleci.com/pipelines/github/metmuseum/marble)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/metmuseum/marble?sort=semver&style=flat-square)
 
 # Marble
 
@@ -309,4 +310,4 @@ To update the list of current browsers, it's important to frequently use:
 ---
 
 ## License
-Currently for internal use only. © Copyright 2021 The Metropolitan Museum of Art. All rights are reserved. 
+Currently for internal use only. © Copyright 2021 The Metropolitan Museum of Art. All rights are reserved.

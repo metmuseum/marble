@@ -1,5 +1,8 @@
+import SETTINGS from "../../../global/settings";
+
 export default function videoSlide() {
-	const videoSlides = [...document.querySelectorAll(".js-carousel-slide__video")];
+	const selectorString = `.js-carousel-slide__video:not(.${SETTINGS.initializedClassName})`;
+	const videoSlides = [...document.querySelectorAll(selectorString)];
 
 	const videosInCarouselSlides = videoSlides.map((videoElement)=> {
 		//Handles the case of some video libraries that nest the video element inside the container.
@@ -21,5 +24,6 @@ export default function videoSlide() {
 		videoElement.addEventListener("click", () => {
 			videoElement.play();
 		});
+		videoElement.classList.add(SETTINGS.initializedClassName);
 	});
 }

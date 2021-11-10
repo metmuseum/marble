@@ -10,7 +10,7 @@
 		width: (100%/3);
 
 		.content-card__body {
-			padding: $spacing-s;
+			padding: $spacing-xs $spacing-s $spacing-s;
 		}
 
 		.content-card__heading {
@@ -69,7 +69,7 @@
 	flex-basis: 100%;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: $spacing-s $spacing-component-margin;
+	padding: $spacing-xs $spacing-component-margin $spacing-s;
 
 	.content-card--productive & {
 		padding-left: 0;

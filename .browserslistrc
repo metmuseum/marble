@@ -1,5 +1,3 @@
 # Browsers that we support https://github.com/browserslist/browserslist#full-list
 
 last 2 major versions and not dead and not IE 1-11 and not OperaMini all
-maintained node versions
-

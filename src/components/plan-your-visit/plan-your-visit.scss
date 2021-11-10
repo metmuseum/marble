@@ -1,80 +1,85 @@
-.plan-card {
-	background: $color-grey-050;
+$pyv-card-bp: 960px;
+
+.pyv-card {
+	background-color: $color-grey-100;
 	display: flex;
-	flex-direction: column;
-	padding: $spacing-m $spacing-component-margin;
-
-	@media (orientation: landscape) {
-		flex-direction: row-reverse;
+	flex-direction: column-reverse;
+	padding: $spacing-component-margin;
+	@media screen and (min-width: $pyv-card-bp) {
+		flex-direction: row;
 	}
 }
 
-.plan-card__image-container {
-	flex: 1;
-	min-height: 33.3vh;
-	position: relative;
-}
-
-.plan-card__image {
-	height: 100%;
-	object-fit: cover;
-	position: absolute;
+.pyv-card__main,
+.pyv-card__image-wrapper {
+	flex-basis: 50%;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin: 0 auto;
+	max-width: 500px;
 	width: 100%;
-}
 
-.plan-card__info {
-	flex: 1;
-	margin-top: $spacing-m;
-	@media (orientation: landscape) {
-		margin-right: $spacing-m;
-	}
-}
-
-.plan-card__header {
-	margin-bottom: $spacing-xs;
-}
-
-.plan-card__details {
-	background-color: $color-white;
-	border-radius: 16px;
-	box-shadow: $shadow-passive;
-	padding: $spacing-xs;
-
-	@media (orientation: landscape) {
-		padding: $spacing-s;
-	}
-}
-
-.plan-card__row {
-	display: flex;
-	margin-bottom: $spacing-xxs;
-	width: 100%;
-}
-
-.plan-card__row-icon {
-	display: inline-flex;
-	height: $spacing-xs;
-	justify-content: center;
-	margin-right: $spacing-micro;
-	width: $spacing-xs;
-
-	svg {
-		max-height: 100%;
+	@media screen and (min-width: $pyv-card-bp) {
 		max-width: 100%;
 	}
 }
 
-.plan-card__row-header {
-	font-weight: 500;
-	line-height: 1;
+.pyv-card__title {
+	margin-bottom: $spacing-xs;
 }
 
-.button {
-	.plan-card__cta-wrapper & {
-		font-size: $textsize-xs;
+.pyv-card__info-box {
+	background-color: $color-white;
+	border-radius: $radius-soft;
+	box-shadow: $shadow-passive;
+	font-size: $textsize-xs;
+	padding: $spacing-xxs;
+
+	@media screen and (min-width: $pyv-card-bp) {
+		margin-right: $spacing-m;
 	}
 }
 
-.plan-card__main-cta {
+.pyv-card__row {
+	display: flex;
+	margin-bottom: $spacing-xxs;
+}
+
+.pyv-card__row-icon {
 	margin-right: $spacing-xxs;
+	text-align: center;
+	width: $spacing-xs;
+
+	svg {
+		height: $spacing-xs;
+		width: auto;
+	}
+}
+
+.pyv-card__row-title {
+	font-weight: 500;
+}
+
+.pyv-card__button-wrapper {
+
+	.button {
+		font-size: $textsize-xs;
+	}
+
+	.button:first-child {
+		margin-right: $spacing-xs;
+	}
+}
+
+.pyv-card__image-wrapper {
+	margin-bottom: $spacing-s;
+	@media screen and (min-width: $pyv-card-bp) {
+		margin-bottom: 0;
+	}
+}
+
+.pyv-card__image {
+	display: block;
+	height: auto;
+	width: 100%;
 }

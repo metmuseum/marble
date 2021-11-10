@@ -49,7 +49,7 @@ $spacing-component-vertical: $spacing-l;
 	$small-screen: 375; //iPhone width.
 	$large-screen: 1440; //Macbook width.
 
-	$base-size: $mobileSize / 16;
+	$baseSize: $mobileSize / 16;
 	$calc: calc(#{$baseSize}rem + (#{$desktopSize} - #{$mobileSize}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
 	@return $calc;
 }
@@ -86,3 +86,8 @@ $soft-radius: $radius-soft; // TODO: deprecate
 
 //Generally used with a landscape media query
 $height-max: 85vh;
+
+// What's On
+$attendables-bp: 640px;
+
+

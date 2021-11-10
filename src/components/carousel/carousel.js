@@ -1,3 +1,4 @@
+import SETTINGS from "../../global/settings";
 import Flickity from "flickity";
 import arrowShape from "./arrowShape";
 
@@ -20,6 +21,7 @@ const flickityDefaults = {
 const carousel = (options = {}) => {
 	let { selectorString } = options;
 	selectorString = selectorString || ".js-carousel";
+	selectorString = `${selectorString}:not(.${SETTINGS.initializedClassName})`;
 
 	let finalOptions = { ...flickityDefaults, ...options };
 
@@ -55,6 +57,7 @@ const carousel = (options = {}) => {
 		// This event is bubbled up when our lazyload library loads an image (see lazyload.js)
 		carousel.addEventListener("image-loaded", handler, false);
 		carousel.addEventListener("image-errored", handler, false);
+		carousel.classList.add(SETTINGS.initializedClassName);
 	});
 };
 

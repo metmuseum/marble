@@ -1,4 +1,3 @@
-import scssExports from "../../global/exports.scss";
 import timeFormatter from "./time-formatter.js";
 import coverImageTemplate from "./cover-image-template";
 import AnalyticsLogger from "../analytics-logger";
@@ -13,6 +12,7 @@ class AudioPlayer {
 		this.wrapperEl								= wrapperEl;
 		this.audioEl									=	wrapperEl.querySelector(".js-audio-player__audio");
 		this.coverImageWrapperEl     	= wrapperEl.querySelector(".js-audio-player__image-wrapper");
+		this.darkModeQuery						= window.matchMedia("(prefers-color-scheme: dark)");
 		this.progressBarCanvasEl 			= wrapperEl.querySelector(".js-audio-player__progress-bar");
 		this.progressBarCanvas				= this.progressBarCanvasEl.getContext("2d");
 		this.playButtonEl 						= wrapperEl.querySelector(".js-audio-player__play");
@@ -34,7 +34,7 @@ class AudioPlayer {
 
 		// Options
 		this.options = {...defaultOptions, ...options};
-		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors");
+		this.isDarkMode = this.options.darkMode || this.wrapperEl.classList.contains("inverted-colors") || this.darkModeQuery.matches;
 		this.seekHelperDuration = this.options.seekHelperDuration;
 		this.analyticsSender = this.options.analyticsSender || new AnalyticsLogger();
 
@@ -42,6 +42,10 @@ class AudioPlayer {
 		this.isScrubbing = false;
 		this.currentTrack = JSON.parse(this.audioEl.dataset.track);
 		this.amountPlayed = 0;
+
+		// Events
+		this.beforeTrackChange = new Event("beforeTrackChange");
+		this.afterTrackChange = new Event("afterTrackChange");
 
 		// bind listeners to this object and save the returned function reference, so they can be added/removed in the right scope
 		["_handleTimeChange",
@@ -65,7 +69,7 @@ class AudioPlayer {
 		this.applyListeners();
 		this.setTranscript(); // format transcript if there is one
 		this.analyticsSender.sendCustomEvent({
-			event: "UniversalAudioPlayer:playerLoaded", 
+			event: "UniversalAudioPlayer:playerLoaded",
 			playerId: this.wrapperEl.id
 		});
 	}
@@ -101,24 +105,26 @@ class AudioPlayer {
 
 		// Transcript 📜
 		this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
+
+		// Dark/light transitions 🌞 / 🌚
+		this.darkModeQuery.addEventListener("change", (query) => { return this.isDarkMode = query.matches; });
 	}
 
 	handleTrackChange(e) {
 		const newTrackEl = e.currentTarget;
-
 		//If already active track, ignore.
 		if (newTrackEl.classList.contains("is-active-track")) {
-			return;
-		} else {
-			this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
+			return false;
 		}
 
+		this.wrapperEl.dispatchEvent(this.beforeTrackChange);
+		this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
 		newTrackEl.classList.add("is-active-track");
-
 		let newTrack = JSON.parse(newTrackEl.dataset.track);
 		this.setTrack(newTrack);
 		this.setTranscript();
 		this.audioEl.play();
+		this.wrapperEl.dispatchEvent(this.afterTrackChange);
 	}
 
 	setTrack(track) {
@@ -191,8 +197,8 @@ class AudioPlayer {
 		this.progressBarCanvas.fillStyle = "transparent";
 		this.progressBarCanvas.fillRect(0, 0, width, 6);
 		this.progressBarCanvas.fillStyle = this.isDarkMode
-			? scssExports.colorWhite
-			: scssExports.colorGrey900;
+			? "#ffffff" // $color-white
+			: "#333333"; // $color-grey-900
 		this.progressBarCanvas.fillRect(0, 0, (elapsed / duration) * width, 6);
 		this.progressBarCanvas.restore();
 	}

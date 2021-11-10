@@ -1,7 +1,9 @@
+import SETTINGS from "../../global/settings";
+
 function quotesModuleJs() {
 	const defaultQuotesToShow = 3;
 
-	document.querySelectorAll(".js-quotes-module").forEach((quotesModule) => {
+	document.querySelectorAll(`.js-quotes-module:not(.${SETTINGS.initializedClassName})`).forEach((quotesModule) => {
 		const arrayOfQuotes = quotesModule.querySelectorAll(".js-quotes-module__quote");
 		const quoteExpander = quotesModule.querySelector(".js-quotes-module__expander");
 		const quoteExpanderDefaultText = quoteExpander.innerHTML;
@@ -21,6 +23,8 @@ function quotesModuleJs() {
 			}
 			isExpanded = !isExpanded;
 		});
+
+		quotesModule.classList.add(SETTINGS.initializedClassName);
 	});
 }
 
