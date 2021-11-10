@@ -83,9 +83,10 @@ jobs:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
       - run: git config user.email "stephen.marsh@metmuseum.org"
       - run: git config user.name "Marble Bot"
+      - run: git fetch --tags
       - run:
           name: "Use release-it to tag and push to GitHub as release"
-          command: DEBUG=release-it:* npm run release -- patch --ci -VV --no-git.requireUpstream --set-upstream origin main
+          command: node ./.circleci/scripts/release.js
 
 workflows:
   build__do_chromatic__deploy_gh_pages__build_and_deploy_dist__tag_a_release:

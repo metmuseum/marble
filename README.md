@@ -19,6 +19,7 @@
   - ### [Storybook Development](#Storybook-Development)
   - ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
 - ### [Browsers We Support](#Browsers-We-Support)
+- ### [Versioning](#Versioning)
 
 # What is Marble?
 
@@ -306,6 +307,29 @@ To update the list of current browsers, it's important to frequently use:
     npx browserslist@latest --update-db
 
 ...because of [reasons](https://github.com/browserslist/browserslist#browsers-data-updating).
+
+# Versioning
+
+We use [semantic versioning](https://semver.org) via tagged releases on GitHub.  This is usually performed automatically on CircleCI.
+
+## To release a *major* or *minor* version:
+
+On your *feature branch*, just run `npm version` with exactly what you want; example:
+
+```shell
+$ npm version 0.13.0
+> v0.13.0
+``` 
+
+This will:
+*  change the `version` keys in `package.json` and `package-lock.json`
+* and commit the changes for you.
+
+ Then, when your feature branch is merged to main, a release tag with your version will be published to GitHub via CircleCI.
+
+## To release a *patch* version:
+
+Otherwise, all merged pull requests to `main` that are not new *major* or *minor* tags will automatically result in the release of a new *patch* version. You don't have to do anything.
 
 ---
 
