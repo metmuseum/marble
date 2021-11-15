@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html, repeat } from "../../../.storybook/helpers";
 import { withKnobs, number, text } from "@storybook/addon-knobs";
 export default {
 	title: "Exhibition/Quotes List",
@@ -40,9 +40,7 @@ const markup = (model) => {
 					<h4><a href="${model.allPressLink}" class="button tertiary-button">${model.allPressCTA}</a></h4>
 				</div>
 				<div class="quotes-module__quotes">
-					${new Array(number("Number of Quotes", model.numberOfQuotes))
-		.fill(quoteMarkup(model.quote))
-		.join("\n")}
+					${repeat(number("Number of Quotes", numberOfQuotes), quoteMarkup(model.quote))}
 				</div>
 			</div>
 		</div>

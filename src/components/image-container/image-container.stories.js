@@ -3,6 +3,8 @@ import defaultImage from "../../../.storybook/assets/images/full-width-image";
 
 export default {
 	title: "Image Containers",
+	includeStories: ["fullWidth", "halfWidth", "lazyLoaded"],
+	excludeStories: "sizesTemplate"
 };
 
 const sizesTemplate = (srcSet) => {
@@ -80,4 +82,4 @@ const lazyLoaded = () => {
 	`;
 };
 
-export { fullWidth, halfWidth, lazyLoaded };
+export { fullWidth, halfWidth, lazyLoaded, sizesTemplate };
