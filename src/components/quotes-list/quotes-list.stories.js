@@ -40,7 +40,7 @@ const markup = (model) => {
 					<h4><a href="${model.allPressLink}" class="button tertiary-button">${model.allPressCTA}</a></h4>
 				</div>
 				<div class="quotes-module__quotes">
-					${repeat(number("Number of Quotes", numberOfQuotes), quoteMarkup(model.quote))}
+					${repeat(number("Number of Quotes", model.numberOfQuotes), quoteMarkup(model.quote))}
 				</div>
 			</div>
 		</div>
