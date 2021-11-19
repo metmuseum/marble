@@ -1,18 +1,9 @@
 import html from "../../../.storybook/helpers/html";
 import defaultImage from "../../../.storybook/assets/images/full-width-image";
+import { sizesTemplate } from "../../components/image-container/image-container.stories";
 
 export default {
-	title: "Elements/Images/Lazyloaded",
-	excludeStories: "sizesTemplate"
-};
-
-const sizesTemplate = (srcSet) => {
-	const widths = Object.keys(srcSet.sizes);
-	return widths
-		.map((width) => {
-			return `${srcSet.sizes[width]} ${width},`;
-		})
-		.join("\n");
+	title: "Elements/Images/Lazyloaded"
 };
 
 const loadedImage = () => {
@@ -67,4 +58,4 @@ const loadingImage = () => {
 };
 
 
-export { loadedImage, erroredImage, loadingImage};
+export { loadedImage, erroredImage, loadingImage };
