@@ -1,8 +1,13 @@
 .media__youtube-wrapper  {
-	height: 0;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
-	padding-bottom: 56.25%;
 	position: relative;
+	max-width: $line-length-max;
+
+	@supports not (aspect-ratio: 16 / 9 {
+		height: 0;
+		padding-bottom: 56.25%;
+	}
 
 	iframe,
 	object,
