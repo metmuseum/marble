@@ -2,7 +2,7 @@
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
 	position: relative;
-	max-width: $line-length-max;
+	max-width: 60em;
 
 	@supports not (aspect-ratio: 16 / 9) {
 		height: 0;
