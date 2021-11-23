@@ -24,9 +24,9 @@ const data = () => {
 };
 
 //Responsive 16x9 wrapper for YouTube videos
-const YoutubeEmbedMarkUp = (model) => {
+const RTEComponentsMarkUp = (model) => {
 	return html`
-	<div class="rich-text" style="margin: 40px">
+	<div class="rich-text" style="margin: 40px auto; max-width: 85%;">
 		<h1>${model.h1}</h1>
 		<h2>${model.h2}</h2>
 		<h3>${model.h3}</h3>
@@ -52,7 +52,7 @@ const YoutubeEmbedMarkUp = (model) => {
 	`;
 };
 
-export const YoutubeEmbed = () => {
+export const RTEComponents = () => {
 	const storyData = data();
-	return html`${YoutubeEmbedMarkUp(storyData)}`;
+	return html`${RTEComponentsMarkUp(storyData)}`;
 };
