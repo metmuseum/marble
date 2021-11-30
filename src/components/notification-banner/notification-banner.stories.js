@@ -30,6 +30,6 @@ const notificationMarkup = (model) => {
 };
 
 
-export const expressive = () => notificationMarkup(data());
+export const Expressive = () => notificationMarkup(data());
 
-export const productive = () => notificationMarkup(data("productive"));
+export const Productive = () => notificationMarkup(data("productive"));

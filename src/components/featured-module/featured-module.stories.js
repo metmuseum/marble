@@ -8,7 +8,7 @@ export default {
 	decorators: [withKnobs],
 };
 
-export const featuredModule = () => {
+export const FeaturedModule = () => {
 	const inSitu = boolean("In Situ", false);
 	const header = text("Header", "Contribute to the Future");
 	const bodyCopyDefault =

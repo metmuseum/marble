@@ -30,7 +30,7 @@ const succesIcon = html `
 	</svg>
 `;
 
-export const containerWithAlert = () => {
+export const ContainerWithAlert = () => {
 	const model = data();
 	const hideAlertClass = model.hideAlert ? "" : "show-alert";
 	const withArrow = model.withArrow ? "has-arrow" : "";
