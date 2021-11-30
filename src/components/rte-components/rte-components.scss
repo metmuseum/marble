@@ -1,8 +1,13 @@
 .media__youtube-wrapper  {
-	height: 0;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
-	padding-bottom: 56.25%;
 	position: relative;
+	max-width: 60em;
+
+	@supports not (aspect-ratio: 16 / 9) {
+		height: 0;
+		padding-bottom: 56.25%;
+	}
 
 	iframe,
 	object,
@@ -12,5 +17,100 @@
 		position: absolute;
 		top: 0;
 		width: 100%;
+	}
+}
+
+.rich-text {
+	box-sizing: border-box;
+	width: 100%;
+
+	h2,
+	h3,
+	h4 {
+		a {
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	ol,
+	ul,
+	p {
+		margin-bottom: $spacing-xxs;
+	}
+
+	ol,
+	ul {
+		max-width: $line-length-max;
+		padding-left: $spacing-xxs;
+	}
+
+	ol {
+		list-style: decimal;
+	}
+
+	ul {
+		list-style: disc;
+	}
+
+	li {
+		line-height: 1.4;
+		margin: 0;
+
+		& > ol,
+		& > ul {
+			margin-bottom: 0;
+		}
+	}
+
+	img {
+		height: auto !important;
+		width: 100% !important;
+		max-width: $line-length-max !important;
+	}
+
+	hr {
+		border-top: 2px solid $color-grey-500;
+		display: block;
+		height: 2px;
+		margin: $spacing-s 0;
+		width: 100%;
+
+		&.alt {
+			border-top: 1px solid $color-grey-200;
+			height: 1px;
+		}
+	}
+
+	table {
+		width: 100%;
+	}
+
+	strong {
+		font-weight: 700;
+	}
+
+	.inline-caption {
+		font-size: $textsize-xs;
+	}
+
+	.audio-player {
+		max-width: $line-length-max;
+	}
+
+	.btn {
+		display: inline-flex;
+	}
+
+	.btn,
+	.button {
+		margin-top: $spacing-micro;
+	}
+
+	*:last-child {
+		margin-bottom: 0;
 	}
 }
