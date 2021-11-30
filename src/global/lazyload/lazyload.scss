@@ -1,0 +1,40 @@
+img.lazy:not(.loaded) {
+	box-sizing: border-box;
+	color: $color-white;
+	display: block;
+	position: relative;
+
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+
+	&:after {
+		@include typography-h4;
+		font-weight: 500;
+		color: $color-white;
+		content: attr(alt);
+		display: block;
+		left: 0;
+		overflow: hidden;
+		padding: 10%;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+		z-index: z("img&:after");
+	}
+
+	&:before {
+		background-color: $color-grey-800;
+		bottom: 0;
+		content: " ";
+		display: block;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
