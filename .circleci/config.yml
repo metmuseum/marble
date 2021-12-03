@@ -2,13 +2,12 @@ version: 2.1
 executors:
   marble-node:
     docker:
-      - image: "cimg/python:3.9-node"
+      - image: "cimg/node:lts"
 jobs:
   setup_marble:
     executor: marble-node
     steps:
       - checkout
-      - run: python --version
       - run: node --version
       - run: npm --version
       - run: npm ci
