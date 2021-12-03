@@ -134,6 +134,7 @@ const buttonTagTemplate = (options) => {
 	`;
 };
 
+/* eslint storybook/story-exports: "off" */
 // javascript why u no have metaprogramming for this 😭
 export const {
 	//// buttons

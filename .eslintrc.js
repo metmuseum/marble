@@ -18,15 +18,6 @@ module.exports = {
 			avoidEscape: true
 		}],
 		semi: [2, "always"]
-	},
-	overrides: [
-		{
-			files: ["*.stories.@(ts|tsx|js|mjs|cjs)"],
-			rules: {
-				// temporarily disabling due to: https://github.com/storybookjs/eslint-plugin-storybook/issues/57
-				"storybook/story-exports": "off",
-			}
-		}
-	]
+	}
 };
 
