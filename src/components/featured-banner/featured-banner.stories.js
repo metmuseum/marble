@@ -18,7 +18,7 @@ const bp1200 = scssExports.bp1200;
 const width = 3920;
 const height = 2621;
 
-export const featuredBanner = () => {
+export const FeaturedBanner = () => {
 	const inSitu = boolean("In Situ", false);
 	const header = text("Header", "Contribute to the Future");
 	const bodyCopyDefault =

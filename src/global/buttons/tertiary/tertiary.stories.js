@@ -86,6 +86,7 @@ const anchorTagTemplate = (options) =>
 		</a>
 	`;
 
+/* eslint storybook/story-exports: "off" */
 export const {
 	ButtonActive,
 	ButtonInactive,

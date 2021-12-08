@@ -120,6 +120,7 @@ const buttonTagTemplate = (options) => {
 	`;
 };
 
+/* eslint storybook/story-exports: "off" */
 export const {
 	ButtonDefault,
 	ButtonGhostLightActive,
