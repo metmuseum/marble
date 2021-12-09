@@ -1,8 +1,8 @@
-.media__youtube-wrapper  {
+.media__youtube-wrapper {
 	aspect-ratio: 16 / 9;
+	max-width: 60em;
 	overflow: hidden;
 	position: relative;
-	max-width: 60em;
 
 	@supports not (aspect-ratio: 16 / 9) {
 		height: 0;
