@@ -1,4 +1,5 @@
-img.lazy:not(.loaded) {
+img.lazy:not(.loaded) { /* stylelint-disable selector-no-qualifying-type */
+
 	box-sizing: border-box;
 	color: $color-white;
 	display: block;

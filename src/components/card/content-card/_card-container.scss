@@ -3,7 +3,7 @@
 	flex-basis: auto;
 	flex-direction: row;
 	flex-wrap: wrap;
-
+	/* stylelint-disable max-nesting-depth */
 	&.card-container--auto-fit {
 		//For Exactly Three Cards - use the three up style.
 		.content-card:nth-last-child(3):first-child,
