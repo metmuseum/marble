@@ -9,10 +9,6 @@
 
 	a {
 		text-decoration: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 
 	&::after {
@@ -20,6 +16,10 @@
 		display: inline-block;
 		padding: 0 0.4em;
 	}
+}
+
+.byline__authors a:hover {
+	text-decoration: underline;
 }
 
 .byline__date {
