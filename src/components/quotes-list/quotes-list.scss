@@ -1,10 +1,5 @@
 .quotes-module {
 	padding: $spacing-l $spacing-component-margin;
-
-	:focus {
-		background-color: $color-white-opaque-30;
-		color: $color-white;
-	}
 }
 
 .quotes-module__header {
