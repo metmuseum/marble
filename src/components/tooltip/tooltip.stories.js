@@ -11,7 +11,8 @@ const ToolTip = () => {
             <div class="tooltip-descriptor">Artwork</div>
                 <h5 class="tooltip-title">Figure Pendant</h5>
                 <h6 class="tooltip-subtitle">Tairona</h6>
-                <img class="tooltip-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/309540/1907006/main-image">
+								<img class="tooltip-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/309540/1907006/main-image"
+									alt="an example image alt, for accessibility">
             </div>.
         </div>
     </div>`;
@@ -28,7 +29,8 @@ indeed, it was often thought of as an excretion of this divine entity
             <div class="tooltip-descriptor">Artwork</div>
                 <h5 class="tooltip-title">Figure Pendant</h5>
                 <h6 class="tooltip-subtitle">Tairona</h6>
-                <img class="tooltip-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/309540/1907006/main-image">
+								<img class="tooltip-image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/309540/1907006/main-image"
+									alt="an example image alt, for accessibility">
             </div>.
         </div>
     </div>`;
