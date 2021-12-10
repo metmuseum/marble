@@ -1,7 +1,7 @@
 import html from "../../../.storybook/helpers/html";
 export default { title: "Components/ExhibitionBadge" };
 
-const exhibitionBadgeMarkUp = (closingSoon, hover) => html`
+const exhibitionBadgeMarkUp = ({ closingSoon, hover }) => html`
 	<div class='exhibition-badge
 		${closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}
 		${hover ? "is-color" : ""}'>
@@ -10,25 +10,25 @@ const exhibitionBadgeMarkUp = (closingSoon, hover) => html`
 		</span>
 	</div>`;
 
-export const JustOpened = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+export const JustOpened = exhibitionBadgeMarkUp.bind({});
 JustOpened.args = {
 	closingSoon: false,
 	hover: false
 };
 
-export const JustOpenedHover = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+export const JustOpenedHover = exhibitionBadgeMarkUp.bind({});
 JustOpenedHover.args = {
 	closingSoon: false,
 	hover: true
 };
 
-export const ClosingSoon = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+export const ClosingSoon = exhibitionBadgeMarkUp.bind({});
 ClosingSoon.args = {
 	closingSoon: true,
 	hover: false
 };
 
-export const ClosingSoonHover = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+export const ClosingSoonHover = exhibitionBadgeMarkUp.bind({});
 ClosingSoonHover.args = {
 	closingSoon: true,
 	hover: true
