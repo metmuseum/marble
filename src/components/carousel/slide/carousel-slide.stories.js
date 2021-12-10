@@ -8,7 +8,8 @@ import video from "../../../../.storybook/assets/video/stock-footage-a-nice-bee-
 
 const data = {
 	header: "Carousel Slide",
-	description: "<p>Either an image or a video, whatever.</p>",
+	description: html`<p>Either an image or a video, whatever.</p>
+<p>A <a href="#">link</a>, perhaps?</p>`,
 	video: video,
 	images: image1920,
 };
