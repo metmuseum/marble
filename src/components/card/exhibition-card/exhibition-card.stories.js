@@ -43,7 +43,7 @@ const cardMarkup = (model) => {
 						`<div class="marble-card marble-card--active">
 			      <div class="marble-card__image-wrapper marble-card__image-wrapper--fixed-ratio marble-card__image-wrapper--66">
 			        <a href="${card.link.url}" class="marble-card__image-link" tabindex="-1">
-			          <img class="marble-card__image" srcset="${card.images}">
+			          <img class="marble-card__image" srcset="${card.images}" alt="an example image alt for accessibility">
 			        </a>
 			      </div>
 			      <div class="marble-card__subject">

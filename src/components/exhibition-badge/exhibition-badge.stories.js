@@ -3,22 +3,22 @@ import { boolean, withKnobs } from "@storybook/addon-knobs";
 
 export default { title: "Components/ExhibitionBadge", decorators: [withKnobs] };
 
-
-const exhibitionBadgeMarkUp = () => {
-
-	const closingSoon = boolean("Closing Soon", false);
-	const isColor = boolean("Has Color", true);
-
+const exhibitionBadgeMarkUp = (closingSoon, hover) => {
+	const data = {
+		closingSoon: boolean("Closing Soon?", closingSoon),
+		hover: boolean("Hover?", hover),
+	};
 	return html`
 		<div class='exhibition-badge
-			${closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}
-			${isColor ? "is-color" : ""}'>
+			${data.closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}
+			${data.hover ? "is-color" : ""}'>
 			<span class='exhibition-badge__text'>
-				${closingSoon ? "Closing soon" : "Just opened"}
+				${data.closingSoon ? "Closing soon" : "Just opened"}
 			</span>
 		</div>`;
 };
 
-const ExhibitionBadge = () => exhibitionBadgeMarkUp();
-
-export { ExhibitionBadge };
+export const JustOpened = () => exhibitionBadgeMarkUp(false, false);
+export const JustOpenedHover = () => exhibitionBadgeMarkUp(false, true);
+export const ClosingSoon = () => exhibitionBadgeMarkUp(true, false);
+export const ClosingSoonHover = () => exhibitionBadgeMarkUp(true, true);
