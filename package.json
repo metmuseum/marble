@@ -69,7 +69,7 @@
 		"lint": "eslint .",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook",
-		"stylelint": "stylelint '**/*.scss'",
+		"stylelint": "stylelint '**/*.scss' --quiet",
 		"chromatic": "chromatic",
 		"postinstall": "node postinstall.js",
 		"release": "release-it"
