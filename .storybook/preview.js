@@ -14,6 +14,16 @@ addDecorator(marbleGlobalJSDecorator);
 addDecorator(withA11y);
 
 export const parameters = {
+	a11y: {
+		config: {
+			rules: [
+				{
+					id: 'frame-tested',
+					selector: 'iframe:not(.a11y-ignore)', // ignore iframes with a11y-ignore class
+				},
+			],
+		},
+	},
 	backgrounds: {
 		values: [
 			{ name: "white", value: colorVariables.colorWhite },
