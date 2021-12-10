@@ -41,7 +41,9 @@ const mediaMarkUp = (model, video) => {
 						tabindex="-1"
 						loop
 						src="${model.video}"
-					/>
+					>
+						<track src="captions_en.vtt" kind="captions" srclang="en" label="english_captions">
+					</video>
 				</div>
 		  `
 		: html`
