@@ -1,24 +1,35 @@
 import html from "../../../.storybook/helpers/html";
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+export default { title: "Components/ExhibitionBadge" };
 
-export default { title: "Components/ExhibitionBadge", decorators: [withKnobs] };
+const exhibitionBadgeMarkUp = (closingSoon, hover) => html`
+	<div class='exhibition-badge
+		${closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}
+		${hover ? "is-color" : ""}'>
+		<span class='exhibition-badge__text'>
+			${closingSoon ? "Closing soon" : "Just opened"}
+		</span>
+	</div>`;
 
-const exhibitionBadgeMarkUp = (closingSoon, hover) => {
-	const data = {
-		closingSoon: boolean("Closing Soon?", closingSoon),
-		hover: boolean("Hover?", hover),
-	};
-	return html`
-		<div class='exhibition-badge
-			${data.closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}
-			${data.hover ? "is-color" : ""}'>
-			<span class='exhibition-badge__text'>
-				${data.closingSoon ? "Closing soon" : "Just opened"}
-			</span>
-		</div>`;
+export const JustOpened = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+JustOpened.args = {
+	closingSoon: false,
+	hover: false
 };
 
-export const JustOpened = () => exhibitionBadgeMarkUp(false, false);
-export const JustOpenedHover = () => exhibitionBadgeMarkUp(false, true);
-export const ClosingSoon = () => exhibitionBadgeMarkUp(true, false);
-export const ClosingSoonHover = () => exhibitionBadgeMarkUp(true, true);
+export const JustOpenedHover = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+JustOpenedHover.args = {
+	closingSoon: false,
+	hover: true
+};
+
+export const ClosingSoon = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+ClosingSoon.args = {
+	closingSoon: true,
+	hover: false
+};
+
+export const ClosingSoonHover = ({ closingSoon, hover }) => exhibitionBadgeMarkUp(closingSoon, hover);
+ClosingSoonHover.args = {
+	closingSoon: true,
+	hover: true
+};
