@@ -2,28 +2,20 @@ import html from "../../../.storybook/helpers/html";
 import { CarouselSlide } from "./slide/carousel-slide.stories.js";
 import carousel, { flickityDefaults } from "./carousel.js";
 import { useEffect } from "@storybook/client-api";
-import { object, withKnobs } from "@storybook/addon-knobs";
 
-export default {
-	title: "Carousel/Carousel",
-	decorators: [withKnobs],
-};
+export default { title: "Carousel/Carousel" };
 
-const Carousel = () => {
-	useEffect(() => {
-		carousel(object("Flickity Settings", flickityDefaults));
-	});
+const mix = ["", CarouselSlide.args.video, CarouselSlide.args.video, "", "", "", "", "", "", "", "", "", "", "", CarouselSlide.args.video, CarouselSlide.args.video, CarouselSlide.args.video];
 
-	return html` <section class="carousel-wrapper">
+export const Carousel = (args) => {
+	useEffect(() => { carousel(args); });
+
+	return html`
+	<section class="carousel-wrapper">
 		<div class="js-carousel carousel">
-			${CarouselSlide(false)} ${CarouselSlide(true)} ${CarouselSlide(true)}
-			${CarouselSlide(false)} ${CarouselSlide(false)} ${CarouselSlide(false)}
-			${CarouselSlide(false)} ${CarouselSlide(false)} ${CarouselSlide(false)}
-			${CarouselSlide(false)} ${CarouselSlide(false)} ${CarouselSlide(false)}
-			${CarouselSlide(false)} ${CarouselSlide(false)} ${CarouselSlide(true)}
-			${CarouselSlide(true)} ${CarouselSlide(true)}
+		${mix.map((video) => CarouselSlide({ ...CarouselSlide.args, video: video })).join("\n")}
 		</div>
 	</section>`;
 };
 
-export { Carousel };
+Carousel.args = flickityDefaults;
