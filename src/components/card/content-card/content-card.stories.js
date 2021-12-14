@@ -86,7 +86,7 @@ const TwoUpContentCard = () => {
 	return ContentCardTemplate("two-up");
 };
 
-export const TwoUpContentCardMixedHeadings = () => html`
+const TwoUpContentCardMixedHeadings = () => html`
 <section class="card-container card-container--auto-fit">
 	${ContentCardTemplate("two-up", 1, false)}
 	${ContentCardTemplate("two-up", 2, true)}
@@ -106,5 +106,6 @@ export {
 	ContentCards,
 	ThreeUpContentCard,
 	TwoUpContentCard,
+	TwoUpContentCardMixedHeadings,
 	ProductiveContentCard,
 };
