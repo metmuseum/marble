@@ -9,10 +9,20 @@ import video from "../../../../.storybook/assets/video/stock-footage-a-nice-bee-
 const data = {
 	header: "Carousel Slide",
 	description: html`<p>Either an image or a video, whatever.</p>
-<p>A <a href="#">link</a>, perhaps?</p>`,
+	<p>A <a href="#">link</a>, perhaps?</p>`,
 	video: video,
 	images: image1920,
 };
+
+// TODO:
+// add a snapshot test of 2-up content cards holding layout even when you delete one of the headings 
+
+
+// problems to solve
+// if you tab into a carousel, you should get a NaS-like helper telling you that you're in a carousel/do you want to skip out (along those lines)
+// - we don't want all the slides to be announced / or have to tab through all the slides (manage tabindex and aria-hidden carefully)
+// - paging: 1) bubble on arrow key down from the links back up to flickity!!!  2) plan b? if there's links in the slides, how do you page the slides? (you have to tab all the way through them to get to arrows keys, and go up/down with shift+tab)
+// - how do you know when the carousel has changed if you use the arrows now (aria-live/changed?)
 
 const markup = (model, video) => {
 	useEffect(videoSlide);
