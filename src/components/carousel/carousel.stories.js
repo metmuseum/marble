@@ -6,10 +6,10 @@ import { useEffect } from "@storybook/client-api";
 export default { title: "Carousel/Carousel" };
 
 const mix = ["", CarouselSlide.args.video, CarouselSlide.args.video, "", "", "", "", "", "", "", "", "", "", "", CarouselSlide.args.video, CarouselSlide.args.video, CarouselSlide.args.video];
-const slides = mix.map(video => CarouselSlide({ ...CarouselSlide.args, video })).join("\n");
 
 export const Carousel = (args) => {
 	useEffect(() => { carousel(args); });
+	const slides = mix.map((video, index) => CarouselSlide({ ...CarouselSlide.args, video, index })).join("\n");
 
 	return html`
 	<section class="carousel-wrapper">

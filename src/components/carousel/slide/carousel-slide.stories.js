@@ -3,20 +3,25 @@ import videoSlide from "./video-slide.js";
 import { useEffect } from "@storybook/client-api";
 export default { title: "Carousel/Carousel Slide" };
 
+
+import { LoremIpsum } from "../../../global/lorem-ipsum.stories";
 import image1920 from "../../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
 import video from "../../../../.storybook/assets/video/stock-footage-a-nice-bee-walking-and-foraging-a-pretty-yellow-flower-and-a-little-push-by-another-bee-to-fly-away.mp4";
 
 const args = {
 	header: "Carousel Slide",
-	description: html`<p>Either an image or a video, whatever.</p>
-	<p>A <a href="#">link</a>, perhaps?</p>`,
+	description: html`
+<p>A <a href="#" aria-hidden="true" tabindex="-1">place to go</a>, perhaps?</p>`,
 	video: video,
 	images: image1920,
+	index: null
 };
 
 // problems to solve
+
 // if you tab into a carousel, you should get a NaS-like helper telling you that you're in a carousel/do you want to skip out (along those lines)
-// - we don't want all the slides to be announced / or have to tab through all the slides (manage tabindex and aria-hidden carefully)
+// it should probably also say that you can use the left and right arrow keys?
+// - we don't want all the slides to be announced / or have to tab through all the slides (manage tabindex and aria-hidden carefully) tabindex="-1".
 // - paging: 1) bubble on arrow key down from the links back up to flickity!!!  2) plan b? if there's links in the slides, how do you page the slides? (you have to tab all the way through them to get to arrows keys, and go up/down with shift+tab)
 // - how do you know when the carousel has changed if you use the arrows now (aria-live/changed?)
 
@@ -26,8 +31,9 @@ export const CarouselSlide = (args) => {
 		<div class="carousel-slide carousel-slide--video js-carousel-slide">
 			${mediaMarkUp(args)}
 			<div class="carousel-slide__subject">
-				<h3 class="carousel-slide__header">${args.header}</h3>
+				<h3 class="carousel-slide__header">${args.header} ${args.index ? args.index : ""}</h3>
 				<div class="carousel-slide__body">
+					${LoremIpsum({ numberOfParagraphs: 1 })}
 					${args.description}
 				</div>
 			</div>
