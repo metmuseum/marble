@@ -11,7 +11,6 @@ const marbleGlobalJSDecorator = (storyFn) => {
 };
 
 addDecorator(marbleGlobalJSDecorator);
-addDecorator(withA11y);
 
 export const parameters = {
 	a11y: {
