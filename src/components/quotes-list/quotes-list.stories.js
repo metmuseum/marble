@@ -37,7 +37,7 @@ const markup = (model) => {
 			<div class="quotes-module__contents">
 				<div class="quotes-module__header">
 					<h2>${model.heading}</h2>
-					<h4><a href="${model.allPressLink}" class="button tertiary-button">${model.allPressCTA}</a></h4>
+					<div><a href="${model.allPressLink}" class="button tertiary-button">${model.allPressCTA}</a></div>
 				</div>
 				<div class="quotes-module__quotes">
 					${repeat(number("Number of Quotes", model.numberOfQuotes), quoteMarkup(model.quote))}
