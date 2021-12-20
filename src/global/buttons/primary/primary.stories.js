@@ -88,6 +88,7 @@ const buttonStoryTemplate = (options) => {
 	};
 
 	return html`
+		${finalOptions.styleMode === "Ghost-Light" ? backgroundOverride() : ""}
 		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
 
 		${finalOptions.elementTag === "Anchor"
@@ -102,7 +103,6 @@ const buttonStoryTemplate = (options) => {
 
 const anchorTagTemplate = (options) => {
 	return html`
-		${backgroundOverride()}
 		<a
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
@@ -110,7 +110,7 @@ const anchorTagTemplate = (options) => {
 			${options.state === "Hover" ? "_sb--hover" : ""}
 			${options.state === "Focus" ? "_sb--focus" : ""}"
 			role="button"
-			tabindex="1"
+			tabindex="0"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Primary Button")}
@@ -120,7 +120,6 @@ const anchorTagTemplate = (options) => {
 
 const buttonTagTemplate = (options) => {
 	return html`
-		${backgroundOverride()}
 		<button
 			class="button primary-button
 			primary-button--${options.sizeMode.toLowerCase()}
