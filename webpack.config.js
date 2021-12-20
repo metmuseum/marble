@@ -9,7 +9,7 @@ const postcssFlexbugsFixes = require("postcss-flexbugs-fixes");
 const postcssInlineSvg = require("postcss-inline-svg");
 
 const commonConfig = {
-	entry: ["./src/index.mjs", "./src/marble.scss"],
+	entry: ["./src/browser.js", "./src/marble.scss"],
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "marble.js",

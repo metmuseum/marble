@@ -45,6 +45,8 @@
  * @license MIT
  */
 
+/*! @vimeo/player v2.16.1 | (c) 2021 Vimeo | MIT License | https://github.com/vimeo/player.js */
+
 /*! Native Promise Only
     v0.8.1 (c) Kyle Simpson
     MIT License: http://getify.mit-license.org
