@@ -58,6 +58,7 @@ const carousel = (options = {}) => {
 		carousel.addEventListener("image-loaded", handler, false);
 		carousel.addEventListener("image-errored", handler, false);
 		carousel.classList.add(SETTINGS.initializedClassName);
+		// accessibility enhancements
 		carousel.setAttribute("role", "region");
 		carousel.setAttribute("aria-label", "Interactive slide carousel. Use left and right arrows to change slides.");
 	});
