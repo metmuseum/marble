@@ -71,7 +71,7 @@ const buttonStoryTemplate = (options) => {
 
 
 	return html`
-		${backgroundOverride()}
+		${finalOptions.styleMode === "Ghost-Light" ? backgroundOverride() : ""}
 
 		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
 
@@ -96,7 +96,7 @@ const anchorTagTemplate = (options) => {
 			${options.state === "Hover" ? "_sb--hover" : ""}
 			${options.state === "Focus" ? "_sb--focus" : ""}"
 			role="button"
-			tabindex="1"
+			tabindex="0"
 			${options.state === "Inactive" ? "disabled" : ""}
 		>
 			${text("Label", "Secondary Button")}
