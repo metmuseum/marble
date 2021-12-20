@@ -1,25 +1,27 @@
-import html from "../../../.storybook/helpers/html";
+import { html, repeat } from "../../../.storybook/helpers";
 import { TopicCard } from "./topic-card.stories.js";
 import carousel, { flickityDefaults } from "../carousel/carousel.js";
 import { useEffect } from "@storybook/client-api";
-import { object, withKnobs } from "@storybook/addon-knobs";
 
-export default { title: "Components/Topics Slider", decorators: [withKnobs] };
+export default { title: "Components/Topics Slider" };
 
-const TopicsSlider = () => {
-	useEffect(()=> {
-		carousel(object("Flickity Settings", flickityDefaults));
-	});
+const TopicsSlider = (args) => {
+	useEffect(() => { carousel(args); });
+
 	return html`
 	<section class="topics-slider">
 		<div class="topics-slider__header">
-			<h3>Heading</h3>
+			<h3>${args.heading}</h3>
 		</div>
 		<div class="topics-slider-list js-carousel carousel">
-			${TopicCard()} ${TopicCard()} ${TopicCard()} ${TopicCard()}
-			${TopicCard()} ${TopicCard()}
+			${repeat(6, TopicCard(TopicCard.args))}
 		</div>
 	</section>`;
+};
+
+TopicsSlider.args = {
+	heading: "Heading",
+	...flickityDefaults
 };
 
 export { TopicsSlider };

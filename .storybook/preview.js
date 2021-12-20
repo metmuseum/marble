@@ -1,6 +1,5 @@
 import { addDecorator, addParameters } from "@storybook/html";
 import { useEffect } from "@storybook/client-api";
-import { withA11y } from "@storybook/addon-a11y";
 import global from "../src/global/global";
 import colorVariables from "../src/base/_colors.scss";
 import "./storybook.css";
