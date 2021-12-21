@@ -69,7 +69,6 @@ const buttonStoryTemplate = (options) => {
 	};
 
 
-
 	return html`
 		${backgroundOverride()}
 

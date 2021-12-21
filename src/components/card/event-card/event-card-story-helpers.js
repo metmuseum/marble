@@ -3,7 +3,7 @@ import image16x9 from "../../../../.storybook/assets/images/greek-hall/16x9/inde
 
 const defaultData = ({opened=false, inSitu=true}) => {
 	const isOpened = boolean("Is Opened", opened, "Display");
-	
+
 	return {
 		attendable: {
 			building: text("Building", "The Met Fifth", "Data"),

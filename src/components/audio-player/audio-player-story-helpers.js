@@ -26,7 +26,7 @@ const example = exampleResponse[0];
 
 const initializeAudioPlayers = () => {
 	const audioPlayers = document.querySelectorAll(".js-marble-audio-player");
-	audioPlayers.forEach((player) => new AudioPlayer({wrapperEl: player}));	
+	audioPlayers.forEach((player) => new AudioPlayer({wrapperEl: player}));
 };
 
 const defaultTrack = () => {

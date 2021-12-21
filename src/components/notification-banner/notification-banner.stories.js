@@ -6,7 +6,7 @@ export default { title: "Notification Banner", decorators: [withKnobs] };
 const data = (defaultMode="expressive") => ({
 	mode: radios("Expressive or Productive?", {Expressive: "expressive", Productive: "productive" }, defaultMode),
 	backgroundColor: color("Background Color", "#fff"),
-	textColor: color("Text Color", "#333"), 
+	textColor: color("Text Color", "#333"),
 	header: text("Header", "The Museum Has Temporarily Closed"),
 	description: text("Description", "<p>The Museum has temporarily closed all three locations effective March 13, to support New York City’s effort to contain the spread of COVID-19.</p>"),
 	link: {

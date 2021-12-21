@@ -13,11 +13,13 @@ module.exports = {
 		sourceType: "module"
 	},
 	rules: {
+		"eol-last": 2,
 		indent: [1, "tab"],
+		"no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
+		"no-trailing-spaces": ["error"],
 		quotes: ["error", "double", {
 			avoidEscape: true
 		}],
-		semi: [2, "always"]
+		semi: [2, "always"],
 	}
 };
-

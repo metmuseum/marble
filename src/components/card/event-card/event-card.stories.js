@@ -119,7 +119,7 @@ const eventCard = () => {
 eventCard.parameters = chromticParams;
 
 
-const eventCardOpened = () => { 
+const eventCardOpened = () => {
 	useEffect(eventCardEffect);
 	return markup(defaultData({opened: true}));
 };
