@@ -3,6 +3,22 @@
 	"version": "0.12.29",
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "./src/index.mjs",
+	"exports": {
+		".": {
+			"browser": {
+				"default": "./dist/marble.js"
+			},
+			"scss": {
+				"default": "./src/marble.scss"
+			},
+			"scss-base": {
+				"default": "./src/base/base.scss"
+			},
+			"default": {
+				"default": "./src/index.mjs"
+			}
+		}
+	},
 	"style": "./dist/marble.css",
 	"dependencies": {
 		"@vimeo/player": "^2.16.1",

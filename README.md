@@ -30,12 +30,7 @@ Our component explorer, powered by [Storybook](https://storybook.js.org/docs/bas
 
 ## 🏛️ [metmuseum.github.io/marble](https://metmuseum.github.io/marble) 📙
 
-
-# Design Documentation and Homepage:
-
-Marble's design docs and homepage are at:
-
-🎨 https://marble.metmuseum.org/ 🏡
+___
 
 # Using Marble In Your Project
 
@@ -43,14 +38,12 @@ Marble's design docs and homepage are at:
 
 Marble installs from GitHub, not the NPM registry.
 
-It's recommended that your CI/CD process use [`npm ci`](https://docs.npmjs.com/cli/v7/commands/npm-ci) instead of `npm install` so that:
+It's recommended that your CI/CD process use [`npm ci`](https://docs.npmjs.com/cli/v7/commands/npm-ci) instead of `npm install` so that you get [deterministic, reproducible builds](https://12factor.net/dependencies).
 
-- [You get deterministic, reproducible builds](https://12factor.net/dependencies).
-- You don't accidentally introduce a newer version of Marble than you intend to.
 
-There are multiple ways to install Marble:
+### Example Usage
 
-Lock to one version:
+Lock to one version (recommended):
 
 `npm install metmuseum/marble#0.11.15`
 
@@ -62,73 +55,67 @@ Use any npm-compatible semantic versioning syntax:
 
 `npm install metmuseum/marble#semver:^0.11.15`
 
-Just get whatever's on main:
+Just get whatever's on `main` currently:
+
 `npm install metmuseum/marble`
 
-## Upgrading Marble
-
-Remember, if you're using `npm ci` in production (recommended), then you'll need to periodically run `npm install ...` or `npm upgrade ...` and check in the updated package-lock.json.
+___
 
 ## Importing Marble
 
-Marble can be imported a few different ways, depending on how your project preprocesses and bundles things. If you're unsure, please reach out in our [#app-dev](https://met-museum.slack.com/archives/G29NSRAGL) Slack channel.
+Marble can be imported a few different ways, depending on your projects' needs and build tools. If you're unsure, please reach out in our [#met-developers Slack channel](https://met-museum.slack.com/archives/C022VD1NZNG) .
 
-### Import Javascript:
+### Node environments (Gulp, Webpack, etc):
 
-- If your project only uses CommonJS syntax (vanilla Node.js environments):
+- Javascript default export:
+```javascript
+import marble from "@metmuseum/marble";
 
-  ```javascript
-  const marble = require("@metmuseum/marble");
-  ```
-
-- ESM syntax (Webpack, etc):
-
-  ```javascript
-  import marble from "@metmuseum/marble";
-  ```
-
-- Reference the files directly (not recommended):
-  - `Path/To/Your/Project/node_modules/@metmuseum/marble/dist/marble.js`
-    - This exposes a variable called `marble`.
-  - `Path/To/Your/Project/node_modules/@metmuseum/marble/dist/marble.js.map`
-    - Source maps (recommended)
-
-* TODO: Consider CDN-hosted file for `<script>` tag? (easy with CI, but like, version control?)
-
-### Import SCSS:
-
-This should work, please let us know if it does not:
-
-```scss
-@import "~@metmuseum/marble/src/marble.scss";
+marble.global()
 ```
 
-### Import Precompiled, Minified CSS:
+- Single module (doesn't include any styles):
+```javascript
+import { AudioPlayer } from "@metmuseum/marble";
 
-- If your project supports the `~` syntax:
-  ```scss
-  import "~@metmuseum/marble";
-  ```
-- If not, production-ready assets are available to reference directly (not recommended):
-  - `Path/To/Your/Project/node_modules/@metmuseum/marble/dist/marble.css`
-- TODO: Consider CDN-hosted file for stylesheet `<link>` tag? (easy with CI, but like, version control?)
 
-#### SCSS
+new AudioPlayer(document.querySelector(".my-cool-audio-player"));
+```
 
-We recommend just using all of Marble's styles, for now. See above. ☝️
+- SCSS:
+```scss
+  @use "~@metmuseum/marble/scss" as marble;
 
-TODO: investigate Sass `@import` vs new `@use` syntax:
+  .my-cool-heading {
+    @include marble.typography-h1;
+  }
+```
 
-- https://sass-lang.com/documentation/at-rules/import#import-only-files
-- will inform if we need our file structure to have `module.import.scss` naming.
-- TODO: Probably we should move away from: `@import "marble/src/base/base";` (_kinda_ bad/leaky abstraction because what if we change file structure?)
-- Depending on SCSS preprocesssor, namely scss-loader+postcss (webpack) vs gulp sass, there is totally different behave regarding scope and iikjf it follows dependencies :(
+- CSS:
+```scss
+ @use "~@metmuseum/marble";
+```
 
-### Using Marble's Components
+____ 
 
-Marble does not currently export component html or templates, only styles and javascript. Think of it a little bit like Twitter's [Bootstrap Framework](/github.com/twbs/bootstrap), or like a meal kit, but not dish you serve.
+### Production-ready assets (transpiled, minified)
+- Javascript:
+```javascript
+  import "@metmuseum/marble/browser";
+```
 
-It's up to your project to implement the proper markup, based on examples you can find in `/src` and on our [Storybook](https://metmuseum.github.io/marble).
+- CSS:
+```scss
+  @use "~@metmuseum/marble";
+```
+
+<small>TODO: Consider CDN-hosted file for `<script>` tags? </small>
+___
+## Using Marble's Components
+
+Marble does not currently export component html or templates, only styles and javascript. Think of it like a _meal kit_ that needs to be cooked before you serve. (Or a little bit like Twitter's [Bootstrap Framework](/github.com/twbs/bootstrap)).
+
+In other words, the component stories are just recipes, and it's up to your project to implement the proper markup, based on examples in `/src` and in [Storybook](https://metmuseum.github.io/marble).
 
 #### Example:
 
@@ -157,7 +144,7 @@ html`<div
 
 And interpret them for your project's framework and data models:
 
-```HTML+Razor
+```razor
 <div class="section-heading section-heading--text-center productive-component section-header-@Model.Name">
 	<h2 class="section-heading__heading expressive">@Html.Raw(Model.Header)</h2>
 	<div>@Html.Raw(@Model.Description)</div>
@@ -171,8 +158,6 @@ And interpret them for your project's framework and data models:
 ```
 
 ##### Javascript
-
-By design, Marble's Javascript should only cause one side-effect: exposing a variable called `marble`. It's up to your project to tell Marble what to do and when.
 
 At the bare minimum, you probably want to run Marble's global code:
 
@@ -189,63 +174,9 @@ import marble from "@metmuseum/marble";
 marble.jumpLinkBanner();
 ```
 
-TODO: a `marble.everything();` option?
+___
 
-## Deployment and Continuous Integration
-
-You can expect that Marble's default branch, `main`, is always stable and releaseable. If you installed as above, `npm install` and `npm update` should always be safe.
-
-**Make sure you always check in your your package-lock.json**.
-
-### Recommended CI
-
-If you need something more deterministic and safe, say for staging or production environments, those environments should use `npm ci` **_instead of_** `npm install`. This will ensure the project only builds with the exact commit (and dependencies) that were specified earlier in the `package-lock.json`.
-
-Example:
-
-```json
-"marble": {
-    "version": "github:metmuseum/marble#d765ab8a340e1e989953207115414469307da93c",
-    "from": "github:metmuseum/marble#main",
-    "requires": {
-        "he": "^1.2.0",
-        "intersection-observer": "^0.7.0",
-        "smoothscroll-polyfill": "^0.4.4",
-        "vanilla-lazyload": "^12.5.1"
-    }
-}
-```
-
-More info: https://docs.npmjs.com/cli/ci.html
-
-For a preview environment (example: on Ghidorah this is called the "development" server), you might want to only use `npm install` so each build has the latest and you can catch integration issues earlier.
-
-It is **not recommended** to point your installation of Marble to an environment-specific branch on staging or production. Please always use `main`.
-
-# Contributing To Marble
-
-# WIP
-
-## Conventions
-
-- mock your data separately
-- use component story format
-- use knobs
-- try to provide in-situ examples?
-- make sure a11y passes!
-
-* file organization
-
-  - stories
-  - scss
-  - javascript
-  - text casing (kebab-case?)
-
-- linting
-  - recommend prettier
-  - explore: CI enforcement?
-
-### Marble Development As A Local Package
+## Marble Development As A Local Package with NPM Link
 
 You may want to see your changes to Marble locally _**and**_ in the context of another project you're working on. We can do this easily with [npm link](https://docs.npmjs.com/cli/link.html).
 
@@ -257,7 +188,7 @@ You may want to see your changes to Marble locally _**and**_ in the context of a
 
           		npm link
 
-2)  Next, tell whatever project you're working on to use that local, linked version of Marble.
+2)  Next, tell whatever downstream project you're working on to use that local, linked version of Marble.
 
     - Navigate to a local project folder and find the directory that contains the `package.json` that originally specified Marble. \* For example, in Ghidorah, this wouldn't be the project root, it would be: `ghidorah/MMA.Ghidorah/`
     - From _that_ directory, run:
@@ -266,11 +197,11 @@ You may want to see your changes to Marble locally _**and**_ in the context of a
 
     - Now, instead of what's installed in `node_modules`, npm knows to pull our Marble package files from the directory in Step 1. We can make our changes in our Marble repo (more on that below), and our other project will show them to us.
 
+  **IMPORTANT**: If your project pulls in any Marble assets through /dist (ie, `@use "~@metmuseum/marble";` for CSS, like in Sculptured), you'll want't make sure that you're running `npm run build-dev` in this repo, so that Webpack watches for changes and compiles them to `/dist` for your other project to find. 
+
 # Storybook Development
 
-Storybook is the preferred way of developing components for Marble. To start Storybook locally, launch the app with: `npm run storybook`
-
-To publish the Storybook to its web homepage (via GitHub pages), please commit your changes, then run: `npm run deploy-storybook`. Be mindful that this overwites the current Storybook with your local version.
+Storybook is the best way to develop components for Marble. To start Storybook locally, launch the app with: `npm run storybook`
 
 We use the `html preset` for Storybook. There are many good exmaples of html stories and add-ons at the official "kitchen sink" example directory:
 
@@ -278,7 +209,7 @@ We use the `html preset` for Storybook. There are many good exmaples of html sto
 
 # Webpack Build for Release And Production
 
-TODO: update this to have CI build dist on merge
+Our CI will automatically do this for you before a release (when pull requests are merged), but if you need to do this manually, please note:
 
 - For releases of Marble, we'll want to compile everything into a production-ready `.css` and `.js` file.
 - We use Webpack to build and bundle these files to `/dist`
@@ -287,11 +218,9 @@ TODO: update this to have CI build dist on merge
 
       		npm run build
 
-* See also: [/webpack.production.config.js](https://github.com/metmuseum/marble/blob/master/webpack.production.config.js)
-
-- Make sure you commit this production-ready build of Marble and not the development version that would also be generated to `/dist` anytime you run webpack-dev-server.
+* See also: [/webpack.production.config.js](https://github.com/metmuseum/marble/blob/master/webpack.config.js)
 
 ---
 
 ## License
-Currently for internal use only. © Copyright 2021 The Metropolitan Museum of Art. All rights are reserved.
+<mark>Currently for internal use only. © Copyright 2021 The Metropolitan Museum of Art. All rights are reserved.</mark>
