@@ -9,8 +9,8 @@
 		height: 0;
 		padding-bottom: (100% * 2/3);
 		position: relative;
-
-		&.ratio-16-9 {
+		
+		&.ratio-16-9 { /* stylelint-disable max-nesting-depth */
 			padding-bottom: (100% * 9/16);
 		}
 		//TODO: Add whatever ratios we want

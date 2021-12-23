@@ -43,14 +43,15 @@ $spacing-component-margin: 7.5vw;
 $spacing-component-vertical: $spacing-l;
 
 //Takes two font sizes and returns a calc function.
-//Sets the font to be $mobileSize on a small (375px) screen and $desktopSize on a large (1440px) screen.
+//Sets the font to be $mobile-size on a small (375px) screen and $desktop-size on a large (1440px) screen.
 
-@function fontsize-calculator($mobileSize, $desktopSize) {
+@function fontsize-calculator($mobile-size, $desktop-size) {
 	$small-screen: 375; //iPhone width.
 	$large-screen: 1440; //Macbook width.
 
-	$baseSize: $mobileSize / 16;
-	$calc: calc(#{$baseSize}rem + (#{$desktopSize} - #{$mobileSize}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
+	$base-size: $mobile-size / 16;
+	$base-size: $mobile-size / 16;
+	$calc: calc(#{$base-size}rem + (#{$desktop-size} - #{$mobile-size}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
 	@return $calc;
 }
 

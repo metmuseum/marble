@@ -50,12 +50,12 @@
 
 	.inline-modal-trigger-styled-as-filter & {
 		border-color: $color-grey-900;
+	}
 
-		&.checked {
-			background: $color-grey-900;
-			border: 2px solid $color-grey-900;
-			color: $color-white;
-		}
+	.inline-modal-trigger-styled-as-filter &.checked {
+		background: $color-grey-900;
+		border: 2px solid $color-grey-900;
+		color: $color-white;
 	}
 
 	&:hover,
@@ -72,10 +72,11 @@
 	:focus:not(:hover) + &,
 	._sb--focus:not(:hover) + & {
 		@include button-focus--not-hover(3px);
+	}
 
-		&:after {
-			border-radius: 999px;
-		}
+	:focus:not(:hover) + &::after,
+	._sb--focus:not(:hover) + &::after {
+		border-radius: 999px;
 	}
 
 	:active + &,
