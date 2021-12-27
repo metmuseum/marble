@@ -1,5 +1,3 @@
-$event-card-slide-up-distance: -66%;
-
 .events-by-day {
 	display: flex;
 	flex-wrap: nowrap;
@@ -29,17 +27,19 @@ $event-card-slide-up-distance: -66%;
 .event-card {
 	border-radius: $form-radius;
 	box-shadow: $shadow-passive;
+	display: flex;
 	flex-basis: 270px;
+	flex-direction: column;
 	flex-shrink: 0;
 	margin-bottom: $spacing-xxs;
 	margin-right: $spacing-xxs;
 	overflow: hidden;
-	transition: all 0.2s;
 
 	@media screen and (min-width: $attendables-bp) {
 		flex-basis: auto;
 		margin: 0;
 	}
+
 
 	&:hover,
 	&:focus-within {
@@ -75,57 +75,13 @@ $event-card-slide-up-distance: -66%;
 	width: 100%;
 }
 
-.event-card__content {
-	@include three-by-two-image-crop-wrapper;
-	transform: translateY(0);
-	transition: all 0.2s;
-
-	.is-open & {
-		transform: translateY($event-card-slide-up-distance);
-		@media screen and (min-width: 1280px) {
-			transform: none;
-		}
-	}
-
-	@media screen and (min-width: 1280px) {
-		padding-bottom: 75%;
-	}
-}
-
-.event-card__body,
-.event-card__expanded-info {
+.event-card__body {
 	background: $color-white;
 	display: flex;
 	flex-basis: 100%;
 	flex-direction: column;
 	justify-content: space-between;
-	left: 0;
 	padding: calc(14px + 0.3vw);
-	position: absolute;
-	right: 0;
-}
-
-.event-card__body {
-	backdrop-filter: blur(4px);
-	background: linear-gradient(360deg,
-	$color-white 35%,
-	rgba($color-white, (2 / 3)) 100%);
-	bottom: 0;
-	top: 0;
-
-	@media screen and (min-width: 1280px) {
-		bottom: 40%;
-	}
-}
-
-.event-card__expanded-info {
-	bottom: $event-card-slide-up-distance;
-	top: 100%;
-
-	@media screen and (min-width: 1280px) {
-		bottom: 0;
-		top: 60%;
-	}
 }
 
 .event-card__row {
@@ -134,18 +90,17 @@ $event-card-slide-up-distance: -66%;
 	font-size: $textsize-xs;
 	font-weight: 500;
 	justify-content: space-between;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .event-card__row--top {
 	font-size: $textsize-xs;
 	font-weight: 600;
-	padding-bottom: $spacing-xxs;
+	line-height: 1;
+	padding-bottom: $spacing-micro;
 	text-transform: uppercase;
-}
-
-.event-card__subprogram,
-.event-card__view-toggle {
-	padding: 0;
 }
 
 .event-card__subprogram {
@@ -157,42 +112,10 @@ $event-card-slide-up-distance: -66%;
 	}
 }
 
-.event-card__view-toggle {
-	background: transparent;
-	border: 0;
-	cursor: pointer;
-	height: 1em;
-	margin-left: $spacing-micro;
-	width: 1em;
-
-	&:focus,
-	&:hover {
-		color: $color-focus-state;
-		outline: 0;
-	}
-	@media screen and (min-width: 1280px) {
-		display: none;
-	}
-}
-
-.view-toggle__icon {
-	fill: currentColor;
-	transition: transform 0.4s;
-
-	.is-open & {
-		transform: rotateZ(180deg);
-	}
-}
-
 .event-card__heading {
-	@include typography-h5;
+	@include typography-h4;
 	margin-bottom: auto;
 	min-height: 4em;
-
-	@media screen and (min-width: 1280px) {
-		@include typography-h4;
-		min-height: 2.4em;
-	}
 }
 
 .event-card__heading-link {
@@ -210,50 +133,32 @@ $event-card-slide-up-distance: -66%;
 	}
 }
 
-.event-card__pricing {
-	background: inherit;
-	cursor: default;
-	line-height: 1;
+.event-card__time-and-location {
+	flex-basis: 50%;
+	flex-grow: 0;
+	flex-shrink: 1;
 	overflow: hidden;
-	padding-right: $spacing-xxs;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-
-	.is-open &,
-	&:hover {
-		overflow: visible;
-		white-space: normal;
-	}
 }
 
+.event-card__pricing,
+.event-card__event-time,
 .event-card__building {
-	text-align: right;
+	line-height: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.event-card__pricing {
+	padding-bottom: $spacing-xs;
 }
 
 .event-card__event-time {
 	align-self: flex-start;
 	flex: 1 0 auto;
-	font-size: $textsize-s;
-	font-weight: 600;
-	text-align: right;
 	text-transform: lowercase;
 }
 
-.event-card__program {
-	padding: 0;
-	text-decoration: none;
-
-	&:focus,
-	&:hover {
-		text-decoration: underline;
-	}
-}
-
-.event-card__info {
-	line-height: 48px; //button height
-}
-
-//TODO: Revisit button--small (Do we need an extra small?)
 .event-card__tickets-button {
 	padding-left: 20px;
 	padding-right: 20px;
