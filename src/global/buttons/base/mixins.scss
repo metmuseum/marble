@@ -1,3 +1,4 @@
+/* stylelint-disable max-nesting-depth */
 @mixin button-hover {
 	text-decoration: none;
 }
@@ -7,7 +8,7 @@
 	text-decoration: none;
 
 	&::-moz-focus-inner { // sass-lint:disable-line no-vendor-prefixes
-		border: none;
+		border: 0;
 	}
 }
 

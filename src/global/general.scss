@@ -32,16 +32,17 @@ input {
 
 	&[type="email"],
 	&[type="text"] {
-		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
-		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 		appearance: none;
 	}
 
+	/* stylelint-disable selector-no-qualifying-type */
 	&.is-invalid {
 		border-color: $color-black;
 		color: $color-red-error;
 	}
+	/* stylelint-enable selector-no-qualifying-type */
 }
+
 
 a {
 	color: inherit;

@@ -1,20 +1,21 @@
-img.lazy:not(.loaded) {
+img.lazy:not(.loaded) { /* stylelint-disable selector-no-qualifying-type */
+
 	box-sizing: border-box;
 	color: $color-white;
 	display: block;
 	position: relative;
 
-	&:before,
-	&:after {
+	&::before,
+	&::after {
 		box-sizing: border-box;
 	}
 
-	&:after {
+	&::after {
 		@include typography-h4;
-		font-weight: 500;
 		color: $color-white;
 		content: attr(alt);
 		display: block;
+		font-weight: 500;
 		left: 0;
 		overflow: hidden;
 		padding: 10%;
@@ -27,7 +28,7 @@ img.lazy:not(.loaded) {
 		z-index: z("img&:after");
 	}
 
-	&:before {
+	&::before {
 		background-color: $color-grey-800;
 		bottom: 0;
 		content: " ";

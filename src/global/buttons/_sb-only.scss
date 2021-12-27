@@ -1,12 +1,11 @@
 @import "../../base/base";
-
+/* stylelint-disable max-nesting-depth */
 ._sb-breathing-room {
 	display: inline-block;
 	padding: 20px;
 }
 
 .button {
-
 	&._sb--focus {
 		@include button-focus();
 	}

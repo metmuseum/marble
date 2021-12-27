@@ -1,0 +1,41 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-order",
+    "stylelint-selector-bem-pattern",
+    "stylelint-no-unsupported-browser-features"
+  ],
+  "rules": {
+    "indentation": "tab",
+    "selector-class-pattern": null,
+    "order/properties-alphabetical-order": true,
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning",
+        "ignorePartialSupport": true
+      }
+    ],
+    "plugin/selector-bem-pattern": {
+      "preset": "bem"
+    },
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreSelectors": [
+          ":export",
+          ":import"
+        ]
+      }
+    ],
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": [
+          "attribute"
+        ]
+      }
+    ],
+    "string-quotes": "double"
+  }
+}

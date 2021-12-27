@@ -5,8 +5,10 @@
 	@include button-base();
 }
 
+/* stylelint-disable selector-no-qualifying-type */
 a.button {
 	align-items: center;
 	display: inline-flex;
 	justify-content: center;
 }
+/* stylelint-enable selector-no-qualifying-type */
