@@ -22,7 +22,7 @@ export const IncorrectAriaHidden = () => html`<div style="width: 300px; margin: 
 			style="width: 100%;">
 	</div>
 	<h3><a href="/#incorrect">Incorrect</a></h3>
-	<p>Top link has correct attributes and image alt can be read instead of a redundant link.</p>
+	<p>Top link has incorrect attributes.</p>
 </div>`;
 
 IncorrectAriaHidden.story = {
@@ -36,8 +36,5 @@ export const IncorrectTabIndex = () => html`<div style="width: 300px; margin: 20
 			style="width: 100%;">
 	</div>
 	<h3><a href="/#incorrect">Incorrect</a></h3>
-	<p>Top link has correct attributes and image alt can be read instead of a redundant link.</p>
+	<p>Top link has incorrect attributes .</p>
 </div>`;
-
-
-
