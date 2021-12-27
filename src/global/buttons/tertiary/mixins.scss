@@ -1,7 +1,7 @@
 @mixin tertiary-button--hover {
 	border-color: transparent;
 
-	&:before {
+	&::before {
 		border-color: currentColor;
 		content: "";
 		right: 0;
@@ -12,9 +12,9 @@
 	background-color: transparent;
 	border: unset;
 	border-bottom: 2px solid currentColor;
-	border-left: none;
-	border-right: none;
-	border-top: none;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
 	color: currentColor;
 	cursor: pointer;
 	font-family: $metsans;
@@ -30,7 +30,7 @@
 
 	// this block handles the underline animation
 	&:not(:disabled) {
-		&:before {
+		&::before {
 			border-bottom: 2px solid transparent;
 			bottom: -2px;
 			content: "";
@@ -55,12 +55,12 @@
 
 	&.button--disabled,
 	&[disabled] {
-		border: none;
+		border: 0;
 		color: $color-grey-600;
 		cursor: not-allowed;
 
-		&:before {
-			border: none;
+		&::before {
+			border: 0;
 		}
 	}
 }

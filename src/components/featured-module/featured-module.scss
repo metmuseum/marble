@@ -20,10 +20,10 @@
 
 	a {
 		margin: 0 $spacing-micro;
+	}
 
-		&[href=""] {
-			margin: 0;
-		}
+	a[href=""] {
+		margin: 0;
 	}
 
 	p {

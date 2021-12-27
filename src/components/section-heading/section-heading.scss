@@ -1,6 +1,6 @@
 @import "../../base/sizes";
 @import "../../base/mixins/layouts";
-@import "../../base/mixins/_typography.scss";
+@import "../../base/mixins/typography";
 
 .section-heading {
 	box-sizing: border-box;
@@ -44,7 +44,6 @@
 }
 
 .section-heading__heading {
-
 	&.expressive {
 		font-family: $metserif;
 	}

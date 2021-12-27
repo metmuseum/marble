@@ -32,8 +32,8 @@
 	}
 }
 
-@import "_card-container";
-@import "_card-image";
+@import "card-container";
+@import "card-image";
 
 .content-card {
 	display: flex;
@@ -54,13 +54,12 @@
 	&.has-border {
 		box-shadow: inset 0 0 1px $color-grey-900;
 		transition: all 0.15s ease-out;
+	}
 
-		&:hover,
-		&:focus-within {
-			box-shadow: $shadow-active--expressive;
-			z-index: z("marble-card--active");
-
-		}
+	&.has-border:hover,
+	&.has-border:focus-within {
+		box-shadow: $shadow-active--expressive;
+		z-index: z("marble-card--active");
 	}
 }
 

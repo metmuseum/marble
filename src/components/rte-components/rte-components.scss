@@ -1,8 +1,8 @@
-.media__youtube-wrapper  {
+.media__youtube-wrapper {
 	aspect-ratio: 16 / 9;
+	max-width: 60em;
 	overflow: hidden;
 	position: relative;
-	max-width: 60em;
 
 	@supports not (aspect-ratio: 16 / 9) {
 		height: 0;
@@ -20,6 +20,7 @@
 	}
 }
 
+/* stylelint-disable max-nesting-depth */
 .rich-text {
 	box-sizing: border-box;
 	width: 100%;
@@ -28,6 +29,7 @@
 	h3,
 	h4 {
 		a {
+
 			text-decoration: none;
 
 			&:hover {
@@ -60,8 +62,8 @@
 		line-height: 1.4;
 		margin: 0;
 
-		& > ol,
-		& > ul {
+		> ol,
+		> ul {
 			margin-bottom: 0;
 		}
 	}
@@ -78,7 +80,7 @@
 		margin: $spacing-s 0;
 		width: 100%;
 
-		&.alt {
+		&.alt { /* stylelint-disable selector-no-qualifying-type */
 			border-top: 1px solid $color-grey-200;
 			height: 1px;
 		}
