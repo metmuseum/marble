@@ -36,9 +36,6 @@ const argTypes = {
 
 export default {
 	title: "Elements/Buttons/Primary",
-	parameters: {
-		backgrounds: { disable: true }, // TODO: hopefully Chromatic supports backgrounds soon
-	},
 	argTypes
 };
 
@@ -57,8 +54,8 @@ permutations.elementTags.forEach((elementTag) => {
 					state,
 				};
 
-				let current = [elementTag, styleMode, sizeMode, state].map((option) => { return option.replaceAll("-", ""); });
-				let storyName = current.join("");
+				let current = [elementTag, styleMode, sizeMode, state];
+				let storyName = current.map((option) => option.replaceAll("-", "")).join("");
 
 				StoriesToExport[storyName] = (args) => StoryTemplate(args);
 				StoriesToExport[storyName].story = {
@@ -77,7 +74,7 @@ const StoryTemplate = (args) => html`
 			<a class="button primary-button
 				primary-button--${args.sizeMode.toLowerCase()}
 				primary-button--${args.styleMode.toLowerCase()}
-				${args.state === " Hover" ? "_sb--hover" : ""}
+				${args.state === "Hover" ? "_sb--hover" : ""}
 				${args.state === "Focus" ? "_sb--focus" : ""}" 
 				role="button"
 				tabindex="0"

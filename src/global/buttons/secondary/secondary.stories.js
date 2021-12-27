@@ -1,15 +1,5 @@
-import html from "../../../../.storybook/helpers/html";
-import { withKnobs, text, radios } from "@storybook/addon-knobs";
-import backgroundOverride from "../../../../.storybook/helpers/backgroundOverride";
+import { html, backgroundOverride } from "../../../../.storybook/helpers";
 import "../_sb-only.scss";
-
-export default {
-	decorators: [withKnobs],
-	title: "Elements/Buttons/Secondary",
-	parameters: {
-		backgrounds: { disable: true }, // TODO: hopefully Chromatic supports backgrounds soon
-	},
-};
 
 const permutations = {
 	elementTags: ["Button", "Anchor"],
@@ -17,117 +7,95 @@ const permutations = {
 	states: ["Active", "Inactive", "Focus", "Hover"],
 };
 
-const StoriesToExport = {
-	AnchorDefault: () =>
-		buttonStoryTemplate({ elementTag: "Anchor", styleMode: null }),
-	ButtonDefault: () =>
-		buttonStoryTemplate({ elementTag: "Button", styleMode: null }),
+const argTypes = {
+	elementTag: {
+		options: permutations.elementTags,
+		control: "inline-radio"
+	},
+	styleMode: {
+		options: permutations.styles,
+		control: "radio"
+	},
+	state: {
+		options: permutations.states,
+		control: "radio"
+	},
+	viewMode: {
+		options: ["Just the button", "Give it some breathing room"],
+		defaultValue: "Give it some breathing room",
+		control: "radio"
+	}
 };
+
+export default {
+	title: "Elements/Buttons/Secondary",
+	argTypes
+};
+
+const StoriesToExport = {};
 
 permutations.elementTags.forEach((elementTag) => {
 	permutations.styles.forEach((styleMode) => {
 		permutations.states.forEach((state) => {
-			let storyName = [elementTag, styleMode.replace("-", ""), state].join("");
-
-			StoriesToExport[storyName] = () => {
-				return buttonStoryTemplate({
-					elementTag,
-					styleMode,
-					state,
-				});
+			const args = {
+				label: "Secondary Button",
+				elementTag,
+				styleMode,
+				state
 			};
+
+			let current = [elementTag, styleMode, state];
+			let storyName = current.map((option) => option.replaceAll("-", "")).join("");
+
+			StoriesToExport[storyName] = (args) => SecondaryButton(args);
+			StoriesToExport[storyName].story = {
+				title: "Elements/Buttons/Secondary",
+				name: current.map((option) => option.replaceAll("-", " ")).join(" ")
+			};
+			StoriesToExport[storyName].args = args;
 		});
 	});
 });
 
-const elementTagSelector = (defaultValue) => {
-	const label = "Element Tag";
-	return radios(label, permutations.elementTags, defaultValue);
-};
 
-const styleSelector = (defaultValue) => {
-	const label = "Style Modes";
-	return radios(label, permutations.styles, defaultValue);
-};
+const SecondaryButton = (args) => {
+	`${console.log("down ehre args is: ", args)}`;
+	if (args.elementTag === "Button") {
+		return html`
+			${args.styleMode !== "Ghost-Dark" ? backgroundOverride() : ""}
+			${args.viewMode == "Give it some breathing room" ? html`<div class="_sb-breathing-room">` : ""}
+				<button class="button secondary-button secondary-button--${args.styleMode.toLowerCase()}
+								${args.state === "Hover" ? "_sb--hover" : ""} ${args.state === "Focus" ? "_sb--focus" : "" }"
+					${args.state==="Inactive" ? "disabled" : "" }>
+					${args.label}
+				</button>
+				${args.viewMode == "Give it some breathing room" ? "</div>" : ""}
+		`;
+	}
 
-const stateSelector = (defaultValue) => {
-	const label = "State";
-	return radios(label, permutations.states, defaultValue);
-};
+	if (args.elementTag === "Anchor") {
+		return html`
+			${args.styleMode !== "Ghost-Dark" ? backgroundOverride() : ""}
+			${args.viewMode == "Give it some breathing room" ? html`<div class="_sb-breathing-room">` : ""}
+				<a class="button secondary-button secondary-button--${args.styleMode.toLowerCase()}
+							${args.state === "Hover" ? "_sb--hover" : ""} ${args.state === "Focus" ? "_sb--focus" : "" }"
+					${args.state === "Inactive" ? "disabled" : "" } role="button" tabindex="0">
+					${args.label}
+					</a>
+			${args.viewMode == "Give it some breathing room" ? "</div>" : ""}
+		`;
+	}
 
-const buttonStoryTemplate = (options) => {
-	// reassign the options based on knobs
-	const elementTag = elementTagSelector(options.elementTag);
-	const styleMode = styleSelector(options.styleMode);
-	const state = stateSelector(options.state);
-	const viewMode = radios("View As", ["Just the button", "Give it some breathing room"], "Give it some breathing room");
-
-	const finalOptions = {
-		elementTag,
-		styleMode,
-		state,
-	};
-
-
-
-	return html`
-		${finalOptions.styleMode === "Ghost-Light" ? backgroundOverride() : ""}
-
-		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
-
-		${finalOptions.elementTag === "Anchor"
-		? anchorTagTemplate(finalOptions)
-		: finalOptions.elementTag === "Button"
-			? buttonTagTemplate(finalOptions)
-			: "Error: no element tag selected"}
-
-		${viewMode == "Give it some breathing room" ? "</div>" : ""}
-	`;
-};
-
-const anchorTagTemplate = (options) => {
-	let styleModifier = options?.styleMode
-		? `secondary-button--${options.styleMode.toLowerCase()}`
-		: "";
-
-	return html`
-		<a
-			class="button secondary-button ${styleModifier}
-			${options.state === "Hover" ? "_sb--hover" : ""}
-			${options.state === "Focus" ? "_sb--focus" : ""}"
-			role="button"
-			tabindex="0"
-			${options.state === "Inactive" ? "disabled" : ""}
-		>
-			${text("Label", "Secondary Button")}
-		</a>
-	`;
-};
-
-const buttonTagTemplate = (options) => {
-	let styleModifier = options?.styleMode
-		? `secondary-button--${options.styleMode.toLowerCase()}`
-		: "";
-	return html`
-		<button
-			class="button secondary-button ${styleModifier}
-				${options.state === "Hover" ? "_sb--hover" : ""}
-				${options.state === "Focus" ? "_sb--focus" : ""}"
-			${options.state === "Inactive" ? "disabled" : ""}
-		>
-			${text("Label", "Secondary Button")}
-		</button>
-	`;
+	return html`Error: no element tag selected ${JSON.stringify(args)}`;
 };
 
 /* eslint storybook/story-exports: "off" */
 export const {
-	ButtonDefault,
 	ButtonGhostLightActive,
 	ButtonGhostLightFocus,
 	ButtonGhostLightHover,
 	ButtonGhostDarkActive,
-	AnchorDefault,
+
 	AnchorGhostLightActive,
 	AnchorGhostLightFocus,
 	AnchorGhostLightHover,
