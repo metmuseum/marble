@@ -18,6 +18,6 @@
 
 	&:not([aria-hidden="true"][tabindex="-1"]) {
 		// bad implementation!
-		border: 2px solid red;
+		border: 2px solid $color-red-error;
 	};
 };
