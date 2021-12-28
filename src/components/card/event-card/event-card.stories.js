@@ -10,7 +10,7 @@ export default {
 
 const markup = (eventCardData) => html`
 	${eventCardData.inSitu ? html`<ol class="events-by-day">`: ""}
-	<li id="${eventCardData.cardId}" class="${eventCardData.initialClassNames}">
+	<li id="${eventCardData.cardId}" class="attendable-card event-card">
 		<div class="event-card__image-wrapper">
 			<a
 				href="${eventCardData.attendable.url}"
