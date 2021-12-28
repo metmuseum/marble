@@ -1,5 +1,4 @@
 import html from "../../../../.storybook/helpers/html";
-import { useEffect } from "@storybook/client-api";
 import { defaultData } from "./event-card-story-helpers.js";
 import { withKnobs } from "@storybook/addon-knobs";
 
@@ -8,14 +7,6 @@ export default {
 	decorators: [withKnobs],
 };
 
-// TODO:
-//  image alt should not be event title
-
-const eventCardEffect = () => {
-	document.querySelectorAll(".js-marble-event-card").forEach((eventCard) => {
-		new EventCard(eventCard);
-	});
-};
 
 const markup = (eventCardData) => html`
 	${eventCardData.inSitu ? html`<ol class="events-by-day">`: ""}
