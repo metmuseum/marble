@@ -1,28 +1,3 @@
-.events-by-day {
-	display: flex;
-	flex-wrap: nowrap;
-	overflow-x: auto;
-
-	@media screen and (min-width: $attendables-bp) {
-		display: grid;
-		grid-gap: $spacing-xxs;
-		grid-template-columns: repeat(2, 1fr);
-		overflow-x: initial;
-	}
-
-	@media screen and (min-width: 960px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	&::after {
-		content: "";
-		flex: 0 0 $spacing-xxs;
-
-		@media screen and (min-width: $attendables-bp) {
-			content: none;
-		}
-	}
-}
 
 .event-card {
 	border-radius: $form-radius;
@@ -35,27 +10,9 @@
 	margin-right: $spacing-xxs;
 	overflow: hidden;
 
-	@media screen and (min-width: $attendables-bp) {
-		flex-basis: auto;
-		margin: 0;
-	}
-
-
 	&:hover,
 	&:focus-within {
 		box-shadow: $shadow-active;
-	}
-
-	&:first-of-type {
-		margin-left: $spacing-xxs;
-
-		@media screen and (min-width: $attendables-bp) {
-			margin-left: 0;
-		}
-	}
-
-	&:last-of-type {
-		margin-right: 0;
 	}
 }
 
@@ -151,12 +108,12 @@
 
 .event-card__pricing {
 	padding-bottom: $spacing-xs;
+	white-space: normal;
 }
 
 .event-card__event-time {
 	align-self: flex-start;
 	flex: 1 0 auto;
-	text-transform: lowercase;
 }
 
 .event-card__tickets-button {
