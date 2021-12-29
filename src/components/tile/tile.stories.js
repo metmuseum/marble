@@ -1,62 +1,60 @@
 import html from "../../../.storybook/helpers/html";
 import repeat from "../../../.storybook/helpers/repeat";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import { sizesTemplate } from "../image-container/image-container.stories";
 import greekHall from "../../../.storybook/assets/images/greek-hall";
 
-export default { title: "Tiles", decorators: [withKnobs] };
-
 const { image16x9 } = greekHall;
 
-const heading = (groupName="Tile") => {
-	const link = boolean("Link?", true, groupName);
-	const title = text("Title", "The Medici: Portraits and Politicis, 1512-1570", groupName);
-	return link ? html`<a href="#">${title}</a>` : title;
+export default {
+	title: "Tiles",
+	args: {
+		heading: "The Medici: Portraits and Politicis, 1512-1570",
+		link: "/#",
+		subheading: "Through October 11",
+		body: "The Met Fifth Avenue",
+		image16x9
+	}
 };
 
-const Tile = () => html`
+const Tile = (args) => html`
 	<div class="tile">
 		<div class="tile__image image-container">
-			<img class="image-container__image" alt="${image16x9.alt}" width="${image16x9.width}" height="${image16x9.height}"
+			${args.link ? html`<a class="invisible-redundant-link" aria-hidden="true" tabindex="-1" href="${args.link}"></a>` : ""}
+			<img class="image-container__image" alt="${args.image16x9.alt}" width="${args.image16x9.width}" height="${args.image16x9.height}"
 				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 21vw, 50vw" />
 		</div>
 		<div>
-			<h4 class="tile__heading">${heading()}</h4>
-			<div class="tile__subheading">${text("Subheading", "Through October 11", "Tile")}</div>
-			<div class="tile__body">${text("Body", "The Met Fifth Avenue", "Tile")}</div>
+			<h4 class="tile__heading">${args.link ? html`<a href="${args.link}">${args.heading}</a>` : args.heading}</h4>
+			<div class="tile__subheading">${args.subheading}</div>
+			<div class="tile__body">${args.body}</div>
 		</div>
 	</div>`;
 
-const HeroTile = () => html`
+const HeroTile = (args) => html`
 	<div class="tile tile--hero">
 		<div class="tile__image image-container">
+			${args.link ? html`<a class="invisible-redundant-link" aria-hidden="true" tabindex="-1" href="${args.link}"></a>` : ""}
 			<img class="image-container__image" alt="${image16x9.alt}" width="${image16x9.width}" height="${image16x9.height}"
 				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 42.5vw, 85vw" />
 		</div>
 		<div>
-			<h3 class="tile__heading">${heading("Hero Tile")}</h3>
-			<div class="tile__subheading">${text("Subheading", "Through October 11", "Hero Tile")}</div>
-			<div class="tile__body">${text("Body", "The Met Fifth Avenue", "Hero Tile")}</div>
+			<h3 class="tile__heading">${args.link ? html`<a href="${args.link}">${args.heading}</a>` : args.heading}</h3>
+			<div class="tile__subheading">${args.subheading}</div>
+			<div class="tile__body">${args.body}</div>
 		</div>
 	</div>`;
 
-const TileGroup = () => {
-	const options = {
-		range: true,
-		min: 1,
-		max: 36,
-		step: 1,
-	};
-
-	const numberOfTiles = number("Number of Tiles",5, options, "Tile Group");
-
-	return html`
+const TileGroup = (args) => html`
 	<div class="tile-group">
-		${HeroTile()}
+		${HeroTile(args)}
 		<ul class="tile-group__list">
-			${repeat(numberOfTiles, html`<li class="tile-group__tile">${Tile()}</li>`)}
+			${repeat(args.numberOfTiles, html`<li class="tile-group__tile">${Tile(args)}</li>`)}
 		</ul>
-	</div>`;};
+	</div>`;
+
+TileGroup.args = {
+	numberOfTiles: 5,
+};
 
 TileGroup.parameters = {
 	chromatic: { viewports: [320, 1280] }

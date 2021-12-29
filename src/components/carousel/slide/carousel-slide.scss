@@ -18,6 +18,7 @@ $carousel-slide-width: 550px;
 .carousel-slide__media-wrapper {
 	@include key-image-wrapper;
 	margin-bottom: $spacing-xxs;
+	position: relative;
 }
 
 //Force video to be 16x9. TODO: see if this aligns with future needs.

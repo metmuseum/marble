@@ -19,7 +19,7 @@ const cardMarkup = (model, className) => {
 		<div class="marble-card ${className}">
 			<a href="${model.link.url}" class="marble-card__image-link" tabindex="-1">
 				<div class="marble-card__image-wrapper">
-					<img class="marble-card__image" srcset="${model.images}" />
+					<img class="marble-card__image" srcset="${model.images}" alt="an example image alt for accessibility" />
 				</div>
 			</a>
 
