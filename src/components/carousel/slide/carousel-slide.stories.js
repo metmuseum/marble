@@ -50,6 +50,7 @@ const mediaMarkUp = (args) => {
 		  `
 		: html`
 				<div class="carousel-slide__media-wrapper">
+					<a href="#" class="invisible-redundant-link" aria-hidden="true" tabindex="-1"></a>
 					<img
 						class="lazy carousel-slide__image"
 						data-srcset="${args.images}"
