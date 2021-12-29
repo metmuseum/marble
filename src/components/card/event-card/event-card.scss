@@ -108,6 +108,7 @@
 
 .event-card__pricing {
 	@include line-clamp(2);
+	align-items: flex-start;
 	min-height: 2.2em;
 	padding-bottom: $spacing-xs;
 	white-space: normal;
