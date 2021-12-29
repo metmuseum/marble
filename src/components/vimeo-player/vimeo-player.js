@@ -20,6 +20,7 @@ const videoTemplate = html`<div
 	</a>
 
 	<iframe
+		class="a11y-ignore"
 		data-chromatic="ignore"
 		src="https://player.vimeo.com/video/395251744?dnt=1&amp;
 			loop=1&amp;

@@ -1,15 +1,5 @@
 import html from "../../../../.storybook/helpers/html";
-import { withKnobs, text, radios } from "@storybook/addon-knobs";
-import backgroundOverride from "../../../../.storybook/helpers/backgroundOverride";
 import "../_sb-only.scss";
-
-export default {
-	decorators: [withKnobs],
-	title: "Elements/Buttons/Primary",
-	parameters: {
-		backgrounds: { disable: true }, // TODO: hopefully Chromatic supports backgrounds soon
-	},
-};
 
 const permutations = {
 	elementTags: ["Button", "Anchor"],
@@ -20,6 +10,35 @@ const permutations = {
 	states: ["Active", "Inactive", "Focus", "Hover"],
 };
 
+const argTypes = {
+	elementTag: {
+		options: permutations.elementTags,
+		control: "inline-radio"
+	},
+	styleMode: {
+		options: permutations.modes.style,
+		control: "radio"
+	},
+	sizeMode: {
+		options: permutations.modes.size,
+		control: "radio"
+	},
+	state: {
+		options: permutations.states,
+		control: "radio"
+	},
+	viewMode: {
+		options: ["Just the button", "Give it some breathing room"],
+		defaultValue: "Give it some breathing room",
+		control: "radio"
+	},
+};
+
+export default {
+	title: "Elements/Buttons/Primary",
+	argTypes
+};
+
 const StoriesToExport = {};
 
 // Programmatically make these stories :)
@@ -27,115 +46,62 @@ permutations.elementTags.forEach((elementTag) => {
 	permutations.modes.style.forEach((styleMode) => {
 		permutations.modes.size.forEach((sizeMode) => {
 			permutations.states.forEach((state) => {
-				let storyName = [
+				let args = {
+					label: "Primary Button",
 					elementTag,
-					styleMode.replace("-", ""),
-					sizeMode.replace("-", ""),
+					styleMode,
+					sizeMode,
 					state,
-				].join("");
-
-				StoriesToExport[storyName] = () => {
-					return buttonStoryTemplate({
-						elementTag,
-						styleMode,
-						sizeMode,
-						state,
-					});
 				};
 
+				let current = [elementTag, styleMode, sizeMode, state];
+				let storyName = current.map((option) => option.replaceAll("-", "")).join("");
+
+				StoriesToExport[storyName] = (args) => StoryTemplate(args);
 				StoriesToExport[storyName].story = {
 					title: "Elements/Buttons/Primary",
-					name: [elementTag, styleMode, sizeMode, state].join(" "),
+					name: current.join(" "),
 				};
+				StoriesToExport[storyName].args = args;
 			});
 		});
 	});
 });
 
-const elementTagSelector = (defaultValue) => {
-	const label = "Element Tag";
-	return radios(label, permutations.elementTags, defaultValue);
-};
+const StoryTemplate = (args) => html`
+	${args.viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
+		${args.elementTag === "Anchor" ? html`
+			<a class="button primary-button
+				primary-button--${args.sizeMode.toLowerCase()}
+				primary-button--${args.styleMode.toLowerCase()}
+				${args.state === "Hover" ? "_sb--hover" : ""}
+				${args.state === "Focus" ? "_sb--focus" : ""}" 
+				role="button"
+				tabindex="0"
+				${args.state === "Inactive" ? "disabled" : ""}
+			>
+				${args.label}
+			</a>` : ""}
+		${args.elementTag === "Button" ? html`
+			<button
+				class="button primary-button
+				primary-button--${args.sizeMode.toLowerCase()}
+				primary-button--${args.styleMode.toLowerCase()}
+				${args.state === "Hover" ? "_sb--hover" : ""}
+				${args.state === "Focus" ? "_sb--focus" : ""}"
+				${args.state === "Inactive" ? "disabled" : "" }
+			>
+				${args.label}
+			</button>` : ""}
+	${args.viewMode == "Give it some breathing room" ? "</div>" : ""}
+`;
 
-const styleSelector = (defaultValue) => {
-	const label = "Style Modes";
-	return radios(label, permutations.modes.style, defaultValue);
-};
+// export const ButtonFilledXsmallActive = StoriesToExport["ButtonFilledXsmallActive"];
+// export const Test = (args) => { return html`halp`; };
 
-const sizeSelector = (defaultValue) => {
-	const label = "Size Modes";
-	return radios(label, permutations.modes.size, defaultValue);
-};
 
-const stateSelector = (defaultValue) => {
-	const label = "State";
-	return radios(label, permutations.states, defaultValue);
-};
-
-const buttonStoryTemplate = (options) => {
-	// reassign the options based on knobs
-	const elementTag = elementTagSelector(options.elementTag);
-	const styleMode = styleSelector(options.styleMode);
-	const sizeMode = sizeSelector(options.sizeMode);
-	const state = stateSelector(options.state);
-	const viewMode = radios("View As", ["Just the button", "Give it some breathing room"], "Give it some breathing room");
-
-	const finalOptions = {
-		elementTag,
-		styleMode,
-		sizeMode,
-		state,
-	};
-
-	return html`
-		${viewMode == "Give it some breathing room" ? "<div class='_sb-breathing-room'>" : ""}
-
-		${finalOptions.elementTag === "Anchor"
-		? anchorTagTemplate(finalOptions)
-		: finalOptions.elementTag === "Button"
-			? buttonTagTemplate(finalOptions)
-			: "Error: no element tag selected"}
-
-		${viewMode == "Give it some breathing room" ? "</div>" : ""}
-	`;
-};
-
-const anchorTagTemplate = (options) => {
-	return html`
-		${backgroundOverride()}
-		<a
-			class="button primary-button
-			primary-button--${options.sizeMode.toLowerCase()}
-			primary-button--${options.styleMode.toLowerCase()}
-			${options.state === "Hover" ? "_sb--hover" : ""}
-			${options.state === "Focus" ? "_sb--focus" : ""}"
-			role="button"
-			tabindex="1"
-			${options.state === "Inactive" ? "disabled" : ""}
-		>
-			${text("Label", "Primary Button")}
-		</a>
-	`;
-};
-
-const buttonTagTemplate = (options) => {
-	return html`
-		${backgroundOverride()}
-		<button
-			class="button primary-button
-			primary-button--${options.sizeMode.toLowerCase()}
-			primary-button--${options.styleMode.toLowerCase()}
-			${options.state === "Hover" ? "_sb--hover" : ""}
-			${options.state === "Focus" ? "_sb--focus" : ""}"
-			${options.state === "Inactive" ? "disabled" : ""}
-		>
-			${text("Label", "Primary Button")}
-		</button>
-	`;
-};
-
-/* eslint storybook/story-exports: "off" */
 // javascript why u no have metaprogramming for this 😭
+/* eslint storybook/story-exports: "off" */
 export const {
 	//// buttons
 	// filled
