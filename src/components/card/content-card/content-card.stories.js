@@ -36,19 +36,13 @@ ${image1440} 1440w,
 ${image2160} 2160w`;
 
 const ContentCardTemplate = (cardMode = "", index = "", withHeading = true) => {
-	return html` <div class="content-card ${cardMode}">
-		<a href="anywhere" class="card-image__wrapper" tabindex="-1">
-			<img
-				class="card-image"
-				alt="An image alt, for accessibility"
-				width="${imageWidth}"
-				height="${imageHeight}"
-				src="${image768}"
-				srcset="${srcSet}"
-				sizes="(min-width: ${scssExports.bp900}) 720px, 90vw"
-			/>
-		</a>
-
+	return html`
+	<div class="content-card ${cardMode}">
+		<div class="card-image__wrapper card-image__wrapper--has-invisible-link">
+			<a href="anywhere" class="invisible-redundant-link" aria-hidden="true" tabindex="-1"></a>
+			<img class="card-image" alt="An image alt, for accessibility" width="${imageWidth}" height="${imageHeight}"
+				src="${image768}" srcset="${srcSet}" sizes="(min-width: ${scssExports.bp900}) 720px, 90vw" />
+		</div>
 		<div class="content-card__body">
 			<div class="content-card__eyebrow">
 				${text("Tag Text", "tag text", `Card ${index}`)}
