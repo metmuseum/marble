@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const postcssFlexbugsFixes = require("postcss-flexbugs-fixes");
-const postcssInlineSvg = require("postcss-inline-svg");
 
 const commonConfig = {
 	entry: ["./src/index.mjs", "./src/marble.scss"],
@@ -43,11 +42,8 @@ const commonConfig = {
 							postcssOptions: {
 								// add all our dank css transformation plugins here
 								plugins: [
-									"autoprefixer", // 2.c: run autoprefxier
-									postcssFlexbugsFixes, // 2.b: some flexbug fixes, because why not
-									postcssInlineSvg({
-										paths: [path.resolve(__dirname, "assets/svg/icons/")],
-									}), // 2.a: inline our SVGs as data because url() has too many issues: https://github.com/JetBrains/svg-sprite-loader/issues/294
+									"autoprefixer", // 2.b run autoprefxier
+									postcssFlexbugsFixes, // 2.a: some flexbug fixes, because why not
 								],
 							},
 						},
