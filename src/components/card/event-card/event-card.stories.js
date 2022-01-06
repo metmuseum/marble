@@ -44,7 +44,7 @@ const markup = (eventCardData) => html`
 				${eventCardData.attendable.ticketPricing}
 			</div>
 
-			<div class="event-card__row">
+			<div class="event-card__row event-card__row--bottom">
 				<div class="event-card__time-and-location">
 					<div class="event-card__event-time">${eventCardData.displayTime}</div>
 					<div class="event-card__building">${eventCardData.attendable.building}</div>
