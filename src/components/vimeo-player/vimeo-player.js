@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 
 const videoTemplate = html`<div
 	class="js-vimeo-container vimeo-container is-visible"

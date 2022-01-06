@@ -1,13 +1,13 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import scssExports from "../../global/exports.scss";
 
-import image768 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
-import image960 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
-import image1440 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
-import image2160 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-2160.jpg";
-import image3240 from "../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-3240.jpg";
+import image768 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
+import image960 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
+import image1440 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
+import image2160 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-2160.jpg";
+import image3240 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-3240.jpg";
 
 export default {
 	title: "Featured",

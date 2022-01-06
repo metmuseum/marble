@@ -1,5 +1,5 @@
-import { html } from "../../.storybook/helpers";
-import greekHall from "../../.storybook//assets/images/greek-hall/1x1/index.js";
+import { html } from ".storybook/helpers";
+import greekHall from ".storybook/assets/images/greek-hall/1x1/index.js";
 
 export default {
 	title: "Accessibility/Double Link Solution"

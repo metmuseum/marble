@@ -1,5 +1,5 @@
-import html from "../../.storybook/helpers/html";
-import paragraph from "../../.storybook/helpers/audienceIpsum";
+import { html } from ".storybook/helpers";
+import paragraph from ".storybook/helpers/audienceIpsum";
 
 export default {
 	title: "Lorem Ipsum",

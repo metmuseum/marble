@@ -1,4 +1,4 @@
-import { html, backgroundOverride } from "../../../../.storybook/helpers";
+import { html, backgroundOverride } from ".storybook/helpers";
 import "../_sb-only.scss";
 
 const permutations = {

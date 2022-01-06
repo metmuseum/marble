@@ -1,5 +1,5 @@
-import html from "../../../.storybook/helpers/html";
-import defaultImage from "../../../.storybook/assets/images/full-width-image";
+import { html } from ".storybook/helpers";
+import defaultImage from ".storybook/assets/images/full-width-image";
 import { sizesTemplate } from "../../components/image-container/image-container.stories";
 
 export default {

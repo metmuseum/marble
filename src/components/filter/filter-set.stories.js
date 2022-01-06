@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, boolean, array } from "@storybook/addon-knobs";
 import options from "./options";
 import markup from "./markup";

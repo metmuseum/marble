@@ -1,6 +1,6 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, text } from "@storybook/addon-knobs";
-import metStoriesImage from "../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
+import metStoriesImage from ".storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
 export default {
 	title: "RTE Components/All",
 	decorators: [withKnobs],

@@ -1,4 +1,4 @@
-import { html, repeat } from "../../../.storybook/helpers";
+import { html, repeat } from ".storybook/helpers";
 import { withKnobs, number, text } from "@storybook/addon-knobs";
 export default {
 	title: "Exhibition/Quotes List",

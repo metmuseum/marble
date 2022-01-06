@@ -1,7 +1,6 @@
-import html from "../../../.storybook/helpers/html";
-import repeat from "../../../.storybook/helpers/repeat";
+import { html, repeat } from ".storybook/helpers";
 import { sizesTemplate } from "../image-container/image-container.stories";
-import greekHall from "../../../.storybook/assets/images/greek-hall";
+import greekHall from ".storybook/assets/images/greek-hall";
 
 const { image16x9 } = greekHall;
 
