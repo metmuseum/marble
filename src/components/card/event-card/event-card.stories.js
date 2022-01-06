@@ -12,16 +12,15 @@ const markup = (eventCardData) => html`
 	${eventCardData.inSitu ? html`<ol>`: ""}
 	<li id="${eventCardData.cardId}" class="event-card">
 		<div class="event-card__image-wrapper">
-			<a
-				href="${eventCardData.attendable.url}"
-				class="event-card__image-link"
-				tabindex="-1"
-			>
-				<img
-					class="event-card__image"
-					src="${eventCardData.attendable.teaserImage}"
-					alt="Thumbnail of ${eventCardData.attendable.title}" 
-				/>
+			<img
+				class="event-card__image"
+				src="${eventCardData.attendable.teaserImage}"
+				alt="Thumbnail of ${eventCardData.attendable.title}" 
+			/>
+			<a href="${eventCardData.attendable.url}"
+				class="event-card__image-link invisible-redundant-link"
+				aria-hidden="true"
+				tabindex="-1">
 			</a>
 		</div>
 		<section class="event-card__body">
