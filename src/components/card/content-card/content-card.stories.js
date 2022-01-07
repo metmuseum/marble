@@ -1,111 +1,76 @@
-import { html } from ".storybook/helpers";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
-
+import { html, srcSet} from ".storybook/helpers";
 import scssExports from "../../../global/exports.scss";
-
-import image768 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
-import image960 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
-import image1440 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
-import image2160 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-2160.jpg";
-
-const imageWidth = 3920;
-const imageHeight = 2621;
+import image from ".storybook/assets/images/full-width-image";
 
 export default {
-	decorators: [withKnobs],
 	title: "Cards/Content Card",
+	args: {
+		cardMode: "",
+		index: 0,
+		heading: {
+			withHeading: true,
+			headingLink: true,
+			headingText: "Heading Text That Can Extend to Three Lines Maximum, Character Count 100",
+		},
+		tagText: "",
+		description: "This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural traditions.Order yours today."
+	}
 };
 
-const Heading = (index) => {
-	return html` ${text(
-		"Heading",
-		"Heading Text That Can Extend to Three Lines Maximum, Character Count 100",
-		`Card ${index}`
-	)}`;
-};
-
-const HeadingWithLink = (index) => {
-	return html` <a class="content-card__heading-link" href="#some-link"
-		>${Heading(index)}</a
-	>`;
-};
-
-const srcSet = `${image768} 768w,
-${image960}  960w,
-${image1440} 1440w,
-${image2160} 2160w`;
-
-const ContentCardTemplate = (cardMode = "", index = "", withHeading = true) => {
-	return html` <div class="content-card ${cardMode}">
-		<a href="anywhere" class="card-image__wrapper" tabindex="-1">
-			<img
-				class="card-image"
-				alt="An image alt, for accessibility"
-				width="${imageWidth}"
-				height="${imageHeight}"
-				src="${image768}"
-				srcset="${srcSet}"
-				sizes="(min-width: ${scssExports.bp900}) 720px, 90vw"
-			/>
-		</a>
-
+const ContentCardTemplate = (args) => html`
+	<div class="content-card ${args.cardMode}">
+		<div class="card-image__wrapper card-image__wrapper--has-invisible-link">
+			<a href="anywhere" class="invisible-redundant-link" aria-hidden="true" tabindex="-1"></a>
+			<img class="card-image" alt="An image alt, for accessibility" width="${image.width}" height="${image.height}"
+				src="${image.srcSet.fallback}" srcset="${srcSet(image.srcSet)}" sizes="(min-width: ${scssExports.bp900}) 720px, 90vw" />
+		</div>
 		<div class="content-card__body">
 			<div class="content-card__eyebrow">
-				${text("Tag Text", "tag text", `Card ${index}`)}
+				${args.tagText ? args.tagText : `Card ${args.index}`}
 			</div>
-			${withHeading ? html`
+			${args.heading.withHeading ? html`
 			<h3 class="content-card__heading">
-				${boolean("Heading Is A Link?", true, `Card ${index}`)
-		? HeadingWithLink(index)
-		: Heading(index)}
+				${args.heading.headingLink ? html`<a class="content-card__heading-link" href="#some-link">${args.heading.headingText}</a>` : args.heading.headingText}
 			</h3>
 			` : ""}
 			<p>
-				${text("Description", `This illustrated volume presents a comprehensive overview of the Sahel's diverse cultural
-				traditions. Order yours today.`, `Card ${index}`)}
+				${args.description ? args.description : `Card ${args.index} description.`}
 			</p>
 		</div>
 	</div>`;
-};
 
-const ContentCard = () => {
-	return ContentCardTemplate();
-};
 
-const ContentCards = () => {
-	const cardCount = number("Card Count", 2, { range: true, min: 2, max: 4 });
-	const cards = Array.apply(null, Array(cardCount)).map((card, index) =>
-		ContentCardTemplate("has-border", index + 1)
-	);
-	return html` <section class="card-container card-container--auto-fit">
-		${cards.reduce((total, card) => total + card, "")}
+export const ContentCard = (args) => ContentCardTemplate(args);
+
+export const ContentCards = (args) => html`
+	<section class="card-container card-container--auto-fit">
+		${	[...Array(args.cardCount).keys()]
+		.map((index) => ContentCardTemplate({ ...args, index: (index + 1) }))
+		.join("\n")
+}
 	</section>`;
+
+ContentCards.args = {
+	cardCount: 2,
+	cardMode: "has-border"
 };
 
-const TwoUpContentCard = () => {
-	return ContentCardTemplate("two-up");
-};
+export const TwoUpContentCard = (args) => ContentCardTemplate(args);
+TwoUpContentCard.args = {cardMode: "two-up"};
 
-const TwoUpContentCardMixedHeadings = () => html`
+export const TwoUpContentCardMixedHeadings = (args) => html`
 <section class="card-container card-container--auto-fit">
-	${ContentCardTemplate("two-up", 1, false)}
-	${ContentCardTemplate("two-up", 2, true)}
+	${ContentCardTemplate({...args, index: 1, heading: {withHeading: false}})}
+	${ContentCardTemplate({...args, index: 2})}
 </section>
 `;
 
-const ThreeUpContentCard = () => {
-	return ContentCardTemplate("three-up");
+export const ThreeUpContentCard = (args) => ContentCardTemplate(args);
+ThreeUpContentCard.args = {
+	cardMode: "three-up"
 };
 
-const ProductiveContentCard = () => {
-	return ContentCardTemplate("content-card--productive");
-};
-
-export {
-	ContentCard,
-	ContentCards,
-	ThreeUpContentCard,
-	TwoUpContentCard,
-	TwoUpContentCardMixedHeadings,
-	ProductiveContentCard,
+export const ProductiveContentCard = (args) =>  ContentCardTemplate(args);
+ProductiveContentCard.args = {
+	cardMode: "content-card--productive"
 };

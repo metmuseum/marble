@@ -1,6 +1,5 @@
-import { html } from ".storybook/helpers";
+import { html, srcSet } from ".storybook/helpers";
 import defaultImage from ".storybook/assets/images/full-width-image";
-import { sizesTemplate } from "../../components/image-container/image-container.stories";
 
 export default {
 	title: "Elements/Images/Lazyloaded"
@@ -16,7 +15,7 @@ const loadedImage = () => {
 				alt="${image.alt}"
 				width="${image.width}"
 				height="${image.height}"
-				srcset="${sizesTemplate(image.srcSet)}"
+				srcset="${srcSet(image.srcSet)}"
 				sizes="100vw"
 			/>
 		</div>
