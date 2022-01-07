@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin typography-tag {
 	color: currentColor;
 	font-family: $metsans;
@@ -5,7 +7,7 @@
 	font-style: normal;
 	font-weight: 600;
 	letter-spacing: 0.7px;
-	line-height: (14/18);
+	line-height: math.div(14, 18);
 	text-transform: uppercase;
 }
 

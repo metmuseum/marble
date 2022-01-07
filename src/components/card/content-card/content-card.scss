@@ -1,13 +1,15 @@
 //Mode Mixins
+@use "sass:math";
+
 @mixin content-card-three-up() {
 	flex-basis: 100%;
 	max-width: none;
 	width: 100%;
 
 	@media screen and (min-width: $bp-large-card) {
-		flex-basis: (100%/3);
+		flex-basis: math.div(100%, 3);
 		flex-grow: 0;
-		width: (100%/3);
+		width: math.div(100%, 3);
 
 		.content-card__body {
 			padding: $spacing-xs $spacing-s $spacing-s;
@@ -114,7 +116,7 @@
 
 .content-card__heading {
 	font-weight: 600;
-	line-height: (29/24);
+	line-height: math.div(29, 24);
 
 	&:last-child {
 		padding-bottom: 0;
