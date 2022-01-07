@@ -1,10 +1,10 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, text} from "@storybook/addon-knobs";
 
 import { passIcon, dateIcon, locationIcon } from "./helper-icons.js";
 
-import image712 from "../../../.storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
-import image1231 from "../../../.storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
+import image712 from ".storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
+import image1231 from ".storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
 
 
 export default {

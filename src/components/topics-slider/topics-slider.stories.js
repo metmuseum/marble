@@ -1,4 +1,4 @@
-import { html, repeat } from "../../../.storybook/helpers";
+import { html, repeat } from ".storybook/helpers";
 import { TopicCard } from "./topic-card.stories.js";
 import carousel, { flickityDefaults } from "../carousel/carousel.js";
 import { useEffect } from "@storybook/client-api";

@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, radios, color, text } from "@storybook/addon-knobs";
 import he from "he";
 export default { title: "Notification Banner", decorators: [withKnobs] };

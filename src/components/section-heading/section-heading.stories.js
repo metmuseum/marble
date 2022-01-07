@@ -1,5 +1,4 @@
-import html from "../../../.storybook/helpers/html";
-import exampleComponent from "../../../.storybook/helpers/exampleComponent";
+import { html, exampleComponent } from ".storybook/helpers";
 import { withKnobs, text, boolean, radios } from "@storybook/addon-knobs";
 import sectionHeadingMarkup from "./section-heading.html.js";
 

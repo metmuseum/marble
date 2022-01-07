@@ -1,6 +1,6 @@
 import { text } from "@storybook/addon-knobs";
 import AudioPlayer from "./audio-player.js";
-import greekHall1x1 from "../../../.storybook/assets/images/greek-hall/1x1";
+import greekHall1x1 from ".storybook/assets/images/greek-hall/1x1";
 
 const exampleResponse = [{
 	id: "C0276F7DFD034191B37BB04E9048BB03",

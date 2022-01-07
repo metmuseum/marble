@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, text, boolean} from "@storybook/addon-knobs";
 
 export default {

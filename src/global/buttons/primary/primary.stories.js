@@ -1,4 +1,4 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import "../_sb-only.scss";
 
 const permutations = {

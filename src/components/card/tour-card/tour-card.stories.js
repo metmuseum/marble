@@ -1,6 +1,6 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, text } from "@storybook/addon-knobs";
-import image16x9 from "../../../../.storybook/assets/images/greek-hall/16x9/index.js";
+import image16x9 from ".storybook/assets/images/greek-hall/16x9/index.js";
 
 export default {
 	title: "Cards/Tour Card",

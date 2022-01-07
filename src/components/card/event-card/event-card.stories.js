@@ -1,10 +1,10 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { useEffect } from "@storybook/client-api";
 
 import EventCard from "./event-card.js";
 import { defaultData } from "./event-card-story-helpers.js";
 import { withKnobs } from "@storybook/addon-knobs";
-import SVGs from "../../../../.storybook/assets/svg";
+import SVGs from ".storybook/assets/svg";
 
 export default {
 	title: "Cards/Event Card",

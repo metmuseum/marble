@@ -1,10 +1,10 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { Byline } from "../../byline/byline.stories";
 import { text, withKnobs } from "@storybook/addon-knobs";
 
-import image768 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
-import image960 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
-import image1440 from "../../../../.storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
+import image768 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow.jpg";
+import image960 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-960.jpg";
+import image1440 from ".storybook/assets/images/full-width-image/seurat_circus_sideshow-1440.jpg";
 
 export default {
 	title: "Cards/Article Card",

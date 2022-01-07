@@ -20,6 +20,10 @@ module.exports = {
 			include: path.resolve(__dirname, "../"),
 		});
 
+		config.resolve ||= {}
+		config.resolve.alias ||= {}
+		config.resolve.alias[".storybook"] = path.resolve(__dirname)
+
 		// Return the altered config
 		return config;
 	},
@@ -30,7 +34,7 @@ module.exports = {
 			options: {
 				// https://storybook.js.org/docs/html/essentials/introduction
 				actions: false,
-				backgrounds: true,
+				backgrounds: false,
 				controls: true,
 				docs: false,
 				toolbars: false,

@@ -1,4 +1,4 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, text, radios } from "@storybook/addon-knobs";
 import "../_sb-only.scss";
 

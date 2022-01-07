@@ -1,5 +1,5 @@
-import html from "../../../.storybook/helpers/html";
-import defaultImage from "../../../.storybook/assets/images/full-width-image";
+import { html } from ".storybook/helpers";
+import defaultImage from ".storybook/assets/images/full-width-image";
 
 export default {
 	title: "Image Containers",

@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { CarouselSlide } from "./slide/carousel-slide.stories.js";
 import carousel, { flickityDefaults } from "./carousel.js";
 import { useEffect } from "@storybook/client-api";
