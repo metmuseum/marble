@@ -65,6 +65,7 @@
 }
 
 .event-card__subprogram {
+	font-weight: 500;
 	text-decoration: none;
 
 	&:hover,
@@ -99,6 +100,7 @@
 	flex-grow: 0;
 	flex-shrink: 1;
 	font-size: $textsize-s;
+	font-weight: 400;
 	overflow: hidden;
 }
 
