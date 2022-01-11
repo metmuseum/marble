@@ -3,6 +3,7 @@
 @import "typography";
 @import "buttons";
 
+/* stylelint-disable */
 @mixin line-clamp($lines) {
 	-webkit-box-orient: vertical;
 	display: -webkit-box;
@@ -10,3 +11,4 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+/* stylelint-enable */
