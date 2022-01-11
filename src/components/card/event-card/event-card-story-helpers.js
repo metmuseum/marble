@@ -1,8 +1,7 @@
 import { text, boolean } from "@storybook/addon-knobs";
 import image16x9 from ".storybook/assets/images/greek-hall/16x9/index.js";
 
-const defaultData = ({opened=false, inSitu=true}) => {
-	const isOpened = boolean("Is Opened", opened, "Display");
+const defaultData = ({inSitu=true}) => {
 	
 	return {
 		attendable: {
@@ -19,8 +18,6 @@ const defaultData = ({opened=false, inSitu=true}) => {
 		},
 		cardId: "abcd1234",
 		displayTime: text("Display Time", "5pm", "Data"),
-		initialClassNames: `attendable-card event-card js-marble-event-card ${isOpened ? "is-open" : ""}`,
-		isOpened,
 		inSitu: boolean("In Situ?", inSitu, "Display")
 	};
 };
