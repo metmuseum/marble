@@ -5,7 +5,7 @@
 
 @mixin line-clamp($lines) {
 	-webkit-box-orient: vertical;
-	display: box;
+	display: -webkit-box;
 	-webkit-line-clamp: $lines;
 	overflow: hidden;
 	text-overflow: ellipsis;
