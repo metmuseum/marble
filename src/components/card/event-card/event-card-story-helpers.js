@@ -1,5 +1,5 @@
 import { text, boolean } from "@storybook/addon-knobs";
-import image16x9 from "../../../../.storybook/assets/images/greek-hall/16x9/index.js";
+import image16x9 from ".storybook/assets/images/greek-hall/16x9/index.js";
 
 const defaultData = ({inSitu=true}) => {
 	

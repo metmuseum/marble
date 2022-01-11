@@ -1,5 +1,21 @@
-import html from "./html";
-import repeat from "./repeat";
 import backgroundOverride from "./backgroundOverride";
+import exampleComponent from "./exampleComponent";
+import html from "./html";
+import idHelper from "./idHelper";
+import parentWrapper from "./parentWrapper";
+import repeat from "./repeat";
+import scalingRuleWrapper from "./scalingRuleWrapper";
+import srcSet from "./srcSet";
 
-export { html, repeat, backgroundOverride };
+export { 
+  backgroundOverride,
+  exampleComponent,
+  idHelper,
+  html,
+  parentWrapper,
+  repeat,
+  scalingRuleWrapper,
+  srcSet
+ };
+
+

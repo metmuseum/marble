@@ -1,12 +1,12 @@
-import { html } from "../../../../.storybook/helpers";
+import { html } from ".storybook/helpers";
 import he from "he";
 import vimeoTemplate from "../../vimeo-player/vimeo-player";
 import vimeoControls from "../../vimeo-player/vimeo-controls";
 import { useEffect } from "@storybook/client-api";
 import { withKnobs, color, text } from "@storybook/addon-knobs";
 
-import image448 from "../../../../.storybook/assets/images/misc/The-Met_150th_Events_Promo_448w.jpg";
-import image896 from "../../../../.storybook/assets/images/misc/The-Met_150th_Events_Promo_896w.jpg";
+import image448 from ".storybook/assets/images/misc/The-Met_150th_Events_Promo_448w.jpg";
+import image896 from ".storybook/assets/images/misc/The-Met_150th_Events_Promo_896w.jpg";
 
 export default { title: "Banner", decorators: [withKnobs] };
 

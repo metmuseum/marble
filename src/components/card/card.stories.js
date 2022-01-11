@@ -1,7 +1,7 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 export default { title: "Cards" };
 
-import image1920 from "../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
+import image1920 from ".storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
 
 const data = {
 	header: "Base Card",

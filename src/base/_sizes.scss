@@ -1,4 +1,6 @@
 //TODO - this is no longer true except on the homepage
+@use "sass:math";
+
 $site-width: 1200px;
 $grid-gutter: 20px;
 
@@ -49,8 +51,8 @@ $spacing-component-vertical: $spacing-l;
 	$small-screen: 375; //iPhone width.
 	$large-screen: 1440; //Macbook width.
 
-	$base-size: $mobile-size / 16;
-	$base-size: $mobile-size / 16;
+	$base-size: math.div($mobile-size, 16);
+	$base-size: math.div($mobile-size, 16);
 	$calc: calc(#{$base-size}rem + (#{$desktop-size} - #{$mobile-size}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
 	@return $calc;
 }

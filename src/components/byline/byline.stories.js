@@ -1,4 +1,4 @@
-import { html, repeat } from "../../../.storybook/helpers";
+import { html, repeat } from ".storybook/helpers";
 import { number, withKnobs } from "@storybook/addon-knobs";
 
 export default { title: "Components/Byline", decorators: [withKnobs] };

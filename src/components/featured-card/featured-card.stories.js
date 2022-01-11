@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { fullWidth } from "../image-container/image-container.stories.js";

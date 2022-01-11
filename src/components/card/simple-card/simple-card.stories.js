@@ -1,8 +1,8 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
-import image600 from "../../../../.storybook/assets/images/misc/150Hub_SimpleCard2_600w.jpg";
-import image1200 from "../../../../.storybook/assets/images/misc/150Hub_SimpleCard2_1200w.jpg";
+import image600 from ".storybook/assets/images/misc/150Hub_SimpleCard2_600w.jpg";
+import image1200 from ".storybook/assets/images/misc/150Hub_SimpleCard2_1200w.jpg";
 
 export default {
 	title: "Cards",

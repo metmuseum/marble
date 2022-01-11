@@ -1,20 +1,11 @@
-import html from "../../../.storybook/helpers/html";
-import defaultImage from "../../../.storybook/assets/images/full-width-image";
+import { html, srcSet } from ".storybook/helpers";
+import defaultImage from ".storybook/assets/images/full-width-image";
 
 export default {
 	title: "Image Containers",
-	includeStories: ["fullWidth", "halfWidth", "lazyLoaded"],
-	excludeStories: "sizesTemplate"
+	includeStories: ["fullWidth", "halfWidth", "lazyLoaded"]
 };
 
-const sizesTemplate = (srcSet) => {
-	const widths = Object.keys(srcSet.sizes);
-	return widths
-		.map((width) => {
-			return `${srcSet.sizes[width]} ${width},`;
-		})
-		.join("\n");
-};
 
 const fullWidth = () => {
 	// Don't forget alt attribute.
@@ -29,7 +20,7 @@ const fullWidth = () => {
 				width="${image.width}"
 				height="${image.height}"
 				src="${image.srcSet.fallback}"
-				srcset="${sizesTemplate(image.srcSet)}"
+				srcset="${srcSet(image.srcSet)}"
 				sizes="100vw"
 			/>
 		</div>
@@ -47,7 +38,7 @@ const halfWidth = () => {
 				width="${image.width}"
 				height="${image.height}"
 				src="${image.srcSet.fallback}"
-				srcset="${sizesTemplate(image.srcSet)}"
+				srcset="${srcSet(image.srcSet)}"
 				sizes="50vw"
 			/>
 		</div>
@@ -75,11 +66,11 @@ const lazyLoaded = () => {
 				width="${image.width}"
 				height="${image.height}"
 				data-src="${image.srcSet.fallback}"
-				data-srcset="${sizesTemplate(image.srcSet)}"
+				data-srcset="${srcSet(image.srcSet)}"
 				data-sizes="100vw"
 			/>
 		</div>
 	`;
 };
 
-export { fullWidth, halfWidth, lazyLoaded, sizesTemplate };
+export { fullWidth, halfWidth, lazyLoaded };

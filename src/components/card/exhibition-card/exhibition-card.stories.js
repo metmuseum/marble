@@ -1,6 +1,6 @@
 import { withKnobs, number } from "@storybook/addon-knobs";
 
-import image1920 from "../../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
+import image1920 from ".storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
 
 export default {
 	title: "Cards",

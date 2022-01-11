@@ -1,6 +1,4 @@
-import html from "../../../.storybook/helpers/html";
-import scalingRuleWrapper from "../../../.storybook/helpers/scalingRuleWrapper";
-import parentWrapper from "../../../.storybook/helpers/parentWrapper";
+import { html, scalingRuleWrapper, parentWrapper } from ".storybook/helpers";
 import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {

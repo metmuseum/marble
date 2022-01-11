@@ -1,7 +1,7 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { useEffect } from "@storybook/client-api";
 import { withKnobs, boolean, select } from "@storybook/addon-knobs";
-import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCaretIcon } from "../../../.storybook/assets/svg";
+import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCaretIcon } from ".storybook/assets/svg";
 import coverImageTemplate from "./cover-image-template";
 import { initializeAudioPlayers, track, example } from "./audio-player-story-helpers";
 

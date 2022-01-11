@@ -1,11 +1,11 @@
-import { html } from "../../../.storybook/helpers";
+import { html } from ".storybook/helpers";
 import vimeoTemplate from "../vimeo-player/vimeo-player";
 import vimeoControls from "../vimeo-player/vimeo-controls.js";
 import { useEffect } from "@storybook/client-api";
 import { withKnobs, color, text } from "@storybook/addon-knobs";
 import he from "he";
-import image712 from "../../../.storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
-import image1231 from "../../../.storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
+import image712 from ".storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
+import image1231 from ".storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
 
 export default { title: "Banner", decorators: [withKnobs] };
 

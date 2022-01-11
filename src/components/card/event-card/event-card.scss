@@ -1,3 +1,4 @@
+@use "sass:math";
 
 .event-card {
 	border-radius: $form-radius;
@@ -19,7 +20,7 @@
 .event-card__image-wrapper {
 	height: 0;
 	overflow: hidden;
-	padding-top: (2 / 3) * 100%;
+	padding-top: math.div(2, 3) * 100%;
 	position: relative;
 }
 
@@ -82,7 +83,7 @@
 
 .event-card__heading-link {
 	@include line-clamp(3);
-	line-height: (19 / 16);
+	line-height: math.div(19, 16);
 
 	&:focus,
 	&:hover {

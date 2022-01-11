@@ -1,7 +1,5 @@
-import html from "../../../.storybook/helpers/html";
-import repeat from "../../../.storybook/helpers/repeat";
-import { sizesTemplate } from "../image-container/image-container.stories";
-import greekHall from "../../../.storybook/assets/images/greek-hall";
+import { html, repeat, srcSet } from ".storybook/helpers";
+import greekHall from ".storybook/assets/images/greek-hall";
 
 const { image16x9 } = greekHall;
 
@@ -21,7 +19,7 @@ const Tile = (args) => html`
 		<div class="tile__image image-container">
 			${args.link ? html`<a class="invisible-redundant-link" aria-hidden="true" tabindex="-1" href="${args.link}"></a>` : ""}
 			<img class="image-container__image" alt="${args.image16x9.alt}" width="${args.image16x9.width}" height="${args.image16x9.height}"
-				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 21vw, 50vw" />
+				src="${image16x9.srcSet.fallback}" srcset="${srcSet(image16x9.srcSet)}" sizes="(orientation: landscape) 21vw, 50vw" />
 		</div>
 		<div>
 			<h4 class="tile__heading">${args.link ? html`<a href="${args.link}">${args.heading}</a>` : args.heading}</h4>
@@ -35,7 +33,7 @@ const HeroTile = (args) => html`
 		<div class="tile__image image-container">
 			${args.link ? html`<a class="invisible-redundant-link" aria-hidden="true" tabindex="-1" href="${args.link}"></a>` : ""}
 			<img class="image-container__image" alt="${image16x9.alt}" width="${image16x9.width}" height="${image16x9.height}"
-				src="${image16x9.srcSet.fallback}" srcset="${sizesTemplate(image16x9.srcSet)}" sizes="(orientation: landscape) 42.5vw, 85vw" />
+				src="${image16x9.srcSet.fallback}" srcset="${srcSet(image16x9.srcSet)}" sizes="(orientation: landscape) 42.5vw, 85vw" />
 		</div>
 		<div>
 			<h3 class="tile__heading">${args.link ? html`<a href="${args.link}">${args.heading}</a>` : args.heading}</h3>

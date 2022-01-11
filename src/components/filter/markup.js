@@ -1,5 +1,4 @@
-import html from "../../../.storybook/helpers/html";
-import idHelper from "../../../.storybook/helpers/idHelper";
+import { html, idHelper } from ".storybook/helpers";
 
 const markup = ({ checked, classHelpers, filterName, label }) => {
 	const filterId = idHelper(label);

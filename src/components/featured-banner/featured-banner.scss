@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "../../base/sizes";
 @import "../../base/mixins/layouts";
 
@@ -22,7 +24,7 @@
 	}
 
 	p {
-		line-height: (24/18); // match figma, y tho?
+		line-height: math.div(24, 18); // match figma, y tho?
 	}
 }
 

@@ -1,8 +1,8 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import videoSlide from "./video-slide.js";
 import { useEffect } from "@storybook/client-api";
-import image1920 from "../../../../.storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
-import video from "../../../../.storybook/assets/video/stock-footage-a-nice-bee-walking-and-foraging-a-pretty-yellow-flower-and-a-little-push-by-another-bee-to-fly-away.mp4";
+import image1920 from ".storybook/assets/images/misc/2020_Met_Stories_Ep_01_4k_NEW-3.jpg";
+import video from ".storybook/assets/video/stock-footage-a-nice-bee-walking-and-foraging-a-pretty-yellow-flower-and-a-little-push-by-another-bee-to-fly-away.mp4";
 
 export default { title: "Carousel/Carousel Slide" };
 

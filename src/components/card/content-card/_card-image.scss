@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .card-image__wrapper {
 	@include link-reset();
 	flex-basis: auto;
@@ -7,14 +9,18 @@
 
 	&.card-image__wrapper-fixed-ratio {
 		height: 0;
-		padding-bottom: (100% * 2/3);
+		padding-bottom: 100% * math.div(2, 3);
 		position: relative;
 		
 		&.ratio-16-9 { /* stylelint-disable max-nesting-depth */
-			padding-bottom: (100% * 9/16);
+			padding-bottom: 100% * math.div(9, 16);
 		}
 		//TODO: Add whatever ratios we want
 	}
+}
+
+.card-image__wrapper--has-invisible-link {
+	position: relative;
 }
 
 .card-image {

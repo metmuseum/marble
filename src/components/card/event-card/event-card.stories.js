@@ -1,4 +1,4 @@
-import html from "../../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import { defaultData } from "./event-card-story-helpers.js";
 import { withKnobs } from "@storybook/addon-knobs";
 
@@ -15,7 +15,7 @@ const markup = (eventCardData) => html`
 			<img
 				class="event-card__image"
 				src="${eventCardData.attendable.teaserImage}"
-				alt="Thumbnail of ${eventCardData.attendable.title}" 
+				alt="Thumbnail of ${eventCardData.attendable.title}"
 			/>
 			<a href="${eventCardData.attendable.url}"
 				class="event-card__image-link invisible-redundant-link"

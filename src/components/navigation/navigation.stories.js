@@ -1,4 +1,4 @@
-import html from "../../../.storybook/helpers/html";
+import { html } from ".storybook/helpers";
 import bareNav from "./navigation-bare/navigation-bare.js";
 import { useEffect } from "@storybook/client-api";
 
