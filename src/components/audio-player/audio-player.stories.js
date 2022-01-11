@@ -116,7 +116,7 @@ const audioPlayerMarkUp = ({model, options}) => html`
 						src="${playlistTrack.image.small}"
 					/>
 					<div class="audio-player__playlist-track-title">${playlistTrack.title}</div>
-					<div></div>
+					<!-- <div> track length goes here if we have it </div> -->
 					</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
 
 		<div class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
