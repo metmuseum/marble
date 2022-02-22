@@ -1,20 +1,18 @@
 import SETTINGS from "../../global/settings";
-import Flickity from "flickity";
+import Flickity from "flickity-imagesloaded";
 import arrowShape from "./arrowShape";
-
-require("flickity-imagesloaded");
 
 const flickityDefaults = {
 	accessibility: true,
 	autoPlay: false,
 	cellAlign: "left",
 	prevNextButtons: true,
-	imagesLoaded: false,
 	pageDots: false,
 	friction: 0.4,
 	contain: true,
 	resize: true,
 	wrapAround: false,
+	imagesLoaded: false,
 	arrowShape,
 };
 
