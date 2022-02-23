@@ -13,6 +13,6 @@ export default (image) => {
 			${image.w840} 840w,
 			${image.w560} 560w,
 			${image.w280} 280w"
-		sizes="(max-width: 600px 100vw, 200px)"
+		sizes="(max-width: 600px) 100vw, 200px"
 	/>` : "";
 };
