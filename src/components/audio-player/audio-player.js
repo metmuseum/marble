@@ -262,7 +262,7 @@ class AudioPlayer {
 			return false;
 		}
 		let artwork = [];
-		let src = this.currentTrack?.image?.small;
+		let src = this.currentTrack?.image?.w560;
 		src && artwork.push({src});
 
 		navigator.mediaSession.metadata = new MediaMetadata({

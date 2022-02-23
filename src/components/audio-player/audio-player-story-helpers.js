@@ -12,10 +12,12 @@ const exampleResponse = [{
 		alt: "",
 		height: 674,
 		width: 1200,
-		xlarge: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=2400&amp;w=1200&amp;hash=ACDB9082199115342909831E388C11F7",
-		large: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=1600&amp;w=1200&amp;hash=3E27038FEFC8D2989B81B4B65F5C4E84",
-		medium: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=1200&amp;w=1200&amp;hash=5D285A06ED3282014D5B9C3178AAB3D1",
-		small: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=449&amp;la=en&amp;mw=800&amp;w=800&amp;hash=8E7A57681A0A90DAE3349D8D458E6885"
+		w2400: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=2400&amp;w=1200&amp;hash=ACDB9082199115342909831E388C11F7",
+		w1600: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=1600&amp;w=1200&amp;hash=3E27038FEFC8D2989B81B4B65F5C4E84",
+		w1200: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=1200&amp;w=1200&amp;hash=5D285A06ED3282014D5B9C3178AAB3D1",
+		w840: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=449&amp;la=en&amp;mw=800&amp;w=800&amp;hash=8E7A57681A0A90DAE3349D8D458E6885",
+		w560: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=449&amp;la=en&amp;mw=800&amp;w=800&amp;hash=8E7A57681A0A90DAE3349D8D458E6885",
+		w280: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=449&amp;la=en&amp;mw=800&amp;w=800&amp;hash=8E7A57681A0A90DAE3349D8D458E6885"
 	},
 	audio: "https://www.metmuseum.org/-/media/audio/ipop-primer/doty_primercast.mp3?la=en",
 	transcript: "[00:01:17] Až pomašírujem tøi sta mil za Prahu,\r\n" +
@@ -34,10 +36,12 @@ const defaultTrack = () => {
 		id: 1,
 		audio:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3", "Track"),
 		image: { ...greekHall1x1,
-			xlarge: greekHall1x1.srcSet.sizes["2440w"],
-			large: greekHall1x1.srcSet.sizes["1920w"],
-			medium: greekHall1x1.srcSet.sizes["1240w"],
-			small: greekHall1x1.srcSet.sizes["1240w"],
+			w2400: greekHall1x1.srcSet.sizes["2440w"],
+			w1600: greekHall1x1.srcSet.sizes["1920w"],
+			w1200: greekHall1x1.srcSet.sizes["1240w"],
+			w840: greekHall1x1.srcSet.sizes["1240w"],
+			w560: greekHall1x1.srcSet.sizes["1240w"],
+			w280: greekHall1x1.srcSet.sizes["1240w"]
 		},
 		description: text("Description", "Praise Songs about Javascript", "Track"),
 		title: text("Title", "Track 1. Title", "Track"),
