@@ -1,12 +1,14 @@
+import { escape } from "underscore";
+
 export default (image) => {
 	let html = String.raw;
 	return image ? html`<img
 		class="audio-player__cover-image"
-		alt="${image.alt}"
+		alt="${escape(image.alt)}"
 		width="${image.width}"
 		height="${image.height}"
 		src="${image.w560}"
-		srcset=
+		srcset="
 			${image.w2400} 2400w,
 			${image.w1600} 1600w,
 			${image.w1200} 1200w,

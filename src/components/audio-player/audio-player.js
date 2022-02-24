@@ -1,3 +1,4 @@
+import { escape } from "underscore";
 import timeFormatter from "./time-formatter.js";
 import coverImageTemplate from "./cover-image-template";
 import AnalyticsLogger from "../analytics-logger";
@@ -131,8 +132,8 @@ class AudioPlayer {
 		this.currentTrack = track;
 		this.audioEl.dataset.track = track;
 		this.audioEl.querySelector("source").src = track.audio;
-		this.titleEl.innerHTML = track.title;
-		this.subtitleEl.innerHTML = track.description;
+		this.titleEl.innerHTML = escape(track.title);
+		this.subtitleEl.innerHTML = escape(track.description);
 		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.image);
 		this.amountPlayed = 0;
 		this.audioEl.load(); // load the new track, this will fire metadataloaded, btw

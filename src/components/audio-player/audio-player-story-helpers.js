@@ -9,7 +9,7 @@ const exampleResponse = [{
 	stopNumber: "6611",
 	rank: "1",
 	image: {
-		alt: "",
+		alt: "Promotional graphic for \"Inspiring Walt Disney\"",
 		height: 674,
 		width: 1200,
 		w2400: "https://www.metmuseum.org/-/media/cauliflower_roasted.jpg?h=674&amp;la=en&amp;mw=2400&amp;w=1200&amp;hash=ACDB9082199115342909831E388C11F7",
