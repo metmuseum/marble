@@ -113,7 +113,7 @@ const audioPlayerMarkUp = ({model, options}) => html`
 					<img
 						class="audio-player__playlist-track-thumbnail"
 						alt="${playlistTrack.image.alt}"
-						src="${playlistTrack.image.small}"
+						src="${playlistTrack.image.w280}"
 					/>
 					<div class="audio-player__playlist-track-title">${playlistTrack.title}</div>
 					<!-- <div> track length goes here if we have it </div> -->
