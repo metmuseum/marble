@@ -33,5 +33,5 @@ export const CarouselVariableWidth = (args) => {
 	</section>`;
 };
 
-CarouselSameSizeItems.args = flickityDefaults;
-CarouselVariableWidth.args = flickityDefaults;
+CarouselSameSizeItems.args = {...flickityDefaults, imagesLoaded: true};
+CarouselVariableWidth.args = {...flickityDefaults, imagesLoaded: true};
