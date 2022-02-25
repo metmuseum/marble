@@ -22,7 +22,7 @@ export const CarouselSameSizeItems = (args) => {
 export const CarouselVariableWidth = (args) => {
 	useEffect(() => { carousel(args); });
 	const slides = mix.map((item, index) => {
-		return CarouselSlide({ ...CarouselSlide.args, video: null, index, images:`//www.placekitten.com/${50*index}/200`, variableWidth:true });
+		return CarouselSlide({ ...CarouselSlide.args, video: null, index, images:`//via.placeholder.com/${50*(index + 1)}x200`, variableWidth:true });
 	}).join("\n");
 
 	return html`
