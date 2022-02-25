@@ -68,7 +68,7 @@
 		"deploy-storybook": "storybook-to-ghpages",
 		"lint": "eslint .",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
-		"storybook": "start-storybook",
+		"storybook": "start-storybook -p 54525",
 		"stylelint": "stylelint '**/*.scss' --quiet",
 		"chromatic": "chromatic",
 		"postinstall": "node postinstall.js",
