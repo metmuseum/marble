@@ -269,7 +269,27 @@ You may want to see your changes to Marble locally _**and**_ in the context of a
 
 # Storybook Development
 
-Storybook is the preferred way of developing components for Marble. To start Storybook locally, launch the app with: `npm run storybook`
+Storybook is the preferred way of developing components for Marble.
+
+## With Docker:
+
+Recommended: install [Docker Desktop](https://www.docker.com/get-started) and run it.
+
+Always build the latest changes if you pull, etc:
+```bash
+docker-compose build
+```
+
+Run the container:
+```bash
+docker-compose up
+```
+
+Storybook will now be available at: [http://localhost:54525](http://localhost:54525)
+
+## Natively / Without Docker:
+
+To start Storybook locally, launch the app with: `npm run storybook`
 
 To publish the Storybook to its web homepage (via GitHub pages), please commit your changes, then run: `npm run deploy-storybook`. Be mindful that this overwites the current Storybook with your local version.
 
