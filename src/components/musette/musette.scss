@@ -45,7 +45,7 @@
 	width: 42px;
 
 	&:hover {
-		background-color: $madhav-gray;
+		background-color: $color-grey-200;
 	}
 }
 
@@ -72,4 +72,14 @@
 			display: block;
 		}
 	}
+}
+
+//DS - for storybook purposes -- you can use any card you want
+.musette-fold {
+	background: lightgray;
+	margin: 0 20px 10px;
+}
+
+.musette-fold img {
+	height: 250px;
 }
