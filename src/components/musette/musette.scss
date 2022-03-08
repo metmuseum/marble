@@ -1,0 +1,75 @@
+.musette-wrapper {
+	position: relative;
+}
+
+.la-musette {
+	cursor: pointer;
+	display: flex;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	position: relative;
+	user-select: none;
+	width: 100%;
+}
+
+.la-musette-offset {
+	& > :first-child {
+		margin-left: 7.5vw;
+	}
+	& > :last-child {
+		margin-right: 7.5vw;
+	}
+}
+
+.la-musette-no-scrollbar {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+//navigation
+.musette-move-left,
+.musette-move-right {
+	background: no-repeat center/20px url('https://www.metmuseum.org/Rodan/dist/svg/banner-link-back.svg');
+	background-color: white;
+	border: none;
+	border-radius: 20px;
+	box-shadow: 0 0 3px 1px $color-black-opaque-20;
+	cursor: pointer;
+	display: none;
+	height: 42px;
+	position: absolute;
+	top: 155px;
+	width: 42px;
+
+	&:hover {
+		background-color: $madhav-gray;
+	}
+}
+
+.musette-move-left {
+	left: 5px;
+}
+
+.musette-move-right {
+	right: 5px;
+	transform: rotate(180deg);
+}
+
+.musette-has-left-button {
+	@media screen and (min-width: 1100px) {
+		.musette-move-left {
+			display: block;
+		}
+	}
+}
+
+.musette-has-right-button {
+	@media screen and (min-width: 1100px) {
+		.musette-move-right {
+			display: block;
+		}
+	}
+}
