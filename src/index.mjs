@@ -1,12 +1,4 @@
-// this is the main entry point for Marble. :)
-
-// TODO: consider if we want to bundle everything into this object or use a) subpath exports or b) more named exports?
-//       examples:
-//         a) import jumpLinkBanner from "marble/jump-link-banner"
-//         b) import { jumpLinkBanner } from "marble"
-
 import global from "./global/global.mjs";
-
 import AudioPlayer from "./components/audio-player/audio-player.js";
 import carousel from "./components/carousel/carousel.js";
 import initializeAlert from "./components/alert/index";
@@ -26,3 +18,13 @@ const marble = {
 };
 
 export default marble;
+
+export {
+	global,
+	AudioPlayer,
+	carousel,
+	initializeAlert,
+	jumpLinkBanner,
+	videoSlide,
+	vimeoPlayToggle,
+};
