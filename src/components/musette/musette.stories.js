@@ -1,10 +1,12 @@
 import { html } from ".storybook/helpers";
-
 import { withKnobs } from "@storybook/addon-knobs";
+import lesMusettes from "./musette.js";
+import { useEffect } from "@storybook/client-api";
 
 export default { title: "Components/Musette", decorators: [withKnobs] };
 
 const Musette = () => {
+	useEffect(() => { lesMusettes(); });
 	return html`
 	<div class="la-musette js-la-musette">
 		<div class="musette-fold">
@@ -20,7 +22,7 @@ const Musette = () => {
 				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/771396/preview" alt="Girodet and His Students">
 			</a>
 			<h5>
-				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling, from a series of twenty-two plates depicting mythological subjects, plate 21
+				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling
 			</h5>
 		</div>
 		<div class="musette-fold">
@@ -28,7 +30,7 @@ const Musette = () => {
 				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/232047/preview" alt="Vertical Panel with Design for a Mirror">
 			</a>
 			<h5>
-				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling, from a series of twenty-two plates depicting mythological subjects, plate 21
+				From a series of twenty-two plates
 			</h5>
 		</div>
 		<div class="musette-fold">
@@ -36,7 +38,7 @@ const Musette = () => {
 				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/497615/preview" alt="Relief of the Betrayal and Arrest of Jesus">
 			</a> 
 			<h5>
-				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling, from a series of twenty-two plates depicting mythological subjects, plate 21
+				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling
 			</h5>
 		</div>
 		<div class="musette-fold">
@@ -59,8 +61,11 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/423653">
-				<img src=" https://collectionapi.metmuseum.org/api/collection/v1/iiif/423653/preview " alt="Vertical Panel with a Pear Shaped Design with a Mounted Soldier and Centaurs">
+				<img src=" https://collectionapi.metmuseum.org/api/collection/v1/iiif/423653/preview" alt="Vertical Panel with a Pear Shaped Design with a Mounted Soldier and Centaurs">
 			</a>
+			<h5>
+				Vertical Panel with Design for a Mirror
+			</h5>
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/337625">
@@ -74,6 +79,9 @@ const Musette = () => {
 			<a href="http://www.metmuseum.org/art/collection/search/334002">
 				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/10152/preview" alt="Seated Giant">
 			</a>
+			<h5>
+			Vertical Panel with a Pear Shaped Design
+			</h5>
 		</div>
 		<div class="musette-fold"><a href="http://www.metmuseum.org/art/collection/search/459090">
 			<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/489972/preview" alt="Condesa de Altamira and Her Daughter, María Agustina">
