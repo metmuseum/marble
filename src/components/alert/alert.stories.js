@@ -27,4 +27,11 @@ const DismissableAlert = (args) => {
 
 DismissableAlert.args = args;
 
-export { DismissableAlert };
+const DismissableAlertDismsissed = (args) => DismissableAlert(args);
+DismissableAlertDismsissed.args = {
+	...args,
+	show: false
+};
+DismissableAlertDismsissed.storyName = "Dismissable Alert (Dismissed)";
+
+export { DismissableAlert, DismissableAlertDismsissed };
