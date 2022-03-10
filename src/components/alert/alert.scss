@@ -1,0 +1,26 @@
+.dismissable-alert {
+	align-items: center;
+	background-color: $color-input-alert;
+	border-radius: $radius-sharp;
+	color: $color-white;
+	display: none;
+	font-size: $textsize-xs;
+	font-weight: 500;
+	justify-content: space-between;
+	left: $spacing-component-margin;
+	line-height: 1;
+	padding: $spacing-micro;
+	position: fixed;
+	top: $spacing-s;
+	width: 100vw - ($spacing-component-margin * 2);
+
+	&.show {
+		display: flex;
+	}
+}
+
+.dismissable-alert__message {
+	align-items: center;
+	display: flex;
+	line-height: 1;
+}
