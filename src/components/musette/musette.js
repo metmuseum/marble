@@ -1,33 +1,33 @@
 export default function lesMusettes() {
-	const lesMusettes = document.querySelectorAll('.js-la-musette');
+	const lesMusettes = document.querySelectorAll(".js-la-musette");
 
 	lesMusettes.forEach((laMusette) => {
 		const preventClick = (e) => {
 			e.preventDefault();
 			e.stopImmediatePropagation();
-		}
+		};
 		let mouseIsDown = false;
 		var mouseIsBeingDragged = false;
 		let startPositionX;
 		let scrollLeft;
 
 		// create wrapper
-		var wrapMusette = document.createElement('div');
-		wrapMusette.classList.add('musette-wrapper');
+		var musetteWrapper = document.createElement("div");
+		musetteWrapper.classList.add("musette-wrapper");
 
 		// create buttons
-		var leftButton = document.createElement('button');
-		leftButton.classList.add('musette-move-left');
-		var rightButton = document.createElement('button');
-		rightButton.classList.add('musette-move-right');
+		var leftButton = document.createElement("button");
+		leftButton.classList.add("musette-move-left");
+		var rightButton = document.createElement("button");
+		rightButton.classList.add("musette-move-right");
 
 		// insert wrapper before musette
-		laMusette.parentNode.insertBefore(wrapMusette, laMusette);
+		laMusette.parentNode.insertBefore(musetteWrapper, laMusette);
 
 		// put elements into wrapper
-		wrapMusette.appendChild(laMusette);
-		wrapMusette.appendChild(leftButton);
-		wrapMusette.appendChild(rightButton);
+		musetteWrapper.appendChild(laMusette);
+		musetteWrapper.appendChild(leftButton);
+		musetteWrapper.appendChild(rightButton);
 
 		// get dimensions, used exclusively for buttons
 		// imported from old Madaveousel and maybe more specs than we need
@@ -37,7 +37,7 @@ export default function lesMusettes() {
 			var positionLeft = laMusette.scrollLeft;
 			var remainingRight = trackWidth - (positionLeft + wiewportWidth);
 			var moreLeft = (positionLeft > 0) ? true : false;
-			var moreRight = (remainingRight > 0) ? true : false;
+			var moreRight = (remainingRight > 1) ? true : false;
 	
 			var specs = {
 				viewportWidth: wiewportWidth,
@@ -46,7 +46,7 @@ export default function lesMusettes() {
 				remainingRight: remainingRight,
 				moreLeft: moreLeft,
 				moreRight: moreRight
-			}
+			};
 			return specs;
 		};
 
@@ -54,36 +54,36 @@ export default function lesMusettes() {
 		const checkButtonStatus = (laMusette) => {
 			var thisMusette = getMusetteSpecs(laMusette);
 			if (thisMusette.moreLeft) {
-				wrapMusette.classList.add('musette-has-left-button');
+				musetteWrapper.classList.add("musette-has-left-button");
 			} else {
-				wrapMusette.classList.remove('musette-has-left-button');
+				musetteWrapper.classList.remove("musette-has-left-button");
 			}
 			if (thisMusette.moreRight) {
-				wrapMusette.classList.add('musette-has-right-button');
+				musetteWrapper.classList.add("musette-has-right-button");
 			} else {
-				wrapMusette.classList.remove('musette-has-right-button');
+				musetteWrapper.classList.remove("musette-has-right-button");
 			}
-		}
+		};
 		checkButtonStatus(laMusette);
 
 		const buttonScrollRight = (laMusette) => {
 			var thisMusette = getMusetteSpecs(laMusette);
 			var scrollToPosition = thisMusette.positionLeft + thisMusette.viewportWidth;
-			laMusette.scrollTo({left: scrollToPosition, behavior: 'smooth'});
+			laMusette.scrollTo({left: scrollToPosition, behavior: "smooth"});
 			checkButtonStatus(laMusette);
 		};
 
 		const buttonScrollLeft = (laMusette) => {
 			var thisMusette = getMusetteSpecs(laMusette);
 			var scrollToPosition = thisMusette.positionLeft - thisMusette.viewportWidth;
-			laMusette.scrollTo({left: scrollToPosition, behavior: 'smooth'});
+			laMusette.scrollTo({left: scrollToPosition, behavior: "smooth"});
 			checkButtonStatus(laMusette);
 		};
 
-		// listen for scroll, so we can check for buttons when it's finished
+		// listen for scroll, so we can check for buttons when it"s finished
 		var isScrollingNow;
     
-		laMusette.addEventListener('scroll', () => {
+		laMusette.addEventListener("scroll", () => {
 			// Clear timeout throughout the scroll
 			window.clearTimeout(isScrollingNow);
 			// Set a timeout to run after scrolling ends
@@ -94,30 +94,30 @@ export default function lesMusettes() {
 		}, false);
 
 		// button control
-		leftButton.addEventListener('click', (e) => {
+		leftButton.addEventListener("click", (e) => {
 			e.preventDefault();
 			buttonScrollLeft(laMusette);
 		});
 
-		rightButton.addEventListener('click', (e) => {
+		rightButton.addEventListener("click", (e) => {
 			e.preventDefault();
 			buttonScrollRight(laMusette);
 		});
 		
 		// musette grabbing and dragging controls
-		laMusette.addEventListener('mousedown', (e) => {
+		laMusette.addEventListener("mousedown", (e) => {
 			e.preventDefault();
 			mouseIsDown = true;
 			startPositionX = e.pageX - laMusette.offsetLeft;
 			scrollLeft = laMusette.scrollLeft;
 		});
 		
-		laMusette.addEventListener('mouseleave', () => {
+		laMusette.addEventListener("mouseleave", () => {
 			mouseIsDown = false;
 		});
 		
-		laMusette.addEventListener('mouseup', (e) => {
-			const musettteLinks = laMusette.querySelectorAll('a');
+		laMusette.addEventListener("mouseup", (e) => {
+			const musettteLinks = laMusette.querySelectorAll("a");
 			if(mouseIsBeingDragged){
 				for(let i = 0; i<musettteLinks.length; i++) {
 					musettteLinks[i].addEventListener("click", preventClick);
@@ -131,7 +131,7 @@ export default function lesMusettes() {
 			mouseIsBeingDragged = false;
 		});
 		
-		laMusette.addEventListener('mousemove', (e) => {
+		laMusette.addEventListener("mousemove", (e) => {
 			if(!mouseIsDown) return;
 			mouseIsBeingDragged =  true;
 			e.preventDefault();

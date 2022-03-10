@@ -3,7 +3,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import lesMusettes from "./musette.js";
 import { useEffect } from "@storybook/client-api";
 
-export default { title: "Components/Musette", decorators: [withKnobs] };
+export default { title: "Carousel/Musette", decorators: [withKnobs] };
 
 const Musette = () => {
 	useEffect(() => { lesMusettes(); });
