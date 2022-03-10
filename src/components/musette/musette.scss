@@ -1,9 +1,12 @@
+$button-height: 42px;
+
 .musette-wrapper {
 	position: relative;
 }
 
 .la-musette {
 	cursor: pointer;
+	column-gap: 20px;
 	display: flex;
 	overflow-x: scroll;
 	overflow-y: hidden;
@@ -39,10 +42,10 @@
 	box-shadow: 0 0 3px 1px $color-black-opaque-20;
 	cursor: pointer;
 	display: none;
-	height: 42px;
+	height: $button-height;
 	position: absolute;
-	top: 155px;
-	width: 42px;
+	top: calc(50% - #{$button-height});
+	width: $button-height;
 
 	&:hover {
 		background-color: $color-grey-200;
@@ -74,12 +77,12 @@
 	}
 }
 
-//DS - for storybook purposes -- you can use any card you want
+//DS - these folds are for illustrative storybook purposes -- you can use any card instead
 .musette-fold {
 	background: lightgray;
-	margin: 0 20px 10px;
 }
 
 .musette-fold img {
 	height: 250px;
+	min-width: 150px;
 }

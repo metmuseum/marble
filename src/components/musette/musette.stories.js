@@ -8,10 +8,10 @@ export default { title: "Components/Musette", decorators: [withKnobs] };
 const Musette = () => {
 	useEffect(() => { lesMusettes(); });
 	return html`
-	<div class="la-musette js-la-musette">
+	<div class="la-musette la-musette-no-scrollbar js-la-musette">
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/771396">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503578/1358034/main-image" alt="La Musette">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503578/1358034/main-image">
 			</a>
 			<h5>
 				Musette de Cour
@@ -19,7 +19,7 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/771396">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/771396/preview" alt="Girodet and His Students">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/771396/preview">
 			</a>
 			<h5>
 				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling
@@ -27,7 +27,7 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/423644">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/232047/preview" alt="Vertical Panel with Design for a Mirror">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/232047/preview">
 			</a>
 			<h5>
 				From a series of twenty-two plates
@@ -35,20 +35,23 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/463973">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/497615/preview" alt="Relief of the Betrayal and Arrest of Jesus">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/497615/preview">
 			</a> 
 			<h5>
-				Reverse copy of The Companions of Ulysses arriving at Circe's dwelling
+				Girodet and His Students
 			</h5>
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/466311">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/207796/preview" alt="Column Statue of a King">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/207796/preview">
 			</a>
+			<h5>
+				Relief of the Betrayal and Arrest of Jesus
+			</h5>
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/337064">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/83962/preview" alt="Woman Bathing (La Toilette)">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/83962/preview">
 			</a>
 			<h5>
 				Evening Dress
@@ -56,12 +59,15 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="/art/collection/search/423658">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/700091/preview" alt="The Annunciation to the Shepherds">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/700091/preview">
 			</a>
+			<h5>
+				Column Statue of a King
+			</h5>
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/423653">
-				<img src=" https://collectionapi.metmuseum.org/api/collection/v1/iiif/423653/preview" alt="Vertical Panel with a Pear Shaped Design with a Mounted Soldier and Centaurs">
+				<img src=" https://collectionapi.metmuseum.org/api/collection/v1/iiif/423653/preview">
 			</a>
 			<h5>
 				Vertical Panel with Design for a Mirror
@@ -69,7 +75,7 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/337625">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/10150/preview" alt="Merced River, Yosemite Valley">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/10150/preview">
 			</a>
 			<h5>
 				Merced River, Yosemite Valley
@@ -77,15 +83,52 @@ const Musette = () => {
 		</div>
 		<div class="musette-fold">
 			<a href="http://www.metmuseum.org/art/collection/search/334002">
-				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/10152/preview" alt="Seated Giant">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/10152/preview">
 			</a>
 			<h5>
-			Vertical Panel with a Pear Shaped Design
+				Vertical Panel with a Pear Shaped Design
 			</h5>
 		</div>
-		<div class="musette-fold"><a href="http://www.metmuseum.org/art/collection/search/459090">
-			<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/489972/preview" alt="Condesa de Altamira and Her Daughter, María Agustina">
-		</a>
+		<div class="musette-fold">
+			<a href="http://www.metmuseum.org/art/collection/search/459090">
+				<img src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP-16529-001.jpg">
+			</a>
+			<h5>
+			Her Daughter, María Agustina
+			</h5>
+		</div>
+		<div class="musette-fold">
+			<a href="http://www.metmuseum.org/art/collection/search/459090">
+				<img src="https://images.metmuseum.org/CRDImages/ep/mobile-large/ep91.26.4.bw.R.jpg">
+			</a>
+			<h5>
+				Suzanna and Her Elders
+			</h5>
+		</div>
+
+		<div class="musette-fold">
+			<a href="http://www.metmuseum.org/art/collection/search/459090">
+				<img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/489972/preview">
+			</a>
+			<h5>
+				Condesa de Altamira
+			</h5>
+		</div>
+		<div class="musette-fold">
+			<a href="http://www.metmuseum.org/art/collection/search/459090">
+				<img src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP143192.jpg">
+			</a>
+			<h5>
+				A Banquet
+			</h5>
+		</div>
+		<div class="musette-fold">
+			<a href="http://www.metmuseum.org/art/collection/search/459090">
+				<img src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP169398.jpg">
+			</a>
+			<h5>
+				Elizabeth Cholmley (1769–1788)
+			</h5>
 		</div>
 	</div>`;
 };
