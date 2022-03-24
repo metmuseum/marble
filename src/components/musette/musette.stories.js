@@ -1,9 +1,8 @@
 import { html } from ".storybook/helpers";
-import { withKnobs } from "@storybook/addon-knobs";
 import lesMusettes from "./musette.js";
 import { useEffect } from "@storybook/client-api";
 
-export default { title: "Carousel/Musette", decorators: [withKnobs] };
+export default { title: "Carousel/Musette" };
 
 const Musette = () => {
 	useEffect(() => { lesMusettes(); });
