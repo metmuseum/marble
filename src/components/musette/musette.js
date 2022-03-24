@@ -119,13 +119,9 @@ export default function lesMusettes() {
 		laMusette.addEventListener("mouseup", () => {
 			const musettteLinks = laMusette.querySelectorAll("a");
 			if(mouseIsBeingDragged){
-				for(let i = 0; i<musettteLinks.length; i++) {
-					musettteLinks[i].addEventListener("click", preventClick);
-				}
+				musettteLinks.forEach(link => link.addEventListener("click", preventClick));
 			} else{
-				for(let i = 0; i<musettteLinks.length; i++) {
-					musettteLinks[i].removeEventListener("click", preventClick);
-				}
+				musettteLinks.forEach(link => link.removeEventListener("click", preventClick));
 			}
 			mouseIsDown = false;
 			mouseIsBeingDragged = false;
