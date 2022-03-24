@@ -1,5 +1,5 @@
 import { html } from ".storybook/helpers";
-import lesMusettes from "./musette.js";
+import { initialize } from "./musette.js";
 import { useEffect } from "@storybook/client-api";
 import greekHallImages from ".storybook/assets/images/greek-hall";
 
@@ -36,7 +36,7 @@ const slideTemplate = (args) => {
 };
 
 const Musette = () => {
-	useEffect(() => { lesMusettes(); });
+	useEffect(() => { initialize(); });
 	return html`
 	<div class="la-musette la-musette-no-scrollbar js-la-musette">
 		${titles.map((title, index) => slideTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
