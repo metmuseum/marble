@@ -1,3 +1,25 @@
+
+let callback = (entries, observer) => {
+	entries.forEach(entry => {
+		console.log(entry);
+		if (entry.isIntersecting) {
+			entry.target.style.border = "2px solid red";
+		} else {
+			entry.target.style.border = "2px solid blue";
+		}
+		// Each entry describes an intersection change for one observed
+		// target element:
+		//   entry.boundingClientRect
+		//   entry.intersectionRatio
+		//   entry.intersectionRect
+		//   entry.isIntersecting
+		//   entry.rootBounds
+		//   entry.target
+		//   entry.time
+	});
+};
+
+
 class Musette {
 	constructor(containerEl) {
 		this.containerEl = containerEl;
@@ -5,7 +27,7 @@ class Musette {
 		this.mouseIsBeingDragged = false;
 		this.startPositionX = null;
 		this.scrollLeft = this.null;
-		this.musetteWrapper = this.createWrapper(this.containerEl);
+		this.musetteWrapper = this.createWrapper();
 
 		this.checkButtonStatus();
 		// listen for scroll, so we can check for buttons when it"s finished
@@ -15,6 +37,17 @@ class Musette {
 		containerEl.addEventListener("mouseleave", this.handleMouseLeave);
 		containerEl.addEventListener("mouseup", this.handleMouseUp);
 		containerEl.addEventListener("mousemove", this.handleMouseMove);
+
+
+		this.observer = new IntersectionObserver(callback, {
+			root: this.containerEl,
+			rootMargin: "0px",
+			threshold: 0.9
+		});
+
+		Array.from(this.containerEl.children).forEach((child) => {
+			this.observer.observe(child);
+		});
 	}
 
 	handleScroll() {
