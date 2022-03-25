@@ -4,6 +4,9 @@
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "./src/index.mjs",
 	"style": "./dist/marble.css",
+	"storybook": {
+		"url": "https://main--5ef272f9ab690c0022ef30ab.chromatic.com"
+	},
 	"dependencies": {
 		"@vimeo/player": "^2.16.1",
 		"flickity": "github:stephenhmarsh/flickity#met-museum",
