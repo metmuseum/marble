@@ -5,6 +5,7 @@
 	"main": "./src/index.mjs",
 	"style": "./dist/marble.css",
 	"dependencies": {
+		"@use-gesture/vanilla": "^10.2.10",
 		"@vimeo/player": "^2.16.1",
 		"flickity": "github:stephenhmarsh/flickity#met-museum",
 		"flickity-imagesloaded": "^2.0.0",

@@ -1,110 +1,71 @@
-
-let callback = (entries, observer) => {
-	entries.forEach(entry => {
-		console.log(entry);
-		if (entry.isIntersecting) {
-			entry.target.style.border = "2px solid red";
-		} else {
-			entry.target.style.border = "2px solid blue";
-		}
-		// Each entry describes an intersection change for one observed
-		// target element:
-		//   entry.boundingClientRect
-		//   entry.intersectionRatio
-		//   entry.intersectionRect
-		//   entry.isIntersecting
-		//   entry.rootBounds
-		//   entry.target
-		//   entry.time
-	});
-};
-
+import { DragGesture } from "@use-gesture/vanilla";
 
 class Musette {
 	constructor(containerEl) {
 		this.containerEl = containerEl;
-		this.mouseIsDown = false;
-		this.mouseIsBeingDragged = false;
-		this.startPositionX = null;
-		this.scrollLeft = this.null;
 		this.musetteWrapper = this.createWrapper();
 
-		this.checkButtonStatus();
-		// listen for scroll, so we can check for buttons when it"s finished
-		this.containerEl.addEventListener("scroll", this.handleScroll, false);
-		// musette grabbing and dragging controls
-		containerEl.addEventListener("mousedown", this.handleMouseDown);
-		containerEl.addEventListener("mouseleave", this.handleMouseLeave);
-		containerEl.addEventListener("mouseup", this.handleMouseUp);
-		containerEl.addEventListener("mousemove", this.handleMouseMove);
+		// new DragGesture(
+		// 	this.containerEl,
+		// 	this.handleDragging.bind(this),
+		// 	{
+		// 		axis: "x",
+		// 		filterTaps: true,
+		// 		rubberband: true,
+		// 		tapsThreshold: 25,
+		// 		preventDefault: true,
+		// 		preventScroll: false,
+		// 		pointer: { mouse: true, lock: true }
+		// 	});
 
-
-		this.observer = new IntersectionObserver(callback, {
-			root: this.containerEl,
-			rootMargin: "0px",
-			threshold: 0.9
-		});
+		this.observer = new IntersectionObserver(
+			this.handleIntersections.bind(this),
+			{
+				root: this.containerEl,
+				rootMargin: "0px",
+				threshold: 0.9
+			}
+		);
 
 		Array.from(this.containerEl.children).forEach((child) => {
 			this.observer.observe(child);
 		});
 	}
 
-	handleScroll() {
-		var isScrollingNow;
-		// Clear timeout throughout the scroll
-		window.clearTimeout(isScrollingNow);
-		// Set a timeout to run after scrolling ends
-		isScrollingNow = setTimeout(this.checkButtonStatus, 66);
+	handleDragging(state) {
+		this.containerEl.scrollLeft = state.movement[0] * -2;
 	}
 
-	handleMouseDown(e) {
-		e.preventDefault();
-		this.mouseIsDown = true;
-		this.this.startPositionX = e.pageX - this.containerEl.offsetLeft;
-		this.scrollLeft = this.this.containerEl.scrollLeft;
-	}
-
-	handleMouseUp() {
-		const musetteLinks = this.containerEl.querySelectorAll("a");
-		if (this.mouseIsBeingDragged) {
-			musetteLinks.forEach(link => link.addEventListener("click", this.preventClick));
-		} else {
-			musetteLinks.forEach(link => link.removeEventListener("click", this.preventClick));
-		}
-		this.mouseIsDown = false;
-		this.mouseIsBeingDragged = false;
-	}
-
-	handleMouseLeave() {
-		this.mouseIsDown = false;
-	}
-
-	handleMouseMove(e) {
-		if (!this.mouseIsDown) return;
-		this.mouseIsBeingDragged = true;
-		e.preventDefault();
-		const x = e.pageX - this.containerEl.offsetLeft;
-		const walk = (x - this.startPositionX) * 2; //scroll-fast
-		this.containerEl.scrollLeft = this.scrollLeft - walk;
-	}
-
-	preventClick(e) {
-		e.preventDefault();
-		e.stopImmediatePropagation();
+	handleIntersections(entries) {
+		entries.forEach(entry => {
+			if (entry.target == this.containerEl.firstElementChild) {
+				entry.isIntersecting ?
+					this.musetteWrapper.classList.remove("musette-has-left-button") :
+					this.musetteWrapper.classList.add("musette-has-left-button");
+			}
+			if (entry.target == this.containerEl.lastElementChild) {
+				entry.isIntersecting ?
+					this.musetteWrapper.classList.remove("musette-has-right-button") :
+					this.musetteWrapper.classList.add("musette-has-right-button");
+			}
+			entry.isIntersecting ? entry.target.style.border = "2px solid red" : entry.target.style.border = "2px solid blue";
+		});
 	}
 
 	createWrapper() {
 		const wrapper = document.createElement("div");
 		wrapper.classList.add("musette-wrapper");
 
-		const leftButton = this.createLeftButton();
-		const rightButton = this.createRightButton();
+		const leftButton = document.createElement("button");
+		leftButton.classList.add("musette-move-left");
+		leftButton.addEventListener("click", this.handleButtonScrollLeft.bind(this));
 
-		// insert wrapper before musette
+		const rightButton = document.createElement("button");
+		rightButton.classList.add("musette-move-right");
+		rightButton.addEventListener("click", this.handleButtonScrollRight.bind(this));
+
 		this.containerEl.parentNode.insertBefore(wrapper, this.containerEl);
 
-		// put elements into wrapper
 		wrapper.appendChild(this.containerEl);
 		wrapper.appendChild(leftButton);
 		wrapper.appendChild(rightButton);
@@ -112,78 +73,18 @@ class Musette {
 		return wrapper;
 	}
 
-	// get dimensions, used exclusively for buttons
-	// imported from old Madaveousel and maybe more specs than we need
-	getMusetteSpecs() {
-		var wiewportWidth = this.containerEl.offsetWidth;
-		var trackWidth = this.containerEl.scrollWidth;
-		var positionLeft = this.containerEl.scrollLeft;
-		var remainingRight = trackWidth - (positionLeft + wiewportWidth);
-		var moreLeft = (positionLeft > 0) ? true : false;
-		var moreRight = (remainingRight > 1) ? true : false;
-	
-		var specs = {
-			viewportWidth: wiewportWidth,
-			trackWidth: trackWidth,
-			positionLeft: positionLeft,
-			remainingRight: remainingRight,
-			moreLeft: moreLeft,
-			moreRight: moreRight
-		};
-		return specs;
-	}
-
-	buttonScrollLeft() {
-		const thisMusette = this.getMusetteSpecs();
-		const scrollToPosition = thisMusette.positionLeft - thisMusette.viewportWidth;
-		this.containerEl.scrollTo({ left: scrollToPosition, behavior: "smooth" });
-		this.checkButtonStatus();
-	}
-
-	createLeftButton() {
-		const leftButton = document.createElement("button");
-		leftButton.classList.add("musette-move-left");
-
-		leftButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			this.buttonScrollLeft();
+	handleButtonScrollLeft() {
+		this.containerEl.scrollTo({
+			left: (this.containerEl.scrollLeft - this.containerEl.offsetWidth),
+			behavior: "smooth"
 		});
-
-		return leftButton;
 	}
 
-	// should buttons be hidden?
-	checkButtonStatus() {
-		var thisMusette = this.getMusetteSpecs();
-		if (thisMusette.moreLeft) {
-			this.musetteWrapper.classList.add("musette-has-left-button");
-		} else {
-			this.musetteWrapper.classList.remove("musette-has-left-button");
-		}
-		if (thisMusette.moreRight) {
-			this.musetteWrapper.classList.add("musette-has-right-button");
-		} else {
-			this.musetteWrapper.classList.remove("musette-has-right-button");
-		}
-	}
-
-	buttonScrollRight() {
-		const thisMusette = this.getMusetteSpecs();
-		const scrollToPosition = thisMusette.positionLeft + thisMusette.viewportWidth;
-		this.containerEl.scrollTo({ left: scrollToPosition, behavior: "smooth" });
-		this.checkButtonStatus();
-	}
-
-	createRightButton() {
-		const rightButton = document.createElement("button");
-		rightButton.classList.add("musette-move-right");
-
-		rightButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			this.buttonScrollRight();
+	handleButtonScrollRight() {
+		this.containerEl.scrollTo({
+			left: (this.containerEl.scrollLeft + this.containerEl.offsetWidth),
+			behavior: "smooth"
 		});
-
-		return rightButton;
 	}
 }
 
