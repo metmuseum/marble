@@ -1,55 +1,39 @@
-import { DragGesture } from "@use-gesture/vanilla";
-
 class Musette {
-	constructor(containerEl) {
-		this.containerEl = containerEl;
+	constructor(musetteEl) {
+		this.musetteEl = musetteEl;
 		this.musetteWrapper = this.createWrapper();
-
-		// new DragGesture(
-		// 	this.containerEl,
-		// 	this.handleDragging.bind(this),
-		// 	{
-		// 		axis: "x",
-		// 		filterTaps: true,
-		// 		rubberband: true,
-		// 		tapsThreshold: 25,
-		// 		preventDefault: true,
-		// 		preventScroll: false,
-		// 		pointer: { mouse: true, lock: true }
-		// 	});
-
 		this.observer = new IntersectionObserver(
 			this.handleIntersections.bind(this),
 			{
-				root: this.containerEl,
+				root: this.musetteEl,
 				rootMargin: "0px",
 				threshold: 0.9
 			}
 		);
-
-		Array.from(this.containerEl.children).forEach((child) => {
+		Array.from(this.musetteEl.children).forEach((child) => {
 			this.observer.observe(child);
 		});
 	}
 
-	handleDragging(state) {
-		this.containerEl.scrollLeft = state.movement[0] * -2;
-	}
-
 	handleIntersections(entries) {
 		entries.forEach(entry => {
-			if (entry.target == this.containerEl.firstElementChild) {
+			if (entry.target == this.musetteEl.firstElementChild) {
 				entry.isIntersecting ?
 					this.musetteWrapper.classList.remove("musette-has-left-button") :
 					this.musetteWrapper.classList.add("musette-has-left-button");
 			}
-			if (entry.target == this.containerEl.lastElementChild) {
+			if (entry.target == this.musetteEl.lastElementChild) {
 				entry.isIntersecting ?
 					this.musetteWrapper.classList.remove("musette-has-right-button") :
 					this.musetteWrapper.classList.add("musette-has-right-button");
 			}
+			// todo: reimplement accessibility work from flickity fork here
 			entry.isIntersecting ? entry.target.style.border = "2px solid red" : entry.target.style.border = "2px solid blue";
 		});
+	}
+
+	handleDragging(state) {
+		this.musetteEl.scrollLeft = state.movement[0] * -2;
 	}
 
 	createWrapper() {
@@ -64,9 +48,9 @@ class Musette {
 		rightButton.classList.add("musette-move-right");
 		rightButton.addEventListener("click", this.handleButtonScrollRight.bind(this));
 
-		this.containerEl.parentNode.insertBefore(wrapper, this.containerEl);
+		this.musetteEl.parentNode.insertBefore(wrapper, this.musetteEl);
 
-		wrapper.appendChild(this.containerEl);
+		wrapper.appendChild(this.musetteEl);
 		wrapper.appendChild(leftButton);
 		wrapper.appendChild(rightButton);
 
@@ -74,23 +58,23 @@ class Musette {
 	}
 
 	handleButtonScrollLeft() {
-		this.containerEl.scrollTo({
-			left: (this.containerEl.scrollLeft - this.containerEl.offsetWidth),
+		this.musetteEl.scrollTo({
+			left: (this.musetteEl.scrollLeft - this.musetteEl.offsetWidth),
 			behavior: "smooth"
 		});
 	}
 
 	handleButtonScrollRight() {
-		this.containerEl.scrollTo({
-			left: (this.containerEl.scrollLeft + this.containerEl.offsetWidth),
+		this.musetteEl.scrollTo({
+			left: (this.musetteEl.scrollLeft + this.musetteEl.offsetWidth),
 			behavior: "smooth"
 		});
 	}
 }
 
-const initialize = () => {
-	const lesMusettes = document.querySelectorAll(".js-la-musette");
-	lesMusettes.forEach((laMusette) => new Musette(laMusette));
+const initialize = (selectorString = ".js-la-musette") => {
+	const lesMusettes = document.querySelectorAll(selectorString);
+	lesMusettes.forEach((laMusetteEl) => new Musette(laMusetteEl));
 };
 
 export default Musette;
