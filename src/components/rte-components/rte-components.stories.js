@@ -34,7 +34,7 @@ const RTEComponentsMarkUp = (model) => {
 		<hr>
 		<div class="media__youtube-wrapper">
 			<iframe
-				class="a11y-ignore"
+				class="a11y-ignore chromatic-ignore"
 				title="Youtube Embed"
 				width="720"
 				height="428"
