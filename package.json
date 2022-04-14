@@ -5,10 +5,10 @@
 	"main": "./src/index.mjs",
 	"style": "./dist/marble.css",
 	"dependencies": {
-		"@vimeo/player": "^2.16.1",
+		"@vimeo/player": "^2.16.4",
 		"flickity": "github:stephenhmarsh/flickity#met-museum",
 		"flickity-imagesloaded": "^2.0.0",
-		"intersection-observer": "^0.7.0",
+		"intersection-observer": "^0.12.0",
 		"npm": "^6.14.14",
 		"smoothscroll-polyfill": "^0.4.4",
 		"vanilla-lazyload": "^12.5.1"
