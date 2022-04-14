@@ -11,7 +11,7 @@
 		"intersection-observer": "^0.12.0",
 		"npm": "^6.14.14",
 		"smoothscroll-polyfill": "^0.4.4",
-		"vanilla-lazyload": "^12.5.1"
+		"vanilla-lazyload": "^17.7.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.8",
