@@ -1,5 +1,5 @@
 const path = require("path");
-const merge  = require("webpack-merge"); // this just changes to { merge } for webpack 5
+const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WebpackNotifierPlugin = require("webpack-notifier");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
