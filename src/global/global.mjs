@@ -4,6 +4,7 @@
 import lazyLoad from "./lazyload/lazyload.js";
 
 function global() {
+  // alert("this is the locally linked marble");
 	lazyLoad();
 }
 
