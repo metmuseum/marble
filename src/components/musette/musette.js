@@ -2,6 +2,7 @@ class Musette {
 	constructor(musetteEl) {
 		this.musetteEl = musetteEl;
 		this.musetteWrapper = this.createWrapper();
+		this.handleDragging = this.handleDragging(this.musetteEl);
 		this.observer = new IntersectionObserver(
 			this.handleIntersections.bind(this),
 			{
@@ -32,8 +33,42 @@ class Musette {
 		});
 	}
 
-	handleDragging(state) {
-		this.musetteEl.scrollLeft = state.movement[0] * -2;
+	handleDragging(musetteEl) {
+		console.log("start");
+
+		let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+		const mouseDownHandler = function (e) {
+
+			pos = {
+				left: musetteEl.scrollLeft,
+				top: musetteEl.scrollTop,
+				// Get the current mouse position
+				x: e.clientX,
+				y: e.clientY,
+			};
+
+			musetteEl.addEventListener("mousemove", mouseMoveHandler);
+			musetteEl.addEventListener("mouseup", mouseUpHandler);
+		};
+
+		const mouseMoveHandler = function (e) {
+			// How far the mouse has been moved
+			const dx = e.clientX - pos.x;
+			const dy = e.clientY - pos.y;
+
+			// Scroll the element go match the mouse
+			musetteEl.scrollTop = pos.top - dy;
+			musetteEl.scrollLeft = pos.left - dx;
+		};
+
+		const mouseUpHandler = function () {
+			musetteEl.removeEventListener("mousemove", mouseMoveHandler);
+			musetteEl.removeEventListener("mouseup", mouseUpHandler);
+		};
+
+		// Attach the handler
+		musetteEl.addEventListener("mousedown", mouseDownHandler);
 	}
 
 	createWrapper() {
