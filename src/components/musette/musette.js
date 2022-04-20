@@ -28,8 +28,7 @@ class Musette {
 					this.musetteWrapper.classList.remove("musette-has-right-button") :
 					this.musetteWrapper.classList.add("musette-has-right-button");
 			}
-			// todo: reimplement accessibility work from flickity fork here
-			entry.isIntersecting ? entry.target.style.border = "2px solid red" : entry.target.style.border = "2px solid blue";
+			entry.isIntersecting ? entry.target.ariaHidden = "false" : entry.target.ariaHidden = "true";
 		});
 	}
 
@@ -87,10 +86,12 @@ class Musette {
 
 		const leftButton = document.createElement("button");
 		leftButton.classList.add("musette-move-left");
+		leftButton.ariaLabel = "Previous items";
 		leftButton.addEventListener("click", this.handleButtonScrollLeft.bind(this));
 
 		const rightButton = document.createElement("button");
 		rightButton.classList.add("musette-move-right");
+		rightButton.ariaLabel = "Next items";
 		rightButton.addEventListener("click", this.handleButtonScrollRight.bind(this));
 
 		this.musetteEl.parentNode.insertBefore(wrapper, this.musetteEl);
