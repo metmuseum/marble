@@ -34,18 +34,19 @@ class Musette {
 	}
 
 	handleDragging(musetteEl) {
-		console.log("start");
+		const preventClick = (e) => {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+		};
 
+		let mouseIsBeingDragged = false;
 		let pos = { top: 0, left: 0, x: 0, y: 0 };
 
 		const mouseDownHandler = function (e) {
-
+			e.preventDefault(); //prevents dragging of images
 			pos = {
 				left: musetteEl.scrollLeft,
-				top: musetteEl.scrollTop,
-				// Get the current mouse position
-				x: e.clientX,
-				y: e.clientY,
+				x: e.clientX
 			};
 
 			musetteEl.addEventListener("mousemove", mouseMoveHandler);
@@ -53,21 +54,30 @@ class Musette {
 		};
 
 		const mouseMoveHandler = function (e) {
-			// How far the mouse has been moved
-			const dx = e.clientX - pos.x;
-			const dy = e.clientY - pos.y;
-
-			// Scroll the element go match the mouse
-			musetteEl.scrollTop = pos.top - dy;
-			musetteEl.scrollLeft = pos.left - dx;
+			const xMovement = e.clientX - pos.x; //how far the mouse has been moved
+			musetteEl.scrollLeft = pos.left - xMovement; //scroll the element to match how much the mouse moved
+			mouseIsBeingDragged =  true;
 		};
 
 		const mouseUpHandler = function () {
+			const musettteLinks = musetteEl.querySelectorAll("a");
+
 			musetteEl.removeEventListener("mousemove", mouseMoveHandler);
 			musetteEl.removeEventListener("mouseup", mouseUpHandler);
+
+			if(mouseIsBeingDragged){ //if mouse is being dragged, disable links
+				musettteLinks.forEach(musettteLink => {
+					musettteLink.addEventListener("click", preventClick);
+				});
+			} else { //otherwise allow links
+				musettteLinks.forEach(musettteLink => {
+					musettteLink.removeEventListener("click", preventClick);
+				});
+			}
+			mouseIsBeingDragged = false;
 		};
 
-		// Attach the handler
+		//init on mouse down
 		musetteEl.addEventListener("mousedown", mouseDownHandler);
 	}
 
