@@ -20,7 +20,9 @@ const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathing
 	let playlist = options.numberOfTracks == "playlist" ? { tracks: [
 		track({title: "Track 1"}),
 		track({...example}),
-		track({title: "Track 3", id: 3, transcript: null})
+		track({title: "Track 3", id: 3, transcript: null}),
+		track({title: "Track 4", id: 4, transcript: null}),
+		track({title: "Track 5", id: 4, transcript: null})
 	]} : null;
 
 	return {
