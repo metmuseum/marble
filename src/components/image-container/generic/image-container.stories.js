@@ -2,7 +2,7 @@ import { html, srcSet } from ".storybook/helpers";
 import defaultImage from ".storybook/assets/images/full-width-image";
 
 export default {
-	title: "Image Containers",
+	title: "Image Containers/Generic",
 	includeStories: ["fullWidth", "halfWidth", "lazyLoaded"]
 };
 
