@@ -141,11 +141,15 @@ const FullPlayer = () => {
 	return audioPlayerMarkUp(data({}));
 };
 
+const FullPlayerWithOpenTranscript = () => {
+	useEffect(initializeAudioPlayers);
+	return html`<div class="transcript-is-open">${audioPlayerMarkUp(data({}))}</div>`;
+};
+
 const FullPlayerWithPlaylist = () => {
 	useEffect(initializeAudioPlayers);
 	return audioPlayerMarkUp(data({numberOfTracks: "playlist"}));
 };
-
 
 const MiniPlayer = () => {
 	useEffect(initializeAudioPlayers);
@@ -156,9 +160,9 @@ const MicroPlayer = () => {
 	useEffect(initializeAudioPlayers);
 	return audioPlayerMarkUp(data({playerMode: "micro-player"}));
 };
-
 export {
 	FullPlayer,
+	FullPlayerWithOpenTranscript,
 	FullPlayerWithPlaylist,
 	MiniPlayer,
 	MicroPlayer
