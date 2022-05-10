@@ -1,0 +1,14 @@
+.error-boundary {
+	margin-left: $spacing-component-margin;
+	margin-right: $spacing-component-margin;
+	margin-top: $spacing-l;
+	max-width: 30em;
+	@media (orientation: landscape) {
+		max-width: 50vw;
+	}
+}
+
+.error-boundary__h3--debolded {
+	font-style: normal;
+	font-weight: 200;
+}
