@@ -44,4 +44,10 @@ module.exports = {
 		"@storybook/addon-a11y",
 		"storybook-preset-inline-svg"
 	],
+	refs: {
+		react: {
+			title: 'React',
+			url: 'http://localhost:54526',
+		},
+	}
 };
