@@ -55,10 +55,5 @@
 	height: auto;
 	max-height: 100%;
 	max-width: 100%;
-	// TODO: we can't use these declarations until we have a BE that can tell us the basic dimensions for markup :( 
-	// object-fit: scale-down;
-	// object-position: center;
-	object-fit: unset;
-	object-position: unset;
 	width: auto;
 }
