@@ -1,7 +1,7 @@
 import { html } from ".storybook/helpers";
 import he from "he";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import { fullWidth } from "../image-container/image-container.stories.js";
+import { fullWidth } from "../image-container/generic/image-container.stories.js";
 import { useEffect } from "@storybook/client-api";
 import jumpLinkBanner from "./jumplink-banner.js";
 

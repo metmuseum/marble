@@ -34,6 +34,11 @@ $metserif: "MetSerif", "Georgia", "Times New Roman", Times, serif;
 	}
 }
 
+@mixin typography-h2-expressive {
+	@include typography-h2();
+	font-family: $metserif;
+}
+
 @mixin typography-h3 {
 	font-size: $textsize-l;
 	font-weight: 500;
