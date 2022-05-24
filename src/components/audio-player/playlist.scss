@@ -1,5 +1,7 @@
 .audio-player__playlist {
 	background: $color-white-050;
+	max-height: 265px; //Madhav picked this.
+	overflow: auto;
 	padding: $spacing-xs;
 
 	&:empty {
