@@ -33,11 +33,6 @@ class Musette {
 	}
 
 	handleDragging(musetteEl) {
-		const preventClick = (e) => {
-			e.preventDefault();
-			e.stopImmediatePropagation();
-		};
-
 		let mouseIsBeingDragged = false;
 		let pos = { top: 0, left: 0, x: 0, y: 0 };
 
@@ -66,11 +61,11 @@ class Musette {
 
 			if(mouseIsBeingDragged){ //if mouse is being dragged, disable links
 				musettteLinks.forEach(musettteLink => {
-					musettteLink.addEventListener("click", preventClick);
+					musettteLink.addEventListener("click", this.preventClick);
 				});
 			} else { //otherwise allow links
 				musettteLinks.forEach(musettteLink => {
-					musettteLink.removeEventListener("click", preventClick);
+					musettteLink.removeEventListener("click", this.preventClick);
 				});
 			}
 			mouseIsBeingDragged = false;
@@ -78,6 +73,11 @@ class Musette {
 
 		//init on mouse down
 		musetteEl.addEventListener("mousedown", mouseDownHandler);
+	}
+
+	preventClick(e) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
 	}
 
 	createWrapper() {
