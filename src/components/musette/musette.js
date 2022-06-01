@@ -19,19 +19,18 @@ class Musette {
 	}
 
 	handleIntersections(entries) {
-		entries.forEach(entry => {
-			if (entry.target == this.musetteEl.firstElementChild) {
-				entry.isIntersecting ?
-					this.musetteWrapper.classList.remove("musette-has-left-button") :
-					this.musetteWrapper.classList.add("musette-has-left-button");
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.ariaHidden = "false";
+				this.showFocusables(entry.target);
+				entry.target == this.musetteEl.firstElementChild && this.musetteWrapper.classList.remove("musette-has-left-button");
+				entry.target == this.musetteEl.lastElementChild && this.musetteWrapper.classList.remove("musette-has-right-button");
+			} else {
+				entry.target.ariaHidden = "true";
+				this.hideFocusables(entry.target);
+				entry.target == this.musetteEl.firstElementChild && this.musetteWrapper.classList.add("musette-has-left-button");
+				entry.target == this.musetteEl.lastElementChild && this.musetteWrapper.classList.add("musette-has-right-button");
 			}
-			if (entry.target == this.musetteEl.lastElementChild) {
-				entry.isIntersecting ?
-					this.musetteWrapper.classList.remove("musette-has-right-button") :
-					this.musetteWrapper.classList.add("musette-has-right-button");
-			}
-			entry.isIntersecting ? entry.target.ariaHidden = "false" : entry.target.ariaHidden = "true";
-			entry.isIntersecting ? this.showFocusables(entry.target) : this.hideFocusables(entry.target);
 		});
 	}
 
