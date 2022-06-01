@@ -141,10 +141,10 @@ const FullPlayer = () => {
 	return audioPlayerMarkUp(data({}));
 };
 
-const multiplePlayers = () => {
+const MultiplePlayers = () => {
 	useEffect(initializeAudioPlayers);
 	return html`
-		<div class="audio-wrapper">
+		<div>
 			${audioPlayerMarkUp(data({}))}
 			${audioPlayerMarkUp(data({}))}
 		</div>`;
@@ -175,5 +175,5 @@ export {
 	FullPlayerWithPlaylist,
 	MiniPlayer,
 	MicroPlayer,
-	multiplePlayers
+	MultiplePlayers
 };
