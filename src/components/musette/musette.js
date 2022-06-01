@@ -28,8 +28,8 @@ class Musette {
 
 		// apply listeners 🎧
 		this.musetteEl.addEventListener("mousedown", this.mouseDownHandler);
-		this.musetteEl.querySelectorAll("a").forEach(musettteLink => {
-			musettteLink.addEventListener("click", this.preventClickIfMouseIsBeingDragged);
+		this.musetteEl.querySelectorAll("a").forEach(musetteLink => {
+			musetteLink.addEventListener("click", this.preventClickIfMouseIsBeingDragged);
 		});
 	}
 
@@ -55,6 +55,7 @@ class Musette {
 		};
 		this.musetteEl.addEventListener("mousemove", this.mouseMoveHandler);
 		this.musetteEl.addEventListener("mouseup", this.mouseUpHandler);
+		this.musetteEl.addEventListener("mouseleave", this.mouseUpHandler);
 	}
 
 	mouseMoveHandler(e) {
@@ -66,6 +67,7 @@ class Musette {
 	mouseUpHandler() {
 		this.musetteEl.removeEventListener("mousemove", this.mouseMoveHandler);
 		this.musetteEl.removeEventListener("mouseup", this.mouseUpHandler);
+		this.musetteEl.removeEventListener("mouseleave", this.mouseUpHandler);
 		this.mouseIsBeingDragged = false;
 	}
 
