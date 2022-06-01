@@ -4,7 +4,7 @@ class Musette {
 	constructor(musetteEl) {
 		this.musetteEl = musetteEl;
 		this.musetteWrapper = this.createWrapper();
-		this.handleDragging = this.handleDragging(this.musetteEl);
+		this.initializeDragging = this.initializeDragging(this.musetteEl);
 		this.observer = new IntersectionObserver(
 			this.handleIntersections.bind(this),
 			{
@@ -32,7 +32,7 @@ class Musette {
 		});
 	}
 
-	handleDragging(musetteEl) {
+	initializeDragging(musetteEl) {
 		let mouseIsBeingDragged = false;
 		let pos = { top: 0, left: 0, x: 0, y: 0 };
 
