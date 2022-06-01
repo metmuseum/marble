@@ -10,6 +10,7 @@ const defaultOptions = {
 
 class AudioPlayer {
 	constructor({wrapperEl, options={}}) {
+		this.allAudioEls              = document.querySelectorAll("audio");
 		this.wrapperEl								= wrapperEl;
 		this.audioEl									=	wrapperEl.querySelector(".js-audio-player__audio");
 		this.coverImageWrapperEl     	= wrapperEl.querySelector(".js-audio-player__image-wrapper");
@@ -279,7 +280,12 @@ class AudioPlayer {
 
 	togglePlaying(e) {
 		e.preventDefault();
-		this.audioEl.paused ? this.audioEl.play() : this.audioEl.pause();
+		if (this.audioEl.paused) {
+			this.allAudioEls.forEach(audioEl => audioEl.pause());
+			console.log("hi");
+		} else {
+			this.audioEl.pause();
+		}
 	}
 
 	handlePlay() {
