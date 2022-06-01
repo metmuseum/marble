@@ -21,11 +21,16 @@ class Musette {
 			this.observer.observe(child);
 		});
 
-		// handlers 🧤
+		// bind handlers 🧤
 		this.mouseDownHandler = this.mouseDownHandler.bind(this);
 		this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
 		this.mouseUpHandler = this.mouseUpHandler.bind(this);
+
+		// apply listeners 🎧
 		this.musetteEl.addEventListener("mousedown", this.mouseDownHandler);
+		this.musetteEl.querySelectorAll("a").forEach(musettteLink => {
+			musettteLink.addEventListener("click", this.preventClickIfMouseIsBeingDragged);
+		});
 	}
 
 	handleIntersections(entries) {
@@ -59,24 +64,13 @@ class Musette {
 	}
 
 	mouseUpHandler() {
-		const musettteLinks = this.musetteEl.querySelectorAll("a");
-
 		this.musetteEl.removeEventListener("mousemove", this.mouseMoveHandler);
 		this.musetteEl.removeEventListener("mouseup", this.mouseUpHandler);
-
-		if (this.mouseIsBeingDragged) { //if mouse is being dragged, disable links
-			musettteLinks.forEach(musettteLink => {
-				musettteLink.addEventListener("click", this.preventClick);
-			});
-		} else { //otherwise allow links
-			musettteLinks.forEach(musettteLink => {
-				musettteLink.removeEventListener("click", this.preventClick);
-			});
-		}
 		this.mouseIsBeingDragged = false;
 	}
 
-	preventClick(e) {
+	preventClickIfMouseIsBeingDragged(e) {
+		if (this.mouseIsBeingDragged) { return; }
 		e.preventDefault();
 		e.stopImmediatePropagation();
 	}
