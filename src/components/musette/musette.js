@@ -4,7 +4,7 @@ class Musette {
 	constructor(musetteEl) {
 		this.musetteEl = musetteEl;
 		this.musetteWrapper = this.createWrapper();
-		this.initializeDragging = this.initializeDragging(this.musetteEl);
+		this.initializeDragging();
 		this.observer = new IntersectionObserver(
 			this.handleIntersections.bind(this),
 			{
@@ -32,32 +32,32 @@ class Musette {
 		});
 	}
 
-	initializeDragging(musetteEl) {
+	initializeDragging() {
 		let mouseIsBeingDragged = false;
 		let pos = { top: 0, left: 0, x: 0, y: 0 };
 
 		const mouseDownHandler = function (e) {
 			e.preventDefault(); //prevents dragging of images
 			pos = {
-				left: musetteEl.scrollLeft,
+				left: this.musetteEl.scrollLeft,
 				x: e.clientX
 			};
 
-			musetteEl.addEventListener("mousemove", mouseMoveHandler);
-			musetteEl.addEventListener("mouseup", mouseUpHandler);
+			this.musetteEl.addEventListener("mousemove", mouseMoveHandler);
+			this.musetteEl.addEventListener("mouseup", mouseUpHandler);
 		};
 
 		const mouseMoveHandler = function (e) {
 			const xMovement = e.clientX - pos.x; //how far the mouse has been moved
-			musetteEl.scrollLeft = pos.left - xMovement; //scroll the element to match how much the mouse moved
+			this.musetteEl.scrollLeft = pos.left - xMovement; //scroll the element to match how much the mouse moved
 			mouseIsBeingDragged =  true;
 		};
 
 		const mouseUpHandler = function () {
-			const musettteLinks = musetteEl.querySelectorAll("a");
+			const musettteLinks = this.musetteEl.querySelectorAll("a");
 
-			musetteEl.removeEventListener("mousemove", mouseMoveHandler);
-			musetteEl.removeEventListener("mouseup", mouseUpHandler);
+			this.musetteEl.removeEventListener("mousemove", mouseMoveHandler);
+			this.musetteEl.removeEventListener("mouseup", mouseUpHandler);
 
 			if(mouseIsBeingDragged){ //if mouse is being dragged, disable links
 				musettteLinks.forEach(musettteLink => {
@@ -72,7 +72,7 @@ class Musette {
 		};
 
 		//init on mouse down
-		musetteEl.addEventListener("mousedown", mouseDownHandler);
+		this.musetteEl.addEventListener("mousedown", mouseDownHandler);
 	}
 
 	preventClick(e) {
