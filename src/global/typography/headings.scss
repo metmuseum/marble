@@ -21,11 +21,15 @@ h1 {
 h1.expressive {
 	@include typography-h1-expressive;
 }
-/* stylelint-enable selector-no-qualifying-type */
 
 h2 {
 	@include typography-h2;
 }
+
+h2.expressive {
+	@include typography-h2-expressive;
+}
+/* stylelint-enable selector-no-qualifying-type */
 
 h3 {
 	@include typography-h3;

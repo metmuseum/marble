@@ -42,6 +42,14 @@ const H2 = () => {
 
 H2.story = { name: "H2" };
 
+const H2Expressive = () => {
+	return scalingRuleWrapper(() => {
+		return html`<h2 class="expressive">${text("Text", pangram)}</h1>`;
+	});
+};
+
+H2Expressive.story = { name: "H2Expressive" };
+
 const h3Markup = () => {
 	return html`<h3>${text("Text", pangram)}</h3>`;
 };
@@ -97,4 +105,4 @@ const All = () => {
 
 H6.story = { name: "H6" };
 
-export { H1Masthead, H1, H1Expressive, H2, H3, H4, H5, H6, All };
+export { H1Masthead, H1, H1Expressive, H2, H2Expressive, H3, H4, H5, H6, All };

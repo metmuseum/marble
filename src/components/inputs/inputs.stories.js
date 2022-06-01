@@ -1,4 +1,5 @@
 import { html } from ".storybook/helpers";
+import { alertIcon } from ".storybook/assets/svg";
 import { withKnobs, text, boolean} from "@storybook/addon-knobs";
 
 export default {
@@ -15,14 +16,6 @@ const data = () => {
 	};
 };
 
-const errorIcon = html`
-	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M10 0C4.4774 0 0 4.4774 0 10C0 15.5226 4.4774 20 10 20C15.5226 20 20 15.5226 20 10C20 4.4774 15.5226 0 10 0Z" fill="#FE8800"/>
-		<path d="M11.25 16.25H8.75V13.75H11.25V16.25Z" fill="white"/>
-		<path d="M11.25 11.25H8.75V3.75H11.25V11.25Z" fill="white"/>
-	</svg>
-`;
-
 const succesIcon = html `
 	<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path d="M10 0C4.4774 0 0 4.4774 0 10C0 15.5226 4.4774 20 10 20C15.5226 20 20 15.5226 20 10C20 4.4774 15.5226 0 10 0Z" fill="#00BA84"/>
@@ -34,7 +27,7 @@ export const ContainerWithAlert = () => {
 	const model = data();
 	const hideAlertClass = model.hideAlert ? "" : "show-alert";
 	const withArrow = model.withArrow ? "has-arrow" : "";
-	const icon = model.showSuccesIcon ? succesIcon : errorIcon;
+	const icon = model.showSuccesIcon ? succesIcon : alertIcon;
 
 	return html`
 	<section style="padding: 20px;">
