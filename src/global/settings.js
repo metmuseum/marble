@@ -15,7 +15,8 @@ function deepFreeze(object) {
 }
 
 const SETTINGS = deepFreeze({
-	initializedClassName: "js-marble-initialized"
+	initializedClassName: "js-marble-initialized",
+	FOCUSABLES_SELECTOR: "a[href]:not(.invisible-redundant-link), button, input, textarea, select, details, [tabindex]:not(.invisible-redundant-link)"
 });
 
 

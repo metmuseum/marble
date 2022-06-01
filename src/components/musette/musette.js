@@ -1,3 +1,5 @@
+import SETTINGS from "../../global/settings";
+
 class Musette {
 	constructor(musetteEl) {
 		this.musetteEl = musetteEl;
@@ -29,6 +31,7 @@ class Musette {
 					this.musetteWrapper.classList.add("musette-has-right-button");
 			}
 			entry.isIntersecting ? entry.target.ariaHidden = "false" : entry.target.ariaHidden = "true";
+			entry.isIntersecting ? this.showFocusables(entry.target) : this.hideFocusables(entry.target);
 		});
 	}
 
@@ -114,6 +117,20 @@ class Musette {
 		this.musetteEl.scrollTo({
 			left: (this.musetteEl.scrollLeft + this.musetteEl.offsetWidth),
 			behavior: "smooth"
+		});
+	}
+
+	hideFocusables(element) {
+		element.querySelectorAll(SETTINGS.FOCUSABLES_SELECTOR).forEach((focusableEl) => {
+			focusableEl.setAttribute("aria-hidden", "true");
+			focusableEl.setAttribute("tabindex", "-1");
+		});
+	}
+
+	showFocusables(element) {
+		element.querySelectorAll(SETTINGS.FOCUSABLES_SELECTOR).forEach((focusableEl) => {
+			focusableEl.removeAttribute("aria-hidden");
+			focusableEl.setAttribute("tabindex", "0");
 		});
 	}
 }
