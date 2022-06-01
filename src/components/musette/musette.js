@@ -21,12 +21,10 @@ class Musette {
 	handleIntersections(entries) {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				entry.target.ariaHidden = "false";
 				this.showFocusables(entry.target);
 				entry.target == this.musetteEl.firstElementChild && this.musetteWrapper.classList.remove("musette-has-left-button");
 				entry.target == this.musetteEl.lastElementChild && this.musetteWrapper.classList.remove("musette-has-right-button");
 			} else {
-				entry.target.ariaHidden = "true";
 				this.hideFocusables(entry.target);
 				entry.target == this.musetteEl.firstElementChild && this.musetteWrapper.classList.add("musette-has-left-button");
 				entry.target == this.musetteEl.lastElementChild && this.musetteWrapper.classList.add("musette-has-right-button");
@@ -120,6 +118,7 @@ class Musette {
 	}
 
 	hideFocusables(element) {
+		element.ariaHidden = "true";
 		element.querySelectorAll(SETTINGS.FOCUSABLES_SELECTOR).forEach((focusableEl) => {
 			focusableEl.setAttribute("aria-hidden", "true");
 			focusableEl.setAttribute("tabindex", "-1");
@@ -127,6 +126,7 @@ class Musette {
 	}
 
 	showFocusables(element) {
+		element.ariaHidden = "false";
 		element.querySelectorAll(SETTINGS.FOCUSABLES_SELECTOR).forEach((focusableEl) => {
 			focusableEl.removeAttribute("aria-hidden");
 			focusableEl.setAttribute("tabindex", "0");
