@@ -2,9 +2,13 @@ import SETTINGS from "../../global/settings";
 
 class Musette {
 	constructor(musetteEl) {
+		// properties
 		this.musetteEl = musetteEl;
 		this.musetteWrapper = this.createWrapper();
-		this.initializeDragging();
+		this.mouseIsBeingDragged = false;
+		this.pos = { top: 0, left: 0, x: 0, y: 0 };
+
+		// 👀 observer
 		this.observer = new IntersectionObserver(
 			this.handleIntersections.bind(this),
 			{
@@ -16,6 +20,12 @@ class Musette {
 		Array.from(this.musetteEl.children).forEach((child) => {
 			this.observer.observe(child);
 		});
+
+		// handlers 🧤
+		this.mouseDownHandler = this.mouseDownHandler.bind(this);
+		this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
+		this.mouseUpHandler = this.mouseUpHandler.bind(this);
+		this.musetteEl.addEventListener("mousedown", this.mouseDownHandler);
 	}
 
 	handleIntersections(entries) {
@@ -32,47 +42,38 @@ class Musette {
 		});
 	}
 
-	initializeDragging() {
-		let mouseIsBeingDragged = false;
-		let pos = { top: 0, left: 0, x: 0, y: 0 };
-
-		const mouseDownHandler = function (e) {
-			e.preventDefault(); //prevents dragging of images
-			pos = {
-				left: this.musetteEl.scrollLeft,
-				x: e.clientX
-			};
-
-			this.musetteEl.addEventListener("mousemove", mouseMoveHandler);
-			this.musetteEl.addEventListener("mouseup", mouseUpHandler);
+	mouseDownHandler(e) {
+		e.preventDefault(); //prevents dragging of images
+		this.pos = {
+			left: this.musetteEl.scrollLeft,
+			x: e.clientX
 		};
+		this.musetteEl.addEventListener("mousemove", this.mouseMoveHandler);
+		this.musetteEl.addEventListener("mouseup", this.mouseUpHandler);
+	}
 
-		const mouseMoveHandler = function (e) {
-			const xMovement = e.clientX - pos.x; //how far the mouse has been moved
-			this.musetteEl.scrollLeft = pos.left - xMovement; //scroll the element to match how much the mouse moved
-			mouseIsBeingDragged =  true;
-		};
+	mouseMoveHandler(e) {
+		const xMovement = e.clientX - this.pos.x; //how far the mouse has been moved
+		this.musetteEl.scrollLeft = this.pos.left - xMovement; //scroll the element to match how much the mouse moved
+		this.mouseIsBeingDragged = true;
+	}
 
-		const mouseUpHandler = function () {
-			const musettteLinks = this.musetteEl.querySelectorAll("a");
+	mouseUpHandler() {
+		const musettteLinks = this.musetteEl.querySelectorAll("a");
 
-			this.musetteEl.removeEventListener("mousemove", mouseMoveHandler);
-			this.musetteEl.removeEventListener("mouseup", mouseUpHandler);
+		this.musetteEl.removeEventListener("mousemove", this.mouseMoveHandler);
+		this.musetteEl.removeEventListener("mouseup", this.mouseUpHandler);
 
-			if(mouseIsBeingDragged){ //if mouse is being dragged, disable links
-				musettteLinks.forEach(musettteLink => {
-					musettteLink.addEventListener("click", this.preventClick);
-				});
-			} else { //otherwise allow links
-				musettteLinks.forEach(musettteLink => {
-					musettteLink.removeEventListener("click", this.preventClick);
-				});
-			}
-			mouseIsBeingDragged = false;
-		};
-
-		//init on mouse down
-		this.musetteEl.addEventListener("mousedown", mouseDownHandler);
+		if (this.mouseIsBeingDragged) { //if mouse is being dragged, disable links
+			musettteLinks.forEach(musettteLink => {
+				musettteLink.addEventListener("click", this.preventClick);
+			});
+		} else { //otherwise allow links
+			musettteLinks.forEach(musettteLink => {
+				musettteLink.removeEventListener("click", this.preventClick);
+			});
+		}
+		this.mouseIsBeingDragged = false;
 	}
 
 	preventClick(e) {
