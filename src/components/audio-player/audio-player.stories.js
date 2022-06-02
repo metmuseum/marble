@@ -141,6 +141,15 @@ const FullPlayer = () => {
 	return audioPlayerMarkUp(data({}));
 };
 
+const MultiplePlayers = () => {
+	useEffect(initializeAudioPlayers);
+	return html`
+		<div>
+			${audioPlayerMarkUp(data({}))}
+			${audioPlayerMarkUp(data({}))}
+		</div>`;
+};
+
 const FullPlayerWithOpenTranscript = () => {
 	useEffect(initializeAudioPlayers);
 	return html`<div class="transcript-is-open">${audioPlayerMarkUp(data({}))}</div>`;
@@ -165,5 +174,6 @@ export {
 	FullPlayerWithOpenTranscript,
 	FullPlayerWithPlaylist,
 	MiniPlayer,
-	MicroPlayer
+	MicroPlayer,
+	MultiplePlayers
 };

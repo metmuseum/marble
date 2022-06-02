@@ -279,7 +279,12 @@ class AudioPlayer {
 
 	togglePlaying(e) {
 		e.preventDefault();
-		this.audioEl.paused ? this.audioEl.play() : this.audioEl.pause();
+		if (this.audioEl.paused) {
+			document.querySelectorAll("audio").forEach(audioEl => audioEl.pause());
+			this.audioEl.play();
+		} else {
+			this.audioEl.pause();
+		}
 	}
 
 	handlePlay() {
