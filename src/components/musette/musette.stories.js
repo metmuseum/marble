@@ -27,11 +27,11 @@ const images = [greekHallImages.image1x1, greekHallImages.image4x3, greekHallIma
 const slideTemplate = (args) => {
 	return html`<div class="musette-fold">
 	<a href="http://www.metmuseum.org/art/collection/search/459090">
-		<img src="${args.imageURL}">
-		</a>
+		<img src="${args.imageURL}" alt="example image alt">
 		<h5>
-		${args.title}
+			${args.title}
 		</h5>
+	</a>
 </div>`;
 };
 

@@ -1,3 +1,5 @@
+@use "../../base/colors";
+// <container>
 .image-container {
 	border: 0;
 	font-size: 0;
@@ -15,6 +17,15 @@
 	width: 50%;
 }
 
+.image-container--object {
+	// TODO: we can't just use object fit/position bc BE can't tell us the dimensions :(
+	align-items: center;
+	background-color: colors.$color-grey-200;
+	display: flex;
+	justify-content: center;
+}
+
+// <img>
 .image-container__image {
 	border: 0;
 	height: auto;
@@ -38,4 +49,16 @@
 	@media (min-aspect-ratio: 5/6) {
 		display: block;
 	}
+}
+
+.image-container__image--object {
+	height: auto;
+	max-height: 100%;
+	max-width: 100%;
+	// TODO: we can't use these declarations until we have a BE that can tell us the basic dimensions for markup :( 
+	// object-fit: scale-down;
+	// object-position: center;
+	object-fit: unset;
+	object-position: unset;
+	width: auto;
 }

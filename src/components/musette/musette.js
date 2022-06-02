@@ -1,8 +1,14 @@
+import SETTINGS from "../../global/settings";
+
 class Musette {
 	constructor(musetteEl) {
+		// properties
 		this.musetteEl = musetteEl;
 		this.musetteWrapper = this.createWrapper();
-		this.handleDragging = this.handleDragging(this.musetteEl);
+		this.mouseIsBeingDragged = false;
+		this.pos = { top: 0, left: 0, x: 0, y: 0 };
+
+		// 👀 observer
 		this.observer = new IntersectionObserver(
 			this.handleIntersections.bind(this),
 			{
@@ -14,70 +20,64 @@ class Musette {
 		Array.from(this.musetteEl.children).forEach((child) => {
 			this.observer.observe(child);
 		});
+
+		// bind handlers 🧤
+		this.mouseDownHandler = this.mouseDownHandler.bind(this);
+		this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
+		this.mouseUpHandler = this.mouseUpHandler.bind(this);
+
+		// apply listener(s) 🎧
+		this.musetteEl.addEventListener("mousedown", this.mouseDownHandler);
 	}
 
 	handleIntersections(entries) {
-		entries.forEach(entry => {
-			if (entry.target == this.musetteEl.firstElementChild) {
-				entry.isIntersecting ?
-					this.musetteWrapper.classList.remove("musette-has-left-button") :
-					this.musetteWrapper.classList.add("musette-has-left-button");
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				this.showFocusables(entry.target);
+				entry.target == this.musetteEl.firstElementChild && this.musetteWrapper.classList.remove("musette-has-left-button");
+				entry.target == this.musetteEl.lastElementChild && this.musetteWrapper.classList.remove("musette-has-right-button");
+			} else {
+				this.hideFocusables(entry.target);
+				entry.target == this.musetteEl.firstElementChild && this.musetteWrapper.classList.add("musette-has-left-button");
+				entry.target == this.musetteEl.lastElementChild && this.musetteWrapper.classList.add("musette-has-right-button");
 			}
-			if (entry.target == this.musetteEl.lastElementChild) {
-				entry.isIntersecting ?
-					this.musetteWrapper.classList.remove("musette-has-right-button") :
-					this.musetteWrapper.classList.add("musette-has-right-button");
-			}
-			entry.isIntersecting ? entry.target.ariaHidden = "false" : entry.target.ariaHidden = "true";
 		});
 	}
 
-	handleDragging(musetteEl) {
-		const preventClick = (e) => {
-			e.preventDefault();
-			e.stopImmediatePropagation();
+	mouseDownHandler(e) {
+		e.preventDefault(); //prevents dragging of images
+		this.pos = {
+			left: this.musetteEl.scrollLeft,
+			x: e.clientX
 		};
+		this.musetteEl.addEventListener("mousemove", this.mouseMoveHandler);
+		this.musetteEl.addEventListener("mouseup", this.mouseUpHandler);
+		this.musetteEl.addEventListener("mouseleave", this.mouseUpHandler);
+	}
 
-		let mouseIsBeingDragged = false;
-		let pos = { top: 0, left: 0, x: 0, y: 0 };
+	mouseMoveHandler(e) {
+		this.mouseIsBeingDragged = true;
+		const xMovement = e.clientX - this.pos.x; //how far the mouse has been moved
+		this.musetteEl.scrollLeft = this.pos.left - xMovement; //scroll the element to match how much the mouse moved
+	}
 
-		const mouseDownHandler = function (e) {
-			e.preventDefault(); //prevents dragging of images
-			pos = {
-				left: musetteEl.scrollLeft,
-				x: e.clientX
-			};
+	mouseUpHandler() {
+		this.musetteEl.removeEventListener("mousemove", this.mouseMoveHandler);
+		this.musetteEl.removeEventListener("mouseup", this.mouseUpHandler);
+		this.musetteEl.removeEventListener("mouseleave", this.mouseUpHandler);
 
-			musetteEl.addEventListener("mousemove", mouseMoveHandler);
-			musetteEl.addEventListener("mouseup", mouseUpHandler);
-		};
+		let addOrRemove = this.mouseIsBeingDragged ? "addEventListener" : "removeEventListener";
+		
+		this.musetteEl.querySelectorAll("a").forEach(musetteLink => {
+			musetteLink[addOrRemove]("click", this.preventClick);
+		});
 
-		const mouseMoveHandler = function (e) {
-			const xMovement = e.clientX - pos.x; //how far the mouse has been moved
-			musetteEl.scrollLeft = pos.left - xMovement; //scroll the element to match how much the mouse moved
-			mouseIsBeingDragged =  true;
-		};
+		this.mouseIsBeingDragged = false;
+	}
 
-		const mouseUpHandler = function () {
-			const musettteLinks = musetteEl.querySelectorAll("a");
-
-			musetteEl.removeEventListener("mousemove", mouseMoveHandler);
-			musetteEl.removeEventListener("mouseup", mouseUpHandler);
-
-			if(mouseIsBeingDragged){ //if mouse is being dragged, disable links
-				musettteLinks.forEach(musettteLink => {
-					musettteLink.addEventListener("click", preventClick);
-				});
-			} else { //otherwise allow links
-				musettteLinks.forEach(musettteLink => {
-					musettteLink.removeEventListener("click", preventClick);
-				});
-			}
-			mouseIsBeingDragged = false;
-		};
-
-		//init on mouse down
-		musetteEl.addEventListener("mousedown", mouseDownHandler);
+	preventClick(e) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
 	}
 
 	createWrapper() {
@@ -114,6 +114,22 @@ class Musette {
 		this.musetteEl.scrollTo({
 			left: (this.musetteEl.scrollLeft + this.musetteEl.offsetWidth),
 			behavior: "smooth"
+		});
+	}
+
+	hideFocusables(element) {
+		element.ariaHidden = "true";
+		element.querySelectorAll(SETTINGS.FOCUSABLES_SELECTOR).forEach((focusableEl) => {
+			focusableEl.setAttribute("aria-hidden", "true");
+			focusableEl.setAttribute("tabindex", "-1");
+		});
+	}
+
+	showFocusables(element) {
+		element.ariaHidden = "false";
+		element.querySelectorAll(SETTINGS.FOCUSABLES_SELECTOR).forEach((focusableEl) => {
+			focusableEl.removeAttribute("aria-hidden");
+			focusableEl.setAttribute("tabindex", "0");
 		});
 	}
 }
