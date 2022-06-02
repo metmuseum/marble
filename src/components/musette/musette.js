@@ -25,9 +25,8 @@ class Musette {
 		this.mouseDownHandler = this.mouseDownHandler.bind(this);
 		this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
 		this.mouseUpHandler = this.mouseUpHandler.bind(this);
-		this.preventClickIfMouseIsBeingDragged = this.preventClickIfMouseIsBeingDragged.bind(this);
 
-		// apply listeners 🎧
+		// apply listener(s) 🎧
 		this.musetteEl.addEventListener("mousedown", this.mouseDownHandler);
 	}
 
@@ -57,9 +56,9 @@ class Musette {
 	}
 
 	mouseMoveHandler(e) {
+		this.mouseIsBeingDragged = true;
 		const xMovement = e.clientX - this.pos.x; //how far the mouse has been moved
 		this.musetteEl.scrollLeft = this.pos.left - xMovement; //scroll the element to match how much the mouse moved
-		this.mouseIsBeingDragged = true;
 	}
 
 	mouseUpHandler() {
@@ -68,18 +67,18 @@ class Musette {
 		this.musetteEl.removeEventListener("mouseleave", this.mouseUpHandler);
 
 		let addOrRemove = this.mouseIsBeingDragged ? "addEventListener" : "removeEventListener";
+		console.log(addOrRemove);
 		this.musetteEl.querySelectorAll("a").forEach(musetteLink => {
-			musetteLink[addOrRemove]("mouseup", this.preventClickIfMouseIsBeingDragged);
+			musetteLink[addOrRemove]("mouseup", this.preventClick);
 		});
 
 		this.mouseIsBeingDragged = false;
 	}
 
-	preventClickIfMouseIsBeingDragged(e) {
-		if (this.mouseIsBeingDragged) {
-			e.preventDefault();
-			e.stopImmediatePropagation();
-		}
+	preventClick(e) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		console.log("ran");
 	}
 
 	createWrapper() {
