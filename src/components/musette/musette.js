@@ -67,9 +67,9 @@ class Musette {
 		this.musetteEl.removeEventListener("mouseleave", this.mouseUpHandler);
 
 		let addOrRemove = this.mouseIsBeingDragged ? "addEventListener" : "removeEventListener";
-		console.log(addOrRemove);
+		
 		this.musetteEl.querySelectorAll("a").forEach(musetteLink => {
-			musetteLink[addOrRemove]("mouseup", this.preventClick);
+			musetteLink[addOrRemove]("click", this.preventClick);
 		});
 
 		this.mouseIsBeingDragged = false;
@@ -78,7 +78,6 @@ class Musette {
 	preventClick(e) {
 		e.preventDefault();
 		e.stopImmediatePropagation();
-		console.log("ran");
 	}
 
 	createWrapper() {
