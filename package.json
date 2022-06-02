@@ -1,6 +1,6 @@
 {
 	"name": "@metmuseum/marble",
-	"version": "0.13.18",
+	"version": "0.13.19",
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "./src/index.mjs",
 	"style": "./dist/marble.css",
