@@ -210,7 +210,6 @@ Example:
     "from": "github:metmuseum/marble#main",
     "requires": {
         "he": "^1.2.0",
-        "intersection-observer": "^0.7.0",
         "smoothscroll-polyfill": "^0.4.4",
         "vanilla-lazyload": "^12.5.1"
     }
