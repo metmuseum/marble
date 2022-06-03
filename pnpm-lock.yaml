@@ -17,6 +17,7 @@ specifiers:
   caniuse-lite: ^1.0.30001346
   chromatic: ^6.5.6
   clean-webpack-plugin: ^4.0.0
+  core-js: ^3.22.8
   css-loader: ^6.7.1
   css-minimizer-webpack-plugin: ^4.0.0
   eslint: ^8.16.0
@@ -32,6 +33,7 @@ specifiers:
   path: ^0.12.7
   path-parse: ^1.0.7
   postcss: ^8.4.14
+  postcss-loader: ^7.0.0
   raw-loader: ^4.0.2
   release-it: ^15.0.0
   sass: ^1.52.1
@@ -80,6 +82,7 @@ devDependencies:
   caniuse-lite: 1.0.30001346
   chromatic: 6.5.6
   clean-webpack-plugin: 4.0.0_webpack@5.73.0
+  core-js: 3.22.8
   css-minimizer-webpack-plugin: 4.0.0_webpack@5.73.0
   eslint: 8.16.0
   eslint-plugin-storybook: 0.5.12_eslint@8.16.0
@@ -92,6 +95,7 @@ devDependencies:
   path: 0.12.7
   path-parse: 1.0.7
   postcss: 8.4.14
+  postcss-loader: 7.0.0_mepnsno3xmng6eyses4tepu7bu
   raw-loader: 4.0.2_webpack@5.73.0
   release-it: 15.0.0
   sass: 1.52.1
@@ -10577,6 +10581,20 @@ packages:
       schema-utils: 3.1.1
       semver: 7.3.7
       webpack: 4.46.0_webpack-cli@4.9.2
+    dev: true
+
+  /postcss-loader/7.0.0_mepnsno3xmng6eyses4tepu7bu:
+    resolution: {integrity: sha512-IDyttebFzTSY6DI24KuHUcBjbAev1i+RyICoPEWcAstZsj03r533uMXtDn506l6/wlsRYiS5XBdx7TpccCsyUg==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      postcss: ^7.0.0 || ^8.0.1
+      webpack: ^5.0.0
+    dependencies:
+      cosmiconfig: 7.0.1
+      klona: 2.0.5
+      postcss: 8.4.14
+      semver: 7.3.7
+      webpack: 5.73.0_webpack-cli@4.9.2
     dev: true
 
   /postcss-media-query-parser/0.2.3:
