@@ -67,12 +67,12 @@
 		"build": "webpack --config webpack.config.js --mode=production",
 		"build-dev": "webpack --config webpack.config.js --mode=development",
 		"build-storybook": "build-storybook -c .storybook -o .out",
+		"chromatic-ci": "chromatic --ci --exit-once-uploaded --storybook-build-dir .out",
 		"deploy-storybook": "storybook-to-ghpages",
 		"lint": "eslint .",
 		"start": "webpack-dev-server --open --hot --config webpack.dev.config.js",
 		"storybook": "start-storybook -p 54525",
 		"stylelint": "stylelint '**/*.scss' --quiet",
-		"chromatic": "chromatic",
 		"postinstall": "node postinstall.js",
 		"release": "release-it"
 	},

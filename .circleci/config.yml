@@ -47,7 +47,7 @@ jobs:
           at: .
       - run:
           name: "Run Chromatic"
-          command: ./tmp/bin/pnpm run chromatic --ci --exit-once-uploaded --storybook-build-dir .out
+          command: ./tmp/bin/pnpm run chromatic-ci
   deploy_gh_pages:
     executor: marble-node
     steps:
