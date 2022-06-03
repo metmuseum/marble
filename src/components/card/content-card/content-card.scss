@@ -67,19 +67,17 @@
 
 .content-card__body {
 	display: flex;
-	flex-basis: 100%;
 	flex-direction: column;
-	justify-content: space-between;
 	padding: $spacing-xs $spacing-component-margin $spacing-s;
+
+	p {
+		font-size: calc(14px + 0.2vw);
+		line-height: 22px;
+	}
 
 	.content-card--productive & {
 		padding-left: 0;
 		padding-right: 0;
-	}
-
-	//Last item is aligned to bottom.
-	:last-child {
-		margin-top: auto;
 	}
 }
 
@@ -88,7 +86,7 @@
 	@include typography-tag();
 	display: block;
 	font-size: $textsize-xxs; //TODO add to tag maybe?
-	margin-bottom: $spacing-xxs;
+	margin-bottom: $spacing-micro;
 
 	&:empty {
 		display: none;
@@ -115,8 +113,8 @@
 }
 
 .content-card__heading {
-	font-weight: 600;
-	line-height: math.div(29, 24);
+	@include typography-h2;
+	margin-bottom: $spacing-xs;
 
 	&:last-child {
 		padding-bottom: 0;
