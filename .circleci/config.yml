@@ -19,7 +19,7 @@ jobs:
       - save_cache:
           key: pnpm-cache-{{ checksum "pnpm-lock.yaml" }}
           paths:
-            - ~/.pnpm-store
+            - /home/circleci/.local/share/pnpm/store/v3
       - run: ./tmp/bin/pnpm run lint
       - run: ./tmp/bin/pnpm run stylelint
       - persist_to_workspace:
