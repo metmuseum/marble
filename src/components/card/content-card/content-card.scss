@@ -113,7 +113,8 @@
 }
 
 .content-card__heading {
-	@include typography-h2;
+	font-weight: 600;
+	line-height: math.div(29, 24);
 	margin-bottom: $spacing-xs;
 
 	&:last-child {
