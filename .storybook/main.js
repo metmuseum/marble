@@ -5,9 +5,6 @@ module.exports = {
 	core: {
 		builder: 'webpack5',
 	},
-	features: {
-		postcss: false,
-	},
 	webpackFinal: async (config, { configType }) => {
 		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
 		// You can change the configuration based on that.
@@ -16,7 +13,18 @@ module.exports = {
 		// Make whatever fine-grained changes you need
 		config.module.rules.push({
 			test: /\.scss$/,
-			use: ["style-loader", "css-loader", "sass-loader"],
+			use: [
+				"style-loader",
+				{
+					loader: "css-loader",
+					options: {
+						importLoaders: 1,
+						modules: {
+							mode: "icss",
+						},
+					},
+				},
+				"sass-loader"],
 			include: path.resolve(__dirname, "../"),
 		});
 
