@@ -10,16 +10,18 @@ jobs:
       - checkout
       - run: node --version
       - run: npm --version
+      - run: npm i --prefix=./tmp --global pnpm # hack to install pnpm with npm until https://github.com/CircleCI-Public/cimg-node/issues/216
+      - run: ./tmp/bin/pnpm --version
       - restore_cache:
           keys:
-          - npm-cache-{{ checksum "package-lock.json" }}
-      - run: npm ci
+          - pnpm-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run: ./tmp/bin/pnpm install --frozen-lockfile
       - save_cache:
-          key: npm-cache-{{ checksum "package-lock.json" }}
+          key: pnpm-cache-{{ checksum "pnpm-lock.yaml" }}
           paths:
-            - ~/.npm
-      - run: npm run lint
-      - run: npm run stylelint
+            - /home/circleci/.local/share/pnpm/store/v3
+      - run: ./tmp/bin/pnpm run lint
+      - run: ./tmp/bin/pnpm run stylelint
       - persist_to_workspace:
           root: .
           paths:
@@ -32,7 +34,7 @@ jobs:
           at: .
       - run:
           name: "Build static storybook to ./.out"
-          command: npm run build-storybook
+          command: ./tmp/bin/pnpm run build-storybook
       - persist_to_workspace:
           root: .
           paths:
@@ -45,7 +47,7 @@ jobs:
           at: .
       - run:
           name: "Run Chromatic"
-          command: "npm run chromatic -- --ci --exit-once-uploaded --storybook-build-dir .out"
+          command: ./tmp/bin/pnpm run chromatic-ci
   deploy_gh_pages:
     executor: marble-node
     steps:
@@ -57,7 +59,7 @@ jobs:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
       - run:
           name: "Run Storybook GitHub Pages Deployer Script"
-          command: npm run deploy-storybook -- --ci --existing-output-dir=.out
+          command: ./tmp/bin/pnpm run deploy-storybook --ci --existing-output-dir=.out
   build_and_deploy_dist:
     executor: marble-node
     steps:
@@ -69,10 +71,10 @@ jobs:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
       - run:
           name: "Build Marble's ./dist for production!"
-          command: npm run build
+          command: ./tmp/bin/pnpm run build
       - run: git config user.email "stephen.marsh@metmuseum.org"
       - run: git config user.name "Marble Bot"
-      - run: npm run build
+      - run: ./tmp/bin/pnpm run build
       - run: node ./.circleci/scripts/git_steps_for_dist_build.js
       - persist_to_workspace:
           root: .
@@ -91,7 +93,7 @@ jobs:
       - run: git config user.name "Marble Bot"
       - run:
           name: "Use release-it to tag and push to GitHub as release"
-          command: DEBUG=release-it:* npm run release -- patch --ci -VV --no-git.requireUpstream --set-upstream origin main
+          command: DEBUG=release-it:* ./tmp/bin/pnpm run release patch --ci -VV --no-git.requireUpstream --set-upstream origin main
 
 workflows:
   build__do_chromatic__deploy_gh_pages__build_and_deploy_dist__tag_a_release:
