@@ -1,0 +1,62 @@
+.js-fs-container {
+	background-color: $color-white;
+	bottom: 0;
+	display: none;
+	flex-direction: column;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	@media (orientation: landscape) {
+		border-radius: 8px;
+		bottom: $spacing-xxs;
+		box-shadow: 0 0 0 $spacing-m $color-black-opaque-80;
+		left: $spacing-xxs;
+		padding: $spacing-xxs;
+		right: $spacing-xxs;
+		top: $spacing-xxs;
+	}
+
+	&.is-fullscreen {
+		display: block;
+	}
+}
+
+.js-fs-content {
+	display: flex;
+	flex-direction: column;
+	grid-gap: $spacing-s;
+	height: 100%;
+
+	@media (orientation: landscape) {
+		align-items: center;
+		flex-direction: row-reverse;
+		padding: $spacing-xxs;
+	}
+}
+
+.js-fs-image {
+	img {
+		align-self: center;
+		flex-basis: auto;
+		height: auto;
+		max-width: 100%;
+		min-width: 0;
+	}
+}
+
+.js-fs-text {
+	flex-basis: 30%;
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+.js-fs-close {
+	align-self: flex-end;
+	display: block;
+	margin: $spacing-xxs $spacing-xxs $spacing-xxs auto;
+	@media (orientation: landscape) {
+		margin: 0 0 0 auto;
+	}
+}
