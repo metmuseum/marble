@@ -4,6 +4,8 @@
 	display: none;
 	flex-direction: column;
 	left: 0;
+	max-height: 100%;
+	padding-bottom: $spacing-m;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -19,19 +21,19 @@
 	}
 
 	&.is-fullscreen {
-		display: block;
+		display: flex;
 	}
 }
 
 .js-fs-content {
 	display: flex;
 	flex-direction: column;
-	grid-gap: $spacing-s;
-	height: 100%;
+	overflow: hidden;
 
 	@media (orientation: landscape) {
 		align-items: center;
 		flex-direction: row-reverse;
+		height: 100%;
 		padding: $spacing-xxs;
 	}
 }
@@ -46,17 +48,51 @@
 	}
 }
 
-.js-fs-text {
-	flex-basis: 30%;
-	flex-grow: 0;
-	flex-shrink: 0;
+.js-fs-text:not(:empty) {
+	max-height: 100%;
+	overflow: auto;
+	padding: $spacing-xxs;
+	@media (orientation: landscape) {
+		flex-basis: 30%;
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin-right: $spacing-xs;
+		padding: 0;
+	}
 }
 
 .js-fs-close {
+	@include button-reset();
 	align-self: flex-end;
 	display: block;
+	height: $spacing-micro;
 	margin: $spacing-xxs $spacing-xxs $spacing-xxs auto;
+	width: $spacing-micro;
 	@media (orientation: landscape) {
 		margin: 0 0 0 auto;
 	}
+}
+
+.js-fs-forward,
+.js-fs-back {
+	@include button-reset();
+	bottom: $spacing-xxs;
+	height: $spacing-xxs;
+	position: absolute;
+	text-align: center;
+	width: $spacing-xxs;
+
+	@media (orientation: landscape) {
+		bottom: 50%;
+	}
+}
+
+.js-fs-forward {
+	right: $spacing-micro;
+	transform: rotate(-90deg);
+}
+
+.js-fs-back {
+	left: $spacing-micro;
+	transform: rotate(90deg);
 }
