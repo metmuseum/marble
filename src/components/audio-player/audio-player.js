@@ -1,3 +1,4 @@
+import { escape } from "underscore";
 import timeFormatter from "./time-formatter.js";
 import coverImageTemplate from "./cover-image-template";
 import AnalyticsLogger from "../analytics-logger";
@@ -107,7 +108,11 @@ class AudioPlayer {
 		this.transcriptToggle?.addEventListener("click", this.handleTranscriptToggle);
 
 		// Dark/light transitions 🌞 / 🌚
-		this.darkModeQuery.addEventListener("change", (query) => { return this.isDarkMode = query.matches; });
+		if (typeof this.darkModeQuery.addEventListener === "function") {
+			// safety check for older browsers that don't support addEventListener on MediaQueryList
+			// see: https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList#browser_compatibility
+			this.darkModeQuery.addEventListener("change", (query) => { return this.isDarkMode = query.matches; });
+		}
 	}
 
 	handleTrackChange(e) {
@@ -131,8 +136,8 @@ class AudioPlayer {
 		this.currentTrack = track;
 		this.audioEl.dataset.track = track;
 		this.audioEl.querySelector("source").src = track.audio;
-		this.titleEl.innerHTML = track.title;
-		this.subtitleEl.innerHTML = track.description;
+		this.titleEl.innerHTML = escape(track.title);
+		this.subtitleEl.innerHTML = escape(track.description);
 		this.coverImageWrapperEl.innerHTML = coverImageTemplate(track.image);
 		this.amountPlayed = 0;
 		this.audioEl.load(); // load the new track, this will fire metadataloaded, btw
@@ -262,7 +267,7 @@ class AudioPlayer {
 			return false;
 		}
 		let artwork = [];
-		let src = this.currentTrack?.image?.small;
+		let src = this.currentTrack?.image?.w560;
 		src && artwork.push({src});
 
 		navigator.mediaSession.metadata = new MediaMetadata({
@@ -274,7 +279,12 @@ class AudioPlayer {
 
 	togglePlaying(e) {
 		e.preventDefault();
-		this.audioEl.paused ? this.audioEl.play() : this.audioEl.pause();
+		if (this.audioEl.paused) {
+			document.querySelectorAll("audio").forEach(audioEl => audioEl.pause());
+			this.audioEl.play();
+		} else {
+			this.audioEl.pause();
+		}
 	}
 
 	handlePlay() {

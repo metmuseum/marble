@@ -1,5 +1,6 @@
 .media__youtube-wrapper {
 	aspect-ratio: 16 / 9;
+	margin-bottom: $spacing-micro;
 	max-width: 60em;
 	overflow: hidden;
 	position: relative;
@@ -66,6 +67,10 @@
 		> ul {
 			margin-bottom: 0;
 		}
+	}
+
+	iframe {
+		max-width: 100%;
 	}
 
 	img {

@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  storybook:
+    build: 
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/:/marble/src:cached
+      - ./.storybook/:/marble/.storybook:cached
+      - ./dist/:/marble/dist:delegated
+    ports:
+      - "54525:54525"
+    entrypoint: "npm run storybook"

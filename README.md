@@ -200,7 +200,7 @@ You can expect that Marble's default branch, `main`, is always stable and releas
 
 ### Recommended CI
 
-If you need something more deterministic and safe, say for staging or production environments, those environments should use `npm ci` **_instead of_** `npm install`. This will ensure the project only builds with the exact commit (and dependencies) that were specified earlier in the `package-lock.json`.
+Use `npm ci` **_instead of_** `npm install`. This will ensure the project only builds with the exact commit (and dependencies) that were specified earlier in the `package-lock.json`.
 
 Example:
 
@@ -210,7 +210,6 @@ Example:
     "from": "github:metmuseum/marble#main",
     "requires": {
         "he": "^1.2.0",
-        "intersection-observer": "^0.7.0",
         "smoothscroll-polyfill": "^0.4.4",
         "vanilla-lazyload": "^12.5.1"
     }
@@ -218,8 +217,6 @@ Example:
 ```
 
 More info: https://docs.npmjs.com/cli/ci.html
-
-For a preview environment (example: on Ghidorah this is called the "development" server), you might want to only use `npm install` so each build has the latest and you can catch integration issues earlier.
 
 It is **not recommended** to point your installation of Marble to an environment-specific branch on staging or production. Please always use `main`.
 
@@ -231,47 +228,66 @@ It is **not recommended** to point your installation of Marble to an environment
 
 - mock your data separately
 - use component story format
-- use knobs
+- use controls
 - try to provide in-situ examples?
 - make sure a11y passes!
 
 * file organization
-
   - stories
   - scss
   - javascript
   - text casing (kebab-case?)
 
-- linting
-  - recommend prettier
-  - explore: CI enforcement?
+* linting
+  * JS: pnpm run lint
+  * S/CSS: pnpm run stylelint
 
 ### Marble Development As A Local Package
 
-You may want to see your changes to Marble locally _**and**_ in the context of another project you're working on. We can do this easily with [npm link](https://docs.npmjs.com/cli/link.html).
+You may want to see your changes to Marble locally _**and**_ in the context of another project you're working on. We can do this easily with [pnpm link](https://pnpm.io/cli/link) based on [npm's link](https://docs.npmjs.com/cli/link.html).
 
 ### Steps:
 
-1.  Tell your `npm` that _this_ is the local folder where Marble lives.
+1.  Tell your `pnpm` that _this_ is the local folder where Marble lives.
 
     - Navigate to your local Marble repo (ie, where this README lives) and just run:
 
-          		npm link
+          		pnpm link
 
 2)  Next, tell whatever project you're working on to use that local, linked version of Marble.
 
     - Navigate to a local project folder and find the directory that contains the `package.json` that originally specified Marble. \* For example, in Ghidorah, this wouldn't be the project root, it would be: `ghidorah/MMA.Ghidorah/`
     - From _that_ directory, run:
 
-          		npm link @metmuseum/marble
+          		pnpm link @metmuseum/marble
 
-    - Now, instead of what's installed in `node_modules`, npm knows to pull our Marble package files from the directory in Step 1. We can make our changes in our Marble repo (more on that below), and our other project will show them to us.
+    - Now, instead of what's installed in `node_modules`, pnpm knows to pull our Marble package files from the directory in Step 1. We can make our changes in our Marble repo (more on that below), and our other project will show them to us.
 
 # Storybook Development
 
-Storybook is the preferred way of developing components for Marble. To start Storybook locally, launch the app with: `npm run storybook`
+Storybook is the preferred way of developing components for Marble.
 
-To publish the Storybook to its web homepage (via GitHub pages), please commit your changes, then run: `npm run deploy-storybook`. Be mindful that this overwites the current Storybook with your local version.
+## With Docker:
+
+Recommended: install [Docker Desktop](https://www.docker.com/get-started) and run it.
+
+Always build the latest changes if you pull, etc:
+```bash
+docker-compose build
+```
+
+Run the container:
+```bash
+docker-compose up
+```
+
+Storybook will now be available at: [http://localhost:54525](http://localhost:54525)
+
+## Natively / Without Docker:
+
+To start Storybook locally, launch the app with: `pnpm run storybook`
+
+To publish the Storybook to its web homepage (via GitHub pages), please commit your changes, then run: `pnpm run deploy-storybook`. Be mindful that this overwites the current Storybook with your local version.
 
 We use the `html preset` for Storybook. There are many good exmaples of html stories and add-ons at the official "kitchen sink" example directory:
 
@@ -286,7 +302,7 @@ TODO: update this to have CI build dist on merge
 
 - Our build step is aliased in package.json as:
 
-      		npm run build
+      		pnpm run build
 
 * See also: [/webpack.production.config.js](https://github.com/metmuseum/marble/blob/master/webpack.production.config.js)
 
@@ -298,12 +314,12 @@ We target the latest 2 major versions of most browsers, via our `.browesrslistrc
 
 To see what those currently are, run:
 
-    npx browserslist
+    pnpm dlx browserslist
 
 
 To update the list of current browsers, it's important to frequently use:
 
-    npx browserslist@latest --update-db
+    pnpm dlx browserslist@latest --update-db
 
 ...because of [reasons](https://github.com/browserslist/browserslist#browsers-data-updating).
 

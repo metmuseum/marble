@@ -20,7 +20,9 @@ const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathing
 	let playlist = options.numberOfTracks == "playlist" ? { tracks: [
 		track({title: "Track 1"}),
 		track({...example}),
-		track({title: "Track 3", id: 3, transcript: null})
+		track({title: "Track 3", id: 3, transcript: null}),
+		track({title: "Track 4", id: 4, transcript: null}),
+		track({title: "Track 5", id: 4, transcript: null})
 	]} : null;
 
 	return {
@@ -113,10 +115,10 @@ const audioPlayerMarkUp = ({model, options}) => html`
 					<img
 						class="audio-player__playlist-track-thumbnail"
 						alt="${playlistTrack.image.alt}"
-						src="${playlistTrack.image.small}"
+						src="${playlistTrack.image.w280}"
 					/>
 					<div class="audio-player__playlist-track-title">${playlistTrack.title}</div>
-					<div></div>
+					<!-- <div> track length goes here if we have it </div> -->
 					</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
 
 		<div class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
@@ -139,11 +141,24 @@ const FullPlayer = () => {
 	return audioPlayerMarkUp(data({}));
 };
 
+const MultiplePlayers = () => {
+	useEffect(initializeAudioPlayers);
+	return html`
+		<div>
+			${audioPlayerMarkUp(data({}))}
+			${audioPlayerMarkUp(data({}))}
+		</div>`;
+};
+
+const FullPlayerWithOpenTranscript = () => {
+	useEffect(initializeAudioPlayers);
+	return html`<div class="transcript-is-open">${audioPlayerMarkUp(data({}))}</div>`;
+};
+
 const FullPlayerWithPlaylist = () => {
 	useEffect(initializeAudioPlayers);
 	return audioPlayerMarkUp(data({numberOfTracks: "playlist"}));
 };
-
 
 const MiniPlayer = () => {
 	useEffect(initializeAudioPlayers);
@@ -154,10 +169,11 @@ const MicroPlayer = () => {
 	useEffect(initializeAudioPlayers);
 	return audioPlayerMarkUp(data({playerMode: "micro-player"}));
 };
-
 export {
 	FullPlayer,
+	FullPlayerWithOpenTranscript,
 	FullPlayerWithPlaylist,
 	MiniPlayer,
-	MicroPlayer
+	MicroPlayer,
+	MultiplePlayers
 };
