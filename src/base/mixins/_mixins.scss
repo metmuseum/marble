@@ -12,3 +12,36 @@
 	text-overflow: ellipsis;
 }
 /* stylelint-enable */
+
+//Create carousel slides with "margin" on left and right.
+@mixin carousel-slide(
+	$gutter: $spacing-xxs,
+	$slideMaxWidth: 85vw,
+	$leftRightOffset: $spacing-component-margin
+) {
+	flex-shrink: 0;
+	margin-left: $gutter;
+	max-width: $slideMaxWidth;
+	
+	&:last-child,
+	&:first-child {
+		max-width: calc($slideMaxWidth + $leftRightOffset);
+	}
+
+	&:first-child {
+		padding-left: $leftRightOffset;
+	}
+
+	&:last-child {
+		padding-right: $leftRightOffset;
+	}
+}
+
+@mixin carousel-slide-fixed-width($slideWidth: 550px, $leftRightOffset: $spacing-component-margin) {
+	width: $slideWidth;
+
+	&:last-child,
+	&:first-child {
+		width: calc(#{$slideWidth} + #{$leftRightOffset});
+	}
+}

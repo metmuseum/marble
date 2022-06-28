@@ -1,24 +1,28 @@
 @import "../../../base/base";
-$carousel-slide-width: 550px;
 
 .carousel-slide {
-	flex-shrink: 0;
-	max-width: calc(#{$carousel-slide-width} + #{$spacing-xxs});
-	padding-left: $spacing-xxs;
-	width: calc(85vw + #{$spacing-xxs});
-
-	//Margin doesn't play well with flickity here so padding was the low-hanging fruit solution
-	&:first-child {
-		max-width: calc(#{$carousel-slide-width} + #{$spacing-component-margin});
-		padding-left: $spacing-component-margin;
-		width: calc(85vw + #{$spacing-component-margin});
-	}
+	@include carousel-slide;
 }
 
+.carousel-slide--fixed-width {
+	@include carousel-slide-fixed-width();
+}
+
+
 .carousel-slide__media-wrapper {
-	@include key-image-wrapper;
 	margin-bottom: $spacing-xxs;
 	position: relative;
+}
+
+.carousel-slide__image {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+
+	.carousel-slide--variable-width & {
+		height: auto;
+		width: auto;
+	}
 }
 
 //Force video to be 16x9. TODO: see if this aligns with future needs.
