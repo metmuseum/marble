@@ -17,31 +17,25 @@
 @mixin carousel-slide(
 	$gutter: $spacing-xxs,
 	$slideMaxWidth: 85vw,
+	$width: auto,
 	$leftRightOffset: $spacing-component-margin
 ) {
-	flex-shrink: 0;
-	margin-left: $gutter;
-	max-width: $slideMaxWidth;
-	
-	&:last-child,
-	&:first-child {
-		max-width: calc($slideMaxWidth + $leftRightOffset);
-	}
 
+	border-left: $gutter transparent solid;
+	box-sizing: content-box;
+	flex-shrink: 0;
+	max-width: $slideMaxWidth;
+	width: $width;
+	
 	&:first-child {
-		padding-left: $leftRightOffset;
+		border-left: $leftRightOffset transparent solid;
 	}
 
 	&:last-child {
-		padding-right: $leftRightOffset;
+		border-right: $leftRightOffset transparent solid;
 	}
-}
 
-@mixin carousel-slide-fixed-width($slideWidth: 550px, $leftRightOffset: $spacing-component-margin) {
-	width: $slideWidth;
-
-	&:last-child,
-	&:first-child {
-		width: calc(#{$slideWidth} + #{$leftRightOffset});
+	* {
+		box-sizing: border-box;
 	}
 }
