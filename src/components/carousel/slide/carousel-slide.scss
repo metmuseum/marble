@@ -4,10 +4,10 @@
 	@include carousel-slide;
 }
 
-.carousel-slide--fixed-width {
-	@include carousel-slide-fixed-width();
+//Just a demo class for Storybook
+.sb-carousel-slide--fixed-width {
+	@include carousel-slide($width: 550px);
 }
-
 
 .carousel-slide__media-wrapper {
 	margin-bottom: $spacing-xxs;
