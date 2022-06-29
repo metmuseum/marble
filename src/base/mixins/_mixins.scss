@@ -12,3 +12,30 @@
 	text-overflow: ellipsis;
 }
 /* stylelint-enable */
+
+//Create carousel slides with "margin" on left and right.
+@mixin carousel-slide(
+	$gutter: $spacing-xxs,
+	$slideMaxWidth: 85vw,
+	$width: auto,
+	$leftRightOffset: $spacing-component-margin
+) {
+
+	border-left: $gutter transparent solid;
+	box-sizing: content-box;
+	flex-shrink: 0;
+	max-width: $slideMaxWidth;
+	width: $width;
+	
+	&:first-child {
+		border-left: $leftRightOffset transparent solid;
+	}
+
+	&:last-child {
+		border-right: $leftRightOffset transparent solid;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+}

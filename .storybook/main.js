@@ -28,8 +28,8 @@ module.exports = {
 			include: path.resolve(__dirname, "../"),
 		});
 
-		config.resolve ||= {}
-		config.resolve.alias ||= {}
+		config.resolve = config.resolve || {}
+		config.resolve.alias = config.resolve.alias || {}
 		config.resolve.alias[".storybook"] = path.resolve(__dirname)
 
 		// Return the altered config

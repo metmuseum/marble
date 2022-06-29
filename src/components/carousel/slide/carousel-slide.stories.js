@@ -8,17 +8,17 @@ export default { title: "Carousel/Carousel Slide" };
 
 const args = {
 	header: "Carousel Slide",
-	description: html`
-<p>This is the description.</p><p>Here is a link to <a href="#">read more</a>, perhaps?</p>`,
+	description: html`<p>This is the description.</p><p>Here is a link to <a href="#">read more</a>, perhaps?</p>`,
 	video: video,
 	images: image1920,
+	variableWidth: false,
 	index: null
 };
 
 export const CarouselSlide = (args) => {
 	useEffect(videoSlide);
 	return html`
-		<div class="carousel-slide carousel-slide--video js-carousel-slide">
+		<div class="carousel-slide ${args.variableWidth ? "carousel-slide--variable-width" : "sb-carousel-slide--fixed-width"} js-carousel-slide">
 			${mediaMarkUp(args)}
 			<div class="carousel-slide__subject">
 				<h3 class="carousel-slide__header">${args.header} ${args.index ? args.index : ""}</h3>
@@ -52,8 +52,8 @@ const mediaMarkUp = (args) => {
 				<div class="carousel-slide__media-wrapper">
 					<a href="#" class="invisible-redundant-link" aria-hidden="true" tabindex="-1"></a>
 					<img
-						class="lazy carousel-slide__image"
-						data-srcset="${args.images}"
+						class="carousel-slide__image"
+						srcset="${args.images}"
 						alt="just a humble alt tag"
 					/>
 				</div>
