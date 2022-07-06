@@ -5,7 +5,7 @@
 	min-height: 56.25vw;
 	position: relative;
 	@media (min-aspect-ratio: 16/10) {
-		min-height: 85vh;
+		min-height: 70vh;
 	}
 
 	&.productive-component {
@@ -95,8 +95,9 @@
 }
 
 .jumplink-banner__description {
-	@include typography-h3;
+	@include typography-h4;
 	margin-bottom: $spacing-xs;
+	max-width: 65vw;
 	padding-bottom: 0;
 
 	/* stylelint-disable max-nesting-depth */
