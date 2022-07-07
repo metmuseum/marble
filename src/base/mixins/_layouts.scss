@@ -3,9 +3,7 @@
 
 //DS - cross-platform 85vw that accounts for scrollbars
 $productive-width-max: calc(85vw - (100vw - 100%));
-
-//TODO: DEPRECATED - Remove in V1. Please use the correctly named $productive-width-max in the future.
-$expressive-width-max: $productive-width-max;
+$productive-width-max-widescreen: calc(65vw - (100vw - 100%));
 
 @mixin vimeo-iframe-16x9 {
 	box-sizing: border-box;
@@ -82,4 +80,8 @@ $expressive-width-max: $productive-width-max;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: $productive-width-max;
+
+	@media screen and (min-width: $bp-2000) {
+		max-width: $productive-width-max-widescreen
+	}
 }
