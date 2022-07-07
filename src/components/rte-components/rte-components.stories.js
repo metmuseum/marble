@@ -43,8 +43,19 @@ const RTEComponentsMarkUp = (model) => {
 				allow="autoplay; encrypted-media">
 			</iframe>
 		</div>
-		<hr>
-		</hr>
+		<hr/>
+		<table>
+    <tbody>
+        <tr>
+            <td>NY residents&nbsp;</td>
+            <td>&nbsp;<strong>Pay what you wish</strong></td>
+        </tr>
+        <tr>
+            <td>NY, NJ, and CT students&nbsp;</td>
+            <td>&nbsp;<strong>Pay what you wish</strong></td>
+        </tr>
+    </tbody>
+	</table>
 		<p>${model.p1}</p>
 		<img src="${model.backgroundImage}" alt="RTE Image">
 		<div class="inline-caption">${model.inlineCaption}</div>
