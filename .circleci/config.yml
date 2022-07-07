@@ -48,18 +48,6 @@ jobs:
       - run:
           name: "Run Chromatic"
           command: ./tmp/bin/pnpm run chromatic-ci
-  deploy_gh_pages:
-    executor: marble-node
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - add_ssh_keys:
-          fingerprints:
-            - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
-      - run:
-          name: "Run Storybook GitHub Pages Deployer Script"
-          command: ./tmp/bin/pnpm run deploy-storybook --ci --existing-output-dir=.out
   build_and_deploy_dist:
     executor: marble-node
     steps:
@@ -96,26 +84,15 @@ jobs:
           command: DEBUG=release-it:* ./tmp/bin/pnpm run release patch --ci -VV --no-git.requireUpstream --set-upstream origin main
 
 workflows:
-  build__do_chromatic__deploy_gh_pages__build_and_deploy_dist__tag_a_release:
+  build__do_chromatic__build_and_deploy_dist__tag_a_release:
     jobs:
-      - setup_marble:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
+      - setup_marble
       - build_static_storybook:
           requires:
             - setup_marble
       - do_chromatic:
           requires:
             - build_static_storybook
-      - deploy_gh_pages:
-          requires:
-            - build_static_storybook
-          filters:
-            branches:
-              only:
-                - main
       - build_and_deploy_dist:
           requires:
             - setup_marble

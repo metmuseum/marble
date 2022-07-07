@@ -9,7 +9,6 @@ specifiers:
   '@storybook/builder-webpack5': ^6.5.7
   '@storybook/html': ~6.5.7
   '@storybook/manager-webpack5': ^6.5.7
-  '@storybook/storybook-deployer': ^2.8.11
   '@vimeo/player': ^2.16.4
   ansi-regex: ^6.0.1
   axios: ^0.27.2
@@ -74,7 +73,6 @@ devDependencies:
   '@storybook/builder-webpack5': 6.5.7_2tnxp5coened2g5sbv2uxwrmha
   '@storybook/html': 6.5.7_o34pp442hql4tlmsqnlrneraii
   '@storybook/manager-webpack5': 6.5.7_2tnxp5coened2g5sbv2uxwrmha
-  '@storybook/storybook-deployer': 2.8.11
   ansi-regex: 6.0.1
   axios: 0.27.2
   babel-loader: 8.2.5_dzrarqmejens5o5lr5bdn3kdtu
@@ -3450,17 +3448,6 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /@storybook/storybook-deployer/2.8.11:
-    resolution: {integrity: sha512-0jaMvMzu1F0TwBSxWm+cpeybB/TSaeepHXDCf7eYilRw51Ijtq5XiwnOTNf1LoXmdeEMLkRnflfj2JWjeQYp/Q==}
-    hasBin: true
-    dependencies:
-      git-url-parse: 11.6.0
-      glob: 7.2.3
-      parse-repo: 1.0.4
-      shelljs: 0.8.5
-      yargs: 15.4.1
-    dev: true
-
   /@storybook/telemetry/6.5.7_bcjfuqbmfoomhsrf7bikujj7ii:
     resolution: {integrity: sha512-RHrjAConMqGIsu1TgNXztWtWOXTvvCHDWyGoLagCgZYgjGJ4sukp+ZtrbkayNDkkWWD0lpMzsdDEYCJuru/Sig==}
     dependencies:
@@ -5430,14 +5417,6 @@ packages:
   /cli-width/3.0.0:
     resolution: {integrity: sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==}
     engines: {node: '>= 10'}
-    dev: true
-
-  /cliui/6.0.0:
-    resolution: {integrity: sha512-t6wbgtoCXvAzst7QgXxJYqPt0usEfbgQdftEPbLL/cvv6HPE5VgvqCuAIDR0NgU52ds6rFwqrgakNLrHEjCbrQ==}
-    dependencies:
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
-      wrap-ansi: 6.2.0
     dev: true
 
   /cliui/7.0.4:
@@ -10360,10 +10339,6 @@ packages:
       query-string: 6.14.1
     dev: true
 
-  /parse-repo/1.0.4:
-    resolution: {integrity: sha512-RdwYLh7cmxByP/BfeZX0QfIVfeNrH2fWgK1aLsGK+G6nCO4WTlCks4J7aW0O3Ap9BCPDF/e8rGTT50giQr10zg==}
-    dev: true
-
   /parse-url/6.0.0:
     resolution: {integrity: sha512-cYyojeX7yIIwuJzledIHeLUBVJ6COVLeT4eF+2P6aKVzwvgKQPndCBv3+yQ7pcWjqToYwaligxzSYNNmGoMAvw==}
     dependencies:
@@ -11854,10 +11829,6 @@ packages:
   /require-from-string/2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /require-main-filename/2.0.0:
-    resolution: {integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==}
     dev: true
 
   /requireindex/1.2.0:
@@ -14002,10 +13973,6 @@ packages:
       is-symbol: 1.0.4
     dev: true
 
-  /which-module/2.0.0:
-    resolution: {integrity: sha1-2e8H3Od7mQK4o6j6SzHD4/fm6Ho=}
-    dev: true
-
   /which/1.3.1:
     resolution: {integrity: sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==}
     hasBin: true
@@ -14068,15 +14035,6 @@ packages:
     resolution: {integrity: sha512-P1WjMrUB3qgJNI9jfmpZ/htmBEjFh//6l/5y8SD9hg1Ef5zTTVVoRjTrTEzPrNBQvmhMxkoTsjOXN10GWU7aCg==}
     dependencies:
       microevent.ts: 0.1.1
-    dev: true
-
-  /wrap-ansi/6.2.0:
-    resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
-    engines: {node: '>=8'}
-    dependencies:
-      ansi-styles: 4.3.0
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
     dev: true
 
   /wrap-ansi/7.0.0:
@@ -14165,14 +14123,6 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /yargs-parser/18.1.3:
-    resolution: {integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==}
-    engines: {node: '>=6'}
-    dependencies:
-      camelcase: 5.3.1
-      decamelize: 1.2.0
-    dev: true
-
   /yargs-parser/20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
@@ -14181,23 +14131,6 @@ packages:
   /yargs-parser/21.0.1:
     resolution: {integrity: sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==}
     engines: {node: '>=12'}
-    dev: true
-
-  /yargs/15.4.1:
-    resolution: {integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==}
-    engines: {node: '>=8'}
-    dependencies:
-      cliui: 6.0.0
-      decamelize: 1.2.0
-      find-up: 4.1.0
-      get-caller-file: 2.0.5
-      require-directory: 2.1.1
-      require-main-filename: 2.0.0
-      set-blocking: 2.0.0
-      string-width: 4.2.3
-      which-module: 2.0.0
-      y18n: 4.0.3
-      yargs-parser: 18.1.3
     dev: true
 
   /yargs/16.2.0:
