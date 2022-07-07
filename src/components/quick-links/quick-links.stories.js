@@ -1,24 +1,10 @@
 import { html, repeat } from ".storybook/helpers";
-import { withKnobs, number, text } from "@storybook/addon-knobs";
 import image4x3 from ".storybook/assets/images/greek-hall/4x3/1240.jpg";
 
 
 export default {
-	title: "Quick Links",
-	decorators: [withKnobs],
+	title: "Quick Links"
 };
-
-const data = () => ({
-	title: text("Heading", "Quick Links"),
-	id: "quick-links",
-	numberOfLinks: number("Number of Links", 5),
-	link: {
-		title: text("Link Title", "Visitor Guidelines"),
-		description: text("Link Description", "Review our latest guidelines, including vaccination requirements."),
-		url: text("Link URL", "https://www.nytimes.com"),
-		image: text("Link Image", image4x3)
-	}
-});
 
 const quickLinkMarkUp = (link) => {
 	return html`
@@ -38,19 +24,25 @@ const quickLinkMarkUp = (link) => {
 			</div>`;
 };
 
-const markup = (model) => {
-	return html`
-		<section class="productive-component quick-links">
-		<h2>${model.title}</h2>
+const QuickLinks = (args) => html`
+	<section class="productive-component quick-links">
+		<h2>${args.title}</h2>
 		<div class="quick-links__link-container">
-			${repeat(number("Number of Links", model.numberOfLinks), quickLinkMarkUp(model.link))}
+			${repeat((args.numberOfLinks), quickLinkMarkUp(args.link))}
 		</div>
 	</section>`;
+
+QuickLinks.args = {
+	title: "Quick Links",
+	id: "quick-links",
+	numberOfLinks: 5,
+	link: {
+		title: "Visitor Guidelines",
+		description: "Review our latest guidelines, including vaccination requirements.",
+		url: "https://www.nytimes.com",
+		image: image4x3
+	}
 };
 
-const QuickLinks = () => {
-	const storyData = data();
-	return markup(storyData);
-};
 
 export { QuickLinks };
