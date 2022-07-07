@@ -99,8 +99,15 @@
 	margin-bottom: $spacing-xs;
 	padding-bottom: 0;
 
+	/* stylelint-disable max-nesting-depth */
 	a {
-		@include tertiary-button();
+		text-decoration: underline;
+
+		&:focus,
+		&:hover {
+			opacity: 0.8;
+			text-decoration: none;
+		}
 	}
 }
 
