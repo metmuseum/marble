@@ -98,6 +98,10 @@
 	@include typography-h3;
 	margin-bottom: $spacing-xs;
 	padding-bottom: 0;
+
+	a {
+		@include tertiary-button();
+	}
 }
 
 .image-container__image {
