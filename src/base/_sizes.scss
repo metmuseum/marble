@@ -52,7 +52,6 @@ $spacing-component-vertical: $spacing-l;
 	$large-screen: 1440; //Macbook width.
 
 	$base-size: math.div($mobile-size, 16);
-	$base-size: math.div($mobile-size, 16);
 	$calc: calc(#{$base-size}rem + (#{$desktop-size} - #{$mobile-size}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
 	@return $calc;
 }
