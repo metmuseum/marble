@@ -1,0 +1,36 @@
+$bp-ql: 800px;
+
+.quick-links {
+	margin-bottom: $spacing-s;
+	margin-top: $spacing-s;
+}
+
+.quick-links__link-container {
+	display: grid;
+	grid-gap: $spacing-s;
+	grid-template-columns: repeat(1, 1fr);
+	padding-top: $spacing-s;
+
+	@media screen and (min-width: $bp-ql) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.quick-link {
+	display: flex;
+	grid-gap: $spacing-xs;
+	position: relative;
+}
+
+.quick-link__image-wrapper {
+	align-self: center;
+	flex-shrink: 0;
+	height: $spacing-l;
+	position: relative;
+	width: $spacing-l;
+}
+
+.quick-link__image {
+	max-height: 100%;
+	max-width: 100%;
+}

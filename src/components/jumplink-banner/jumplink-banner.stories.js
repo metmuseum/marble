@@ -18,7 +18,7 @@ const data = () => {
 		header: text("Header", "Visit Us from Home"),
 		description: text(
 			"Body Copy",
-			"<p>Immerse yourself in 360-degree video of iconic spaces in the Museum. Visit the Great Hall as a ball,  and Greek as a treat!</p>"
+			"<p>Immerse yourself in 360-degree video of iconic spaces in the Museum. Visit the Great Hall as a ball,  and Greek as a treat!</p><a href='http://www.google.com'>Explore Google</a>"
 		),
 		images: "",
 		links: [
