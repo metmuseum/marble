@@ -45,13 +45,13 @@ $minimum-header-width: 350px;
 
 .notification-banner__subtext {
 	font-size: $textsize-s;
-	line-height: 1.3;
 	font-weight: 500;
+	line-height: 1.3;
 }
 
 .notification-banner__link {
-	font-size: $textsize-xs;
 	display: inline-block;
+	font-size: $textsize-xs;
 	margin-top: $spacing-micro;
 
 	&:empty {

@@ -82,6 +82,6 @@ $productive-width-max-widescreen: calc(65vw - (100vw - 100%));
 	max-width: $productive-width-max;
 
 	@media screen and (min-width: $bp-2000) {
-		max-width: $productive-width-max-widescreen
+		max-width: $productive-width-max-widescreen;
 	}
 }
