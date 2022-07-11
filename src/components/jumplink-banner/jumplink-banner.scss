@@ -100,6 +100,17 @@
 	margin-bottom: $spacing-xs;
 	max-width: 65vw;
 	padding-bottom: 0;
+
+	/* stylelint-disable max-nesting-depth */
+	a {
+		text-decoration: underline;
+
+		&:focus,
+		&:hover {
+			opacity: 0.8;
+			text-decoration: none;
+		}
+	}
 }
 
 .image-container__image {

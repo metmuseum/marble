@@ -1,6 +1,6 @@
 {
 	"name": "@metmuseum/marble",
-	"version": "1.0.1",
+	"version": "1.0.8",
 	"description": "The Design System of The Metropolitan Museum Of Art",
 	"main": "./src/index.mjs",
 	"style": "./dist/marble.css",
@@ -21,7 +21,6 @@
 		"@storybook/builder-webpack5": "^6.5.7",
 		"@storybook/html": "~6.5.7",
 		"@storybook/manager-webpack5": "^6.5.7",
-		"@storybook/storybook-deployer": "^2.8.11",
 		"ansi-regex": "^6.0.1",
 		"axios": "^0.27.2",
 		"babel-loader": "^8.2.5",

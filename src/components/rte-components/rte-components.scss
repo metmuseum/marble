@@ -39,6 +39,7 @@
 		}
 	}
 
+	table,
 	ol,
 	ul,
 	p {
@@ -92,7 +93,17 @@
 	}
 
 	table {
+		border-collapse: collapse;
 		width: 100%;
+
+		tr {
+			border-bottom: 1px solid $color-grey-500;
+		}
+
+		td:last-child {
+			white-space: nowrap;
+			width: 0;
+		}
 	}
 
 	strong {
