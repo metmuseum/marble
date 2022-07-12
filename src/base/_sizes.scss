@@ -38,8 +38,17 @@ $spacing-xxl: calc(144px + 9vw);
 //TODO: find a better way to do this.
 $spacing-negative-micro: calc(-1 * (8px + 0.25vw));
 
-//This is as an outside margin to help align components with those that use width: 85vw which is an emerging standard.
-$spacing-component-margin: 7.5vw;
+//absolute max width for productive component
+$max-component-size: 1000px;
+
+//ideal width for priductive component, with a cross-browser scrollbar adjustment
+$width--scrollbar-agnostic: calc(85vw - (100vw - 100%));
+
+//calculation for productive component - the width--scrollbar-agnostic up to the max-size
+$productive-width-max: clamp(0px, #{$width--scrollbar-agnostic}, #{$max-component-size});
+
+//the calculation for an offset margin of the component
+$spacing-component-margin: calc((100vw - #{$productive-width-max})/2);
 
 //Default vertical spacing for components.
 $spacing-component-vertical: $spacing-l;
