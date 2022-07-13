@@ -42,7 +42,7 @@ $spacing-soft-m: 7.5vw; //DS - formerly $spacing-component-margin
 $spacing-negative-micro: calc(-1 * (8px + 0.25vw));
 
 //absolute, hard max width for productive component
-$max-component-size: 1000px;
+$max-component-size: 1600px;
 
 //ideal width for priductive component, with a cross-browser scrollbar adjustment
 $width--scrollbar-agnostic: calc(85vw - (100vw - 100%));
