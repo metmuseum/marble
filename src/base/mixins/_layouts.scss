@@ -1,10 +1,6 @@
 @import "../sizes";
 @import "../colors";
 
-//DS - cross-platform 85vw that accounts for scrollbars
-$productive-width-max: calc(85vw - (100vw - 100%));
-$productive-width-max-widescreen: calc(65vw - (100vw - 100%));
-
 @mixin vimeo-iframe-16x9 {
 	box-sizing: border-box;
 	height: 56.25vw;
@@ -80,8 +76,4 @@ $productive-width-max-widescreen: calc(65vw - (100vw - 100%));
 	margin-left: auto;
 	margin-right: auto;
 	max-width: $productive-width-max;
-
-	@media screen and (min-width: $bp-2000) {
-		max-width: $productive-width-max-widescreen;
-	}
 }
