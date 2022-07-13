@@ -2,11 +2,8 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	min-height: 56.25vw;
+	min-height: 70vh;
 	position: relative;
-	@media (min-aspect-ratio: 16/10) {
-		min-height: 70vh;
-	}
 
 	&.productive-component {
 		@include productive-component;
@@ -98,8 +95,11 @@
 	@include typography-h4;
 	font-weight: 500;
 	margin-bottom: $spacing-xs;
-	max-width: 65vw;
 	padding-bottom: 0;
+
+	@media (orientation: landscape) {
+		max-width: 65vw;
+	}
 
 	/* stylelint-disable max-nesting-depth */
 	a {
