@@ -35,7 +35,7 @@ $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
 //"soft" purely based on viewport vidth
-$spacing-soft-m: 7.5vw; //DS - formerly $spacing-component-margin
+$spacing-soft-m: 7.5vw; //DS - value for the former $spacing-component-margin
 
 //I know, i know, this is clunky. We need a negative margin for the Jumplink Banner,
 //TODO: find a better way to do this.
