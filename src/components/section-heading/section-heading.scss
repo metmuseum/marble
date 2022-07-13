@@ -16,13 +16,7 @@
 	}
 
 	@media (orientation: portrait) {
-		max-width: 85vw;
-	}
-
-	@media (orientation: landscape) {
-		* {
-			max-width: 500px;
-		}
+		max-width: $faux-productive-width-max;
 	}
 }
 
