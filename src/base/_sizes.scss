@@ -23,9 +23,9 @@ $bp-extra-large: $bp-1440;
 $bp-audio-player: 600px;
 
 //padding and margins
-//This is used super sparingly and won't be a part of most designs.
-$spacing-micro: calc(8px + 0.25vw);
 
+//"hard-sh" pixel based with some leeway for viewport widths
+$spacing-micro: calc(8px + 0.25vw);
 $spacing-xxs: calc(16px + 0.5vw);
 $spacing-xs: calc(24px + 0.75vw);
 $spacing-s: calc(32px + 1vw);
@@ -34,18 +34,24 @@ $spacing-l: calc(64px + 2vw);
 $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
+//"soft" purely based on viewport vidth
+$spacing-soft-m: 7.5vw; //DS - formerly $spacing-component-margin
+
 //I know, i know, this is clunky. We need a negative margin for the Jumplink Banner,
 //TODO: find a better way to do this.
 $spacing-negative-micro: calc(-1 * (8px + 0.25vw));
 
-//absolute max width for productive component
+//absolute, hard max width for productive component
 $max-component-size: 1000px;
 
 //ideal width for priductive component, with a cross-browser scrollbar adjustment
 $width--scrollbar-agnostic: calc(85vw - (100vw - 100%));
 
-//calculation for productive component - the width--scrollbar-agnostic up to the max-size
+//calculation for productive component - it's width--scrollbar-agnostic up to the max-size
 $productive-width-max: clamp(0px, #{$width--scrollbar-agnostic}, #{$max-component-size});
+
+//when the above calculation can't be used, this is a close substitute
+$faux-productive-width-max: 85vw;
 
 //the calculation for an offset margin of the component
 $spacing-component-margin: calc((100vw - #{$productive-width-max})/2);
