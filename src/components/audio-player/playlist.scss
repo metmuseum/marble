@@ -12,11 +12,13 @@
 	// goth stuff
 	@media (prefers-color-scheme: dark) {
 		background: $color-grey-950;
+		border-bottom: $spacing-xxs solid $color-grey-950;
 		color: $color-white;
 	}
 
 	.inverted-colors & {
 		background: $color-grey-950;
+		border-bottom: $spacing-xxs solid $color-grey-950;
 		color: $color-white;
 	}
 }

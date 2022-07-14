@@ -1,50 +1,62 @@
 import { html } from ".storybook/helpers";
 import { useEffect } from "@storybook/client-api";
-import { withKnobs, boolean, select } from "@storybook/addon-knobs";
 import { playIcon, pauseIcon, rewindTenSecondsIcon, forwardTenSecondsIcon, upCaretIcon } from ".storybook/assets/svg";
 import coverImageTemplate from "./cover-image-template";
-import { initializeAudioPlayers, track, example } from "./audio-player-story-helpers";
+import { initializeAudioPlayers, track, playlist } from "./audio-player-story-helpers";
 
-export default { title: "Media/Audio Player", decorators: [withKnobs] };
-
-const data = ({hasImage=true, numberOfTracks="single", darkMode=false, breathingRoom=false, playerMode=""}) => {
-
-	const options = {
-		hasImage: boolean("Has Image", hasImage, "Track"),
-		numberOfTracks: select("Single Track or Playlist?", {Single: "single", Playlist: "playlist"}, numberOfTracks, "Player"),
-		isDark: boolean("Dark mode?", darkMode, "Player") ? "inverted-colors" : "",
-		breathingRoom: boolean("Give it some breathing room?", breathingRoom, "Player") ? "padding: 40px; background-color: #eee" : "",
-		playerMode: select("Player Mode", {Default: "", "Mini Player": "mini-player", "Micro Player": "micro-player"}, playerMode, "Player")
-	};
-
-	let playlist = options.numberOfTracks == "playlist" ? { tracks: [
-		track({title: "Track 1"}),
-		track({...example}),
-		track({title: "Track 3", id: 3, transcript: null}),
-		track({title: "Track 4", id: 4, transcript: null}),
-		track({title: "Track 5", id: 4, transcript: null})
-	]} : null;
-
-	return {
-		options,
-		model: {
-			playlist: playlist,
-			track: track()
+const argTypes = {
+	breathingRoom: {
+		name: "Give it some breathing room?"
+	},
+	darkMode: { name: "Dark Mode" },
+	hasImage: { name: "Has Image?" },
+	transcriptIsOpen: { name: "Force Transcript Area To Be Open?", },
+	playerMode: {
+		options: ["Regular", "Mini", "Micro"],
+		mapping: {
+			Regular: "",
+			Mini: "mini-player",
+			Micro: "micro-player"
+		},
+		type: "Select",
+		name: "Player Mode"
+	},
+	playlist: {
+		name: "Playlist Tracks",
+		options: ["1", "2", "3", "4", "5"],
+		defaultValue: [],
+		control: {
+			type: "check",
 		}
-	};
+	}
 };
 
-const audioPlayerMarkUp = ({model, options}) => html`
-	<div style="${options.breathingRoom}">
-	<section class="audio-player js-marble-audio-player ${options.playerMode} ${options.isDark}">
+const args = {
+	breathingRoom: false,
+	darkMode: false,
+	hasImage: true,
+	transcriptIsOpen: false,
+	track,
+};
+
+export default { title: "Media/Audio Player", argTypes };
+
+const wrapInTranscriptDiv = ({ transcriptIsOpen }, markup) => (
+	transcriptIsOpen ?
+		html`<div class="transcript-is-open">${markup}</div>` :
+		markup);
+
+const audioPlayerMarkUp = (args) => wrapInTranscriptDiv(args, html`
+	<div ${args.breathingRoom ? "style=\"padding: 40px; background-color: #eee\"" : ""}">
+	<section class="audio-player js-marble-audio-player ${args.playerMode} ${args.darkMode ? " inverted-colors" : ""}">
 		<div class="audio-player__media-section">
 			<div class="audio-player__image-section">
-				<div class="audio-player__image-wrapper js-audio-player__image-wrapper">${options.hasImage ? coverImageTemplate(model.track.image) : "" }</div>
+				<div class="audio-player__image-wrapper js-audio-player__image-wrapper">${args.hasImage ? coverImageTemplate(args.track.image) : "" }</div>
 			</div>
 			<div class="audio-player__body">
 				<div class="audio-player__headings">
-					<h1 class="audio-player__title js-audio-player__title">${model.track.title}</h1>
-					<h2 class="audio-player__subtitle js-audio-player__subtitle">${model.track.description}</h2>
+					<h1 class="audio-player__title js-audio-player__title">${args.track.title}</h1>
+					<h2 class="audio-player__subtitle js-audio-player__subtitle">${args.track.description}</h2>
 				</div>
 				<div class="audio-player__controls-wrapper">
 					<div class="audio-controls">
@@ -88,16 +100,16 @@ const audioPlayerMarkUp = ({model, options}) => html`
 
 						<audio
 							class="js-audio-player__audio audio-player__audio-element"
-							data-track='${JSON.stringify(model.track)}'
-							title="${model.track.title}"
+							data-track='${JSON.stringify(args.track)}'
+							title="${args.track.title}"
 							style="width: 100%; height: 36px;"
 							controls
 						>
-							<source src="${model.track.audio}" />
+							<source src="${args.track.audio}" />
 							<!-- TODO: playlist links, too!! -->
 							<p>
 								Your browser doesn't support HTML5 audio. Here is a
-								<a href="${model.track.audio}"
+									<a href="${args.track.audio}"
 									>link to download the audio</a
 								>
 								instead.
@@ -109,10 +121,10 @@ const audioPlayerMarkUp = ({model, options}) => html`
 		</div>
 
 		<div
-			class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
+			class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!args?.track?.transcript?.length} js-audio-player__transcript-section">
 			<div class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper">
 				<div class="audio-player__transcript js-audio-player__transcript" tabindex=0>
-					${model.track.transcript}
+					${args.track.transcript}
 				</div>
 			</div>
 			<a class="audio-player__transcript-toggle js-audio-player__transcript-toggle" href="#">
@@ -121,9 +133,11 @@ const audioPlayerMarkUp = ({model, options}) => html`
 			</a>
 		</div>
 
-		<ol class="js-audio-player__playlist-container audio-player__playlist">${ model.playlist?.tracks?.length ? html`
+		<ol class="js-audio-player__playlist-container audio-player__playlist">${ args.playlist?.length ? html`
 			<h4 class="audio-player__playlist-title">Playlist</h4>
-			${model.playlist.tracks.map(playlistTrack => { return html`
+			${args.playlist.map(playlistTrackIndex => {
+				const playlistTrack = playlist.tracks[playlistTrackIndex - 1];
+				return html`
 				<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}'>
 					<img
 						class="audio-player__playlist-track-thumbnail"
@@ -136,46 +150,65 @@ const audioPlayerMarkUp = ({model, options}) => html`
 
 	</section>
 	</div>
-`;
+`);
 
-const FullPlayer = () => {
+const Player = (args) => {
 	useEffect(initializeAudioPlayers);
-	return audioPlayerMarkUp(data({}));
+	return audioPlayerMarkUp(args);
 };
 
-const MultiplePlayers = () => {
+const FullPlayer = (args) => Player(args);
+FullPlayer.args = args;
+
+const MultiplePlayers = (args) => {
 	useEffect(initializeAudioPlayers);
 	return html`
 		<div>
-			${audioPlayerMarkUp(data({}))}
-			${audioPlayerMarkUp(data({}))}
+			${audioPlayerMarkUp(args)}
+			${audioPlayerMarkUp(args)}
 		</div>`;
 };
+MultiplePlayers.args = args;
 
-const FullPlayerWithOpenTranscript = () => {
-	useEffect(initializeAudioPlayers);
-	return html`<div class="transcript-is-open">${audioPlayerMarkUp(data({}))}</div>`;
+const FullPlayerWithOpenTranscript = (args) => Player(args);
+FullPlayerWithOpenTranscript.args = {
+	...args,
+	transcriptIsOpen: true
 };
 
-const FullPlayerWithPlaylist = () => {
-	useEffect(initializeAudioPlayers);
-	return audioPlayerMarkUp(data({numberOfTracks: "playlist"}));
+const FullPlayerWithPlaylist = (args) => Player(args);
+FullPlayerWithPlaylist.args = {
+	...args,
+	playlist: ["1", "2", "3", "4", "5"]
 };
 
-const MiniPlayer = () => {
-	useEffect(initializeAudioPlayers);
-	return audioPlayerMarkUp(data({playerMode: "mini-player"}));
+const MiniPlayer = (args) => Player(args);
+MiniPlayer.args = {
+	...args,
+	playerMode: "mini-player"
 };
 
-const MicroPlayer = () => {
-	useEffect(initializeAudioPlayers);
-	return audioPlayerMarkUp(data({playerMode: "micro-player"}));
+const MicroPlayer = (args) => Player(args);
+MicroPlayer.args = {
+	...args,
+	playerMode: "micro-player"
 };
+
+const FullPlayerDarkModeKitchenSink = (args) => Player(args);
+FullPlayerDarkModeKitchenSink.args = {
+	...args,
+	darkMode: true,
+	hasImage: true,
+	playlist: ["1", "2", "3", "4", "5"],
+	transcriptIsOpen: true,
+};
+
 export {
 	FullPlayer,
 	FullPlayerWithOpenTranscript,
 	FullPlayerWithPlaylist,
+	FullPlayerDarkModeKitchenSink,
 	MiniPlayer,
 	MicroPlayer,
-	MultiplePlayers
+	MultiplePlayers,
 };
