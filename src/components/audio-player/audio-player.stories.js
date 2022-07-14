@@ -108,6 +108,19 @@ const audioPlayerMarkUp = ({model, options}) => html`
 			</div>
 		</div>
 
+		<div
+			class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
+			<div class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper">
+				<div class="audio-player__transcript js-audio-player__transcript" tabindex=0>
+					${model.track.transcript}
+				</div>
+			</div>
+			<a class="audio-player__transcript-toggle js-audio-player__transcript-toggle" href="#">
+				<span class="transcript__toggle-icon"> ${upCaretIcon}</span>
+				<span class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
+			</a>
+		</div>
+
 		<ol class="js-audio-player__playlist-container audio-player__playlist">${ model.playlist?.tracks?.length ? html`
 			<h4 class="audio-player__playlist-title">Playlist</h4>
 			${model.playlist.tracks.map(playlistTrack => { return html`
@@ -121,17 +134,6 @@ const audioPlayerMarkUp = ({model, options}) => html`
 					<!-- <div> track length goes here if we have it </div> -->
 					</li>`;}).join("")}` : ""}</ol> <!-- no whitespace! :empty needs to work to hide it -->
 
-		<div class="audio-player__transcript-section audio-player__transcript-section--transcript-${!!model?.track?.transcript?.length} js-audio-player__transcript-section">
-			<div class="audio-player__transcript-wrapper js-audio-player__transcript-wrapper">
-				<div class="audio-player__transcript js-audio-player__transcript" tabindex=0>
-					${model.track.transcript}
-				</div>
-			</div>
-			<a class="audio-player__transcript-toggle js-audio-player__transcript-toggle" href="#">
-				<span class="transcript__toggle-icon"> ${upCaretIcon}</span>
-				<span class="transcript__toggle-text js-transcript__toggle-text"> View Transcript </span>
-			</a>
-		</div>
 	</section>
 	</div>
 `;
