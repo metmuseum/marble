@@ -138,7 +138,7 @@ const audioPlayerMarkUp = (args) => wrapInTranscriptDiv(args, html`
 			${args.playlist.map(playlistTrackIndex => {
 				const playlistTrack = playlist.tracks[playlistTrackIndex - 1];
 				return html`
-				<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}'>
+				<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}' tabindex="0">
 					<img
 						class="audio-player__playlist-track-thumbnail"
 						alt="${playlistTrack.image.alt}"
