@@ -135,13 +135,21 @@
 	font-weight: 500;
 	padding: $spacing-xxs;
 	text-decoration: none;
+}
 
-	&:focus,
-	&:hover {
-		color: $color-focus-state;
-		text-decoration: none;
+.audio-player__transcript-toggle:focus,
+.audio-player__transcript-toggle:hover {
+	color: $color-focus-state;
+
+	@media (prefers-color-scheme: dark) {
+		color: $color-focus-state-darkmode;
+	}
+
+	.inverted-colors & {
+		color: $color-focus-state-darkmode;
 	}
 }
+
 
 .transcript__toggle-icon {
 	height: 1em;
