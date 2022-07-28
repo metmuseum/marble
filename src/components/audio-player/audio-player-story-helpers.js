@@ -1,4 +1,3 @@
-import { text } from "@storybook/addon-knobs";
 import AudioPlayer from "./audio-player.js";
 import greekHall1x1 from ".storybook/assets/images/greek-hall/1x1";
 
@@ -31,34 +30,6 @@ const initializeAudioPlayers = () => {
 	audioPlayers.forEach((player) => new AudioPlayer({wrapperEl: player}));	
 };
 
-const defaultTrack = () => {
-	return {
-		id: 1,
-		audio:	text("Audio File URL", "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3", "Track"),
-		image: { ...greekHall1x1,
-			w2400: greekHall1x1.srcSet.sizes["2440w"],
-			w1600: greekHall1x1.srcSet.sizes["1920w"],
-			w1200: greekHall1x1.srcSet.sizes["1240w"],
-			w840: greekHall1x1.srcSet.sizes["1240w"],
-			w560: greekHall1x1.srcSet.sizes["1240w"],
-			w280: greekHall1x1.srcSet.sizes["1240w"]
-		},
-		description: text("Description", "Praise Songs about Javascript", "Track"),
-		title: text("Title", "Track 1. Title", "Track"),
-		transcript: text(
-			"Transcript",
-			exampleTranscriptData,
-			"Track"
-		)
-	};
-};
-
-const track = (overrides={}) => {
-	return {
-		...defaultTrack(),
-		...overrides,
-	};
-};
 
 const exampleTranscriptData = `Figure, Abelam People
 Sepik region, New Guinea (1981.415.1, 1978.412.871), Catalogue 27
@@ -79,11 +50,11 @@ NOTE: This was getting too long, so I made a few deletions.
 LEVEL 2 
  (187 words)
 
-NARRATOR: At the very top of this sculpture, you see two birds' heads. They have the distinctive long beaks of hornbills.* The large face below them is shown as though it were an Abelam man in full ceremonial dress.* And below the large face is carved a smaller figure, dressed similarly, with a rounded body and its arms raised.*
+NARRATOR: At the very top of this sculpture, you see two birds&#39 heads. They have the distinctive long beaks of hornbills.* The large face below them is shown as though it were an Abelam man in full ceremonial dress.* And below the large face is carved a smaller figure, dressed similarly, with a rounded body and its arms raised.*
 
 ERIC KJELLGREN: Now although these images are in human form, they actually depict spirits which live out in the forests and these spirits are known as nggwalndu. These spirits are particularly associated with yams.
 
-And the yam species that they had among the Abelam was actually a gigantic species. They could grow up to about twelve feet long and as thick around as a human leg. In fact, yams could grow almost as large as the wooden image we're looking at here now.
+And the yam species that they had among the Abelam was actually a gigantic species.They could grow up to about twelve feet long and as thick around as a human leg.In fact, yams could grow almost as large as the wooden image we&#39re looking at here now.
 
 NARRATOR: Each prominent man had a ceremonial yam-exchange partner in a neighboring village. The men competed to see who could present the other with a larger yam. The exchange constituted a form of ritual warfare, dissipating social tension that might otherwise have erupted in the form of physical attack.
 
@@ -94,7 +65,7 @@ EXISTING STOP 1718 Figure, Kambot
 Sepik Region, New Guinea (1978.412.823), Catalogue 52
 246 words
 
-NARRATOR-This impressive, life-size figure originally adorned a supporting post in a men's ceremonial house-among the Kambot people of New Guinea. Curator Eric Kjellgren:
+NARRATOR - This impressive, life - size figure originally adorned a supporting post in a men&#39s ceremonial house-among the Kambot people of New Guinea. Curator Eric Kjellgren:
 
 ERIC KJELLGREN--Although it represents a remote ancestor, this image is actually decorated much like a Kambot man would be when wearing essentially his best ritual finery.  If you look around the neck of the image, you can see a series of crescents that go down the chest.  These are almost certainly images of pearl shells.
 
@@ -102,6 +73,28 @@ NARRATOR: One of the most unusual aspects of this figure is that his face can be
 
 If you look at the very top of the forehead, you see a circle with a red center.* This represents the head of a second figure. The long, curved eyes appear as arms, descending down on either side to two hands, which form the nostrils of the larger face.* Clasped in the hands, the nose of the first image here likely represents a flute. Such flutes were secret objects, known only to initiated men. This subtle reference almost certainly indicates that the statue contains further hidden imagery understood only by the initiated.
 
-NOTE: Eric: it would be great to include the Sepik flute recordings you mentioned. How could we get them?`;
+	NOTE: Eric: it would be great to include the Sepik flute recordings you mentioned.How could we get them ? `;
 
-export { initializeAudioPlayers, track, example, exampleTranscriptData };
+const track = {
+	id: 1,
+	audio: "https://images.metmuseum.org/CRDImages/ad/audio/5TH-3865-ENG-134-1.mp3",
+	image: {
+		...greekHall1x1,
+		w2400: greekHall1x1.srcSet.sizes["2440w"],
+		w1600: greekHall1x1.srcSet.sizes["1920w"],
+		w1200: greekHall1x1.srcSet.sizes["1240w"],
+		w840: greekHall1x1.srcSet.sizes["1240w"],
+		w560: greekHall1x1.srcSet.sizes["1240w"],
+		w280: greekHall1x1.srcSet.sizes["1240w"]
+	},
+	description: "Praise Songs about Javascript",
+	title: "Track 1. Title",
+	transcript: exampleTranscriptData,
+};
+
+const playlist = {
+	tracks: [track, { ...track, id: 2 }, { ...track, id: 3 }, { ...track, id: 4 }, { ...track, id: 5 }]
+};
+
+
+export { initializeAudioPlayers, track, playlist, example, exampleTranscriptData };

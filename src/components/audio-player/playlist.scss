@@ -1,8 +1,9 @@
 .audio-player__playlist {
 	background: $color-white-050;
+	border-bottom: $spacing-xxs solid $color-white-050; // hack to add bottom 'padding' for the overflow 👇
 	max-height: 265px; //Madhav picked this.
 	overflow: auto;
-	padding: $spacing-xs;
+	padding: $spacing-xs $spacing-xs 0 $spacing-xs;
 
 	&:empty {
 		display: none;
@@ -11,11 +12,13 @@
 	// goth stuff
 	@media (prefers-color-scheme: dark) {
 		background: $color-grey-950;
+		border-bottom: $spacing-xxs solid $color-grey-950;
 		color: $color-white;
 	}
 
 	.inverted-colors & {
 		background: $color-grey-950;
+		border-bottom: $spacing-xxs solid $color-grey-950;
 		color: $color-white;
 	}
 }
