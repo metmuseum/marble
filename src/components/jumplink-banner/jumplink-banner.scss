@@ -48,7 +48,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 0 $spacing-negative-micro;
+	margin: 0 calc(-1 * #{$spacing-micro});
 
 	.align--left & {
 		@media (orientation: landscape) {

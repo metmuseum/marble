@@ -65,7 +65,7 @@
 	flex-basis: 100%;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: $spacing-xs $spacing-soft-m $spacing-s;
+	padding: $spacing-xs $spacing-component-margin $spacing-s;
 
 	p {
 		font-size: calc(14px + 0.2vw);

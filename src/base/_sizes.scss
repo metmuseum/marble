@@ -35,25 +35,21 @@ $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
 //"soft" purely based on viewport vidth
-$spacing-soft-m: 7.5vw; //DS - value for the former $spacing-component-margin
+$spacing-unclamped: 7.5vw; //DS - value for the former $spacing-component-margin
 
-//I know, i know, this is clunky. We need a negative margin for the Jumplink Banner,
-//TODO: find a better way to do this.
-$spacing-negative-micro: calc(-1 * (8px + 0.25vw));
+//when the above calculation can't be used, this is a close substitute
+$max-width-unclamped: 85vw;
 
 //absolute, hard max width for productive component
 $max-component-size: 1600px;
 
-//ideal width for priductive component, with a cross-browser scrollbar adjustment
+//TODO stop using.
 $width--scrollbar-agnostic: calc(85vw - (100vw - 100%));
 
-//calculation for productive component - it's width--scrollbar-agnostic up to the max-size
-$productive-width-max: clamp(0px, #{$width--scrollbar-agnostic}, #{$max-component-size});
+//Clamped width. $max-width-unclamped up to a max of $max-component-size
+$productive-width-max: clamp(0px, #{$max-width-unclamped}, #{$max-component-size});
 
-//when the above calculation can't be used, this is a close substitute
-$faux-productive-width-max: 85vw;
-
-//the calculation for an offset margin of the component
+//Half of the difference between 100vw and $productive-width-max
 $spacing-component-margin: calc((100vw - #{$productive-width-max})/2);
 
 //Default vertical spacing for components.

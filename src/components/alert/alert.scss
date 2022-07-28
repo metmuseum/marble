@@ -7,12 +7,12 @@
 	font-size: $textsize-xs;
 	font-weight: 500;
 	justify-content: space-between;
-	left: $spacing-soft-m;
+	left: $spacing-component-margin;
 	line-height: 1;
 	padding: $spacing-micro;
 	position: fixed;
 	top: $spacing-s;
-	width: $faux-productive-width-max;
+	width: $max-width-unclamped;
 
 	&.show {
 		display: flex;
