@@ -3,13 +3,13 @@
 
 .featured-card {
 	align-items: flex-end;
+	aspect-ratio: 16 / 9;
 	display: flex;
 	margin-bottom: $spacing-s;
-	min-height: 56.25vw;
 	position: relative;
 	z-index: 1;
 	@media (min-aspect-ratio: 16/10) {
-		min-height: 85vh;
+		aspect-ratio: 5 / 4;
 	}
 
 	&.productive-component {
@@ -19,7 +19,7 @@
 
 .featured-card__content {
 	color: $color-white;
-	padding: $spacing-component-margin;
+	padding: $spacing-m;
 	@media (orientation: landscape) {
 		max-width: 66%;
 	}
