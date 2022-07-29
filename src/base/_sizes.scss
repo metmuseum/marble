@@ -43,11 +43,11 @@ $max-width-unclamped: 85vw;
 //absolute, hard max width for productive component
 $max-component-size: 1600px;
 
-//TODO stop using.
-$width--scrollbar-agnostic: calc(85vw - (100vw - 100%));
+//Account for scrollbar width on windows
+$width--scrollbar-agnostic: calc(#{$max-width-unclamped} - (100vw - 100%));
 
 //Clamped width. $max-width-unclamped up to a max of $max-component-size
-$productive-width-max: clamp(0px, #{$max-width-unclamped}, #{$max-component-size});
+$productive-width-max: min(#{$width--scrollbar-agnostic}, #{$max-component-size});
 
 //Half of the difference between 100vw and $productive-width-max
 $spacing-component-margin: calc((100vw - #{$productive-width-max})/2);
