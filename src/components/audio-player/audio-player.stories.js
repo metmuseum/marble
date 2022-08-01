@@ -136,8 +136,8 @@ const audioPlayerMarkUp = (args) => wrapInTranscriptDiv(args, html`
 		<ol class="js-audio-player__playlist-container audio-player__playlist">${ args.playlist?.length ? html`
 			<h4 class="audio-player__playlist-title">Playlist</h4>
 			${args.playlist.map(playlistTrackIndex => {
-				const playlistTrack = playlist.tracks[playlistTrackIndex - 1];
-				return html`
+		const playlistTrack = playlist.tracks[playlistTrackIndex - 1];
+		return html`
 				<li class="js-audio-player__playlist-track audio-player__playlist-track" data-track='${JSON.stringify(playlistTrack)}' tabindex="0">
 					<img
 						class="audio-player__playlist-track-thumbnail"
@@ -203,6 +203,15 @@ FullPlayerDarkModeKitchenSink.args = {
 	transcriptIsOpen: true,
 };
 
+const WithUnreasonablyLongSubtitle = (args) => Player(args);
+WithUnreasonablyLongSubtitle.args = {
+	...args,
+	track: {
+		...track,
+		description: "Maecenas non suscipit urna. Donec mollis nisl metus, eget semper nisi venenatis vel. Cras quis neque nisl. Suspendisse ut augue fringilla, tincidunt nisl non, scelerisque tortor. Aenean cursus odio aliquam nisi condimentum, vitae pharetra erat sodales. Curabitur aliquet volutpat metus, ut pellentesque lorem mollis ac. Quisque in pulvinar leo, ut venenatis massa. Cras at metus eu nibh rutrum accumsan a in eros."
+	}
+};
+
 export {
 	FullPlayer,
 	FullPlayerWithOpenTranscript,
@@ -211,4 +220,5 @@ export {
 	MiniPlayer,
 	MicroPlayer,
 	MultiplePlayers,
+	WithUnreasonablyLongSubtitle
 };
