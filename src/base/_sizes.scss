@@ -50,7 +50,7 @@ $width--scrollbar-agnostic: calc(#{$max-width-unclamped} - (100vw - 100%));
 $productive-width-max: min(#{$width--scrollbar-agnostic}, #{$max-component-size});
 
 //Half of the difference between 100vw and $productive-width-max
-$spacing-component-margin: calc((100vw - #{$productive-width-max})/2);
+$spacing-component-margin: calc((100% - #{$productive-width-max})/2);
 
 //Default vertical spacing for components.
 $spacing-component-vertical: $spacing-l;
