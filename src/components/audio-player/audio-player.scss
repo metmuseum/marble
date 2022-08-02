@@ -5,7 +5,7 @@
 
 .audio-player {
 	background-color: $color-white;
-	border-radius: 8px;
+	border-radius: $radius-blunt;
 	box-shadow: $shadow-passive;
 	color: $color-black;
 	overflow: hidden;
@@ -100,7 +100,7 @@
 }
 
 .audio-player__transcript-section {
-	border-top: 1px solid $color-grey-200;
+	border-top: 1px solid $color-grey-100;
 }
 
 .audio-player__transcript-section--transcript-true {
@@ -135,13 +135,21 @@
 	font-weight: 500;
 	padding: $spacing-xxs;
 	text-decoration: none;
+}
 
-	&:focus,
-	&:hover {
-		color: $color-focus-state;
-		text-decoration: none;
+.audio-player__transcript-toggle:focus,
+.audio-player__transcript-toggle:hover {
+	color: $color-focus-state;
+
+	@media (prefers-color-scheme: dark) {
+		color: $color-focus-state-darkmode;
+	}
+
+	.inverted-colors & {
+		color: $color-focus-state-darkmode;
 	}
 }
+
 
 .transcript__toggle-icon {
 	height: 1em;

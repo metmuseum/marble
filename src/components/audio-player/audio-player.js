@@ -123,12 +123,14 @@ class AudioPlayer {
 		}
 
 		this.wrapperEl.dispatchEvent(this.beforeTrackChange);
+
 		this.wrapperEl.querySelector(".is-active-track").classList.remove("is-active-track");
 		newTrackEl.classList.add("is-active-track");
 		let newTrack = JSON.parse(newTrackEl.dataset.track);
 		this.setTrack(newTrack);
 		this.setTranscript();
 		this.audioEl.play();
+
 		this.wrapperEl.dispatchEvent(this.afterTrackChange);
 	}
 
