@@ -1,10 +1,9 @@
 import { html } from ".storybook/helpers";
 export default { title: "Components/ExhibitionBadge" };
 
-const exhibitionBadgeMarkUp = ({ closingSoon, hover }) => html`
+const exhibitionBadgeMarkUp = ({ closingSoon }) => html`
 	<div class='exhibition-badge
-		${closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}
-		${hover ? "is-color" : ""}'>
+		${closingSoon ? "exhibition-badge--closing-soon" : "exhibition-badge--just-opened"}'>
 		<span class='exhibition-badge__text'>
 			${closingSoon ? "Closing soon" : "Just opened"}
 		</span>
@@ -12,24 +11,11 @@ const exhibitionBadgeMarkUp = ({ closingSoon, hover }) => html`
 
 export const JustOpened = exhibitionBadgeMarkUp.bind({});
 JustOpened.args = {
-	closingSoon: false,
-	hover: false
-};
-
-export const JustOpenedHover = exhibitionBadgeMarkUp.bind({});
-JustOpenedHover.args = {
-	closingSoon: false,
-	hover: true
+	closingSoon: false
 };
 
 export const ClosingSoon = exhibitionBadgeMarkUp.bind({});
 ClosingSoon.args = {
-	closingSoon: true,
-	hover: false
+	closingSoon: true
 };
 
-export const ClosingSoonHover = exhibitionBadgeMarkUp.bind({});
-ClosingSoonHover.args = {
-	closingSoon: true,
-	hover: true
-};
