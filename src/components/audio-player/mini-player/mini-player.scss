@@ -10,9 +10,7 @@ $mini-player-image-size: 120px;
 
 .audio-player__headings {
 	.mini-player & {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		line-height: 1;
 	}
 }
 
