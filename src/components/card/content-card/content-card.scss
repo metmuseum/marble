@@ -14,11 +14,6 @@
 		.content-card__body {
 			padding: $spacing-xs $spacing-s $spacing-s;
 		}
-
-		.content-card__heading {
-			@include typography-h4;
-			font-weight: 600;
-		}
 	}
 }
 
@@ -115,9 +110,6 @@
 }
 
 .content-card__heading {
-	font-weight: 600;
-	line-height: math.div(29, 24);
-
 	&:last-child {
 		padding-bottom: 0;
 	}

@@ -23,9 +23,9 @@ $bp-extra-large: $bp-1440;
 $bp-audio-player: 600px;
 
 //padding and margins
-//This is used super sparingly and won't be a part of most designs.
-$spacing-micro: calc(8px + 0.25vw);
 
+//"hard-sh" pixel based with some leeway for viewport widths
+$spacing-micro: calc(8px + 0.25vw);
 $spacing-xxs: calc(16px + 0.5vw);
 $spacing-xs: calc(24px + 0.75vw);
 $spacing-s: calc(32px + 1vw);
@@ -34,12 +34,23 @@ $spacing-l: calc(64px + 2vw);
 $spacing-xl: calc(98px + 6vw);
 $spacing-xxl: calc(144px + 9vw);
 
-//I know, i know, this is clunky. We need a negative margin for the Jumplink Banner,
-//TODO: find a better way to do this.
-$spacing-negative-micro: calc(-1 * (8px + 0.25vw));
+//"soft" purely based on viewport vidth
+$spacing-unclamped: 7.5vw; //DS - value for the former $spacing-component-margin
 
-//This is as an outside margin to help align components with those that use width: 85vw which is an emerging standard.
-$spacing-component-margin: 7.5vw;
+//when the above calculation can't be used, this is a close substitute
+$max-width-unclamped: 85vw;
+
+//absolute, hard max width for productive component
+$max-component-size: 1600px;
+
+//Account for scrollbar width on windows
+$width--scrollbar-agnostic: calc(#{$max-width-unclamped} - (100vw - 100%));
+
+//Clamped width. $max-width-unclamped up to a max of $max-component-size
+$productive-width-max: min(#{$width--scrollbar-agnostic}, #{$max-component-size});
+
+//Half of the difference between 100vw and $productive-width-max
+$spacing-component-margin: calc((100% - #{$productive-width-max})/2);
 
 //Default vertical spacing for components.
 $spacing-component-vertical: $spacing-l;
@@ -52,7 +63,6 @@ $spacing-component-vertical: $spacing-l;
 	$large-screen: 1440; //Macbook width.
 
 	$base-size: math.div($mobile-size, 16);
-	$base-size: math.div($mobile-size, 16);
 	$calc: calc(#{$base-size}rem + (#{$desktop-size} - #{$mobile-size}) * ((100vw - #{$small-screen}px) / (#{$large-screen} - #{$small-screen})));
 	@return $calc;
 }
@@ -62,8 +72,8 @@ $textsize-xxs: fontsize-calculator(12, 14);
 $textsize-xs: fontsize-calculator(14, 16);
 $textsize-s: fontsize-calculator(18, 20); //Body Text
 $textsize-m: fontsize-calculator(20, 24); //H4
-$textsize-l: fontsize-calculator(24, 32); //H3
-$textsize-xl: fontsize-calculator(32, 42); //H2
+$textsize-l: fontsize-calculator(24, 30); //H3
+$textsize-xl: fontsize-calculator(32, 38); //H2
 $textsize-xxl: fontsize-calculator(48, 54); //H1
 
 //The smaller value of the fluid type functions.

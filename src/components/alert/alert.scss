@@ -12,7 +12,7 @@
 	padding: $spacing-micro;
 	position: fixed;
 	top: $spacing-s;
-	width: 100vw - ($spacing-component-margin * 2);
+	width: $max-width-unclamped;
 
 	&.show {
 		display: flex;

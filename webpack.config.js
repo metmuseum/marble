@@ -72,7 +72,7 @@ const commonConfig = {
 				minimizerOptions: {
 					preset: [
 						"default",
-						{ discardComments: { removeAll: true }, discardDuplicates: true },
+						{ discardComments: { removeAll: true }, discardDuplicates: true, calc: false },
 					],
 				},
 			}),

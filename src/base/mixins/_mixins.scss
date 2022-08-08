@@ -18,7 +18,7 @@
 	$gutter: $spacing-xxs,
 	$slideMaxWidth: 85vw,
 	$width: auto,
-	$leftRightOffset: $spacing-component-margin
+	$leftRightOffset: calc((100vw - min(#{$max-width-unclamped}, #{$max-component-size}))/2)
 ) {
 
 	border-left: $gutter transparent solid;

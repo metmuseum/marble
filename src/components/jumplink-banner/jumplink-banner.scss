@@ -2,11 +2,8 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	min-height: 56.25vw;
+	min-height: 70vh;
 	position: relative;
-	@media (min-aspect-ratio: 16/10) {
-		min-height: 85vh;
-	}
 
 	&.productive-component {
 		@include productive-component;
@@ -51,7 +48,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 0 $spacing-negative-micro;
+	margin: 0 calc(-1 * #{$spacing-micro});
 
 	.align--left & {
 		@media (orientation: landscape) {
@@ -95,9 +92,14 @@
 }
 
 .jumplink-banner__description {
-	@include typography-h3;
+	@include typography-h4;
+	font-weight: 500;
 	margin-bottom: $spacing-xs;
 	padding-bottom: 0;
+
+	@media (orientation: landscape) {
+		max-width: 65vw;
+	}
 
 	/* stylelint-disable max-nesting-depth */
 	a {
