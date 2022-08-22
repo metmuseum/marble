@@ -6,6 +6,7 @@ import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner.js";
 import Musette from "./components/musette/musette.js";
 import videoSlide from "./components/carousel/slide/video-slide.js";
 import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls.js";
+import Flickity from "flickity-imagesloaded"; // import Marble's resolved version of Flickity to pass to Rodan for David
 
 
 const marble = {
@@ -30,4 +31,5 @@ export {
 	Musette,
 	videoSlide,
 	vimeoPlayToggle,
+	Flickity
 };
