@@ -1,0 +1,20 @@
+@use "../../base/colors";
+@use "../../base/sizes";
+
+h4.object-availability {
+	color: colors.$color-grey-800;
+	font-size: sizes.$textsize-s;
+	font-weight: 300;
+	line-height: 18/16;
+	margin-top: sizes.$spacing-xs;
+
+	svg {
+		height: 1em;
+		margin-right: 0.5em;
+		vertical-align: text-top;
+	}
+}
+
+.object-availability__link {
+	text-decoration: underline;
+}

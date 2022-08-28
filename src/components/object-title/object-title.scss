@@ -1,0 +1,11 @@
+@use "../../base/colors";
+@use "../../base/sizes";
+@use "../../base/mixins/typography";
+
+h1.object-title {
+	@include typography.typography-h1-expressive;
+	color: colors.$color-grey-900;
+	font-weight: 500;
+	line-height: 1.05; // 🤨
+	margin-bottom: sizes.$spacing-xxs;
+}
