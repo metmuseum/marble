@@ -3,6 +3,7 @@
 
 .object-creators {
 	@include typography.typography-body-long;
+	font-size: $textsize-xs;
 	font-weight: 300;
-	margin: sizes.$spacing-xxs 0;
+	margin: sizes.$spacing-micro 0;
 }
