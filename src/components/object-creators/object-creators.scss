@@ -1,7 +1,7 @@
 @use "../../base/mixins/typography";
 @use "../../base/sizes.scss";
 
-h3.object-creators {
+.object-creators {
 	@include typography.typography-body-long;
 	font-weight: 300;
 	margin: sizes.$spacing-xxs 0;

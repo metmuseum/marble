@@ -2,7 +2,7 @@
 @use "../../base/mixins/typography";
 @use "../../base/sizes";
 
-h2.object-chronological-info {
+.object-chronological-info {
 	@include typography.typography-h2;
 	color: colors.$color-grey-700;
 	font-weight: 500;

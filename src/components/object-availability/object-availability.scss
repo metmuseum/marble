@@ -1,7 +1,7 @@
 @use "../../base/colors";
 @use "../../base/sizes";
 
-h4.object-availability {
+.object-availability {
 	color: colors.$color-grey-800;
 	font-size: sizes.$textsize-s;
 	font-weight: 300;

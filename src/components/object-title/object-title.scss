@@ -2,7 +2,7 @@
 @use "../../base/sizes";
 @use "../../base/mixins/typography";
 
-h1.object-title {
+.object-title {
 	@include typography.typography-h1-expressive;
 	color: colors.$color-grey-900;
 	font-weight: 500;
