@@ -35,3 +35,6 @@ export const CarouselVariableWidth = (args) => {
 
 CarouselSameSizeItems.args = {...flickityDefaults, imagesLoaded: true};
 CarouselVariableWidth.args = {...flickityDefaults, imagesLoaded: true};
+CarouselVariableWidth.parameters = {
+	chromatic: { delay: 1000 },
+};
