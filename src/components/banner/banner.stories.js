@@ -67,3 +67,6 @@ export const BannerWithVideo = () => {
 	useEffect(vimeoControls);
 	return bannerMarkup({ ...data, ...{ video: true } });
 };
+BannerWithVideo.parameters = {
+	chromatic: { viewports: [320, 1200, 1700, 2500] },
+};
