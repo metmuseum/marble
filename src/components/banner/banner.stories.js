@@ -59,6 +59,9 @@ const bannerMarkup = (model) => html`
 
 
 export const Banner = () => bannerMarkup(data);
+Banner.parameters = {
+	chromatic: { viewports: [320, 1200, 1700, 2500] },
+};
 
 export const BannerWithVideo = () => {
 	useEffect(vimeoControls);
