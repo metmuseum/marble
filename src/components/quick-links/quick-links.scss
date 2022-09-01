@@ -1,7 +1,7 @@
 $bp-ql: 800px;
 
 .quick-links {
-	margin-bottom: $spacing-s;
+	margin-bottom: $spacing-m;
 	margin-top: $spacing-s;
 }
 
@@ -22,6 +22,14 @@ $bp-ql: 800px;
 	position: relative;
 }
 
+
+.quick-link.has-link:hover,
+.quick-link.has-link:focus-within {
+	.quick-link__title {
+		text-decoration: underline;
+	}
+}
+
 .quick-link__image-wrapper {
 	align-self: center;
 	flex-shrink: 0;
@@ -33,4 +41,8 @@ $bp-ql: 800px;
 .quick-link__image {
 	max-height: 100%;
 	max-width: 100%;
+}
+
+.quick-links__description--bottom:not(:empty) {
+	margin-top: $spacing-xs;
 }
