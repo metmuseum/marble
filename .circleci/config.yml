@@ -33,12 +33,21 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: "Build static storybook to ./.out"
+          name: "Build static storybook to ./out"
           command: ./tmp/bin/pnpm run build-storybook
       - persist_to_workspace:
           root: .
           paths:
             - .
+  run_tests:
+    executor: marble-node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: "run accessibility tests against local storybook"
+          command: ./tmp/bin/pnpm run test:storybook
   do_chromatic:
     executor: marble-node
     steps:
@@ -91,6 +100,9 @@ workflows:
           requires:
             - setup_marble
       - do_chromatic:
+          requires:
+            - build_static_storybook
+      - run_tests:
           requires:
             - build_static_storybook
       - build_and_deploy_dist:
