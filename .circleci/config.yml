@@ -27,28 +27,30 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run stylelint
       - persist_to_workspace:
-          root: .
+          root: /home/circleci/
           paths:
-            - .
+            - project
+            - .cache
   build_static_storybook:
     executor: marble-node
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: ..
       - run:
           name: "Build static storybook to ./out"
           command: pnpm run build-storybook
       - persist_to_workspace:
-          root: .
+          root: /home/circleci/
           paths:
-            - .
+            - project
+            - .cache
   run_tests:
     executor: marble-node
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: ..
       - run: mkdir reports
       # - run: pnpm dlx playwright install-deps
       - run:
@@ -63,7 +65,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: ..
       - run:
           name: "Run Chromatic"
           command: pnpm run chromatic-ci
@@ -72,7 +74,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: ..
       - add_ssh_keys:
           fingerprints:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
@@ -95,7 +97,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: ..
       - add_ssh_keys:
           fingerprints:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
