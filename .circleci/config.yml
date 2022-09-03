@@ -37,7 +37,7 @@ jobs:
           at: .
       - run:
           name: "Build static storybook to ./out"
-          command: pnpm run build-storybook
+          command: ./tmp/bin/pnpm run build-storybook
       - persist_to_workspace:
           root: .
           paths:
@@ -48,6 +48,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - run: 
+          name: Add pnpm binary to PATH
+          command: echo 'export PATH=/home/circleci/project/tmp/bin/:$PATH' >> $BASH_ENV
       - run:
           name: "run accessibility tests against local storybook"
           command: pnpm run test:storybook
@@ -63,7 +66,7 @@ jobs:
           at: .
       - run:
           name: "Run Chromatic"
-          command: pnpm run chromatic-ci
+          command: ./tmp/bin/pnpm run chromatic-ci
   build_and_deploy_dist:
     executor: marble-node
     steps:
@@ -73,6 +76,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
+      - run: 
+          name: Add pnpm binary to PATH
+          command: echo 'export PATH=/home/circleci/project/tmp/bin/:$PATH' >> $BASH_ENV
       - run:
           name: "Build Marble's ./dist for production!"
           command: pnpm run build
@@ -95,6 +101,9 @@ jobs:
             - "50:f8:e7:4b:75:10:ff:83:d3:dc:ca:77:7b:f7:72:8a"
       - run: git config user.email "stephen.marsh@metmuseum.org"
       - run: git config user.name "Marble Bot"
+      - run: 
+          name: Add pnpm binary to PATH
+          command: echo 'export PATH=/home/circleci/project/tmp/bin/:$PATH' >> $BASH_ENV
       - run:
           name: "Use release-it to tag and push to GitHub as release"
           command: DEBUG=release-it:* pnpm run release patch --ci -VV --no-git.requireUpstream --set-upstream origin main
