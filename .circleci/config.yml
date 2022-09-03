@@ -49,6 +49,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: mkdir reports
+      - run: ./tmp/bin/pnpm dlx playwright install-deps
       - run:
           name: "run accessibility tests against local storybook"
           command: ./tmp/bin/pnpm run test:storybook-ci
