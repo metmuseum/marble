@@ -2,7 +2,8 @@ version: 2.1
 executors:
   marble-node:
     docker:
-      - image: "cimg/node:lts"
+      - image: "cimg/node:current-browsers"
+      # - image: "cimg/node:lts"
 jobs:
   setup_marble:
     executor: marble-node
@@ -49,7 +50,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: mkdir reports
-      - run: ./tmp/bin/pnpm dlx playwright install-deps
+      # - run: ./tmp/bin/pnpm dlx playwright install-deps
       - run:
           name: "run accessibility tests against local storybook"
           command: ./tmp/bin/pnpm run test:storybook-ci
