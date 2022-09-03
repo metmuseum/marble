@@ -51,7 +51,7 @@ jobs:
       - run: mkdir reports
       - run:
           name: "run accessibility tests against local storybook"
-          command: pnpm run test:storybook
+          command: ./tmp/bin/pnpm run test:storybook
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/
       - store_test_results:
