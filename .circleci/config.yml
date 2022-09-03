@@ -48,9 +48,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: 
-          name: Add pnpm binary to PATH
-          command: echo 'export PATH=/home/circleci/project/tmp/bin/:$PATH' >> $BASH_ENV
+      - run: mkdir reports
       - run:
           name: "run accessibility tests against local storybook"
           command: pnpm run test:storybook
