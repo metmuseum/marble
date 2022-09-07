@@ -6,8 +6,17 @@ import { withKnobs, color, text } from "@storybook/addon-knobs";
 import he from "he";
 import image712 from ".storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
 import image1231 from ".storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
+import SETTINGS from "../../global/settings";
 
-export default { title: "Banner", decorators: [withKnobs] };
+export default {
+	title: "Banner",
+	decorators: [withKnobs],
+	parameters: {
+		chromatic: {
+			viewports: SETTINGS.chromatic.extraViewports
+		}
+	}
+};
 
 const data = {
 	backgroundColor: () => color("Background Color", "#ECDFD7"),
