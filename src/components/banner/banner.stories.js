@@ -6,8 +6,17 @@ import { withKnobs, color, text } from "@storybook/addon-knobs";
 import he from "he";
 import image712 from ".storybook/assets/images/misc/150HubBannerMobile_712w.jpg";
 import image1231 from ".storybook/assets/images/misc/150HubBannerMobile_1231w.jpg";
+import SETTINGS from "../../global/settings";
 
-export default { title: "Banner", decorators: [withKnobs] };
+export default {
+	title: "Banner",
+	decorators: [withKnobs],
+	parameters: {
+		chromatic: {
+			viewports: SETTINGS.chromatic.extraViewports
+		}
+	}
+};
 
 const data = {
 	backgroundColor: () => color("Background Color", "#ECDFD7"),
@@ -59,14 +68,8 @@ const bannerMarkup = (model) => html`
 
 
 export const Banner = () => bannerMarkup(data);
-Banner.parameters = {
-	chromatic: { viewports: [320, 1200, 1700, 2500] },
-};
 
 export const BannerWithVideo = () => {
 	useEffect(vimeoControls);
 	return bannerMarkup({ ...data, ...{ video: true } });
-};
-BannerWithVideo.parameters = {
-	chromatic: { viewports: [320, 1200, 1700, 2500] },
 };

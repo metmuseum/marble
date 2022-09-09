@@ -7,8 +7,16 @@ import { withKnobs, color, text } from "@storybook/addon-knobs";
 
 import image448 from ".storybook/assets/images/misc/The-Met_150th_Events_Promo_448w.jpg";
 import image896 from ".storybook/assets/images/misc/The-Met_150th_Events_Promo_896w.jpg";
+import SETTINGS from "../../../global/settings";
 
-export default { title: "Banner", decorators: [withKnobs] };
+export default {
+	title: "Banner", decorators: [withKnobs],
+	parameters: {
+		chromatic: {
+			viewports: SETTINGS.chromatic.extraViewports
+		}
+	}
+};
 
 const data = {
 	backgroundColor: () => color("Background Color", "#84b8ff"),
@@ -53,14 +61,8 @@ const bannerMarkup = (model) => html`
 export const BannerEditorial = () => {
 	return bannerMarkup(data);
 };
-BannerEditorial.parameters = {
-	chromatic: { viewports: [320, 1200, 1700, 2500] },
-};
 
 export const BannerEditorialWithVideo = () => {
 	useEffect(vimeoControls);
 	return bannerMarkup({ ...data, ...{ video: true } });
-};
-BannerEditorialWithVideo.parameters = {
-	chromatic: { viewports: [320, 1200, 1700, 2500] },
 };
