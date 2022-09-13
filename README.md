@@ -9,16 +9,15 @@
 
 # Table Of Contents
 
-
-- ### [What is Marble?](#What-is-Marble?)
-- ### [Component Explorer](#Component-Explorer)
-- ### [Design Documentation and Homepage](#Design-Documentation-and-Homepage)
-- ### [Using Marble In Your Project](#Using-Marble-In-Your-Project)
-- ### [How To Contribute To Marble](#Contributing-To-Marble)
-  - ### [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
-  - ### [Storybook Development](#Storybook-Development)
-  - ### [Webpack Build for Release And Production](#[Webpack-Build-for-Release-And-Production)
-- ### [Browsers We Support](#Browsers-We-Support)
+- [What is Marble?](#What-is-Marble)
+- [Component Explorer](#Component-Explorer)
+- [Design Documentation and Homepage](#Design-Documentation-and-Homepage)
+- [Using Marble In Your Project](#Using-Marble-In-Your-Project)
+- [How To Contribute To Marble](#Contributing-To-Marble)
+  - [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
+  - [Storybook Development](#Storybook-Development)
+  - [Webpack Build for Release And Production](#Webpack-Build-for-Release-And-Production)
+- [Browsers We Support](#Browsers-We-Support)
 
 # What is Marble?
 
@@ -32,7 +31,7 @@ Our component explorer, powered by [Storybook](https://storybook.js.org/docs/bas
 ## 🏛️ [main--5ef272f9ab690c0022ef30ab.chromatic.com](https://main--5ef272f9ab690c0022ef30ab.chromatic.com) 📙
 
 
-# Design Documentation and Homepage:
+# Design Documentation and Homepage
 
 Marble's design docs and homepage are at:
 
@@ -221,8 +220,6 @@ More info: https://docs.npmjs.com/cli/ci.html
 It is **not recommended** to point your installation of Marble to an environment-specific branch on staging or production. Please always use `main`.
 
 # Contributing To Marble
-
-# WIP
 
 ## Conventions
 
