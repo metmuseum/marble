@@ -16,11 +16,11 @@ $button-height: 42px;
 }
 
 .la-musette--offset > :first-child {
-	margin-left: 7.5vw;
+	margin-left: $spacing-component-margin;
 }
 
 .la-musette--offset > :last-child {
-	margin-right: 7.5vw;
+	margin-right: $spacing-component-margin;
 }
 
 .la-musette--no-scrollbar {
