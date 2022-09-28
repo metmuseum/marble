@@ -11,7 +11,6 @@
 
 - [What is Marble?](#What-is-Marble)
 - [Component Explorer](#Component-Explorer)
-- [Design Documentation and Homepage](#Design-Documentation-and-Homepage)
 - [Using Marble In Your Project](#Using-Marble-In-Your-Project)
 - [How To Contribute To Marble](#Contributing-To-Marble)
   - [Marble Development As A Local Package](#Marble-Development-As-A-Local-Package)
@@ -30,12 +29,6 @@ Our component explorer, powered by [Storybook](https://storybook.js.org/docs/bas
 
 ## 🏛️ [marble.metmuseum.org](https://marble.metmuseum.org) 📙
 
-
-# Design Documentation and Homepage
-
-Marble's design docs and homepage are at:
-
-🎨 https://marble.metmuseum.org/ 🏡
 
 # Using Marble In Your Project
 
