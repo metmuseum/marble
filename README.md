@@ -28,7 +28,7 @@ https://about.gitlab.com/topics/version-control/what-is-innersource/) project.
 
 Our component explorer, powered by [Storybook](https://storybook.js.org/docs/basics/introduction/), lives on Chromatic at:
 
-## 🏛️ [main--5ef272f9ab690c0022ef30ab.chromatic.com](https://main--5ef272f9ab690c0022ef30ab.chromatic.com) 📙
+## 🏛️ [marble.metmuseum.org](https://marble.metmuseum.org) 📙
 
 
 # Design Documentation and Homepage
