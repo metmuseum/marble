@@ -5,6 +5,7 @@
 .object-viewability {
 	color: colors.$color-grey-800;
 	font-size: sizes.$textsize-xs;
+	font-weight: 400;
 	line-height: math.div(18, 16);
 	margin-top: sizes.$spacing-xs;
 }

@@ -7,12 +7,18 @@ export default {
 };
 
 export const Viewability = ({ status, building, locations }) => {
+	let innerMarkup;
+
 	switch (status) {
 	case "On view":
-		return html`<div class="object-viewability">${status} at ${building} in ${LocationPin({ locations })}</div >`;
+			innerMarkup = `${status} at ${building} in ${LocationPin({ locations })}`;
+			break;
 	case "Not on view":
-		return html`<div class="object-viewability">${eyeSlash} ${status}</div>`;
+			innerMarkup = `${eyeSlash} ${status}`;
+			break;
 	}
+
+	return html`<h4 class="object-viewability">${innerMarkup}</h4>`
 };
 
 Viewability.args = {
