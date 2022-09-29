@@ -1,0 +1,17 @@
+@use "../../base/colors";
+@use "../../base/sizes";
+@use "sass:math";
+
+.object-viewability {
+	color: colors.$color-grey-800;
+	font-size: sizes.$textsize-xs;
+	line-height: math.div(18, 16);
+	margin-top: sizes.$spacing-xs;
+}
+
+.not-on-view-icon {
+	height: sizes.$textsize-xs;
+	margin-right: math.div(1, 3) * 1em;
+	transform: translateY(-2px);
+	vertical-align: middle;
+}

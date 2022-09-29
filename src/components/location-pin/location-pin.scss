@@ -1,0 +1,21 @@
+@use "../../base/colors";
+@use "../../base/sizes";
+@use "sass:math";
+
+.location-pin {
+	color: colors.$color-grey-800;
+	display: inline-block;
+	font-size: sizes.$textsize-xs;
+	font-weight: 500;
+	line-height: math.div(18, 16);
+
+	svg {
+		height: calc(1em + 2px);
+		margin-right: 0 math.div(1, 3) * 1em;
+		vertical-align: middle;
+	}
+}
+
+.location-pin__link {
+	text-decoration: underline;
+}

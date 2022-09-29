@@ -1,4 +1,5 @@
 import alertIcon from "!!raw-loader!./alertIcon.svg";
+import eyeSlash from "!!raw-loader!./eyeSlash.svg";
 import forwardTenSecondsIcon from "!!raw-loader!./forwardTenSecondsIcon.svg";
 import mapPin from "!!raw-loader!./mapPin.svg";
 import pauseIcon from "!!raw-loader!./pauseIcon.svg";
@@ -9,6 +10,7 @@ import viewToggleIcon from "!!raw-loader!./viewToggleIcon.svg";
 
 export default {
   alertIcon,
+  eyeSlash,
   forwardTenSecondsIcon,
   mapPin,
   pauseIcon,
@@ -20,6 +22,7 @@ export default {
 
 export { 
   alertIcon,
+  eyeSlash,
   forwardTenSecondsIcon,
   mapPin,
   pauseIcon,

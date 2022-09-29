@@ -2,7 +2,7 @@ import { html } from ".storybook/helpers";
 import { Title } from "../object-title/object-title.stories";
 import { ChronologicalInfo } from "../object-chronological-info/object-chronological-info.stories";
 import { Creators } from "../object-creators/object-creators.stories";
-import { Availability } from "../object-availability/object-availability.stories";
+import { Viewability } from "../object-viewability/object-viewability.stories";
 
 export default { title: "Collection Objects/Label" };
 
@@ -11,7 +11,7 @@ export const Label = (args) => (
 		${Title(args.Title)}
 		${ChronologicalInfo(args.ChronologicalInfo)}
 		${Creators(args.Creators)}
-		${Availability(args.Availability)}
+		${Viewability(args.Viewability)}
 	</div>`
 );
 
@@ -19,5 +19,5 @@ Label.args = {
 	Title: Title.args,
 	ChronologicalInfo: ChronologicalInfo.args,
 	Creators: Creators.args,
-	Availability: Availability.args
+	Viewability: Viewability.args
 };
