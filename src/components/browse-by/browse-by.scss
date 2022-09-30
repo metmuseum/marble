@@ -1,0 +1,21 @@
+.browseby-tab {
+	display: none;
+
+	&.selected {
+		display: block;
+	}
+}
+
+.browseby-tab-body {
+	display: grid;
+	grid-column-gap: $spacing-micro;
+	grid-row-gap: $spacing-xs;
+	grid-template-columns: repeat(auto-fit, minmax(239px, 1fr));
+	margin: $spacing-micro 0 $spacing-s;
+}
+
+.browse-by__heading {
+	font-size: $textsize-m;
+	font-weight: 500;
+	line-height: 1.1;
+}
