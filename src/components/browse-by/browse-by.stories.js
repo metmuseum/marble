@@ -51,39 +51,39 @@ const cardTemplate = (args) => {
 };
 
 export const BrowseBy = () => html`
-	<section class="browse-by js-browse-by">
+	<section class="browseby js-browseby">
 		<fieldset class="tabs-control-container">
 			<legend class="screen-reader-only">Select one of the tabs below</legend>
 			<div class="tab-controls">
-				<input id="Past-tab-id" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Past" checked="">
-				<label for="Past-tab-id" class="tab-controls__label">
-					<h3 class="browse-by__heading">Dis</h3>
+				<input id="artist-tab" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Artist" checked="">
+				<label for="artist-tab" class="tab-controls__label">
+					<h3 class="browseby__heading">Artist</h3>
 				</label>
 			</div>
 			<div class="tab-controls">
-				<input id="Current-tab-id" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Current">
-				<label for="Current-tab-id" class="tab-controls__label">
-					<h3 class="browse-by__heading">Dat</h3>
+				<input id="art-movement-tab" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Art Movement">
+				<label for="art-movement-tab" class="tab-controls__label">
+					<h3 class="browseby__heading">Art Movement</h3>
 				</label>
 			</div> <div class="tab-controls">
-				<input id="Upcoming-tab-id" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Upcoming" false="">
-				<label for="Upcoming-tab-id" class="tab-controls__label">
-					<h3 class="browse-by__heading">The Last</h3>
+				<input id="time-period-tab" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Time Period" false="">
+				<label for="time-period-tab" class="tab-controls__label">
+					<h3 class="browseby__heading">Time Period</h3>
 				</label>
 			</div>
 		</fieldset>
-		<section id="tab1" class="browseby-tab selected">
-			<div class="browseby-tab-body">
+		<section id="artist" class="browseby-tabpanel selected">
+			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
 			</div>
 		</section>
-		<section id="tab2" class="browseby-tab">
-			<div class="browseby-tab-body">
+		<section id="art-movement" class="browseby-tabpanel">
+			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
 			</div>
 		</section>
-		<section id="tab3" class="browseby-tab">
-			<div class="browseby-tab-body">
+		<section id="time-period" class="browseby-tabpanel">
+			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
 			</div>
 		</section>
