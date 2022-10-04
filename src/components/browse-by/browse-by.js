@@ -1,4 +1,5 @@
 function browseBy() {
+	alert("browse by is here");
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
 		browseBys.forEach((browser)=> {
