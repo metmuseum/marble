@@ -1,4 +1,6 @@
 import { html } from ".storybook/helpers";
+import { useEffect } from "@storybook/client-api";
+import { browseByjs } from "./browse-by.js";
 import greekHallImages from ".storybook/assets/images/greek-hall";
 
 export default { title: "Components/BrowseBy" };
@@ -50,7 +52,9 @@ const cardTemplate = (args) => {
 		</div>`;
 };
 
-export const BrowseBy = () => html`
+export const BrowseBy = () => {
+	useEffect(browseByjs);
+	return html`
 	<section class="browseby js-browseby">
 		<fieldset class="tabs-control-container">
 			<legend class="screen-reader-only">Select one of the tabs below</legend>
@@ -88,3 +92,4 @@ export const BrowseBy = () => html`
 			</div>
 		</section>
 	</section>`;
+};
