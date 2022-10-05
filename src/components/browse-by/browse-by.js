@@ -5,12 +5,12 @@ function browseBy() {
 			let tabToggles = browseBy.querySelectorAll(".js-browseby-tab");
 	
 			tabToggles.forEach((tabToggle) => {
-				tabToggle.addEventListener("click", function (e) {
+				tabToggle.addEventListener("click", function () {
 					handleToggleClick(tabToggle, true);
 				});
 			});
 
-			const handleToggleClick = (toggleClicked, withFocus) => {
+			const handleToggleClick = (toggleClicked) => {
 				let clickedID = toggleClicked.id;
 				let IDofTabToOpen = clickedID.substring(0, clickedID.length - 4);
 				let tabToOpen = document.getElementById(IDofTabToOpen);

@@ -56,8 +56,8 @@ export const BrowseBy = () => {
 	useEffect(browseByjs);
 	return html`
 	<section class="browseby js-browseby">
-		<fieldset class="tabs-control-container">
-			<legend class="screen-reader-only">Select one of the tabs below</legend>
+		<fieldset class="tabs-control-container js-browseby-tabs">
+			<legend class="screen-reader-only">Select one of the tabs below. Use your arrow keys to navigate the tabs, and your tab key to select an item below the tab</legend>
 			<div class="tab-controls">
 				<input id="artist-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Artist" checked="">
 				<label for="artist-tab" class="tab-controls__label">
