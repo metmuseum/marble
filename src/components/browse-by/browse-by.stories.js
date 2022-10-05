@@ -1,6 +1,6 @@
 import { html } from ".storybook/helpers";
 import { useEffect } from "@storybook/client-api";
-import { browseByjs } from "./browse-by.js";
+import browseByjs from "./browse-by.js";
 import greekHallImages from ".storybook/assets/images/greek-hall";
 
 export default { title: "Components/BrowseBy" };
@@ -59,34 +59,35 @@ export const BrowseBy = () => {
 		<fieldset class="tabs-control-container">
 			<legend class="screen-reader-only">Select one of the tabs below</legend>
 			<div class="tab-controls">
-				<input id="artist-tab" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Artist" checked="">
+				<input id="artist-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Artist" checked="">
 				<label for="artist-tab" class="tab-controls__label">
 					<h3 class="browseby__heading">Artist</h3>
 				</label>
 			</div>
 			<div class="tab-controls">
-				<input id="art-movement-tab" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Art Movement">
+				<input id="art-movement-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Art Movement">
 				<label for="art-movement-tab" class="tab-controls__label">
 					<h3 class="browseby__heading">Art Movement</h3>
 				</label>
-			</div> <div class="tab-controls">
-				<input id="time-period-tab" type="radio" name="my-cool-tabs" class="tab-controls__input" value="Time Period" false="">
+			</div> 
+			<div class="tab-controls">
+				<input id="time-period-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Time Period" false="">
 				<label for="time-period-tab" class="tab-controls__label">
 					<h3 class="browseby__heading">Time Period</h3>
 				</label>
 			</div>
 		</fieldset>
-		<section id="artist" class="browseby-tabpanel selected">
+		<section id="artist" class="browseby-tabpanel js-browseby-tabpanel selected">
 			<div class="browseby-tabpanel-body">
-				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
+				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 1].srcSet.fallback })).join("")}
 			</div>
 		</section>
-		<section id="art-movement" class="browseby-tabpanel">
+		<section id="art-movement" class="browseby-tabpanel js-browseby-tabpanel">
 			<div class="browseby-tabpanel-body">
-				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
+				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 2].srcSet.fallback })).join("")}
 			</div>
 		</section>
-		<section id="time-period" class="browseby-tabpanel">
+		<section id="time-period" class="browseby-tabpanel js-browseby-tabpanel">
 			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
 			</div>
