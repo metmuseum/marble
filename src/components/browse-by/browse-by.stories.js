@@ -65,13 +65,13 @@ export const BrowseBy = () => {
 				</label>
 			</div>
 			<div class="tab-controls" role="tab" aria-controls="topic2">
-				<input id="topic2-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Art Movement">
+				<input id="topic2-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic2">
 				<label for="topic2-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading" role="presentation">Topic Two</h3>
 				</label>
 			</div> 
 			<div class="tab-controls" role="tab" aria-controls="topic3">
-				<input id="topic3-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Time Period">
+				<input id="topic3-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic3">
 				<label for="topic3-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading" role="presentation">Topic Three</h3>
 				</label>
