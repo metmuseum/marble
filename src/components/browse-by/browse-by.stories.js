@@ -56,28 +56,28 @@ export const BrowseBy = () => {
 	useEffect(browseByjs);
 	return html`
 	<section class="browseby js-browseby">
-		<fieldset class="tabs-control-container" role="tablist">
+		<fieldset class="tabs-control-container js-tabs-control-container" role="tablist">
 			<legend class="screen-reader-only">Select one of the tabs below. Use your arrow keys to navigate the tabs, and your tab key to select an item below the tab</legend>
-			<div class="tab-controls" role="tab" aria-controls="topic1">
+			<div class="tab-controls" role="tab" aria-controls="topic1" aria-selected="true">
 				<input id="topic1-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic1" checked="">
 				<label for="topic1-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading" role="presentation">Topic One</h3>
 				</label>
 			</div>
-			<div class="tab-controls" role="tab" aria-controls="topic2">
+			<div class="tab-controls" role="tab" aria-controls="topic2" aria-selected="false">
 				<input id="topic2-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic2">
 				<label for="topic2-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading" role="presentation">Topic Two</h3>
 				</label>
 			</div> 
-			<div class="tab-controls" role="tab" aria-controls="topic3">
+			<div class="tab-controls" role="tab" aria-controls="topic3" aria-selected="false">
 				<input id="topic3-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic3">
 				<label for="topic3-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading" role="presentation">Topic Three</h3>
 				</label>
 			</div>
 		</fieldset>
-		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel selected" role="tabpanel" aria-labelledby="topic1-tab" aria-expanded="true">
+		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="topic1-tab" aria-expanded="true">
 			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 1].srcSet.fallback })).join("")}
 			</div>
