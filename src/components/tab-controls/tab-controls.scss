@@ -33,21 +33,18 @@
 		border-color: currentColor;
 	}
 
-	:checked + &:hover {
-		border-color: $color-focus-state;
-	}
-
-	.tab-controls__input:focus + & {
-		border-color: currentColor;
-		color: $color-focus-state;
-	}
-
 	&:hover {
-		color: $color-focus-state;
+		border-color: currentColor;
 		cursor: pointer;
 	}
 
-	h3 {
+	.tab-controls__heading {
 		margin-bottom: 0;
 	}
+}
+
+.tab-controls__heading {
+	font-size: $textsize-m;
+	font-weight: 500;
+	line-height: 1.1;
 }

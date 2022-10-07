@@ -56,38 +56,38 @@ export const BrowseBy = () => {
 	useEffect(browseByjs);
 	return html`
 	<section class="browseby js-browseby">
-		<fieldset class="tabs-control-container">
+		<fieldset class="tabs-control-container" role="tablist">
 			<legend class="screen-reader-only">Select one of the tabs below. Use your arrow keys to navigate the tabs, and your tab key to select an item below the tab</legend>
-			<div class="tab-controls">
-				<input id="artist-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Artist" checked="">
-				<label for="artist-tab" class="tab-controls__label">
-					<h3 class="browseby__heading">Artist</h3>
+			<div class="tab-controls" role="tab" aria-controls="topic1">
+				<input id="topic1-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic1" checked="">
+				<label for="topic1-tab" class="tab-controls__label">
+					<h3 class="tab-controls__heading" role="presentation">Topic One</h3>
 				</label>
 			</div>
-			<div class="tab-controls">
-				<input id="art-movement-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Art Movement">
-				<label for="art-movement-tab" class="tab-controls__label">
-					<h3 class="browseby__heading">Art Movement</h3>
+			<div class="tab-controls" role="tab" aria-controls="topic2">
+				<input id="topic2-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Art Movement">
+				<label for="topic2-tab" class="tab-controls__label">
+					<h3 class="tab-controls__heading" role="presentation">Topic Two</h3>
 				</label>
 			</div> 
-			<div class="tab-controls">
-				<input id="time-period-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Time Period" false="">
-				<label for="time-period-tab" class="tab-controls__label">
-					<h3 class="browseby__heading">Time Period</h3>
+			<div class="tab-controls" role="tab" aria-controls="topic3">
+				<input id="topic3-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="Time Period">
+				<label for="topic3-tab" class="tab-controls__label">
+					<h3 class="tab-controls__heading" role="presentation">Topic Three</h3>
 				</label>
 			</div>
 		</fieldset>
-		<section id="artist" class="browseby-tabpanel js-browseby-tabpanel selected">
+		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel selected" role="tabpanel" aria-labelledby="topic1-tab" aria-expanded="true">
 			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 1].srcSet.fallback })).join("")}
 			</div>
 		</section>
-		<section id="art-movement" class="browseby-tabpanel js-browseby-tabpanel">
+		<section id="topic2" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="topic2-tab" aria-expanded="false" hidden="true">
 			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 2].srcSet.fallback })).join("")}
 			</div>
 		</section>
-		<section id="time-period" class="browseby-tabpanel js-browseby-tabpanel">
+		<section id="topic3" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="topic3-tab" aria-expanded="false" hidden="true">
 			<div class="browseby-tabpanel-body">
 				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
 			</div>
