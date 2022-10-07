@@ -2,33 +2,35 @@ function browseBy() {
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
 		browseBys.forEach((browseBy)=> {
-			let tabToggles = browseBy.querySelectorAll(".js-browseby-tab");
+			let tabs = browseBy.querySelectorAll(".js-browseby-tab");
 	
-			tabToggles.forEach((tabToggle) => {
-				tabToggle.addEventListener("click", function () {
-					handleToggleClick(tabToggle, true);
+			tabs.forEach((tab) => {
+				tab.addEventListener("click", function () {
+					handleTabClick(tab);
 				});
 			});
 
-			const handleToggleClick = (toggleClicked) => {
-				let clickedID = toggleClicked.id;
-				let IDofTabToOpen = clickedID.substring(0, clickedID.length - 4);
-				let tabToOpen = document.getElementById(IDofTabToOpen);
-				closeAllTabs();
-				openTab(tabToOpen);
+			const handleTabClick = (tabClicked) => {
+				let clickedID = tabClicked.id;
+				let IDofTabPanelToOpen = clickedID.substring(0, clickedID.length - 4); //remove the "-tab" from the name
+				let tabPanelToOpen = document.getElementById(IDofTabPanelToOpen);
+				closeAllTabPanels();
+				openTabPanel(tabPanelToOpen);
 			};
 
-			const closeAllTabs = () => {
-				let allTabs = browseBy.querySelectorAll(".js-browseby-tabpanel");
-				allTabs.forEach((theTab) => {
-					theTab.classList.remove("selected");
-					theTab.setAttribute("hidden", "");
+			const closeAllTabPanels = () => {
+				let allTabPanels = browseBy.querySelectorAll(".js-browseby-tabpanel");
+				allTabPanels.forEach((theTabPanel) => {
+					theTabPanel.classList.remove("selected");
+					theTabPanel.setAttribute("hidden", "true");
+					theTabPanel.setAttribute("aria-expanded", "false");
 				});
 			};
 
-			const openTab = (tabToOpen) => {
-				tabToOpen.classList.add("selected");
-				tabToOpen.removeAttribute("hidden");
+			const openTabPanel = (tabPanelToOpen) => {
+				tabPanelToOpen.classList.add("selected");
+				tabPanelToOpen.removeAttribute("hidden");
+				tabPanelToOpen.setAttribute("aria-expanded", "true");
 			};
 		});
 	}

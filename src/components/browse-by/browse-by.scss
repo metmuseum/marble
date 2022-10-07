@@ -3,14 +3,6 @@
 // 	outline: none;
 // }
 
-.browseby-tabpanel {
-	display: none;
-
-	&.selected {
-		display: block;
-	}
-}
-
 .browseby-tabpanel-body {
 	display: grid;
 	grid-column-gap: $spacing-micro;
