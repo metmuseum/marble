@@ -23,12 +23,18 @@ const titles = [
 	"Modern and Contemporary Art"
 ];
 
+const colors = [
+	"#FCD1FE",
+	"#B62878",
+	"#D6C775"
+];
+
 const images = [greekHallImages.image1x1, greekHallImages.image4x3, greekHallImages.image16x9];
 
 // these items can literally be any card
 const cardTemplate = (args) => {
 	return html`
-		<div class="marble-card">
+		<div class="marble-card" style="background:${args.color}">
 			<a href="link here" class="marble-card__image-link" tabindex="-1">
 				<div class="marble-card__image-wrapper">
 					<img class="marble-card__image" src="${args.imageURL}" alt="an example image alt for accessibility" />
@@ -59,10 +65,10 @@ export const BrowseBy = () => {
 	useEffect(browseByjs);
 	return html`
 	<section class="browseby js-browseby">
-
 		<fieldset class="tabs-control-container js-tabs-control-container" role="tablist">
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
 		${tabNames.map((tabName, index) => {
+		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable
 		return html`
 			<div class="tab-controls" role="tab" aria-controls="${tabName}" ${index === 0 && "aria-selected=\"true\""}>
 				<input
@@ -74,17 +80,19 @@ export const BrowseBy = () => {
 					${index === 0 && "checked"}
 				/>
 				<label for="${tabName}-tab" class="tab-controls__label">
-					<h3 class="tab-controls__heading" role="presentation">${tabName}</h3>
+					<h3 class="tab-controls__heading" role="presentation">${niceTabName}</h3>
 				</label>
 			</div>
 		`;}).join("")}
 		</fieldset>
 
 		${tabNames.map((tabName, index) => {
+		let randomImageSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit
+		let randomColorSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit
 		return html`
 			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" ${index === 0 && "aria-expanded=\"true\""}>
 				<div class="browseby-tabpanel-body">
-					${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 1].srcSet.fallback })).join("")}
+					${titles.map((title, index) => cardTemplate({ title: title, color: colors[index % randomColorSrc], imageURL: images[index % randomImageSrc].srcSet.fallback })).join("")}
 				</div>
 			</section>
 		`;}).join("")}
