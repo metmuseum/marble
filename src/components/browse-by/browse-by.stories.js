@@ -53,44 +53,40 @@ const cardTemplate = (args) => {
 };
 
 export const BrowseBy = () => {
+	const screenreaderLegendText = "Use your arrow keys to navigate the topics in the tabs below, and your tab key to choose an item";
+	const tabNames = ["topic1", "topic2", "topic3"];
+	const inputGroupName = "browseby-tabset";
 	useEffect(browseByjs);
 	return html`
 	<section class="browseby js-browseby">
+
 		<fieldset class="tabs-control-container js-tabs-control-container" role="tablist">
-			<legend class="screen-reader-only">Select one of the tabs below. Use your arrow keys to navigate the tabs, and your tab key to select an item below the tab</legend>
-			<div class="tab-controls" role="tab" aria-controls="topic1" aria-selected="true">
-				<input id="topic1-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic1" checked="">
-				<label for="topic1-tab" class="tab-controls__label">
-					<h3 class="tab-controls__heading" role="presentation">Topic One</h3>
+		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
+		${tabNames.map((tabName, index) => {
+		return html`
+			<div class="tab-controls" role="tab" aria-controls="${tabName}" ${index === 0 && "aria-selected=\"true\""}>
+				<input
+					id="${tabName}-tab"
+					type="radio"
+					name=${inputGroupName}
+					class="tab-controls__input js-browseby-tab"
+					value="${tabName}"
+					${index === 0 && "checked"}
+				/>
+				<label for="${tabName}-tab" class="tab-controls__label">
+					<h3 class="tab-controls__heading" role="presentation">${tabName}</h3>
 				</label>
 			</div>
-			<div class="tab-controls" role="tab" aria-controls="topic2" aria-selected="false">
-				<input id="topic2-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic2">
-				<label for="topic2-tab" class="tab-controls__label">
-					<h3 class="tab-controls__heading" role="presentation">Topic Two</h3>
-				</label>
-			</div> 
-			<div class="tab-controls" role="tab" aria-controls="topic3" aria-selected="false">
-				<input id="topic3-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic3">
-				<label for="topic3-tab" class="tab-controls__label">
-					<h3 class="tab-controls__heading" role="presentation">Topic Three</h3>
-				</label>
-			</div>
+		`;}).join("")}
 		</fieldset>
-		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="topic1-tab" aria-expanded="true">
-			<div class="browseby-tabpanel-body">
-				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 1].srcSet.fallback })).join("")}
-			</div>
-		</section>
-		<section id="topic2" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="topic2-tab" aria-expanded="false" hidden="true">
-			<div class="browseby-tabpanel-body">
-				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 2].srcSet.fallback })).join("")}
-			</div>
-		</section>
-		<section id="topic3" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="topic3-tab" aria-expanded="false" hidden="true">
-			<div class="browseby-tabpanel-body">
-				${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
-			</div>
-		</section>
+
+		${tabNames.map((tabName, index) => {
+		return html`
+			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" ${index === 0 && "aria-expanded=\"true\""}>
+				<div class="browseby-tabpanel-body">
+					${titles.map((title, index) => cardTemplate({ title: title, imageURL: images[index % 1].srcSet.fallback })).join("")}
+				</div>
+			</section>
+		`;}).join("")}
 	</section>`;
 };
