@@ -69,8 +69,12 @@ export const BrowseBy = () => {
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
 		${tabNames.map((tabName, index) => {
 		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable
+		let isSelected = false;
+		if (index === 0) {
+			isSelected = true;
+		}
 		return html`
-			<div class="tab-controls" role="tab" aria-controls="${tabName}" ${index === 0 && "aria-selected=\"true\""}>
+			<div class="tab-controls" role="tab" aria-controls="${tabName}" aria-selected="${isSelected}">
 				<input
 					id="${tabName}-tab"
 					type="radio"
@@ -89,8 +93,12 @@ export const BrowseBy = () => {
 		${tabNames.map((tabName, index) => {
 		let randomImageSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit
 		let randomColorSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit
+		let isExpanded = false;
+		if (index === 0) {
+			isExpanded = true;
+		}
 		return html`
-			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" ${index === 0 && "aria-expanded=\"true\""}>
+			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" aria-expanded="${isExpanded}">
 				<div class="browseby-tabpanel-body">
 					${titles.map((title, index) => cardTemplate({ title: title, color: colors[index % randomColorSrc], imageURL: images[index % randomImageSrc].srcSet.fallback })).join("")}
 				</div>
