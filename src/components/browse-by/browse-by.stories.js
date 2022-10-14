@@ -73,6 +73,10 @@ export const BrowseBy = () => {
 		if (index === 0) {
 			isSelected = true;
 		}
+		let isChecked ="";
+		if (index === 0) {
+			isChecked = "checked";
+		}
 		return html`
 			<div class="tab-controls" role="tab" aria-controls="${tabName}" aria-selected="${isSelected}">
 				<input
@@ -81,7 +85,7 @@ export const BrowseBy = () => {
 					name=${inputGroupName}
 					class="tab-controls__input js-browseby-tab"
 					value="${tabName}"
-					${index === 0 && "checked"}
+					${isChecked}
 				/>
 				<label for="${tabName}-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading" role="presentation">${niceTabName}</h3>
@@ -97,8 +101,12 @@ export const BrowseBy = () => {
 		if (index === 0) {
 			isExpanded = true;
 		}
+		let isHidden = "hidden=\"true\"";
+		if (index === 0) {
+			isHidden = "";
+		}
 		return html`
-			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" aria-expanded="${isExpanded}">
+			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" aria-expanded="${isExpanded}" ${isHidden}>
 				<div class="browseby-tabpanel-body">
 					${titles.map((title, index) => cardTemplate({ title: title, color: colors[index % randomColorSrc], imageURL: images[index % randomImageSrc].srcSet.fallback })).join("")}
 				</div>
