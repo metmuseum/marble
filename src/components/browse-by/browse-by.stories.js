@@ -74,7 +74,7 @@ export const BrowseBy = () => {
 			isChecked = "checked";
 		}
 		return html`
-			<div class="tab-controls" role="tab">
+			<div class="tab-controls">
 				<input
 					id="${tabName}-tab"
 					type="radio"
