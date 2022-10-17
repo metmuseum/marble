@@ -24,9 +24,9 @@ const titles = [
 ];
 
 const colors = [
-	"#FCD1FE",
-	"#B62878",
-	"#D6C775"
+	"#abdbe3",
+	"#eeeee4",
+	"#f8e3c9"
 ];
 
 const images = [greekHallImages.image1x1, greekHallImages.image4x3, greekHallImages.image16x9];
@@ -65,20 +65,16 @@ export const BrowseBy = () => {
 	useEffect(browseByjs);
 	return html`
 	<section class="browseby js-browseby">
-		<fieldset class="tabs-control-container js-tabs-control-container" role="tablist">
+		<fieldset class="tabs-control-container js-tabs-control-container">
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
 		${tabNames.map((tabName, index) => {
-		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable
-		let isSelected = false;
-		if (index === 0) {
-			isSelected = true;
-		}
+		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable for storybook
 		let isChecked ="";
 		if (index === 0) {
 			isChecked = "checked";
 		}
 		return html`
-			<div class="tab-controls" role="tab" aria-controls="${tabName}" aria-selected="${isSelected}">
+			<div class="tab-controls" role="tab">
 				<input
 					id="${tabName}-tab"
 					type="radio"
@@ -88,25 +84,23 @@ export const BrowseBy = () => {
 					${isChecked}
 				/>
 				<label for="${tabName}-tab" class="tab-controls__label">
-					<h3 class="tab-controls__heading" role="presentation">${niceTabName}</h3>
+					<h3 class="tab-controls__heading"><span class="visually-hidden">Show panel </span> ${niceTabName}</h3>
 				</label>
 			</div>
 		`;}).join("")}
 		</fieldset>
 
 		${tabNames.map((tabName, index) => {
-		let randomImageSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit
-		let randomColorSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit
-		let isExpanded = false;
-		if (index === 0) {
-			isExpanded = true;
-		}
+		let randomImageSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit for storybook
+		let randomColorSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit for storybook
+		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable for storybook
 		let isHidden = "hidden=\"true\"";
 		if (index === 0) {
 			isHidden = "";
 		}
 		return html`
-			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" role="tabpanel" aria-labelledby="${tabName}-tab" aria-expanded="${isExpanded}" ${isHidden}>
+			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" ${isHidden}>
+			<h3 class="visually-hidden">${niceTabName}</h3>
 				<div class="browseby-tabpanel-body">
 					${titles.map((title, index) => cardTemplate({ title: title, color: colors[index % randomColorSrc], imageURL: images[index % randomImageSrc].srcSet.fallback })).join("")}
 				</div>
