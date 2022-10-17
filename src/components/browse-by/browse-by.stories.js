@@ -84,7 +84,7 @@ export const BrowseBy = () => {
 					${isChecked}
 				/>
 				<label for="${tabName}-tab" class="tab-controls__label">
-					<h3 class="tab-controls__heading"><span class="visually-hidden">Show panel </span> ${niceTabName}</h3>
+					<h3 class="tab-controls__heading"><span class="screen-reader-only">Show panel </span> ${niceTabName}</h3>
 				</label>
 			</div>
 		`;}).join("")}
