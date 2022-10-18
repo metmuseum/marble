@@ -69,9 +69,9 @@ export const BrowseBy = () => {
 		<legend class="screen-reader-only">${screenreaderLegendText}</legend>
 		${tabNames.map((tabName, index) => {
 		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable for storybook
-		let isChecked ="";
+		let valueForChecked ="";
 		if (index === 0) {
-			isChecked = "checked";
+			valueForChecked = "checked";
 		}
 		return html`
 			<div class="tab-controls">
@@ -81,7 +81,7 @@ export const BrowseBy = () => {
 					name=${inputGroupName}
 					class="tab-controls__input js-browseby-tab"
 					value="${tabName}"
-					${isChecked}
+					${valueForChecked}
 				/>
 				<label for="${tabName}-tab" class="tab-controls__label">
 					<h3 class="tab-controls__heading"><span class="screen-reader-only">Show panel </span> ${niceTabName}</h3>
@@ -94,13 +94,10 @@ export const BrowseBy = () => {
 		let randomImageSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit for storybook
 		let randomColorSrc = Math.floor(Math.random() * 3) + 1; //just randomize this a bit for storybook
 		let niceTabName = tabName.replace(/.{1}$/," $&"); //just make it a bit more readable for storybook
-		let isHidden = "hidden=\"true\"";
-		if (index === 0) {
-			isHidden = "";
-		}
+		let valueForHidden = index === 0 ? "" : "hidden";
 		return html`
-			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" ${isHidden}>
-			<h3 class="visually-hidden">${niceTabName}</h3>
+			<section id="${tabName}" class="browseby-tabpanel js-browseby-tabpanel" ${valueForHidden}>
+			<h3 class="screen-reader-only">${niceTabName}</h3>
 				<div class="browseby-tabpanel-body">
 					${titles.map((title, index) => cardTemplate({ title: title, color: colors[index % randomColorSrc], imageURL: images[index % randomImageSrc].srcSet.fallback })).join("")}
 				</div>

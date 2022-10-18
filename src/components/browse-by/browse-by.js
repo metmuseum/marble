@@ -1,5 +1,7 @@
 function browseBy() {
+	console.log("Browse by script is here");
 	if (document.querySelector(".js-browseby")) {
+		console.log("Browse by script init");
 		const browseBys = document.querySelectorAll(".js-browseby");
 		browseBys.forEach((browseBy)=> {
 			let tabsContainer = browseBy.querySelector(".js-tabs-control-container");
