@@ -43,7 +43,8 @@
 	}
 }
 
-.tab-controls__heading {
+.tab-controls__heading,
+.tab-controls__input h3 {
 	font-size: $textsize-m;
 	font-weight: 500;
 	line-height: 1.1;
