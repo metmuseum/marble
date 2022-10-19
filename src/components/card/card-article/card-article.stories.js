@@ -39,8 +39,7 @@ const ArticleCard = () => {
 		</div>
 		<div class="article-card__subject">
 			<div
-				class="article-card__subject-body article-card__subject-body--multicard"
-			>
+				class="article-card__subject-body article-card__subject-body--multicard">
 				<div class="article-card__header">
 					<h4 class="article-card__header-descriptor">
 						<a class="article-card__header-descriptor-link" href="${link}">
