@@ -93,11 +93,15 @@
 	}
 }
 
-//Force a 2/3 ratio for the image
-.article-card__image-wrapper--66 {
-	height: 0;
-	padding-bottom: 66%;
-	position: relative;
+//Force a 3/2 ratio for the image
+.article-card__image-wrapper--66,
+.article-card__image-wrapper--3by2 {
+	aspect-ratio: 3/2;
+}
+
+//Force a 4/3 ratio for the image
+.article-card__image-wrapper--4by3 {
+	aspect-ratio: 4/3;
 }
 
 .article-card__subject {

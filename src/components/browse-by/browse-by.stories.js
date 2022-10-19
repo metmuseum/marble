@@ -38,7 +38,7 @@ export const BrowseBy = () => {
 			<h3 class="screen-reader-only">Topic One</h3>
 			<div class="browseby-tabpanel-body">
 				<div class="article-card">
-					<div class="article-card__image-wrapper">
+					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
 							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
 							</a>
@@ -53,7 +53,7 @@ export const BrowseBy = () => {
 				</div>
 				<div class="article-card">
 					<a href="link here" class="article-card__image-link" tabindex="-1">
-						<div class="article-card__image-wrapper">
+						<div class=" article-card__image-wrapper article-card__image-wrapper--4by3  article-card__image-wrapper article-card__image-wrapper--4by3--4-3">
 							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
 						</div>
 					</a>
@@ -67,7 +67,7 @@ export const BrowseBy = () => {
 				</div>
 				<div class="article-card">
 					<a href="link here" class="article-card__image-link" tabindex="-1">
-						<div class="article-card__image-wrapper">
+						<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
 						</div>
 					</a>
@@ -87,7 +87,7 @@ export const BrowseBy = () => {
 		<div class="browseby-tabpanel-body">
 			<div class="article-card">
 				<a href="link here" class="article-card__image-link" tabindex="-1">
-					<div class="article-card__image-wrapper">
+					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
 					</div>
 				</a>
@@ -101,7 +101,7 @@ export const BrowseBy = () => {
 			</div>
 			<div class="article-card">
 				<a href="link here" class="article-card__image-link" tabindex="-1">
-					<div class="article-card__image-wrapper">
+					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
 					</div>
 				</a>
@@ -115,7 +115,7 @@ export const BrowseBy = () => {
 			</div>
 			<div class="article-card">
 				<a href="link here" class="article-card__image-link" tabindex="-1">
-					<div class="article-card__image-wrapper">
+					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
 					</div>
 				</a>
@@ -135,7 +135,7 @@ export const BrowseBy = () => {
 		<div class="browseby-tabpanel-body">
 			<div class="article-card">
 				<a href="link here" class="article-card__image-link" tabindex="-1">
-					<div class="article-card__image-wrapper">
+					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
 					</div>
 				</a>
@@ -149,7 +149,7 @@ export const BrowseBy = () => {
 			</div>
 			<div class="article-card">
 			<a href="link here" class="article-card__image-link" tabindex="-1">
-				<div class="article-card__image-wrapper">
+				<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 					<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
 				</div>
 			</a>
@@ -163,7 +163,7 @@ export const BrowseBy = () => {
 		</div>
 			<div class="article-card">
 				<a href="link here" class="article-card__image-link" tabindex="-1">
-					<div class="article-card__image-wrapper">
+					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
 					</div>
 				</a>
