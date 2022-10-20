@@ -102,6 +102,10 @@
 //Force a 4/3 ratio for the image
 .article-card__image-wrapper--4by3 {
 	aspect-ratio: 4/3;
+
+	.article-card__image-link {
+		height: 100%;
+	}
 }
 
 .article-card__subject {
