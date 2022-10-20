@@ -1,6 +1,7 @@
 function browseBy() {
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
+		const mobileBreakpoint = "500";
 		browseBys.forEach((browseBy)=> {
 			let tabsContainer = browseBy.querySelector(".js-tabs-control-container");
 			let tabs = tabsContainer.querySelectorAll(".js-browseby-tab");
@@ -12,11 +13,12 @@ function browseBy() {
 			});
 
 			const handleTabClick = (tabClicked) => {
-				let clickedID = tabClicked.id;
-				let IDofTabPanelToOpen = clickedID.substring(0, clickedID.length - 4);//remove the "-tab" from the tab id to get the panel id
-				let tabPanelToOpen = document.getElementById(IDofTabPanelToOpen);
-				closeAllTabPanels();
-				openTabPanel(tabPanelToOpen);
+				let windowWidth = window.innerWidth;
+				if (windowWidth <= mobileBreakpoint) {
+					handleDropDownModeClick(tabClicked);
+				} else {
+					openTabPanel(tabClicked);
+				}
 			};
 
 			const closeAllTabPanels = () => {
@@ -26,7 +28,19 @@ function browseBy() {
 				});
 			};
 
-			const openTabPanel = (tabPanelToOpen) => {
+			const handleDropDownModeClick = (tabClicked) => {
+				if (tabsContainer.classList.contains("tab-controls--open")) {
+					openTabPanel(tabClicked);
+				} else {
+					tabsContainer.classList.add("tab-controls--open");
+				}
+			};
+
+			const openTabPanel = (tabClicked) => {
+				let clickedID = tabClicked.id;
+				let IDofTabPanelToOpen = clickedID.substring(0, clickedID.length - 4);
+				let tabPanelToOpen = document.getElementById(IDofTabPanelToOpen);
+				closeAllTabPanels();
 				tabPanelToOpen.removeAttribute("hidden");
 			};
 		});

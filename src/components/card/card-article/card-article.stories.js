@@ -26,8 +26,7 @@ const ArticleCard = () => {
 
 	return html`<div class="article-card article-card--active">
 		<div
-			class="article-card__image-wrapper article-card__image-wrapper--fixed-ratio article-card__image-wrapper--66"
-		>
+			class="article-card__image-wrapper article-card__image-wrapper--fixed-ratio article-card__image-wrapper--66">
 			<a href="${link}" class="article-card__image-link" tabindex="-1">
 				<img
 					class="article-card__image"
