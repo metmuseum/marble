@@ -1,7 +1,8 @@
 function browseBy() {
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
-		const mobileBreakpoint = "500";
+		const mobileBreakpoint = "499";
+
 		browseBys.forEach((browseBy)=> {
 			let tabsContainer = browseBy.querySelector(".js-tabs-control-container");
 			let tabs = tabsContainer.querySelectorAll(".js-browseby-tab");
@@ -16,20 +17,16 @@ function browseBy() {
 
 			const handleTabClick = (tabClicked) => {
 				let windowWidth = window.innerWidth;
-				if (windowWidth <= mobileBreakpoint) {
+				if (windowWidth <= mobileBreakpoint) { //in "dropdown mode" for mobile only
 					handleDropDownModeClick(tabClicked);
 				} else {
+					highlightTabContainer(tabClicked);
 					openTabPanel(tabClicked);
 				}
 			};
 
-			const closeAllTabPanels = () => {
-				allTabPanels.forEach((tabPanel) => {
-					tabPanel.setAttribute("hidden", true);
-				});
-			};
-
 			const handleDropDownModeClick = (tabClicked) => {
+				//if dropdown is already open, handle it as a normal click to open a panel
 				if (tabsContainer.classList.contains("browseby-tab-controls--open")) {
 					openTabPanel(tabClicked);
 				} else {
@@ -40,14 +37,24 @@ function browseBy() {
 			const reorderDropDown = (tabClicked) => {
 				if (tabsContainer.classList.contains("browseby-tab-controls--open")) {
 					tabsContainer.classList.remove("browseby-tab-controls--open");
-					deHighlightAllTabContainers();
-					tabClicked.parentNode.classList.add("highlighted-tab");
+					highlightTabContainer(tabClicked);
 				}
 			};
 			
 			const deHighlightAllTabContainers = () => {
 				tabControls.forEach((tabControl) => {
 					tabControl.classList.remove("highlighted-tab");
+				});
+			};
+
+			const highlightTabContainer = (tabClicked) => {
+				deHighlightAllTabContainers();
+				tabClicked.parentNode.classList.add("highlighted-tab");
+			};
+
+			const closeAllTabPanels = () => {
+				allTabPanels.forEach((tabPanel) => {
+					tabPanel.setAttribute("hidden", true);
 				});
 			};
 
