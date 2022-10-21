@@ -8,6 +8,9 @@ export const BrowseBy = () => {
 
 	useEffect(browseByjs);
 	return html`
+	<br>
+	<br>
+	<br>
 	<section class="browseby js-browseby">
 		<div class="browseby-header">
 			<span class="browseby-header__title">Browse by: </span>
