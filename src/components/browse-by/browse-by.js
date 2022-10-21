@@ -27,16 +27,16 @@ function browseBy() {
 
 			const handleDropDownModeClick = (tabClicked) => {
 				//if dropdown is already open, handle it as a normal click to open a panel
-				if (tabsContainer.classList.contains("browseby-tab-controls--open")) {
+				if (tabsContainer.classList.contains("browseby-dropdown--open")) {
 					openTabPanel(tabClicked);
 				} else {
-					tabsContainer.classList.add("browseby-tab-controls--open");
+					tabsContainer.classList.add("browseby-dropdown--open");
 				}
 			};
 
 			const reorderDropDown = (tabClicked) => {
-				if (tabsContainer.classList.contains("browseby-tab-controls--open")) {
-					tabsContainer.classList.remove("browseby-tab-controls--open");
+				if (tabsContainer.classList.contains("browseby-dropdown--open")) {
+					tabsContainer.classList.remove("browseby-dropdown--open");
 					highlightTabContainer(tabClicked);
 				}
 			};

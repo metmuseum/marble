@@ -22,7 +22,7 @@
 	}
 }
 
-.browseby-tab-controls--open {
+.browseby-dropdown--open {
 	.browseby-tab-controls {
 		display: inline-flex;
 	}
@@ -34,14 +34,15 @@
 }
 
 .browseby-tabs-control-body {
-	padding: 0 10px 1px 10px;
 	display: flex;
 	flex-direction: column;
+	margin-top: -10px;
+	padding: 10px 10px 1px 10px;
 	position: absolute;
 	z-index: z("filter-set");
 
-	.browseby-tab-controls--open & {
-		background-color: white;
+	.browseby-dropdown--open & {
+		background-color: $color-white;
 		border-radius: $radius-sharp;
 		box-shadow: $shadow-faint;
 	}
