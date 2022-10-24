@@ -1,6 +1,10 @@
+.tabs-control-container {
+	column-gap: $spacing-xxs;
+	display: flex;
+	margin: 0 0 $spacing-micro 0;
+}
+
 .tab-controls {
-	display: inline-block;
-	margin: 0 $spacing-xxs $spacing-micro 0;
 	position: relative;
 }
 

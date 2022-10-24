@@ -43,13 +43,13 @@ function browseBy() {
 			
 			const deHighlightAllTabContainers = () => {
 				tabControls.forEach((tabControl) => {
-					tabControl.classList.remove("highlighted-tab");
+					tabControl.classList.remove("browseby-highlighted-tab");
 				});
 			};
 
 			const highlightTabContainer = (tabClicked) => {
 				deHighlightAllTabContainers();
-				tabClicked.parentNode.classList.add("highlighted-tab");
+				tabClicked.parentNode.classList.add("browseby-highlighted-tab");
 			};
 
 			const closeAllTabPanels = () => {
