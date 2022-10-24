@@ -17,7 +17,7 @@ export const BrowseBy = () => {
 			<fieldset class="browseby-tabs-control-container tabs-control-container js-tabs-control-container">
 				<div class="browseby-tabs-control-body">
 					<legend class="screen-reader-only">Use your arrow keys to navigate the topics in the tabs below, and your tab key to choose an item</legend>
-					<div class="tab-controls browseby-tab-controls js-tab-controls highlighted-tab">
+					<div class="tab-controls browseby-tab-controls js-tab-controls browseby-highlighted-tab">
 						<input id="topic1-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic1" checked>
 						<label for="topic1-tab" class="tab-controls__label">
 							<h3 class="tab-controls__heading"><span class="screen-reader-only">Show panel </span> Topic One</h3>

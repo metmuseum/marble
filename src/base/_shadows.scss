@@ -9,13 +9,12 @@ $shadow-active--expressive: 6px 6px 10px 0 $color-card-shadow, -6px -6px 10px 0 
 
 @mixin white-shade($height: 115px, $transparency-amount: 80%) {
 	background: linear-gradient(to top,
-		rgba(255,255,255, 1) 20%,
-		rgba(255,255,255, 0) $transparency-amount
-	);
+	rgba(255, 255, 255, 1) 20%,
+	rgba(255, 255, 255, 0) $transparency-amount);
 	bottom: 0;
 	content: "";
-	left: 0;
 	height: $height;
+	left: 0;
 	pointer-events: none; /* so the text is still selectable */
 	position: absolute;
 	width: 100%;
