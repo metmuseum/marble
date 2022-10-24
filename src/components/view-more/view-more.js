@@ -16,7 +16,6 @@ function viewMore() {
 			};
 			checkTabpanelHeight(viewMore);
 			
-
 			const expandTabpanelText = (tabToExpand, CTAclicked) => {
 				tabToExpand.addEventListener("transitionend", function () {
 					CTAclicked.querySelector(".js-view-more-panel-cta-text").innerHTML = "View less";
