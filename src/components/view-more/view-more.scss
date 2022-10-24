@@ -8,7 +8,7 @@
 .view-more-panel-cta {
 	background: transparent;
 	border: 0;
-    color: currentColor;
+	color: currentColor;
 	cursor: pointer;
 	display: none;
 	font-size: 15px;
@@ -23,9 +23,7 @@
 }
 
 .view-more-panel--cropped {
-
-	.view-more-panel-body {
-		&::after {
+	.view-more-panel-body::after {
 			@include white-shade($transparency-amount: 165%);
 		}
 	}
@@ -36,7 +34,6 @@
 }
 
 .view-more-panel--expanded {
-
 	.view-more-panel-body {
 		max-height: 100%;
 	}
