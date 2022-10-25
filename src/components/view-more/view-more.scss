@@ -24,7 +24,7 @@
 
 .view-more-panel--cropped {
 	.view-more-panel-body::after {
-		@include white-shade($transparency-amount: 165%);
+		@include white-shade($height: 80px, $transparency-amount: 105%);
 	}
 
 	.view-more-panel-cta {
