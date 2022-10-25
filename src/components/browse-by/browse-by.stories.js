@@ -1,12 +1,14 @@
 import { html } from ".storybook/helpers";
 import { useEffect } from "@storybook/client-api";
 import browseByjs from "./browse-by.js";
+import viewMore from "../view-more/view-more.js";
 
 export default { title: "Components/BrowseBy" };
 
 export const BrowseBy = () => {
 
 	useEffect(browseByjs);
+	useEffect(viewMore);
 	return html`
 	<br>
 	<br>
@@ -38,9 +40,9 @@ export const BrowseBy = () => {
 				</div>
 			</fieldset>
 		</div>
-		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel">
+		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel">
 			<h3 class="screen-reader-only">Topic One</h3>
-			<div class="browseby-tabpanel-body">
+			<div class="browseby-tabpanel-body view-more-panel-body js-view-more-panel-body">
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
@@ -182,6 +184,7 @@ export const BrowseBy = () => {
 					</div>
 				</div>
 			</div>
+			<button class="view-more-panel-cta js-view-more-panel-cta"><svg class="downward-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.33"><path fill="#262626" d="M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z"></path></svg> <span class="view-more-panel-cta-text js-view-more-panel-cta-text">View more</span></button>
 		</section>
 	
 		<section id="topic2" class="browseby-tabpanel js-browseby-tabpanel" hidden="">
@@ -293,5 +296,8 @@ export const BrowseBy = () => {
 				</div>
 			</div>
 		</section>
-	</section>`;
+	</section>
+	<br>
+	<br>
+	<br>`;
 };

@@ -1,5 +1,4 @@
 function viewMore() {
-
 	if (document.querySelector(".js-view-more-panel")) {
 		const viewMores = document.querySelectorAll(".js-view-more-panel");
 
