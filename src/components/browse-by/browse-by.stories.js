@@ -46,7 +46,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DP803355.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -60,7 +60,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3  article-card__image-wrapper">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DPB879267.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -74,7 +74,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="https://main--5ef272f9ab690c0022ef30ab.chromatic.com/static/media/seurat_circus_sideshow.d7570654.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/436625/preview" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -88,7 +88,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DPB879267.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -102,7 +102,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP-15762-001.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -116,7 +116,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="https://main--5ef272f9ab690c0022ef30ab.chromatic.com/static/media/2020_Met_Stories_Ep_01_4k_NEW-3.0eb1c141.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/rl/mobile-large/DP146506.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -130,7 +130,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DP803355.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -144,7 +144,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DPB879267.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -158,7 +158,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP145411.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -172,7 +172,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP-15762-001.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -193,7 +193,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DPB879267.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -207,7 +207,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP-15762-001.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -221,7 +221,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DPB879267.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -235,7 +235,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DP803355.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -255,7 +255,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DPB879267.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -269,7 +269,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/4x3/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/ep/mobile-large/DP-15762-001.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
@@ -283,7 +283,7 @@ export const BrowseBy = () => {
 				<div class="article-card">
 					<div class=" article-card__image-wrapper article-card__image-wrapper--4by3">
 						<a href="link here" class="article-card__image-link" tabindex="-1">
-							<img class="article-card__image" src="static/media/.storybook/assets/images/greek-hall/1x1/1240.jpg" alt="an example image alt for accessibility">
+							<img class="article-card__image" src="https://images.metmuseum.org/CRDImages/dp/mobile-large/DP803355.jpg" alt="an example image alt for accessibility">
 						</a>
 					</div>
 					<div class="article-card__subject">
