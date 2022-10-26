@@ -1,7 +1,7 @@
 function browseBy() {
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
-		const mobileBreakpoint = "499";
+		const mobileBreakpoint = 499;
 
 		browseBys.forEach((browseBy)=> {
 			let tabsContainer = browseBy.querySelector(".js-tabs-control-container");
