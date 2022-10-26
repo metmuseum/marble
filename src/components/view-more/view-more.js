@@ -1,13 +1,12 @@
 function viewMore() {
 	if (document.querySelector(".js-view-more-panel")) {
 		const viewMores = document.querySelectorAll(".js-view-more-panel");
+		const mobileBreakpoint = 499;
 
 		viewMores.forEach((viewMore)=> {
 			let showMoreCTAs = viewMore.querySelectorAll(".js-view-more-panel-cta");
-
 			let isMobileOnly = viewMore.classList.contains("js-view-more-panel--mobile-only") ? true : false;
-
-			console.log('isMobileOnly', isMobileOnly);
+			let windowWidth = window.innerWidth;
 
 			const checkTabpanelHeight = (tabpanelToCheck) => {
 				let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
@@ -17,14 +16,12 @@ function viewMore() {
 					tabpanelToCheck.classList.remove("view-more-panel--cropped");
 				}
 			};
-			checkTabpanelHeight(viewMore);
+			if (!isMobileOnly || (windowWidth <= mobileBreakpoint)) {
+				checkTabpanelHeight(viewMore);
+			}
 			
 			const expandTabpanelText = (tabToExpand, CTAclicked) => {
-				tabToExpand.addEventListener("transitionend", function () {
-					CTAclicked.querySelector(".js-view-more-panel-cta-text").innerHTML = "View less";
-				}, {
-					once: true
-				});
+				CTAclicked.querySelector(".js-view-more-panel-cta-text").innerHTML = "Less";
 				tabToExpand.classList.remove("view-more-panel--cropped");
 				tabToExpand.classList.add("view-more-panel--expanded");
 			};
