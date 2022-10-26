@@ -5,6 +5,10 @@ function viewMore() {
 		viewMores.forEach((viewMore)=> {
 			let showMoreCTAs = viewMore.querySelectorAll(".js-view-more-panel-cta");
 
+			let isMobileOnly = viewMore.classList.contains("js-view-more-panel--mobile-only") ? true : false;
+
+			console.log('isMobileOnly', isMobileOnly);
+
 			const checkTabpanelHeight = (tabpanelToCheck) => {
 				let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
 				if (tabpanelToCheckInner.clientHeight < tabpanelToCheckInner.scrollHeight) {
@@ -54,7 +58,6 @@ function viewMore() {
 					handleCTAclick(showMoreCTA);
 				});
 			});
-
 		});
 	}
 }
