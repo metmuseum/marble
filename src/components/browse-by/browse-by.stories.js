@@ -10,9 +10,6 @@ const browseByMarkup = ({ mobileOnly }) => {
 	useEffect(browseByjs);
 	useEffect(viewMore);
 	return html`
-	<br>
-	<br>
-	<br>
 	<section class='browseby js-browseby'>
 		<div class='browseby-header'>
 			<span class='browseby-header__title'>Browse by: </span>
@@ -41,7 +38,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			</fieldset>
 		</div>
 
-		<section id='topic1' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "js-view-more-panel--mobile-only" : ""} '>
+		<section id='topic1' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""} '>
 			<h3 class='screen-reader-only'>Topic One</h3>
 			<div class='browseby-tabpanel-body view-more-panel-body js-view-more-panel-body'>
 				<div class='article-card'>
@@ -188,7 +185,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path fill='#262626' d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
 
-		<section id='topic2' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "js-view-more-panel--mobile-only" : ""}' hidden>
+		<section id='topic2' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}' hidden>
 		<div class='browseby-tabpanel-body view-more-panel-body js-view-more-panel-body'>
 			<h3 class='screen-reader-only'>Topic Two</h3>
 			<div class='browseby-tabpanel-body view-more-panel-body js-view-more-panel-body'>
@@ -252,7 +249,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path fill='#262626' d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
 
-		<section id='topic3' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "js-view-more-panel--mobile-only" : ""}' hidden>
+		<section id='topic3' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}' hidden>
 			<h3 class='screen-reader-only'>Topic Three</h3>
 			<div class='browseby-tabpanel-body view-more-panel-body js-view-more-panel-body'>
 				<div class='article-card'>
@@ -301,9 +298,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path fill='#262626' d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
 	</section>
-	<br>
-	<br>
-	<br>`;
+	<div style='width:100%;background:aqua;height:200px;'></div>`;
 };
 
 export const Standard = browseByMarkup.bind({});
