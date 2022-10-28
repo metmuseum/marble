@@ -69,11 +69,10 @@
 	display: grid;
 	grid-column-gap: $spacing-micro;
 	grid-row-gap: $spacing-xs;
-	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+	grid-template-columns: 1fr 1fr;
 	margin: $spacing-micro 0 $spacing-s;
 
 	@media screen and (min-width: $bp-500) {
 		grid-template-columns: repeat(auto-fit, minmax(239px, 1fr));
 	}
 }
-

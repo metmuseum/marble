@@ -182,7 +182,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 					</div>
 				</div>
 			</div>
-			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path fill='#262626' d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
+			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
 
 		<section id='topic2' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}' hidden>
@@ -246,7 +246,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 					</div>
 				</div>
 			</div>
-			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path fill='#262626' d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
+			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
 
 		<section id='topic3' class='browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}' hidden>
@@ -295,7 +295,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 					</div>
 				</div>
 			</div>
-			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path fill='#262626' d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
+			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
 	</section>
 	<div style='width:100%;background:aqua;height:200px;'></div>`;
