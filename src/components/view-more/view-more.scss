@@ -49,3 +49,11 @@
 		transform: rotate(180deg);
 	}
 }
+
+.view-more-panel--mobile-only {
+	.view-more-panel-body {
+		@media screen and (min-width: $bp-500) {
+			max-height: none;
+		}
+	}
+}
