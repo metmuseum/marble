@@ -97,6 +97,10 @@
 .article-card__image-wrapper--66,
 .article-card__image-wrapper--3by2 {
 	aspect-ratio: 3/2;
+
+	.article-card__image-link {
+		aspect-ratio: 3/2;
+	}
 }
 
 //Force a 4/3 ratio for the image
