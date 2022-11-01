@@ -1,19 +1,15 @@
 function viewMore() {
 	if (document.querySelector(".js-view-more-panel")) {
-		console.log("view more loaded");
 		const viewMores = document.querySelectorAll(".js-view-more-panel");
 		const mobileBreakpoint = 499;
 
 		viewMores.forEach((viewMore)=> {
-			console.log("Check view mores");
 			let showMoreCTAs = viewMore.querySelectorAll(".js-view-more-panel-cta");
 			let isMobileOnly = viewMore.classList.contains("js-view-more-panel--mobile-only") ? true : false;
 			let windowWidth = window.innerWidth;
 
 			const checkTabpanelHeight = (tabpanelToCheck) => {
 				let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
-				console.log("clientHeight", tabpanelToCheckInner.clientHeight);
-				console.log("scrollHeight", tabpanelToCheckInner.scrollHeight);
 				if (tabpanelToCheckInner.clientHeight < tabpanelToCheckInner.scrollHeight) {
 					tabpanelToCheck.classList.add("view-more-panel--cropped");
 				} else {
