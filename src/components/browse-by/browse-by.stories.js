@@ -11,6 +11,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 	useEffect(viewMore);
 	return html`
 	<section class='browseby js-browseby'>
+		<h2 class='browseby__title'>Main Topic</h2>
 		<div class='browseby-header'>
 			<span class='browseby-header__title'>Browse by: </span>
 			<fieldset class='browseby-tabs-control-container tabs-control-container js-tabs-control-container'>
@@ -19,19 +20,19 @@ const browseByMarkup = ({ mobileOnly }) => {
 					<div class='tab-controls browseby-tab-controls js-tab-controls browseby-highlighted-tab'>
 						<input id='topic1-tab' type='radio' name='browseby-tabset' class='tab-controls__input js-browseby-tab' value='topic1' checked>
 						<label for='topic1-tab' class='tab-controls__label'>
-							<h3 class='tab-controls__heading'><span class='screen-reader-only'>Show panel </span> Topic One</h3>
+							<h3 class='tab-controls__heading'><span class='screen-reader-only'>Show panel </span> Topic One <svg class='browseby-indicator' viewBox='0 0 19 12' xmlns='http://www.w3.org/2000/svg'><path d='M17.1385 0.75L18.25 1.78845L9.24439 11.25L0.25 1.7895L1.36153 0.75L9.26796 9.1941L17.1385 0.75Z'/></svg></h3>
 						</label>
 					</div>
 					<div class='tab-controls browseby-tab-controls js-tab-controls'>
 						<input id='topic2-tab' type='radio' name='browseby-tabset' class='tab-controls__input js-browseby-tab' value='topic2'>
 						<label for='topic2-tab' class='tab-controls__label'>
-							<h3 class='tab-controls__heading'><span class='screen-reader-only'>Show panel </span> Topic Two</h3>
+							<h3 class='tab-controls__heading'><span class='screen-reader-only'>Show panel </span> Topic Two <svg class='browseby-indicator' viewBox='0 0 19 12' xmlns='http://www.w3.org/2000/svg'><path d='M17.1385 0.75L18.25 1.78845L9.24439 11.25L0.25 1.7895L1.36153 0.75L9.26796 9.1941L17.1385 0.75Z'/></svg></h3>
 						</label>
 					</div>
 					<div class='tab-controls browseby-tab-controls js-tab-controls'>
 						<input id='topic3-tab' type='radio' name='browseby-tabset' class='tab-controls__input js-browseby-tab' value='topic3'>
 						<label for='topic3-tab' class='tab-controls__label'>
-							<h3 class='tab-controls__heading'><span class='screen-reader-only'>Show panel </span> Topic Three</h3>
+							<h3 class='tab-controls__heading'><span class='screen-reader-only'>Show panel </span> Topic Three <svg class='browseby-indicator' viewBox='0 0 19 12' xmlns='http://www.w3.org/2000/svg'><path d='M17.1385 0.75L18.25 1.78845L9.24439 11.25L0.25 1.7895L1.36153 0.75L9.26796 9.1941L17.1385 0.75Z'/></svg></h3>
 						</label>
 					</div>
 				</div>
@@ -297,8 +298,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			</div>
 			<button class='view-more-panel-cta js-view-more-panel-cta'><svg class='downward-arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.33'><path d='M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z'></path></svg> <span class='view-more-panel-cta-text js-view-more-panel-cta-text'>View more</span></button>
 		</section>
-	</section>
-	<div style='width:100%;background:aqua;height:200px;'></div>`;
+	</section>`;
 };
 
 export const Standard = browseByMarkup.bind({});
