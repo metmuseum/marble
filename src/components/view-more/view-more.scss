@@ -1,3 +1,6 @@
+@use "../../base/colors";
+@use "../../base/sizes";
+
 .view-more-panel-body {
 	max-height: 70vh;
 	position: relative;
@@ -15,7 +18,7 @@
 	margin: 0 auto;
 
 	.downward-arrow {
-		fill: $color-grey-700;
+		fill: colors.$color-grey-700;
 		height: 10px;
 		margin: 0 3px 0 0;
 		width: 10px;
@@ -53,7 +56,7 @@
 
 .view-more-panel--mobile-only {
 	.view-more-panel-body {
-		@media screen and (min-width: $bp-500) {
+		@media screen and (min-width: sizes.$bp-500) {
 			max-height: none;
 		}
 	}

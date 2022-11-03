@@ -1,7 +1,9 @@
-function browseBy() {
+import SETTINGS from "../../global/settings";
+
+const browseBy = () => {
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
-		const mobileBreakpoint = 499;
+		const mobileBreakpoint = SETTINGS.mobileBreakpoint;
 
 		browseBys.forEach((browseBy)=> {
 			let tabsContainer = browseBy.querySelector(".js-tabs-control-container");
@@ -82,6 +84,6 @@ function browseBy() {
 			};
 		});
 	}
-}
+};
 
 export default browseBy;
