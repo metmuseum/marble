@@ -19,6 +19,7 @@ const SETTINGS = deepFreeze({
 	chromatic: {
 		extraViewports: [320, 1200, 1700, 2500]
 	},
+	mobileBreakpoint: 499,
 	FOCUSABLES_SELECTOR: "a[href]:not(.invisible-redundant-link), button, input, textarea, select, details, [tabindex]:not(.invisible-redundant-link)"
 });
 
