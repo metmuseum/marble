@@ -1,4 +1,5 @@
 @use "../../base/colors";
+@use "../../base/shadows";
 @use "../../base/sizes";
 
 .browseby {
@@ -84,7 +85,7 @@
 	.browseby-tabs-control-body {
 		background-color: colors.$color-white;
 		border-radius: sizes.$radius-sharp;
-		box-shadow: sizes.$shadow-faint;
+		box-shadow: shadows.$shadow-faint;
 	}
 }
 
