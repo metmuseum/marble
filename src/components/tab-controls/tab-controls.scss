@@ -37,6 +37,15 @@
 		border-color: currentColor;
 	}
 
+	:checked + &:hover {
+		border-color: $color-focus-state;
+	}
+
+	.tab-controls__input:focus + & {
+		border-color: currentColor;
+		color: $color-focus-state;
+	}
+
 	&:hover {
 		border-color: currentColor;
 		cursor: pointer;
