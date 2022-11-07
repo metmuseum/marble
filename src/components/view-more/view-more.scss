@@ -23,6 +23,10 @@
 		margin: 0 3px 0 0;
 		width: 10px;
 	}
+
+	&:focus {
+		outline-color: colors.$color-grey-700;
+	}
 }
 
 .view-more-panel--cropped {
