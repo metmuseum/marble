@@ -46,13 +46,12 @@ const expandOrContractTabpanel = (viewMore, buttonClicked) => {
 
 const initialize = () => {
 	const viewMores = document.querySelectorAll(".js-view-more-panel");
-	const mobileBreakpoint = SETTINGS.mobileBreakpoint;
 
 	viewMores.forEach((viewMore)=> {
 		let panelButtons = viewMore.querySelectorAll(".js-view-more-panel-cta");
 		let isMobileOnly = viewMore.classList.contains("js-view-more-panel--mobile-only");
 
-		if (!isMobileOnly || (window.innerWidth <= mobileBreakpoint)) {
+		if (!isMobileOnly || (window.innerWidth <= SETTINGS.mobileBreakpoint)) {
 			checkTabpanelHeight(viewMore);
 		}
 

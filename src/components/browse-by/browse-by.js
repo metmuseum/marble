@@ -3,7 +3,6 @@ import SETTINGS from "../../global/settings";
 const browseBy = () => {
 	if (document.querySelector(".js-browseby")) {
 		const browseBys = document.querySelectorAll(".js-browseby");
-		const mobileBreakpoint = SETTINGS.mobileBreakpoint;
 
 		browseBys.forEach((browseBy)=> {
 			let tabsContainer = browseBy.querySelector(".js-tabs-control-container");
@@ -20,7 +19,7 @@ const browseBy = () => {
 
 			const handleTabClick = (tabClicked) => {
 				let windowWidth = window.innerWidth;
-				if (windowWidth <= mobileBreakpoint) { //in "dropdown mode" for mobile only
+				if (windowWidth <= SETTINGS.mobileBreakpoint) { //in "dropdown mode" for mobile only
 					handleDropDownModeClick(tabClicked);
 				} else {
 					highlightTabContainer(tabClicked);
@@ -63,7 +62,7 @@ const browseBy = () => {
 
 			const checkTabpanelHeight = (tabpanelToCheck) => {
 				let windowWidth = window.innerWidth;
-				if (!isMobileOnly || (windowWidth <= mobileBreakpoint)) {
+				if (!isMobileOnly || (windowWidth <= SETTINGS.mobileBreakpoint)) {
 					let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
 					if (tabpanelToCheckInner.clientHeight < tabpanelToCheckInner.scrollHeight) {
 						tabpanelToCheck.classList.add("view-more-panel--cropped");
