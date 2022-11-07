@@ -16,7 +16,7 @@ const checkTabpanelHeight = (tabpanelToCheck) => {
 };
 
 const expandTabpanelText = (tabToExpand, buttonClicked) => {
-	buttonClicked.querySelector(".js-view-more-panel-cta-text").innerHTML = "Less";
+	buttonClicked.querySelector(".js-view-more-panel-cta-text").innerHTML = "View less";
 	tabToExpand.classList.remove("view-more-panel--cropped");
 	tabToExpand.classList.add("view-more-panel--expanded");
 };
