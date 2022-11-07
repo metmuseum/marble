@@ -1,0 +1,26 @@
+.jump-to {
+	background: pink;
+	display: flex;
+}
+
+.jump-to__content {
+	background-color: aqua;
+	column-gap: $spacing-xs;
+	display: flex;
+	margin: $spacing-xs 0;
+}
+
+.jump-to__instructions {
+	font-size: $textsize-s;
+	font-weight: 600;
+}
+
+.jump-to__link {
+	font-size: $textsize-s;
+	font-weight: 500;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
