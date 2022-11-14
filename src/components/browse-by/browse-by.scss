@@ -55,6 +55,11 @@
 
 	@media screen and (min-width: sizes.$bp-500) {
 		order: 0;
+
+		&::after {
+			background-image: none;
+			width: 0;;
+		}
 	}
 }
 
@@ -99,7 +104,7 @@
 
 .browseby-header__title {
 	font-size: sizes.$textsize-m;
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 1.1;
 	margin-bottom: sizes.$spacing-micro;
 }

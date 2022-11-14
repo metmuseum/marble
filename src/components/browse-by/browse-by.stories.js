@@ -189,7 +189,6 @@ const browseByMarkup = ({ mobileOnly }) => {
 		</section>
 
 		<section id="topic2" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}" hidden>
-		<div class="browseby-tabpanel-body view-more-panel-body js-view-more-panel-body">
 			<h3 class="screen-reader-only">Topic Two</h3>
 			<div class="browseby-tabpanel-body view-more-panel-body js-view-more-panel-body">
 				<div class="article-card">
