@@ -114,7 +114,7 @@
 	grid-column-gap: sizes.$spacing-micro;
 	grid-row-gap: sizes.$spacing-xs;
 	grid-template-columns: 1fr 1fr;
-	margin: sizes.$spacing-micro 0 sizes.$spacing-s;
+	margin: sizes.$spacing-micro 0 sizes.$spacing-micro;
 
 	@media screen and (min-width: sizes.$bp-500) {
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
