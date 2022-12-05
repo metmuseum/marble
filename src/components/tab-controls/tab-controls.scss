@@ -27,38 +27,43 @@
 	}
 }
 
-.tab-controls__label {
-	border-bottom: 2px solid transparent;
-	color: $color-grey-900;
-	display: block;
-	user-select: none; // https://www.a11ymatters.com/pattern/checkbox/
-
-	:checked + & {
-		border-color: currentColor;
-	}
-
-	:checked + &:hover {
-		border-color: $color-focus-state;
-	}
-
-	.tab-controls__input:focus + & {
-		border-color: $color-focus-state;
-		color: currentColor;
-	}
-
-	&:hover {
-		border-color: currentColor;
-		cursor: pointer;
-	}
-
-	.tab-controls__heading {
-		margin-bottom: 0;
-	}
-}
-
 .tab-controls__heading,
 .tab-controls__input h3 {
+	border-bottom: 2px solid transparent;
 	font-size: $textsize-m;
 	font-weight: 500;
 	line-height: 1.1;
+	margin-bottom: 4px;
+}
+
+.tab-controls__label {
+	color: $color-grey-900;
+	display: flex;
+	user-select: none; // https://www.a11ymatters.com/pattern/checkbox/
+
+	:checked + & {
+		.tab-controls__heading,
+		.tab-controls__input h3 {
+			border-color: currentColor;
+		}
+	}
+
+	:checked + &:hover {
+		.tab-controls__heading,
+		.tab-controls__input h3 {
+			border-color: $color-focus-state;
+		}
+	}
+
+	.tab-controls__input:focus + & {
+		.tab-controls__heading,
+		.tab-controls__input h3 {
+			border-color: $color-focus-state;
+			color: $color-focus-state;
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
 }
