@@ -29,7 +29,7 @@
 
 .tab-controls__label {
 	border-bottom: 2px solid transparent;
-	color: $color-black;
+	color: $color-grey-900;
 	display: block;
 	user-select: none; // https://www.a11ymatters.com/pattern/checkbox/
 
@@ -42,8 +42,8 @@
 	}
 
 	.tab-controls__input:focus + & {
-		border-color: currentColor;
-		color: $color-focus-state;
+		border-color: $color-focus-state;
+		color: currentColor;
 	}
 
 	&:hover {
