@@ -8,7 +8,9 @@ const viewMore = () => {
 
 const checkTabpanelHeight = (tabpanelToCheck) => {
 	let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
-	if (tabpanelToCheckInner.clientHeight < tabpanelToCheckInner.scrollHeight) {
+	console.log('tabpanelToCheckInner.clientHeight + 95', tabpanelToCheckInner.clientHeight + 95);
+	console.log('tabpanelToCheckInner.scrollHeight', tabpanelToCheckInner.scrollHeight);
+	if ((tabpanelToCheckInner.clientHeight + 95) < tabpanelToCheckInner.scrollHeight) {
 		tabpanelToCheck.classList.add("view-more-panel--cropped");
 	} else {
 		tabpanelToCheck.classList.remove("view-more-panel--cropped");
