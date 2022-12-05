@@ -20,21 +20,22 @@ const browseByMarkup = ({ mobileOnly }) => {
 					<div class="tab-controls browseby-tab-controls js-tab-controls browseby-highlighted-tab">
 						<input id="topic1-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic1" checked>
 						<label for="topic1-tab" class="tab-controls__label">
-							<h3 class="tab-controls__heading">
-							<span class="screen-reader-only">Show panel </span> 
-							Topic One</h3>
+							<h3 class="tab-controls__heading"><span class="screen-reader-only">Show panel </span>Topic One</h3>
+							<span class="browseby-tab-chevron"></span>
 						</label>
 					</div>
 					<div class="tab-controls browseby-tab-controls js-tab-controls">
 						<input id="topic2-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic2">
 						<label for="topic2-tab" class="tab-controls__label">
 							<h3 class="tab-controls__heading"><span class="screen-reader-only">Show panel </span> Topic Two</h3>
+							<span class="browseby-tab-chevron"></span>
 						</label>
 					</div>
 					<div class="tab-controls browseby-tab-controls js-tab-controls">
 						<input id="topic3-tab" type="radio" name="browseby-tabset" class="tab-controls__input js-browseby-tab" value="topic3">
 						<label for="topic3-tab" class="tab-controls__label">
 							<h3 class="tab-controls__heading"><span class="screen-reader-only">Show panel </span> Topic Three</h3>
+							<span class="browseby-tab-chevron"></span>
 						</label>
 					</div>
 				</div>
