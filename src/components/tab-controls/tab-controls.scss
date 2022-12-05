@@ -52,21 +52,21 @@
 
 :checked + .tab-controls__label {
 	.tab-controls__heading,
-	.tab-controls__input h3 {
+	h3 {
 		border-color: currentColor;
 	}
 }
 
 :checked + .tab-controls__label:hover {
 	.tab-controls__heading,
-	.tab-controls__input h3 {
+	h3 {
 		border-color: $color-focus-state;
 	}
 }
 
 .tab-controls__input:focus + .tab-controls__label {
 	.tab-controls__heading,
-	.tab-controls__input h3 {
+	h3 {
 		border-color: $color-focus-state;
 		color: $color-focus-state;
 	}
