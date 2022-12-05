@@ -34,6 +34,10 @@
 	font-weight: 500;
 	line-height: 1.1;
 	margin-bottom: 4px;
+
+	&:hover {
+		color: $color-focus-state;
+	}
 }
 
 .tab-controls__label {
@@ -41,29 +45,29 @@
 	display: flex;
 	user-select: none; // https://www.a11ymatters.com/pattern/checkbox/
 
-	:checked + & {
-		.tab-controls__heading,
-		.tab-controls__input h3 {
-			border-color: currentColor;
-		}
-	}
-
-	:checked + &:hover {
-		.tab-controls__heading,
-		.tab-controls__input h3 {
-			border-color: $color-focus-state;
-		}
-	}
-
-	.tab-controls__input:focus + & {
-		.tab-controls__heading,
-		.tab-controls__input h3 {
-			border-color: $color-focus-state;
-			color: $color-focus-state;
-		}
-	}
-
 	&:hover {
 		cursor: pointer;
+	}
+}
+
+:checked + .tab-controls__label {
+	.tab-controls__heading,
+	.tab-controls__input h3 {
+		border-color: currentColor;
+	}
+}
+
+:checked + .tab-controls__label:hover {
+	.tab-controls__heading,
+	.tab-controls__input h3 {
+		border-color: $color-focus-state;
+	}
+}
+
+.tab-controls__input:focus + .tab-controls__label {
+	.tab-controls__heading,
+	.tab-controls__input h3 {
+		border-color: $color-focus-state;
+		color: $color-focus-state;
 	}
 }
