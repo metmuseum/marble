@@ -1,13 +1,11 @@
 .jump-to {
-	background: pink;
 	display: flex;
 }
 
 .jump-to__content {
-	background-color: aqua;
 	column-gap: $spacing-xs;
 	display: flex;
-	margin: $spacing-xs 0;
+	margin: $spacing-xxs 0 $spacing-xxs $spacing-m;
 }
 
 .jump-to__instructions {
