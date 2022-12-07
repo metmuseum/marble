@@ -2,9 +2,9 @@ import { html } from ".storybook/helpers";
 import { useEffect } from "@storybook/client-api";
 import jumpTojs from "./jump-to-banner.js";
 
-export default { title: "Banner/Jump to Minimal" };
+export default { title: "Banner/Basic Jump to" };
 
-export const JumpToMinimal = () => {
+export const BasicJumpTo = () => {
 
 	useEffect(jumpTojs);
 	return html`
