@@ -64,7 +64,7 @@ const browseBy = () => {
 				let windowWidth = window.innerWidth;
 				if (!isMobileOnly || (windowWidth <= SETTINGS.mobileBreakpoint)) {
 					let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
-					if (tabpanelToCheckInner.clientHeight < tabpanelToCheckInner.scrollHeight) {
+					if ((tabpanelToCheckInner.clientHeight + SETTINGS.shadowOffset) < tabpanelToCheckInner.scrollHeight) {
 						tabpanelToCheck.classList.add("view-more-panel--cropped");
 					} else {
 						tabpanelToCheck.classList.remove("view-more-panel--cropped");

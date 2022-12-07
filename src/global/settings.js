@@ -20,6 +20,7 @@ const SETTINGS = deepFreeze({
 		extraViewports: [320, 1200, 1700, 2500]
 	},
 	mobileBreakpoint: 499,
+	shadowOffset: 95,
 	FOCUSABLES_SELECTOR: "a[href]:not(.invisible-redundant-link), button, input, textarea, select, details, [tabindex]:not(.invisible-redundant-link)"
 });
 
