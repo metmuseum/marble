@@ -9,7 +9,6 @@ const browseBy = () => {
 			let tabs = tabsContainer.querySelectorAll(".js-browseby-tab");
 			let allTabPanels = browseBy.querySelectorAll(".js-browseby-tabpanel");
 			let tabControls = tabsContainer.querySelectorAll(".js-tab-controls");
-			let isMobileOnly = tabsContainer.classList.contains("js-view-more-panel--mobile-only") ? true : false;
 	
 			tabs.forEach((tab) => {
 				tab.addEventListener("click", function () {
@@ -61,14 +60,11 @@ const browseBy = () => {
 			};
 
 			const checkTabpanelHeight = (tabpanelToCheck) => {
-				let windowWidth = window.innerWidth;
-				if (!isMobileOnly || (windowWidth <= SETTINGS.mobileBreakpoint)) {
-					let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
-					if ((tabpanelToCheckInner.clientHeight + SETTINGS.shadowOffset) < tabpanelToCheckInner.scrollHeight) {
-						tabpanelToCheck.classList.add("view-more-panel--cropped");
-					} else {
-						tabpanelToCheck.classList.remove("view-more-panel--cropped");
-					}
+				let tabpanelToCheckInner = tabpanelToCheck.querySelector(".js-view-more-panel-body");
+				if ((tabpanelToCheckInner.clientHeight + SETTINGS.shadowOffset) < tabpanelToCheckInner.scrollHeight) {
+					tabpanelToCheck.classList.add("view-more-panel--cropped");
+				} else {
+					tabpanelToCheck.classList.remove("view-more-panel--cropped");
 				}
 			};
 

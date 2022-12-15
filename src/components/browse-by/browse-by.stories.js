@@ -5,7 +5,7 @@ import viewMore from "../view-more/view-more.js";
 
 export default { title: "Components/BrowseBy" };
 
-const browseByMarkup = ({ mobileOnly }) => {
+export const BrowseBy = () => {
 
 	useEffect(browseByjs);
 	useEffect(viewMore);
@@ -42,7 +42,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			</fieldset>
 		</div>
 
-		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""} ">
+		<section id="topic1" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel">
 			<h3 class="screen-reader-only">Topic One</h3>
 			<div class="browseby-tabpanel-body view-more-panel-body js-view-more-panel-body">
 				<div class="article-card">
@@ -189,7 +189,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			<button class="view-more-panel-cta js-view-more-panel-cta"><svg class="downward-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.33"><path d="M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z"></path></svg> <span class="view-more-panel-cta-text js-view-more-panel-cta-text">View more</span></button>
 		</section>
 
-		<section id="topic2" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}" hidden>
+		<section id="topic2" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel" hidden>
 			<h3 class="screen-reader-only">Topic Two</h3>
 			<div class="browseby-tabpanel-body view-more-panel-body js-view-more-panel-body">
 				<div class="article-card">
@@ -252,7 +252,7 @@ const browseByMarkup = ({ mobileOnly }) => {
 			<button class="view-more-panel-cta js-view-more-panel-cta"><svg class="downward-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.33"><path d="M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z"></path></svg> <span class="view-more-panel-cta-text js-view-more-panel-cta-text">View more</span></button>
 		</section>
 
-		<section id="topic3" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel ${mobileOnly ? "view-more-panel--mobile-only js-view-more-panel--mobile-only" : ""}" hidden>
+		<section id="topic3" class="browseby-tabpanel js-browseby-tabpanel view-more-panel js-view-more-panel" hidden>
 			<h3 class="screen-reader-only">Topic Three</h3>
 			<div class="browseby-tabpanel-body view-more-panel-body js-view-more-panel-body">
 				<div class="article-card">
@@ -301,14 +301,4 @@ const browseByMarkup = ({ mobileOnly }) => {
 			<button class="view-more-panel-cta js-view-more-panel-cta"><svg class="downward-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.33"><path d="M10.5 0L6 4.4 1.5 0 0 1.47l6 5.86 6-5.86L10.5 0z"></path></svg> <span class="view-more-panel-cta-text js-view-more-panel-cta-text">View more</span></button>
 		</section>
 	</section>`;
-};
-
-export const Standard = browseByMarkup.bind({});
-Standard.args = {
-	mobileOnly: false
-};
-
-export const MobileOnly = browseByMarkup.bind({});
-MobileOnly.args = {
-	mobileOnly: true
 };
