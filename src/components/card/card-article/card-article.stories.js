@@ -26,8 +26,7 @@ const ArticleCard = () => {
 
 	return html`<div class="article-card article-card--active">
 		<div
-			class="article-card__image-wrapper article-card__image-wrapper--fixed-ratio article-card__image-wrapper--66"
-		>
+			class="article-card__image-wrapper article-card__image-wrapper--fixed-ratio article-card__image-wrapper--66">
 			<a href="${link}" class="article-card__image-link" tabindex="-1">
 				<img
 					class="article-card__image"
@@ -39,8 +38,7 @@ const ArticleCard = () => {
 		</div>
 		<div class="article-card__subject">
 			<div
-				class="article-card__subject-body article-card__subject-body--multicard"
-			>
+				class="article-card__subject-body article-card__subject-body--multicard">
 				<div class="article-card__header">
 					<h4 class="article-card__header-descriptor">
 						<a class="article-card__header-descriptor-link" href="${link}">

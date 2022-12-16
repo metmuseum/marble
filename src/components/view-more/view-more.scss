@@ -1,0 +1,67 @@
+@use "../../base/colors";
+@use "../../base/sizes";
+
+.view-more-panel-body {
+	max-height: 70vh;
+	position: relative;
+	transition: max-height 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.view-more-panel-cta {
+	background: transparent;
+	border: 0;
+	color: currentColor;
+	cursor: pointer;
+	display: none;
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0 auto;
+
+	.downward-arrow {
+		fill: colors.$color-grey-700;
+		height: 10px;
+		margin: 0 3px 0 0;
+		width: 10px;
+	}
+
+	&:focus {
+		outline-color: colors.$color-grey-700;
+	}
+}
+
+.view-more-panel--cropped {
+	.view-more-panel-body {
+		overflow: hidden;
+	}
+
+	.view-more-panel-body::after {
+		@include white-shade($height: 80px, $transparency-amount: 105%);
+	}
+
+	.view-more-panel-cta {
+		display: block;
+	}
+}
+
+.view-more-panel--expanded {
+	.view-more-panel-body {
+		max-height: 100%;
+	}
+
+	.view-more-panel-cta {
+		display: block;
+		margin-top: 16px;
+	}
+
+	.downward-arrow {
+		transform: rotate(180deg);
+	}
+}
+
+.view-more-panel--mobile-only {
+	.view-more-panel-body {
+		@media screen and (min-width: sizes.$bp-500) {
+			max-height: none;
+		}
+	}
+}

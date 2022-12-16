@@ -6,3 +6,16 @@ $shadow-active: 6px 6px 10px 0 $color-active-shadow, 0 0 4px 0 $color-active-sha
 
 //Since expressive components don't have a gutter their shadow treatment should be slightly different;
 $shadow-active--expressive: 6px 6px 10px 0 $color-card-shadow, -6px -6px 10px 0 $color-card-shadow;
+
+@mixin white-shade($height: 115px, $transparency-amount: 80%) {
+	background: linear-gradient(to top,
+	rgba(255, 255, 255, 1) 0%,
+	rgba(255, 255, 255, 0) $transparency-amount);
+	bottom: 0;
+	content: "";
+	height: $height;
+	left: 0;
+	pointer-events: none; /* so the text is still selectable */
+	position: absolute;
+	width: 100%;
+}

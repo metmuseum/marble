@@ -24,7 +24,7 @@ const TabControls = () => {
 						${index === 1 && "checked"}
 					/>
 					<label for="${tabName}-tab-id" class="tab-controls__label">
-						<h3>${tabName}</h3>
+						<h3 class="tab-controls__heading">${tabName}</h3>
 					</label>
 				</div>`;
 		})

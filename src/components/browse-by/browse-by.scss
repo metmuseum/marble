@@ -1,0 +1,123 @@
+@use "../../base/colors";
+@use "../../base/shadows";
+@use "../../base/sizes";
+
+.browseby {
+	.article-card {
+		margin: 0;
+		width: 100%;
+	}
+
+	.article-card__image-wrapper {
+		margin-bottom: sizes.$spacing-micro;
+	}
+
+	.article-card__header-heading {
+		font-size: sizes.$textsize-s;
+		font-weight: 500;
+	}
+
+	.tab-controls__heading {
+		display: flex;
+	}
+}
+
+.browseby__title {
+	margin-bottom: sizes.$spacing-xxs;
+}
+
+.browseby-tab-controls {
+	display: none;
+	margin: 0 9px 11px;
+
+	@media screen and (min-width: sizes.$bp-500) {
+		display: inline-flex;
+	}
+}
+
+.browseby-tab-chevron {
+	background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzMzMzMzIiB2aWV3Qm94PSIwIDAgMTkgMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE3LjEzODUgMC43NUwxOC4yNSAxLjc4ODQ1TDkuMjQ0MzkgMTEuMjVMMC4yNSAxLjc4OTVMMS4zNjE1MyAwLjc1TDkuMjY3OTYgOS4xOTQxTDE3LjEzODUgMC43NVoiLz48L3N2Zz4=");
+	background-position: 10px 5px;
+	background-repeat: no-repeat;
+	background-size: 17px;
+	content: "";
+	display: none;
+	height: 30px;
+	width: 30px;
+
+	@media screen and (min-width: sizes.$bp-500) {
+		background-image: none;
+		width: 0;
+	}
+}
+
+.browseby-highlighted-tab {
+	display: inline-flex;
+	order: -1;
+
+	.browseby-tab-chevron {
+		display: block;
+	}
+
+	@media screen and (min-width: sizes.$bp-500) {
+		order: 0;
+	}
+}
+
+.browseby-tabs-control-container {
+	flex: 1;
+	position: relative;
+}
+
+.browseby-tabs-control-body {
+	display: flex;
+	flex-direction: column;
+	margin-top: -10px;
+	padding: 10px 10px 1px;
+	position: absolute;
+	z-index: z("filter-set");
+
+	@media screen and (min-width: sizes.$bp-500) {
+		flex-direction: row;
+	}
+}
+
+.browseby-dropdown--open {
+	.browseby-tab-controls {
+		display: inline-flex;
+	}
+
+	.browseby-tab-chevron {
+		background-position: 5px 15px;
+		transform: rotate(180deg);
+	}
+
+	.browseby-tabs-control-body {
+		background-color: colors.$color-white;
+		border-radius: sizes.$radius-sharp;
+		box-shadow: shadows.$shadow-faint;
+	}
+}
+
+.browseby-header {
+	display: flex;
+}
+
+.browseby-header__title {
+	font-size: sizes.$textsize-m;
+	font-weight: 500;
+	line-height: 1.1;
+	margin-bottom: sizes.$spacing-micro;
+}
+
+.browseby-tabpanel-body {
+	display: grid;
+	grid-column-gap: sizes.$spacing-micro;
+	grid-row-gap: sizes.$spacing-xs;
+	grid-template-columns: 1fr 1fr;
+	margin: sizes.$spacing-micro 0 sizes.$spacing-micro;
+
+	@media screen and (min-width: sizes.$bp-500) {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+}
