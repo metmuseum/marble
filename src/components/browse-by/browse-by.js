@@ -14,6 +14,12 @@ const browseBy = () => {
 				tab.addEventListener("click", function () {
 					handleTabClick(tab);
 				});
+
+				tab.addEventListener("keydown", function (e) {
+					if (e.which == 13) {//"return"
+						handleDropDownModeClick(tab);
+					} 
+				});
 			});
 
 			const handleTabClick = (tabClicked) => {
@@ -77,6 +83,31 @@ const browseBy = () => {
 				tabPanelToOpen.removeAttribute("hidden");
 				checkTabpanelHeight(tabPanelToOpen);
 			};
+
+			const handleResize = () => {
+
+
+				allTabPanels.forEach((tabPanel) => {
+					if (!tabPanel.hasAttribute("hidden")) {
+						window.requestAnimationFrame((function() {
+							checkTabpanelHeight(tabPanel);
+						}));
+					}
+				});	
+
+
+
+
+
+
+
+
+
+
+
+			};
+
+			window.addEventListener("resize", handleResize);
 		});
 	}
 };
