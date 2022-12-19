@@ -5,6 +5,7 @@ import browseBy from "./components/browse-by/browse-by.js";
 import viewMore from "./components/view-more/view-more.js";
 import initializeAlert from "./components/alert/index.js";
 import jumpLinkBanner from "./components/jumplink-banner/jumplink-banner.js";
+import jumpToBanner from "./components/jump-to-banner/jump-to-banner.js";
 import Musette from "./components/musette/musette.js";
 import videoSlide from "./components/carousel/slide/video-slide.js";
 import vimeoPlayToggle from "./components/vimeo-player/vimeo-controls.js";
@@ -19,6 +20,7 @@ const marble = {
 	viewMore,
 	initializeAlert,
 	jumpLinkBanner,
+	jumpToBanner,
 	Musette,
 	videoSlide,
 	vimeoPlayToggle,
@@ -34,6 +36,7 @@ export {
 	viewMore,
 	initializeAlert,
 	jumpLinkBanner,
+	jumpToBanner,
 	Musette,
 	videoSlide,
 	vimeoPlayToggle,
