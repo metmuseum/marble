@@ -1,0 +1,48 @@
+$button-height: 42px;
+
+.grab-nav-wrapper {
+	position: relative;
+}
+
+.grab-nav {
+	column-gap: 20px;
+	cursor: pointer;
+	display: flex;
+	padding: 0 20px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	position: relative;
+	scrollbar-width: none;
+	user-select: none;
+	width: 100%;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.grab-nav--overflow-right {
+
+	&:after {
+		background: linear-gradient(to left,#fff -21%,rgba(255,255,255,0) 99%);
+		content: "";
+		height: 100%;
+		pointer-events: none;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 63px;
+	}
+}
+
+.grab-nav-tab {
+	background: $color-grey-200;
+}
+
+.grab-nav-link {
+	white-space: nowrap;
+
+	&:focus {
+		outline: 2px solid lightblue;
+	}
+}

@@ -4,7 +4,7 @@ import { useEffect } from "@storybook/client-api";
 
 import { withKnobs } from "@storybook/addon-knobs";
 
-export default { title: "Components/Bare Navigation", decorators: [withKnobs] };
+export default { title: "Navigation/Bare Navigation", decorators: [withKnobs] };
 
 const BareNav = () => {
 	useEffect(bareNav);
