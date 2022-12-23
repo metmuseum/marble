@@ -20,8 +20,7 @@
 }
 
 .grab-nav--overflow-right {
-
-	&:after {
+	&::after {
 		background: linear-gradient(to left, #fff -21%, rgba(255, 255, 255, 0) 99%);
 		content: "";
 		height: 100%;
