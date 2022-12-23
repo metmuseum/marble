@@ -86,6 +86,8 @@ class GrabNav {
 	}
 }
 
+// DS - the initialize is only for Storybook
+// to use this in a project you need to init it there
 const initialize = (selectorString = ".js-grab-nav") => {
 	const grabNavs = document.querySelectorAll(selectorString);
 	grabNavs.forEach((grabNavEl) => new GrabNav(grabNavEl));
