@@ -1,5 +1,3 @@
-$button-height: 42px;
-
 .grab-nav-wrapper {
 	position: relative;
 }
@@ -8,7 +6,7 @@ $button-height: 42px;
 	column-gap: 20px;
 	cursor: pointer;
 	display: flex;
-	padding: 0 20px;
+	padding: 0;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	position: relative;
@@ -41,8 +39,4 @@ $button-height: 42px;
 
 .grab-nav-link {
 	white-space: nowrap;
-
-	&:focus {
-		outline: 2px solid lightblue;
-	}
 }
