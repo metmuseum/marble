@@ -6,9 +6,9 @@
 	column-gap: 20px;
 	cursor: pointer;
 	display: flex;
-	padding: 0;
 	overflow-x: scroll;
 	overflow-y: hidden;
+	padding: 0;
 	position: relative;
 	scrollbar-width: none;
 	user-select: none;
@@ -22,7 +22,7 @@
 .grab-nav--overflow-right {
 
 	&:after {
-		background: linear-gradient(to left,#fff -21%,rgba(255,255,255,0) 99%);
+		background: linear-gradient(to left, #fff -21%, rgba(255, 255, 255, 0) 99%);
 		content: "";
 		height: 100%;
 		pointer-events: none;
