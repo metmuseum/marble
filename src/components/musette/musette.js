@@ -44,6 +44,17 @@ class Musette {
 		});
 	}
 
+	static initObserver(musetteEl) {
+		this.observer = new IntersectionObserver(
+			this.handleIntersections.bind(this),
+			{
+				root: musetteEl,
+				rootMargin: "0px",
+				threshold: 0.9
+			}
+		);
+	}
+
 	mouseDownHandler(e) {
 		e.preventDefault(); //prevents dragging of images
 		this.pos = {
@@ -139,5 +150,17 @@ const initialize = (selectorString = ".js-la-musette") => {
 	lesMusettes.forEach((laMusetteEl) => new Musette(laMusetteEl));
 };
 
+const initObserver = (musetteEl) => {
+	this.observer = new IntersectionObserver(
+		this.handleIntersections.bind(this),
+		{
+			root: musetteEl,
+			rootMargin: "0px",
+			threshold: 0.9
+		}
+	);
+}
+
 export default Musette;
 export { initialize };
+export { initObserver };

@@ -40,7 +40,11 @@ const Musette = () => {
 	return html`
 	<div class="la-musette la-musette-no-scrollbar js-la-musette">
 		${titles.map((title, index) => slideTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
-	</div>`;
+	</div>
+	<div id="dave-musette" class="la-musette la-musette-no-scrollbar">
+		${titles.map((title, index) => slideTemplate({ title: title, imageURL: images[index % 3].srcSet.fallback })).join("")}
+	</div>
+	<a href=javascript:Musette.initObserver(document.GetElementById("dave-musette"));>Initialize</a>`;
 };
 
 export { Musette };
