@@ -1,54 +1,29 @@
-@mixin tertiary-button--hover {
-	border-color: transparent;
-
-	&::before {
-		border-color: currentColor;
-		content: "";
-		right: 0;
-	}
-}
-
 @mixin tertiary-button {
 	background-color: transparent;
-	border: unset;
-	border-bottom: 2px solid currentColor;
-	border-left: 0;
-	border-right: 0;
-	border-top: 0;
+	border: 0;
 	color: currentColor;
 	cursor: pointer;
 	font-family: $metsans;
-	font-size: $textsize-s;
+	font-size: $textsize-xs;
 	font-weight: 500;
 	line-height: 1.2;
 	padding: 0;
 	position: relative;
 
+	//DS - ask Julie about this
 	&:active {
-		color: $color-purplee;
-	}
-
-	// this block handles the underline animation
-	&:not(:disabled) {
-		&::before {
-			border-bottom: 2px solid transparent;
-			bottom: -2px;
-			content: "";
-			left: 0;
-			position: absolute;
-			right: 100%;
-			transition: right 0.8s 0.1s;
-		}
+		color: currentColor;
 	}
 
 	&:focus:not(:hover) {
-		@include button-focus--not-hover(7px);
+		@include button-focus--not-hover(10px, 0);
+		border-bottom: 2px solid currentColor;
 	}
 
 	@media screen and (hover: hover) {
 		&:not(:disabled) {
 			&:hover {
-				@include tertiary-button--hover();
+				border-bottom: 2px solid currentColor;
 			}
 		}
 	}

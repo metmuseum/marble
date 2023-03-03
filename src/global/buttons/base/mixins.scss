@@ -12,10 +12,10 @@
 	}
 }
 
-@mixin button-focus--not-hover($offset) {
+@mixin button-focus--not-hover($offset, $radius-offset: 3px) {
 	&::after {
 		border: 2px solid $color-grey-700;
-		border-radius: $radius-sharp + 3px;
+		border-radius: $radius-sharp + $radius-offset;
 		bottom: -$offset;
 		content: "";
 		left: -$offset;
