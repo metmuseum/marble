@@ -111,13 +111,14 @@
 
 .tertiary-button {
 	&._sb--focus:not(:hover) {
-		@include button-focus--not-hover(7px);
+		@include button-focus--not-hover(10px, 0);
+		border-bottom: 2px solid currentColor;
 	}
 
 	@media screen and (hover: hover) {
 		&:not(:disabled) {
 			&._sb--hover {
-				@include tertiary-button--hover();
+				border-bottom: 2px solid currentColor;
 			}
 		}
 	}
