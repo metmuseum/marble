@@ -15,20 +15,24 @@ $button-height: 42px;
 	width: 100%;
 }
 
-.la-musette-offset > :first-child {
-	margin-left: 7.5vw;
+.la-musette--offset > :first-child {
+	margin-left: $spacing-component-margin;
 }
 
-.la-musette-offset > :last-child {
-	margin-right: 7.5vw;
+.la-musette--offset > :last-child {
+	margin-right: $spacing-component-margin;
 }
 
-.la-musette-no-scrollbar {
+.la-musette--no-scrollbar {
 	scrollbar-width: none;
 
 	&::-webkit-scrollbar {
 		display: none;
 	}
+}
+
+.la-musette--rtl {
+	flex-direction: row-reverse;
 }
 
 //navigation
